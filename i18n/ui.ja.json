@@ -1,0 +1,24 @@
+{
+  "app": {
+    "title": "Yamada Components",
+    "description": ""
+  },
+  "not-found": {
+    "title": "404: 見つかりません",
+    "description": "ページが見つかりません",
+    "heading": "404 | ページが見つかりません",
+    "message": "存在しないページにぶち当たってしまった…悲しいですね。😢",
+    "back-to-app": "アプリにもどる"
+  },
+  "component": {
+    "forms": {
+      "search": {
+        "message": "コンポーネントを検索する",
+        "placeholder": "コンポーネントを検索する"
+      }
+    },
+    "footer": {
+      "description": "このアプリケーションは、`Hirotomo Yamada`と`愉快な仲間たち`によって開発されました。"
+    }
+  }
+}
