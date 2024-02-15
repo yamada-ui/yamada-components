@@ -1,3 +1,4 @@
+import { componentList } from "@/components";
 import { Box, Container, Text, Textarea } from "@yamada-ui/react";
 import { readFileSync } from "fs";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
@@ -17,12 +18,7 @@ interface PageParams extends ParsedUrlQuery {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
-        paths: [
-            { params: { slug: ['header'] } },
-            // { params: { slug: ['header', 'basic'] } },
-            { params: { slug: ['navbar'] } },
-            // 他の可能な値を追加
-        ],
+        paths: componentList,
         fallback: false,
     };
 };
