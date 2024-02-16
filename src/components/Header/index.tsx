@@ -1,9 +1,9 @@
-import { Box, HStack, Link } from "@yamada-ui/react";
+import { Box, HStack, Heading, Link } from "@yamada-ui/react";
 import { FC } from "react";
 
-export const Header: FC = () => {
+const Header: FC = () => {
     return <HStack as="header" justify="space-between">
-        <Box>アイコン</Box>
+        <Box><Heading>アイコン</Heading></Box>
         <HStack>
             <Link href="/">リンク</Link>
             <Link href="/">リンク</Link>
