@@ -6,12 +6,13 @@ import path from "path";
 import { ParsedUrlQuery } from "querystring";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
 import React from "react"
-const { Box, Container, Text, Textarea } = YamadaUI
+const { Box, Container, Text } = YamadaUI
 
 interface PageProps {
     data: {
         path: string;
         component: string;
+        componentName: string;
     };
 }
 
@@ -55,12 +56,12 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({ pa
     }
 
     // 最後にrender(コンポーネント名)を追加する
-    codeSnippet += `render(<${componentName}/>)`;
     console.log(codeSnippet);
 
     const data: PageProps["data"] = {
         path: slug.map((e) => e.charAt(0).toUpperCase() + e.slice(1).toLowerCase()).join("/"),
-        component: codeSnippet
+        component: codeSnippet,
+        componentName
     };
 
     return {
@@ -71,11 +72,11 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({ pa
 }
 
 const Page: NextPage<PageProps> = ({ data }) => {
+    const transformCode = (code: string) => `${code}\nrender(<${data.componentName}/>)` 
     return <Container>
         <Box>
             <Text>Component: {data.path}</Text>
-            <Textarea resize={'block'} defaultValue={data.component} />
-            <LiveProvider code={data.component} scope={{ ...YamadaUI, ...React }} noInline={true}>
+            <LiveProvider code={data.component} scope={{ ...YamadaUI, ...React }} enableTypeScript noInline transformCode={transformCode} >
                 <Box>
                     <LiveEditor />
                     <LivePreview />
