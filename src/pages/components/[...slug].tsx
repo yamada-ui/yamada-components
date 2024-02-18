@@ -12,7 +12,6 @@ interface PageProps {
     data: {
         path: string;
         component: string;
-        componentName: string;
     };
 }
 
@@ -60,8 +59,7 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({ pa
 
     const data: PageProps["data"] = {
         path: slug.map((e) => e.charAt(0).toUpperCase() + e.slice(1).toLowerCase()).join("/"),
-        component: codeSnippet,
-        componentName
+        component: fileContent,
     };
 
     return {
@@ -72,7 +70,26 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({ pa
 }
 
 const Page: NextPage<PageProps> = ({ data }) => {
-    const transformCode = (code: string) => `${code}\nrender(<${data.componentName}/>)` 
+    const transformCode = (code: string) => {
+        const codeLines = code.split('\n');
+        let codeSnippet = ''; // React Liveで表示させるコード
+        let componentName = ''; // コンポーネント名
+    
+        for (const line of codeLines) {
+            // import {} from "" を削除
+            if (!line.includes('import')) {
+                codeSnippet += line + '\n';
+                if (codeSnippet.includes('const')) {
+                    // const 変数名をcomponentNameに格納
+                    const match = line.match(/const\s+(\w+)\s*:\s*FC\s*=\s*\(\s*\)\s*=>\s*{/);
+                    if (match && match.length >= 2) {
+                        componentName = match[1];
+                    }
+                }
+            }
+        }
+        return `${codeSnippet}\nrender(<${componentName}/>)` 
+    }
     return <Container>
         <Box>
             <Text>Component: {data.path}</Text>
