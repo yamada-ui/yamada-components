@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({ pa
     const filePath = path.join(process.cwd(), 'src', 'contents', ...slug.map(part => part.toLowerCase()), 'index.tsx');
 
     // ファイルの読み込み
-    const fileContent = readFileSync(filePath, 'utf8');
+    const fileContent = readFileSync(filePath, 'utf8').split('\n').filter(line => !line.includes('export')).join('\n');
 
     const data: PageProps["data"] = {
         path: slug.map((e) => e.charAt(0).toUpperCase() + e.slice(1).toLowerCase()).join("/"),

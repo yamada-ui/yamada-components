@@ -13,3 +13,5 @@ const Header: FC = () => {
         </HStack>
     </HStack>
 }
+
+export default Header

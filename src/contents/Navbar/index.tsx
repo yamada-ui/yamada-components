@@ -4,3 +4,5 @@ import { FC } from "react";
 const NavBar:FC = () => {
     return <Box  as="nav">Nav</Box>
 }
+
+export default NavBar
