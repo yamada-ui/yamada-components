@@ -1,0 +1,8 @@
+{
+  "title": "Simple Header",
+  "category": "headers",
+  "canvas": {
+    "center": true,
+    "maxWidth": 420
+  }
+}

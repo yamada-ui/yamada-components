@@ -1,0 +1,8 @@
+{
+  "title": "Simple Navbar",
+  "category": "navbars",
+  "canvas": {
+    "center": true,
+    "maxWidth": 420
+  }
+}
