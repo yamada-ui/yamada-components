@@ -1,0 +1,8 @@
+{
+  "title": "Password Input",
+  "category": "inputs",
+  "canvas": {
+    "center": true,
+    "maxWidth": 420
+  }
+}
