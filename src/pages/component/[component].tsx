@@ -1,4 +1,3 @@
-import { componentList } from "@/contents";
 import * as YamadaUI from "@yamada-ui/react";
 import { readFileSync } from "fs";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
@@ -6,6 +5,7 @@ import path from "path";
 import { ParsedUrlQuery } from "querystring";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
 import React from "react"
+import { getAllComponents } from "@/data/components";
 const { Box, Container, Text } = YamadaUI
 
 interface PageProps {
@@ -16,28 +16,28 @@ interface PageProps {
 }
 
 interface PageParams extends ParsedUrlQuery {
-    slug: string[];
+    component: string;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
-        paths: componentList,
+        paths: getAllComponents().map((component) => ({ params: { component: component.slug } })),
         fallback: false,
     };
 };
 
 export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({ params }) => {
     // paramsオブジェクトからslugを取得
-    const { slug } = params!;
+    const component = params!.component.split('-').join('');
 
     // ローカル上のファイルパス取得
-    const filePath = path.join(process.cwd(), 'src', 'contents', ...slug.map(part => part.toLowerCase()), 'index.tsx');
+    const filePath = path.join(process.cwd(), 'src', 'contents', component.toLowerCase(), 'index.tsx');
 
     // ファイルの読み込み
     const fileContent = readFileSync(filePath, 'utf8').split('\n').filter(line => !line.includes('export')).join('\n');
 
     const data: PageProps["data"] = {
-        path: slug.map((e) => e.charAt(0).toUpperCase() + e.slice(1).toLowerCase()).join("/"),
+        path: component.charAt(0).toUpperCase() + component.slice(1).toLowerCase(),
         component: fileContent,
     };
 

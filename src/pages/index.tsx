@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { GetStaticProps, NextPage } from "next";
-import { componentList } from "@/contents";
 import { Container, Heading, Link, List, ListItem, Text } from "@yamada-ui/react"
+import { getAllComponents } from "@/data/components";
 
 interface ListItem {
   name: string;
@@ -14,7 +14,8 @@ interface PageProps {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const list: ListItem[] = componentList.map(({ params: e }) => ({ name: e.slug.join('').charAt(0).toUpperCase() + e.slug.join().slice(1).toLowerCase(), path: `/component/${e.slug.join('/')}` }))
+  // const list: ListItem[] = componentList.map(({ params: e }) => ({ name: e.slug.charAt(0).toUpperCase() + e.slug.slice(1).toLowerCase(), path: `/component/${e.slug}` }))
+  const list: ListItem[] = getAllComponents().map((e) => ({ name: e!.slug.charAt(0).toUpperCase() + e!.slug.slice(1).toLowerCase(), path: `/component/${e!.slug}` }))
   const data: PageProps["data"] = {
     list
   }
