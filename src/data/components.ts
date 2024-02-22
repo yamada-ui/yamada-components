@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from "fs";
 import path from "path";
 
-interface ComponentInfo {
+export interface ComponentInfo {
   component: string;
   slug: string;
   // code: { fileName: string; language: string; code: string }[];
@@ -72,4 +72,17 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
 
   // nullでない要素だけを抽出して返す
   return results.filter((c) => c) as ComponentInfo[];
+};
+
+export const getComponentsByCategory = async () => {
+  return (await getAllComponents()).reduce<Record<string, ComponentInfo[]>>(
+    (acc, component) => {
+      if (!(component.attributes.category in acc)) {
+        acc[component.attributes.category] = [];
+      }
+      acc[component.attributes.category].push(component);
+      return acc;
+    },
+    {}
+  );
 };
