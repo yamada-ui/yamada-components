@@ -1,12 +1,12 @@
-import { lstatSync, readFileSync, readdirSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import path from "path";
 
 interface ComponentInfo {
-    component: string;
-    slug: string;
-    // code: { fileName: string; language: string; code: string }[];
-    attributes: any;
-  }
+  component: string;
+  slug: string;
+  // code: { fileName: string; language: string; code: string }[];
+  attributes: any;
+}
 
 const convertCase = (string: string) => {
   const splitted = string
@@ -49,32 +49,27 @@ const getComponentCode = (componentFolder: string, componentName: string) => {
   ];
 };
 
-export const getAllComponents = (): ComponentInfo[] => {
+export const getAllComponents = async (): Promise<ComponentInfo[]> => {
   const rootFolder = path.join(process.cwd(), "src", "contents");
   const paths = readdirSync(rootFolder);
 
-  return paths
-    .map((componentName) => {
-      const componentDirectory = path.join(rootFolder, componentName);
-      const componentAttributes = path.join(
-        componentDirectory,
-        "attributes.json"
-      );
+  // 全ての非同期処理を待つためのPromise配列
+  const promises = paths.map(async (componentName) => {
+    // metadataを非同期で取得する
+    const { metadata } = await import(
+      "../contents/" + componentName + "/index"
+    );
 
-      if (lstatSync(componentDirectory).isDirectory()) {
-        // const code = getComponentCode(componentDirectory, componentName);
-        const attributes = JSON.parse(
-          readFileSync(componentAttributes, "utf8")
-        );
-        return {
-          component: componentName,
-          slug: convertCase(componentName),
-        //   code,
-          attributes,
-        };
-      }
+    return {
+      component: componentName,
+      slug: convertCase(componentName),
+      attributes: metadata,
+    };
+  });
 
-      return null;
-    })
-    .filter((c) => c) as ComponentInfo[];
+  // Promise配列の完了を待ち、結果を返す
+  const results = await Promise.all(promises);
+
+  // nullでない要素だけを抽出して返す
+  return results.filter((c) => c) as ComponentInfo[];
 };
