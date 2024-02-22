@@ -21,7 +21,7 @@ interface PageParams extends ParsedUrlQuery {
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {
-        paths: getAllComponents().map((component) => ({ params: { component: component.slug } })),
+        paths: (await getAllComponents()).map((component) => ({ params: { component: component.slug } })),
         fallback: false,
     };
 };
@@ -34,11 +34,12 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({ pa
     const filePath = path.join(process.cwd(), 'src', 'contents', component.toLowerCase(), 'index.tsx');
 
     // ファイルの読み込み
-    const fileContent = readFileSync(filePath, 'utf8').split('\n').filter(line => !line.includes('export')).join('\n');
-
+    const fileContent = readFileSync(filePath, 'utf8');
+    const index = fileContent.split('\n').findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v));
+    
     const data: PageProps["data"] = {
         path: component.charAt(0).toUpperCase() + component.slice(1).toLowerCase(),
-        component: fileContent,
+        component: fileContent.split('\n').slice(0, index).filter(line => !line.includes('export')).join('\n'),
     };
 
     return {

@@ -14,8 +14,7 @@ interface PageProps {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  // const list: ListItem[] = componentList.map(({ params: e }) => ({ name: e.slug.charAt(0).toUpperCase() + e.slug.slice(1).toLowerCase(), path: `/component/${e.slug}` }))
-  const list: ListItem[] = getAllComponents().map((e) => ({ name: e!.slug.charAt(0).toUpperCase() + e!.slug.slice(1).toLowerCase(), path: `/component/${e!.slug}` }))
+  const list: ListItem[] = (await getAllComponents()).map((e) => ({ name: e!.slug.charAt(0).toUpperCase() + e!.slug.slice(1).toLowerCase(), path: `/component/${e!.slug}` }))
   const data: PageProps["data"] = {
     list
   }
