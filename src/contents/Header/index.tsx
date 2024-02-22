@@ -17,3 +17,12 @@ const Header: FC = () => {
 }
 
 export default Header
+
+export const metadata = {
+    "title": "Simple Header",
+    "category": "headers",
+    "canvas": {
+        "center": true,
+        "maxWidth": 420
+    }
+};

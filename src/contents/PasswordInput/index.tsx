@@ -16,3 +16,12 @@ const PasswordInput: FC = () => {
 }
 
 export default PasswordInput
+
+export const metadata = {
+    "title": "Password Input",
+    "category": "inputs",
+    "canvas": {
+        "center": true,
+        "maxWidth": 420
+    }
+};

@@ -6,3 +6,13 @@ const NavBar:FC = () => {
 }
 
 export default NavBar
+
+export const metadata = {
+    "title": "Simple Navbar",
+    "category": "navbars",
+    "canvas": {
+      "center": true,
+      "maxWidth": 420
+    }
+  };
+  
