@@ -4,6 +4,7 @@ import path from "path";
 export interface ComponentInfo {
   component: string;
   slug: string;
+  code: string;
   // code: { fileName: string; language: string; code: string }[];
   attributes: any;
 }
@@ -54,16 +55,25 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
   const paths = readdirSync(rootFolder);
 
   // 全ての非同期処理を待つためのPromise配列
-  const promises = paths.map(async (componentName) => {
+  const promises = paths.map(async (componentName: string) => {
     // metadataを非同期で取得する
     const { metadata } = await import(
       "../contents/" + componentName + "/index"
     );
 
+    // ローカル上のファイルパス取得
+    const filePath = path.join(rootFolder, componentName, 'index.tsx');
+
+    // ファイルの読み込み
+    const fileContent = readFileSync(filePath, 'utf8');
+    const index = fileContent.split('\n').findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v));
+    const code = fileContent.split('\n').slice(0, index).filter(line => !line.includes('export')).join('\n')
+
     return {
       component: componentName,
       slug: convertCase(componentName),
       attributes: metadata,
+      code: code
     };
   });
 
@@ -71,7 +81,7 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
   const results = await Promise.all(promises);
 
   // nullでない要素だけを抽出して返す
-  return results.filter((c) => c) as ComponentInfo[];
+  return results.filter((c) => c);
 };
 
 export const getComponentsByCategory = async () => {
