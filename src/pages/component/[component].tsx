@@ -1,13 +1,11 @@
-import * as YamadaUI from "@yamada-ui/react";
 import { readFileSync } from "fs";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import path from "path";
 import { ParsedUrlQuery } from "querystring";
-import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
 import React from "react"
 import { getAllComponents } from "@/data/components";
 import { ComponentPreview } from "@/components/ComponentPreview";
-const { Box, Container, Text } = YamadaUI
+import { Container } from "@yamada-ui/react";
 
 interface PageProps {
     data: {

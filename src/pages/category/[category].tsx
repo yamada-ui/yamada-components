@@ -2,7 +2,7 @@ import { ComponentPreview } from "@/components/ComponentPreview";
 import { CATEGORIES_SLUGS, getCategoryData } from "@/data/categories";
 import { ComponentInfo, getAllComponents, getComponentsByCategory } from "@/data/components";
 import { Category } from "@/data/types";
-import { Container, Heading, Link, List, ListItem, Text, Textarea } from "@yamada-ui/react";
+import { Container, Heading, Link, List, ListItem, Text } from "@yamada-ui/react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 
