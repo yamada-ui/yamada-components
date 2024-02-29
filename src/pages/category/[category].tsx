@@ -1,7 +1,8 @@
+import { ComponentPreview } from "@/components/ComponentPreview";
 import { CATEGORIES_SLUGS, getCategoryData } from "@/data/categories";
 import { ComponentInfo, getAllComponents, getComponentsByCategory } from "@/data/components";
 import { Category } from "@/data/types";
-import { Container, Heading, Link, List, ListItem, Text } from "@yamada-ui/react";
+import { Container, Heading, Link, List, ListItem, Text, Textarea } from "@yamada-ui/react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 
@@ -43,6 +44,7 @@ const Page: NextPage<PageProps> = ({ data }) => {
                     <ListItem key={`${e.component}-${i}`} display="flex" flexDir={"column"}>
                         <Text>{e.component}</Text>
                         <Link href={`/component/${e.slug}`}>{`/component/${e.slug}`}</Link>
+                        <ComponentPreview path={e.component} code={e.code}/>
                     </ListItem>
                 ))}
             </List>
