@@ -25,9 +25,10 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 })
 
 export const getStaticProps: GetStaticProps<PageProps, PageParams> = async (context) => {
+    const components = await getComponentsByCategory()
     const data: PageProps["data"] = {
         category: getCategoryData(context!.params!.category),
-        components: (await getComponentsByCategory())[context!.params!.category],
+        components: context!.params!.category in components ? components[context!.params!.category] : [],
         allComponents: await getAllComponents(),
     }
     return {
