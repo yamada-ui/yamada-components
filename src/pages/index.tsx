@@ -1,20 +1,17 @@
 import Head from "next/head";
 import { GetStaticProps, NextPage } from "next";
-import { Container, Heading, Link, List, ListItem, Text } from "@yamada-ui/react"
-import { getAllComponents } from "@/data/components";
+import { Container, Heading, Link, List, ListItem, Text, VStack } from "@yamada-ui/react"
+import { CategoriesGroup } from "@/data/types";
+import { CATEGORIES } from "@/data/categories";
 
-interface ListItem {
-  name: string;
-  path: string;
-}
 interface PageProps {
   data: {
-    list: ListItem[]
+    list: CategoriesGroup[]
   }
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const list: ListItem[] = (await getAllComponents()).map((e) => ({ name: e!.slug.charAt(0).toUpperCase() + e!.slug.slice(1).toLowerCase(), path: `/component/${e!.slug}` }))
+  const list: CategoriesGroup[] = CATEGORIES;
   const data: PageProps["data"] = {
     list
   }
@@ -36,15 +33,21 @@ const Home: NextPage<PageProps> = ({ data }) => {
       </Head>
       <main>
         <Container>
-          <Heading>コンポーネント一覧</Heading>
-          <List>
-            {data.list.map((e,i) => (
-              <ListItem key={`${e.name}-${i}`} display="flex" flexDir={"column"}>
-                <Text>{e.name}</Text>
-                <Link href={e.path}>{e.path}</Link>
-              </ListItem>
-            ))}
-          </List>
+          {
+            data.list.map((group, i) => (
+              <VStack key={`${group.name}-${i}`}>
+                <Heading>{group.name}</Heading>
+                <List>
+                  {group.categories.map((category, j) => (
+                    <ListItem key={`${category.name}-${j}`} display="flex" flexDir={"column"}>
+                      <Text>{category.name}</Text>
+                      <Link href={`/category/${category.slug}`}>{`/category/${category.slug}`}</Link>
+                    </ListItem>
+                  ))}
+                </List>
+              </VStack>
+            ))
+          }
         </Container>
       </main>
     </>
