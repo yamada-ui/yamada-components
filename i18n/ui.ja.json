@@ -20,5 +20,13 @@
     "footer": {
       "description": "このアプリケーションは、`Hirotomo Yamada`と`愉快な仲間たち`によって開発されました。"
     }
+  },
+  "categories": {
+    "title": "Yamada Components",
+    "description": ""
+  },
+  "components": {
+    "title": "Yamada Components",
+    "description": ""
   }
 }
