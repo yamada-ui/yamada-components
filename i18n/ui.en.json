@@ -20,5 +20,13 @@
     "footer": {
       "description": "Built by `Hirotomo Yamada` and `these awesome people`"
     }
+  },
+  "categories": {
+    "title": "Yamada Components",
+    "description": ""
+  },
+  "components": {
+    "title": "Yamada Components",
+    "description": ""
   }
 }
