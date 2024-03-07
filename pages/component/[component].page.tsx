@@ -9,14 +9,14 @@ import { ComponentPreview } from "components/component-preview"
 import { AppLayout } from "layouts/app-layout"
 import { useI18n } from "contexts/i18n-context"
 
-interface PageProps {
+type PageProps = {
   data: {
     path: string
     component: string
   }
 }
 
-interface PageParams extends ParsedUrlQuery {
+type PageParams = ParsedUrlQuery & {
   component: string
 }
 

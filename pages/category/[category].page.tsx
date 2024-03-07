@@ -19,7 +19,7 @@ import { AppLayout } from "layouts/app-layout"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { ParsedUrlQuery } from "querystring"
 
-interface PageProps {
+type PageProps = {
   data: {
     category: Category | undefined
     components: ComponentInfo[]
@@ -27,7 +27,7 @@ interface PageProps {
   }
 }
 
-interface PageParams extends ParsedUrlQuery {
+type PageParams = ParsedUrlQuery & {
   category: string
 }
 

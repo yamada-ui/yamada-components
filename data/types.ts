@@ -1,15 +1,15 @@
-export interface Category {
+export type Category = {
   slug: string
   name: string
   // images: { dark: string; light: string };
 }
 
-export interface CategoriesGroup {
+export type CategoriesGroup = {
   name: string
   categories: Category[]
 }
 
-export interface CanvasAttributes {
+export type CanvasAttributes = {
   responsive?: boolean
   withColor?: boolean
   dimmed?: boolean
@@ -19,7 +19,7 @@ export interface CanvasAttributes {
   props?: Record<string, any>
 }
 
-export interface UiComponent {
+export type UiComponent = {
   component: string
   slug: string
   code: { fileName: string; language: string; code: string }[]

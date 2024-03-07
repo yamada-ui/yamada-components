@@ -14,7 +14,7 @@ import { CategoriesGroup } from "data/types"
 import { CATEGORIES } from "data/categories"
 
 // type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
-interface PageProps {
+type PageProps = {
   data: {
     list: CategoriesGroup[]
   }

@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from "fs"
 import path from "path"
 
-export interface ComponentInfo {
+export type ComponentInfo = {
   component: string
   slug: string
   code: string
