@@ -1,13 +1,13 @@
 import { readFileSync } from "fs"
-import { GetStaticProps, GetStaticPaths, NextPage } from "next"
 import path from "path"
-import { ParsedUrlQuery } from "querystring"
-import React from "react"
+import type { ParsedUrlQuery } from "querystring"
 import { Container } from "@yamada-ui/react"
-import { getAllComponents } from "data/components"
+import type { GetStaticProps, GetStaticPaths, NextPage } from "next"
+import React from "react"
 import { ComponentPreview } from "components/component-preview"
-import { AppLayout } from "layouts/app-layout"
 import { useI18n } from "contexts/i18n-context"
+import { getAllComponents } from "data/components"
+import { AppLayout } from "layouts/app-layout"
 
 type PageProps = {
   data: {

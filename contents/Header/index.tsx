@@ -1,5 +1,5 @@
 import { Box, HStack, Heading, Link } from "@yamada-ui/react"
-import { FC } from "react"
+import type { FC } from "react"
 
 const Header: FC = () => {
   return (
