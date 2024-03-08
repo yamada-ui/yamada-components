@@ -1,22 +1,30 @@
-import type { GetStaticProps, NextPage } from "next"
-import { useI18n } from "contexts/i18n-context"
-import { AppLayout } from "layouts/app-layout"
 import {
   Container,
   Heading,
-  Link,
+  Link as UILink,
   List,
   ListItem,
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { CategoriesGroup } from "data/types"
+import type { InferGetStaticPropsType, NextPage } from "next"
+import Link from "next/link"
+import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES } from "data/categories"
+import type { CategoriesGroup } from "data/types"
+import { AppLayout } from "layouts/app-layout"
 
-// type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
-type PageProps = {
-  data: {
-    list: CategoriesGroup[]
+type PageProps = InferGetStaticPropsType<typeof getStaticProps>
+
+export const getStaticProps = async () => {
+  const list: CategoriesGroup[] = CATEGORIES
+  const data = {
+    list,
+  }
+  return {
+    props: {
+      data,
+    },
   }
 }
 
@@ -34,12 +42,13 @@ const Page: NextPage<PageProps> = ({ data }) => {
                 <ListItem
                   key={`${category.name}-${j}`}
                   display="flex"
-                  flexDir={"column"}
+                  flexDir="column"
                 >
                   <Text>{category.name}</Text>
-                  <Link
+                  <UILink
+                    as={Link}
                     href={`/category/${category.slug}`}
-                  >{`/category/${category.slug}`}</Link>
+                  >{`/category/${category.slug}`}</UILink>
                 </ListItem>
               ))}
             </List>
@@ -51,17 +60,3 @@ const Page: NextPage<PageProps> = ({ data }) => {
 }
 
 export default Page
-
-export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const list: CategoriesGroup[] = CATEGORIES
-  const data: PageProps["data"] = {
-    list,
-  }
-  return {
-    props: {
-      data,
-    },
-  } as { props: PageProps }
-}
-
-// export const getServerSideProps = getServerSideCommonProps
