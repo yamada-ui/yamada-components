@@ -1,4 +1,4 @@
-import { CategoriesGroup, Category } from "./types"
+import type { CategoriesGroup, Category } from "./types"
 // import images from './images';
 
 export const CATEGORIES: CategoriesGroup[] = [
