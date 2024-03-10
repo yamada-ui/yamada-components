@@ -1,3 +1,4 @@
+import type { ParsedUrlQuery } from "querystring"
 import {
   Container,
   Heading,
@@ -6,18 +7,14 @@ import {
   ListItem,
   Text,
 } from "@yamada-ui/react"
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { ComponentPreview } from "components/component-preview"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES_SLUGS, getCategoryData } from "data/categories"
-import {
-  ComponentInfo,
-  getAllComponents,
-  getComponentsByCategory,
-} from "data/components"
-import { Category } from "data/types"
+import type { ComponentInfo } from "data/components"
+import { getAllComponents, getComponentsByCategory } from "data/components"
+import type { Category } from "data/types"
 import { AppLayout } from "layouts/app-layout"
-import { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import { ParsedUrlQuery } from "querystring"
 
 type PageProps = {
   data: {
@@ -68,7 +65,7 @@ const Page: NextPage<PageProps> = ({ data }) => {
             <ListItem
               key={`${e.component}-${i}`}
               display="flex"
-              flexDir={"column"}
+              flexDir="column"
             >
               <Text>{e.component}</Text>
               <Link
