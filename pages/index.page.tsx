@@ -1,6 +1,3 @@
-import type { GetStaticProps, NextPage } from "next"
-import { useI18n } from "contexts/i18n-context"
-import { AppLayout } from "layouts/app-layout"
 import {
   Container,
   Heading,
@@ -10,8 +7,11 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { CategoriesGroup } from "data/types"
+import type { GetStaticProps, NextPage } from "next"
+import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES } from "data/categories"
+import type { CategoriesGroup } from "data/types"
+import { AppLayout } from "layouts/app-layout"
 
 // type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 type PageProps = {
@@ -34,7 +34,7 @@ const Page: NextPage<PageProps> = ({ data }) => {
                 <ListItem
                   key={`${category.name}-${j}`}
                   display="flex"
-                  flexDir={"column"}
+                  flexDir="column"
                 >
                   <Text>{category.name}</Text>
                   <Link
