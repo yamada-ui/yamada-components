@@ -1,6 +1,7 @@
 import * as YamadaUI from "@yamada-ui/react"
 import { Box, Text } from "@yamada-ui/react"
-import React, { FC } from "react"
+import type { FC } from "react"
+import React from "react"
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live"
 import { transformCode } from "utils/transform-code"
 
