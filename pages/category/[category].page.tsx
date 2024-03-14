@@ -2,27 +2,20 @@ import type { ParsedUrlQuery } from "querystring"
 import {
   Container,
   Heading,
-  Link,
+  Link as UILink,
   List,
   ListItem,
   Text,
 } from "@yamada-ui/react"
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import type { GetStaticPaths, InferGetStaticPropsType, NextPage } from "next"
+import Link from "next/link"
 import { ComponentPreview } from "components/component-preview"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES_SLUGS, getCategoryData } from "data/categories"
-import type { ComponentInfo } from "data/components"
 import { getAllComponents, getComponentsByCategory } from "data/components"
-import type { Category } from "data/types"
 import { AppLayout } from "layouts/app-layout"
 
-type PageProps = {
-  data: {
-    category: Category | undefined
-    components: ComponentInfo[]
-    allComponents: ComponentInfo[]
-  }
-}
+type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
 type PageParams = ParsedUrlQuery & {
   category: string
@@ -33,15 +26,13 @@ export const getStaticPaths: GetStaticPaths = async () => ({
   fallback: false,
 })
 
-export const getStaticProps: GetStaticProps<PageProps, PageParams> = async (
-  context,
-) => {
+export const getStaticProps = async (context: { params: PageParams }) => {
   const components = await getComponentsByCategory()
-  const data: PageProps["data"] = {
-    category: getCategoryData(context!.params!.category),
+  const data = {
+    category: getCategoryData(context.params.category),
     components:
-      context!.params!.category in components
-        ? components[context!.params!.category]
+      context.params.category in components
+        ? components[context.params.category]
         : [],
     allComponents: await getAllComponents(),
   }
@@ -59,7 +50,7 @@ const Page: NextPage<PageProps> = ({ data }) => {
       description={t("categories.description")}
     >
       <Container>
-        <Heading>カテゴリー：{data.category!.name}</Heading>
+        <Heading>カテゴリー：{data.category.name}</Heading>
         <List>
           {data.components.map((e, i) => (
             <ListItem
@@ -68,9 +59,10 @@ const Page: NextPage<PageProps> = ({ data }) => {
               flexDir="column"
             >
               <Text>{e.component}</Text>
-              <Link
+              <UILink
+                as={Link}
                 href={`/component/${e.slug}`}
-              >{`/component/${e.slug}`}</Link>
+              >{`/component/${e.slug}`}</UILink>
               <ComponentPreview path={e.component} code={e.code} />
             </ListItem>
           ))}
