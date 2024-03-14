@@ -2,19 +2,14 @@ import { readFileSync } from "fs"
 import path from "path"
 import type { ParsedUrlQuery } from "querystring"
 import { Container } from "@yamada-ui/react"
-import type { GetStaticProps, GetStaticPaths, NextPage } from "next"
+import type { GetStaticPaths, NextPage, InferGetStaticPropsType } from "next"
 import React from "react"
 import { ComponentPreview } from "components/component-preview"
 import { useI18n } from "contexts/i18n-context"
 import { getAllComponents } from "data/components"
 import { AppLayout } from "layouts/app-layout"
 
-type PageProps = {
-  data: {
-    path: string
-    component: string
-  }
-}
+type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
 type PageParams = ParsedUrlQuery & {
   component: string
@@ -29,11 +24,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({
-  params,
-}) => {
+export const getStaticProps = async ({ params }: { params: PageParams }) => {
   // paramsオブジェクトからslugを取得
-  const component = params!.component.split("-").join("")
+  const component = params.component.split("-").join("")
 
   // ローカル上のファイルパス取得
   const filePath = path.join(
@@ -49,7 +42,7 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({
     .split("\n")
     .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
 
-  const data: PageProps["data"] = {
+  const data = {
     path: component.charAt(0).toUpperCase() + component.slice(1).toLowerCase(),
     component: fileContent
       .split("\n")
@@ -62,7 +55,7 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async ({
     props: {
       data,
     },
-  } as { props: PageProps }
+  }
 }
 
 const Page: NextPage<PageProps> = ({ data }) => {
