@@ -1,5 +1,5 @@
-import { Container, Grid, Heading, VStack } from "@yamada-ui/react"
-import type { InferGetStaticPropsType, NextPage } from "next"
+import { Container, Heading, VStack, Wrap } from "@yamada-ui/react"
+import type { GetStaticProps, NextPage } from "next"
 import { CategoryCard } from "components/layouts/category-card"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES } from "data/categories"
@@ -29,10 +29,7 @@ const Page: NextPage<PageProps> = ({ data }) => {
         {data.list.map((group, i) => (
           <VStack key={`${group.name}-${i}`}>
             <Heading>{group.name}</Heading>
-            <Grid
-              templateColumns={{ base: "repeat(4, 1fr)", lg: "repeat(3, 1fr)" }}
-              gap="10"
-            >
+            <Wrap gap={9}>
               {group.categories.map((category, j) => (
                 <CategoryCard
                   key={`${category.name}-${j}`}
@@ -40,7 +37,7 @@ const Page: NextPage<PageProps> = ({ data }) => {
                   count={14}
                 />
               ))}
-            </Grid>
+            </Wrap>
           </VStack>
         ))}
       </Container>
