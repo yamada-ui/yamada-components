@@ -6,17 +6,10 @@ import { CATEGORIES } from "data/categories"
 import type { CategoriesGroup } from "data/types"
 import { AppLayout } from "layouts/app-layout"
 
-type PageProps = InferGetStaticPropsType<typeof getStaticProps>
-
-export const getStaticProps = async () => {
-  const list: CategoriesGroup[] = CATEGORIES
-  const data = {
-    list,
-  }
-  return {
-    props: {
-      data,
-    },
+// type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
+type PageProps = {
+  data: {
+    list: CategoriesGroup[]
   }
 }
 
@@ -46,3 +39,17 @@ const Page: NextPage<PageProps> = ({ data }) => {
 }
 
 export default Page
+
+export const getStaticProps: GetStaticProps<PageProps> = async () => {
+  const list: CategoriesGroup[] = CATEGORIES
+  const data: PageProps["data"] = {
+    list,
+  }
+  return {
+    props: {
+      data,
+    },
+  } as { props: PageProps }
+}
+
+// export const getServerSideProps = getServerSideCommonProps
