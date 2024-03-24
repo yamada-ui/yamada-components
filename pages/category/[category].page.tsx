@@ -8,7 +8,7 @@ import {
   Text,
 } from "@yamada-ui/react"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import { ComponentPreview } from "components/component-preview"
+import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES_SLUGS, getCategoryData } from "data/categories"
 import type { ComponentInfo } from "data/components"

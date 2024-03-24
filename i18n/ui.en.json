@@ -11,6 +11,13 @@
     "back-to-app": "Back to App"
   },
   "component": {
+    "component-preview": {
+      "label": "Editable example",
+      "control-button": {
+        "open": "Show more",
+        "close": "Show less"
+      }
+    },
     "forms": {
       "search": {
         "message": "Search the components",
