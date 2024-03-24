@@ -17,52 +17,81 @@ const convertCase = (string: string) => {
   return splitted.join("-")
 }
 
-const getComponentCode = (componentFolder: string, componentName: string) => {
-  const componentContents = readdirSync(componentFolder).filter(
-    (item) =>
-      (item.endsWith(".tsx") && !item.endsWith(".story.tsx")) ||
-      item.endsWith(".ts") ||
-      item.endsWith(".css"),
-  )
+// const getComponentCode = (componentFolder: string, componentName: string) => {
+//   const componentContents = readdirSync(componentFolder).filter(
+//     (item) =>
+//       (item.endsWith(".tsx") && !item.endsWith(".story.tsx")) ||
+//       item.endsWith(".ts") ||
+//       item.endsWith(".css"),
+//   )
 
-  const mainFileContent = readFileSync(
-    path.join(componentFolder, `${componentName}.tsx`),
-    "utf-8",
-  )
-  const otherFilesContent = componentContents
-    .filter((file) => file !== `${componentName}.tsx`)
-    .map((file) => ({
-      name: file,
-      content: readFileSync(path.join(componentFolder, file), "utf-8"),
-    }))
+//   const mainFileContent = readFileSync(
+//     path.join(componentFolder, `${componentName}.tsx`),
+//     "utf-8",
+//   )
+//   const otherFilesContent = componentContents
+//     .filter((file) => file !== `${componentName}.tsx`)
+//     .map((file) => ({
+//       name: file,
+//       content: readFileSync(path.join(componentFolder, file), "utf-8"),
+//     }))
 
-  return [
-    {
-      fileName: `${componentName}.tsx`,
-      language: "tsx",
-      code: mainFileContent,
-    },
-    ...otherFilesContent.map(({ name, content }) => ({
-      fileName: name,
-      language: name.endsWith(".css") ? "scss" : "tsx",
-      code: content,
-    })),
-  ]
+//   return [
+//     {
+//       fileName: `${componentName}.tsx`,
+//       language: "tsx",
+//       code: mainFileContent,
+//     },
+//     ...otherFilesContent.map(({ name, content }) => ({
+//       fileName: name,
+//       language: name.endsWith(".css") ? "scss" : "tsx",
+//       code: content,
+//     })),
+//   ]
+// }
+
+const getDirNames = (basePath: string) => {
+  return readdirSync(basePath, { withFileTypes: true })
+    .filter((dir) => dir.isDirectory())
+    .map((dir) => dir.name)
+}
+
+export const getPaths = () => {
+  const result: { params: { slug: string[] } }[] = []
+  const root = path.join(process.cwd(), "contents")
+  const parent = getDirNames(root)
+
+  for (const item of parent) {
+    const parentFullPath = path.join(root, item)
+    readdirSync(parentFullPath, { withFileTypes: true })
+      .filter((dir) => dir.isDirectory())
+      .forEach((r) => {
+        result.push({ params: { slug: [item, r.name] } })
+      })
+  }
+
+  return result
 }
 
 export const getAllComponents = async (): Promise<ComponentInfo[]> => {
-  const rootFolder = path.join(process.cwd(), "contents")
-  const paths = readdirSync(rootFolder)
+  const root = path.join(process.cwd(), "contents")
+  const parent = getDirNames(root)
+  const paths: string[] = []
 
-  // 全ての非同期処理を待つためのPromise配列
+  for (const item of parent) {
+    const parentFullPath = path.join(root, item)
+    readdirSync(parentFullPath, { withFileTypes: true })
+      .filter((dir) => dir.isDirectory())
+      .forEach((r) => {
+        paths.push(`${item}/${r.name}`)
+      })
+  }
+
   const promises = paths.map(async (componentName: string) => {
-    // metadataを非同期で取得する
     const { metadata } = await import("../contents/" + componentName + "/index")
 
-    // ローカル上のファイルパス取得
-    const filePath = path.join(rootFolder, componentName, "index.tsx")
+    const filePath = path.join(root, componentName, "index.tsx")
 
-    // ファイルの読み込み
     const fileContent = readFileSync(filePath, "utf8")
     const index = fileContent
       .split("\n")
@@ -81,10 +110,8 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
     }
   })
 
-  // Promise配列の完了を待ち、結果を返す
   const results = await Promise.all(promises)
 
-  // nullでない要素だけを抽出して返す
   return results.filter((c) => c)
 }
 
