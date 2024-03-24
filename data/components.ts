@@ -60,7 +60,6 @@ export const getPaths = () => {
   const result: { params: { slug: string[] } }[] = []
   const root = path.join(process.cwd(), "contents")
   const parent = getDirNames(root)
-  console.log(parent)
 
   for (const item of parent) {
     const parentFullPath = path.join(root, item)

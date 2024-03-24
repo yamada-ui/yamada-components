@@ -1,19 +1,13 @@
 import { readFileSync } from "fs"
 import path from "path"
 import { Container } from "@yamada-ui/react"
-import type { NextPage } from "next"
-import React from "react"
+import type { InferGetStaticPropsType, NextPage } from "next"
 import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
 import { getPaths } from "data/components"
 import { AppLayout } from "layouts/app-layout"
 
-type PageProps = {
-  data: {
-    path: string
-    component: string
-  }
-}
+type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticPaths = async () => {
   return {
@@ -56,7 +50,7 @@ export const getStaticProps = async ({
     props: {
       data,
     },
-  } as { props: PageProps }
+  }
 }
 
 const Page: NextPage<PageProps> = ({ data }) => {
