@@ -4,17 +4,12 @@ import { Container } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
 import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
-import { getPaths } from "data/components"
 import { AppLayout } from "layouts/app-layout"
+import { getStaticDocumentPaths } from "utils/next"
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-export const getStaticPaths = async () => {
-  return {
-    paths: getPaths("page-sections"),
-    fallback: false,
-  }
-}
+export const getStaticPaths = getStaticDocumentPaths("page-sections")
 
 export const getStaticProps = async ({
   params,
@@ -28,7 +23,7 @@ export const getStaticProps = async ({
   const filePath = path.join(
     process.cwd(),
     "contents",
-    "blog-ui",
+    "page-sections",
     component.toLowerCase(),
     "index.tsx",
   )

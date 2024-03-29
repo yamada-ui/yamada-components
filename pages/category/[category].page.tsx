@@ -11,10 +11,10 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES_SLUGS, getCategoryData } from "data/categories"
-import type { ComponentInfo } from "data/components"
-import { getAllComponents, getComponentsByCategory } from "data/components"
 import type { Category } from "data/types"
 import { AppLayout } from "layouts/app-layout"
+import type { ComponentInfo } from "utils/contentlayer"
+import { getAllComponents, getComponentsByCategory } from "utils/contentlayer"
 
 type PageProps = {
   data: {

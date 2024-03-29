@@ -1,4 +1,5 @@
-import type { GetServerSidePropsContext } from "next"
+import type { GetServerSidePropsContext, GetStaticPathsContext } from "next"
+import { getPaths } from "./contentlayer"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -7,3 +8,11 @@ export const getServerSideCommonProps = async ({
 
   return { props: { cookies } }
 }
+
+export const getStaticDocumentPaths =
+  (documentTypeName: string) =>
+  async ({}: GetStaticPathsContext) => {
+    const paths = getPaths(documentTypeName)
+
+    return { paths, fallback: false }
+  }
