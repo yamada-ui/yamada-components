@@ -11,7 +11,7 @@ type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticPaths = async () => {
   return {
-    paths: getPaths(),
+    paths: getPaths("application-ui"),
     fallback: false,
   }
 }
@@ -28,6 +28,7 @@ export const getStaticProps = async ({
   const filePath = path.join(
     process.cwd(),
     "contents",
+    "application-ui",
     component.toLowerCase(),
     "index.tsx",
   )
