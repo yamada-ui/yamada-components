@@ -8,11 +8,11 @@ import {
   Text,
 } from "@yamada-ui/react"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import type { Category } from "@types/types"
 import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES_SLUGS, getCategoryData } from "data/categories"
 import { AppLayout } from "layouts/app-layout"
+import type { Category } from "types"
 import type { ComponentInfo } from "utils/component"
 import { getAllComponents, getComponentsByCategory } from "utils/component"
 

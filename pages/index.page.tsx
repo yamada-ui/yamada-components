@@ -1,10 +1,10 @@
 import { Container, Heading, VStack, Wrap } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
-import type { CategoriesGroup } from "@types/types"
 import { CategoryCard } from "components/layouts/category-card"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES } from "data/categories"
 import { AppLayout } from "layouts/app-layout"
+import type { CategoriesGroup } from "types"
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
