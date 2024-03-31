@@ -42,7 +42,8 @@ export const getStaticDocumentProps =
       .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
 
     const data = {
-      path: component.split("/")[1],
+      path:
+        documentTypeName + "/" + component.toLocaleLowerCase() + "/index.tsx",
       component: fileContent
         .split("\n")
         .slice(0, index)
