@@ -8,13 +8,13 @@ import {
   Text,
 } from "@yamada-ui/react"
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import type { Category } from "@types/types"
 import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
 import { CATEGORIES_SLUGS, getCategoryData } from "data/categories"
-import type { Category } from "data/types"
 import { AppLayout } from "layouts/app-layout"
-import type { ComponentInfo } from "utils/contentlayer"
-import { getAllComponents, getComponentsByCategory } from "utils/contentlayer"
+import type { ComponentInfo } from "utils/component"
+import { getAllComponents, getComponentsByCategory } from "utils/component"
 
 type PageProps = {
   data: {

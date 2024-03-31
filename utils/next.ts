@@ -5,7 +5,7 @@ import type {
   GetStaticPathsContext,
   GetStaticPropsContext,
 } from "next"
-import { getPaths } from "./contentlayer"
+import { getPaths } from "./component"
 
 export const getServerSideCommonProps = async ({
   req,

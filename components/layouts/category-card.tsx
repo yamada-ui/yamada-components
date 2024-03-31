@@ -13,7 +13,7 @@ import {
 } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
-import type { Category } from "data/types"
+import type { Category } from "@types/types"
 
 type CardProps = {
   count: number
