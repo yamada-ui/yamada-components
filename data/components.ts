@@ -44,8 +44,6 @@ export type ComponentInfo = {
 //   ]
 // }
 
-// TODO: utilsに欲しい
-
 export const getPaths = () => {
   const result: { params: { slug: string[] } }[] = []
   const root = path.join(process.cwd(), "contents")

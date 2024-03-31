@@ -11,7 +11,6 @@ export const ALL_CATEGORIES = getDirNames(contentsDir).map((category) => ({
   name: category.charAt(0).toUpperCase() + category.slice(1),
 }))
 
-// TODO: nameもディレクトリ構造に反映するか
 export const CATEGORIES: CategoriesGroup[] = [
   {
     name: "Application UI",
