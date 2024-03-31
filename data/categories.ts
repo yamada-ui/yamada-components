@@ -1,7 +1,8 @@
 import { readFileSync } from "fs"
 import path from "path"
-import { convertCase, getDirNames } from "data/components"
 import type { CategoriesGroup } from "data/types"
+import { toKebabCase } from "utils/assetion"
+import { getDirNames } from "utils/contentlayer"
 // import images from './images';
 
 const contentsDir = path.join(process.cwd(), "contents")
@@ -45,7 +46,7 @@ export const getComponentsByCategory = async (category: string) => {
 
     return {
       component: `${category}/${componentName}`,
-      slug: convertCase(`${category}/${componentName}`),
+      slug: toKebabCase(`${category}/${componentName}`),
       attributes: metadata,
       code: code,
     }

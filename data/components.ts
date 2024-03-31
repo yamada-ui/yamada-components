@@ -1,5 +1,7 @@
 import { readFileSync, readdirSync } from "fs"
 import path from "path"
+import { toKebabCase } from "utils/assetion"
+import { getDirNames } from "utils/contentlayer"
 
 export type ComponentInfo = {
   component: string
@@ -7,15 +9,6 @@ export type ComponentInfo = {
   code: string
   // code: { fileName: string; language: string; code: string }[];
   attributes: any
-}
-
-// TODO: utilsに欲しい
-export const convertCase = (string: string) => {
-  const splitted = string
-    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
-    .toLowerCase()
-    .split(" ")
-  return splitted.join("-")
 }
 
 // const getComponentCode = (componentFolder: string, componentName: string) => {
@@ -52,11 +45,6 @@ export const convertCase = (string: string) => {
 // }
 
 // TODO: utilsに欲しい
-export const getDirNames = (basePath: string) => {
-  return readdirSync(basePath, { withFileTypes: true })
-    .filter((dir) => dir.isDirectory())
-    .map((dir) => dir.name)
-}
 
 export const getPaths = () => {
   const result: { params: { slug: string[] } }[] = []
@@ -106,7 +94,7 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
 
     return {
       component: componentName,
-      slug: convertCase(componentName),
+      slug: toKebabCase(componentName),
       attributes: metadata,
       code: code,
     }
