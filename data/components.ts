@@ -9,7 +9,8 @@ export type ComponentInfo = {
   attributes: any
 }
 
-const convertCase = (string: string) => {
+// TODO: utilsに欲しい
+export const convertCase = (string: string) => {
   const splitted = string
     .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
     .toLowerCase()
@@ -50,7 +51,8 @@ const convertCase = (string: string) => {
 //   ]
 // }
 
-const getDirNames = (basePath: string) => {
+// TODO: utilsに欲しい
+export const getDirNames = (basePath: string) => {
   return readdirSync(basePath, { withFileTypes: true })
     .filter((dir) => dir.isDirectory())
     .map((dir) => dir.name)
