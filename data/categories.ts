@@ -52,8 +52,5 @@ export const getComponentsByCategory = async (category: string) => {
     }
   })
 
-  const results = await Promise.all(promises)
-
-  // NOTE: このfilterはなんや？（undefinedのやつとか入ってくる？）
-  return results.filter((c) => c)
+  return await Promise.all(promises)
 }
