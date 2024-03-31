@@ -23,8 +23,6 @@ type PageProps = {
   data: {
     category: Category | undefined
     components: ComponentInfo[]
-    // TODO: allComponentsいらない?
-    // allComponents: ComponentInfo[]
   }
 }
 
@@ -45,8 +43,6 @@ export const getStaticProps: GetStaticProps<PageProps, PageParams> = async (
   const data: PageProps["data"] = {
     category: getCategoryData(ctx!.params!.category),
     components: await getComponentsByCategory(ctx!.params!.category),
-    // TODO: allComponentsいらない?
-    // allComponents: await getAllComponents(),
   }
   return {
     props: { data },
