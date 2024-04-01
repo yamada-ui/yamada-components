@@ -37,7 +37,6 @@ export const getStaticDocumentProps =
       }
     } else {
       // params.slugの0番目のデータのカテゴリ内のコンポーネント一覧を取得
-      console.log(params.slug[0])
       const categoryDir = (params.slug as string[])[0].toLowerCase()
       const data = await getComponentsByCategory(documentTypeName, categoryDir)
 
