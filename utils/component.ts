@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync } from "fs"
 import path from "path"
+import { toKebabCase } from "@yamada-ui/react"
 
 export type ComponentInfo = {
   component: string
@@ -63,6 +64,7 @@ export const getPaths = (documentTypeName: string) => {
 
   for (const item of parent) {
     const parentFullPath = path.join(root, item)
+    result.push({ params: { slug: [item] } })
     readdirSync(parentFullPath, { withFileTypes: true })
       .filter((dir) => dir.isDirectory())
       .forEach((r) => {
@@ -71,6 +73,40 @@ export const getPaths = (documentTypeName: string) => {
   }
 
   return result
+}
+
+export const getComponent = async (
+  documentTypeName: string,
+  componentDir: string,
+) => {
+  const { metadata } = await import(
+    `../contents/${documentTypeName}/${componentDir}/index`
+  )
+  const filePath = path.join(
+    process.cwd(),
+    "contents",
+    documentTypeName,
+    componentDir,
+    "index.tsx",
+  )
+
+  const fileContent = readFileSync(filePath, "utf8")
+  const index = fileContent
+    .split("\n")
+    .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
+
+  const data = {
+    path: `${documentTypeName}/${componentDir}/index.tsx`,
+    component: fileContent
+      .split("\n")
+      .slice(0, index)
+      .filter((line) => !line.includes("export"))
+      .join("\n"),
+    metadata,
+    slug: toKebabCase(`${documentTypeName}/${componentDir}`),
+  }
+
+  return data
 }
 
 export const getAllComponents = async (): Promise<ComponentInfo[]> => {
@@ -115,15 +151,21 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
   return results.filter((c) => c)
 }
 
-export const getComponentsByCategory = async () => {
-  return (await getAllComponents()).reduce<Record<string, ComponentInfo[]>>(
-    (acc, component) => {
-      if (!(component.attributes.category in acc)) {
-        acc[component.attributes.category] = []
-      }
-      acc[component.attributes.category].push(component)
-      return acc
-    },
-    {},
-  )
+export const getComponentsByCategory = async (
+  documentTypeName: string,
+  category: string,
+) => {
+  const contentsDir = path.join(process.cwd(), "contents")
+  const root = path.join(contentsDir, documentTypeName, category)
+  const components = getDirNames(root)
+  const promises = components.map(async (componentName: string) => {
+    const data = await getComponent(
+      documentTypeName,
+      category + "/" + componentName,
+    )
+
+    return data
+  })
+
+  return await Promise.all(promises)
 }

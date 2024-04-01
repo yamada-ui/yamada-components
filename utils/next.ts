@@ -1,11 +1,9 @@
-import { readFileSync } from "fs"
-import path from "path"
 import type {
   GetServerSidePropsContext,
   GetStaticPathsContext,
   GetStaticPropsContext,
 } from "next"
-import { getPaths } from "./component"
+import { getComponent, getComponentsByCategory, getPaths } from "./component"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -26,34 +24,28 @@ export const getStaticDocumentPaths =
 export const getStaticDocumentProps =
   (documentTypeName: string) =>
   async ({ params }: GetStaticPropsContext) => {
-    const component = (params.slug as string[]).join("/")
+    // params.slugの総数が1の時は一覧表示、2の時はコンポーネント詳細
+    if ((params.slug as string[]).length > 1) {
+      const componentDir = (params.slug as string[]).join("/").toLowerCase()
 
-    const filePath = path.join(
-      process.cwd(),
-      "contents",
-      documentTypeName,
-      component.toLowerCase(),
-      "index.tsx",
-    )
+      const data = await getComponent(documentTypeName, componentDir)
 
-    const fileContent = readFileSync(filePath, "utf8")
-    const index = fileContent
-      .split("\n")
-      .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
+      return {
+        props: {
+          data,
+        },
+      }
+    } else {
+      // params.slugの0番目のデータのカテゴリ内のコンポーネント一覧を取得
+      console.log(params.slug[0])
+      const categoryDir = (params.slug as string[])[0].toLowerCase()
+      const data = await getComponentsByCategory(documentTypeName, categoryDir)
 
-    const data = {
-      path:
-        documentTypeName + "/" + component.toLocaleLowerCase() + "/index.tsx",
-      component: fileContent
-        .split("\n")
-        .slice(0, index)
-        .filter((line) => !line.includes("export"))
-        .join("\n"),
-    }
-
-    return {
-      props: {
-        data,
-      },
+      return {
+        props: {
+          data,
+          categoryDir,
+        },
+      }
     }
   }
