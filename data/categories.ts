@@ -1,54 +1,55 @@
-import type { CategoriesGroup, Category } from "./types"
+import { readFileSync } from "fs"
+import path from "path"
+import type { CategoriesGroup } from "data/types"
+import { toKebabCase } from "utils/assetion"
+import { getDirNames } from "utils/contentlayer"
 // import images from './images';
+
+const contentsDir = path.join(process.cwd(), "contents")
+export const ALL_CATEGORIES = getDirNames(contentsDir).map((category) => ({
+  slug: category,
+  name: category.charAt(0).toUpperCase() + category.slice(1),
+}))
 
 export const CATEGORIES: CategoriesGroup[] = [
   {
     name: "Application UI",
-    categories: [
-      { slug: "navbars", name: "Navbars" },
-      { slug: "headers", name: "Headers" },
-      { slug: "footers", name: "Footers" },
-      { slug: "grids", name: "Grids" },
-      { slug: "users", name: "User info and controls" },
-      { slug: "inputs", name: "Inputs" },
-      { slug: "buttons", name: "Buttons" },
-      { slug: "sliders", name: "Sliders" },
-      { slug: "dropzones", name: "Dropzones" },
-      { slug: "app-cards", name: "Application cards" },
-      { slug: "stats", name: "Stats" },
-      { slug: "tables", name: "Tables" },
-      { slug: "dnd", name: "Drag'n'Drop" },
-      { slug: "carousels", name: "Carousels" },
-    ],
-  },
-  {
-    name: "Page sections",
-    categories: [
-      { slug: "hero", name: "Hero headers" },
-      { slug: "features", name: "Features section" },
-      { slug: "authentication", name: "Authentication" },
-      { slug: "faq", name: "Frequently asked questions" },
-      { slug: "contact", name: "Contact us section" },
-      { slug: "error-pages", name: "Error pages" },
-      { slug: "banners", name: "Banners" },
-    ],
-  },
-  {
-    name: "Blog UI",
-    categories: [
-      { slug: "article-cards", name: "Article cards" },
-      { slug: "toc", name: "Table of contents" },
-      { slug: "comments", name: "Comments" },
-    ],
+    categories: ALL_CATEGORIES,
   },
 ]
-
-const ALL_CATEGORIES = CATEGORIES.reduce<Category[]>((acc, group) => {
-  acc.push(...group.categories)
-  return acc
-}, [])
 
 export const CATEGORIES_SLUGS = ALL_CATEGORIES.map((item) => item.slug)
 
 export const getCategoryData = (category: string) =>
   ALL_CATEGORIES.find((item) => item.slug === category)
+
+export const getComponentsByCategory = async (category: string) => {
+  const root = path.join(contentsDir, category)
+  const components = getDirNames(root)
+  const promises = components.map(async (componentName: string) => {
+    const { metadata } = await import(
+      `../contents/${category}/${componentName}/index`
+    )
+
+    const filePath = path.join(root, componentName, "index.tsx")
+
+    const fileContent = readFileSync(filePath, "utf8")
+    const index = fileContent
+      .split("\n")
+      .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
+    const code = fileContent
+      .split("\n")
+      .slice(0, index)
+      .filter((line) => !line.includes("export"))
+      .join("\n")
+
+    return {
+      component: `${category}/${componentName}`,
+      slug: toKebabCase(`${category}/${componentName}`),
+      attributes: metadata,
+      code: code,
+    }
+  })
+
+  return await Promise.all(promises)
+}
