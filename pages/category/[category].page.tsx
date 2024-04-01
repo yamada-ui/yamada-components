@@ -10,17 +10,19 @@ import {
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
-import { CATEGORIES_SLUGS, getCategoryData } from "data/categories"
+import {
+  CATEGORIES_SLUGS,
+  getCategoryData,
+  getComponentsByCategory,
+} from "data/categories"
 import { AppLayout } from "layouts/app-layout"
 import type { Category } from "types"
 import type { ComponentInfo } from "utils/component"
-import { getAllComponents, getComponentsByCategory } from "utils/component"
 
 type PageProps = {
   data: {
     category: Category | undefined
     components: ComponentInfo[]
-    allComponents: ComponentInfo[]
   }
 }
 
@@ -28,22 +30,19 @@ type PageParams = ParsedUrlQuery & {
   category: string
 }
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: CATEGORIES_SLUGS.map((slug) => ({ params: { category: slug } })),
-  fallback: false,
-})
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: CATEGORIES_SLUGS.map((slug) => ({ params: { category: slug } })),
+    fallback: false,
+  }
+}
 
 export const getStaticProps: GetStaticProps<PageProps, PageParams> = async (
-  context,
+  ctx,
 ) => {
-  const components = await getComponentsByCategory()
   const data: PageProps["data"] = {
-    category: getCategoryData(context!.params!.category),
-    components:
-      context!.params!.category in components
-        ? components[context!.params!.category]
-        : [],
-    allComponents: await getAllComponents(),
+    category: getCategoryData(ctx!.params!.category),
+    components: await getComponentsByCategory(ctx!.params!.category),
   }
   return {
     props: { data },

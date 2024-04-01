@@ -56,9 +56,9 @@ const getDirNames = (basePath: string) => {
     .map((dir) => dir.name)
 }
 
-export const getPaths = (documentTypeName: string) => {
+export const getPaths = () => {
   const result: { params: { slug: string[] } }[] = []
-  const root = path.join(process.cwd(), "contents", documentTypeName)
+  const root = path.join(process.cwd(), "contents")
   const parent = getDirNames(root)
 
   for (const item of parent) {
