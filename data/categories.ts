@@ -2,7 +2,7 @@ import { readFileSync } from "fs"
 import path from "path"
 import type { CategoriesGroup } from "types"
 import { toKebabCase } from "utils/assetion"
-import { getDirNames } from "utils/contentlayer"
+import { getDirNames } from "utils/component"
 // import images from './images';
 
 const contentsDir = path.join(process.cwd(), "contents")

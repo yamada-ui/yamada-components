@@ -50,7 +50,7 @@ const convertCase = (string: string) => {
 //   ]
 // }
 
-const getDirNames = (basePath: string) => {
+export const getDirNames = (basePath: string) => {
   return readdirSync(basePath, { withFileTypes: true })
     .filter((dir) => dir.isDirectory())
     .map((dir) => dir.name)
