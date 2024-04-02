@@ -61,7 +61,7 @@ export const getPaths = (documentTypeName: string) => {
   const result: { params: { slug: string[] } }[] = []
   const root = path.join(process.cwd(), "contents", documentTypeName)
   const parent = getDirNames(root)
-
+  result.push({ params: { slug: [] } })
   for (const item of parent) {
     const parentFullPath = path.join(root, item)
     result.push({ params: { slug: [item] } })
@@ -168,4 +168,12 @@ export const getComponentsByCategory = async (
   })
 
   return await Promise.all(promises)
+}
+
+export const getCategoriesByDocName = (documentTypeName: string) => {
+  const root = path.join(process.cwd(), "contents", documentTypeName)
+  return getDirNames(root).map((child) => ({
+    name: child,
+    slug: toKebabCase(path.join(documentTypeName, child)),
+  }))
 }

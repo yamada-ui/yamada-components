@@ -3,7 +3,12 @@ import type {
   GetStaticPathsContext,
   GetStaticPropsContext,
 } from "next"
-import { getComponent, getComponentsByCategory, getPaths } from "./component"
+import {
+  getCategoriesByDocName,
+  getComponent,
+  getComponentsByCategory,
+  getPaths,
+} from "./component"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -24,6 +29,15 @@ export const getStaticDocumentPaths =
 export const getStaticDocumentProps =
   (documentTypeName: string) =>
   async ({ params }: GetStaticPropsContext) => {
+    if (!params.slug) {
+      const categories = getCategoriesByDocName(documentTypeName)
+      return {
+        props: {
+          categories,
+        },
+      }
+    }
+
     // params.slugの総数が1の時は一覧表示、2の時はコンポーネント詳細
     if ((params.slug as string[]).length > 1) {
       const componentDir = (params.slug as string[]).join("/").toLowerCase()

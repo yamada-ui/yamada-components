@@ -6,10 +6,11 @@ import {
   ListItem,
   Text,
   isArray,
+  Wrap,
 } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
 import Link from "next/link"
-import { ComponentPreview } from "components/layouts"
+import { CategoryCard, ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
 import { AppLayout } from "layouts/app-layout"
 import { getStaticDocumentPaths, getStaticDocumentProps } from "utils/next"
@@ -20,14 +21,27 @@ export const getStaticPaths = getStaticDocumentPaths("page-sections")
 
 export const getStaticProps = getStaticDocumentProps("page-sections")
 
-const Page: NextPage<PageProps> = ({ data, categoryDir }) => {
+const Page: NextPage<PageProps> = ({ data, categoryDir, categories }) => {
   const { t } = useI18n()
   return (
     <AppLayout
       title={t("components.title")}
       description={t("components.description")}
     >
-      {isArray(data) ? (
+      {!data ? (
+        <>
+          <Heading>Page Sections</Heading>
+          <Wrap gap={9}>
+            {categories.map((category, j) => (
+              <CategoryCard
+                key={`${category.name}-${j}`}
+                category={category}
+                count={14}
+              />
+            ))}
+          </Wrap>
+        </>
+      ) : isArray(data) ? (
         <Container>
           <Heading>カテゴリー：{categoryDir}</Heading>
           <List>
