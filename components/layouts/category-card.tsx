@@ -24,7 +24,7 @@ export const CategoryCard: FC<CardProps> = ({ category, count }) => {
   return (
     <Card
       as={Link}
-      href={`/category/${category.slug}`}
+      href={`/${category.slug}`}
       w={300}
       variant="outline"
       _nativeHover={{
