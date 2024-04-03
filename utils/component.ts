@@ -10,14 +10,6 @@ export type ComponentInfo = {
   attributes: any
 }
 
-const convertCase = (string: string) => {
-  const splitted = string
-    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
-    .toLowerCase()
-    .split(" ")
-  return splitted.join("-")
-}
-
 // const getComponentCode = (componentFolder: string, componentName: string) => {
 //   const componentContents = readdirSync(componentFolder).filter(
 //     (item) =>
@@ -140,7 +132,7 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
 
     return {
       component: componentName,
-      slug: convertCase(componentName),
+      slug: toKebabCase(componentName),
       attributes: metadata,
       code: code,
     }
