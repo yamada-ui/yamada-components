@@ -1,7 +1,8 @@
 import { Box, HStack, Heading, Link } from "@yamada-ui/react"
 import type { FC } from "react"
+import type { ComponentMetadata } from "types"
 
-const Header2: FC = () => {
+const Header: FC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
@@ -18,13 +19,9 @@ const Header2: FC = () => {
   )
 }
 
-export default Header2
+export default Header
 
-export const metadata = {
-  title: "Simple Header1",
-  category: "headers",
-  canvas: {
-    center: true,
-    maxWidth: 420,
-  },
+export const metadata: ComponentMetadata = {
+  title: "Simple Header",
+  description: "This is simple header component.",
 }

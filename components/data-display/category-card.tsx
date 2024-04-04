@@ -8,23 +8,21 @@ import {
   Card,
   Divider,
   Spacer,
-  Tag,
-  Center,
 } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
-import type { Category } from "data/types"
+import type { Category } from "types"
 
 type CardProps = {
   count: number
   category: Category
 }
 
-export const CategoryCard: FC<CardProps> = ({ category, count }) => {
+export const CategoryCard: FC<CardProps> = ({ category }) => {
   return (
     <Card
       as={Link}
-      href={`/category/${category.slug}`}
+      href={`/${category.slug}`}
       w={300}
       variant="outline"
       _nativeHover={{
@@ -51,9 +49,9 @@ export const CategoryCard: FC<CardProps> = ({ category, count }) => {
         <Text>Description</Text>
         <Spacer />
         <Divider orientation="vertical" h="75%" />
-        <Tag p={0} as={Center}>
+        {/* <Tag p={0} as={Center}>
           {count}
-        </Tag>
+        </Tag> */}
       </CardFooter>
     </Card>
   )
