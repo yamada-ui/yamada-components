@@ -8,8 +8,6 @@ import {
   Card,
   Divider,
   Spacer,
-  Tag,
-  Center,
 } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
@@ -20,7 +18,7 @@ type CardProps = {
   category: Category
 }
 
-export const CategoryCard: FC<CardProps> = ({ category, count }) => {
+export const CategoryCard: FC<CardProps> = ({ category }) => {
   return (
     <Card
       as={Link}
@@ -51,9 +49,9 @@ export const CategoryCard: FC<CardProps> = ({ category, count }) => {
         <Text>Description</Text>
         <Spacer />
         <Divider orientation="vertical" h="75%" />
-        <Tag p={0} as={Center}>
+        {/* <Tag p={0} as={Center}>
           {count}
-        </Tag>
+        </Tag> */}
       </CardFooter>
     </Card>
   )

@@ -33,6 +33,7 @@ export const getStaticDocumentProps =
       const categories = getCategoriesByDocName(documentTypeName)
       return {
         props: {
+          type: "categories-group",
           categories,
         },
       }
@@ -46,6 +47,7 @@ export const getStaticDocumentProps =
 
       return {
         props: {
+          type: "component",
           data,
         },
       }
@@ -56,6 +58,7 @@ export const getStaticDocumentProps =
 
       return {
         props: {
+          type: "category",
           data,
           categoryDir,
         },
