@@ -1,14 +1,7 @@
 import { readFileSync, readdirSync } from "fs"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
-
-export type ComponentInfo = {
-  component: string
-  slug: string
-  code: string
-  // code: { fileName: string; language: string; code: string }[];
-  attributes: any
-}
+import type { ComponentInfo } from "types"
 
 // const getComponentCode = (componentFolder: string, componentName: string) => {
 //   const componentContents = readdirSync(componentFolder).filter(

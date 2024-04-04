@@ -1,4 +1,17 @@
 declare module "types" {
+  type ComponentInfo = {
+    component: string
+    slug: string
+    code: string
+    // code: { fileName: string; language: string; code: string }[];
+    attributes: any
+  }
+
+  type ComponentMetadata = {
+    title: string
+    description: string
+  }
+
   type Category = {
     slug: string
     name: string
