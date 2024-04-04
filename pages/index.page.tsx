@@ -1,7 +1,7 @@
 import path from "path"
-import { Container, Heading, VStack, Wrap, toKebabCase } from "@yamada-ui/react"
+import { Container, VStack, toKebabCase } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
-import { CategoryCard } from "components/layouts"
+import { CategoriesGroupDisplay } from "components/data-display/categories-group-display"
 import { useI18n } from "contexts/i18n-context"
 import { AppLayout } from "layouts/app-layout"
 import { getDirNames } from "utils/component"
@@ -37,16 +37,12 @@ const Page: NextPage<PageProps> = ({ data }) => {
       <Container>
         {data.map((group, i) => (
           <VStack key={`${group.name}-${i}`}>
-            <Heading>{group.name}</Heading>
-            <Wrap gap={9}>
-              {group.categories.map((category, j) => (
-                <CategoryCard
-                  key={`${category.name}-${j}`}
-                  category={category}
-                  count={14}
-                />
-              ))}
-            </Wrap>
+            <CategoriesGroupDisplay
+              {...{
+                documentTypeName: group.name,
+                categories: group.categories,
+              }}
+            />
           </VStack>
         ))}
       </Container>
