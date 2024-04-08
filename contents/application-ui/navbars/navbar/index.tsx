@@ -1,5 +1,6 @@
 import { Box } from "@yamada-ui/react"
 import type { FC } from "react"
+import type { ComponentMetadata } from "types"
 
 const NavBar: FC = () => {
   return <Box as="nav">Nav</Box>
@@ -7,11 +8,7 @@ const NavBar: FC = () => {
 
 export default NavBar
 
-export const metadata = {
+export const metadata: ComponentMetadata = {
   title: "Simple Navbar",
-  category: "navbars",
-  canvas: {
-    center: true,
-    maxWidth: 420,
-  },
+  description: "This is simple navbar component.",
 }
