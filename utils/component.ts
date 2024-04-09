@@ -59,6 +59,9 @@ export const getPaths = ({
   }
   for (const item of parent) {
     const parentFullPath = path.join(root, item)
+    for (const locale of locales || []) {
+      result.push({ params: { slug: [item] }, locale })
+    }
     readdirSync(parentFullPath, { withFileTypes: true })
       .filter((dir) => dir.isDirectory())
       .forEach((r) => {
@@ -69,7 +72,6 @@ export const getPaths = ({
           if (match) {
             const locale = match[1] || defaultLocale
             if (locales.includes(locale)) {
-              result.push({ params: { slug: [item] }, locale })
               result.push({ params: { slug: [item, r.name] }, locale })
             }
           }
