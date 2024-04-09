@@ -78,7 +78,7 @@ export const getComponent = async (
   const fileContent = readFileSync(filePath, "utf8")
   const index = fileContent
     .split("\n")
-    .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
+    .findIndex((v) => /export\s+const\s+metadata/.test(v))
 
   const data = {
     path: `${documentTypeName}/${componentDir}/index.tsx`,
