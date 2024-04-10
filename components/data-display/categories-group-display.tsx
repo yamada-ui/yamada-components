@@ -14,6 +14,8 @@ export const CategoriesGroupDisplay: FC<CategoriesGroupDisplayProps> = ({
   categories,
   documentTypeName,
 }) => {
+  if (!categories) return null
+
   return (
     <>
       <Heading>{documentTypeName}</Heading>

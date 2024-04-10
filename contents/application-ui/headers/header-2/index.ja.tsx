@@ -6,14 +6,14 @@ const Header: FC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
-        <Heading>Icon</Heading>
+        <Heading>アイコン</Heading>
       </Box>
       <HStack>
-        <Link href="/">Link</Link>
-        <Link href="/">Link</Link>
-        <Link href="/">Link</Link>
-        <Link href="/">Link</Link>
-        <Link href="/">Link</Link>
+        <Link href="/">リンク</Link>
+        <Link href="/">リンク</Link>
+        <Link href="/">リンク</Link>
+        <Link href="/">リンク</Link>
+        <Link href="/">リンク</Link>
       </HStack>
     </HStack>
   )
@@ -22,6 +22,6 @@ const Header: FC = () => {
 export default Header
 
 export const metadata: ComponentMetadata = {
-  title: "Simple Header",
-  description: "This is simple header component.",
+  title: "シンプルなヘッダー2",
+  description: "これはシンプルなヘッダーコンポーネント2です",
 }

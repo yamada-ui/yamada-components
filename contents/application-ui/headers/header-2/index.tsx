@@ -6,14 +6,14 @@ const Header2: FC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
-        <Heading>アイコン</Heading>
+        <Heading>Icon</Heading>
       </Box>
       <HStack>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
+        <Link href="/">Link</Link>
+        <Link href="/">Link</Link>
+        <Link href="/">Link</Link>
+        <Link href="/">Link</Link>
+        <Link href="/">Link</Link>
       </HStack>
     </HStack>
   )
