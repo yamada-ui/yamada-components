@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from "fs"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
 import { CONSTANT } from "constant"
-import type { ComponentInfo } from "types"
+import type { ComponentInfo, ComponentMetadata } from "types"
 
 // const getComponentCode = (componentFolder: string, componentName: string) => {
 //   const componentContents = readdirSync(componentFolder).filter(
@@ -110,9 +110,9 @@ export const getComponent = async (
       )
     }
 
-    const { metadata } = await import(
+    const { metadata } = (await import(
       `../contents/${documentTypeName}/${componentDir}/${filename}`
-    )
+    )) as { metadata: ComponentMetadata }
 
     const fileContent = readFileSync(filePath, "utf8")
     const index = fileContent
@@ -121,6 +121,7 @@ export const getComponent = async (
 
     const data = {
       path: `${documentTypeName}/${componentDir}/${filename}.tsx`,
+      // { component: { filename: string; code: string; }[] } // 配列にする
       component: fileContent
         .split("\n")
         .slice(0, index)
