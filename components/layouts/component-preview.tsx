@@ -1,9 +1,9 @@
-import { Markdown } from "@yamada-ui/markdown"
 import { Box, Text, Skeleton, useBoolean } from "@yamada-ui/react"
 import type { SkeletonProps } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import type { FC } from "react"
 import React, { useEffect } from "react"
+import { Highlight } from "components/code/code-block"
 import { CopyButton } from "components/forms/copy-button"
 
 export const ComponentPreview: FC<{ path: string; code: string }> = ({
@@ -12,11 +12,6 @@ export const ComponentPreview: FC<{ path: string; code: string }> = ({
 }) => {
   // ダイナミックインポート
   const Component = dynamic(() => import(`../../contents/${path}`))
-  const markdown = `
-  \`\`\`tsx
-${code}
-\`\`\`
-  `
 
   return (
     <Box>
@@ -32,16 +27,7 @@ ${code}
           />
         </Preview>
         <Box rounded="md" overflow="hidden" my="4" position="relative">
-          <Markdown
-            px="md"
-            fontSize="sm"
-            overflowX="auto"
-            sx={{
-              "& > pre": { p: "0px !important", bg: "none !important" },
-            }}
-          >
-            {markdown}
-          </Markdown>
+          <Highlight code={code} language="tsx" />
           <CopyButton value={code} position="absolute" top="1rem" right="6" />
         </Box>
       </Box>
