@@ -1,6 +1,7 @@
-import { readFileSync, readdirSync } from "fs"
+import { existsSync, readFileSync, readdirSync } from "fs"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
+import { CONSTANT } from "constant"
 import type { ComponentInfo } from "types"
 
 // const getComponentCode = (componentFolder: string, componentName: string) => {
@@ -42,56 +43,97 @@ export const getDirNames = (basePath: string) => {
     .map((dir) => dir.name)
 }
 
-export const getPaths = (documentTypeName: string) => {
-  const result: { params: { slug: string[] } }[] = []
+export const getPaths = ({
+  documentTypeName,
+  locales,
+}: {
+  documentTypeName: string
+  locales: string[]
+}) => {
+  const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
+  const result: { params: { slug: string[] }; locale?: string }[] = []
   const root = path.join(process.cwd(), "contents", documentTypeName)
   const parent = getDirNames(root)
-  result.push({ params: { slug: [] } })
+  for (const locale of locales || []) {
+    result.push({ params: { slug: [] }, locale })
+  }
   for (const item of parent) {
     const parentFullPath = path.join(root, item)
-    result.push({ params: { slug: [item] } })
+    for (const locale of locales || []) {
+      result.push({ params: { slug: [item] }, locale })
+    }
     readdirSync(parentFullPath, { withFileTypes: true })
       .filter((dir) => dir.isDirectory())
       .forEach((r) => {
-        result.push({ params: { slug: [item, r.name] } })
+        const dirPath = path.join(parentFullPath, r.name)
+        const files = readdirSync(dirPath)
+        for (const file of files) {
+          const match = file.match(/index(?:\.(.+))?\.tsx$/)
+          if (match) {
+            const locale = match[1] || defaultLocale
+            if (locales.includes(locale)) {
+              result.push({ params: { slug: [item, r.name] }, locale })
+            }
+          }
+        }
       })
   }
-
   return result
 }
 
 export const getComponent = async (
   documentTypeName: string,
   componentDir: string,
+  locale: string,
 ) => {
-  const { metadata } = await import(
-    `../contents/${documentTypeName}/${componentDir}/index`
-  )
-  const filePath = path.join(
-    process.cwd(),
-    "contents",
-    documentTypeName,
-    componentDir,
-    "index.tsx",
-  )
+  try {
+    let filename = `index${
+      locale !== CONSTANT.I18N.DEFAULT_LOCALE ? `.${locale}` : ""
+    }`
 
-  const fileContent = readFileSync(filePath, "utf8")
-  const index = fileContent
-    .split("\n")
-    .findIndex((v) => /export\s+const\s+metadata/.test(v))
+    let filePath = path.join(
+      process.cwd(),
+      "contents",
+      documentTypeName,
+      componentDir,
+      `${filename}.tsx`,
+    )
 
-  const data = {
-    path: `${documentTypeName}/${componentDir}/index.tsx`,
-    component: fileContent
+    if (!existsSync(filePath)) {
+      filename = "index"
+      filePath = path.join(
+        process.cwd(),
+        "contents",
+        documentTypeName,
+        componentDir,
+        `${filename}.tsx`,
+      )
+    }
+
+    const { metadata } = await import(
+      `../contents/${documentTypeName}/${componentDir}/${filename}`
+    )
+
+    const fileContent = readFileSync(filePath, "utf8")
+    const index = fileContent
       .split("\n")
-      .slice(0, index)
-      .filter((line) => !line.includes("export"))
-      .join("\n"),
-    metadata,
-    slug: toKebabCase(`${documentTypeName}/${componentDir}`),
-  }
+      .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
 
-  return data
+    const data = {
+      path: `${documentTypeName}/${componentDir}/${filename}.tsx`,
+      component: fileContent
+        .split("\n")
+        .slice(0, index)
+        .filter((line) => !line.includes("export"))
+        .join("\n"),
+      metadata,
+      slug: toKebabCase(`${documentTypeName}/${componentDir}`),
+    }
+
+    return data
+  } catch (error) {
+    return null
+  }
 }
 
 export const getAllComponents = async (): Promise<ComponentInfo[]> => {
@@ -139,26 +181,36 @@ export const getAllComponents = async (): Promise<ComponentInfo[]> => {
 export const getComponentsByCategory = async (
   documentTypeName: string,
   category: string,
+  locale: string,
 ) => {
-  const contentsDir = path.join(process.cwd(), "contents")
-  const root = path.join(contentsDir, documentTypeName, category)
-  const components = getDirNames(root)
-  const promises = components.map(async (componentName: string) => {
-    const data = await getComponent(
-      documentTypeName,
-      category + "/" + componentName,
-    )
+  try {
+    const contentsDir = path.join(process.cwd(), "contents")
+    const root = path.join(contentsDir, documentTypeName, category)
+    const components = getDirNames(root)
+    const promises = components.map(async (componentName: string) => {
+      const data = await getComponent(
+        documentTypeName,
+        category + "/" + componentName,
+        locale,
+      )
 
-    return data
-  })
+      return data
+    })
 
-  return await Promise.all(promises)
+    return await Promise.all(promises)
+  } catch (error) {
+    return null
+  }
 }
 
 export const getCategoriesByDocName = (documentTypeName: string) => {
-  const root = path.join(process.cwd(), "contents", documentTypeName)
-  return getDirNames(root).map((child) => ({
-    name: child,
-    slug: toKebabCase(path.join(documentTypeName, child)),
-  }))
+  try {
+    const root = path.join(process.cwd(), "contents", documentTypeName)
+    return getDirNames(root).map((child) => ({
+      name: child,
+      slug: toKebabCase(path.join(documentTypeName, child)),
+    }))
+  } catch (error) {
+    return null
+  }
 }
