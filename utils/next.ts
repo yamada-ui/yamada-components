@@ -20,17 +20,23 @@ export const getServerSideCommonProps = async ({
 
 export const getStaticDocumentPaths =
   (documentTypeName: string) =>
-  async ({}: GetStaticPathsContext) => {
-    const paths = getPaths(documentTypeName)
+  async ({ locales }: GetStaticPathsContext) => {
+    const paths = getPaths({ documentTypeName, locales })
 
-    return { paths, fallback: false }
+    return { paths, fallback: true }
   }
 
 export const getStaticDocumentProps =
   (documentTypeName: string) =>
-  async ({ params }: GetStaticPropsContext) => {
+  async ({ params, locale }: GetStaticPropsContext) => {
     if (!params.slug) {
       const categories = getCategoriesByDocName(documentTypeName)
+
+      if (!categories)
+        return {
+          notFound: true,
+        }
+
       return {
         props: {
           type: "categories-group",
@@ -43,7 +49,12 @@ export const getStaticDocumentProps =
     if ((params.slug as string[]).length > 1) {
       const componentDir = (params.slug as string[]).join("/").toLowerCase()
 
-      const data = await getComponent(documentTypeName, componentDir)
+      const data = await getComponent(documentTypeName, componentDir, locale)
+
+      if (!data)
+        return {
+          notFound: true,
+        }
 
       return {
         props: {
@@ -54,7 +65,16 @@ export const getStaticDocumentProps =
     } else {
       // params.slugの0番目のデータのカテゴリ内のコンポーネント一覧を取得
       const categoryDir = (params.slug as string[])[0].toLowerCase()
-      const data = await getComponentsByCategory(documentTypeName, categoryDir)
+      const data = await getComponentsByCategory(
+        documentTypeName,
+        categoryDir,
+        locale,
+      )
+
+      if (!data)
+        return {
+          notFound: true,
+        }
 
       return {
         props: {

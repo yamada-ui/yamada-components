@@ -2,6 +2,7 @@ import { Link as UILink, List, ListItem, Text, Heading } from "@yamada-ui/react"
 import Link from "next/link"
 import type { FC } from "react"
 import { ComponentPreview } from "components/layouts"
+import { useI18n } from "contexts/i18n-context"
 
 type CategoriesDisplayProps = {
   data: {
@@ -17,11 +18,16 @@ export const CategoriesDisplay: FC<CategoriesDisplayProps> = ({
   categoryDir,
   data,
 }) => {
+  const { t } = useI18n()
+
   return (
     <>
-      <Heading>カテゴリー：{categoryDir}</Heading>
+      <Heading>
+        {t("categories.heading")}
+        {categoryDir}
+      </Heading>
       <List>
-        {data.map((e, i) => (
+        {data.filter(Boolean).map((e, i) => (
           <ListItem key={`${e.slug}-${i}`} display="flex" flexDir="column">
             <Text>{e.slug}</Text>
             <UILink as={Link} href={`/${e.slug}`}>{`/${e.slug}`}</UILink>
