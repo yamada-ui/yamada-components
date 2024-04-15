@@ -1,4 +1,4 @@
-import { Box, Text, Skeleton, useBoolean } from "@yamada-ui/react"
+import { Box, Skeleton, useBoolean } from "@yamada-ui/react"
 import type { SkeletonProps } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import type { FC } from "react"
@@ -15,7 +15,6 @@ export const ComponentPreview: FC<{ path: string; code: string }> = ({
 
   return (
     <Box>
-      <Text>Component: {path}</Text>
       <Box my="6">
         <Preview>
           <Box
