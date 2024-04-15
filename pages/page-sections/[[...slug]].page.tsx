@@ -23,7 +23,7 @@ const Page: NextPage<PageProps> = ({ data, categoryDir, categories, type }) => {
         title={t("components.title")}
         description={t("components.description")}
       >
-        <ComponentPreview path={data.path} code={data.component} />
+        <ComponentPreview path={data.path} code={data.component[0].code} />
       </ComponentLayout>
     )
   }
@@ -35,7 +35,15 @@ const Page: NextPage<PageProps> = ({ data, categoryDir, categories, type }) => {
     >
       <Container>
         {type === "category" && isArray(data) ? (
-          <CategoriesDisplay {...{ categoryDir, data }} />
+          <CategoriesDisplay
+            {...{ categoryDir }}
+            data={data.map((item) => ({
+              path: item.path,
+              slug: item.path,
+              metadata: item.metadata,
+              component: item.component[0].code,
+            }))}
+          />
         ) : (
           <CategoriesGroupDisplay
             documentTypeName="Page Sections"

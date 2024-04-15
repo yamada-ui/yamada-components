@@ -1,6 +1,15 @@
-import { Box, HStack, Heading, Link } from "@yamada-ui/react"
+import { Box, HStack, Heading } from "@yamada-ui/react"
 import type { FC } from "react"
+import { LinkItem } from "./link-item.ja"
 import type { ComponentMetadata } from "types"
+
+const links = [
+  { link: "#", label: "ホーム" },
+  { link: "#", label: "お問合せ" },
+  { link: "#", label: "プライバシー" },
+  { link: "#", label: "チームズ" },
+  { link: "#", label: "について" },
+]
 
 const Header: FC = () => {
   return (
@@ -9,11 +18,9 @@ const Header: FC = () => {
         <Heading>アイコン</Heading>
       </Box>
       <HStack>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
-        <Link href="/">リンク</Link>
+        {links.map((item, index) => (
+          <LinkItem key={index} {...{ item }} />
+        ))}
       </HStack>
     </HStack>
   )
