@@ -109,24 +109,44 @@ export const getComponent = async (
         `${filename}.tsx`,
       )
     }
+    // ../contents/${documentTypeName}/${componentDir}内のファイルを取得する
+    const componentContents = readdirSync(
+      path.join(process.cwd(), "contents", documentTypeName, componentDir),
+    )
+      .filter((file) => file.endsWith(".tsx")) // .tsxファイルのみ
+      .map((file) => {
+        const fileContent = readFileSync(
+          path.join(
+            process.cwd(),
+            "contents",
+            documentTypeName,
+            componentDir,
+            file,
+          ),
+          "utf-8",
+        )
+        const index = fileContent
+          .split("\n")
+          .findIndex((v) => /export\s+const\s+metadata/.test(v))
+        return {
+          name: file,
+          code: fileContent
+            .split("\n")
+            .slice(0, index)
+            .filter((line) => !line.includes("export"))
+            .join("\n"),
+        }
+      })
+    console.log(componentContents)
 
     const { metadata } = (await import(
       `../contents/${documentTypeName}/${componentDir}/${filename}`
     )) as { metadata: ComponentMetadata }
 
-    const fileContent = readFileSync(filePath, "utf8")
-    const index = fileContent
-      .split("\n")
-      .findIndex((v) => /export\s+const\s+metadata/.test(v))
-
     const data = {
       path: `${documentTypeName}/${componentDir}/${filename}.tsx`,
       // { component: { filename: string; code: string; }[] } // 配列にする
-      component: fileContent
-        .split("\n")
-        .slice(0, index)
-        .filter((line) => !line.includes("export"))
-        .join("\n"),
+      component: componentContents,
       metadata,
       slug: toKebabCase(`${documentTypeName}/${componentDir}`),
     }
