@@ -24,8 +24,6 @@ export const ComponentPreview: FC<ComponentPreviewProps> = ({
   // ダイナミックインポート
   const Component = dynamic(() => import(`../../contents/${path}`))
 
-  console.log(component)
-
   return (
     <Box my="6">
       <Tabs align="end">
