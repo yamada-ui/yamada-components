@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync } from "fs"
+import { readFileSync, readdirSync } from "fs"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
 import { CONSTANT } from "constant"
@@ -54,28 +54,28 @@ export const getComponent = async (
   locale: string,
 ) => {
   try {
-    let filename = `index${
+    const filename = `index${
       locale !== CONSTANT.I18N.DEFAULT_LOCALE ? `.${locale}` : ""
     }`
 
-    let filePath = path.join(
-      process.cwd(),
-      "contents",
-      documentTypeName,
-      componentDir,
-      `${filename}.tsx`,
-    )
+    // let filePath = path.join(
+    //   process.cwd(),
+    //   "contents",
+    //   documentTypeName,
+    //   componentDir,
+    //   `${filename}.tsx`,
+    // )
 
-    if (!existsSync(filePath)) {
-      filename = "index"
-      filePath = path.join(
-        process.cwd(),
-        "contents",
-        documentTypeName,
-        componentDir,
-        `${filename}.tsx`,
-      )
-    }
+    // if (!existsSync(filePath)) {
+    //   filename = "index"
+    //   filePath = path.join(
+    //     process.cwd(),
+    //     "contents",
+    //     documentTypeName,
+    //     componentDir,
+    //     `${filename}.tsx`,
+    //   )
+    // }
     // ../contents/${documentTypeName}/${componentDir}内のファイルを取得する
     const componentContents = readdirSync(
       path.join(process.cwd(), "contents", documentTypeName, componentDir),
