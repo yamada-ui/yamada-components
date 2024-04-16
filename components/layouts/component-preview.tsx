@@ -1,35 +1,53 @@
-import { Box, Skeleton, useBoolean } from "@yamada-ui/react"
+import {
+  Box,
+  Skeleton,
+  Tab,
+  TabPanel,
+  Tabs,
+  useBoolean,
+} from "@yamada-ui/react"
 import type { SkeletonProps } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
-import type { FC } from "react"
+import type { ComponentProps, FC } from "react"
 import React, { useEffect } from "react"
-import { Highlight } from "components/code/code-block"
-import { CopyButton } from "components/forms/copy-button"
+import { DividedComponent } from "./devided-component"
 
-export const ComponentPreview: FC<{ path: string; code: string }> = ({
+type ComponentPreviewProps = {
+  component: ComponentProps<typeof DividedComponent>["component"]
+  path: string
+}
+
+export const ComponentPreview: FC<ComponentPreviewProps> = ({
   path,
-  code,
+  component,
 }) => {
   // ダイナミックインポート
   const Component = dynamic(() => import(`../../contents/${path}`))
 
+  console.log(component)
+
   return (
-    <Box>
-      <Box my="6">
-        <Preview>
-          <Box
-            as={Component}
-            p="md"
-            borderWidth="1px"
-            rounded="md"
-            overflowX="auto"
-          />
-        </Preview>
-        <Box rounded="md" overflow="hidden" my="4" position="relative">
-          <Highlight code={code} language="tsx" />
-          <CopyButton value={code} position="absolute" top="1rem" right="6" />
-        </Box>
-      </Box>
+    <Box my="6">
+      <Tabs align="end">
+        <Tab>preview</Tab>
+        <Tab>code</Tab>
+        <TabPanel mt={10}>
+          <Preview>
+            <Box
+              as={Component}
+              p="md"
+              borderWidth="1px"
+              rounded="md"
+              overflowX="auto"
+            />
+          </Preview>
+        </TabPanel>
+        <TabPanel>
+          <Box rounded="md" overflow="hidden" my="4" position="relative">
+            <DividedComponent component={component} />
+          </Box>
+        </TabPanel>
+      </Tabs>
     </Box>
   )
 }

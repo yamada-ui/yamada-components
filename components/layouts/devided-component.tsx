@@ -1,20 +1,19 @@
 import { Tab, TabPanel, Tabs } from "@yamada-ui/react"
 import type { FC } from "react"
-import { ComponentPreview } from "./component-preview"
+import { Highlight } from "components/code/code-block"
+import { CopyButton } from "components/forms/copy-button"
 import { useI18n } from "contexts/i18n-context"
 
-type DivideComponentProps = {
-  component: {
-    name: string
-    code: string
-  }[]
-  path: string
+type Compoent = {
+  name: string
+  code: string
 }
 
-export const DividedComponent: FC<DivideComponentProps> = ({
-  component,
-  path,
-}) => {
+type DivideComponentProps = {
+  component: Compoent[]
+}
+
+export const DividedComponent: FC<DivideComponentProps> = ({ component }) => {
   const { locale } = useI18n()
 
   const sortedComponent = component
@@ -36,7 +35,8 @@ export const DividedComponent: FC<DivideComponentProps> = ({
       ))}
       {sortedComponent.map((r, i) => (
         <TabPanel key={i}>
-          <ComponentPreview path={path} code={r.code} />
+          <Highlight code={r.code} language="tsx" />
+          <CopyButton value={r.code} position="absolute" top="4rem" right="6" />
         </TabPanel>
       ))}
     </Tabs>
