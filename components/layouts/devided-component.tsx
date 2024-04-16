@@ -11,11 +11,15 @@ type DivideComponentProps = {
   path: string
 }
 
-export const DividedComponent: FC<DivideComponentProps> = ({ component }) => {
+export const DividedComponent: FC<DivideComponentProps> = ({
+  component,
+  path,
+}) => {
   const { locale } = useI18n()
 
-  const pickedComponent = component
+  const sortedComponent = component
     .map((r) => {
+      console.log(44)
       const isJaFile = r.name.includes(".ja.")
       switch (locale) {
         case "en":
@@ -28,12 +32,12 @@ export const DividedComponent: FC<DivideComponentProps> = ({ component }) => {
 
   return (
     <Tabs>
-      {pickedComponent.map((r, i) => (
+      {sortedComponent.map((r, i) => (
         <Tab key={i}>{r.name}</Tab>
       ))}
-      {pickedComponent.map((r, i) => (
+      {sortedComponent.map((r, i) => (
         <TabPanel key={i}>
-          <ComponentPreview path="" code={r.code} />
+          <ComponentPreview path={path} code={r.code} />
         </TabPanel>
       ))}
     </Tabs>
