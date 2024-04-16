@@ -19,7 +19,6 @@ export const DividedComponent: FC<DivideComponentProps> = ({
 
   const sortedComponent = component
     .map((r) => {
-      console.log(44)
       const isJaFile = r.name.includes(".ja.")
       switch (locale) {
         case "en":
