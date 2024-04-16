@@ -4,39 +4,6 @@ import { toKebabCase } from "@yamada-ui/react"
 import { CONSTANT } from "constant"
 import type { ComponentInfo, ComponentMetadata } from "types"
 
-// const getComponentCode = (componentFolder: string, componentName: string) => {
-//   const componentContents = readdirSync(componentFolder).filter(
-//     (item) =>
-//       (item.endsWith(".tsx") && !item.endsWith(".story.tsx")) ||
-//       item.endsWith(".ts") ||
-//       item.endsWith(".css"),
-//   )
-
-//   const mainFileContent = readFileSync(
-//     path.join(componentFolder, `${componentName}.tsx`),
-//     "utf-8",
-//   )
-//   const otherFilesContent = componentContents
-//     .filter((file) => file !== `${componentName}.tsx`)
-//     .map((file) => ({
-//       name: file,
-//       content: readFileSync(path.join(componentFolder, file), "utf-8"),
-//     }))
-
-//   return [
-//     {
-//       fileName: `${componentName}.tsx`,
-//       language: "tsx",
-//       code: mainFileContent,
-//     },
-//     ...otherFilesContent.map(({ name, content }) => ({
-//       fileName: name,
-//       language: name.endsWith(".css") ? "scss" : "tsx",
-//       code: content,
-//     })),
-//   ]
-// }
-
 export const getDirNames = (basePath: string) => {
   return readdirSync(basePath, { withFileTypes: true })
     .filter((dir) => dir.isDirectory())
@@ -137,7 +104,6 @@ export const getComponent = async (
             .join("\n"),
         }
       })
-    console.log(componentContents)
 
     const { metadata } = (await import(
       `../contents/${documentTypeName}/${componentDir}/${filename}`

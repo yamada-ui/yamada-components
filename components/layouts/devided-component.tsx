@@ -16,11 +16,12 @@ export const DividedComponent: FC<DivideComponentProps> = ({ component }) => {
 
   const pickedComponent = component
     .map((r) => {
+      const isJaFile = r.name.includes(".ja.")
       switch (locale) {
         case "en":
-          return r.name.includes(".ja.") ? null : r
+          return isJaFile ? null : r
         case "ja":
-          return r.name.includes(".ja.") ? r : null
+          return isJaFile ? r : null
       }
     })
     .filter(Boolean)

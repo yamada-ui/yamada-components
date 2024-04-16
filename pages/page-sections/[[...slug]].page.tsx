@@ -41,7 +41,7 @@ const Page: NextPage<PageProps> = ({ data, categoryDir, categories, type }) => {
               path: item.path,
               slug: item.path,
               metadata: item.metadata,
-              component: item.component[0].code,
+              component: item.component,
             }))}
           />
         ) : (
