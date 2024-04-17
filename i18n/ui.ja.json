@@ -13,6 +13,10 @@
   "component": {
     "component-preview": {
       "label": "編集可能な例",
+      "tab": {
+        "preview": "プレビュー",
+        "code": "コード"
+      },
       "control-button": {
         "open": "もっと見る",
         "close": "とじる"

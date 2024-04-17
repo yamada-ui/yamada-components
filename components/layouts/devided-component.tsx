@@ -3,6 +3,7 @@ import type { FC } from "react"
 import { Highlight } from "components/code/code-block"
 import { CopyButton } from "components/forms/copy-button"
 import { useI18n } from "contexts/i18n-context"
+import { removePhrase } from "utils/assetion"
 
 type Compoent = {
   name: string
@@ -19,11 +20,12 @@ export const DividedComponent: FC<DivideComponentProps> = ({ component }) => {
   const sortedComponent = component
     .map((r) => {
       const isJaFile = r.name.includes(".ja.")
+      const isNotExistJa = !component.some((r) => r.name.includes(".ja."))
       switch (locale) {
         case "en":
           return isJaFile ? null : r
         case "ja":
-          return isJaFile ? r : null
+          return isJaFile ? r : isNotExistJa ? r : null
       }
     })
     .filter(Boolean)
@@ -31,7 +33,7 @@ export const DividedComponent: FC<DivideComponentProps> = ({ component }) => {
   return (
     <Tabs>
       {sortedComponent.map((r, i) => (
-        <Tab key={i}>{r.name}</Tab>
+        <Tab key={i}>{removePhrase(r.name, ".ja")}</Tab>
       ))}
       {sortedComponent.map((r, i) => (
         <TabPanel key={i}>

@@ -11,6 +11,7 @@ import dynamic from "next/dynamic"
 import type { ComponentProps, FC } from "react"
 import React, { useEffect } from "react"
 import { DividedComponent } from "./devided-component"
+import { useI18n } from "contexts/i18n-context"
 
 type ComponentPreviewProps = {
   component: ComponentProps<typeof DividedComponent>["component"]
@@ -21,14 +22,15 @@ export const ComponentPreview: FC<ComponentPreviewProps> = ({
   path,
   component,
 }) => {
+  const { t } = useI18n()
   // ダイナミックインポート
   const Component = dynamic(() => import(`../../contents/${path}`))
 
   return (
     <Box my="6">
       <Tabs align="end">
-        <Tab>preview</Tab>
-        <Tab>code</Tab>
+        <Tab>{t("component.component-preview.tab.preview")}</Tab>
+        <Tab>{t("component.component-preview.tab.code")}</Tab>
         <TabPanel mt={10}>
           <Preview>
             <Box
