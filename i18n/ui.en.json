@@ -13,6 +13,10 @@
   "component": {
     "component-preview": {
       "label": "Editable example",
+      "tab": {
+        "preview": "preview",
+        "code": "code"
+      },
       "control-button": {
         "open": "Show more",
         "close": "Show less"

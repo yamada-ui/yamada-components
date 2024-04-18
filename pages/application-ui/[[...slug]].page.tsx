@@ -23,7 +23,7 @@ const Page: NextPage<PageProps> = ({ data, categoryDir, categories, type }) => {
         title={t("components.title")}
         description={t("components.description")}
       >
-        <ComponentPreview path={data.path} code={data.component[0].code} />
+        <ComponentPreview path={data.path} component={data.component} />
       </ComponentLayout>
     )
   }
@@ -41,7 +41,7 @@ const Page: NextPage<PageProps> = ({ data, categoryDir, categories, type }) => {
               path: item.path,
               slug: item.slug,
               metadata: item.metadata,
-              component: item.component[0].code,
+              component: item.component,
             }))}
           />
         ) : (

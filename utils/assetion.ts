@@ -5,3 +5,7 @@ export const toKebabCase = (string: string) => {
     .split(" ")
   return splitted.join("-")
 }
+
+export const removePhrase = (text: string, phrase: string) => {
+  return text.replace(new RegExp(phrase, "g"), "")
+}

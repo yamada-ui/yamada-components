@@ -4,39 +4,6 @@ import { toKebabCase } from "@yamada-ui/react"
 import { CONSTANT } from "constant"
 import type { ComponentInfo, ComponentMetadata } from "types"
 
-// const getComponentCode = (componentFolder: string, componentName: string) => {
-//   const componentContents = readdirSync(componentFolder).filter(
-//     (item) =>
-//       (item.endsWith(".tsx") && !item.endsWith(".story.tsx")) ||
-//       item.endsWith(".ts") ||
-//       item.endsWith(".css"),
-//   )
-
-//   const mainFileContent = readFileSync(
-//     path.join(componentFolder, `${componentName}.tsx`),
-//     "utf-8",
-//   )
-//   const otherFilesContent = componentContents
-//     .filter((file) => file !== `${componentName}.tsx`)
-//     .map((file) => ({
-//       name: file,
-//       content: readFileSync(path.join(componentFolder, file), "utf-8"),
-//     }))
-
-//   return [
-//     {
-//       fileName: `${componentName}.tsx`,
-//       language: "tsx",
-//       code: mainFileContent,
-//     },
-//     ...otherFilesContent.map(({ name, content }) => ({
-//       fileName: name,
-//       language: name.endsWith(".css") ? "scss" : "tsx",
-//       code: content,
-//     })),
-//   ]
-// }
-
 export const getDirNames = (basePath: string) => {
   return readdirSync(basePath, { withFileTypes: true })
     .filter((dir) => dir.isDirectory())
@@ -91,7 +58,7 @@ export const getComponent = async (
       locale !== CONSTANT.I18N.DEFAULT_LOCALE ? `.${locale}` : ""
     }`
 
-    let filePath = path.join(
+    const filePath = path.join(
       process.cwd(),
       "contents",
       documentTypeName,
@@ -101,14 +68,8 @@ export const getComponent = async (
 
     if (!existsSync(filePath)) {
       filename = "index"
-      filePath = path.join(
-        process.cwd(),
-        "contents",
-        documentTypeName,
-        componentDir,
-        `${filename}.tsx`,
-      )
     }
+
     // ../contents/${documentTypeName}/${componentDir}内のファイルを取得する
     const componentContents = readdirSync(
       path.join(process.cwd(), "contents", documentTypeName, componentDir),
@@ -137,7 +98,6 @@ export const getComponent = async (
             .join("\n"),
         }
       })
-    console.log(componentContents)
 
     const { metadata } = (await import(
       `../contents/${documentTypeName}/${componentDir}/${filename}`
@@ -145,7 +105,6 @@ export const getComponent = async (
 
     const data = {
       path: `${documentTypeName}/${componentDir}/${filename}.tsx`,
-      // { component: { filename: string; code: string; }[] } // 配列にする
       component: componentContents,
       metadata,
       slug: toKebabCase(`${documentTypeName}/${componentDir}`),
