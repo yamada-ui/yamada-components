@@ -1,4 +1,5 @@
-import { Box, HStack, Heading } from "@yamada-ui/react"
+import type { ThemeConfig, UsageTheme } from "@yamada-ui/react"
+import { Box, HStack, Heading, extendTheme } from "@yamada-ui/react"
 import type { FC } from "react"
 import { LinkItem } from "./link-item"
 import type { ComponentMetadata } from "types"
@@ -15,7 +16,7 @@ const Header: FC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
-        <Heading>Icon</Heading>
+        <Heading color="primary">Icon</Heading>
       </Box>
       <HStack>
         {links.map((item, index) => (
@@ -32,3 +33,26 @@ export const metadata: ComponentMetadata = {
   title: "Simple Header",
   description: "This is simple header component.",
 }
+
+export const theme: UsageTheme = extendTheme({
+  semantics: {
+    colors: {
+      primary: "pink.500",
+    },
+    colorSchemes: {
+      primary: "pink",
+    },
+  },
+})()
+// export const theme: UsageTheme = {
+//   semantics: {
+//     colors: {
+//       primary: "pink.500",
+//     },
+//     colorSchemes: {
+//       primary: "pink",
+//     },
+//   },
+// }
+
+export const config: ThemeConfig = {}
