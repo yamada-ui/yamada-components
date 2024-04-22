@@ -1,10 +1,5 @@
 import { IconCheck, IconCopy } from "@tabler/icons-react"
-import {
-  Button as _Button,
-  Center,
-  Tooltip,
-  useClipboard,
-} from "@yamada-ui/react"
+import { Button, Center, Tooltip, useClipboard } from "@yamada-ui/react"
 import type { FC } from "react"
 
 const CopyButton: FC = () => {
@@ -13,12 +8,12 @@ const CopyButton: FC = () => {
   return (
     <Center>
       <Tooltip label="Link copied!" bg="success" isOpen={hasCopied}>
-        <_Button
+        <Button
           onClick={onCopy}
           rightIcon={hasCopied ? <IconCheck /> : <IconCopy />}
         >
           Copy link to clipboard
-        </_Button>
+        </Button>
       </Tooltip>
     </Center>
   )
