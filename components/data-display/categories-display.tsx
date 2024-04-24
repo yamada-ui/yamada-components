@@ -4,12 +4,13 @@ import type { ComponentProps, FC } from "react"
 import type { DividedComponent } from "components/layouts"
 import { ComponentPreview } from "components/layouts"
 import { useI18n } from "contexts/i18n-context"
+import type { ComponentMetadata } from "types"
 
 type CategoriesDisplayProps = {
   data: {
     path: string
     component: ComponentProps<typeof DividedComponent>["component"]
-    metadata: any
+    metadata: ComponentMetadata
     slug: string
   }[]
   categoryDir: string
@@ -32,6 +33,8 @@ export const CategoriesDisplay: FC<CategoriesDisplayProps> = ({
           <ListItem key={`${e.slug}-${i}`} display="flex" flexDir="column">
             <Text>{e.slug}</Text>
             <UILink as={Link} href={`/${e.slug}`}>{`/${e.slug}`}</UILink>
+            <Text>{e.metadata.title}</Text>
+            <Text>{e.metadata.description}</Text>
             <ComponentPreview component={e.component} path={e.path} />
           </ListItem>
         ))}
