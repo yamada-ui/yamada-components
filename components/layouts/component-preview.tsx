@@ -23,8 +23,6 @@ export const ComponentPreview: FC<ComponentPreviewProps> = ({
   component,
 }) => {
   const { t } = useI18n()
-  // ダイナミックインポート
-  // const Component = dynamic(() => import(`../../contents/${path}`))
 
   return (
     <Box my="6">
