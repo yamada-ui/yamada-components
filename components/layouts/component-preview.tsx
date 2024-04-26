@@ -31,7 +31,7 @@ export const ComponentPreview: FC<ComponentPreviewProps> = ({
 
   const loadComponent = async () => {
     const { theme } = await import(`../../contents/${path}`)
-    setUiTheme(theme)
+    setUiTheme({ ...theme })
   }
 
   useEffect(() => {

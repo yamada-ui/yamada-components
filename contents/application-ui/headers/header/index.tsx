@@ -1,5 +1,11 @@
 import type { ThemeConfig, UsageTheme } from "@yamada-ui/react"
-import { Box, HStack, Heading, extendTheme } from "@yamada-ui/react"
+import {
+  Box,
+  HStack,
+  Heading,
+  extendConfig,
+  extendTheme,
+} from "@yamada-ui/react"
 import type { FC } from "react"
 import { LinkItem } from "./link-item"
 import type { ComponentMetadata } from "types"
@@ -44,15 +50,5 @@ export const theme: UsageTheme = extendTheme({
     },
   },
 })()
-// export const theme: UsageTheme = {
-//   semantics: {
-//     colors: {
-//       primary: "pink.500",
-//     },
-//     colorSchemes: {
-//       primary: "pink",
-//     },
-//   },
-// }
 
-export const config: ThemeConfig = {}
+export const config: ThemeConfig = extendConfig({})
