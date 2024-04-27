@@ -39,7 +39,7 @@ const Page: NextPage<PageProps> = ({ data, categoryDir, categories, type }) => {
             {...{ categoryDir }}
             data={data.map((item) => ({
               path: item.path,
-              slug: item.path,
+              slug: item.slug,
               metadata: item.metadata,
               component: item.component,
             }))}
