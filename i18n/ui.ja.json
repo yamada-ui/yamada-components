@@ -20,6 +20,15 @@
       "control-button": {
         "open": "もっと見る",
         "close": "とじる"
+      },
+      "back": "戻る",
+      "direction": {
+        "vertical": "縦並び",
+        "horizontal": "横並び"
+      },
+      "code": {
+        "open": "コード",
+        "close": "閉じる"
       }
     },
     "forms": {
