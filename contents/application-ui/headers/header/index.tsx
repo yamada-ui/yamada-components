@@ -22,7 +22,7 @@ const Header: FC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
-        <Heading color="primary">Icon</Heading>
+        <Heading color="banner">Icon</Heading>
       </Box>
       <HStack>
         {links.map((item, index) => (
@@ -43,10 +43,7 @@ export const metadata: ComponentMetadata = {
 export const theme: UsageTheme = extendTheme({
   semantics: {
     colors: {
-      primary: "pink.500",
-    },
-    colorSchemes: {
-      primary: "pink",
+      banner: "#9d38a0",
     },
   },
 })()
