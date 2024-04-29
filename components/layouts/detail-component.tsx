@@ -11,7 +11,6 @@ import {
 import { useRouter } from "next/router"
 import { createContext, useContext, useState } from "react"
 import type { ComponentProps, FC } from "react"
-import type { ComponentPreview } from "./component-preview"
 import { Preview } from "./component-preview"
 import { DividedComponent } from "./devided-component"
 import { Github } from "components/media-and-icons"
@@ -38,11 +37,18 @@ export const useDetail = () => {
   return useContext(Context)
 }
 
-type Props = ComponentProps<typeof ComponentPreview> & {
+type Props = {
+  component: ComponentProps<typeof DividedComponent>["component"]
+  path: string
   metadata: ComponentMetadata
+  isDisableBackBtn?: boolean
 }
 
-export const DetailComponent: FC<Props> = ({ component, path }) => {
+export const DetailComponent: FC<Props> = ({
+  component,
+  path,
+  isDisableBackBtn,
+}) => {
   const [showCode, showCodeControl] = useBoolean(true)
   const [direction, setDirection] =
     useState<ResizableProps["direction"]>("vertical")
@@ -63,7 +69,11 @@ export const DetailComponent: FC<Props> = ({ component, path }) => {
       }}
     >
       <Box>
-        <Header path={path} direction={direction} />
+        <Header
+          path={path}
+          direction={direction}
+          isDisableBackBtn={isDisableBackBtn}
+        />
         <Resizable
           h="100vh"
           rounded="md"
@@ -90,9 +100,10 @@ export const DetailComponent: FC<Props> = ({ component, path }) => {
 type HeaderProps = {
   path: string
   direction: "vertical" | "horizontal"
+  isDisableBackBtn: boolean
 }
 
-const Header: FC<HeaderProps> = ({ path, direction }) => {
+const Header: FC<HeaderProps> = ({ path, direction, isDisableBackBtn }) => {
   const { setDirectionResizable, showCodeToggle, showCode } = useDetail()
   const router = useRouter()
   const { t } = useI18n()
@@ -106,7 +117,10 @@ const Header: FC<HeaderProps> = ({ path, direction }) => {
       borderColor="white"
       borderStyle="solid"
     >
-      <button onClick={() => router.back()}>
+      <button
+        onClick={() => router.back()}
+        style={{ visibility: isDisableBackBtn ? "hidden" : "visible" }}
+      >
         {t("component.component-preview.back")}
       </button>
       <Box gap={2} display="flex">

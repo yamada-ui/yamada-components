@@ -1,83 +1,47 @@
 import {
   Box,
   Skeleton,
-  Tab,
-  TabPanel,
-  Tabs,
   UIProvider,
+  useAsync,
   useBoolean,
 } from "@yamada-ui/react"
 import type { SkeletonProps } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
-import type { ComponentProps, FC } from "react"
+import type { FC } from "react"
 import { useEffect, useState } from "react"
-import { DividedComponent } from "./devided-component"
-import { useI18n } from "contexts/i18n-context"
-
-type ComponentPreviewProps = {
-  component: ComponentProps<typeof DividedComponent>["component"]
-  path: string
-}
-
-export const ComponentPreview: FC<ComponentPreviewProps> = ({
-  path,
-  component,
-}) => {
-  const { t } = useI18n()
-
-  const [uiTheme, setUiTheme] = useState()
-
-  const loadComponent = async () => {
-    const { theme } = await import(`../../contents/${path}`)
-    setUiTheme({ ...theme })
-  }
-
-  useEffect(() => {
-    loadComponent()
-    /* eslint-disable-next-line */
-  }, [])
-
-  console.log(uiTheme)
-
-  return (
-    <UIProvider {...(uiTheme ? { theme: uiTheme } : {})}>
-      <Box my="6">
-        <Tabs align="end">
-          <Tab>{t("component.component-preview.tab.preview")}</Tab>
-          <Tab>{t("component.component-preview.tab.code")}</Tab>
-          <TabPanel mt={10}>
-            <Preview path={path} />
-          </TabPanel>
-          <TabPanel>
-            <Box rounded="md" overflow="hidden" my="4" position="relative">
-              <DividedComponent component={component} />
-            </Box>
-          </TabPanel>
-        </Tabs>
-      </Box>
-    </UIProvider>
-  )
-}
 
 export const Preview: FC<SkeletonProps & { path: string }> = ({
   path,
   ...rest
 }) => {
   const Component = dynamic(() => import(`../../contents/${path}`))
+  const [uiTheme, setUiTheme] = useState()
 
+  useAsync(async () => {
+    const { theme } = await import(`../../contents/${path}`)
+    setUiTheme(theme ? { ...theme } : undefined)
+  }, [])
   const [isMounted, { on }] = useBoolean()
 
   useEffect(on, [on])
 
   return (
-    <Skeleton isLoaded={isMounted} rounded="md" w="full" isFitContent {...rest}>
-      <Box
-        as={Component}
-        p="md"
-        borderWidth="1px"
+    <UIProvider {...(uiTheme ? { theme: uiTheme } : {})}>
+      <Skeleton
+        isLoaded={isMounted}
         rounded="md"
-        overflowX="auto"
-      />
-    </Skeleton>
+        w="full"
+        isFitContent
+        {...rest}
+      >
+        <Box
+          as={Component}
+          p="md"
+          borderWidth="1px"
+          rounded="md"
+          overflowX="auto"
+        />
+      </Skeleton>
+    </UIProvider>
   )
 }
