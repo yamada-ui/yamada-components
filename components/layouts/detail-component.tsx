@@ -80,12 +80,12 @@ export const DetailComponent: FC<Props> = ({
           borderWidth="1px"
           direction={direction}
         >
-          <ResizableItem>
+          <ResizableItem overflow="auto">
             <Preview path={path} />
           </ResizableItem>
           <ResizableTrigger />
           {showCode ? (
-            <ResizableItem>
+            <ResizableItem overflow="auto">
               <Box position="relative">
                 <Code component={component} />
               </Box>
