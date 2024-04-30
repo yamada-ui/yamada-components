@@ -3,7 +3,7 @@ name: Sync
 on: [workflow_dispatch]
 
 jobs:
-  Sync:
+  sync:
     name: Sync
     runs-on: ubuntu-latest
     steps:
@@ -21,10 +21,11 @@ jobs:
       - name: Create PR
         uses: peter-evans/create-pull-request@v4
         with:
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           base: main
           delete-branch: true
           commit-message: "ci(changesets): version packages"
-          title: "Version Packages"
+          title: "Updated dependencies"
           branch: changeset-release/main
           assignees: "hirotomoyamada"
+          reviewers: "hirotomoyamada"
