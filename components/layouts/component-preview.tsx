@@ -1,66 +1,43 @@
 import {
   Box,
   Skeleton,
-  Tab,
-  TabPanel,
-  Tabs,
+  UIProvider,
+  useAsync,
   useBoolean,
 } from "@yamada-ui/react"
-import type { SkeletonProps } from "@yamada-ui/react"
+import type { SkeletonProps, ThemeConfig, UsageTheme } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
-import type { ComponentProps, FC } from "react"
-import React, { useEffect } from "react"
-import { DividedComponent } from "./devided-component"
-import { useI18n } from "contexts/i18n-context"
-
-type ComponentPreviewProps = {
-  component: ComponentProps<typeof DividedComponent>["component"]
-  path: string
-}
-
-export const ComponentPreview: FC<ComponentPreviewProps> = ({
-  path,
-  component,
-}) => {
-  const { t } = useI18n()
-
-  return (
-    <Box my="6">
-      <Tabs align="end">
-        <Tab>{t("component.component-preview.tab.preview")}</Tab>
-        <Tab>{t("component.component-preview.tab.code")}</Tab>
-        <TabPanel mt={10}>
-          <Preview path={path} />
-        </TabPanel>
-        <TabPanel>
-          <Box rounded="md" overflow="hidden" my="4" position="relative">
-            <DividedComponent component={component} />
-          </Box>
-        </TabPanel>
-      </Tabs>
-    </Box>
-  )
-}
+import type { FC } from "react"
+import { useEffect, useState } from "react"
 
 export const Preview: FC<SkeletonProps & { path: string }> = ({
   path,
   ...rest
 }) => {
   const Component = dynamic(() => import(`../../contents/${path}`))
+  const [uiTheme, setUiTheme] = useState<UsageTheme>()
+  const [uiConfig, setUiConfig] = useState<ThemeConfig>()
 
+  useAsync(async () => {
+    const { theme, config } = await import(`../../contents/${path}`)
+    setUiTheme(theme ? { ...theme } : undefined)
+    setUiConfig(config ? { ...config } : undefined)
+  }, [])
   const [isMounted, { on }] = useBoolean()
 
   useEffect(on, [on])
 
   return (
-    <Skeleton isLoaded={isMounted} rounded="md" w="full" isFitContent {...rest}>
-      <Box
-        as={Component}
-        p="md"
-        borderWidth="1px"
+    <UIProvider theme={uiTheme} config={uiConfig}>
+      <Skeleton
+        isLoaded={isMounted}
         rounded="md"
-        overflowX="auto"
-      />
-    </Skeleton>
+        w="full"
+        isFitContent
+        {...rest}
+      >
+        <Box as={Component} p="md" borderWidth="1px" rounded="md" />
+      </Skeleton>
+    </UIProvider>
   )
 }

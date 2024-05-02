@@ -1,4 +1,5 @@
-import { Box, HStack, Heading } from "@yamada-ui/react"
+import type { UsageTheme } from "@yamada-ui/react"
+import { Box, HStack, Heading, extendTheme } from "@yamada-ui/react"
 import type { FC } from "react"
 import { LinkItem } from "./link-item"
 import type { ComponentMetadata } from "types"
@@ -15,7 +16,7 @@ const Header: FC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
-        <Heading>Icon</Heading>
+        <Heading color="banner">Icon</Heading>
       </Box>
       <HStack>
         {links.map((item, index) => (
@@ -25,6 +26,14 @@ const Header: FC = () => {
     </HStack>
   )
 }
+
+export const theme: UsageTheme = extendTheme({
+  semantics: {
+    colors: {
+      banner: "#9d38a0",
+    },
+  },
+})()
 
 export default Header
 

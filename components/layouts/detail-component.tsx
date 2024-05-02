@@ -11,12 +11,12 @@ import {
 import { useRouter } from "next/router"
 import { createContext, useContext, useState } from "react"
 import type { ComponentProps, FC } from "react"
-import type { ComponentPreview } from "./component-preview"
 import { Preview } from "./component-preview"
 import { DividedComponent } from "./devided-component"
 import { Github } from "components/media-and-icons"
 import { NextLinkIconButton } from "components/navigation"
 import { CONSTANT } from "constant"
+import { useI18n } from "contexts/i18n-context"
 import type { ComponentMetadata } from "types"
 
 type Context = {
@@ -37,11 +37,18 @@ export const useDetail = () => {
   return useContext(Context)
 }
 
-type Props = ComponentProps<typeof ComponentPreview> & {
+type Props = {
+  component: ComponentProps<typeof DividedComponent>["component"]
+  path: string
   metadata: ComponentMetadata
+  isDisableBackBtn?: boolean
 }
 
-export const DetailComponent: FC<Props> = ({ component, path }) => {
+export const DetailComponent: FC<Props> = ({
+  component,
+  path,
+  isDisableBackBtn,
+}) => {
   const [showCode, showCodeControl] = useBoolean(true)
   const [direction, setDirection] =
     useState<ResizableProps["direction"]>("vertical")
@@ -62,19 +69,23 @@ export const DetailComponent: FC<Props> = ({ component, path }) => {
       }}
     >
       <Box>
-        <Header path={path} />
+        <Header
+          path={path}
+          direction={direction}
+          isDisableBackBtn={isDisableBackBtn}
+        />
         <Resizable
           h="100vh"
           rounded="md"
           borderWidth="1px"
           direction={direction}
         >
-          <ResizableItem>
+          <ResizableItem overflow="auto">
             <Preview path={path} />
           </ResizableItem>
           <ResizableTrigger />
           {showCode ? (
-            <ResizableItem>
+            <ResizableItem overflow="auto">
               <Box position="relative">
                 <Code component={component} />
               </Box>
@@ -88,11 +99,14 @@ export const DetailComponent: FC<Props> = ({ component, path }) => {
 
 type HeaderProps = {
   path: string
+  direction: "vertical" | "horizontal"
+  isDisableBackBtn: boolean
 }
 
-const Header: FC<HeaderProps> = ({ path }) => {
+const Header: FC<HeaderProps> = ({ path, direction, isDisableBackBtn }) => {
   const { setDirectionResizable, showCodeToggle, showCode } = useDetail()
   const router = useRouter()
+  const { t } = useI18n()
 
   return (
     <HStack
@@ -103,7 +117,12 @@ const Header: FC<HeaderProps> = ({ path }) => {
       borderColor="white"
       borderStyle="solid"
     >
-      <button onClick={() => router.back()}>back</button>
+      <button
+        onClick={() => router.back()}
+        style={{ visibility: isDisableBackBtn ? "hidden" : "visible" }}
+      >
+        {t("component.component-preview.back")}
+      </button>
       <Box gap={2} display="flex">
         <NextLinkIconButton
           href={`${CONSTANT.SNS.GITHUB.YAMADA_COMPONENTS}/blob/dev/contents/${path}`}
@@ -113,8 +132,16 @@ const Header: FC<HeaderProps> = ({ path }) => {
           color="muted"
           icon={<Github />}
         />
-        <button onClick={setDirectionResizable}>directon</button>
-        {!showCode ? <button onClick={showCodeToggle}>code</button> : null}
+        <button onClick={setDirectionResizable}>
+          {direction === "horizontal"
+            ? t("component.component-preview.direction.horizontal")
+            : t("component.component-preview.direction.vertical")}
+        </button>
+        {!showCode ? (
+          <button onClick={showCodeToggle}>
+            {t("component.component-preview.code.open")}
+          </button>
+        ) : null}
       </Box>
     </HStack>
   )
@@ -124,12 +151,13 @@ type CodeProps = Pick<ComponentProps<typeof DetailComponent>, "component">
 
 const Code: FC<CodeProps> = ({ component }) => {
   const { showCodeToggle } = useDetail()
+  const { t } = useI18n()
 
   return (
     <Box display="flex" alignItems="baseline">
       <DividedComponent component={component} />
       <ui.button ml={-14} onClick={showCodeToggle}>
-        code
+        {t("component.component-preview.code.close")}
       </ui.button>
     </Box>
   )
