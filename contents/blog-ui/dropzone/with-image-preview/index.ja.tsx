@@ -68,11 +68,6 @@ export const ImagePreviewDropzone: FC = () => {
 
 export default ImagePreviewDropzone
 
-export const metadata = {
-  title: "画像プレビュー付きのドロップゾーン",
-  description: "画像プレビュー付きのドロップゾーン",
-}
-
 export const config = extendConfig({
   loading: {
     page: {
@@ -82,3 +77,8 @@ export const config = extendConfig({
     },
   },
 })
+
+export const metadata = {
+  title: "画像プレビュー付きのドロップゾーン",
+  description: "画像プレビュー付きのドロップゾーン",
+}

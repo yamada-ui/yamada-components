@@ -94,7 +94,7 @@ export const getComponent = async (
           code: fileContent
             .split("\n")
             .slice(0, index)
-            .filter((line) => !line.includes("export"))
+            // .filter((line) => !line.includes("export"))
             .join("\n"),
         }
       })

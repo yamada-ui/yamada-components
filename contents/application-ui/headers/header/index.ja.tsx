@@ -29,11 +29,6 @@ const Header: FC = () => {
 
 export default Header
 
-export const metadata: ComponentMetadata = {
-  title: "シンプルなヘッダー",
-  description: "これはシンプルなヘッダーコンポーネントです",
-}
-
 export const theme: UsageTheme = extendTheme({
   semantics: {
     colors: {
@@ -41,3 +36,8 @@ export const theme: UsageTheme = extendTheme({
     },
   },
 })()
+
+export const metadata: ComponentMetadata = {
+  title: "シンプルなヘッダー",
+  description: "これはシンプルなヘッダーコンポーネントです",
+}
