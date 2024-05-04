@@ -12,8 +12,7 @@ const links = [
   { link: "#", label: "About" },
 ]
 
-const Header: CFC = ({ metadata }) => {
-  console.log(metadata)
+const Header: CFC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
