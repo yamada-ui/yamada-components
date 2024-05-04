@@ -9,12 +9,14 @@ import type { SkeletonProps, ThemeConfig, UsageTheme } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import type { FC } from "react"
 import { useEffect, useState } from "react"
+import type { ComponentMetadata } from "types"
 
-export const Preview: FC<SkeletonProps & { path: string }> = ({
-  path,
-  ...rest
-}) => {
-  const Component = dynamic(() => import(`../../contents/${path}`))
+export const Preview: FC<
+  SkeletonProps & { path: string; metadata: ComponentMetadata }
+> = ({ path, metadata, ...rest }) => {
+  const Component = dynamic<{ metadata: ComponentMetadata }>(
+    () => import(`../../contents/${path}`),
+  )
   const [uiTheme, setUiTheme] = useState<UsageTheme>()
   const [uiConfig, setUiConfig] = useState<ThemeConfig>()
 
@@ -36,7 +38,13 @@ export const Preview: FC<SkeletonProps & { path: string }> = ({
         isFitContent
         {...rest}
       >
-        <Box as={Component} p="md" borderWidth="1px" rounded="md" />
+        <Box
+          as={Component}
+          metadata={metadata}
+          p="md"
+          borderWidth="1px"
+          rounded="md"
+        />
       </Skeleton>
     </UIProvider>
   )

@@ -5,10 +5,10 @@ import {
   InputRightElement,
   useBoolean,
 } from "@yamada-ui/react"
-import type { FC } from "react"
+import type { CFC } from "react"
 import type { ComponentMetadata } from "types"
 
-const PasswordInput: FC = () => {
+const PasswordInput: CFC = () => {
   const [show, { toggle }] = useBoolean()
   return (
     <InputGroup size="md">

@@ -1,8 +1,8 @@
 import { IconCheck, IconCopy } from "@tabler/icons-react"
 import { Button, Center, Tooltip, useClipboard } from "@yamada-ui/react"
-import type { FC } from "react"
+import type { CFC } from "react"
 
-const CopyButton: FC = () => {
+const CopyButton: CFC = () => {
   const { onCopy, hasCopied } = useClipboard("https://yamada-ui.com/")
 
   return (

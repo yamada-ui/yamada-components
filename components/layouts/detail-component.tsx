@@ -48,6 +48,7 @@ export const DetailComponent: FC<Props> = ({
   component,
   path,
   isDisableBackBtn,
+  metadata,
 }) => {
   const [showCode, showCodeControl] = useBoolean(true)
   const [direction, setDirection] =
@@ -81,7 +82,7 @@ export const DetailComponent: FC<Props> = ({
           direction={direction}
         >
           <ResizableItem overflow="auto">
-            <Preview path={path} />
+            <Preview path={path} metadata={metadata} />
           </ResizableItem>
           <ResizableTrigger />
           {showCode ? (
