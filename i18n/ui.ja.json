@@ -11,6 +11,26 @@
     "back-to-app": "アプリにもどる"
   },
   "component": {
+    "component-preview": {
+      "label": "編集可能な例",
+      "tab": {
+        "preview": "プレビュー",
+        "code": "コード"
+      },
+      "control-button": {
+        "open": "もっと見る",
+        "close": "とじる"
+      },
+      "back": "戻る",
+      "direction": {
+        "vertical": "縦並び",
+        "horizontal": "横並び"
+      },
+      "code": {
+        "open": "コード",
+        "close": "閉じる"
+      }
+    },
     "forms": {
       "search": {
         "message": "コンポーネントを検索する",
@@ -20,5 +40,14 @@
     "footer": {
       "description": "このアプリケーションは、`Hirotomo Yamada`と`愉快な仲間たち`によって開発されました。"
     }
+  },
+  "categories": {
+    "title": "Yamada Components",
+    "description": "",
+    "heading": "カテゴリー："
+  },
+  "components": {
+    "title": "Yamada Components",
+    "description": ""
   }
 }

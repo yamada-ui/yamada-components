@@ -11,6 +11,26 @@
     "back-to-app": "Back to App"
   },
   "component": {
+    "component-preview": {
+      "label": "Editable example",
+      "tab": {
+        "preview": "preview",
+        "code": "code"
+      },
+      "control-button": {
+        "open": "Show more",
+        "close": "Show less"
+      },
+      "back": "back",
+      "direction": {
+        "vertical": "vertical",
+        "horizontal": "horizontal"
+      },
+      "code": {
+        "open": "code",
+        "close": "close"
+      }
+    },
     "forms": {
       "search": {
         "message": "Search the components",
@@ -20,5 +40,14 @@
     "footer": {
       "description": "Built by `Hirotomo Yamada` and `these awesome people`"
     }
+  },
+  "categories": {
+    "title": "Yamada Components",
+    "description": "",
+    "heading": "Categories: "
+  },
+  "components": {
+    "title": "Yamada Components",
+    "description": ""
   }
 }

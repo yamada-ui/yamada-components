@@ -18,19 +18,30 @@
     "clean:all": "rimraf .next node_modules"
   },
   "dependencies": {
-    "@commitlint/cli": "^18.5.0",
-    "@commitlint/config-conventional": "^18.5.0",
+    "@tabler/icons-react": "^3.1.0",
     "@vercel/analytics": "^1.1.2",
     "@vercel/speed-insights": "^1.0.1",
-    "@yamada-ui/react": "1.3.8",
+    "@yamada-ui/calendar": "^1.2.4",
+    "@yamada-ui/carousel": "^1.0.19",
+    "@yamada-ui/charts": "^1.1.1",
+    "@yamada-ui/dropzone": "^1.0.19",
+    "@yamada-ui/fontawesome": "^1.0.16",
+    "@yamada-ui/markdown": "^1.0.17",
+    "@yamada-ui/react": "1.2.11",
+    "@yamada-ui/table": "^1.0.21",
+    "lucide-react": "^0.373.0",
     "match-sorter": "^6.3.3",
     "next": "14.0.3",
     "next-seo": "^6.4.0",
+    "prism-react-renderer": "^2.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.51.1",
     "scroll-into-view-if-needed": "^3.1.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.5.0",
+    "@commitlint/config-conventional": "^18.5.0",
     "@octokit/rest": "^20.0.2",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
@@ -51,7 +62,6 @@
     "prettier": "^3.2.4",
     "rimraf": "^5.0.5",
     "tsx": "^4.1.1",
-    "typescript": "5.3.2",
-    "unified": "^10.1.2"
+    "typescript": "5.3.2"
   }
 }
