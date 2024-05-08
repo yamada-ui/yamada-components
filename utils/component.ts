@@ -10,6 +10,12 @@ export const getDirNames = (basePath: string) => {
     .map((dir) => dir.name)
 }
 
+export const getDirCount = (basePath: string) => {
+  return readdirSync(basePath, { withFileTypes: true }).filter((item) =>
+    item.isDirectory(),
+  ).length
+}
+
 export const getPaths = ({
   documentTypeName,
   locales,

@@ -4,7 +4,7 @@ import type { InferGetStaticPropsType, NextPage } from "next"
 import { CategoriesGroupDisplay } from "components/data-display/categories-group-display"
 import { useI18n } from "contexts/i18n-context"
 import { AppLayout } from "layouts/app-layout"
-import { getDirNames } from "utils/component"
+import { getDirNames, getDirCount } from "utils/component"
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -19,6 +19,7 @@ export const getStaticProps = async () => {
       categories: getDirNames(childPath).map((i) => ({
         name: i,
         slug: toKebabCase(path.join(child, i)),
+        count: getDirCount(path.join(childPath, i)),
       })),
     }
   })

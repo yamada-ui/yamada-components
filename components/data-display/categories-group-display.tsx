@@ -6,6 +6,7 @@ type CategoriesGroupDisplayProps = {
   categories: {
     name: string
     slug: string
+    count: number
   }[]
   documentTypeName: string
 }
@@ -21,11 +22,7 @@ export const CategoriesGroupDisplay: FC<CategoriesGroupDisplayProps> = ({
       <Heading>{documentTypeName}</Heading>
       <Wrap gap={9}>
         {categories.map((category, j) => (
-          <CategoryCard
-            key={`${category.name}-${j}`}
-            category={category}
-            count={14}
-          />
+          <CategoryCard key={`${category.name}-${j}`} category={category} />
         ))}
       </Wrap>
     </>

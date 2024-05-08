@@ -15,6 +15,7 @@ declare module "types" {
   type Category = {
     slug: string
     name: string
+    count: number
     // images: { dark: string; light: string };
   }
 
