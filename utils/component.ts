@@ -192,10 +192,14 @@ export const getComponentsByCategory = async (
 export const getCategoriesByDocName = (documentTypeName: string) => {
   try {
     const root = path.join(process.cwd(), "contents", documentTypeName)
-    return getDirNames(root).map((child) => ({
-      name: child,
-      slug: toKebabCase(path.join(documentTypeName, child)),
-    }))
+    return getDirNames(root).map((child) => {
+      const childPath = path.join(root, child)
+      return {
+        name: child,
+        slug: toKebabCase(path.join(documentTypeName, child)),
+        count: getDirCount(childPath),
+      }
+    })
   } catch (error) {
     return null
   }
