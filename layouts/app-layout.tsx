@@ -1,16 +1,18 @@
+import type { StackProps } from "@yamada-ui/react"
 import { Center, VStack } from "@yamada-ui/react"
-import { type FC, type PropsWithChildren } from "react"
+import { type FC } from "react"
 import { Footer, Header } from "components/layouts"
 import { SEO } from "components/media-and-icons"
 
 type AppLayoutOptions = { title: string; description: string }
 
-export type AppLayoutProps = PropsWithChildren & AppLayoutOptions
+export type AppLayoutProps = StackProps & AppLayoutOptions
 
 export const AppLayout: FC<AppLayoutProps> = ({
   title,
   description,
   children,
+  ...rest
 }) => {
   return (
     <>
@@ -25,6 +27,7 @@ export const AppLayout: FC<AppLayoutProps> = ({
           gap="0"
           py={{ base: "lg", md: "normal" }}
           px={{ base: "lg", md: "md" }}
+          {...rest}
         >
           {children}
         </VStack>
