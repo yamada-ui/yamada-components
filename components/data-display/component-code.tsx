@@ -46,61 +46,6 @@ export const ComponentCode = memo(
                   {name}
                 </Tab>
               ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
-              {components.map(({ name }) => (
-                <Tab key={name} mb="0" overflow="visible">
-                  {name}
-                </Tab>
-              ))}
             </ScrollArea>
 
             <HStack ms="md" me="sm" gap="0">
