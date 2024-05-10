@@ -20,5 +20,3 @@ const CopyButton: CFC = () => {
 }
 
 export default CopyButton
-
-export const hoge = {}
