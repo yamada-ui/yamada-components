@@ -1,196 +1,148 @@
-import { existsSync, readFileSync, readdirSync } from "fs"
+import { existsSync } from "fs"
+import { readdir, readFile } from "fs/promises"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
+import type { ComponentTree, SharedMetadata } from "component"
 import { CONSTANT } from "constant"
-import type { ComponentInfo, ComponentMetadata } from "types"
 
-export const getDirNames = (basePath: string) => {
-  return readdirSync(basePath, { withFileTypes: true })
-    .filter((dir) => dir.isDirectory())
-    .map((dir) => dir.name)
-}
+export const getComponentTree =
+  (
+    targetPath: string = "contents",
+    callback?: (metadata: SharedMetadata) => void,
+  ) =>
+  async (locale: string): Promise<ComponentTree[]> => {
+    const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
+    const dirents = await readdir(targetPath, { withFileTypes: true })
 
-export const getPaths = ({
-  documentTypeName,
-  locales,
-}: {
-  documentTypeName: string
-  locales: string[]
-}) => {
-  const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
-  const result: { params: { slug: string[] }; locale?: string }[] = []
-  const root = path.join(process.cwd(), "contents", documentTypeName)
-  const parent = getDirNames(root)
-  for (const locale of locales || []) {
-    result.push({ params: { slug: [] }, locale })
-  }
-  for (const item of parent) {
-    const parentFullPath = path.join(root, item)
-    for (const locale of locales || []) {
-      result.push({ params: { slug: [item] }, locale })
-    }
-    readdirSync(parentFullPath, { withFileTypes: true })
-      .filter((dir) => dir.isDirectory())
-      .forEach((r) => {
-        const dirPath = path.join(parentFullPath, r.name)
-        const files = readdirSync(dirPath)
-        for (const file of files) {
-          const match = file.match(/index(?:\.(.+))?\.tsx$/)
-          if (match) {
-            const locale = match[1] || defaultLocale
-            if (locales.includes(locale)) {
-              result.push({ params: { slug: [item, r.name] }, locale })
-            }
+    const componentTree = await Promise.all(
+      dirents.map(async (dirent) => {
+        const name = toKebabCase(dirent.name)
+        const slug = path.join(dirent.path, name)
+
+        if (!dirent.isDirectory()) {
+          if (name === "metadata.json") {
+            try {
+              const data = await readFile(slug, "utf-8")
+              const json = JSON.parse(data)
+              const metadata = (json[locale] ??
+                json[defaultLocale]) as SharedMetadata
+
+              callback?.(metadata)
+            } catch {}
           }
+
+          return
         }
-      })
+
+        let metadata: SharedMetadata | undefined = undefined
+
+        const items = await getComponentTree(
+          slug,
+          (data) => (metadata = data),
+        )(locale)
+
+        return {
+          name,
+          slug: slug.replace(/^contents\//, "/"),
+          ...(items.length ? { items } : {}),
+          ...metadata,
+        }
+      }),
+    )
+
+    return componentTree.filter(Boolean)
   }
-  return result
+
+export const getComponentPaths =
+  (categoryGroupName: string) => async (locales: string[]) => {
+    const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
+    const categoryGroupPath = path.join("contents", categoryGroupName)
+    const componentTree =
+      await getComponentTree(categoryGroupPath)(defaultLocale)
+
+    const getPaths = (componentTree?: ComponentTree[]) => (locale: string) =>
+      (componentTree ?? []).flatMap(({ slug, items }) => {
+        slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
+
+        const resolvedSlug = slug.split("/")
+
+        return [
+          { params: { slug: resolvedSlug }, locale },
+          ...getPaths(items)(locale),
+        ]
+      })
+
+    const paths = locales.flatMap((locale) => [
+      { params: { slug: [] }, locale },
+      ...getPaths(componentTree)(locale),
+    ])
+
+    return paths
+  }
+
+const omitComponentFiles = (fileNames: string[]) =>
+  fileNames.filter((fileName) => !["metadata.json"].includes(fileName))
+
+const getMetadata = (dirPath: string) => async (locale: string) => {
+  const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
+
+  try {
+    const data = await readFile(path.join(dirPath, "metadata.json"), "utf-8")
+    const json = JSON.parse(data)
+    const metadata = (json[locale] ?? json[defaultLocale]) as SharedMetadata
+
+    return metadata
+  } catch {
+    return {} as SharedMetadata
+  }
 }
 
-export const getComponent = async (
-  documentTypeName: string,
-  componentDir: string,
-  locale: string,
-) => {
+export const getComponent = (slug: string) => async (locale: string) => {
   try {
-    let filename = `index${
-      locale !== CONSTANT.I18N.DEFAULT_LOCALE ? `.${locale}` : ""
-    }`
+    const dirPath = path.join("contents", slug)
+    const componentPath = path.join(dirPath, "index.tsx")
+    const themePath = path.join(dirPath, "theme.ts")
+    const configPath = path.join(dirPath, "config.ts")
+    const validComponentPath = path.join(slug, "index.tsx")
+    const validThemePath = path.join(slug, "theme.ts")
+    const validConfigPath = path.join(slug, "config.ts")
 
-    const filePath = path.join(
-      process.cwd(),
-      "contents",
-      documentTypeName,
-      componentDir,
-      `${filename}.tsx`,
-    )
+    if (!existsSync(componentPath)) return
 
-    if (!existsSync(filePath)) {
-      filename = "index"
+    let fileNames = await readdir(dirPath)
+
+    const metadata = await getMetadata(dirPath)(locale)
+    const hasTheme = existsSync(themePath)
+    const hasConfig = existsSync(configPath)
+
+    fileNames = omitComponentFiles(fileNames)
+
+    const paths = {
+      component: validComponentPath,
+      theme: hasTheme ? validThemePath : null,
+      config: hasConfig ? validConfigPath : null,
     }
 
-    // ../contents/${documentTypeName}/${componentDir}内のファイルを取得する
-    const componentContents = readdirSync(
-      path.join(process.cwd(), "contents", documentTypeName, componentDir),
-    )
-      .filter((file) => file.endsWith(".tsx")) // .tsxファイルのみ
-      .map((file) => {
-        const fileContent = readFileSync(
-          path.join(
-            process.cwd(),
-            "contents",
-            documentTypeName,
-            componentDir,
-            file,
-          ),
-          "utf-8",
-        )
-        const index = fileContent
-          .split("\n")
-          .findIndex((v) => /export\s+const\s+metadata/.test(v))
-        return {
-          name: file,
-          code: fileContent
-            .split("\n")
-            .slice(0, index)
-            // .filter((line) => !line.includes("export"))
-            .join("\n"),
-        }
-      })
+    const components = await Promise.all(
+      fileNames.map(async (name) => {
+        const filePath = path.join(dirPath, name)
+        const code = await readFile(filePath, "utf-8")
 
-    const { metadata } = (await import(
-      `../contents/${documentTypeName}/${componentDir}/${filename}`
-    )) as { metadata: ComponentMetadata }
+        return { name, path: filePath, code }
+      }),
+    )
 
     const data = {
-      path: `${documentTypeName}/${componentDir}/${filename}.tsx`,
-      component: componentContents,
+      slug: "/" + slug,
+      paths,
+      components,
       metadata,
-      slug: toKebabCase(`${documentTypeName}/${componentDir}`),
     }
 
     return data
-  } catch (error) {
-    return null
-  }
+  } catch {}
 }
 
-export const getAllComponents = async (): Promise<ComponentInfo[]> => {
-  const root = path.join(process.cwd(), "contents")
-  const parent = getDirNames(root)
-  const paths: string[] = []
+export type Component = Awaited<ReturnType<ReturnType<typeof getComponent>>>
 
-  for (const item of parent) {
-    const parentFullPath = path.join(root, item)
-    readdirSync(parentFullPath, { withFileTypes: true })
-      .filter((dir) => dir.isDirectory())
-      .forEach((r) => {
-        paths.push(`${item}/${r.name}`)
-      })
-  }
-
-  const promises = paths.map(async (componentName: string) => {
-    const { metadata } = await import("../contents/" + componentName + "/index")
-
-    const filePath = path.join(root, componentName, "index.tsx")
-
-    const fileContent = readFileSync(filePath, "utf8")
-    const index = fileContent
-      .split("\n")
-      .findIndex((v) => /export\s+const\s+metadata\s*=\s*{/.test(v))
-    const code = fileContent
-      .split("\n")
-      .slice(0, index)
-      .filter((line) => !line.includes("export"))
-      .join("\n")
-
-    return {
-      component: componentName,
-      slug: toKebabCase(componentName),
-      attributes: metadata,
-      code: code,
-    }
-  })
-
-  const results = await Promise.all(promises)
-
-  return results.filter((c) => c)
-}
-
-export const getComponentsByCategory = async (
-  documentTypeName: string,
-  category: string,
-  locale: string,
-) => {
-  try {
-    const contentsDir = path.join(process.cwd(), "contents")
-    const root = path.join(contentsDir, documentTypeName, category)
-    const components = getDirNames(root)
-    const promises = components.map(async (componentName: string) => {
-      const data = await getComponent(
-        documentTypeName,
-        category + "/" + componentName,
-        locale,
-      )
-
-      return data
-    })
-
-    return await Promise.all(promises)
-  } catch (error) {
-    return null
-  }
-}
-
-export const getCategoriesByDocName = (documentTypeName: string) => {
-  try {
-    const root = path.join(process.cwd(), "contents", documentTypeName)
-    return getDirNames(root).map((child) => ({
-      name: child,
-      slug: toKebabCase(path.join(documentTypeName, child)),
-    }))
-  } catch (error) {
-    return null
-  }
-}
+export type ComponentPaths = Component["paths"]

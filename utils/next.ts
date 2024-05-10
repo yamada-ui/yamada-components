@@ -3,12 +3,10 @@ import type {
   GetStaticPathsContext,
   GetStaticPropsContext,
 } from "next"
-import {
-  getCategoriesByDocName,
-  getComponent,
-  getComponentsByCategory,
-  getPaths,
-} from "./component"
+import { toArray } from "./array"
+import type { Component } from "./component"
+import { getComponentTree, getComponentPaths, getComponent } from "./component"
+import type { ComponentTree } from "component"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -18,70 +16,65 @@ export const getServerSideCommonProps = async ({
   return { props: { cookies } }
 }
 
-export const getStaticDocumentPaths =
-  (documentTypeName: string) =>
-  async ({ locales }: GetStaticPathsContext) => {
-    const paths = getPaths({ documentTypeName, locales })
+export const getStaticCommonProps = async ({
+  locale,
+}: GetStaticPropsContext) => {
+  const componentTree = await getComponentTree()(locale)
 
-    return { paths, fallback: true }
-  }
+  return { props: { componentTree } }
+}
 
-export const getStaticDocumentProps =
-  (documentTypeName: string) =>
-  async ({ params, locale }: GetStaticPropsContext) => {
-    if (!params.slug) {
-      const categories = getCategoriesByDocName(documentTypeName)
+export const getStaticComponentProps =
+  (categoryGroupName: string) =>
+  async ({
+    params,
+    locale,
+  }: GetStaticPropsContext): Promise<{
+    props: {
+      categoryGroup?: ComponentTree
+      category?: ComponentTree
+      component?: Component
+      componentTree: ComponentTree[]
+    }
+    notFound?: boolean
+  }> => {
+    const paths = toArray(params?.slug ?? [])
 
-      if (!categories)
-        return {
-          notFound: true,
-        }
+    const componentTree = await getComponentTree()(locale)
 
-      return {
-        props: {
-          type: "categories-group",
-          categories,
-        },
-      }
+    const categoryGroup = componentTree.find(
+      ({ name }) => name === categoryGroupName,
+    )
+
+    if (!paths.length) {
+      const props = { categoryGroup, componentTree }
+
+      return { props, notFound: !categoryGroup }
     }
 
-    // params.slugの総数が1の時は一覧表示、2の時はコンポーネント詳細
-    if ((params.slug as string[]).length > 1) {
-      const componentDir = (params.slug as string[]).join("/").toLowerCase()
-
-      const data = await getComponent(documentTypeName, componentDir, locale)
-
-      if (!data)
-        return {
-          notFound: true,
-        }
-
-      return {
-        props: {
-          type: "component",
-          data,
-        },
-      }
-    } else {
-      // params.slugの0番目のデータのカテゴリ内のコンポーネント一覧を取得
-      const categoryDir = (params.slug as string[])[0].toLowerCase()
-      const data = await getComponentsByCategory(
-        documentTypeName,
-        categoryDir,
-        locale,
+    if (paths.length === 1) {
+      const category = categoryGroup.items?.find(
+        ({ name }) => name === paths.at(-1),
       )
 
-      if (!data)
-        return {
-          notFound: true,
-        }
+      const props = { categoryGroup, category, componentTree }
 
-      return {
-        props: {
-          type: "category",
-          data,
-          categoryDir,
-        },
-      }
+      return { props, notFound: !category }
+    } else {
+      const slug = [categoryGroupName, ...paths].join("/")
+
+      const component = await getComponent(slug)(locale)
+
+      const props = { component, componentTree }
+
+      return { props, notFound: !component }
     }
+  }
+
+export const getStaticComponentPaths =
+  (categoryGroupName: string) =>
+  async ({ locales }: GetStaticPathsContext) => {
+    const paths = await getComponentPaths(categoryGroupName)(locales)
+
+    return { paths, fallback: false }
   }
