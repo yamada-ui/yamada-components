@@ -1,52 +1,56 @@
-import path from "path"
-import { Container, VStack, toKebabCase } from "@yamada-ui/react"
+import { Grid, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
-import { CategoriesGroupDisplay } from "components/data-display/categories-group-display"
+import Link from "next/link"
+import { CategoryCard } from "components/data-display"
+import { AppProvider } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
 import { AppLayout } from "layouts/app-layout"
-import { getDirNames } from "utils/component"
+import { getStaticCommonProps } from "utils/next"
+
+export const getStaticProps = getStaticCommonProps
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-export const getStaticProps = async () => {
-  // /contents内の直下取得
-  const root = path.join(process.cwd(), "contents")
-  // ループ回してその配下のカテゴリー取得
-  const data = getDirNames(root).map((child) => {
-    const childPath = path.join(root, child)
-    return {
-      name: child,
-      categories: getDirNames(childPath).map((i) => ({
-        name: i,
-        slug: toKebabCase(path.join(child, i)),
-      })),
-    }
-  })
-  return {
-    props: {
-      data,
-    },
-  }
-}
-
-const Page: NextPage<PageProps> = ({ data }) => {
+const Page: NextPage<PageProps> = ({ componentTree }) => {
   const { t } = useI18n()
 
   return (
-    <AppLayout title={t("app.title")} description={t("app.description")}>
-      <Container>
-        {data.map((group, i) => (
-          <VStack key={`${group.name}-${i}`}>
-            <CategoriesGroupDisplay
-              {...{
-                documentTypeName: group.name,
-                categories: group.categories,
-              }}
-            />
+    <AppProvider {...{ componentTree }}>
+      <AppLayout
+        title={t("app.title")}
+        description={t("app.description")}
+        gap="lg"
+      >
+        {componentTree.map(({ title, name, slug, items }) => (
+          <VStack key={name} as="section">
+            <HStack as="header" alignItems="end">
+              <Link href={slug}>
+                <Heading
+                  as="h2"
+                  size="lg"
+                  fontWeight="semibold"
+                  lineHeight="shorter"
+                >
+                  {title}
+                </Heading>
+              </Link>
+
+              <Text color="muted">{items?.length ?? 0} categories</Text>
+            </HStack>
+
+            <Grid
+              as="nav"
+              templateColumns={{ base: "repeat(4, 1fr)" }}
+              gap="md"
+            >
+              {items?.map(({ name, title, slug, items }) => (
+                <CategoryCard key={name} {...{ title, slug, items }} />
+              ))}
+            </Grid>
           </VStack>
         ))}
-      </Container>
-    </AppLayout>
+      </AppLayout>
+    </AppProvider>
   )
 }
 

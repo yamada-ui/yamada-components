@@ -1,61 +1,46 @@
-import { Container, isArray } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
-import { CategoriesDisplay } from "components/data-display/categories-display"
-import { CategoriesGroupDisplay } from "components/data-display/categories-group-display"
-import { DetailComponent } from "components/layouts"
-import { useI18n } from "contexts/i18n-context"
+import { Category, CategoryGroup } from "components/data-display"
+import { AppProvider } from "contexts/app-context"
+import { ComponentProvider } from "contexts/component-context"
 import { AppLayout } from "layouts/app-layout"
 import { ComponentLayout } from "layouts/component-layout"
-import { getStaticDocumentPaths, getStaticDocumentProps } from "utils/next"
+import { getStaticComponentPaths, getStaticComponentProps } from "utils/next"
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-export const getStaticPaths = getStaticDocumentPaths("blog-ui")
+export const getStaticPaths = getStaticComponentPaths("application-ui")
 
-export const getStaticProps = getStaticDocumentProps("blog-ui")
+export const getStaticProps = getStaticComponentProps("application-ui")
 
-const Page: NextPage<PageProps> = ({ data, categoryDir, categories, type }) => {
-  const { t } = useI18n()
+const Page: NextPage<PageProps> = ({
+  categoryGroup,
+  category,
+  component,
+  componentTree,
+}) => {
+  if (component) {
+    const { metadata } = component
 
-  if (type === "component" && !isArray(data)) {
     return (
-      <ComponentLayout
-        title={t("components.title")}
-        description={t("components.description")}
-      >
-        <DetailComponent
-          path={data.path}
-          component={data.component}
-          metadata={data.metadata}
+      <ComponentProvider {...component}>
+        <ComponentLayout
+          title={metadata.title}
+          description={metadata.description}
         />
-      </ComponentLayout>
+      </ComponentProvider>
     )
   }
 
   return (
-    <AppLayout
-      title={t("components.title")}
-      description={t("components.description")}
-    >
-      <Container>
-        {type === "category" && isArray(data) ? (
-          <CategoriesDisplay
-            {...{ categoryDir }}
-            data={data.map((item) => ({
-              path: item.path,
-              slug: item.slug,
-              metadata: item.metadata,
-              component: item.component,
-            }))}
-          />
-        ) : (
-          <CategoriesGroupDisplay
-            documentTypeName="Blog UI"
-            {...{ categories }}
-          />
-        )}
-      </Container>
-    </AppLayout>
+    <AppProvider {...{ componentTree, categoryGroup, category }}>
+      <AppLayout
+        title={category?.title ?? categoryGroup.title}
+        description={category?.description ?? categoryGroup.description}
+        gap="md"
+      >
+        {category ? <Category /> : <CategoryGroup />}
+      </AppLayout>
+    </AppProvider>
   )
 }
 
