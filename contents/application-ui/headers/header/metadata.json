@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Simple Header",
+    "description": "This is simple header component."
+  },
+  "ja": {
+    "title": "シンプルなヘッダー",
+    "description": "これはシンプルなヘッダーコンポーネントです"
+  }
+}

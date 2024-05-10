@@ -44,8 +44,3 @@ const FooterCentered: CFC = () => {
 }
 
 export default FooterCentered
-
-export const metadata = {
-  title: "Footer with Centered links",
-  category: "This is Footer with Centered links",
-}

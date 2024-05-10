@@ -7,12 +7,12 @@ const CopyButton: CFC = () => {
 
   return (
     <Center>
-      <Tooltip label="リンクをコピーしました！" bg="success" isOpen={hasCopied}>
+      <Tooltip label="Link copied!" bg="success" isOpen={hasCopied}>
         <Button
           onClick={onCopy}
           rightIcon={hasCopied ? <IconCheck /> : <IconCopy />}
         >
-          リンクをクリップボードにコピー
+          Copy link to clipboard
         </Button>
       </Tooltip>
     </Center>
@@ -21,7 +21,4 @@ const CopyButton: CFC = () => {
 
 export default CopyButton
 
-export const metadata = {
-  title: "クリップボードにコピーするボタン",
-  description: "これはテキストをクリップボードにコピーするボタンです",
-}
+export const hoge = {}

@@ -6,7 +6,6 @@ import {
   useBoolean,
 } from "@yamada-ui/react"
 import type { CFC } from "react"
-import type { ComponentMetadata } from "types"
 
 const PasswordInput: CFC = () => {
   const [show, { toggle }] = useBoolean()
@@ -27,8 +26,3 @@ const PasswordInput: CFC = () => {
 }
 
 export default PasswordInput
-
-export const metadata: ComponentMetadata = {
-  title: "Password Input",
-  description: "Passowrd Input Component",
-}

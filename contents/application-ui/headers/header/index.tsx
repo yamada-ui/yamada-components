@@ -1,8 +1,6 @@
-import type { UsageTheme } from "@yamada-ui/react"
-import { Box, HStack, Heading, extendTheme } from "@yamada-ui/react"
+import { Box, HStack, Heading } from "@yamada-ui/react"
 import type { CFC } from "react"
 import { LinkItem } from "./link-item"
-import type { ComponentMetadata } from "types"
 
 const links = [
   { link: "#", label: "Home" },
@@ -27,17 +25,4 @@ const Header: CFC = () => {
   )
 }
 
-export const theme: UsageTheme = extendTheme({
-  semantics: {
-    colors: {
-      banner: "#9d38a0",
-    },
-  },
-})()
-
 export default Header
-
-export const metadata: ComponentMetadata = {
-  title: "Simple Header",
-  description: "This is simple header component.",
-}

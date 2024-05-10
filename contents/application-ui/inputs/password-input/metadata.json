@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Password Input",
+    "description": "Password Input Component"
+  },
+  "ja": {
+    "title": "パスワード入力",
+    "description": "パスワードを入力するコンポーネント"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Copy to clipboard button",
+    "description": "This is a button that copies the text to the clipboard"
+  },
+  "ja": {
+    "title": "クリップボードにコピーするボタン",
+    "description": "これはテキストをクリップボードにコピーするボタンです"
+  }
+}
