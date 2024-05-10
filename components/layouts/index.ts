@@ -1,5 +1,4 @@
 export * from "./header"
 export * from "./footer"
-export * from "./component-preview"
-export * from "./devided-component"
-export * from "./detail-component"
+export * from "./component-header"
+export * from "./component-body"

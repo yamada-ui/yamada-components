@@ -15,6 +15,7 @@ import {
   DrawerBody,
   DrawerHeader,
   HStack,
+  Heading,
   IconButton,
   Menu,
   MenuButton,
@@ -27,7 +28,6 @@ import {
   PopoverTrigger,
   Ripple,
   Spacer,
-  Text,
   VStack,
   forwardRef,
   mergeRefs,
@@ -104,9 +104,7 @@ export const Header = memo(
               _focusVisible={{ boxShadow: "outline" }}
               rounded="md"
             >
-              <Text as="span" fontSize="xl" fontWeight="semibold">
-                Yamada Components
-              </Text>
+              <Heading fontSize="2xl">Yamada Components</Heading>
             </Box>
 
             <Spacer />

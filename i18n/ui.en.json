@@ -37,6 +37,12 @@
         "placeholder": "Search the components"
       }
     },
+    "category-group": {
+      "back-to": "Back to all category groups"
+    },
+    "category": {
+      "back-to": "Back to all categories"
+    },
     "footer": {
       "description": "Built by `Hirotomo Yamada` and `these awesome people`"
     }

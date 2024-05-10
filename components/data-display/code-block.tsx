@@ -1,19 +1,17 @@
 import { Box, Text } from "@yamada-ui/react"
-import type { HighlightProps as ReactHighlightProps } from "prism-react-renderer"
-import { Highlight as ReactHighlight, themes } from "prism-react-renderer"
+import type { HighlightProps } from "prism-react-renderer"
+import { Highlight, themes } from "prism-react-renderer"
 import type { FC } from "react"
 
-export type HighlightProps = Omit<ReactHighlightProps, "children"> & {
-  highlight?: string
-}
+export type CodeBlockProps = Omit<HighlightProps, "children">
 
-export const Highlight: FC<HighlightProps> = ({
+export const CodeBlock: FC<CodeBlockProps> = ({
   language,
   theme = themes.oneDark,
   ...rest
 }) => {
   return (
-    <ReactHighlight language={language} theme={theme} {...rest}>
+    <Highlight language={language} theme={theme} {...rest}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Box fontSize="sm" overflowX="auto" data-language={language}>
           <Box
@@ -26,8 +24,6 @@ export const Highlight: FC<HighlightProps> = ({
               <Box
                 key={index}
                 minW="fit-content"
-                pl="4"
-                pr="16"
                 {...getLineProps({ line, key: index })}
               >
                 {line.map((token, index) => (
@@ -42,6 +38,6 @@ export const Highlight: FC<HighlightProps> = ({
           </Box>
         </Box>
       )}
-    </ReactHighlight>
+    </Highlight>
   )
 }

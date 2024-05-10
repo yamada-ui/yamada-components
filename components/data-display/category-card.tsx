@@ -1,58 +1,47 @@
 import {
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Heading,
-  Image,
+  forwardRef,
+  LinkBox,
+  LinkOverlay,
   Text,
-  Card,
-  Divider,
-  Spacer,
+  VStack,
 } from "@yamada-ui/react"
+import type { LinkBoxProps, TextProps } from "@yamada-ui/react"
 import Link from "next/link"
-import type { FC } from "react"
-import type { Category } from "types"
+import { memo } from "react"
+import type { ComponentTree } from "component"
 
-type CardProps = {
-  count: number
-  category: Category
-}
+export type CategoryCardProps = LinkBoxProps &
+  Pick<ComponentTree, "title" | "items" | "slug"> & {
+    headingProps?: TextProps
+  }
 
-export const CategoryCard: FC<CardProps> = ({ category }) => {
-  return (
-    <Card
-      as={Link}
-      href={`/${category.slug}`}
-      w={300}
-      variant="outline"
-      _nativeHover={{
-        boxShadow: [
-          "0 4px 8px 0 rgba(0,0,0,0.2)",
-          "0 6px 20px 0 rgba(0,0,0,0.3)",
-        ],
-        transition: "box-shadow 0.2s ease-in-out",
-      }}
-    >
-      <CardHeader h={200} overflow="hidden" p={0} roundedTop="md">
-        {/* TODO: fix src */}
-        <Image
-          size="full"
-          src="https://picsum.photos/400"
-          alt={category.name}
-        />
-      </CardHeader>
-      <CardBody>
-        <Heading size="md">{category.name}</Heading>
-      </CardBody>
-      <Divider w="95%" mx="auto" />
-      <CardFooter roundedBottom="md" pt="md">
-        <Text>Description</Text>
-        <Spacer />
-        <Divider orientation="vertical" h="75%" />
-        {/* <Tag p={0} as={Center}>
-          {count}
-        </Tag> */}
-      </CardFooter>
-    </Card>
-  )
-}
+export const CategoryCard = memo(
+  forwardRef<CategoryCardProps, "article">(
+    ({ title, slug, items, headingProps, ...rest }, ref) => {
+      return (
+        <LinkBox
+          ref={ref}
+          as="article"
+          borderWidth="1px"
+          rounded="md"
+          p="md"
+          {...rest}
+        >
+          <VStack gap="xs">
+            <Text as="h3" fontSize="lg" {...headingProps}>
+              {title}
+            </Text>
+
+            <Text color="muted" fontSize="sm">
+              {items.length} components
+            </Text>
+          </VStack>
+
+          <LinkOverlay as={Link} href={slug} />
+        </LinkBox>
+      )
+    },
+  ),
+)
+
+CategoryCard.displayName = "CategoryCard"
