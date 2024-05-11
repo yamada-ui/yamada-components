@@ -32,7 +32,14 @@ export const ComponentCard = memo(
       const modeRef = useRef<(mode: Mode) => void>(noop)
 
       return (
-        <VStack ref={ref} as="article" borderWidth="1px" rounded="md" {...rest}>
+        <VStack
+          ref={ref}
+          as="article"
+          borderWidth="1px"
+          rounded="md"
+          gap="0"
+          {...rest}
+        >
           <HStack as="header" px="md" py="sm" borderBottomWidth="1px">
             <Heading as="h3" size="sm" fontWeight="semibold">
               {metadata.title}

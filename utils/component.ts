@@ -100,6 +100,7 @@ const getMetadata = (dirPath: string) => async (locale: string) => {
 
 export const getComponent = (slug: string) => async (locale: string) => {
   try {
+    slug = slug.replace(/^\//, "")
     const name = slug.split("/").at(-1)
     const dirPath = path.join("contents", slug)
     const componentPath = path.join(dirPath, "index.tsx")
@@ -134,11 +135,11 @@ export const getComponent = (slug: string) => async (locale: string) => {
       }),
     )
 
-    const resolvedSlug = /^\//.test(slug) ? slug : `/${slug}`
+    slug = `/${slug}`
 
     const data = {
       name,
-      slug: resolvedSlug,
+      slug,
       paths,
       components,
       metadata,

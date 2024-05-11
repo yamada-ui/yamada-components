@@ -47,9 +47,9 @@ export const ComponentHeader = memo(
                 color="muted"
                 icon={
                   codeDirection === "vertical" ? (
-                    <LayoutHorizontal />
-                  ) : (
                     <LayoutVertical />
+                  ) : (
+                    <LayoutHorizontal />
                   )
                 }
                 onClick={codeControls.onOpen}
