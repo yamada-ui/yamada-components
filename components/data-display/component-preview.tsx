@@ -2,17 +2,14 @@ import { Box, forwardRef, UIProvider, useAsync } from "@yamada-ui/react"
 import type { BoxProps, Dict, ThemeConfig } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import { memo } from "react"
-import type { SharedMetadata } from "component"
 import { useComponent } from "contexts/component-context"
 
 export type ComponentPreviewProps = BoxProps & {}
 
 export const ComponentPreview = memo(
   forwardRef<ComponentPreviewProps, "div">(({ ...rest }, ref) => {
-    const { metadata, paths } = useComponent()
-    const Component = dynamic<{ metadata: SharedMetadata }>(
-      () => import(`/contents/${paths.component}`),
-    )
+    const { paths } = useComponent()
+    const Component = dynamic(() => import(`/contents/${paths.component}`))
 
     const { value } = useAsync(async () => {
       let theme: Dict
@@ -33,7 +30,7 @@ export const ComponentPreview = memo(
     return (
       <Box ref={ref} {...rest}>
         <UIProvider {...value}>
-          <Component metadata={metadata} />
+          <Component />
         </UIProvider>
       </Box>
     )
