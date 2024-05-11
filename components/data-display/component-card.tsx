@@ -1,6 +1,5 @@
 import {
   assignRef,
-  Box,
   Flex,
   forwardRef,
   Heading,
@@ -16,6 +15,8 @@ import type { StackProps } from "@yamada-ui/react"
 import { Code2, ExternalLink, Eye } from "lucide-react"
 import type { MutableRefObject, FC } from "react"
 import { memo, useRef, useState } from "react"
+import { ComponentCode } from "./component-code"
+import { ComponentPreview } from "./component-preview"
 import type { Component } from "component"
 import { Github } from "components/media-and-icons"
 import { NextLinkIconButton } from "components/navigation"
@@ -114,12 +115,10 @@ const ComponentView: FC<ComponentViewProps> = memo(
 
     assignRef(modeRef, setMode)
 
-    console.log(paths, components)
-
     if (mode === "preview") {
-      return <Box></Box>
+      return <ComponentPreview paths={paths} />
     } else {
-      return <Box></Box>
+      return <ComponentCode components={components} />
     }
   },
 )

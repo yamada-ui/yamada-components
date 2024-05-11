@@ -14,21 +14,23 @@ import { X } from "lucide-react"
 import type { Dispatch, SetStateAction } from "react"
 import { memo } from "react"
 import { CodeBlock } from "./code-block"
+import type { Component } from "component"
 import { LayoutHorizontal, LayoutVertical } from "components/media-and-icons"
-import { useComponent } from "contexts/component-context"
 import type { CodeDirection } from "layouts/component-layout"
 
-export type ComponentCodeProps = TabsProps & {
-  codeDirection: CodeDirection
-  setCodeDirection: Dispatch<SetStateAction<CodeDirection>>
-  codeControls: UseDisclosureReturn
-}
+export type ComponentCodeProps = TabsProps &
+  Pick<Component, "components"> & {
+    codeDirection?: CodeDirection
+    setCodeDirection?: Dispatch<SetStateAction<CodeDirection>>
+    codeControls?: UseDisclosureReturn
+  }
 
 export const ComponentCode = memo(
   forwardRef<ComponentCodeProps, "div">(
-    ({ codeDirection, setCodeDirection, codeControls, ...rest }, ref) => {
-      const { components } = useComponent()
-
+    (
+      { components, codeDirection, setCodeDirection, codeControls, ...rest },
+      ref,
+    ) => {
       return (
         <Tabs ref={ref} {...rest}>
           <TabList>
@@ -48,35 +50,41 @@ export const ComponentCode = memo(
               ))}
             </ScrollArea>
 
-            <HStack ms="md" me="sm" gap="0">
-              <IconButton
-                size="sm"
-                variant="ghost"
-                color="muted"
-                fontSize="0.8em"
-                icon={
-                  codeDirection === "vertical" ? (
-                    <LayoutHorizontal />
-                  ) : (
-                    <LayoutVertical />
-                  )
-                }
-                onClick={() =>
-                  setCodeDirection((prev) =>
-                    prev === "vertical" ? "horizontal" : "vertical",
-                  )
-                }
-              />
+            {codeDirection || codeControls ? (
+              <HStack ms="md" me="sm" gap="0">
+                {codeDirection ? (
+                  <IconButton
+                    size="sm"
+                    variant="ghost"
+                    color="muted"
+                    fontSize="0.8em"
+                    icon={
+                      codeDirection === "vertical" ? (
+                        <LayoutHorizontal />
+                      ) : (
+                        <LayoutVertical />
+                      )
+                    }
+                    onClick={() =>
+                      setCodeDirection?.((prev) =>
+                        prev === "vertical" ? "horizontal" : "vertical",
+                      )
+                    }
+                  />
+                ) : null}
 
-              <IconButton
-                size="sm"
-                variant="ghost"
-                color="muted"
-                fontSize="1em"
-                icon={<Icon as={X} />}
-                onClick={codeControls.onClose}
-              />
-            </HStack>
+                {codeControls ? (
+                  <IconButton
+                    size="sm"
+                    variant="ghost"
+                    color="muted"
+                    fontSize="1em"
+                    icon={<Icon as={X} />}
+                    onClick={codeControls.onClose}
+                  />
+                ) : null}
+              </HStack>
+            ) : null}
           </TabList>
 
           {components.map(({ name, code }) => (
