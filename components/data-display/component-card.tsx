@@ -73,7 +73,7 @@ export const ComponentCard = memo(
             </HStack>
           </HStack>
 
-          <ComponentView modeRef={modeRef} {...{ paths, components }} />
+          <ComponentCardBody modeRef={modeRef} {...{ paths, components }} />
         </VStack>
       )
     },
@@ -112,11 +112,11 @@ const ViewModeControl: FC<ViewModeControlProps> = memo(({ modeRef }) => {
 
 ViewModeControl.displayName = "ViewModeControl"
 
-type ComponentViewProps = Pick<Component, "paths" | "components"> & {
+type ComponentCardBodyProps = Pick<Component, "paths" | "components"> & {
   modeRef: MutableRefObject<(mode: Mode) => void>
 }
 
-const ComponentView: FC<ComponentViewProps> = memo(
+const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
   ({ modeRef, paths, components }) => {
     const [mode, setMode] = useState<Mode>("preview")
 
@@ -130,4 +130,4 @@ const ComponentView: FC<ComponentViewProps> = memo(
   },
 )
 
-ComponentView.displayName = "ComponentView"
+ComponentCardBody.displayName = "ComponentCardBody"
