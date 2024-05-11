@@ -122,11 +122,18 @@ const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
 
     assignRef(modeRef, setMode)
 
-    if (mode === "preview") {
-      return <ComponentPreview paths={paths} />
-    } else {
-      return <ComponentCode components={components} />
-    }
+    return (
+      <>
+        <ComponentPreview
+          paths={paths}
+          display={mode === "preview" ? "block" : "none"}
+        />
+        <ComponentCode
+          components={components}
+          display={mode === "code" ? "flex" : "none"}
+        />
+      </>
+    )
   },
 )
 
