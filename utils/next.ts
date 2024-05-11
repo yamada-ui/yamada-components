@@ -4,9 +4,16 @@ import type {
   GetStaticPropsContext,
 } from "next"
 import { toArray } from "./array"
-import type { Component } from "./component"
-import { getComponentTree, getComponentPaths, getComponent } from "./component"
-import type { ComponentTree } from "component"
+import {
+  getComponentCategoryGroup,
+  getComponentPaths,
+  getComponent,
+} from "./component"
+import type {
+  Component,
+  ComponentCategory,
+  ComponentCategoryGroup,
+} from "component"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -19,7 +26,7 @@ export const getServerSideCommonProps = async ({
 export const getStaticCommonProps = async ({
   locale,
 }: GetStaticPropsContext) => {
-  const componentTree = await getComponentTree()(locale)
+  const componentTree = await getComponentCategoryGroup()(locale)
 
   return { props: { componentTree } }
 }
@@ -31,16 +38,16 @@ export const getStaticComponentProps =
     locale,
   }: GetStaticPropsContext): Promise<{
     props: {
-      categoryGroup?: ComponentTree
-      category?: ComponentTree
+      categoryGroup?: ComponentCategoryGroup
+      category?: ComponentCategory
       component?: Component
-      componentTree: ComponentTree[]
+      componentTree: ComponentCategoryGroup[]
     }
     notFound?: boolean
   }> => {
     const paths = toArray(params?.slug ?? [])
 
-    const componentTree = await getComponentTree()(locale)
+    const componentTree = await getComponentCategoryGroup()(locale)
 
     const categoryGroup = componentTree.find(
       ({ name }) => name === categoryGroupName,
@@ -53,9 +60,15 @@ export const getStaticComponentProps =
     }
 
     if (paths.length === 1) {
-      const category = categoryGroup.items?.find(
+      const _category = categoryGroup.items?.find(
         ({ name }) => name === paths.at(-1),
       )
+
+      const items: Component[] | undefined = await Promise.all(
+        _category.items?.map(({ slug }) => getComponent(slug)(locale)),
+      )
+
+      const category: ComponentCategory = { ..._category, items }
 
       const props = { categoryGroup, category, componentTree }
 

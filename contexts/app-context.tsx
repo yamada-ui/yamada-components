@@ -1,11 +1,11 @@
 import { createContext, useMemo, useContext } from "react"
 import type { PropsWithChildren, FC } from "react"
-import type { ComponentTree } from "component"
+import type { ComponentCategory, ComponentCategoryGroup } from "component"
 
 type AppContext = {
-  componentTree: ComponentTree[]
-  categoryGroup?: ComponentTree
-  category?: ComponentTree
+  componentTree: ComponentCategoryGroup[]
+  categoryGroup?: ComponentCategoryGroup
+  category?: ComponentCategory
 }
 
 const AppContext = createContext<AppContext>({
@@ -13,9 +13,9 @@ const AppContext = createContext<AppContext>({
 })
 
 export type AppProviderProps = PropsWithChildren<{
-  componentTree: ComponentTree[]
-  categoryGroup?: ComponentTree
-  category?: ComponentTree
+  componentTree: ComponentCategoryGroup[]
+  categoryGroup?: ComponentCategoryGroup
+  category?: ComponentCategory
 }>
 
 export const AppProvider: FC<AppProviderProps> = ({

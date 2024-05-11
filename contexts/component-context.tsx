@@ -1,6 +1,6 @@
 import { createContext, useMemo, useContext } from "react"
 import type { PropsWithChildren, FC } from "react"
-import type { Component } from "utils/component"
+import type { Component } from "component"
 
 type ComponentContext = Component
 

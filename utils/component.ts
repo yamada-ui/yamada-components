@@ -2,15 +2,15 @@ import { existsSync } from "fs"
 import { readdir, readFile } from "fs/promises"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
-import type { ComponentTree, SharedMetadata } from "component"
+import type { ComponentCategoryGroup, SharedMetadata } from "component"
 import { CONSTANT } from "constant"
 
-export const getComponentTree =
+export const getComponentCategoryGroup =
   (
     targetPath: string = "contents",
     callback?: (metadata: SharedMetadata) => void,
   ) =>
-  async (locale: string): Promise<ComponentTree[]> => {
+  async (locale: string): Promise<ComponentCategoryGroup[]> => {
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
     const dirents = await readdir(targetPath, { withFileTypes: true })
 
@@ -36,7 +36,7 @@ export const getComponentTree =
 
         let metadata: SharedMetadata | undefined = undefined
 
-        const items = await getComponentTree(
+        const items = await getComponentCategoryGroup(
           slug,
           (data) => (metadata = data),
         )(locale)
@@ -58,19 +58,20 @@ export const getComponentPaths =
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
     const categoryGroupPath = path.join("contents", categoryGroupName)
     const componentTree =
-      await getComponentTree(categoryGroupPath)(defaultLocale)
+      await getComponentCategoryGroup(categoryGroupPath)(defaultLocale)
 
-    const getPaths = (componentTree?: ComponentTree[]) => (locale: string) =>
-      (componentTree ?? []).flatMap(({ slug, items }) => {
-        slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
+    const getPaths =
+      (componentTree?: ComponentCategoryGroup[]) => (locale: string) =>
+        (componentTree ?? []).flatMap(({ slug, items }) => {
+          slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
 
-        const resolvedSlug = slug.split("/")
+          const resolvedSlug = slug.split("/")
 
-        return [
-          { params: { slug: resolvedSlug }, locale },
-          ...getPaths(items)(locale),
-        ]
-      })
+          return [
+            { params: { slug: resolvedSlug }, locale },
+            ...getPaths(items)(locale),
+          ]
+        })
 
     const paths = locales.flatMap((locale) => [
       { params: { slug: [] }, locale },
@@ -99,6 +100,7 @@ const getMetadata = (dirPath: string) => async (locale: string) => {
 
 export const getComponent = (slug: string) => async (locale: string) => {
   try {
+    const name = slug.split("/").at(-1)
     const dirPath = path.join("contents", slug)
     const componentPath = path.join(dirPath, "index.tsx")
     const themePath = path.join(dirPath, "theme.ts")
@@ -132,8 +134,11 @@ export const getComponent = (slug: string) => async (locale: string) => {
       }),
     )
 
+    const resolvedSlug = /^\//.test(slug) ? slug : `/${slug}`
+
     const data = {
-      slug: "/" + slug,
+      name,
+      slug: resolvedSlug,
       paths,
       components,
       metadata,
@@ -142,7 +147,3 @@ export const getComponent = (slug: string) => async (locale: string) => {
     return data
   } catch {}
 }
-
-export type Component = Awaited<ReturnType<ReturnType<typeof getComponent>>>
-
-export type ComponentPaths = Component["paths"]

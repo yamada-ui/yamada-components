@@ -16,59 +16,60 @@ import type { StackProps } from "@yamada-ui/react"
 import { Code2, ExternalLink, Eye } from "lucide-react"
 import type { MutableRefObject, FC } from "react"
 import { memo, useRef, useState } from "react"
-import type { ComponentTree } from "component"
+import type { Component } from "component"
 import { Github } from "components/media-and-icons"
 import { NextLinkIconButton } from "components/navigation"
 import { CONSTANT } from "constant"
 
 type Mode = "preview" | "code"
 
-export type ComponentCardProps = StackProps &
-  Pick<ComponentTree, "title" | "slug">
+export type ComponentCardProps = StackProps & Omit<Component, "name">
 
 export const ComponentCard = memo(
-  forwardRef<ComponentCardProps, "div">(({ title, slug, ...rest }, ref) => {
-    const modeRef = useRef<(mode: Mode) => void>(noop)
+  forwardRef<ComponentCardProps, "div">(
+    ({ metadata, slug, paths, components, ...rest }, ref) => {
+      const modeRef = useRef<(mode: Mode) => void>(noop)
 
-    return (
-      <VStack ref={ref} as="article" borderWidth="1px" rounded="md" {...rest}>
-        <HStack as="header" px="md" py="sm" borderBottomWidth="1px">
-          <Heading as="h3" size="sm" fontWeight="semibold">
-            {title}
-          </Heading>
+      return (
+        <VStack ref={ref} as="article" borderWidth="1px" rounded="md" {...rest}>
+          <HStack as="header" px="md" py="sm" borderBottomWidth="1px">
+            <Heading as="h3" size="sm" fontWeight="semibold">
+              {metadata.title}
+            </Heading>
 
-          <Spacer />
+            <Spacer />
 
-          <HStack gap="sm">
-            <NextLinkIconButton
-              aria-label="Open component preview"
-              href={slug}
-              variant="outline"
-              borderColor="border"
-              size="sm"
-              color="muted"
-              icon={<Icon as={ExternalLink} fontSize="1.2em" />}
-            />
+            <HStack gap="sm">
+              <NextLinkIconButton
+                aria-label="Open component preview"
+                href={slug}
+                variant="outline"
+                borderColor="border"
+                size="sm"
+                color="muted"
+                icon={<Icon as={ExternalLink} fontSize="1.2em" />}
+              />
 
-            <NextLinkIconButton
-              aria-label="GitHub source code"
-              href={`${CONSTANT.SNS.GITHUB.EDIT_URL}${slug}`}
-              isExternal
-              variant="outline"
-              borderColor="border"
-              size="sm"
-              color="muted"
-              icon={<Github />}
-            />
+              <NextLinkIconButton
+                aria-label="GitHub source code"
+                href={`${CONSTANT.SNS.GITHUB.EDIT_URL}${slug}`}
+                isExternal
+                variant="outline"
+                borderColor="border"
+                size="sm"
+                color="muted"
+                icon={<Github />}
+              />
 
-            <ViewModeControl modeRef={modeRef} />
+              <ViewModeControl modeRef={modeRef} />
+            </HStack>
           </HStack>
-        </HStack>
 
-        <ComponentView modeRef={modeRef} />
-      </VStack>
-    )
-  }),
+          <ComponentView modeRef={modeRef} {...{ paths, components }} />
+        </VStack>
+      )
+    },
+  ),
 )
 
 ComponentCard.displayName = "ComponentCard"
@@ -103,20 +104,24 @@ const ViewModeControl: FC<ViewModeControlProps> = memo(({ modeRef }) => {
 
 ViewModeControl.displayName = "ViewModeControl"
 
-type ComponentViewProps = {
+type ComponentViewProps = Pick<Component, "paths" | "components"> & {
   modeRef: MutableRefObject<(mode: Mode) => void>
 }
 
-const ComponentView: FC<ComponentViewProps> = memo(({ modeRef }) => {
-  const [mode, setMode] = useState<Mode>("preview")
+const ComponentView: FC<ComponentViewProps> = memo(
+  ({ modeRef, paths, components }) => {
+    const [mode, setMode] = useState<Mode>("preview")
 
-  assignRef(modeRef, setMode)
+    assignRef(modeRef, setMode)
 
-  if (mode === "preview") {
-    return <Box></Box>
-  } else {
-    return <Box></Box>
-  }
-})
+    console.log(paths, components)
+
+    if (mode === "preview") {
+      return <Box></Box>
+    } else {
+      return <Box></Box>
+    }
+  },
+)
 
 ComponentView.displayName = "ComponentView"

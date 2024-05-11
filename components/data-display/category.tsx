@@ -28,8 +28,8 @@ export const Category: FC = memo(() => {
       </HStack>
 
       <VStack as="nav" gap="lg">
-        {category.items?.map(({ name, title, slug }) => (
-          <ComponentCard key={name} {...{ title, slug }} />
+        {category.items?.map(({ name, ...rest }) => (
+          <ComponentCard key={name} {...rest} />
         ))}
       </VStack>
     </>

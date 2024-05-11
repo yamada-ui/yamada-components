@@ -8,10 +8,10 @@ import {
 import type { LinkBoxProps, TextProps } from "@yamada-ui/react"
 import Link from "next/link"
 import { memo } from "react"
-import type { ComponentTree } from "component"
+import type { ComponentCategoryGroup } from "component"
 
 export type CategoryCardProps = LinkBoxProps &
-  Pick<ComponentTree, "title" | "items" | "slug"> & {
+  Pick<ComponentCategoryGroup, "title" | "items" | "slug"> & {
     headingProps?: TextProps
   }
 
