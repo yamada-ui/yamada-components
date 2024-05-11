@@ -15,8 +15,3 @@ const ProgressCard = () => {
 }
 
 export default ProgressCard
-
-export const metadata = {
-  title: "Progress Card",
-  description: "This is a card with progress bar",
-}
