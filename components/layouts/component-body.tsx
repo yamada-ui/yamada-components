@@ -24,21 +24,29 @@ export const ComponentBody = memo(
 
       return (
         <Resizable ref={ref} direction={codeDirection} h="100vh" {...rest}>
-          <ResizableItem overflow="auto">
+          <ResizableItem id="preview" defaultSize={70} overflow="auto">
             <ComponentPreview paths={paths} />
           </ResizableItem>
 
-          <ResizableTrigger />
-
           {codeControls.isOpen ? (
-            <ResizableItem overflow="auto">
-              <ComponentCode
-                components={components}
-                codeDirection={codeDirection}
-                setCodeDirection={setCodeDirection}
-                codeControls={codeControls}
-              />
-            </ResizableItem>
+            <>
+              <ResizableTrigger />
+
+              <ResizableItem
+                id="code"
+                defaultSize={30}
+                minW="xs"
+                minH="xs"
+                overflow="auto"
+              >
+                <ComponentCode
+                  components={components}
+                  codeDirection={codeDirection}
+                  setCodeDirection={setCodeDirection}
+                  codeControls={codeControls}
+                />
+              </ResizableItem>
+            </>
           ) : null}
         </Resizable>
       )
