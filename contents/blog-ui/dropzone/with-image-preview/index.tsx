@@ -6,9 +6,9 @@ import {
 import { Dropzone } from "@yamada-ui/dropzone"
 import { Center, Image, Text, extendConfig, useLoading } from "@yamada-ui/react"
 import { useState } from "react"
-import type { CFC } from "react"
+import type { FC } from "react"
 
-export const ImagePreviewDropzone: CFC = () => {
+export const ImagePreviewDropzone: FC = () => {
   const [imageURL, setImageURL] = useState<string[]>([])
   const { page } = useLoading()
   const handleAcceptedFile = async (files: File[] | undefined) => {

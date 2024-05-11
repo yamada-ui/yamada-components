@@ -4,7 +4,7 @@ import {
   IconBrandYoutube,
 } from "@tabler/icons-react"
 import { Box, Divider, Flex, IconButton, Image, Link } from "@yamada-ui/react"
-import type { CFC } from "react"
+import type { FC } from "react"
 
 const links = [
   { link: "#", label: "Home" },
@@ -14,7 +14,7 @@ const links = [
   { link: "#", label: "About" },
 ]
 
-const FooterCentered: CFC = () => {
+const FooterCentered: FC = () => {
   const items = links.map((link) => (
     <Link key={link.label} href={link.link} onClick={(e) => e.preventDefault()}>
       {link.label}

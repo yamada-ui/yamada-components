@@ -1,5 +1,5 @@
 import { Box, HStack, Heading } from "@yamada-ui/react"
-import type { CFC } from "react"
+import type { FC } from "react"
 import { LinkItem } from "./link-item"
 
 const links = [
@@ -10,7 +10,7 @@ const links = [
   { link: "#", label: "About" },
 ]
 
-const Header: CFC = () => {
+const Header: FC = () => {
   return (
     <HStack as="header" justify="space-between">
       <Box>
