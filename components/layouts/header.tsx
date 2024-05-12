@@ -1,10 +1,8 @@
 import type {
-  BoxProps,
   CenterProps,
   DrawerProps,
   IconButtonProps,
   MenuProps,
-  PopoverProps,
   UseDisclosureReturn,
 } from "@yamada-ui/react"
 import {
@@ -22,36 +20,25 @@ import {
   MenuList,
   MenuOptionGroup,
   MenuOptionItem,
-  Popover,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Ripple,
   Spacer,
   VStack,
   forwardRef,
   mergeRefs,
   useBreakpoint,
   useBreakpointValue,
-  useColorMode,
   useDisclosure,
   useMotionValueEvent,
-  useRipple,
   useScroll,
-  useTheme,
 } from "@yamada-ui/react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import type { FC } from "react"
 import { memo, useEffect, useRef, useState } from "react"
-import { Search } from "components/forms"
+import { ColorModeButton, Search, ThemeSchemeButton } from "components/forms"
 import {
-  ColorPalette,
   Discord,
   Github,
   Hamburger,
-  Moon,
-  Sun,
   Translate,
 } from "components/media-and-icons"
 import { NextLinkIconButton } from "components/navigation"
@@ -244,155 +231,6 @@ const I18nButton: FC<I18nButtonProps> = memo(({ menuProps, ...rest }) => {
 })
 
 I18nButton.displayName = "I18nButton"
-
-type ColorModeButtonProps = IconButtonProps & {
-  menuProps?: MenuProps
-}
-
-const ColorModeButton: FC<ColorModeButtonProps> = memo(
-  ({ menuProps, ...rest }) => {
-    const padding = useBreakpointValue({ base: 32, md: 16 })
-    const { colorMode, internalColorMode, changeColorMode } = useColorMode()
-
-    return (
-      <Menu
-        placement="bottom"
-        modifiers={[
-          {
-            name: "preventOverflow",
-            options: {
-              padding: {
-                top: padding,
-                bottom: padding,
-                left: padding,
-                right: padding,
-              },
-            },
-          },
-        ]}
-        restoreFocus={false}
-        {...menuProps}
-      >
-        <MenuButton
-          as={IconButton}
-          aria-label="Open color mode switching menu"
-          variant="ghost"
-          color="muted"
-          icon={colorMode === "dark" ? <Sun /> : <Moon />}
-          {...rest}
-        />
-
-        <MenuList>
-          <MenuOptionGroup<string>
-            value={internalColorMode}
-            onChange={changeColorMode}
-            type="radio"
-          >
-            <MenuOptionItem value="light" closeOnSelect>
-              Light
-            </MenuOptionItem>
-            <MenuOptionItem value="dark" closeOnSelect>
-              Dark
-            </MenuOptionItem>
-            <MenuOptionItem value="system" closeOnSelect>
-              System
-            </MenuOptionItem>
-          </MenuOptionGroup>
-        </MenuList>
-      </Menu>
-    )
-  },
-)
-
-ColorModeButton.displayName = "ColorModeButton"
-
-type ThemeSchemeButtonProps = IconButtonProps & {
-  popoverProps?: PopoverProps
-}
-
-const ThemeSchemeButton: FC<ThemeSchemeButtonProps> = memo(
-  ({ popoverProps, ...rest }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const { theme, changeThemeScheme } = useTheme()
-    const { colorSchemes = [] } = theme
-
-    return (
-      <Popover
-        {...popoverProps}
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onClose={onClose}
-        placement="bottom"
-        closeOnButton={false}
-        restoreFocus={false}
-      >
-        <PopoverTrigger>
-          <IconButton
-            aria-label="Open color mode switching menu"
-            variant="ghost"
-            color="muted"
-            icon={<ColorPalette />}
-            {...rest}
-          />
-        </PopoverTrigger>
-
-        <PopoverContent>
-          <PopoverBody
-            display="grid"
-            gridTemplateColumns={{ base: "repeat(4, 1fr)" }}
-          >
-            {colorSchemes.map((colorScheme: string) => (
-              <ColorButton
-                key={colorScheme}
-                colorScheme={colorScheme}
-                onClick={() => {
-                  changeThemeScheme(colorScheme)
-                  onClose()
-                }}
-              />
-            ))}
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
-    )
-  },
-)
-
-ThemeSchemeButton.displayName = "ThemeSchemeButton"
-
-type ColorButtonProps = BoxProps & {
-  colorScheme: string
-}
-
-const ColorButton: FC<ColorButtonProps> = memo(({ colorScheme, ...rest }) => {
-  const { onPointerDown, ...rippleProps } = useRipple({})
-
-  return (
-    <Box
-      as="button"
-      type="button"
-      position="relative"
-      overflow="hidden"
-      bg={`${colorScheme}.500`}
-      minW={{ base: "12", md: "10" }}
-      minH={{ base: "12", md: "10" }}
-      rounded="md"
-      boxShadow="inner"
-      outline="0"
-      _hover={{ bg: `${colorScheme}.600` }}
-      _active={{ bg: `${colorScheme}.700` }}
-      _focusVisible={{ shadow: "outline" }}
-      transitionProperty="common"
-      transitionDuration="slower"
-      {...rest}
-      onPointerDown={onPointerDown}
-    >
-      <Ripple {...rippleProps} />
-    </Box>
-  )
-})
-
-ColorButton.displayName = "ColorButton"
 
 type MobileMenuProps = DrawerProps
 

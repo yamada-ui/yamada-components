@@ -4,25 +4,16 @@ import {
   HStack,
   Icon,
   IconButton,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuOptionGroup,
-  MenuOptionItem,
   Spacer,
-  useBreakpointValue,
-  useColorMode,
 } from "@yamada-ui/react"
-import type { IconButtonProps, MenuProps, StackProps } from "@yamada-ui/react"
+import type { StackProps } from "@yamada-ui/react"
 import { Download } from "lucide-react"
-import type { FC } from "react"
 import { memo, useMemo } from "react"
+import { ColorModeButton, ThemeSchemeButton } from "components/forms"
 import {
   Github,
   LayoutHorizontal,
   LayoutVertical,
-  Moon,
-  Sun,
 } from "components/media-and-icons"
 import { NextLinkIconButton } from "components/navigation"
 import { CONSTANT } from "constant"
@@ -73,6 +64,8 @@ export const ComponentHeader = memo(
               onClick={() => onDownload()}
             />
 
+            <ThemeSchemeButton />
+
             <ColorModeButton />
 
             <NextLinkIconButton
@@ -91,64 +84,3 @@ export const ComponentHeader = memo(
 )
 
 ComponentHeader.displayName = "ComponentHeader"
-
-type ColorModeButtonProps = IconButtonProps & {
-  menuProps?: MenuProps
-}
-
-const ColorModeButton: FC<ColorModeButtonProps> = memo(
-  ({ menuProps, ...rest }) => {
-    const padding = useBreakpointValue({ base: 32, md: 16 })
-    const { colorMode, internalColorMode, changeColorMode } = useColorMode()
-
-    return (
-      <Menu
-        placement="bottom"
-        modifiers={[
-          {
-            name: "preventOverflow",
-            options: {
-              padding: {
-                top: padding,
-                bottom: padding,
-                left: padding,
-                right: padding,
-              },
-            },
-          },
-        ]}
-        restoreFocus={false}
-        {...menuProps}
-      >
-        <MenuButton
-          as={IconButton}
-          aria-label="Open color mode switching menu"
-          variant="ghost"
-          color="muted"
-          icon={colorMode === "dark" ? <Sun /> : <Moon />}
-          {...rest}
-        />
-
-        <MenuList>
-          <MenuOptionGroup<string>
-            value={internalColorMode}
-            onChange={changeColorMode}
-            type="radio"
-          >
-            <MenuOptionItem value="light" closeOnSelect>
-              Light
-            </MenuOptionItem>
-            <MenuOptionItem value="dark" closeOnSelect>
-              Dark
-            </MenuOptionItem>
-            <MenuOptionItem value="system" closeOnSelect>
-              System
-            </MenuOptionItem>
-          </MenuOptionGroup>
-        </MenuList>
-      </Menu>
-    )
-  },
-)
-
-ColorModeButton.displayName = "ColorModeButton"
