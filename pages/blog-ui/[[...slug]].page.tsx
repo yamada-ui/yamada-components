@@ -8,9 +8,9 @@ import { getStaticComponentPaths, getStaticComponentProps } from "utils/next"
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-export const getStaticPaths = getStaticComponentPaths("application-ui")
+export const getStaticPaths = getStaticComponentPaths("blog-ui")
 
-export const getStaticProps = getStaticComponentProps("application-ui")
+export const getStaticProps = getStaticComponentProps("blog-ui")
 
 const Page: NextPage<PageProps> = ({
   categoryGroup,
