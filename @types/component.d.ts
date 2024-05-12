@@ -1,3 +1,5 @@
+import type { HTMLUIProps } from "@yamada-ui/react"
+
 type DefaultLocale = "en"
 type Locale = "en" | "ja"
 type OtherLocale = Exclude<Locale, DefaultLocale>
@@ -24,7 +26,8 @@ declare module "component" {
     slug: string
     paths: ComponentPaths
     components: ComponentCode[]
-    metadata: SharedMetadata
+    metadata: SharedMetadata | null
+    options: ComponentMetadataOptions | null
   }
 
   type ComponentCategoryGroup = Partial<SharedMetadata> & {
@@ -42,7 +45,13 @@ declare module "component" {
     description: string
   }
 
-  type ComponentMetadata = LocaleMetadata<SharedMetadata>
+  type ComponentMetadataOptions = {
+    container: HTMLUIProps<"div">
+  }
+
+  type ComponentMetadata = LocaleMetadata<SharedMetadata> & {
+    options: ComponentMetadataOptions
+  }
 
   type CategoryMetadata = LocaleMetadata<SharedMetadata>
 
