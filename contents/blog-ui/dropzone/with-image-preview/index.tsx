@@ -4,7 +4,7 @@ import {
   CarouselSlide,
 } from "@yamada-ui/carousel"
 import { Dropzone } from "@yamada-ui/dropzone"
-import { Center, Image, Text, extendConfig, useLoading } from "@yamada-ui/react"
+import { Center, Image, Text, useLoading } from "@yamada-ui/react"
 import { useState } from "react"
 import type { FC } from "react"
 
@@ -73,18 +73,3 @@ export const ImagePreviewDropzone: FC = () => {
 }
 
 export default ImagePreviewDropzone
-
-export const config = extendConfig({
-  loading: {
-    page: {
-      icon: {
-        variant: "grid",
-      },
-    },
-  },
-})
-
-export const metadata = {
-  title: "Dropzone image preview",
-  description: "This is a Dropzone with image preview",
-}
