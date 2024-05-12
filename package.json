@@ -30,6 +30,7 @@
     "@yamada-ui/markdown": "^1.0.27",
     "@yamada-ui/react": "1.3.9",
     "@yamada-ui/table": "^1.0.31",
+    "jszip": "^3.10.1",
     "lucide-react": "^0.373.0",
     "match-sorter": "^6.3.3",
     "next": "14.0.3",
