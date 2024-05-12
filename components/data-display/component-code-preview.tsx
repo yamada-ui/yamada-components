@@ -4,15 +4,14 @@ import {
   HStack,
   Icon,
   IconButton,
-  ScrollArea,
   Tab,
   TabList,
   TabPanel,
   Tabs,
 } from "@yamada-ui/react"
-import type { TabsProps, UseDisclosureReturn } from "@yamada-ui/react"
+import type { TabsProps } from "@yamada-ui/react"
 import { X } from "lucide-react"
-import type { Dispatch, SetStateAction } from "react"
+import type { SetStateAction } from "react"
 import { memo, useRef } from "react"
 import { CodeBlock } from "./code-block"
 import type { Component } from "component"
@@ -23,14 +22,20 @@ import type { CodeDirection } from "layouts/component-layout"
 export type ComponentCodePreviewProps = TabsProps &
   Pick<Component, "components"> & {
     codeDirection?: CodeDirection
-    setCodeDirection?: Dispatch<SetStateAction<CodeDirection>>
-    codeControls?: UseDisclosureReturn
+    onCodeDirectionChange?: (valueOrFunc: SetStateAction<CodeDirection>) => void
+    onCodePreviewClose?: () => void
   }
 
 export const ComponentCodePreview = memo(
   forwardRef<ComponentCodePreviewProps, "div">(
     (
-      { components, codeDirection, setCodeDirection, codeControls, ...rest },
+      {
+        components,
+        codeDirection,
+        onCodeDirectionChange,
+        onCodePreviewClose,
+        ...rest
+      },
       ref,
     ) => {
       const currentCodeRef = useRef<string>(components[0].code)
@@ -46,14 +51,14 @@ export const ComponentCodePreview = memo(
           })}
         >
           <TabList position="sticky" top="0" bg={["white", "black"]}>
-            <ScrollArea
-              as={HStack}
-              type="never"
-              overflowX="auto"
+            <HStack
+              tabIndex={-1}
+              mb="-px"
               w="full"
               gap="0"
-              mb="-px"
-              tabIndex={-1}
+              overflowX="auto"
+              scrollbarWidth="none"
+              _scrollbar={{ display: "none" }}
             >
               {components.map(({ name }) => (
                 <Tab
@@ -66,7 +71,7 @@ export const ComponentCodePreview = memo(
                   {name}
                 </Tab>
               ))}
-            </ScrollArea>
+            </HStack>
 
             <HStack ms="md" me="sm" gap="0">
               <CopyButton value={currentCodeRef.current} />
@@ -80,14 +85,14 @@ export const ComponentCodePreview = memo(
                   fontSize="0.8em"
                   icon={isVertical ? <LayoutHorizontal /> : <LayoutVertical />}
                   onClick={() =>
-                    setCodeDirection?.((prev) =>
+                    onCodeDirectionChange?.((prev) =>
                       prev === "vertical" ? "horizontal" : "vertical",
                     )
                   }
                 />
               ) : null}
 
-              {codeControls ? (
+              {onCodePreviewClose ? (
                 <IconButton
                   aria-label="Close code preview"
                   size="sm"
@@ -95,7 +100,7 @@ export const ComponentCodePreview = memo(
                   color="muted"
                   fontSize="1em"
                   icon={<Icon as={X} />}
-                  onClick={codeControls.onClose}
+                  onClick={onCodePreviewClose}
                 />
               ) : null}
             </HStack>

@@ -13,12 +13,7 @@ import {
   useBreakpointValue,
   useColorMode,
 } from "@yamada-ui/react"
-import type {
-  IconButtonProps,
-  MenuProps,
-  StackProps,
-  UseDisclosureReturn,
-} from "@yamada-ui/react"
+import type { IconButtonProps, MenuProps, StackProps } from "@yamada-ui/react"
 import { Download } from "lucide-react"
 import type { FC } from "react"
 import { memo, useMemo } from "react"
@@ -37,12 +32,13 @@ import type { CodeDirection } from "layouts/component-layout"
 
 export type ComponentHeaderProps = StackProps & {
   codeDirection: CodeDirection
-  codeControls: UseDisclosureReturn
+  isCodePreviewOpen: boolean
+  onCodePreviewOpen: () => void
 }
 
 export const ComponentHeader = memo(
   forwardRef<ComponentHeaderProps, "div">(
-    ({ codeDirection, codeControls, ...rest }, ref) => {
+    ({ codeDirection, isCodePreviewOpen, onCodePreviewOpen, ...rest }, ref) => {
       const { name, metadata, slug, components } = useComponent()
       const files = useMemo(
         () => components.map(({ name, code }) => ({ path: name, data: code })),
@@ -59,13 +55,13 @@ export const ComponentHeader = memo(
           <Spacer />
 
           <HStack gap="sm">
-            {!codeControls.isOpen ? (
+            {!isCodePreviewOpen ? (
               <IconButton
                 aria-label="GitHub source code"
                 variant="ghost"
                 color="muted"
                 icon={isVertical ? <LayoutVertical /> : <LayoutHorizontal />}
-                onClick={codeControls.onOpen}
+                onClick={onCodePreviewOpen}
               />
             ) : null}
 

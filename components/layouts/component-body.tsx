@@ -4,12 +4,8 @@ import {
   ResizableItem,
   ResizableTrigger,
 } from "@yamada-ui/react"
-import type {
-  ResizableProps,
-  ResizableStorage,
-  UseDisclosureReturn,
-} from "@yamada-ui/react"
-import type { Dispatch, SetStateAction } from "react"
+import type { ResizableProps, ResizableStorage } from "@yamada-ui/react"
+import type { SetStateAction } from "react"
 import { memo, useMemo } from "react"
 import { ComponentCodePreview, ComponentPreview } from "components/data-display"
 import { CONSTANT } from "constant"
@@ -18,13 +14,23 @@ import type { CodeDirection } from "layouts/component-layout"
 
 export type ComponentBodyProps = ResizableProps & {
   codeDirection: CodeDirection
-  setCodeDirection: Dispatch<SetStateAction<CodeDirection>>
-  codeControls: UseDisclosureReturn
+  onCodeDirectionChange: (valueOrFunc: SetStateAction<CodeDirection>) => void
+  isCodePreviewOpen: boolean
+  onCodePreviewClose: () => void
 }
 
 export const ComponentBody = memo(
   forwardRef<ComponentBodyProps, "div">(
-    ({ codeDirection, setCodeDirection, codeControls, ...rest }, ref) => {
+    (
+      {
+        codeDirection,
+        onCodeDirectionChange,
+        isCodePreviewOpen,
+        onCodePreviewClose,
+        ...rest
+      },
+      ref,
+    ) => {
       const { paths, components } = useComponent()
 
       const storage: ResizableStorage = useMemo(
@@ -57,14 +63,14 @@ export const ComponentBody = memo(
           <ResizableItem
             id="preview"
             order={1}
-            defaultSize={70}
+            defaultSize={isCodePreviewOpen ? 70 : 100}
             overflow="auto"
             h="full"
           >
             <ComponentPreview paths={paths} borderTopWidth="1px" />
           </ResizableItem>
 
-          {codeControls.isOpen ? (
+          {isCodePreviewOpen ? (
             <>
               <ResizableTrigger
                 _active={{ bg: "focus" }}
@@ -84,8 +90,8 @@ export const ComponentBody = memo(
                 <ComponentCodePreview
                   components={components}
                   codeDirection={codeDirection}
-                  setCodeDirection={setCodeDirection}
-                  codeControls={codeControls}
+                  onCodeDirectionChange={onCodeDirectionChange}
+                  onCodePreviewClose={onCodePreviewClose}
                   borderTopWidth={isVertical ? "0px" : "1px"}
                 />
               </ResizableItem>

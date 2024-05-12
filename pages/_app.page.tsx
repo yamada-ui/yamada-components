@@ -4,11 +4,13 @@ import {
   UIProvider,
   createColorModeManager,
   createThemeSchemeManager,
+  merge,
+  runIfFunc,
 } from "@yamada-ui/react"
-import type { AppProps } from "next/app"
+import type { AppPropsWithOptions } from "next/app"
 import { Inter } from "next/font/google"
 import Head from "next/head"
-import type { FC } from "react"
+import { type FC } from "react"
 import { I18nProvider } from "contexts/i18n-context"
 import { theme, config } from "theme"
 
@@ -19,10 +21,13 @@ const inter = Inter({
   display: "block",
 })
 
-const App: FC<AppProps> = ({ Component, pageProps }) => {
+const App: FC<AppPropsWithOptions> = ({ Component, pageProps, router }) => {
   const { cookies } = pageProps
   const colorModeManager = createColorModeManager("ssr", cookies)
   const themeSchemeManager = createThemeSchemeManager("ssr", cookies)
+  const pageConfig = runIfFunc(Component.config, router.asPath)
+
+  const computedConfig = pageConfig ? merge(config, pageConfig) : config
 
   return (
     <>
@@ -35,7 +40,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
 
       <UIProvider
         theme={theme}
-        config={config}
+        config={computedConfig}
         colorModeManager={colorModeManager}
         themeSchemeManager={themeSchemeManager}
       >
