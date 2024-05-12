@@ -31,7 +31,7 @@ export const ComponentBody = memo(
       },
       ref,
     ) => {
-      const { paths, components } = useComponent()
+      const { paths, components, options } = useComponent()
 
       const storage: ResizableStorage = useMemo(
         () => ({
@@ -67,7 +67,11 @@ export const ComponentBody = memo(
             overflow="auto"
             h="full"
           >
-            <ComponentPreview paths={paths} borderTopWidth="1px" />
+            <ComponentPreview
+              paths={paths}
+              borderTopWidth="1px"
+              {...options?.container}
+            />
           </ResizableItem>
 
           {isCodePreviewOpen ? (

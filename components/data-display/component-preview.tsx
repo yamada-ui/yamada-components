@@ -15,6 +15,8 @@ export type ComponentPreviewProps = BoxProps & Pick<Component, "paths">
 
 export const ComponentPreview = memo(
   forwardRef<ComponentPreviewProps, "div">(({ paths, ...rest }, ref) => {
+    console.log(rest)
+
     const Component = dynamic(() => import(`/contents/${paths.component}`))
 
     const { loading, value } = useAsync(async () => {
