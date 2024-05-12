@@ -41,7 +41,7 @@ export const ComponentHeader = memo(
 
       return (
         <HStack ref={ref} py="3" px={{ base: "lg", md: "md" }} {...rest}>
-          <Heading fontSize="2xl">{metadata?.title ?? "Unknown"}</Heading>
+          <Heading fontSize="2xl">{metadata?.title ?? "Untitled"}</Heading>
 
           <Spacer />
 
