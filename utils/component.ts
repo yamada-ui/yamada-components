@@ -2,7 +2,11 @@ import { existsSync } from "fs"
 import { readdir, readFile } from "fs/promises"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
-import type { ComponentCategoryGroup, SharedMetadata } from "component"
+import type {
+  ComponentCategoryGroup,
+  ComponentMetadata,
+  SharedMetadata,
+} from "component"
 import { CONSTANT } from "constant"
 
 export const getComponentCategoryGroup =
@@ -23,9 +27,9 @@ export const getComponentCategoryGroup =
           if (name === "metadata.json") {
             try {
               const data = await readFile(slug, "utf-8")
-              const json = JSON.parse(data)
-              const metadata = (json[locale] ??
-                json[defaultLocale]) as SharedMetadata
+              const json = JSON.parse(data) as ComponentMetadata
+              const metadata: SharedMetadata =
+                json[locale] ?? json[defaultLocale]
 
               callback?.(metadata)
             } catch {}
@@ -89,12 +93,13 @@ const getMetadata = (dirPath: string) => async (locale: string) => {
 
   try {
     const data = await readFile(path.join(dirPath, "metadata.json"), "utf-8")
-    const json = JSON.parse(data)
+    const json = JSON.parse(data) as ComponentMetadata
     const metadata = (json[locale] ?? json[defaultLocale]) as SharedMetadata
+    const options = json.options ?? null
 
-    return metadata
+    return { metadata, options }
   } catch {
-    return {} as SharedMetadata
+    return { metadata: null, options: null }
   }
 }
 
@@ -114,7 +119,7 @@ export const getComponent = (slug: string) => async (locale: string) => {
 
     let fileNames = await readdir(dirPath)
 
-    const metadata = await getMetadata(dirPath)(locale)
+    const { metadata, options } = await getMetadata(dirPath)(locale)
     const hasTheme = existsSync(themePath)
     const hasConfig = existsSync(configPath)
 
@@ -143,6 +148,7 @@ export const getComponent = (slug: string) => async (locale: string) => {
       paths,
       components,
       metadata,
+      options,
     }
 
     return data
