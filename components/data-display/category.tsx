@@ -29,7 +29,7 @@ export const Category: FC = memo(() => {
 
       <VStack as="nav" gap="lg">
         {category.items?.map(({ name, ...rest }) => (
-          <ComponentCard key={name} {...rest} />
+          <ComponentCard key={name} {...{ name, ...rest }} />
         ))}
       </VStack>
     </>

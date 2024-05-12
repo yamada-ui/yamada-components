@@ -12,11 +12,10 @@ export const CopyButton = memo(
     return (
       <>
         <Tooltip
-          label="Copied!"
-          placement="left"
-          isOpen={hasCopied}
-          bg="success"
-          h="8"
+          label={hasCopied ? "Copied!" : "Copy the code"}
+          placement="top"
+          gutter={12}
+          {...(hasCopied ? { bg: "success", color: "white" } : {})}
           display="inline-flex"
           alignItems="center"
         >
@@ -24,18 +23,18 @@ export const CopyButton = memo(
             ref={ref}
             size="sm"
             aria-label="Copy the code"
-            variant="unstyled"
-            color={hasCopied ? "success" : "whiteAlpha.600"}
-            border="1px solid"
-            borderColor={hasCopied ? "success" : "whiteAlpha.600"}
-            bg={["neutral.800", "neutral.900"]}
-            _hover={{
-              color: hasCopied ? "success" : "whiteAlpha.800",
-              borderColor: hasCopied ? "success" : "whiteAlpha.800",
-            }}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
+            variant="ghost"
+            color={hasCopied ? "success" : "muted"}
+            fontSize="1em"
+            {...(hasCopied
+              ? {
+                  _hover: {
+                    color: "success",
+                    borderColor: "success",
+                    bg: "rgba(86, 92, 103, 0.12)",
+                  },
+                }
+              : {})}
             icon={hasCopied ? <Check /> : <Copy />}
             {...rest}
             onClick={onCopy}

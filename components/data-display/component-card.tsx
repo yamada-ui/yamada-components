@@ -5,6 +5,7 @@ import {
   Heading,
   HStack,
   Icon,
+  IconButton,
   noop,
   SegmentedControl,
   SegmentedControlButton,
@@ -12,24 +13,30 @@ import {
   VStack,
 } from "@yamada-ui/react"
 import type { StackProps } from "@yamada-ui/react"
-import { Code2, ExternalLink, Eye } from "lucide-react"
+import { Code2, Download, ExternalLink, Eye } from "lucide-react"
 import type { MutableRefObject, FC } from "react"
-import { memo, useRef, useState } from "react"
-import { ComponentCode } from "./component-code"
+import { memo, useMemo, useRef, useState } from "react"
+import { ComponentCodePreview } from "./component-code-preview"
 import { ComponentPreview } from "./component-preview"
 import type { Component } from "component"
 import { Github } from "components/media-and-icons"
 import { NextLinkIconButton } from "components/navigation"
 import { CONSTANT } from "constant"
+import { useDownload } from "hooks/use-download"
 
 type Mode = "preview" | "code"
 
-export type ComponentCardProps = StackProps & Omit<Component, "name">
+export type ComponentCardProps = StackProps & Component
 
 export const ComponentCard = memo(
   forwardRef<ComponentCardProps, "div">(
-    ({ metadata, slug, paths, components, ...rest }, ref) => {
+    ({ name, metadata, slug, paths, components, ...rest }, ref) => {
       const modeRef = useRef<(mode: Mode) => void>(noop)
+      const files = useMemo(
+        () => components.map(({ name, code }) => ({ path: name, data: code })),
+        [components],
+      )
+      const { onDownload } = useDownload({ folderName: name, files })
 
       return (
         <VStack
@@ -48,14 +55,25 @@ export const ComponentCard = memo(
             <Spacer />
 
             <HStack gap="sm">
-              <NextLinkIconButton
-                aria-label="Open component preview"
-                href={slug}
+              <IconButton
+                aria-label="Download the files"
                 variant="outline"
                 borderColor="border"
                 size="sm"
                 color="muted"
-                icon={<Icon as={ExternalLink} fontSize="1.2em" />}
+                icon={<Icon as={Download} fontSize="1.125em" />}
+                onClick={() => onDownload()}
+              />
+
+              <NextLinkIconButton
+                aria-label="Open component preview"
+                href={slug}
+                isExternal
+                variant="outline"
+                borderColor="border"
+                size="sm"
+                color="muted"
+                icon={<Icon as={ExternalLink} fontSize="1.125em" />}
               />
 
               <NextLinkIconButton
@@ -66,7 +84,7 @@ export const ComponentCard = memo(
                 borderColor="border"
                 size="sm"
                 color="muted"
-                icon={<Github />}
+                icon={<Github fontSize="0.875em" />}
               />
 
               <ViewModeControl modeRef={modeRef} />
@@ -128,7 +146,7 @@ const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
           paths={paths}
           display={mode === "preview" ? "block" : "none"}
         />
-        <ComponentCode
+        <ComponentCodePreview
           components={components}
           display={mode === "code" ? "flex" : "none"}
         />

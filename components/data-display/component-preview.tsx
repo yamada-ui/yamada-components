@@ -1,4 +1,11 @@
-import { Box, forwardRef, UIProvider, useAsync } from "@yamada-ui/react"
+import {
+  Box,
+  Center,
+  forwardRef,
+  Loading,
+  UIProvider,
+  useAsync,
+} from "@yamada-ui/react"
 import type { BoxProps, Dict, ThemeConfig } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import { memo } from "react"
@@ -10,7 +17,7 @@ export const ComponentPreview = memo(
   forwardRef<ComponentPreviewProps, "div">(({ paths, ...rest }, ref) => {
     const Component = dynamic(() => import(`/contents/${paths.component}`))
 
-    const { value } = useAsync(async () => {
+    const { loading, value } = useAsync(async () => {
       let theme: Dict
       let config: ThemeConfig
 
@@ -27,9 +34,15 @@ export const ComponentPreview = memo(
     })
 
     return (
-      <Box ref={ref} {...rest}>
+      <Box ref={ref} boxSize="full" {...rest}>
         <UIProvider {...value}>
-          <Component />
+          {!loading ? (
+            <Component />
+          ) : (
+            <Center boxSize="full">
+              <Loading size="6xl" />
+            </Center>
+          )}
         </UIProvider>
       </Box>
     )
