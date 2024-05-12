@@ -143,7 +143,6 @@ type ComponentCardBodyProps = Pick<
 const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
   ({ modeRef, paths, components, options }) => {
     const [mode, setMode] = useState<Mode>("preview")
-    const display = options?.container?.display ?? "block"
 
     assignRef(modeRef, setMode)
 
@@ -151,8 +150,8 @@ const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
       <>
         <ComponentPreview
           paths={paths}
-          {...options?.container}
-          display={mode === "preview" ? display : "none"}
+          containerProps={options?.container}
+          display={mode === "preview" ? "flex" : "none"}
         />
         <ComponentCodePreview
           components={components}

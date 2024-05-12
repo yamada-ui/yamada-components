@@ -70,7 +70,7 @@ export const ComponentBody = memo(
             <ComponentPreview
               paths={paths}
               borderTopWidth="1px"
-              {...options?.container}
+              containerProps={options?.container}
             />
           </ResizableItem>
 
