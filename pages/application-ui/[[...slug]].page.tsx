@@ -24,8 +24,8 @@ const Page: NextPageWithOptions<PageProps> = ({
     return (
       <ComponentProvider {...component}>
         <ComponentLayout
-          title={metadata.title}
-          description={metadata.description}
+          title={metadata?.title}
+          description={metadata?.description}
         />
       </ComponentProvider>
     )
