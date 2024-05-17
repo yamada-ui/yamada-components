@@ -1,14 +1,4 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  HStack,
-  IconButton,
-  Image,
-  Link,
-  Text,
-} from "@yamada-ui/react"
-import { Instagram, Twitter, Youtube } from "lucide-react"
+import { Box, Divider, Flex, HStack, Image, Link, Text } from "@yamada-ui/react"
 import type { FC } from "react"
 
 const links = [
@@ -34,22 +24,16 @@ const FooterCentered: FC = () => {
         alignItems="center"
         flexDirection={{ base: "row", md: "column" }}
         gap={{ base: "initial", md: "sm" }}
-        p="md"
+        py="lg"
+        px="md"
+        maxW="6xl"
+        mx="auto"
       >
         <HStack gap="sm">
           <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
           <Text fontSize="lg">Yamada UI</Text>
         </HStack>
         <Flex gap="md">{items}</Flex>
-        <Flex gap="xs">
-          <IconButton variant="ghost" borderRadius="full" icon={<Twitter />} />
-          <IconButton variant="ghost" borderRadius="full" icon={<Youtube />} />
-          <IconButton
-            variant="ghost"
-            borderRadius="full"
-            icon={<Instagram />}
-          />
-        </Flex>
       </Flex>
     </Box>
   )
