@@ -38,10 +38,12 @@
       }
     },
     "category-group": {
-      "back-to": "すべてのカテゴリグループに戻る"
+      "back-to": "すべてのカテゴリグループに戻る",
+      "count": "`count`個のカテゴリー"
     },
     "category": {
-      "back-to": "すべてのカテゴリに戻る"
+      "back-to": "すべてのカテゴリに戻る",
+      "count": "`count`個のコンポーネント"
     },
     "footer": {
       "description": "このアプリケーションは、`Hirotomo Yamada`と`愉快な仲間たち`によって開発されました。"

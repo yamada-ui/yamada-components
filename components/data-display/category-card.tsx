@@ -9,6 +9,7 @@ import type { LinkBoxProps, TextProps } from "@yamada-ui/react"
 import Link from "next/link"
 import { memo } from "react"
 import type { ComponentCategoryGroup } from "component"
+import { useI18n } from "contexts/i18n-context"
 
 export type CategoryCardProps = LinkBoxProps &
   Pick<ComponentCategoryGroup, "title" | "items" | "slug"> & {
@@ -18,6 +19,7 @@ export type CategoryCardProps = LinkBoxProps &
 export const CategoryCard = memo(
   forwardRef<CategoryCardProps, "article">(
     ({ title, slug, items, headingProps, ...rest }, ref) => {
+      const { tc } = useI18n()
       return (
         <LinkBox
           ref={ref}
@@ -33,7 +35,11 @@ export const CategoryCard = memo(
             </Text>
 
             <Text color="muted" fontSize="sm">
-              {items.length} components
+              {tc("component.category.count", (str) => (
+                <Text as="span" key={str}>
+                  {str === "count" ? items?.length ?? 0 : str}
+                </Text>
+              ))}
             </Text>
           </VStack>
 
