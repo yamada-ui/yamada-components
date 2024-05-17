@@ -24,7 +24,7 @@ export const Category: FC = memo(() => {
           {category.title}
         </Heading>
 
-        <Text color="muted">{category.items?.length ?? 0} categories</Text>
+        <Text color="muted">{category.items?.length ?? 0} components</Text>
       </HStack>
 
       <VStack as="nav" gap="lg">
