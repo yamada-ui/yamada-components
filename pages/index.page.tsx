@@ -12,7 +12,7 @@ export const getStaticProps = getStaticCommonProps
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
 const Page: NextPage<PageProps> = ({ componentTree }) => {
-  const { t, tc } = useI18n()
+  const { t } = useI18n()
 
   return (
     <AppProvider {...{ componentTree }}>
@@ -36,11 +36,7 @@ const Page: NextPage<PageProps> = ({ componentTree }) => {
               </Link>
 
               <Text color="muted">
-                {tc("component.category-group.count", (str) => (
-                  <Text as="span" key={str}>
-                    {str === "count" ? items?.length ?? 0 : str}
-                  </Text>
-                ))}
+                {t("component.category-group.count", items?.length ?? 0)}
               </Text>
             </HStack>
 
