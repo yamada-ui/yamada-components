@@ -4,6 +4,8 @@ import {
   isString,
   Text,
   noop,
+  isObject,
+  isUndefined,
 } from "@yamada-ui/react"
 import { useRouter } from "next/router"
 import {
@@ -26,7 +28,11 @@ const contentData = { ja: [], en: [] }
 
 type I18nContext = {
   locale: Locale
-  t: (path: Path<UIData>) => string
+  t: (
+    path: Path<UIData> | StringLiteral,
+    replaceValue?: string | number | Record<string, string | number>,
+    pattern?: string,
+  ) => string
   tc: (
     path: Path<UIData>,
     callback?: (str: string, index: number) => JSX.Element,
@@ -58,7 +64,30 @@ export const I18nProvider: FC<I18nProviderProps> = ({ children }) => {
   )
 
   const t = useCallback(
-    (path: Path<UIData>) => get<string>(uiData[locale], path, ""),
+    (
+      path: Path<UIData> | StringLiteral,
+      replaceValue?: string | number | Record<string, string | number>,
+      pattern: string = "label",
+    ) => {
+      let value = get<string>(uiData[locale], path, "")
+
+      if (isUndefined(replaceValue)) return value
+
+      if (!isObject(replaceValue)) {
+        value = value.replace(
+          new RegExp(`{${pattern}}`, "g"),
+          `${replaceValue}`,
+        )
+      } else {
+        value = Object.entries(replaceValue).reduce(
+          (prev, [pattern, value]) =>
+            prev.replace(new RegExp(`{${pattern}}`, "g"), `${value}`),
+          value,
+        )
+      }
+
+      return value
+    },
     [locale],
   )
 
