@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "404 page",
+    "description": "This is a 404 page."
+  },
+  "ja": {
+    "title": "404ページ",
+    "description": "このページは404ページです。"
+  },
+  "options": {
+    "container": {
+      "p": "xl",
+      "bg": "link.500"
+    }
+  }
+}
