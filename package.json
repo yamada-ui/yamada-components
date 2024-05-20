@@ -16,7 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check --cache .",
     "format:write": "prettier --write --cache .",
-    "quality": "pnpm format:check && pnpm lint && pnpm typecheck",
+    "observe:pr": "tsx scripts/observe-pull-requests",
     "clean": "rimraf .next",
     "clean:all": "rimraf .next node_modules"
   },
@@ -46,6 +46,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.5.0",
     "@commitlint/config-conventional": "^18.5.0",
+    "@octokit/request-error": "^6.1.1",
     "@octokit/rest": "^20.0.2",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",
