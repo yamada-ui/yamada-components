@@ -16,7 +16,6 @@ type PullRequestMap = { [key: number]: PullRequest }
 
 const COMMON_PARAMS = { owner: "yamada-ui", repo: "yamada-components" }
 const OMIT_GITHUB_IDS = [
-  // "hirotomoyamada",
   "koralle",
   "108yen",
   "setodeve",
@@ -24,6 +23,7 @@ const OMIT_GITHUB_IDS = [
   "komura-c",
   "imaimai17468",
   "suzukisan22",
+  "hirotomoyamada",
   "hajimemat",
 ]
 const DISCORD_USER_MAP: Record<string, string> = {
