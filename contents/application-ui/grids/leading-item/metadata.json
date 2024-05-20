@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Grid with Leading Item",
+    "description": "A responsive grid layout with a leading item that changes arrangement based on screen size."
+  },
+  "ja": {
+    "title": "リーディングアイテム付きグリッド",
+    "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

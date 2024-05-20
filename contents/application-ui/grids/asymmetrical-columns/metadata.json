@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Grid with Asymmetrical Columns",
+    "description": "A responsive grid layout featuring asymmetrical columns, ideal for dynamic and modern web design."
+  },
+  "ja": {
+    "title": "非対称な列を持つグリッド",
+    "description": "ダイナミックでモダンなウェブデザインに最適な、非対称な列を特徴とするレスポンシブグリッドレイアウト。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
