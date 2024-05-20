@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Comment",
+    "description": "A card component displaying a user's avatar, username, timestamp, and comment text."
+  },
+  "ja": {
+    "title": "コメント",
+    "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、コメントテキストを表示するカードコンポーネント。"
+  }
+}
