@@ -1,11 +1,11 @@
 {
   "en": {
-    "title": "404 page",
-    "description": "This is a 404 page."
+    "title": "500 page",
+    "description": "This is a 500 page."
   },
   "ja": {
-    "title": "404ページ",
-    "description": "このページは404ページです。"
+    "title": "500ページ",
+    "description": "このページは500ページです。"
   },
   "options": {
     "container": {
