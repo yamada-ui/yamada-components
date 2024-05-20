@@ -10,6 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
+    "gen:category-group": "plop category-group",
+    "gen:category": "plop category",
     "gen:component": "plop component",
     "format": "prettier --write .",
     "format:check": "prettier --check --cache .",
