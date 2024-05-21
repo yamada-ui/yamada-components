@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "FAQ with Image",
+    "description": "This is an FAQ component with an image."
+  },
+  "ja": {
+    "title": "画像付き FAQ",
+    "description": "これは画像付きの FAQ コンポーネントです。"
+  }
+}
