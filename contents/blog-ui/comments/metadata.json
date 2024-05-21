@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Comments",
+    "description": "This is a component that can be used in comment sections."
+  },
+  "ja": {
+    "title": "コメント",
+    "description": "コメントセクションで使用できるコンポーネントです。"
+  }
+}
