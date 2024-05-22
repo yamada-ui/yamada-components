@@ -3,13 +3,13 @@ import fs from "fs"
 const upperCase = (t) => t.charAt(0).toUpperCase() + t.slice(1)
 const camelCase = (t) => t.replace(/[-_](\w)/g, (_, c) => c.toUpperCase())
 
-const categoryGroup = fs
+const categoryGroups = fs
   .readdirSync("./contents")
   .filter((r) => !r.includes("."))
 
-const category = {}
-categoryGroup.forEach((r) => {
-  category[r] = fs
+const categories = {}
+categoryGroups.forEach((r) => {
+  categories[r] = fs
     .readdirSync(`./contents/${r}`)
     .filter((rr) => !rr.includes("."))
 })
@@ -24,17 +24,9 @@ export default function plop(
     description: "Generates a category group",
     prompts: [
       {
-        type: "list",
-        name: "categoryGroupName",
-        message: "Which categoryGroup does this component belong to?:",
-        default: categoryGroup[0],
-        choices: [...categoryGroup, "none"],
-      },
-      {
         type: "input",
         name: "newCategoryGroupName",
         message: "Enter category group name:",
-        when: (answers) => answers.categoryGroupName === "none",
       },
     ],
 
@@ -44,12 +36,15 @@ export default function plop(
       if (!answers) return result
 
       const { newCategoryGroupName } = answers
+      const exist = categoryGroups.includes(newCategoryGroupName)
+      if (exist) {
+        console.log(`${newCategoryGroupName} already exist`)
+        return result
+      }
 
       result.push({
         type: "add",
-        path: newCategoryGroupName
-          ? `./contents/{{newCategoryGroupName}}/metajson.ts`
-          : `./contents/{{categoryGroupName}}/metadata.json`,
+        path: `./contents/{{newCategoryGroupName}}/metajson.ts`,
         templateFile: "plop/component/metadata.json.hbs",
       })
 
@@ -64,8 +59,8 @@ export default function plop(
         type: "list",
         name: "categoryGroupName",
         message: "Which categoryGroup does this component belong to?:",
-        default: categoryGroup[0],
-        choices: [...categoryGroup, "none"],
+        default: categoryGroups[0],
+        choices: [...categoryGroups, "none"],
       },
       {
         type: "input",
@@ -74,17 +69,9 @@ export default function plop(
         when: (answers) => answers.categoryGroupName === "none",
       },
       {
-        type: "list",
-        name: "category",
-        message: "Which category does this component belong to?:",
-        default: categoryGroup[0],
-        choices: [...categoryGroup, "none"],
-      },
-      {
         type: "input",
         name: "newCategoryName",
         message: "Enter category name:",
-        when: (answers) => answers.categoryName === "none",
       },
     ],
 
@@ -93,7 +80,15 @@ export default function plop(
 
       if (!answers) return result
 
-      const { newCategoryGroupName, newCategoryName } = answers
+      const { categoryGroupName, newCategoryGroupName, newCategoryName } =
+        answers
+
+      const exist = categories[categoryGroupName].includes(newCategoryName)
+
+      if (categoryGroupName !== "none" && exist) {
+        console.log(`${categoryGroupName}/${newCategoryName} already exist`)
+        return result
+      }
 
       let path =
         "./contents/{{dashCase categoryGroupName}}/{{dashCase categoryName}}/metadata.json"
@@ -127,8 +122,8 @@ export default function plop(
         type: "list",
         name: "categoryGroupName",
         message: "Which categoryGroup does this component belong to?:",
-        default: categoryGroup[0],
-        choices: [...categoryGroup, "none"],
+        default: categoryGroups[0],
+        choices: [...categoryGroups, "none"],
       },
       {
         type: "input",
@@ -140,15 +135,12 @@ export default function plop(
         type: "list",
         name: "categoryName",
         message: "Which category does this component belong to?:",
-        default: category[0],
+        default: categories[0],
         when: (answers) => answers.categoryGroupName !== "none",
-        choices: (answers) => category[answers.categoryGroupName],
-      },
-      {
-        type: "input",
-        name: "newCategoryName",
-        message: "Enter category name:",
-        when: (answers) => answers.categoryName === "none",
+        choices: (answers) => [
+          ...categories[answers.categoryGroupName],
+          "none",
+        ],
       },
       {
         type: "input",
