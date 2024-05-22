@@ -1,18 +1,15 @@
-import fs from "fs"
+import { readdirSync } from "fs"
 
 const upperCase = (t) => t.charAt(0).toUpperCase() + t.slice(1)
 const camelCase = (t) => t.replace(/[-_](\w)/g, (_, c) => c.toUpperCase())
 
-const categoryGroups = fs
-  .readdirSync("./contents")
-  .filter((r) => !r.includes("."))
+const categoryGroups = readdirSync("./contents").filter((r) => !r.includes("."))
 
-const categories = {}
-categoryGroups.forEach((r) => {
-  categories[r] = fs
-    .readdirSync(`./contents/${r}`)
-    .filter((rr) => !rr.includes("."))
-})
+const categories = categoryGroups.reduce((p, n) => {
+  p[n] = readdirSync(`./contents/${n}`).filter((r) => !r.includes("."))
+
+  return p
+}, {})
 
 export default function plop(
   /** @type {import('plop').NodePlopAPI} */
@@ -27,28 +24,34 @@ export default function plop(
         type: "input",
         name: "newCategoryGroupName",
         message: "Enter category group name:",
+        validate: (input) => {
+          if (!input) return "category group name is required."
+
+          if (categoryGroups.includes(input)) return `${input} already exist.`
+
+          return true
+        },
       },
     ],
 
     actions: (answers) => {
-      const result = []
+      const actions = []
 
-      if (!answers) return result
+      if (!answers) return actions
 
-      const { newCategoryGroupName } = answers
-      const exist = categoryGroups.includes(newCategoryGroupName)
-      if (exist) {
-        console.log(`${newCategoryGroupName} already exist`)
-        return result
-      }
-
-      result.push({
+      actions.push({
         type: "add",
-        path: `./contents/{{newCategoryGroupName}}/metajson.ts`,
-        templateFile: "plop/component/metadata.json.hbs",
+        path: `./contents/{{dashCase newCategoryGroupName}}/metadata.json`,
+        templateFile: "plop/category-group/metadata.json.hbs",
       })
 
-      return result
+      actions.push({
+        type: "add",
+        path: `./pages/{{dashCase newCategoryGroupName}}/[[...slug]].page.tsx`,
+        templateFile: "plop/pages/[[...slug]].page.tsx.hbs",
+      })
+
+      return actions
     },
   })
 
@@ -60,35 +63,44 @@ export default function plop(
         name: "categoryGroupName",
         message: "Which categoryGroup does this component belong to?:",
         default: categoryGroups[0],
-        choices: [...categoryGroups, "none"],
+        choices: [...categoryGroups, "Create new category group."],
       },
       {
         type: "input",
         name: "newCategoryGroupName",
         message: "Enter category group name:",
-        when: (answers) => answers.categoryGroupName === "none",
+        when: ({ categoryGroupName }) =>
+          categoryGroupName === "Create new category group.",
+        validate: (input) => {
+          if (!input) return "category group name is required."
+
+          if (categoryGroups.includes(input)) return `${input} already exist.`
+
+          return true
+        },
       },
       {
         type: "input",
         name: "newCategoryName",
         message: "Enter category name:",
+        validate: (input, { newCategoryGroupName, categoryGroupName }) => {
+          if (!input) return "category name is required."
+
+          const category = categories[newCategoryGroupName ?? categoryGroupName]
+
+          if (category?.includes(input)) return `${input} already exist.`
+
+          return true
+        },
       },
     ],
 
     actions: (answers) => {
-      const result = []
+      const actions = []
 
-      if (!answers) return result
+      if (!answers) return actions
 
-      const { categoryGroupName, newCategoryGroupName, newCategoryName } =
-        answers
-
-      const exist = categories[categoryGroupName].includes(newCategoryName)
-
-      if (categoryGroupName !== "none" && exist) {
-        console.log(`${categoryGroupName}/${newCategoryName} already exist`)
-        return result
-      }
+      const { newCategoryGroupName, newCategoryName } = answers
 
       let path =
         "./contents/{{dashCase categoryGroupName}}/{{dashCase categoryName}}/metadata.json"
@@ -105,13 +117,27 @@ export default function plop(
         path = `./contents/{{dashCase categoryGroupName}}/{{dashCase newCategoryName}}/metadata.json`
       }
 
-      result.push({
+      if (newCategoryGroupName) {
+        actions.push({
+          type: "add",
+          path: `./contents/{{dashCase newCategoryGroupName}}/metadata.json`,
+          templateFile: "plop/category-group/metadata.json.hbs",
+        })
+
+        actions.push({
+          type: "add",
+          path: `./pages/{{dashCase newCategoryGroupName}}/[[...slug]].page.tsx`,
+          templateFile: "plop/pages/[[...slug]].page.tsx.hbs",
+        })
+      }
+
+      actions.push({
         type: "add",
         path,
-        templateFile: "plop/component/metadata.json.hbs",
+        templateFile: "plop/category/metadata.json.hbs",
       })
 
-      return result
+      return actions
     },
   })
 
@@ -123,30 +149,50 @@ export default function plop(
         name: "categoryGroupName",
         message: "Which categoryGroup does this component belong to?:",
         default: categoryGroups[0],
-        choices: [...categoryGroups, "none"],
+        choices: [...categoryGroups, "Create new category group."],
       },
       {
         type: "input",
         name: "newCategoryGroupName",
         message: "Enter category group name:",
-        when: (answers) => answers.categoryGroupName === "none",
+        when: ({ categoryGroupName }) =>
+          categoryGroupName === "Create new category group.",
+        validate: (input) => {
+          if (!input) return "category group name is required."
+
+          if (categoryGroups.includes(input)) return `${input} already exist.`
+
+          return true
+        },
       },
       {
         type: "list",
         name: "categoryName",
         message: "Which category does this component belong to?:",
         default: categories[0],
-        when: (answers) => answers.categoryGroupName !== "none",
-        choices: (answers) => [
-          ...categories[answers.categoryGroupName],
-          "none",
+        when: ({ categoryGroupName }) =>
+          categoryGroupName !== "Create new category group.",
+        choices: ({ categoryGroupName }) => [
+          ...categories[categoryGroupName],
+          "Create new category.",
         ],
       },
       {
         type: "input",
         name: "newCategoryName",
         message: "Enter category name:",
-        when: (answers) => answers.categoryName === "none",
+        when: ({ categoryGroupName, categoryName }) =>
+          categoryGroupName === "Create new category group." ||
+          categoryName === "Create new category.",
+        validate: (input, { newCategoryGroupName, categoryGroupName }) => {
+          if (!input) return "category name is required."
+
+          const category = categories[newCategoryGroupName ?? categoryGroupName]
+
+          if (category?.includes(input)) return `${input} already exist.`
+
+          return true
+        },
       },
       {
         type: "input",
@@ -156,23 +202,23 @@ export default function plop(
       {
         type: "list",
         name: "theme",
-        message: "Does this component need a theme?",
-        default: "Yes",
+        message: "Does this component need a theme?:",
+        default: "No",
         choices: ["Yes", "No"],
       },
       {
         type: "list",
         name: "config",
-        message: "Does this component need a config?",
-        default: "Yes",
+        message: "Does this component need a config?:",
+        default: "No",
         choices: ["Yes", "No"],
       },
     ],
 
     actions: (answers) => {
-      const result = []
+      const actions = []
 
-      if (!answers) return result
+      if (!answers) return actions
 
       const { theme, config, newCategoryGroupName, newCategoryName } = answers
 
@@ -190,7 +236,29 @@ export default function plop(
         destination = `./contents/{{dashCase categoryGroupName}}/{{dashCase newCategoryName}}/{{dashCase componentName}}`
       }
 
-      result.push({
+      if (newCategoryGroupName) {
+        actions.push({
+          type: "add",
+          path: `./contents/{{dashCase newCategoryGroupName}}/metadata.json`,
+          templateFile: "plop/category-group/metadata.json.hbs",
+        })
+
+        actions.push({
+          type: "add",
+          path: `./pages/{{dashCase newCategoryGroupName}}/[[...slug]].page.tsx`,
+          templateFile: "plop/pages/[[...slug]].page.tsx.hbs",
+        })
+      }
+
+      if (newCategoryName) {
+        actions.push({
+          type: "add",
+          path: `./contents/{{dashCase newCategoryGroupName}}/{{dashCase newCategoryName}}/metadata.json`,
+          templateFile: "plop/category/metadata.json.hbs",
+        })
+      }
+
+      actions.push({
         type: "addMany",
         templateFiles: "plop/component/**",
         destination,
@@ -199,26 +267,26 @@ export default function plop(
       })
 
       if (theme === "Yes") {
-        result.push({
+        actions.push({
           type: "addMany",
-          templateFiles: "plop/addition/theme.ts.hbs",
+          templateFiles: "plop/optional/theme.ts.hbs",
           destination,
-          base: "plop/addition",
+          base: "plop/optional",
           abortOnFail: true,
         })
       }
 
       if (config === "Yes") {
-        result.push({
+        actions.push({
           type: "addMany",
-          templateFiles: "plop/addition/config.ts.hbs",
+          templateFiles: "plop/optional/config.ts.hbs",
           destination,
-          base: "plop/addition",
+          base: "plop/optional",
           abortOnFail: true,
         })
       }
 
-      return result
+      return actions
     },
   })
 }
