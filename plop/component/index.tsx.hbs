@@ -1,20 +1,7 @@
-import type { UsageTheme } from "@yamada-ui/react"
-import { extendTheme } from "@yamada-ui/react"
-import type { CFC } from "react"
-import type { ComponentMetadata } from "types"
+import type { FC } from "react"
 
-const {{upperCase componentName}}: CFC = () => {
-    return <div></div>
+const {{upperCase componentName}}: FC = () => { 
+  return <div></div>
 }
-
-export const theme: UsageTheme = extendTheme({
-  semantics: {
-  },
-})()
 
 export default {{upperCase componentName}}
-
-export const metadata: ComponentMetadata = {
-  title: "",
-  description: "",
-}
