@@ -1,10 +1,11 @@
-import type { InferGetStaticPropsType, NextPage } from "next"
+import type { InferGetStaticPropsType, NextPageWithConfig } from "next"
 import { Category, CategoryGroup } from "components/data-display"
 import { AppProvider } from "contexts/app-context"
 import { ComponentProvider } from "contexts/component-context"
 import { AppLayout } from "layouts/app-layout"
 import { ComponentLayout } from "layouts/component-layout"
 import { getStaticComponentPaths, getStaticComponentProps } from "utils/next"
+import { getComponentConfig } from "utils/ui"
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -12,7 +13,7 @@ export const getStaticPaths = getStaticComponentPaths("blog-ui")
 
 export const getStaticProps = getStaticComponentProps("blog-ui")
 
-const Page: NextPage<PageProps> = ({
+const Page: NextPageWithConfig<PageProps> = ({
   categoryGroup,
   category,
   component,
@@ -45,3 +46,5 @@ const Page: NextPage<PageProps> = ({
 }
 
 export default Page
+
+Page.config = getComponentConfig

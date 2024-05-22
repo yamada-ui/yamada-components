@@ -7,7 +7,7 @@ import {
   merge,
   runIfFunc,
 } from "@yamada-ui/react"
-import type { AppPropsWithOptions } from "next/app"
+import type { AppPropsWithConfig } from "next/app"
 import { Inter } from "next/font/google"
 import Head from "next/head"
 import { type FC } from "react"
@@ -21,7 +21,7 @@ const inter = Inter({
   display: "block",
 })
 
-const App: FC<AppPropsWithOptions> = ({ Component, pageProps, router }) => {
+const App: FC<AppPropsWithConfig> = ({ Component, pageProps, router }) => {
   const { cookies } = pageProps
   const colorModeManager = createColorModeManager("ssr", cookies)
   const themeSchemeManager = createThemeSchemeManager("ssr", cookies)
