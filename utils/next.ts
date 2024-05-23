@@ -64,8 +64,8 @@ export const getStaticComponentProps =
         ({ name }) => name === paths.at(-1),
       )
 
-      const items: Component[] | undefined = await Promise.all(
-        _category.items?.map(({ slug }) => getComponent(slug)(locale)),
+      const items: Component[] = await Promise.all(
+        _category.items?.map(({ slug }) => getComponent(slug)(locale)) ?? [],
       )
 
       const category: ComponentCategory = { ..._category, items }

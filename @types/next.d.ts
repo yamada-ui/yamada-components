@@ -1,9 +1,9 @@
 import type { ThemeConfig } from "@yamada-ui/react"
-import type { NextPage, NextPageWithOptions } from "next"
+import type { NextPage, NextPageWithConfig } from "next"
 import type { AppProps } from "next/app"
 
 declare module "next" {
-  type NextPageWithOptions<Props = any, InitialProps = Props> = NextPage<
+  type NextPageWithConfig<Props = any, InitialProps = Props> = NextPage<
     Props,
     InitialProps
   > & {
@@ -12,7 +12,7 @@ declare module "next" {
 }
 
 declare module "next/app" {
-  type AppPropsWithOptions<Props = any> = Omit<AppProps<Props>, "Component"> & {
-    Component: NextPageWithOptions<P>
+  type AppPropsWithConfig<Props = any> = Omit<AppProps<Props>, "Component"> & {
+    Component: NextPageWithConfig<P>
   }
 }
