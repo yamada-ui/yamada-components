@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "500 page",
+    "description": "This is a 500 page."
+  },
+  "ja": {
+    "title": "500ページ",
+    "description": "このページは500ページです。"
+  },
+  "options": {
+    "container": {
+      "p": "xl",
+      "bg": "link.500"
+    }
+  }
+}

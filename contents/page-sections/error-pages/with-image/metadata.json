@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "404 page with image",
+    "description": "This is a 404 page with image."
+  },
+  "ja": {
+    "title": "画像付きの404ページ",
+    "description": "これは画像付きの404ページです。"
+  },
+  "options": {
+    "container": {
+      "p": "xl"
+    }
+  }
+}
