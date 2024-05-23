@@ -10,7 +10,7 @@ export type CategoryProps = {}
 
 export const Category: FC = memo(() => {
   const { categoryGroup, category } = useApp()
-  const { t, tc } = useI18n()
+  const { t } = useI18n()
 
   return (
     <>
@@ -25,11 +25,7 @@ export const Category: FC = memo(() => {
         </Heading>
 
         <Text color="muted">
-          {tc("component.category.count", (str) => (
-            <Text as="span" key={str}>
-              {str === "count" ? category.items?.length ?? 0 : str}
-            </Text>
-          ))}
+          {t("component.category.count", category.items?.length ?? 0)}
         </Text>
       </HStack>
 

@@ -19,7 +19,8 @@ export type CategoryCardProps = LinkBoxProps &
 export const CategoryCard = memo(
   forwardRef<CategoryCardProps, "article">(
     ({ title, slug, items, headingProps, ...rest }, ref) => {
-      const { tc } = useI18n()
+      const { t } = useI18n()
+
       return (
         <LinkBox
           ref={ref}
@@ -35,11 +36,7 @@ export const CategoryCard = memo(
             </Text>
 
             <Text color="muted" fontSize="sm">
-              {tc("component.category.count", (str) => (
-                <Text as="span" key={str}>
-                  {str === "count" ? items?.length ?? 0 : str}
-                </Text>
-              ))}
+              {t("component.category.count", items?.length ?? 0)}
             </Text>
           </VStack>
 
