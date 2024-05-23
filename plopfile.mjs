@@ -2,11 +2,12 @@ import { readdirSync } from "fs"
 
 const upperCase = (t) => t.charAt(0).toUpperCase() + t.slice(1)
 const camelCase = (t) => t.replace(/[-_](\w)/g, (_, c) => c.toUpperCase())
+const validateDashCase = (i) => !/[A-Z]/.test(i) && !/_/.test(i)
 
-const categoryGroups = readdirSync("./contents").filter((r) => !r.includes("."))
+const categoryGroups = readdirSync("./contents").filter((n) => !n.includes("."))
 
 const categories = categoryGroups.reduce((p, n) => {
-  p[n] = readdirSync(`./contents/${n}`).filter((r) => !r.includes("."))
+  p[n] = readdirSync(`./contents/${n}`).filter((n) => !n.includes("."))
 
   return p
 }, {})
@@ -26,6 +27,9 @@ export default function plop(
         message: "Enter category group name:",
         validate: (input) => {
           if (!input) return "category group name is required."
+
+          if (!validateDashCase(input))
+            return `Please enter the category group name in kebab case.`
 
           if (categoryGroups.includes(input)) return `${input} already exist.`
 
@@ -74,6 +78,9 @@ export default function plop(
         validate: (input) => {
           if (!input) return "category group name is required."
 
+          if (!validateDashCase(input))
+            return `Please enter the category group name in kebab case.`
+
           if (categoryGroups.includes(input)) return `${input} already exist.`
 
           return true
@@ -85,6 +92,9 @@ export default function plop(
         message: "Enter category name:",
         validate: (input, { newCategoryGroupName, categoryGroupName }) => {
           if (!input) return "category name is required."
+
+          if (!validateDashCase(input))
+            return `Please enter the category name in kebab case.`
 
           const category = categories[newCategoryGroupName ?? categoryGroupName]
 
@@ -160,6 +170,9 @@ export default function plop(
         validate: (input) => {
           if (!input) return "category group name is required."
 
+          if (!validateDashCase(input))
+            return `Please enter the category group name in kebab case.`
+
           if (categoryGroups.includes(input)) return `${input} already exist.`
 
           return true
@@ -187,6 +200,9 @@ export default function plop(
         validate: (input, { newCategoryGroupName, categoryGroupName }) => {
           if (!input) return "category name is required."
 
+          if (!validateDashCase(input))
+            return `Please enter the category name in kebab case.`
+
           const category = categories[newCategoryGroupName ?? categoryGroupName]
 
           if (category?.includes(input)) return `${input} already exist.`
@@ -198,6 +214,18 @@ export default function plop(
         type: "input",
         name: "componentName",
         message: "Enter component name:",
+        validate: (input, { newCategoryGroupName, categoryGroupName }) => {
+          if (!input) return "component name is required."
+
+          if (!validateDashCase(input))
+            return `Please enter the component name in kebab case.`
+
+          const category = categories[newCategoryGroupName ?? categoryGroupName]
+
+          if (category?.includes(input)) return `${input} already exist.`
+
+          return true
+        },
       },
       {
         type: "list",
@@ -253,7 +281,7 @@ export default function plop(
       if (newCategoryName) {
         actions.push({
           type: "add",
-          path: `./contents/{{dashCase newCategoryGroupName}}/{{dashCase newCategoryName}}/metadata.json`,
+          path: `./contents/{{dashCase ${newCategoryGroupName ? `newCategoryGroupName` : `categoryGroupName`}}}/{{dashCase newCategoryName}}/metadata.json`,
           templateFile: "plop/category/metadata.json.hbs",
         })
       }
