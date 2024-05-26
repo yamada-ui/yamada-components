@@ -30,10 +30,11 @@ cd yamada-components
 - **`pnpm dev`**: ローカルサーバーを起動します。
 - **`pnpm build`**: サイトを構築します。
 - **`pnpm lint`**: コードの問題をチェックします。
-
-<!--
-TODO: plop,theme,configの設定を記載する
--->
+- **`pnpm gen:category-group`**: コンポーネントのカテゴリグループを作成します。
+- **`pnpm gen:category`**: コンポーネントのカテゴリを作成します。
+- **`pnpm gen:component`**: コンポーネントのフォーマットを作成します。作成する過程で`theme`と`config`が必要か問われます。それぞれの詳細は下記を覧ください。
+  - [`theme`について](https://yamada-ui.com/ja/styled-system/theming)
+  - [`config`について](https://yamada-ui.com/ja/styled-system/configure)
 
 ## プルリクエストを作成する
 
