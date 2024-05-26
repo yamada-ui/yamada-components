@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Dropzone image preview",
+    "description": "This is a Dropzone with image preview."
+  },
+  "ja": {
+    "title": "画像プレビュー付きのドロップゾーン",
+    "description": "これは画像プレビュー付きのドロップゾーンです。"
+  }
+}
