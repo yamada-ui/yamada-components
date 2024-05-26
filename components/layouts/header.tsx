@@ -41,7 +41,7 @@ import {
   Hamburger,
   Translate,
 } from "components/media-and-icons"
-import { NextLinkIconButton } from "components/navigation"
+import { NextLinkIconButton, Tree } from "components/navigation"
 import { CONSTANT } from "constant"
 import { useI18n } from "contexts/i18n-context"
 
@@ -256,6 +256,7 @@ const MobileMenu: FC<MobileMenuProps> = memo(({ isOpen, onClose }) => {
       onClose={onClose}
       withCloseButton={false}
       isFullHeight
+      w="19.5rem"
     >
       <DrawerHeader
         justifyContent="flex-end"
@@ -267,11 +268,9 @@ const MobileMenu: FC<MobileMenuProps> = memo(({ isOpen, onClose }) => {
       </DrawerHeader>
 
       <DrawerBody position="relative" my="sm">
-        <VStack
-          as="nav"
-          overflowY="scroll"
-          overscrollBehavior="contain"
-        ></VStack>
+        <VStack as="nav" overflowY="scroll" overscrollBehavior="contain">
+          <Tree py="sm" />
+        </VStack>
 
         <Box
           position="absolute"

@@ -11,6 +11,10 @@
     "back-to-app": "Back to App"
   },
   "component": {
+    "tree": {
+      "yamada-ui": "Yamada UI",
+      "yamada-colors": "カラージェネレーター"
+    },
     "component-preview": {
       "label": "Editable example",
       "tab": {
@@ -48,14 +52,5 @@
     "footer": {
       "description": "Built by `Hirotomo Yamada` and `these awesome people`"
     }
-  },
-  "categories": {
-    "title": "Yamada Components",
-    "description": "",
-    "heading": "Categories: "
-  },
-  "components": {
-    "title": "Yamada Components",
-    "description": ""
   }
 }
