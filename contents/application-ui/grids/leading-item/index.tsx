@@ -3,17 +3,22 @@ import { Grid, GridItem } from "@yamada-ui/react"
 const LeadingItem = () => {
   return (
     <Grid
-      templateAreas={{
-        base: `
+      templateAreas={`
         "one one two two"
         "one one three four"
-      `,
-        sm: `
-        "one one"
-        "two two"
-        "three four"
-        `,
-      }}
+      `}
+      _container={[
+        {
+          maxW: "480px",
+          css: {
+            gridTemplateAreas: `
+              "one one"
+              "two two"
+              "three four"
+            `,
+          },
+        },
+      ]}
       gap="md"
       maxW="4xl"
       mx="auto"

@@ -4,22 +4,27 @@ const GridAsymmetrical = () => {
   return (
     <Grid
       gap="md"
-      templateAreas={{
-        base: `
+      templateAreas={`
         "one one two two two"
         "three three three four four"
         "five six seven seven seven"
-      `,
-        sm: `
-        "one"
-        "two"
-        "three"
-        "four"
-        "five"
-        "six"
-        "seven"
-      `,
-      }}
+      `}
+      _container={[
+        {
+          maxW: "480px",
+          css: {
+            gridTemplateAreas: `
+              "one"
+              "two"
+              "three"
+              "four"
+              "five"
+              "six"
+              "seven"
+            `,
+          },
+        },
+      ]}
       maxW="4xl"
       mx="auto"
     >
