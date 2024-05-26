@@ -23,26 +23,37 @@ const Page: NextPage<PageProps> = ({ componentTree }) => {
       >
         {componentTree.map(({ title, name, slug, items }) => (
           <VStack key={name} as="section">
-            <HStack as="header" alignItems="end">
+            <HStack
+              as="header"
+              flexDirection={{ base: "row", sm: "column" }}
+              alignItems={{ base: "end", sm: "stretch" }}
+              gap={{ base: "md", sm: "0" }}
+            >
               <Link href={slug}>
                 <Heading
                   as="h2"
                   size="lg"
                   fontWeight="semibold"
                   lineHeight="shorter"
+                  lineClamp={1}
                 >
                   {title}
                 </Heading>
               </Link>
 
-              <Text color="muted">
+              <Text color="muted" whiteSpace="nowrap">
                 {t("component.category-group.count", items?.length ?? 0)}
               </Text>
             </HStack>
 
             <Grid
               as="nav"
-              templateColumns={{ base: "repeat(4, 1fr)" }}
+              templateColumns={{
+                base: "repeat(4, 1fr)",
+                lg: "repeat(3, 1fr)",
+                md: "repeat(2, 1fr)",
+                sm: "repeat(1, 1fr)",
+              }}
               gap="md"
             >
               {items?.map(({ name, title, slug, items }) => (
