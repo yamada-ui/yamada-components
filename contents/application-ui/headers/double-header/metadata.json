@@ -1,11 +1,11 @@
 {
   "en": {
     "title": "Header with multiple layers",
-    "description": "Header with multiple layers"
+    "description": "This is a header with multiple layers."
   },
   "ja": {
     "title": "マルチレイヤーのヘッダー",
-    "description": "マルチレイヤーのヘッダー"
+    "description": "これはマルチレイヤーのヘッダーです。"
   },
   "options": {
     "container": {
