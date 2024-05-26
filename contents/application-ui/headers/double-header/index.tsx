@@ -5,8 +5,9 @@ import {
   Heading,
   IconButton,
   Link,
-  SegmentedControl,
-  SegmentedControlButton,
+  Tab,
+  TabList,
+  Tabs,
   VStack,
   useDisclosure,
 } from "@yamada-ui/react"
@@ -32,12 +33,13 @@ const DoubleHeader: FC = () => {
   const { isOpen, onToggle } = useDisclosure()
 
   const mainItems = mainLinks.map((item) => (
-    <SegmentedControlButton
+    <Tab
       as={Link}
       href={item.link}
       key={item.label}
       value={item.label}
-      w="fit-content"
+      // w="fit-content"
+      color={["black", "white"]}
       data-active={item.label === active || undefined}
       onClick={(event) => {
         event.preventDefault()
@@ -46,7 +48,7 @@ const DoubleHeader: FC = () => {
       _hover={{ textDecor: "none" }}
     >
       {item.label}
-    </SegmentedControlButton>
+    </Tab>
   ))
 
   const secondaryItems = userLinks.map((item) => (
@@ -54,6 +56,7 @@ const DoubleHeader: FC = () => {
       href={item.link}
       key={item.label}
       onClick={(event) => event.preventDefault()}
+      color={["black", "white"]}
       _hover={{ textDecor: "none" }}
     >
       {item.label}
@@ -61,7 +64,12 @@ const DoubleHeader: FC = () => {
   ))
 
   return (
-    <Box as="header">
+    <Box
+      as="header"
+      borderBottomWidth="1px"
+      borderBottomColor={["blackAlpha.500", "whiteAlpha.500"]}
+      borderBottomStyle="solid"
+    >
       <Container>
         <HStack justifyContent="space-between" containerType="inline-size">
           <Box flex={1}>
@@ -80,14 +88,9 @@ const DoubleHeader: FC = () => {
             _container={[{ maxW: "750px", css: { display: "none" } }]}
           >
             <HStack justify="flex-end">{secondaryItems}</HStack>
-            <SegmentedControl
-              gap={0}
-              as="nav"
-              justifyContent="flex-end"
-              value={active}
-            >
-              {mainItems}
-            </SegmentedControl>
+            <Tabs gap={0} as="nav">
+              <TabList justifyContent="center">{mainItems}</TabList>
+            </Tabs>
           </VStack>
           <IconButton
             title="Menu"
