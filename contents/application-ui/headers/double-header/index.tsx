@@ -40,6 +40,7 @@ const DoubleHeader: FC = () => {
         event.preventDefault()
         setActive(item.label)
       }}
+      _hover={{ textDecor: "none" }}
     >
       {item.label}
     </SegmentedControlButton>
@@ -50,19 +51,21 @@ const DoubleHeader: FC = () => {
       href={item.link}
       key={item.label}
       onClick={(event) => event.preventDefault()}
+      _hover={{ textDecor: "none" }}
     >
       {item.label}
     </Link>
   ))
 
   return (
-    <header>
+    <Box as="header">
       <Container>
         <HStack justifyContent="space-between" minW="715px">
           <Box flex={1}>
             <Heading
               size="lg"
               color="white"
+              as={Link}
               _hover={{ textDecor: "none" }}
               onClick={(e) => e.preventDefault()}
             >
@@ -82,7 +85,7 @@ const DoubleHeader: FC = () => {
           </VStack>
         </HStack>
       </Container>
-    </header>
+    </Box>
   )
 }
 

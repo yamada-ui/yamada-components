@@ -27,6 +27,7 @@ const HeaderSimple: FC = () => {
       href={link.link}
       value={link.label}
       data-active={active === link.link || undefined}
+      _hover={{ textDecor: "none" }}
       onClick={(event) => {
         event.preventDefault()
         setActive(link.label)
@@ -37,11 +38,12 @@ const HeaderSimple: FC = () => {
   ))
 
   return (
-    <header>
+    <Box as="header">
       <Container size="md">
         <HStack minW="517px">
           <Box flex={1}>
             <Heading
+              as={Link}
               size="lg"
               color="white"
               _hover={{ textDecor: "none" }}
@@ -55,7 +57,7 @@ const HeaderSimple: FC = () => {
           </SegmentedControl>
         </HStack>
       </Container>
-    </header>
+    </Box>
   )
 }
 
