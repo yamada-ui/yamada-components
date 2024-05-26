@@ -9,7 +9,8 @@
   },
   "options": {
     "container": {
-      "p": "xl"
+      "p": "xl",
+      "containerType": "inline-size"
     }
   }
 }
