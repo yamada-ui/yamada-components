@@ -1,11 +1,11 @@
 {
   "en": {
-    "title": "SimpleHeader",
-    "description": ""
+    "title": "Simple Header",
+    "description": "Simple Header"
   },
   "ja": {
-    "title": "シンプルヘッダー",
-    "description": ""
+    "title": "シンプル ヘッダー",
+    "description": "シンプルなヘッダー"
   },
   "options": {
     "container": {

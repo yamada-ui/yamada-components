@@ -1,10 +1,10 @@
 {
   "en": {
-    "title": "DoubleHeader",
+    "title": "Header with multiple layers",
     "description": "Header with multiple layers"
   },
   "ja": {
-    "title": "ダブルヘッダー",
+    "title": "マルチレイヤーのヘッダー",
     "description": "マルチレイヤーのヘッダー"
   },
   "options": {
