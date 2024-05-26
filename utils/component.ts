@@ -3,51 +3,60 @@ import { readdir, readFile } from "fs/promises"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
 import type {
+  CategoryGroupMetadata,
   ComponentCategoryGroup,
   ComponentMetadata,
   SharedMetadata,
 } from "component"
 import { CONSTANT } from "constant"
 
+type Metadata = SharedMetadata & { icon?: string | null }
+
 export const getComponentCategoryGroup =
-  (
-    targetPath: string = "contents",
-    callback?: (metadata: SharedMetadata) => void,
-  ) =>
-  async (locale: string): Promise<ComponentCategoryGroup[]> => {
+  (targetPath: string = "contents", callback?: (metadata: Metadata) => void) =>
+  async (
+    locale: string,
+    currentSlug?: string,
+  ): Promise<ComponentCategoryGroup[]> => {
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
     const dirents = await readdir(targetPath, { withFileTypes: true })
 
     const componentTree = await Promise.all(
       dirents.map(async (dirent) => {
         const name = toKebabCase(dirent.name)
-        const slug = path.join(dirent.path, name)
+        const targetPath = path.join(dirent.path, name)
 
         if (!dirent.isDirectory()) {
           if (name === "metadata.json") {
             try {
-              const data = await readFile(slug, "utf-8")
-              const json = JSON.parse(data) as ComponentMetadata
+              const data = await readFile(targetPath, "utf-8")
+              const json = JSON.parse(data) as CategoryGroupMetadata
               const metadata: SharedMetadata =
                 json[locale] ?? json[defaultLocale]
+              const icon = json.icon ?? null
 
-              callback?.(metadata)
+              callback?.({ ...metadata, icon })
             } catch {}
           }
 
           return
         }
 
-        let metadata: SharedMetadata | undefined = undefined
+        let metadata: Metadata | undefined = undefined
 
         const items = await getComponentCategoryGroup(
-          slug,
+          targetPath,
           (data) => (metadata = data),
-        )(locale)
+        )(locale, currentSlug)
+
+        const slug = targetPath.replace(/^contents\//, "/")
+        const isExpanded =
+          slug === currentSlug || items.some(({ slug }) => slug === currentSlug)
 
         return {
           name,
-          slug: slug.replace(/^contents\//, "/"),
+          slug,
+          isExpanded,
           ...(items.length ? { items } : {}),
           ...metadata,
         }
