@@ -17,13 +17,20 @@ const FooterCentered: FC = () => {
   ))
 
   return (
-    <Box pt="4xl">
+    <Box pt="4xl" containerType="inline-size">
       <Divider />
       <Flex
         justifyContent="space-between"
         alignItems="center"
-        flexDirection={{ base: "row", md: "column" }}
-        gap={{ base: "initial", md: "sm" }}
+        _container={[
+          {
+            maxW: "500px",
+            css: {
+              flexDirection: "column",
+              gap: "sm",
+            },
+          },
+        ]}
         py="lg"
         px="md"
         maxW="6xl"
