@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "SimpleHeader",
+    "description": ""
+  },
+  "ja": {
+    "title": "シンプルヘッダー",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

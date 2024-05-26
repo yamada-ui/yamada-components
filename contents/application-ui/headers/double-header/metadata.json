@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "DoubleHeader",
+    "description": "Header with multiple layers"
+  },
+  "ja": {
+    "title": "ダブルヘッダー",
+    "description": "マルチレイヤーのヘッダー"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
