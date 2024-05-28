@@ -117,7 +117,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
             color="muted"
             display={{
               base: "inline-flex",
-              lg: !isMobile ? "none" : undefined,
+              md: !isMobile ? "none" : undefined,
             }}
             icon={isVertical ? <LayoutVertical /> : <LayoutHorizontal />}
             onClick={handlerAll(
@@ -131,13 +131,13 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
           aria-label="Download the files"
           variant="ghost"
           color="muted"
-          display={{ base: "inline-flex", lg: !isMobile ? "none" : undefined }}
+          display={{ base: "inline-flex", md: !isMobile ? "none" : undefined }}
           icon={<Icon as={Download} fontSize="1.375em" />}
           onClick={() => onDownload()}
         />
 
         <ThemeSchemeButton
-          display={{ base: "inline-flex", lg: !isMobile ? "none" : undefined }}
+          display={{ base: "inline-flex", md: !isMobile ? "none" : undefined }}
         />
 
         <ColorModeButton />
@@ -145,7 +145,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
         <NextLinkIconButton
           href={`${CONSTANT.SNS.GITHUB.EDIT_URL}${slug}`}
           isExternal
-          display={{ base: "inline-flex", lg: !isMobile ? "none" : undefined }}
+          display={{ base: "inline-flex", md: !isMobile ? "none" : undefined }}
           aria-label="GitHub source code"
           variant="ghost"
           color="muted"
@@ -156,7 +156,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
           <IconButton
             variant="ghost"
             aria-label="Open navigation menu"
-            display={{ base: "none", lg: "inline-flex" }}
+            display={{ base: "none", md: "inline-flex" }}
             color="muted"
             onClick={onOpen}
             icon={<Hamburger />}
@@ -165,7 +165,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
           <CloseButton
             size="lg"
             aria-label="Close navigation menu"
-            display={{ base: "none", lg: "inline-flex" }}
+            display={{ base: "none", md: "inline-flex" }}
             color="muted"
             onClick={onClose}
           />
