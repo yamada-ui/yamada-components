@@ -13,7 +13,18 @@ import {
   useBoolean,
 } from "@yamada-ui/react"
 import type { IconProps, ListProps } from "@yamada-ui/react"
-import { GitPullRequestArrow, Tags } from "lucide-react"
+import {
+  GitPullRequestArrow,
+  Layers,
+  LayoutTemplate,
+  LineChart,
+  Navigation,
+  PanelsTopLeft,
+  Table,
+  Tags,
+  TextCursorInput,
+  TextIcon,
+} from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { memo, useEffect } from "react"
@@ -36,6 +47,8 @@ export const Tree = memo(
     const { componentTree } = useApp()
     const { t, locale } = useI18n()
     const { pathname } = useRouter()
+
+    console.log(componentTree)
 
     return (
       <List ref={ref} gap="sm" fontSize="sm" {...rest}>
@@ -77,6 +90,7 @@ const RecursiveListItem: FC<RecursiveListItemProps> = memo(
     const isChildExpanded = items.some(({ isExpanded }) => isExpanded)
     const isSelected = !isChildExpanded && isExpanded
     const hasItems = !!items.length
+    const isComponent = slug.split("/").length === 4
 
     return (
       <ListItem>
@@ -89,12 +103,12 @@ const RecursiveListItem: FC<RecursiveListItemProps> = memo(
             isSelected,
             isOpen,
             withToggleButton: hasItems,
-            isComponent: !hasItems,
+            isComponent,
             onToggle: toggle,
           }}
         />
 
-        {items.length ? (
+        {hasItems ? (
           <Collapse isOpen={isOpen} unmountOnExit>
             <List mt="sm" gap="sm" borderLeftWidth="1px" ml="3" pl="3">
               {items.map((doc) => (
@@ -239,6 +253,30 @@ const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
   switch (icon) {
     case "compass":
       return <Compass {...rest} />
+
+    case "panels-top-left":
+      return <Icon as={PanelsTopLeft} fontSize="1.5em" {...rest} />
+
+    case "text-cursor-input":
+      return <Icon as={TextCursorInput} fontSize="1.5em" {...rest} />
+
+    case "layout-template":
+      return <Icon as={LayoutTemplate} fontSize="1.5em" {...rest} />
+
+    case "line-chart":
+      return <Icon as={LineChart} fontSize="1.5em" {...rest} />
+
+    case "table":
+      return <Icon as={Table} fontSize="1.5em" {...rest} />
+
+    case "layers":
+      return <Icon as={Layers} fontSize="1.5em" {...rest} />
+
+    case "navigation":
+      return <Icon as={Navigation} fontSize="1.5em" {...rest} />
+
+    case "text":
+      return <Icon as={TextIcon} fontSize="1.5em" {...rest} />
 
     case "tags":
       return <Icon as={Tags} fontSize="1.5em" {...rest} />
