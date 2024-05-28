@@ -15,6 +15,8 @@ import { SEO } from "components/media-and-icons"
 import { CONSTANT } from "constant"
 import { getCookie, setCookie } from "utils/storage"
 
+export const MOBILE_BREAKPOINTS = ["md", "sm"]
+
 export type CodeDirection = ResizableProps["direction"]
 
 type ComponentLayoutOptions = {
@@ -70,7 +72,7 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
   )
 
   useEffect(() => {
-    if (!["md", "sm"].includes(breakpoint)) return
+    if (!MOBILE_BREAKPOINTS.includes(breakpoint)) return
 
     onCodeDirectionChange("vertical")
   }, [breakpoint, onCodeDirectionChange])
@@ -87,7 +89,7 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
 
     if (isOpen) codeControls.onOpen()
 
-    if (!["md", "sm"].includes(breakpoint)) {
+    if (!MOBILE_BREAKPOINTS.includes(breakpoint)) {
       const codeDirection = getCookie<CodeDirection>(
         document.cookie,
         CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_DIRECTION,
