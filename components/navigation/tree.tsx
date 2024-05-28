@@ -3,6 +3,7 @@ import {
   ChevronIcon,
   Collapse,
   HStack,
+  Icon,
   List,
   ListItem,
   Text,
@@ -11,6 +12,7 @@ import {
   useBoolean,
 } from "@yamada-ui/react"
 import type { IconProps, ListProps } from "@yamada-ui/react"
+import { GitPullRequestArrow, Tags } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { memo, useEffect } from "react"
@@ -236,6 +238,12 @@ const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
   switch (icon) {
     case "compass":
       return <Compass {...rest} />
+
+    case "tags":
+      return <Icon as={Tags} fontSize="1.5em" {...rest} />
+
+    case "git-pull-request-arrow":
+      return <Icon as={GitPullRequestArrow} fontSize="1.5em" {...rest} />
 
     case "yamada-ui":
       return <YamadaUI {...rest} />

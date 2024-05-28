@@ -13,6 +13,8 @@
   "component": {
     "tree": {
       "home": "ホーム",
+      "request": "コンポーネントをリクエストする",
+      "create": "コンポーネントを作る",
       "yamada-ui": "Yamada UI",
       "yamada-colors": "カラージェネレーター"
     },
