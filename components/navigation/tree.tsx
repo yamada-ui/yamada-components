@@ -9,6 +9,7 @@ import {
   Text,
   dataAttr,
   forwardRef,
+  isString,
   useBoolean,
 } from "@yamada-ui/react"
 import type { IconProps, ListProps } from "@yamada-ui/react"
@@ -33,7 +34,7 @@ export type TreeProps = ListProps
 export const Tree = memo(
   forwardRef<TreeProps, "div">(({ ...rest }, ref) => {
     const { componentTree } = useApp()
-    const { t } = useI18n()
+    const { t, locale } = useI18n()
     const { pathname } = useRouter()
 
     return (
@@ -53,7 +54,7 @@ export const Tree = memo(
           <ListItemLink
             key={name}
             icon={icon}
-            slug={href}
+            slug={isString(href) ? href : href[locale]}
             title={t(`component.tree.${name}`)}
             isExternal={isExternal}
           />
