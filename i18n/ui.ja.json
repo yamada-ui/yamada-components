@@ -11,6 +11,10 @@
     "back-to-app": "アプリにもどる"
   },
   "component": {
+    "authors": {
+      "description": "作者",
+      "unknown": "不明"
+    },
     "tree": {
       "home": "ホーム",
       "request": "コンポーネントをリクエストする",
