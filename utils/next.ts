@@ -47,7 +47,10 @@ export const getStaticComponentProps =
   }> => {
     const paths = toArray(params?.slug ?? [])
 
-    const componentTree = await getComponentCategoryGroup()(locale)
+    const componentTree = await getComponentCategoryGroup()(
+      locale,
+      `/${[categoryGroupName, ...paths].join("/")}`,
+    )
 
     const categoryGroup = componentTree.find(
       ({ name }) => name === categoryGroupName,

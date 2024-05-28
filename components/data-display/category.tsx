@@ -19,12 +19,23 @@ export const Category: FC = memo(() => {
         {t("component.category.back-to")}
       </NextLink>
 
-      <HStack as="header" alignItems="end">
-        <Heading as="h2" size="lg" fontWeight="semibold" lineHeight="shorter">
+      <HStack
+        as="header"
+        flexDirection={{ base: "row", sm: "column" }}
+        alignItems={{ base: "end", sm: "stretch" }}
+        gap={{ base: "md", sm: "0" }}
+      >
+        <Heading
+          as="h2"
+          size="lg"
+          fontWeight="semibold"
+          lineHeight="shorter"
+          lineClamp={1}
+        >
           {category.title}
         </Heading>
 
-        <Text color="muted">
+        <Text color="muted" whiteSpace="nowrap">
           {t("component.category.count", category.items?.length ?? 0)}
         </Text>
       </HStack>

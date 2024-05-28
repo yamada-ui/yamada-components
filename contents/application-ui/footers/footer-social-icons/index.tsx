@@ -12,13 +12,20 @@ import type { FC } from "react"
 
 const FooterCentered: FC = () => {
   return (
-    <Box pt="4xl">
+    <Box pt="4xl" containerType="inline-size">
       <Divider />
       <Flex
         justifyContent="space-between"
         alignItems="center"
-        flexDirection={{ base: "row", md: "column" }}
-        gap={{ base: "initial", md: "md" }}
+        _container={[
+          {
+            maxW: "300px",
+            css: {
+              flexDirection: "column",
+              gap: "sm",
+            },
+          },
+        ]}
         p="md"
         maxW="6xl"
         mx="auto"

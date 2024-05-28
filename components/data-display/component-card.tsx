@@ -9,10 +9,9 @@ import {
   noop,
   SegmentedControl,
   SegmentedControlButton,
-  Spacer,
   VStack,
 } from "@yamada-ui/react"
-import type { StackProps } from "@yamada-ui/react"
+import type { SegmentedControlProps, StackProps } from "@yamada-ui/react"
 import { Code2, Download, ExternalLink, Eye } from "lucide-react"
 import type { MutableRefObject, FC } from "react"
 import { memo, useMemo, useRef, useState } from "react"
@@ -47,19 +46,30 @@ export const ComponentCard = memo(
           gap="0"
           {...rest}
         >
-          <HStack as="header" px="md" py="sm" borderBottomWidth="1px">
-            <Heading as="h3" size="sm" fontWeight="semibold">
+          <HStack
+            as="header"
+            gap={{ base: "md", sm: "sm" }}
+            px="md"
+            py="sm"
+            borderBottomWidth="1px"
+          >
+            <Heading
+              as="h3"
+              size="sm"
+              fontWeight="semibold"
+              flex="1"
+              lineClamp={1}
+            >
               {metadata.title}
             </Heading>
-
-            <Spacer />
 
             <HStack gap="sm">
               <IconButton
                 aria-label="Download the files"
                 variant="outline"
-                borderColor="border"
                 size="sm"
+                display={{ base: "flex", sm: "none" }}
+                borderColor="border"
                 color="muted"
                 icon={<Icon as={Download} fontSize="1.125em" />}
                 onClick={() => onDownload()}
@@ -70,8 +80,8 @@ export const ComponentCard = memo(
                 href={slug}
                 isExternal
                 variant="outline"
-                borderColor="border"
                 size="sm"
+                borderColor="border"
                 color="muted"
                 icon={<Icon as={ExternalLink} fontSize="1.125em" />}
               />
@@ -81,13 +91,17 @@ export const ComponentCard = memo(
                 href={`${CONSTANT.SNS.GITHUB.EDIT_URL}${slug}`}
                 isExternal
                 variant="outline"
-                borderColor="border"
                 size="sm"
+                display={{ base: "flex", sm: "none" }}
+                borderColor="border"
                 color="muted"
                 icon={<Github fontSize="0.875em" />}
               />
 
-              <ViewModeControl modeRef={modeRef} />
+              <ViewModeControl
+                modeRef={modeRef}
+                display={{ base: "flex", sm: "none" }}
+              />
             </HStack>
           </HStack>
 
@@ -103,33 +117,36 @@ export const ComponentCard = memo(
 
 ComponentCard.displayName = "ComponentCard"
 
-type ViewModeControlProps = {
+type ViewModeControlProps = SegmentedControlProps & {
   modeRef: MutableRefObject<(mode: Mode) => void>
 }
 
-const ViewModeControl: FC<ViewModeControlProps> = memo(({ modeRef }) => {
-  return (
-    <SegmentedControl
-      size="sm"
-      defaultValue="preview"
-      onChange={(mode) => modeRef.current(mode as Mode)}
-    >
-      <SegmentedControlButton value="preview">
-        <Flex alignItems="center" gap="sm">
-          <Icon as={Eye} fontSize="1.25em" color="muted" />
-          Preview
-        </Flex>
-      </SegmentedControlButton>
+const ViewModeControl: FC<ViewModeControlProps> = memo(
+  ({ modeRef, ...rest }) => {
+    return (
+      <SegmentedControl
+        size="sm"
+        defaultValue="preview"
+        onChange={(mode) => modeRef.current(mode as Mode)}
+        {...rest}
+      >
+        <SegmentedControlButton value="preview">
+          <Flex alignItems="center" gap="sm">
+            <Icon as={Eye} fontSize="1.25em" color="muted" />
+            Preview
+          </Flex>
+        </SegmentedControlButton>
 
-      <SegmentedControlButton value="code">
-        <Flex alignItems="center" gap="sm">
-          <Icon as={Code2} fontSize="1.25em" color="muted" />
-          Code
-        </Flex>
-      </SegmentedControlButton>
-    </SegmentedControl>
-  )
-})
+        <SegmentedControlButton value="code">
+          <Flex alignItems="center" gap="sm">
+            <Icon as={Code2} fontSize="1.25em" color="muted" />
+            Code
+          </Flex>
+        </SegmentedControlButton>
+      </SegmentedControl>
+    )
+  },
+)
 
 ViewModeControl.displayName = "ViewModeControl"
 

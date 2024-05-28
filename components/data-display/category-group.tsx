@@ -19,12 +19,23 @@ export const CategoryGroup: FC = memo(() => {
         {t("component.category-group.back-to")}
       </NextLink>
 
-      <HStack as="header" alignItems="end">
-        <Heading as="h2" size="lg" fontWeight="semibold" lineHeight="shorter">
+      <HStack
+        as="header"
+        flexDirection={{ base: "row", sm: "column" }}
+        alignItems={{ base: "end", sm: "stretch" }}
+        gap={{ base: "md", sm: "0" }}
+      >
+        <Heading
+          as="h2"
+          size="lg"
+          fontWeight="semibold"
+          lineHeight="shorter"
+          lineClamp={1}
+        >
           {categoryGroup.title}
         </Heading>
 
-        <Text color="muted">
+        <Text color="muted" whiteSpace="nowrap">
           {t(
             "component.category-group.count",
             categoryGroup.items?.length ?? 0,
@@ -32,7 +43,16 @@ export const CategoryGroup: FC = memo(() => {
         </Text>
       </HStack>
 
-      <Grid as="nav" templateColumns={{ base: "repeat(4, 1fr)" }} gap="md">
+      <Grid
+        as="nav"
+        templateColumns={{
+          base: "repeat(4, 1fr)",
+          lg: "repeat(3, 1fr)",
+          md: "repeat(2, 1fr)",
+          sm: "repeat(1, 1fr)",
+        }}
+        gap="md"
+      >
         {categoryGroup.items?.map(({ name, title, slug, items }) => (
           <CategoryCard key={name} {...{ title, slug, items }} />
         ))}

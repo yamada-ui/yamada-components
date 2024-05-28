@@ -9,7 +9,8 @@
   },
   "options": {
     "container": {
-      "p": "md"
+      "p": "md",
+      "containerType": "inline-size"
     }
   }
 }
