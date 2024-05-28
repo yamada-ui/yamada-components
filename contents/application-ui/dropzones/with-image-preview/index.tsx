@@ -13,7 +13,7 @@ export const ImagePreviewDropzone: FC = () => {
   const { page } = useLoading()
   const handleAcceptedFile = async (files: File[] | undefined) => {
     if (files === undefined || files.length === 0) return
-    page.start({ message: "loading" })
+    page.start({ message: "Loading..." })
     setImageURL([])
     await new Promise((resolve) => setTimeout(resolve, 5000))
     for (let i = 0; i < files.length; i++) {
@@ -41,12 +41,7 @@ export const ImagePreviewDropzone: FC = () => {
         }}
       >
         {imageURL.map((url, index) => (
-          <CarouselSlide
-            key={index}
-            as={Center}
-            position="relative"
-            background="blackAlpha.100"
-          >
+          <CarouselSlide key={index} as={Center} position="relative">
             <Image
               src={url}
               w="full"

@@ -68,19 +68,37 @@ const FooterLinks: FC = () => {
   })
 
   return (
-    <Box bg={["white", "black"]}>
+    <Box bg={["white", "black"]} containerType="inline-size">
       <Divider mt="3xl" />
       <Box bg="blackAlpha.50">
         <VStack py="xl" px="md" maxW="6xl" mx="auto">
           <Flex
             justifyContent="space-between"
-            alignItems={{ base: "flex-start", md: "center" }}
-            flexDir={{ base: "row", md: "column" }}
-            gap={{ base: "initial", md: "sm" }}
+            alignItems="flex-start"
+            _container={[
+              {
+                maxW: "768px",
+                css: {
+                  flexDirection: "column",
+                  gap: "sm",
+                  alignItems: "center",
+                },
+              },
+            ]}
             py="md"
           >
             <VStack maxW="xs">
-              <HStack gap="sm" mx={{ base: "inherit", md: "auto" }}>
+              <HStack
+                gap="sm"
+                _container={[
+                  {
+                    maxW: "768px",
+                    css: {
+                      mx: "auto",
+                    },
+                  },
+                ]}
+              >
                 <Image
                   src="/favicon.svg"
                   width={30}
@@ -92,7 +110,15 @@ const FooterLinks: FC = () => {
               <Text
                 fontSize="sm"
                 color="GrayText"
-                textAlign={{ base: "left", md: "center" }}
+                textAlign="left"
+                _container={[
+                  {
+                    maxW: "768px",
+                    css: {
+                      textAlign: "center",
+                    },
+                  },
+                ]}
               >
                 Unleash the Power of Styling, Animation, and Flexibility in
                 React Apps
@@ -101,15 +127,31 @@ const FooterLinks: FC = () => {
             <SimpleGrid
               columns={3}
               px="md"
-              display={{ base: "grid", md: "none" }}
+              _container={[
+                {
+                  maxW: "768px",
+                  css: {
+                    display: "none",
+                  },
+                },
+              ]}
             >
               {groups}
             </SimpleGrid>
           </Flex>
           <Divider />
           <Flex
-            flexDir={{ base: "row", md: "column" }}
-            alignItems={{ base: "flex-start", md: "center" }}
+            flexDir="row"
+            alignItems="flex-start"
+            _container={[
+              {
+                maxW: "768px",
+                css: {
+                  flexDir: "column",
+                  alignItems: "center",
+                },
+              },
+            ]}
             py="md"
           >
             <Text color="GrayText" fontSize="sm">

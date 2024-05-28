@@ -6,13 +6,16 @@ import {
   runIfFunc,
   useLoading,
   useUpdateEffect,
+  useBreakpoint,
 } from "@yamada-ui/react"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import type { SetStateAction, FC } from "react"
 import { ComponentBody, ComponentHeader } from "components/layouts"
 import { SEO } from "components/media-and-icons"
 import { CONSTANT } from "constant"
 import { getCookie, setCookie } from "utils/storage"
+
+export const MOBILE_BREAKPOINTS = ["md", "sm"]
 
 export type CodeDirection = ResizableProps["direction"]
 
@@ -43,6 +46,7 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
   const codeControls = useDisclosure()
   const [codeDirection, setCodeDirection] = useState<CodeDirection>("vertical")
   const [, isMounted] = useIsMounted({ rerender: true })
+  const breakpoint = useBreakpoint()
   const isCodePreviewOpen = codeControls.isOpen
 
   const onCodePreviewOpen = useCallback(() => {
@@ -67,24 +71,33 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
     [],
   )
 
+  useEffect(() => {
+    if (!MOBILE_BREAKPOINTS.includes(breakpoint)) return
+
+    onCodeDirectionChange("vertical")
+  }, [breakpoint, onCodeDirectionChange])
+
   useUpdateEffect(() => {
     if (!isMounted) return
 
-    const codeDirection = getCookie<CodeDirection>(
-      document.cookie,
-      CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_DIRECTION,
-      "vertical",
-    )
-
-    const strIsOpen = getCookie<string>(
-      document.cookie,
-      CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_IS_OPEN,
-      "false",
-    )
-    const isOpen = strIsOpen === "true"
+    const isOpen =
+      getCookie<string>(
+        document.cookie,
+        CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_IS_OPEN,
+        "false",
+      ) === "true"
 
     if (isOpen) codeControls.onOpen()
-    setCodeDirection(codeDirection)
+
+    if (!MOBILE_BREAKPOINTS.includes(breakpoint)) {
+      const codeDirection = getCookie<CodeDirection>(
+        document.cookie,
+        CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_DIRECTION,
+        "vertical",
+      )
+
+      setCodeDirection(codeDirection)
+    }
 
     screen.finish()
   }, [isMounted])

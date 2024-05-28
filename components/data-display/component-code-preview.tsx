@@ -81,6 +81,7 @@ export const ComponentCodePreview = memo(
                   aria-label="Change code preview direction"
                   size="sm"
                   variant="ghost"
+                  display={{ base: "inline-flex", md: "none" }}
                   color="muted"
                   fontSize="0.8em"
                   icon={isVertical ? <LayoutHorizontal /> : <LayoutVertical />}
