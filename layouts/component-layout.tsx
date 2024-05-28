@@ -6,8 +6,9 @@ import {
   runIfFunc,
   useLoading,
   useUpdateEffect,
+  useBreakpoint,
 } from "@yamada-ui/react"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import type { SetStateAction, FC } from "react"
 import { ComponentBody, ComponentHeader } from "components/layouts"
 import { SEO } from "components/media-and-icons"
@@ -43,6 +44,7 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
   const codeControls = useDisclosure()
   const [codeDirection, setCodeDirection] = useState<CodeDirection>("vertical")
   const [, isMounted] = useIsMounted({ rerender: true })
+  const breakpoint = useBreakpoint()
   const isCodePreviewOpen = codeControls.isOpen
 
   const onCodePreviewOpen = useCallback(() => {
@@ -67,14 +69,14 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
     [],
   )
 
+  useEffect(() => {
+    if (!["md", "sm"].includes(breakpoint)) return
+
+    onCodeDirectionChange("vertical")
+  }, [breakpoint, onCodeDirectionChange])
+
   useUpdateEffect(() => {
     if (!isMounted) return
-
-    const codeDirection = getCookie<CodeDirection>(
-      document.cookie,
-      CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_DIRECTION,
-      "vertical",
-    )
 
     const isOpen =
       getCookie<string>(
@@ -85,7 +87,15 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
 
     if (isOpen) codeControls.onOpen()
 
-    setCodeDirection(codeDirection)
+    if (!["md", "sm"].includes(breakpoint)) {
+      const codeDirection = getCookie<CodeDirection>(
+        document.cookie,
+        CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_DIRECTION,
+        "vertical",
+      )
+
+      setCodeDirection(codeDirection)
+    }
 
     screen.finish()
   }, [isMounted])
