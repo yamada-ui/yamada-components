@@ -1,10 +1,36 @@
 {
-  "en": {
-    "title": "Application UI",
-    "description": ""
-  },
-  "ja": {
-    "title": "アプリケーション UI",
-    "description": ""
-  }
+  "en": { "title": "Application UI", "description": "" },
+  "ja": { "title": "アプリケーション UI", "description": "" },
+  "authors": [
+    {
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion"
+    },
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    },
+    {
+      "id": 63556889,
+      "login": "nakayan5",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63556889?v=4",
+      "html_url": "https://github.com/nakayan5"
+    },
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    },
+    {
+      "id": 85816730,
+      "login": "KenyaMasuko",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85816730?v=4",
+      "html_url": "https://github.com/KenyaMasuko"
+    }
+  ]
 }
