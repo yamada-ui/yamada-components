@@ -16,7 +16,6 @@ import {
   MenuList,
   MenuOptionGroup,
   MenuOptionItem,
-  Spacer,
   forwardRef,
   mergeRefs,
   useBreakpointValue,
@@ -84,11 +83,11 @@ export const Header = memo(
               _focus={{ outline: "none" }}
               _focusVisible={{ boxShadow: "outline" }}
               rounded="md"
+              flex="1"
+              lineClamp={1}
             >
               <Heading fontSize="2xl">Yamada Components</Heading>
             </Box>
-
-            <Spacer />
 
             <Search
               display={{ base: "flex", md: "none" }}
