@@ -15,7 +15,7 @@ import Link from "next/link"
 import { memo, useEffect } from "react"
 import type { FC } from "react"
 import type { ComponentCategoryGroup } from "component"
-import { Brush, YamadaUI } from "components/media-and-icons"
+import { Brush, ExternalLink, YamadaUI } from "components/media-and-icons"
 import { CONSTANT } from "constant"
 import { useApp } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
@@ -59,7 +59,7 @@ const RecursiveListItem: FC<RecursiveListItemProps> = memo(
 
     const isChildExpanded = items.some(({ isExpanded }) => isExpanded)
     const isSelected = !isChildExpanded && isExpanded
-    const withToggleButton = !!items.length
+    const hasItems = !!items.length
 
     return (
       <ListItem>
@@ -71,7 +71,8 @@ const RecursiveListItem: FC<RecursiveListItemProps> = memo(
             isNested,
             isSelected,
             isOpen,
-            withToggleButton,
+            withToggleButton: hasItems,
+            isComponent: !hasItems,
             onToggle: toggle,
           }}
         />
@@ -98,6 +99,7 @@ type ListItemLinkProps = Pick<
   "title" | "slug" | "isNested" | "icon"
 > & {
   isSelected?: boolean
+  isComponent?: boolean
   isOpen?: boolean
   withToggleButton?: boolean
   onToggle?: () => void
@@ -112,10 +114,13 @@ const ListItemLink: FC<ListItemLinkProps> = memo(
     isNested,
     isOpen,
     isSelected,
+    isComponent,
     withToggleButton,
     onToggle,
     isExternal,
   }) => {
+    isExternal ??= isComponent
+
     return (
       <HStack
         data-selected={dataAttr(isSelected)}
@@ -176,9 +181,11 @@ const ListItemLink: FC<ListItemLinkProps> = memo(
         >
           <ListItemIcon icon={icon} color="muted" me="sm" />
 
-          <Text as="span" lineClamp={1}>
+          <Text as="span" flex="1" lineClamp={1}>
             {title}
           </Text>
+
+          {isComponent ? <ExternalLink fontSize="1.25em" /> : null}
         </Text>
 
         {withToggleButton ? (
