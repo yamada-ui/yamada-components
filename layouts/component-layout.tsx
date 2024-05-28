@@ -76,14 +76,15 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
       "vertical",
     )
 
-    const strIsOpen = getCookie<string>(
-      document.cookie,
-      CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_IS_OPEN,
-      "false",
-    )
-    const isOpen = strIsOpen === "true"
+    const isOpen =
+      getCookie<string>(
+        document.cookie,
+        CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_IS_OPEN,
+        "false",
+      ) === "true"
 
     if (isOpen) codeControls.onOpen()
+
     setCodeDirection(codeDirection)
 
     screen.finish()
