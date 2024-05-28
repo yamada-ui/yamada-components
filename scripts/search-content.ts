@@ -131,7 +131,7 @@ const generateSearchContent: p.RequiredRunner =
     await writeFile(outPath, data)
 
     s.stop(`Wrote files`)
-    p.note("Generated search contents")
+    p.note(outPath, "Generated search contents")
   }
 
 program.action(async () => {
