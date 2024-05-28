@@ -51,7 +51,12 @@ export const getComponentCategoryGroup =
 
         const slug = targetPath.replace(/^contents\//, "/")
         const isExpanded =
-          slug === currentSlug || items.some(({ slug }) => slug === currentSlug)
+          slug === currentSlug ||
+          items.some(
+            ({ slug, items }) =>
+              slug === currentSlug ||
+              items?.some(({ slug }) => slug === currentSlug),
+          )
 
         return {
           name,
