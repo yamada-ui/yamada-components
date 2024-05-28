@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Authentication with title",
+    "description": "This is an authentication form that includes a title."
+  },
+  "ja": {
+    "title": "タイトル付き認証",
+    "description": "これはタイトルを含む認証フォームです。"
+  },
+  "options": {
+    "container": {
+      "py": "lg",
+      "containerType": "inline-size",
+      "bg": ["blackAlpha.100", "blackAlpha.500"]
+    }
+  }
+}
