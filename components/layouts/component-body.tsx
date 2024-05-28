@@ -3,14 +3,22 @@ import {
   Resizable,
   ResizableItem,
   ResizableTrigger,
+  useBreakpoint,
 } from "@yamada-ui/react"
-import type { ResizableProps, ResizableStorage } from "@yamada-ui/react"
+import type {
+  ResizableItemControl,
+  ResizableProps,
+  ResizableStorage,
+} from "@yamada-ui/react"
 import type { SetStateAction } from "react"
-import { memo, useMemo } from "react"
+import { memo, useEffect, useMemo, useRef } from "react"
 import { ComponentCodePreview, ComponentPreview } from "components/data-display"
 import { CONSTANT } from "constant"
 import { useComponent } from "contexts/component-context"
-import type { CodeDirection } from "layouts/component-layout"
+import {
+  MOBILE_BREAKPOINTS,
+  type CodeDirection,
+} from "layouts/component-layout"
 
 export type ComponentBodyProps = ResizableProps & {
   codeDirection: CodeDirection
@@ -31,7 +39,9 @@ export const ComponentBody = memo(
       },
       ref,
     ) => {
+      const controlRef = useRef<ResizableItemControl>(null)
       const { paths, components, options } = useComponent()
+      const breakpoint = useBreakpoint()
 
       const storage: ResizableStorage = useMemo(
         () => ({
@@ -49,6 +59,13 @@ export const ComponentBody = memo(
         [],
       )
 
+      useEffect(() => {
+        if (!MOBILE_BREAKPOINTS.includes(breakpoint)) return
+
+        if (controlRef.current) controlRef.current.resize(100)
+      }, [breakpoint])
+
+      const isMobile = MOBILE_BREAKPOINTS.includes(breakpoint)
       const isVertical = codeDirection === "vertical"
 
       return (
@@ -63,7 +80,7 @@ export const ComponentBody = memo(
           <ResizableItem
             id="preview"
             order={1}
-            defaultSize={isCodePreviewOpen ? 70 : 100}
+            defaultSize={isCodePreviewOpen ? (isMobile ? 0 : 70) : 100}
             overflow="auto"
             h="full"
           >
@@ -77,16 +94,18 @@ export const ComponentBody = memo(
           {isCodePreviewOpen ? (
             <>
               <ResizableTrigger
-                _active={{ bg: "focus" }}
-                _hover={{ bg: "focus" }}
+                _active={!isMobile ? { bg: "focus" } : undefined}
+                _hover={!isMobile ? { bg: "focus" } : undefined}
                 transitionProperty="background"
                 transitionDuration="normal"
+                isDisabled={isMobile}
               />
 
               <ResizableItem
                 id="code"
+                controlRef={controlRef}
                 order={2}
-                defaultSize={30}
+                defaultSize={isMobile ? 100 : 30}
                 minW="xs"
                 minH="xs"
                 overflow="auto"

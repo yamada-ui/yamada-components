@@ -33,6 +33,8 @@ declare module "component" {
   type ComponentCategoryGroup = Partial<SharedMetadata> & {
     name: string
     slug: string
+    isExpanded: boolean
+    icon?: string | null
     items?: ComponentCategoryGroup[]
   }
 
@@ -55,5 +57,7 @@ declare module "component" {
 
   type CategoryMetadata = LocaleMetadata<SharedMetadata>
 
-  type CategoryGroupMetadata = LocaleMetadata<SharedMetadata>
+  type CategoryGroupMetadata = LocaleMetadata<SharedMetadata> & {
+    icon?: string | null
+  }
 }

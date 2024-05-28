@@ -23,12 +23,14 @@ const Page: NextPageWithConfig<PageProps> = ({
     const { metadata } = component
 
     return (
-      <ComponentProvider {...component}>
-        <ComponentLayout
-          title={metadata.title}
-          description={metadata.description}
-        />
-      </ComponentProvider>
+      <AppProvider {...{ componentTree }}>
+        <ComponentProvider {...component}>
+          <ComponentLayout
+            title={metadata.title}
+            description={metadata.description}
+          />
+        </ComponentProvider>
+      </AppProvider>
     )
   }
 

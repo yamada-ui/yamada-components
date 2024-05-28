@@ -1,6 +1,5 @@
 import type {
   CenterProps,
-  DrawerProps,
   IconButtonProps,
   MenuProps,
   UseDisclosureReturn,
@@ -9,9 +8,6 @@ import {
   Box,
   Center,
   CloseButton,
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
   HStack,
   Heading,
   IconButton,
@@ -20,20 +16,16 @@ import {
   MenuList,
   MenuOptionGroup,
   MenuOptionItem,
-  Spacer,
-  VStack,
   forwardRef,
   mergeRefs,
-  useBreakpoint,
   useBreakpointValue,
   useDisclosure,
   useMotionValueEvent,
   useScroll,
 } from "@yamada-ui/react"
 import Link from "next/link"
-import { useRouter } from "next/router"
 import type { FC } from "react"
-import { memo, useEffect, useRef, useState } from "react"
+import { memo, useRef, useState } from "react"
 import { ColorModeButton, Search, ThemeSchemeButton } from "components/forms"
 import {
   Discord,
@@ -41,7 +33,8 @@ import {
   Hamburger,
   Translate,
 } from "components/media-and-icons"
-import { NextLinkIconButton } from "components/navigation"
+import { NextLinkIconButton, Tree } from "components/navigation"
+import { MobileMenu } from "components/overlay"
 import { CONSTANT } from "constant"
 import { useI18n } from "contexts/i18n-context"
 
@@ -90,11 +83,11 @@ export const Header = memo(
               _focus={{ outline: "none" }}
               _focusVisible={{ boxShadow: "outline" }}
               rounded="md"
+              flex="1"
+              lineClamp={1}
             >
               <Heading fontSize="2xl">Yamada Components</Heading>
             </Box>
-
-            <Spacer />
 
             <Search
               display={{ base: "flex", md: "none" }}
@@ -105,7 +98,13 @@ export const Header = memo(
           </HStack>
         </Center>
 
-        <MobileMenu isOpen={isOpen} onClose={onClose} />
+        <MobileMenu
+          isOpen={isOpen}
+          onClose={onClose}
+          header={<ButtonGroup isMobile {...{ isOpen, onClose }} />}
+        >
+          <Tree py="sm" />
+        </MobileMenu>
       </>
     )
   }),
@@ -231,77 +230,3 @@ const I18nButton: FC<I18nButtonProps> = memo(({ menuProps, ...rest }) => {
 })
 
 I18nButton.displayName = "I18nButton"
-
-type MobileMenuProps = DrawerProps
-
-const MobileMenu: FC<MobileMenuProps> = memo(({ isOpen, onClose }) => {
-  const { events } = useRouter()
-  const breakpoint = useBreakpoint()
-
-  useEffect(() => {
-    if (!["lg", "md", "sm"].includes(breakpoint)) onClose()
-  }, [breakpoint, onClose])
-
-  useEffect(() => {
-    events.on("routeChangeComplete", onClose)
-
-    return () => {
-      events.off("routeChangeComplete", onClose)
-    }
-  }, [events, onClose])
-
-  return (
-    <Drawer
-      isOpen={isOpen}
-      onClose={onClose}
-      withCloseButton={false}
-      isFullHeight
-    >
-      <DrawerHeader
-        justifyContent="flex-end"
-        pt="sm"
-        fontSize="md"
-        fontWeight="normal"
-      >
-        <ButtonGroup isMobile {...{ isOpen, onClose }} />
-      </DrawerHeader>
-
-      <DrawerBody position="relative" my="sm">
-        <VStack
-          as="nav"
-          overflowY="scroll"
-          overscrollBehavior="contain"
-        ></VStack>
-
-        <Box
-          position="absolute"
-          top="0"
-          left="0"
-          right="0"
-          zIndex="kurillin"
-          w="full"
-          h="3"
-          bgGradient={[
-            "linear(to-t, rgba(255, 255, 255, 0), white)",
-            "linear(to-t, rgba(0, 0, 0, 0), black)",
-          ]}
-        />
-        <Box
-          position="absolute"
-          bottom="0"
-          left="0"
-          right="0"
-          zIndex="kurillin"
-          w="full"
-          h="3"
-          bgGradient={[
-            "linear(to-b, rgba(255, 255, 255, 0), white)",
-            "linear(to-b, rgba(0, 0, 0, 0), black)",
-          ]}
-        />
-      </DrawerBody>
-    </Drawer>
-  )
-})
-
-MobileMenu.displayName = "MobileMenu"

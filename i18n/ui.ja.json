@@ -11,6 +11,13 @@
     "back-to-app": "アプリにもどる"
   },
   "component": {
+    "tree": {
+      "home": "ホーム",
+      "request": "コンポーネントをリクエストする",
+      "create": "コンポーネントを作る",
+      "yamada-ui": "Yamada UI",
+      "yamada-colors": "カラージェネレーター"
+    },
     "component-preview": {
       "label": "編集可能な例",
       "tab": {
@@ -48,14 +55,5 @@
     "footer": {
       "description": "このアプリケーションは、`Hirotomo Yamada`と`愉快な仲間たち`によって開発されました。"
     }
-  },
-  "categories": {
-    "title": "Yamada Components",
-    "description": "",
-    "heading": "カテゴリー："
-  },
-  "components": {
-    "title": "Yamada Components",
-    "description": ""
   }
 }
