@@ -12,10 +12,16 @@ import {
 } from "@yamada-ui/react"
 import type { IconProps, ListProps } from "@yamada-ui/react"
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { memo, useEffect } from "react"
 import type { FC } from "react"
 import type { ComponentCategoryGroup } from "component"
-import { Brush, ExternalLink, YamadaUI } from "components/media-and-icons"
+import {
+  Brush,
+  Compass,
+  ExternalLink,
+  YamadaUI,
+} from "components/media-and-icons"
 import { CONSTANT } from "constant"
 import { useApp } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
@@ -26,9 +32,17 @@ export const Tree = memo(
   forwardRef<TreeProps, "div">(({ ...rest }, ref) => {
     const { componentTree } = useApp()
     const { t } = useI18n()
+    const { pathname } = useRouter()
 
     return (
       <List ref={ref} gap="sm" fontSize="sm" {...rest}>
+        <ListItemLink
+          isSelected={pathname === "/"}
+          icon="compass"
+          slug="/"
+          title={t("component.tree.home")}
+        />
+
         {componentTree.map((document) => (
           <RecursiveListItem key={document.slug} {...document} />
         ))}
@@ -220,6 +234,9 @@ type ListItemIconProps = { icon?: string } & IconProps
 
 const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
   switch (icon) {
+    case "compass":
+      return <Compass {...rest} />
+
     case "yamada-ui":
       return <YamadaUI {...rest} />
 

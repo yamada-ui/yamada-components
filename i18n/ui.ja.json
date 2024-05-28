@@ -12,8 +12,9 @@
   },
   "component": {
     "tree": {
+      "home": "ホーム",
       "yamada-ui": "Yamada UI",
-      "yamada-colors": "Colors generator"
+      "yamada-colors": "カラージェネレーター"
     },
     "component-preview": {
       "label": "編集可能な例",
