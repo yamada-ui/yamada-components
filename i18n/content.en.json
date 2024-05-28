@@ -1,0 +1,357 @@
+[
+  {
+    "title": "Copy to clipboard button",
+    "description": "This is a button that copies the text to the clipboard",
+    "type": "component",
+    "slug": "/application-ui/buttons/copy-button/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "buttons",
+      "component": "copy-button"
+    }
+  },
+  {
+    "title": "Buttons",
+    "description": "",
+    "type": "category",
+    "slug": "/application-ui/buttons/",
+    "labels": [],
+    "hierarchy": { "category-group": "application-ui", "category": "buttons" }
+  },
+  {
+    "title": "Footer with Centered links",
+    "description": "This is Footer with Centered links",
+    "type": "component",
+    "slug": "/application-ui/footers/footer-centerd/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "footers",
+      "component": "footer-centerd"
+    }
+  },
+  {
+    "title": "Footer with links",
+    "description": "This is Footer with links",
+    "type": "component",
+    "slug": "/application-ui/footers/footer-links/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "footers",
+      "component": "footer-links"
+    }
+  },
+  {
+    "title": "Simple Footer",
+    "description": "This is a simple Footer.",
+    "type": "component",
+    "slug": "/application-ui/footers/footer-simple/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "footers",
+      "component": "footer-simple"
+    }
+  },
+  {
+    "title": "Footer with Social icons",
+    "description": "This is Footer with Social icons",
+    "type": "component",
+    "slug": "/application-ui/footers/footer-social-icons/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "footers",
+      "component": "footer-social-icons"
+    }
+  },
+  {
+    "title": "Footers",
+    "description": "",
+    "type": "category",
+    "slug": "/application-ui/footers/",
+    "labels": [],
+    "hierarchy": { "category-group": "application-ui", "category": "footers" }
+  },
+  {
+    "title": "Grid with Asymmetrical Columns",
+    "description": "A responsive grid layout featuring asymmetrical columns, ideal for dynamic and modern web design.",
+    "type": "component",
+    "slug": "/application-ui/grids/asymmetrical-columns/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "grids",
+      "component": "asymmetrical-columns"
+    }
+  },
+  {
+    "title": "Grid with Leading Item",
+    "description": "A responsive grid layout with a leading item that changes arrangement based on screen size.",
+    "type": "component",
+    "slug": "/application-ui/grids/leading-item/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "grids",
+      "component": "leading-item"
+    }
+  },
+  {
+    "title": "Grids",
+    "description": "",
+    "type": "category",
+    "slug": "/application-ui/grids/",
+    "labels": [],
+    "hierarchy": { "category-group": "application-ui", "category": "grids" }
+  },
+  {
+    "title": "Simple Header",
+    "description": "This is simple header component.",
+    "type": "component",
+    "slug": "/application-ui/headers/header/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "headers",
+      "component": "header"
+    }
+  },
+  {
+    "title": "Simple Header1",
+    "description": "This is simple header component.",
+    "type": "component",
+    "slug": "/application-ui/headers/header-2/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "headers",
+      "component": "header-2"
+    }
+  },
+  {
+    "title": "Headers",
+    "description": "",
+    "type": "category",
+    "slug": "/application-ui/headers/",
+    "labels": [],
+    "hierarchy": { "category-group": "application-ui", "category": "headers" }
+  },
+  {
+    "title": "Inputs",
+    "description": "",
+    "type": "category",
+    "slug": "/application-ui/inputs/",
+    "labels": [],
+    "hierarchy": { "category-group": "application-ui", "category": "inputs" }
+  },
+  {
+    "title": "Password Input",
+    "description": "Password Input Component",
+    "type": "component",
+    "slug": "/application-ui/inputs/password-input/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "inputs",
+      "component": "password-input"
+    }
+  },
+  {
+    "title": "Application UI",
+    "description": "",
+    "type": "category-group",
+    "slug": "/application-ui/",
+    "labels": [],
+    "hierarchy": { "category-group": "application-ui" }
+  },
+  {
+    "title": "Navbar",
+    "description": "",
+    "type": "category",
+    "slug": "/application-ui/navbars/",
+    "labels": [],
+    "hierarchy": { "category-group": "application-ui", "category": "navbars" }
+  },
+  {
+    "title": "Simple Navbar",
+    "description": "This is simple navbar component.",
+    "type": "component",
+    "slug": "/application-ui/navbars/navbar/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "application-ui",
+      "category": "navbars",
+      "component": "navbar"
+    }
+  },
+  {
+    "title": "Comment",
+    "description": "A card component displaying a user's avatar, username, timestamp, and comment text.",
+    "type": "component",
+    "slug": "/blog-ui/comments/comment/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "blog-ui",
+      "category": "comments",
+      "component": "comment"
+    }
+  },
+  {
+    "title": "Comments",
+    "description": "This is a component that can be used in comment sections.",
+    "type": "category",
+    "slug": "/blog-ui/comments/",
+    "labels": [],
+    "hierarchy": { "category-group": "blog-ui", "category": "comments" }
+  },
+  {
+    "title": "Comment with HTML Content",
+    "description": "A card component displaying a user's avatar, username, timestamp, and comment text with HTML content.",
+    "type": "component",
+    "slug": "/blog-ui/comments/with-html-content/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "blog-ui",
+      "category": "comments",
+      "component": "with-html-content"
+    }
+  },
+  {
+    "title": "Dropzone",
+    "description": "",
+    "type": "category",
+    "slug": "/blog-ui/dropzone/",
+    "labels": [],
+    "hierarchy": { "category-group": "blog-ui", "category": "dropzone" }
+  },
+  {
+    "title": "Dropzone image preview",
+    "description": "This is a Dropzone with image preview",
+    "type": "component",
+    "slug": "/blog-ui/dropzone/with-image-preview/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "blog-ui",
+      "category": "dropzone",
+      "component": "with-image-preview"
+    }
+  },
+  {
+    "title": "Blog UI",
+    "description": "",
+    "type": "category-group",
+    "slug": "/blog-ui/",
+    "labels": [],
+    "hierarchy": { "category-group": "blog-ui" }
+  },
+  {
+    "title": "Stats",
+    "description": "",
+    "type": "category",
+    "slug": "/blog-ui/stats/",
+    "labels": [],
+    "hierarchy": { "category-group": "blog-ui", "category": "stats" }
+  },
+  {
+    "title": "Progress Card",
+    "description": "This is a card with progress bar",
+    "type": "component",
+    "slug": "/blog-ui/stats/progress-card/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "blog-ui",
+      "category": "stats",
+      "component": "progress-card"
+    }
+  },
+  {
+    "title": "404 page",
+    "description": "This is a 404 page.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/404-page/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages",
+      "component": "404-page"
+    }
+  },
+  {
+    "title": "500 page",
+    "description": "This is a 500 page.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/500-page/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages",
+      "component": "500-page"
+    }
+  },
+  {
+    "title": "Error Pages",
+    "description": "A collection of error pages for different scenarios.",
+    "type": "category",
+    "slug": "/page-sections/error-pages/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages"
+    }
+  },
+  {
+    "title": "404 page with image",
+    "description": "This is a 404 page with image.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/with-image/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages",
+      "component": "with-image"
+    }
+  },
+  {
+    "title": "Frequently Asked Questions",
+    "description": "A section dedicated to answering common queries.",
+    "type": "category",
+    "slug": "/page-sections/faq/",
+    "labels": [],
+    "hierarchy": { "category-group": "page-sections", "category": "faq" }
+  },
+  {
+    "title": "FAQ simple",
+    "description": "This is a simple FAQ.",
+    "type": "component",
+    "slug": "/page-sections/faq/simple/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "faq",
+      "component": "simple"
+    }
+  },
+  {
+    "title": "FAQ with Image",
+    "description": "This is an FAQ component with an image.",
+    "type": "component",
+    "slug": "/page-sections/faq/with-image/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "faq",
+      "component": "with-image"
+    }
+  },
+  {
+    "title": "Page Sections",
+    "description": "",
+    "type": "category-group",
+    "slug": "/page-sections/",
+    "labels": [],
+    "hierarchy": { "category-group": "page-sections" }
+  }
+]

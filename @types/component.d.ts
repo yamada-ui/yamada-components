@@ -50,6 +50,7 @@ declare module "component" {
   }
 
   type ComponentMetadata = LocaleMetadata<SharedMetadata> & {
+    lables?: string[]
     options: ComponentMetadataOptions
   }
 
