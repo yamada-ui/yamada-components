@@ -9,9 +9,9 @@ import { getComponentConfig } from "utils/ui"
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>
 
-export const getStaticPaths = getStaticComponentPaths("blog-ui")
+export const getStaticPaths = getStaticComponentPaths("typography")
 
-export const getStaticProps = getStaticComponentProps("blog-ui")
+export const getStaticProps = getStaticComponentProps("typography")
 
 const Page: NextPageWithConfig<PageProps> = ({
   categoryGroup,
@@ -23,14 +23,12 @@ const Page: NextPageWithConfig<PageProps> = ({
     const { metadata } = component
 
     return (
-      <AppProvider {...{ componentTree }}>
-        <ComponentProvider {...component}>
-          <ComponentLayout
-            title={metadata.title}
-            description={metadata.description}
-          />
-        </ComponentProvider>
-      </AppProvider>
+      <ComponentProvider {...component}>
+        <ComponentLayout
+          title={metadata?.title}
+          description={metadata?.description}
+        />
+      </ComponentProvider>
     )
   }
 
