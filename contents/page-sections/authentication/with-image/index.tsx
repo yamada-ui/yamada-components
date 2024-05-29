@@ -22,7 +22,7 @@ const AuthenticationForm: FC = () => {
   return (
     <Container
       gap="sm"
-      w="50%"
+      w="xl"
       _container={[{ maxW: "700px", css: { w: "full" } }]}
       bg={["white", "black"]}
       h="full"
