@@ -9,6 +9,12 @@ type LocaleMetadata<Y> = { [key in DefaultLocale]: Y } & {
 }
 
 declare module "component" {
+  type Author = {
+    id: number
+    login: string
+    avatar_url: string
+    html_url: string
+  }
   type ComponentCode = {
     name: string
     path: string
@@ -26,11 +32,10 @@ declare module "component" {
     slug: string
     paths: ComponentPaths
     components: ComponentCode[]
-    metadata: SharedMetadata | null
-    options: ComponentMetadataOptions | null
+    metadata: ComponentMetadata | null
   }
 
-  type ComponentCategoryGroup = Partial<SharedMetadata> & {
+  type ComponentCategoryGroup = Partial<Metadata> & {
     name: string
     slug: string
     isExpanded: boolean
@@ -42,23 +47,29 @@ declare module "component" {
     items?: Component[]
   }
 
+  type MetadataOptions = {
+    container: HTMLUIProps<"div">
+  }
+
   type SharedMetadata = {
+    icon?: string | null
+    authors?: Author[] | null
+    lables?: string[]
+    options?: MetadataOptions | null
+  }
+
+  type CommonMetadata = {
     title: string
     description: string
   }
 
-  type ComponentMetadataOptions = {
-    container: HTMLUIProps<"div">
-  }
+  type OriginMetadata = LocaleMetadata<CommonMetadata> & SharedMetadata
 
-  type ComponentMetadata = LocaleMetadata<SharedMetadata> & {
-    lables?: string[]
-    options: ComponentMetadataOptions
-  }
+  type ComponentMetadata = CommonMetadata & SharedMetadata
 
-  type CategoryMetadata = LocaleMetadata<SharedMetadata>
+  type CategoryMetadata = CommonMetadata & SharedMetadata
 
-  type CategoryGroupMetadata = LocaleMetadata<SharedMetadata> & {
-    icon?: string | null
-  }
+  type CategoryGroupMetadata = CommonMetadata & SharedMetadata
+
+  type Metadata = CategoryGroupMetadata | CategoryMetadata | ComponentMetadata
 }

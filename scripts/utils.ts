@@ -1,4 +1,23 @@
+import path from "path"
 import type { RequestError } from "@octokit/request-error"
+import { format, resolveConfig } from "prettier"
+import type { Options } from "prettier"
+
+export const prettier = async (content: string, options?: Options) => {
+  const prettierConfig = await resolveConfig(
+    path.join(process.cwd(), ".prettierrc"),
+  )
+
+  try {
+    return format(content, {
+      ...prettierConfig,
+      parser: "json",
+      ...options,
+    })
+  } catch {
+    return content
+  }
+}
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 

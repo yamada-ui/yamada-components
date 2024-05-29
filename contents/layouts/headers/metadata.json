@@ -1,0 +1,30 @@
+{
+  "en": {
+    "title": "Headers",
+    "description": "Headers are used to provide a brief introduction to the content."
+  },
+  "ja": {
+    "title": "ヘッダー",
+    "description": "ヘッダーは、コンテンツの簡単な紹介を提供するために使用されます。"
+  },
+  "authors": [
+    {
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion"
+    },
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    },
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    }
+  ]
+}

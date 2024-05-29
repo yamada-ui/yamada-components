@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "Grids",
+    "description": "Grids are used to structure and align content in a flexible manner."
+  },
+  "ja": {
+    "title": "グリッド",
+    "description": "グリッドは、コンテンツを柔軟に構造化し、整列するために使用されます。"
+  },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    }
+  ]
+}

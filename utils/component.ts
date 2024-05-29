@@ -3,14 +3,12 @@ import { readdir, readFile } from "fs/promises"
 import path from "path"
 import { toKebabCase } from "@yamada-ui/react"
 import type {
-  CategoryGroupMetadata,
+  CommonMetadata,
   ComponentCategoryGroup,
-  ComponentMetadata,
-  SharedMetadata,
+  Metadata,
+  OriginMetadata,
 } from "component"
 import { CONSTANT } from "constant"
-
-type Metadata = SharedMetadata & { icon?: string | null }
 
 export const getComponentCategoryGroup =
   (targetPath: string = "contents", callback?: (metadata: Metadata) => void) =>
@@ -30,12 +28,13 @@ export const getComponentCategoryGroup =
           if (name === "metadata.json") {
             try {
               const data = await readFile(targetPath, "utf-8")
-              const json = JSON.parse(data) as CategoryGroupMetadata
-              const metadata: SharedMetadata =
+              const json: OriginMetadata = JSON.parse(data)
+              const metadata: CommonMetadata =
                 json[locale] ?? json[defaultLocale]
               const icon = json.icon ?? null
+              const authors = json.authors ?? null
 
-              callback?.({ ...metadata, icon })
+              callback?.({ ...metadata, icon, authors })
             } catch {}
           }
 
@@ -107,13 +106,14 @@ const getMetadata = (dirPath: string) => async (locale: string) => {
 
   try {
     const data = await readFile(path.join(dirPath, "metadata.json"), "utf-8")
-    const json = JSON.parse(data) as ComponentMetadata
-    const metadata = (json[locale] ?? json[defaultLocale]) as SharedMetadata
+    const json: OriginMetadata = JSON.parse(data)
+    const metadata: CommonMetadata = json[locale] ?? json[defaultLocale]
     const options = json.options ?? null
+    const authors = json.authors ?? null
 
-    return { metadata, options }
+    return { ...metadata, options, authors }
   } catch {
-    return { metadata: null, options: null }
+    return null
   }
 }
 
@@ -133,7 +133,7 @@ export const getComponent = (slug: string) => async (locale: string) => {
 
     let fileNames = await readdir(dirPath)
 
-    const { metadata, options } = await getMetadata(dirPath)(locale)
+    const metadata = await getMetadata(dirPath)(locale)
     const hasTheme = existsSync(themePath)
     const hasConfig = existsSync(configPath)
 
@@ -162,7 +162,6 @@ export const getComponent = (slug: string) => async (locale: string) => {
       paths,
       components,
       metadata,
-      options,
     }
 
     return data

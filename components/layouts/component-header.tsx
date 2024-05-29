@@ -1,4 +1,6 @@
 import {
+  Avatar,
+  Center,
   CloseButton,
   forwardRef,
   handlerAll,
@@ -6,10 +8,20 @@ import {
   HStack,
   Icon,
   IconButton,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  Text,
   useDisclosure,
+  VStack,
 } from "@yamada-ui/react"
-import type { StackProps, UseDisclosureReturn } from "@yamada-ui/react"
-import { Download } from "lucide-react"
+import type {
+  IconButtonProps,
+  ModalProps,
+  StackProps,
+  UseDisclosureReturn,
+} from "@yamada-ui/react"
+import { Download, Users } from "lucide-react"
 import type { FC } from "react"
 import { memo, useMemo } from "react"
 import { ColorModeButton, ThemeSchemeButton } from "components/forms"
@@ -23,6 +35,7 @@ import { NextLinkIconButton, Tree } from "components/navigation"
 import { MobileMenu } from "components/overlay"
 import { CONSTANT } from "constant"
 import { useComponent } from "contexts/component-context"
+import { useI18n } from "contexts/i18n-context"
 import { useDownload } from "hooks/use-download"
 import type { CodeDirection } from "layouts/component-layout"
 
@@ -127,11 +140,15 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
           />
         ) : null}
 
+        <AuthorsButton
+          display={{ base: "inline-flex", md: !isMobile ? "none" : undefined }}
+        />
+
         <IconButton
           aria-label="Download the files"
           variant="ghost"
           color="muted"
-          display={{ base: "inline-flex", md: !isMobile ? "none" : undefined }}
+          display={{ base: "inline-flex", md: "none" }}
           icon={<Icon as={Download} fontSize="1.375em" />}
           onClick={() => onDownload()}
         />
@@ -176,3 +193,52 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
 )
 
 ButtonGroup.displayName = "ButtonGroup"
+
+type AuthorsButtonProps = IconButtonProps & {
+  modalProps?: ModalProps
+}
+
+const AuthorsButton: FC<AuthorsButtonProps> = memo(
+  ({ modalProps, ...rest }) => {
+    const { t } = useI18n()
+    const { metadata } = useComponent()
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
+    return (
+      <>
+        <IconButton
+          aria-label="Download the files"
+          variant="ghost"
+          color="muted"
+          icon={<Icon as={Users} fontSize="1.375em" />}
+          onClick={onOpen}
+          {...rest}
+        />
+
+        <Modal isOpen={isOpen} onClose={onClose} size="md" {...modalProps}>
+          <ModalHeader>{t("component.authors.description")}</ModalHeader>
+
+          <ModalBody>
+            {metadata.authors?.length ? (
+              <VStack>
+                {metadata.authors.map(({ id, login, avatar_url, html_url }) => (
+                  <HStack key={id} as="a" target="_blank" href={html_url}>
+                    <Avatar name={login} src={avatar_url} boxSize="10" />
+
+                    <Text fontWeight="semibold">{login}</Text>
+                  </HStack>
+                ))}
+              </VStack>
+            ) : (
+              <Center w="full" h="4xs">
+                <Text color="muted">{t("component.authors.unknown")}</Text>
+              </Center>
+            )}
+          </ModalBody>
+        </Modal>
+      </>
+    )
+  },
+)
+
+AuthorsButton.displayName = "AuthorsButton"

@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "Footer with links",
+    "description": "This is Footer with links"
+  },
+  "ja": {
+    "title": "リンク付きフッター",
+    "description": "これはリンク付きフッターです"
+  },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    }
+  ]
+}

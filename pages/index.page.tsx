@@ -1,7 +1,7 @@
 import { Grid, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
 import Link from "next/link"
-import { CategoryCard } from "components/data-display"
+import { Authors, CategoryCard } from "components/data-display"
 import { AppProvider } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
 import { AppLayout } from "layouts/app-layout"
@@ -21,29 +21,33 @@ const Page: NextPage<PageProps> = ({ componentTree }) => {
         description={t("app.description")}
         gap="lg"
       >
-        {componentTree.map(({ title, name, slug, items }) => (
+        {componentTree.map(({ title, name, slug, items, authors }) => (
           <VStack key={name} as="section">
-            <HStack
-              as="header"
-              flexDirection={{ base: "row", sm: "column" }}
-              alignItems={{ base: "end", sm: "stretch" }}
-              gap={{ base: "md", sm: "0" }}
-            >
-              <Link href={slug}>
-                <Heading
-                  as="h2"
-                  size="lg"
-                  fontWeight="semibold"
-                  lineHeight="shorter"
-                  lineClamp={1}
-                >
-                  {title}
-                </Heading>
-              </Link>
+            <HStack as="header" gap={{ base: "md", sm: "sm" }}>
+              <HStack
+                flex="1"
+                flexDirection={{ base: "row", sm: "column" }}
+                alignItems={{ base: "end", sm: "stretch" }}
+                gap={{ base: "md", sm: "0" }}
+              >
+                <Link href={slug}>
+                  <Heading
+                    as="h2"
+                    size="lg"
+                    fontWeight="semibold"
+                    lineHeight="shorter"
+                    lineClamp={1}
+                  >
+                    {title}
+                  </Heading>
+                </Link>
 
-              <Text color="muted" whiteSpace="nowrap">
-                {t("component.category-group.count", items?.length ?? 0)}
-              </Text>
+                <Text color="muted" whiteSpace="nowrap">
+                  {t("component.category-group.count", items?.length ?? 0)}
+                </Text>
+              </HStack>
+
+              <Authors authors={authors} />
             </HStack>
 
             <Grid

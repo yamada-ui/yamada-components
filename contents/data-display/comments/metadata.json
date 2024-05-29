@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "Comments",
+    "description": "This is a component that can be used in comment sections."
+  },
+  "ja": {
+    "title": "コメント",
+    "description": "コメントセクションで使用できるコンポーネントです。"
+  },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    }
+  ]
+}

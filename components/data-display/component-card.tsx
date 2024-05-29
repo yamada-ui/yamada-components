@@ -29,7 +29,7 @@ export type ComponentCardProps = StackProps & Component
 
 export const ComponentCard = memo(
   forwardRef<ComponentCardProps, "div">(
-    ({ name, metadata, slug, paths, components, options, ...rest }, ref) => {
+    ({ name, metadata, slug, paths, components, ...rest }, ref) => {
       const modeRef = useRef<(mode: Mode) => void>(noop)
       const files = useMemo(
         () => components.map(({ name, code }) => ({ path: name, data: code })),
@@ -107,7 +107,7 @@ export const ComponentCard = memo(
 
           <ComponentCardBody
             modeRef={modeRef}
-            {...{ paths, components, options }}
+            {...{ metadata, paths, components }}
           />
         </VStack>
       )
@@ -152,13 +152,13 @@ ViewModeControl.displayName = "ViewModeControl"
 
 type ComponentCardBodyProps = Pick<
   Component,
-  "paths" | "components" | "options"
+  "paths" | "components" | "metadata"
 > & {
   modeRef: MutableRefObject<(mode: Mode) => void>
 }
 
 const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
-  ({ modeRef, paths, components, options }) => {
+  ({ modeRef, paths, components, metadata }) => {
     const [mode, setMode] = useState<Mode>("preview")
 
     assignRef(modeRef, setMode)
@@ -167,7 +167,7 @@ const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
       <>
         <ComponentPreview
           paths={paths}
-          containerProps={options?.container}
+          containerProps={metadata?.options?.container}
           display={mode === "preview" ? "flex" : "none"}
         />
         <ComponentCodePreview

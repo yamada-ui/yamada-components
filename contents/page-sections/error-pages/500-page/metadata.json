@@ -1,16 +1,13 @@
 {
-  "en": {
-    "title": "500 page",
-    "description": "This is a 500 page."
-  },
-  "ja": {
-    "title": "500ページ",
-    "description": "このページは500ページです。"
-  },
-  "options": {
-    "container": {
-      "p": "xl",
-      "bg": "link.500"
+  "en": { "title": "500 page", "description": "This is a 500 page." },
+  "ja": { "title": "500ページ", "description": "このページは500ページです。" },
+  "options": { "container": { "p": "xl", "bg": "link.500" } },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
     }
-  }
+  ]
 }
