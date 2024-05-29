@@ -1,6 +1,7 @@
 {
   "en": { "title": "Page Sections", "description": "" },
   "ja": { "title": "ページセクション", "description": "" },
+  "icon": "layout-template",
   "authors": [
     {
       "id": 60034520,
