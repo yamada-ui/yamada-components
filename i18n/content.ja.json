@@ -1,200 +1,12 @@
 [
   {
-    "title": "クリップボードにコピーするボタン",
-    "description": "これはテキストをクリップボードにコピーするボタンです",
-    "type": "component",
-    "slug": "/application-ui/buttons/copy-button/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "buttons",
-      "component": "copy-button"
-    }
-  },
-  {
-    "title": "ボタン",
-    "description": "",
-    "type": "category",
-    "slug": "/application-ui/buttons/",
-    "labels": [],
-    "hierarchy": { "category-group": "application-ui", "category": "buttons" }
-  },
-  {
-    "title": "中央揃えリンク付きフッター",
-    "description": "これは中央揃えのリンク付きフッターです",
-    "type": "component",
-    "slug": "/application-ui/footers/footer-centerd/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "footers",
-      "component": "footer-centerd"
-    }
-  },
-  {
-    "title": "リンク付きフッター",
-    "description": "これはリンク付きフッターです",
-    "type": "component",
-    "slug": "/application-ui/footers/footer-links/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "footers",
-      "component": "footer-links"
-    }
-  },
-  {
-    "title": "シンプルなフッター",
-    "description": "これはシンプルなフッターです",
-    "type": "component",
-    "slug": "/application-ui/footers/footer-simple/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "footers",
-      "component": "footer-simple"
-    }
-  },
-  {
-    "title": "ソーシャルアイコン付きフッター",
-    "description": "これはソーシャルアイコン付きのフッターです",
-    "type": "component",
-    "slug": "/application-ui/footers/footer-social-icons/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "footers",
-      "component": "footer-social-icons"
-    }
-  },
-  {
-    "title": "フッター",
-    "description": "",
-    "type": "category",
-    "slug": "/application-ui/footers/",
-    "labels": [],
-    "hierarchy": { "category-group": "application-ui", "category": "footers" }
-  },
-  {
-    "title": "非対称な列を持つグリッド",
-    "description": "ダイナミックでモダンなウェブデザインに最適な、非対称な列を特徴とするレスポンシブグリッドレイアウト。",
-    "type": "component",
-    "slug": "/application-ui/grids/asymmetrical-columns/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "grids",
-      "component": "asymmetrical-columns"
-    }
-  },
-  {
-    "title": "リーディングアイテム付きグリッド",
-    "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。",
-    "type": "component",
-    "slug": "/application-ui/grids/leading-item/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "grids",
-      "component": "leading-item"
-    }
-  },
-  {
-    "title": "グリッド",
-    "description": "",
-    "type": "category",
-    "slug": "/application-ui/grids/",
-    "labels": [],
-    "hierarchy": { "category-group": "application-ui", "category": "grids" }
-  },
-  {
-    "title": "シンプルなヘッダー",
-    "description": "これはシンプルなヘッダーコンポーネントです",
-    "type": "component",
-    "slug": "/application-ui/headers/header/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "headers",
-      "component": "header"
-    }
-  },
-  {
-    "title": "シンプルなヘッダー2",
-    "description": "これはシンプルなヘッダーコンポーネント2です",
-    "type": "component",
-    "slug": "/application-ui/headers/header-2/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "headers",
-      "component": "header-2"
-    }
-  },
-  {
-    "title": "ヘッダー",
-    "description": "",
-    "type": "category",
-    "slug": "/application-ui/headers/",
-    "labels": [],
-    "hierarchy": { "category-group": "application-ui", "category": "headers" }
-  },
-  {
-    "title": "インプット",
-    "description": "",
-    "type": "category",
-    "slug": "/application-ui/inputs/",
-    "labels": [],
-    "hierarchy": { "category-group": "application-ui", "category": "inputs" }
-  },
-  {
-    "title": "パスワード入力",
-    "description": "パスワードを入力するコンポーネント",
-    "type": "component",
-    "slug": "/application-ui/inputs/password-input/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "inputs",
-      "component": "password-input"
-    }
-  },
-  {
-    "title": "アプリケーション UI",
-    "description": "",
-    "type": "category-group",
-    "slug": "/application-ui/",
-    "labels": [],
-    "hierarchy": { "category-group": "application-ui" }
-  },
-  {
-    "title": "ナビゲーションバー",
-    "description": "",
-    "type": "category",
-    "slug": "/application-ui/navbars/",
-    "labels": [],
-    "hierarchy": { "category-group": "application-ui", "category": "navbars" }
-  },
-  {
-    "title": "Simple Navbar",
-    "description": "This is simple navbar component.",
-    "type": "component",
-    "slug": "/application-ui/navbars/navbar/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "application-ui",
-      "category": "navbars",
-      "component": "navbar"
-    }
-  },
-  {
     "title": "コメント",
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、コメントテキストを表示するカードコンポーネント。",
     "type": "component",
-    "slug": "/blog-ui/comments/comment/",
+    "slug": "/data-display/comments/comment/",
     "labels": [],
     "hierarchy": {
-      "category-group": "blog-ui",
+      "category-group": "data-display",
       "category": "comments",
       "component": "comment"
     }
@@ -203,69 +15,281 @@
     "title": "コメント",
     "description": "コメントセクションで使用できるコンポーネントです。",
     "type": "category",
-    "slug": "/blog-ui/comments/",
+    "slug": "/data-display/comments/",
     "labels": [],
-    "hierarchy": { "category-group": "blog-ui", "category": "comments" }
+    "hierarchy": { "category-group": "data-display", "category": "comments" }
   },
   {
     "title": "HTMLコンテンツを含むコメント",
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、およびHTMLコンテンツを含むコメントテキストを表示するカードコンポーネント。",
     "type": "component",
-    "slug": "/blog-ui/comments/with-html-content/",
+    "slug": "/data-display/comments/with-html-content/",
     "labels": [],
     "hierarchy": {
-      "category-group": "blog-ui",
+      "category-group": "data-display",
       "category": "comments",
       "component": "with-html-content"
     }
   },
   {
-    "title": "ドロップゾーン",
-    "description": "",
-    "type": "category",
-    "slug": "/blog-ui/dropzone/",
-    "labels": [],
-    "hierarchy": { "category-group": "blog-ui", "category": "dropzone" }
-  },
-  {
-    "title": "画像プレビュー付きのドロップゾーン",
-    "description": "画像プレビュー付きのドロップゾーン",
-    "type": "component",
-    "slug": "/blog-ui/dropzone/with-image-preview/",
-    "labels": [],
-    "hierarchy": {
-      "category-group": "blog-ui",
-      "category": "dropzone",
-      "component": "with-image-preview"
-    }
-  },
-  {
-    "title": "ブログ UI",
+    "title": "データディスプレイ",
     "description": "",
     "type": "category-group",
-    "slug": "/blog-ui/",
+    "slug": "/data-display/",
     "labels": [],
-    "hierarchy": { "category-group": "blog-ui" }
+    "hierarchy": { "category-group": "data-display" }
   },
   {
     "title": "統計",
     "description": "",
     "type": "category",
-    "slug": "/blog-ui/stats/",
+    "slug": "/data-display/stats/",
     "labels": [],
-    "hierarchy": { "category-group": "blog-ui", "category": "stats" }
+    "hierarchy": { "category-group": "data-display", "category": "stats" }
   },
   {
     "title": "Progress Card",
     "description": "This is a card with progress bar",
     "type": "component",
-    "slug": "/blog-ui/stats/progress-card/",
+    "slug": "/data-display/stats/progress-card/",
     "labels": [],
     "hierarchy": {
-      "category-group": "blog-ui",
+      "category-group": "data-display",
       "category": "stats",
       "component": "progress-card"
     }
+  },
+  {
+    "title": "フィードバック",
+    "description": "",
+    "type": "category-group",
+    "slug": "/feedback/",
+    "labels": [],
+    "hierarchy": { "category-group": "feedback" }
+  },
+  {
+    "title": "クリップボードにコピーするボタン",
+    "description": "これはテキストをクリップボードにコピーするボタンです",
+    "type": "component",
+    "slug": "/forms/buttons/copy-button/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "buttons",
+      "component": "copy-button"
+    }
+  },
+  {
+    "title": "ボタン",
+    "description": "",
+    "type": "category",
+    "slug": "/forms/buttons/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms", "category": "buttons" }
+  },
+  {
+    "title": "ドロップゾーン",
+    "description": "ドロップゾーンは、ユーザーがファイルをドラッグアンドドロップしてアップロードできるエリアです。",
+    "type": "category",
+    "slug": "/forms/dropzones/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms", "category": "dropzones" }
+  },
+  {
+    "title": "ボタン付きのドロップゾーン",
+    "description": "これはボタン付きのドロップゾーンです。",
+    "type": "component",
+    "slug": "/forms/dropzones/with-button/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "dropzones",
+      "component": "with-button"
+    }
+  },
+  {
+    "title": "画像プレビュー付きのドロップゾーン",
+    "description": "これは画像プレビュー付きのドロップゾーンです。",
+    "type": "component",
+    "slug": "/forms/dropzones/with-image-preview/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "dropzones",
+      "component": "with-image-preview"
+    }
+  },
+  {
+    "title": "インプット",
+    "description": "",
+    "type": "category",
+    "slug": "/forms/inputs/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms", "category": "inputs" }
+  },
+  {
+    "title": "パスワード入力",
+    "description": "パスワードを入力するコンポーネント",
+    "type": "component",
+    "slug": "/forms/inputs/password-input/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "inputs",
+      "component": "password-input"
+    }
+  },
+  {
+    "title": "フォーム",
+    "description": "",
+    "type": "category-group",
+    "slug": "/forms/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms" }
+  },
+  {
+    "title": "中央揃えリンク付きフッター",
+    "description": "これは中央揃えのリンク付きフッターです",
+    "type": "component",
+    "slug": "/layouts/footers/footer-centerd/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-centerd"
+    }
+  },
+  {
+    "title": "リンク付きフッター",
+    "description": "これはリンク付きフッターです",
+    "type": "component",
+    "slug": "/layouts/footers/footer-links/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-links"
+    }
+  },
+  {
+    "title": "シンプルなフッター",
+    "description": "これはシンプルなフッターです",
+    "type": "component",
+    "slug": "/layouts/footers/footer-simple/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-simple"
+    }
+  },
+  {
+    "title": "ソーシャルアイコン付きフッター",
+    "description": "これはソーシャルアイコン付きのフッターです",
+    "type": "component",
+    "slug": "/layouts/footers/footer-social-icons/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-social-icons"
+    }
+  },
+  {
+    "title": "フッター",
+    "description": "フッターは、ページの下部に重要な情報を表示するために使用されます。",
+    "type": "category",
+    "slug": "/layouts/footers/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts", "category": "footers" }
+  },
+  {
+    "title": "非対称な列を持つグリッド",
+    "description": "ダイナミックでモダンなウェブデザインに最適な、非対称な列を特徴とするレスポンシブグリッドレイアウト。",
+    "type": "component",
+    "slug": "/layouts/grids/asymmetrical-columns/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "grids",
+      "component": "asymmetrical-columns"
+    }
+  },
+  {
+    "title": "リーディングアイテム付きグリッド",
+    "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。",
+    "type": "component",
+    "slug": "/layouts/grids/leading-item/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "grids",
+      "component": "leading-item"
+    }
+  },
+  {
+    "title": "グリッド",
+    "description": "グリッドは、コンテンツを柔軟に構造化し、整列するために使用されます。",
+    "type": "category",
+    "slug": "/layouts/grids/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts", "category": "grids" }
+  },
+  {
+    "title": "マルチレイヤーのヘッダー",
+    "description": "これはマルチレイヤーのヘッダーです。",
+    "type": "component",
+    "slug": "/layouts/headers/double-header/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "headers",
+      "component": "double-header"
+    }
+  },
+  {
+    "title": "ヘッダー",
+    "description": "ヘッダーは、コンテンツの簡単な紹介を提供するために使用されます。",
+    "type": "category",
+    "slug": "/layouts/headers/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts", "category": "headers" }
+  },
+  {
+    "title": "シンプルなヘッダー",
+    "description": "これはシンプルなヘッダーです。",
+    "type": "component",
+    "slug": "/layouts/headers/simple-header/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "headers",
+      "component": "simple-header"
+    }
+  },
+  {
+    "title": "レイアウト",
+    "description": "",
+    "type": "category-group",
+    "slug": "/layouts/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts" }
+  },
+  {
+    "title": "ナビゲーション",
+    "description": "",
+    "type": "category-group",
+    "slug": "/navigation/",
+    "labels": [],
+    "hierarchy": { "category-group": "navigation" }
+  },
+  {
+    "title": "オーバーレイ",
+    "description": "",
+    "type": "category-group",
+    "slug": "/overlay/",
+    "labels": [],
+    "hierarchy": { "category-group": "overlay" }
   },
   {
     "title": "404ページ",
@@ -353,5 +377,13 @@
     "slug": "/page-sections/",
     "labels": [],
     "hierarchy": { "category-group": "page-sections" }
+  },
+  {
+    "title": "タイポグラフィ",
+    "description": "",
+    "type": "category-group",
+    "slug": "/typography/",
+    "labels": [],
+    "hierarchy": { "category-group": "typography" }
   }
 ]
