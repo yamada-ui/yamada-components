@@ -25,6 +25,7 @@ const AuthenticationForm: FC = () => {
       w="50%"
       _container={[{ maxW: "700px", css: { w: "full" } }]}
       bg={["white", "black"]}
+      h="full"
     >
       <Heading as="h1" size="lg" textAlign="center">
         Welcome back to Yamada UI!
