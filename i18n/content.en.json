@@ -36,7 +36,7 @@
     "description": "",
     "type": "category-group",
     "slug": "/data-display/",
-    "labels": [],
+    "labels": ["data-display"],
     "hierarchy": { "category-group": "data-display" }
   },
   {

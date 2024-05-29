@@ -1,6 +1,6 @@
 import { I18N } from "./i18n"
-import { PATH } from "./path"
 import { MENU } from "./menu"
+import { PATH } from "./path"
 import { SEO } from "./seo"
 import { SNS } from "./sns"
 import { STORAGE } from "./storage"

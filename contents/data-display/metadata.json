@@ -7,5 +7,6 @@
     "title": "データディスプレイ",
     "description": ""
   },
-  "icon": "table"
+  "icon": "table",
+  "labels": ["data-display"]
 }

@@ -54,7 +54,7 @@ declare module "component" {
   type SharedMetadata = {
     icon?: string | null
     authors?: Author[] | null
-    lables?: string[]
+    labels?: string[]
     options?: MetadataOptions | null
   }
 

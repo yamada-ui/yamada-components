@@ -117,7 +117,7 @@ const generateSearchContent: p.RequiredRunner =
             : metadataJson["en"].description,
           type: getType(path),
           slug: getSlug(path),
-          labels: [], // labelsがまだ
+          labels: metadataJson["labels"] ? metadataJson["labels"] : [],
           hierarchy: getHierarchy(path),
         }
         return content
