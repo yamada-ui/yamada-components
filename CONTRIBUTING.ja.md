@@ -24,19 +24,31 @@ cd yamada-components
 
 4. `pnpm dev`を実行してローカルサーバーを起動します。
 
-## コマンド
+## 開発手段
+
+開発プロセスを快適するために、ツールとシステムを用意しています。
+
+### ツール
+
+- [Next.js](https://nextjs.org/) ウェブサイトのフレームワーク
+
+### コマンド
 
 - **`pnpm install`**: すべての依存関係とパッケージをセットアップします。
 - **`pnpm dev`**: ローカルサーバーを起動します。
+- **`pnpm start`**: プロダクションサーバーを起動します。
 - **`pnpm build`**: サイトを構築します。
 - **`pnpm lint`**: コードの問題をチェックします。
-- **`pnpm gen:category-group`**: コンポーネントのカテゴリグループを作成します。
-- **`pnpm gen:category`**: コンポーネントのカテゴリを作成します。
-- **`pnpm gen:component`**: コンポーネントのフォーマットを作成します。作成する過程で`theme`と`config`が必要か問われます。それぞれの詳細は下記を覧ください。
-  - [`theme`について](https://yamada-ui.com/ja/styled-system/theming)
-  - [`config`について](https://yamada-ui.com/ja/styled-system/configure)
+- **`pnpm gen:category-group`**: [Plop](https://plopjs.com/)を使用して、コンポーネントのカテゴリグループを作成します。
+  - カテゴリグループ名はケバブケースで入力してください。
+- **`pnpm gen:category`**: [Plop](https://plopjs.com/)を使用して、コンポーネントのカテゴリを作成します。
+  - カテゴリ名はケバブケースで入力してください。
+- **`pnpm gen:component`**: [Plop](https://plopjs.com/)を使用して、テンプレートからコンポーネントのを作成します。
+  - コンポーネント名はケバブケースで入力してください。
+  - [theme](https://yamada-ui.com/ja/styled-system/theming)が`true`の場合、コンポーネントにカスタマイズしたテーマを適用します。
+  - [config](https://yamada-ui.com/ja/styled-system/configure)が`true`の場合、コンポーネントにカスタマイズしたコンフィグを適用します。
 
-## プルリクエストを作成する
+## プルリクエストを作成しますか？
 
 ### コミット規約
 
@@ -53,13 +65,17 @@ cd yamada-components
 - `ci`: 継続的インテグレーションの設定に関する変更をした場合（例：github actions、CIシステムなど）
 - `chore`: 上記のいずれにも当てはまらないリポジトリへの変更をした場合
 
+> [!TIP]
+>
+> 詳しい仕様については、[Conventional Commits](https://www.conventionalcommits.org)を確認するか、[Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)を確認してください。
+
 ### プルリクエストの手順
 
 1. [リポジトリ](https://github.com/yamada-ui/yamada-components)をフォークし、クローンします。
 
-2. `main`ブランチから新しいブランチを作成します。[タイプ/スコープ]という命名規則に従います。例えば、`fix/accordion-hook`や`menu-typo`などです。`タイプ`は`docs`、`fix`、`feat`、`build`などの標準的なコミットタイプのいずれかです。`スコープ`は作業範囲を表す短い言葉です。
+2. `main`ブランチから新しいブランチを作成します。[タイプ/スコープ]という命名規則に従います。例えば、`fix/copy-button`や`feat/headers`などです。`タイプ`は`docs`、`fix`、`feat`、`build`などの標準的なコミットタイプのいずれかです。`スコープ`は作業範囲を表す短い言葉です。
 
-3. 変更を行い、[コミット規約](https://github.com/yamada-ui/yamada-ui/blob/main/README.md#commit-convention)に従ってコミットします。
+3. 変更を行い、[コミット規約](#コミット規約)に従ってコミットします。
 
 4. 上記の全てのタスクを完了したら、変更をプッシュしてください。プッシュ後、プルリクエストのURLが生成されます。テンプレートに従ってリクエストを提出してください。また、プルリクエスト内のチェックを確認し、ビルドが正常に完了していることを確認してください。問題がある場合、このプルリクエストはマージされません。
 
