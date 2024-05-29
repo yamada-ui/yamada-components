@@ -48,8 +48,6 @@ export const Tree = memo(
     const { t, locale } = useI18n()
     const { pathname } = useRouter()
 
-    console.log(componentTree)
-
     return (
       <List ref={ref} gap="sm" fontSize="sm" {...rest}>
         <ListItemLink
