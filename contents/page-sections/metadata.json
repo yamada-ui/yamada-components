@@ -1,11 +1,25 @@
 {
-  "en": {
-    "title": "Page Sections",
-    "description": ""
-  },
-  "ja": {
-    "title": "ページセクション",
-    "description": ""
-  },
-  "icon": "layout-template"
+  "en": { "title": "Page Sections", "description": "" },
+  "ja": { "title": "ページセクション", "description": "" },
+  "icon": "layout-template",
+  "authors": [
+    {
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion"
+    },
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    },
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    }
+  ]
 }

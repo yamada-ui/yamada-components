@@ -6,5 +6,13 @@
   "ja": {
     "title": "画像プレビュー付きのドロップゾーン",
     "description": "これは画像プレビュー付きのドロップゾーンです。"
-  }
+  },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    }
+  ]
 }

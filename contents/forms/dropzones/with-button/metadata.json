@@ -7,9 +7,13 @@
     "title": "ボタン付きのドロップゾーン",
     "description": "これはボタン付きのドロップゾーンです。"
   },
-  "options": {
-    "container": {
-      "p": "md"
+  "options": { "container": { "p": "md" } },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
     }
-  }
+  ]
 }

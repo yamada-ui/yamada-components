@@ -1,6 +1,7 @@
 import { ChevronIcon, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import type { FC } from "react"
-import { memo } from "react"
+import { Fragment, memo } from "react"
+import { Authors } from "./authors"
 import { ComponentCard } from "./component-card"
 import { NextLink } from "components/navigation"
 import { useApp } from "contexts/app-context"
@@ -19,25 +20,29 @@ export const Category: FC = memo(() => {
         {t("component.category.back-to")}
       </NextLink>
 
-      <HStack
-        as="header"
-        flexDirection={{ base: "row", sm: "column" }}
-        alignItems={{ base: "end", sm: "stretch" }}
-        gap={{ base: "md", sm: "0" }}
-      >
-        <Heading
-          as="h2"
-          size="lg"
-          fontWeight="semibold"
-          lineHeight="shorter"
-          lineClamp={1}
+      <HStack as="header" gap={{ base: "md", sm: "sm" }}>
+        <HStack
+          flex="1"
+          flexDirection={{ base: "row", sm: "column" }}
+          alignItems={{ base: "end", sm: "stretch" }}
+          gap={{ base: "md", sm: "0" }}
         >
-          {category.title}
-        </Heading>
+          <Heading
+            as="h2"
+            size="lg"
+            fontWeight="semibold"
+            lineHeight="shorter"
+            lineClamp={1}
+          >
+            {category.title}
+          </Heading>
 
-        <Text color="muted" whiteSpace="nowrap">
-          {t("component.category.count", category.items?.length ?? 0)}
-        </Text>
+          <Text color="muted" whiteSpace="nowrap">
+            {t("component.category.count", category.items?.length ?? 0)}
+          </Text>
+        </HStack>
+
+        <Authors authors={category.authors} />
       </HStack>
 
       <VStack as="nav" gap="lg">

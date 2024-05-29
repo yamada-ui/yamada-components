@@ -7,10 +7,13 @@
     "title": "非対称な列を持つグリッド",
     "description": "ダイナミックでモダンなウェブデザインに最適な、非対称な列を特徴とするレスポンシブグリッドレイアウト。"
   },
-  "options": {
-    "container": {
-      "p": "md",
-      "containerType": "inline-size"
+  "options": { "container": { "p": "md", "containerType": "inline-size" } },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
     }
-  }
+  ]
 }

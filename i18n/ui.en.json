@@ -11,6 +11,10 @@
     "back-to-app": "Back to App"
   },
   "component": {
+    "authors": {
+      "description": "Created by",
+      "unknown": "Unknown"
+    },
     "tree": {
       "home": "Home",
       "request": "Request component",

@@ -7,9 +7,13 @@
     "title": "クリップボードにコピーするボタン",
     "description": "これはテキストをクリップボードにコピーするボタンです"
   },
-  "options": {
-    "container": {
-      "p": "md"
+  "options": { "container": { "p": "md" } },
+  "authors": [
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
     }
-  }
+  ]
 }

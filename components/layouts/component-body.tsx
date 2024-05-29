@@ -40,7 +40,7 @@ export const ComponentBody = memo(
       ref,
     ) => {
       const controlRef = useRef<ResizableItemControl>(null)
-      const { paths, components, options } = useComponent()
+      const { paths, components, metadata } = useComponent()
       const breakpoint = useBreakpoint()
 
       const storage: ResizableStorage = useMemo(
@@ -87,7 +87,7 @@ export const ComponentBody = memo(
             <ComponentPreview
               paths={paths}
               borderTopWidth="1px"
-              containerProps={options?.container}
+              containerProps={metadata?.options?.container}
             />
           </ResizableItem>
 

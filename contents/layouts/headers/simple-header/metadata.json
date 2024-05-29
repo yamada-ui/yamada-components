@@ -1,15 +1,22 @@
 {
-  "en": {
-    "title": "Simple Header",
-    "description": "This is a simple header."
-  },
+  "en": { "title": "Simple Header", "description": "This is a simple header." },
   "ja": {
     "title": "シンプルなヘッダー",
     "description": "これはシンプルなヘッダーです。"
   },
-  "options": {
-    "container": {
-      "p": "md"
+  "options": { "container": { "p": "md" } },
+  "authors": [
+    {
+      "id": 60034520,
+      "login": "illionillion",
+      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
+      "html_url": "https://github.com/illionillion"
+    },
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
     }
-  }
+  ]
 }
