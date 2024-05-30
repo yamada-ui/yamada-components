@@ -292,6 +292,65 @@
     "hierarchy": { "category-group": "overlay" }
   },
   {
+    "title": "Authentication Form",
+    "description": "Authentication Form is used to verify the user's credentials.",
+    "type": "component",
+    "slug": "/page-sections/authentication/authentication-form/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "authentication-form"
+    }
+  },
+  {
+    "title": "Forgot password",
+    "description": "This feature allows users to reset their password if they've forgotten it.",
+    "type": "component",
+    "slug": "/page-sections/authentication/forgot-password/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "forgot-password"
+    }
+  },
+  {
+    "title": "Authentication",
+    "description": "This process verifies the identity of a user.",
+    "type": "category",
+    "slug": "/page-sections/authentication/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication"
+    }
+  },
+  {
+    "title": "Authentication page with image",
+    "description": "This page features an authentication form with a background image.",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-image/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "with-image"
+    }
+  },
+  {
+    "title": "Authentication with title",
+    "description": "This is an authentication form that includes a title.",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-title/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "with-title"
+    }
+  },
+  {
     "title": "404 page",
     "description": "This is a 404 page.",
     "type": "component",

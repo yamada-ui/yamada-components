@@ -292,6 +292,65 @@
     "hierarchy": { "category-group": "overlay" }
   },
   {
+    "title": "認証フォーム",
+    "description": "認証フォームは、ユーザーの資格情報を確認するために使用されます。",
+    "type": "component",
+    "slug": "/page-sections/authentication/authentication-form/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "authentication-form"
+    }
+  },
+  {
+    "title": "パスワードを忘れた場合",
+    "description": "この機能は、ユーザーがパスワードを忘れた場合にリセットすることができます。",
+    "type": "component",
+    "slug": "/page-sections/authentication/forgot-password/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "forgot-password"
+    }
+  },
+  {
+    "title": "認証",
+    "description": "このプロセスは、ユーザーの身元を確認します。",
+    "type": "category",
+    "slug": "/page-sections/authentication/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication"
+    }
+  },
+  {
+    "title": "画像付き認証ページ",
+    "description": "このページには、背景画像付きの認証フォームが表示されます。",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-image/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "with-image"
+    }
+  },
+  {
+    "title": "タイトル付き認証",
+    "description": "これはタイトルを含む認証フォームです。",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-title/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "with-title"
+    }
+  },
+  {
     "title": "404ページ",
     "description": "このページは404ページです。",
     "type": "component",
