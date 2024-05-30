@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Authentication",
+    "description": "This process verifies the identity of a user."
+  },
+  "ja": {
+    "title": "認証",
+    "description": "このプロセスは、ユーザーの身元を確認します。"
+  }
+}
