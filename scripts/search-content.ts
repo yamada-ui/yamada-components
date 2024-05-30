@@ -8,7 +8,7 @@ import { getResolvedPath } from "utils/path"
 
 type Content = {
   title: string
-  type: "component" | "category" | "category-group" | "label"
+  type: "component" | "category" | "category-group"
   description?: string
   slug: string
   labels?: string[]
