@@ -1,11 +1,13 @@
 {
-  "en": {
-    "title": "Feedback",
-    "description": ""
-  },
-  "ja": {
-    "title": "フィードバック",
-    "description": ""
-  },
-  "icon": "line-chart"
+  "en": { "title": "Feedback", "description": "" },
+  "ja": { "title": "フィードバック", "description": "" },
+  "icon": "line-chart",
+  "authors": [
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    }
+  ]
 }

@@ -12,5 +12,13 @@
       "containerType": "inline-size",
       "bgImage": "url(https://images.unsplash.com/photo-1484242857719-4b9144542727?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1280&q=80)"
     }
-  }
+  },
+  "authors": [
+    {
+      "id": 61367823,
+      "login": "taroj1205",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61367823?v=4",
+      "html_url": "https://github.com/taroj1205"
+    }
+  ]
 }

@@ -1,11 +1,13 @@
 {
-  "en": {
-    "title": "Forms",
-    "description": ""
-  },
-  "ja": {
-    "title": "フォーム",
-    "description": ""
-  },
-  "icon": "text-cursor-input"
+  "en": { "title": "Forms", "description": "" },
+  "ja": { "title": "フォーム", "description": "" },
+  "icon": "text-cursor-input",
+  "authors": [
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    }
+  ]
 }

@@ -1,11 +1,13 @@
 {
-  "en": {
-    "title": "Overlay",
-    "description": ""
-  },
-  "ja": {
-    "title": "オーバーレイ",
-    "description": ""
-  },
-  "icon": "layers"
+  "en": { "title": "Overlay", "description": "" },
+  "ja": { "title": "オーバーレイ", "description": "" },
+  "icon": "layers",
+  "authors": [
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    }
+  ]
 }
