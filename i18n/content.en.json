@@ -1,0 +1,448 @@
+[
+  {
+    "title": "Comment",
+    "description": "A card component displaying a user's avatar, username, timestamp, and comment text.",
+    "type": "component",
+    "slug": "/data-display/comments/comment/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "data-display",
+      "category": "comments",
+      "component": "comment"
+    }
+  },
+  {
+    "title": "Comments",
+    "description": "This is a component that can be used in comment sections.",
+    "type": "category",
+    "slug": "/data-display/comments/",
+    "labels": [],
+    "hierarchy": { "category-group": "data-display", "category": "comments" }
+  },
+  {
+    "title": "Comment with HTML Content",
+    "description": "A card component displaying a user's avatar, username, timestamp, and comment text with HTML content.",
+    "type": "component",
+    "slug": "/data-display/comments/with-html-content/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "data-display",
+      "category": "comments",
+      "component": "with-html-content"
+    }
+  },
+  {
+    "title": "Data Display",
+    "description": "",
+    "type": "category-group",
+    "slug": "/data-display/",
+    "labels": ["data-display"],
+    "hierarchy": { "category-group": "data-display" }
+  },
+  {
+    "title": "Stats",
+    "description": "",
+    "type": "category",
+    "slug": "/data-display/stats/",
+    "labels": [],
+    "hierarchy": { "category-group": "data-display", "category": "stats" }
+  },
+  {
+    "title": "Progress Card",
+    "description": "This is a card with progress bar",
+    "type": "component",
+    "slug": "/data-display/stats/progress-card/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "data-display",
+      "category": "stats",
+      "component": "progress-card"
+    }
+  },
+  {
+    "title": "Feedback",
+    "description": "",
+    "type": "category-group",
+    "slug": "/feedback/",
+    "labels": [],
+    "hierarchy": { "category-group": "feedback" }
+  },
+  {
+    "title": "Copy to clipboard button",
+    "description": "This is a button that copies the text to the clipboard",
+    "type": "component",
+    "slug": "/forms/buttons/copy-button/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "buttons",
+      "component": "copy-button"
+    }
+  },
+  {
+    "title": "Buttons",
+    "description": "",
+    "type": "category",
+    "slug": "/forms/buttons/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms", "category": "buttons" }
+  },
+  {
+    "title": "Dropzones",
+    "description": "Dropzones are areas where users can drag and drop files for upload.",
+    "type": "category",
+    "slug": "/forms/dropzones/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms", "category": "dropzones" }
+  },
+  {
+    "title": "Dropzone with button",
+    "description": "This is a dropzone with button.",
+    "type": "component",
+    "slug": "/forms/dropzones/with-button/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "dropzones",
+      "component": "with-button"
+    }
+  },
+  {
+    "title": "Dropzone image preview",
+    "description": "This is a Dropzone with image preview.",
+    "type": "component",
+    "slug": "/forms/dropzones/with-image-preview/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "dropzones",
+      "component": "with-image-preview"
+    }
+  },
+  {
+    "title": "Inputs",
+    "description": "",
+    "type": "category",
+    "slug": "/forms/inputs/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms", "category": "inputs" }
+  },
+  {
+    "title": "Password Input",
+    "description": "Password Input Component",
+    "type": "component",
+    "slug": "/forms/inputs/password-input/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "forms",
+      "category": "inputs",
+      "component": "password-input"
+    }
+  },
+  {
+    "title": "Forms",
+    "description": "",
+    "type": "category-group",
+    "slug": "/forms/",
+    "labels": [],
+    "hierarchy": { "category-group": "forms" }
+  },
+  {
+    "title": "Footer with Centered links",
+    "description": "This is Footer with Centered links",
+    "type": "component",
+    "slug": "/layouts/footers/footer-centerd/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-centerd"
+    }
+  },
+  {
+    "title": "Footer with links",
+    "description": "This is Footer with links",
+    "type": "component",
+    "slug": "/layouts/footers/footer-links/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-links"
+    }
+  },
+  {
+    "title": "Simple Footer",
+    "description": "This is a simple Footer.",
+    "type": "component",
+    "slug": "/layouts/footers/footer-simple/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-simple"
+    }
+  },
+  {
+    "title": "Footer with Social icons",
+    "description": "This is Footer with Social icons",
+    "type": "component",
+    "slug": "/layouts/footers/footer-social-icons/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "footers",
+      "component": "footer-social-icons"
+    }
+  },
+  {
+    "title": "Footers",
+    "description": "Footers are used to display important information at the bottom of the page.",
+    "type": "category",
+    "slug": "/layouts/footers/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts", "category": "footers" }
+  },
+  {
+    "title": "Grid with Asymmetrical Columns",
+    "description": "A responsive grid layout featuring asymmetrical columns, ideal for dynamic and modern web design.",
+    "type": "component",
+    "slug": "/layouts/grids/asymmetrical-columns/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "grids",
+      "component": "asymmetrical-columns"
+    }
+  },
+  {
+    "title": "Grid with Leading Item",
+    "description": "A responsive grid layout with a leading item that changes arrangement based on screen size.",
+    "type": "component",
+    "slug": "/layouts/grids/leading-item/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "grids",
+      "component": "leading-item"
+    }
+  },
+  {
+    "title": "Grids",
+    "description": "Grids are used to structure and align content in a flexible manner.",
+    "type": "category",
+    "slug": "/layouts/grids/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts", "category": "grids" }
+  },
+  {
+    "title": "Header with multiple layers",
+    "description": "This is a header with multiple layers.",
+    "type": "component",
+    "slug": "/layouts/headers/double-header/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "headers",
+      "component": "double-header"
+    }
+  },
+  {
+    "title": "Headers",
+    "description": "Headers are used to provide a brief introduction to the content.",
+    "type": "category",
+    "slug": "/layouts/headers/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts", "category": "headers" }
+  },
+  {
+    "title": "Simple Header",
+    "description": "This is a simple header.",
+    "type": "component",
+    "slug": "/layouts/headers/simple-header/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "layouts",
+      "category": "headers",
+      "component": "simple-header"
+    }
+  },
+  {
+    "title": "Layouts",
+    "description": "",
+    "type": "category-group",
+    "slug": "/layouts/",
+    "labels": [],
+    "hierarchy": { "category-group": "layouts" }
+  },
+  {
+    "title": "Navigation",
+    "description": "",
+    "type": "category-group",
+    "slug": "/navigation/",
+    "labels": [],
+    "hierarchy": { "category-group": "navigation" }
+  },
+  {
+    "title": "Overlay",
+    "description": "",
+    "type": "category-group",
+    "slug": "/overlay/",
+    "labels": [],
+    "hierarchy": { "category-group": "overlay" }
+  },
+  {
+    "title": "Authentication Form",
+    "description": "Authentication Form is used to verify the user's credentials.",
+    "type": "component",
+    "slug": "/page-sections/authentication/authentication-form/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "authentication-form"
+    }
+  },
+  {
+    "title": "Forgot password",
+    "description": "This feature allows users to reset their password if they've forgotten it.",
+    "type": "component",
+    "slug": "/page-sections/authentication/forgot-password/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "forgot-password"
+    }
+  },
+  {
+    "title": "Authentication",
+    "description": "This process verifies the identity of a user.",
+    "type": "category",
+    "slug": "/page-sections/authentication/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication"
+    }
+  },
+  {
+    "title": "Authentication page with image",
+    "description": "This page features an authentication form with a background image.",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-image/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "with-image"
+    }
+  },
+  {
+    "title": "Authentication with title",
+    "description": "This is an authentication form that includes a title.",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-title/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "authentication",
+      "component": "with-title"
+    }
+  },
+  {
+    "title": "404 page",
+    "description": "This is a 404 page.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/404-page/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages",
+      "component": "404-page"
+    }
+  },
+  {
+    "title": "500 page",
+    "description": "This is a 500 page.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/500-page/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages",
+      "component": "500-page"
+    }
+  },
+  {
+    "title": "Error Pages",
+    "description": "A collection of error pages for different scenarios.",
+    "type": "category",
+    "slug": "/page-sections/error-pages/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages"
+    }
+  },
+  {
+    "title": "404 page with image",
+    "description": "This is a 404 page with image.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/with-image/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "error-pages",
+      "component": "with-image"
+    }
+  },
+  {
+    "title": "Frequently Asked Questions",
+    "description": "A section dedicated to answering common queries.",
+    "type": "category",
+    "slug": "/page-sections/faq/",
+    "labels": [],
+    "hierarchy": { "category-group": "page-sections", "category": "faq" }
+  },
+  {
+    "title": "FAQ simple",
+    "description": "This is a simple FAQ.",
+    "type": "component",
+    "slug": "/page-sections/faq/simple/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "faq",
+      "component": "simple"
+    }
+  },
+  {
+    "title": "FAQ with Image",
+    "description": "This is an FAQ component with an image.",
+    "type": "component",
+    "slug": "/page-sections/faq/with-image/",
+    "labels": [],
+    "hierarchy": {
+      "category-group": "page-sections",
+      "category": "faq",
+      "component": "with-image"
+    }
+  },
+  {
+    "title": "Page Sections",
+    "description": "",
+    "type": "category-group",
+    "slug": "/page-sections/",
+    "labels": [],
+    "hierarchy": { "category-group": "page-sections" }
+  },
+  {
+    "title": "Typography",
+    "description": "",
+    "type": "category-group",
+    "slug": "/typography/",
+    "labels": [],
+    "hierarchy": { "category-group": "typography" }
+  }
+]
