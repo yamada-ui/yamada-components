@@ -26,7 +26,12 @@ import {
 import Link from "next/link"
 import type { FC } from "react"
 import { memo, useRef, useState } from "react"
-import { ColorModeButton, Search, ThemeSchemeButton } from "components/forms"
+import {
+  ColorModeButton,
+  Search,
+  SearchButton,
+  ThemeSchemeButton,
+} from "components/forms"
 import {
   Discord,
   Github,
@@ -84,14 +89,23 @@ export const Header = memo(
               _focusVisible={{ boxShadow: "outline" }}
               rounded="md"
               flex="1"
-              lineClamp={1}
             >
-              <Heading fontSize="2xl">Yamada Components</Heading>
+              <Heading fontSize="2xl" whiteSpace="nowrap">
+                Yamada Components
+              </Heading>
             </Box>
 
             <Search
               display={{ base: "flex", md: "none" }}
               borderColor={isScroll ? "transparent" : "border"}
+              bg={
+                isScroll
+                  ? ["whiteAlpha.600", "blackAlpha.500"]
+                  : ["white", "black"]
+              }
+              backdropFilter="auto"
+              backdropSaturate="180%"
+              backdropBlur="10px"
             />
 
             <ButtonGroup {...{ isOpen, onOpen }} />
@@ -116,6 +130,14 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
   ({ isMobile, isOpen, onOpen, onClose }) => {
     return (
       <HStack gap="sm">
+        <SearchButton
+          display={{
+            base: "none",
+            md: !isMobile ? "inline-flex" : undefined,
+            sm: "none",
+          }}
+        />
+
         <NextLinkIconButton
           href={CONSTANT.SNS.DISCORD}
           isExternal
