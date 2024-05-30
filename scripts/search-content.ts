@@ -1,138 +1,127 @@
-import { existsSync } from "fs"
-import { readFile, readdir, writeFile } from "fs/promises"
+import { readFile, writeFile } from "fs/promises"
+import path from "path"
 import * as p from "@clack/prompts"
 import c from "chalk"
 import { program } from "commander"
-import type { ComponentMetadata } from "component"
-import { getResolvedPath } from "utils/path"
+import { glob } from "glob"
+import { prettier } from "./utils"
+import type { OriginMetadata } from "component"
+import { CONSTANT } from "constant"
+
+const DEFAULT_LOCALE = CONSTANT.I18N.DEFAULT_LOCALE
+const LOCALES = CONSTANT.I18N.LOCALES.map(({ value }) => value)
+
+type ContentType = "categoryGroup" | "category" | "component"
+type ContentHierarchy = {
+  categoryGroup: string
+  category?: string
+  component?: string
+}
 
 type Content = {
   title: string
-  type: "component" | "category" | "category-group"
   description?: string
+  type: ContentType
   slug: string
-  labels?: string[]
-  hierarchy: {
-    "category-group": string
-    category?: string
-    component?: string
-  }
+  labels: string[]
+  hierarchy: ContentHierarchy
 }
 
-const getRecursivePaths = async (path: string): Promise<string[]> => {
-  try {
-    const dirents = await readdir(path, { withFileTypes: true })
+const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
+  s.start(`Getting the Yamada UI content paths`)
 
-    return (
-      await Promise.all(
-        dirents.flatMap(async (dirent) => {
-          const resolvedPath = `${path}/${dirent.name}`
+  const metadataPaths = await glob("contents/**/metadata.json")
 
-          if (dirent.isDirectory()) {
-            return await getRecursivePaths(resolvedPath)
-          } else {
-            return resolvedPath
-          }
-        }),
-      )
-    )
-      .flat()
-      .filter((path) => path.split(/[\\/]/).pop() === "metadata.json")
-  } catch {
-    const isExist = existsSync(path)
+  s.stop(`Got the Yamada UI content paths`)
 
-    return isExist ? [path] : []
-  }
+  return metadataPaths
 }
 
-const getPaths: p.RequiredRunner =
-  (path: string = getResolvedPath("contents")) =>
-  async (_, s): Promise<string[]> => {
-    s.start(`Getting the Yamada Components paths`)
+const getType = (slug: string): ContentType => {
+  const hierarchy = slug.split("/").length - 1
 
-    const paths = await getRecursivePaths(path)
-
-    s.stop(`Got the Yamada Components paths`)
-
-    return paths
-  }
-
-const getType = (path: string): Content["type"] | undefined => {
-  const layers = path
-    .replace(new RegExp(`^${getResolvedPath("contents")}`), "")
-    .split(/[\\/]/)
-    .filter((v) => v !== "metadata.json")
-    .filter(Boolean)
-  switch (layers.length) {
+  switch (hierarchy) {
     case 1:
-      return "category-group"
+      return "categoryGroup"
+
     case 2:
       return "category"
-    case 3:
-      return "component"
+
     default:
-      return undefined
+      return "component"
   }
 }
 
-const getSlug = (path: string) => {
-  path = path.replace(new RegExp(`^${getResolvedPath("contents")}`), "")
-  path = path.replace("metadata.json", "")
-  return path
+const getSlug = (path: string) =>
+  `/${path.replace(/^contents\//, "").replace(/\/metadata.json$/, "")}`
+
+const getMetadata = async (metadataPath: string) => {
+  const data = await readFile(metadataPath, "utf-8")
+  const metadata: OriginMetadata = JSON.parse(data)
+
+  return metadata
 }
 
-const getHierarchy = (path: string) => {
-  const layers = path
-    .replace(new RegExp(`^${getResolvedPath("contents")}`), "")
-    .split(/[\\/]/)
-    .filter((v) => v !== "metadata.json")
-    .filter(Boolean)
-  const hierarchy: Content["hierarchy"] = {
-    "category-group": layers[0],
-  }
-  if (layers.length >= 2) {
-    hierarchy.category = layers[1]
-  }
-  if (layers.length >= 3) {
-    hierarchy.component = layers[2]
-  }
-  return hierarchy
+const generateSearchContent = async (
+  metadataPaths: string[],
+  locale: string,
+) => {
+  const contents = await Promise.all(
+    metadataPaths.map(async (metadataPath) => {
+      const metadata = await getMetadata(metadataPath)
+
+      const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+      const description =
+        metadata[locale]?.description ?? metadata[DEFAULT_LOCALE]?.description
+      const labels = metadata.labels ?? []
+      const slug = getSlug(metadataPath)
+      const type = getType(slug)
+      const [, categoryGroup, category, component] = slug.split("/")
+
+      let hierarchy = { categoryGroup, category, component }
+
+      hierarchy[type] = title
+
+      if (type === "category" || type === "component") {
+        const metadata = await getMetadata(
+          path.join("contents", categoryGroup, "metadata.json"),
+        )
+
+        const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+
+        hierarchy.categoryGroup = title
+      }
+
+      if (type === "component") {
+        const metadata = await getMetadata(
+          path.join("contents", categoryGroup, category, "metadata.json"),
+        )
+
+        const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+
+        hierarchy.category = title
+      }
+
+      const content: Content = {
+        title,
+        description,
+        type,
+        slug,
+        labels,
+        hierarchy,
+      }
+      return content
+    }),
+  )
+
+  const data = await prettier(JSON.stringify(contents), {
+    parser: "json",
+  })
+
+  const outPath = `i18n/content.${locale}.json`
+
+  await writeFile(outPath, data)
 }
-
-const generateSearchContent: p.RequiredRunner =
-  (paths: string[], lang: "en" | "ja") => async (p, s) => {
-    s.start(`Generating table of contents and writing files`)
-
-    const contents = await Promise.all(
-      paths.map(async (path) => {
-        const metadataContent = await readFile(path, "utf8")
-        const metadataJson: ComponentMetadata = JSON.parse(metadataContent)
-
-        const content: Content = {
-          title: metadataJson[lang]
-            ? metadataJson[lang].title
-            : metadataJson["en"].title,
-          description: metadataJson[lang]
-            ? metadataJson[lang].description
-            : metadataJson["en"].description,
-          type: getType(path),
-          slug: getSlug(path),
-          labels: metadataJson["labels"] ? metadataJson["labels"] : [],
-          hierarchy: getHierarchy(path),
-        }
-        return content
-      }),
-    )
-
-    const data = JSON.stringify(contents)
-
-    const outPath = `i18n/content.${lang}.json`
-
-    await writeFile(outPath, data)
-
-    s.stop(`Wrote files`)
-    p.note(outPath, "Generated search contents")
-  }
 
 program.action(async () => {
   p.intro(c.magenta(`Generating Yamada Components search content`))
@@ -141,10 +130,15 @@ program.action(async () => {
   try {
     const start = process.hrtime.bigint()
 
-    const paths = await getPaths()(p, s)
+    const metadataPaths = await getMetadataPaths()(p, s)
 
-    await generateSearchContent(paths, "en")(p, s)
-    await generateSearchContent(paths, "ja")(p, s)
+    s.start(`Generating table of contents and writing files`)
+
+    await Promise.all(
+      LOCALES.map((locale) => generateSearchContent(metadataPaths, locale)),
+    )
+
+    s.stop(`Wrote files`)
 
     const end = process.hrtime.bigint()
     const duration = (Number(end - start) / 1e9).toFixed(2)
