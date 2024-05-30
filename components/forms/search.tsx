@@ -306,13 +306,13 @@ const SearchModal: FC<SearchModalProps> = memo(
 
                 return (
                   <HStack
-                    gap="2"
                     as={type === "component" ? "a" : NextLink}
                     target={type === "component" ? "_blank" : undefined}
                     rel={type === "component" ? "noopener" : undefined}
                     ref={ref}
                     key={slug}
                     href={slug}
+                    gap="2"
                     borderWidth="1px"
                     rounded="md"
                     minH="16"
