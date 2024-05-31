@@ -81,9 +81,7 @@ export const getComponentPaths =
     const getPaths =
       (componentTree?: ComponentCategoryGroup[]) => (locale: string) =>
         (componentTree ?? []).flatMap(({ slug, items }) => {
-          slug = slug
-            .replace(/\\/g, "/")
-            .replace(new RegExp(`^/${categoryGroupName}/`), "")
+          slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
 
           const resolvedSlug = slug.split("/")
 
@@ -150,7 +148,7 @@ export const getComponent = (slug: string) => async (locale: string) => {
 
     const components = await Promise.all(
       fileNames.map(async (name) => {
-        const filePath = path.join(dirPath, name).replace(/\\/g, "/")
+        const filePath = path.join(dirPath, name)
         const code = await readFile(filePath, "utf-8")
 
         return { name, path: filePath, code }
