@@ -1,6 +1,6 @@
 import { existsSync } from "fs"
 import { readdir, readFile } from "fs/promises"
-import path from "path"
+import path from "node:path"
 import { toKebabCase } from "@yamada-ui/react"
 import type {
   CommonMetadata,
@@ -48,7 +48,7 @@ export const getComponentCategoryGroup =
           (data) => (metadata = data),
         )(locale, currentSlug)
 
-        const slug = targetPath.replace(/^contents\//, "/")
+        const slug = targetPath.replace(/\\/g, "/").replace(/^contents\//, "/")
         const isExpanded =
           slug === currentSlug ||
           items.some(
@@ -74,6 +74,7 @@ export const getComponentPaths =
   (categoryGroupName: string) => async (locales: string[]) => {
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
     const categoryGroupPath = path.join("contents", categoryGroupName)
+
     const componentTree =
       await getComponentCategoryGroup(categoryGroupPath)(defaultLocale)
 
@@ -125,7 +126,7 @@ export const getComponent = (slug: string) => async (locale: string) => {
     const componentPath = path.join(dirPath, "index.tsx")
     const themePath = path.join(dirPath, "theme.ts")
     const configPath = path.join(dirPath, "config.ts")
-    const validComponentPath = path.join(slug, "index.tsx")
+    const validComponentPath = path.join(slug, "index.tsx").replace(/\\/g, "/")
     const validThemePath = path.join(slug, "theme.ts")
     const validConfigPath = path.join(slug, "config.ts")
 
