@@ -1,7 +1,7 @@
 import { existsSync } from "fs"
 import { readdir, readFile } from "fs/promises"
+import path from "node:path"
 import { toKebabCase } from "@yamada-ui/react"
-import { joinPath } from "./path"
 import type {
   CommonMetadata,
   ComponentCategoryGroup,
@@ -22,7 +22,7 @@ export const getComponentCategoryGroup =
     const componentTree = await Promise.all(
       dirents.map(async (dirent) => {
         const name = toKebabCase(dirent.name)
-        const targetPath = joinPath(dirent.path, name)
+        const targetPath = path.join(dirent.path, name)
 
         if (!dirent.isDirectory()) {
           if (name === "metadata.json") {
@@ -48,7 +48,7 @@ export const getComponentCategoryGroup =
           (data) => (metadata = data),
         )(locale, currentSlug)
 
-        const slug = targetPath.replace(/^contents\//, "/")
+        const slug = targetPath.replace(/\\/g, "/").replace(/^contents\//, "/")
         const isExpanded =
           slug === currentSlug ||
           items.some(
@@ -73,7 +73,7 @@ export const getComponentCategoryGroup =
 export const getComponentPaths =
   (categoryGroupName: string) => async (locales: string[]) => {
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
-    const categoryGroupPath = joinPath("contents", categoryGroupName)
+    const categoryGroupPath = path.join("contents", categoryGroupName)
 
     const componentTree =
       await getComponentCategoryGroup(categoryGroupPath)(defaultLocale)
@@ -108,7 +108,7 @@ const getMetadata = (dirPath: string) => async (locale: string) => {
   const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
 
   try {
-    const data = await readFile(joinPath(dirPath, "metadata.json"), "utf-8")
+    const data = await readFile(path.join(dirPath, "metadata.json"), "utf-8")
     const json: OriginMetadata = JSON.parse(data)
     const metadata: CommonMetadata = json[locale] ?? json[defaultLocale]
     const options = json.options ?? null
@@ -124,13 +124,13 @@ export const getComponent = (slug: string) => async (locale: string) => {
   try {
     slug = slug.replace(/^\//, "")
     const name = slug.split("/").at(-1)
-    const dirPath = joinPath("contents", slug)
-    const componentPath = joinPath(dirPath, "index.tsx")
-    const themePath = joinPath(dirPath, "theme.ts")
-    const configPath = joinPath(dirPath, "config.ts")
-    const validComponentPath = joinPath(slug, "index.tsx")
-    const validThemePath = joinPath(slug, "theme.ts")
-    const validConfigPath = joinPath(slug, "config.ts")
+    const dirPath = path.join("contents", slug)
+    const componentPath = path.join(dirPath, "index.tsx")
+    const themePath = path.join(dirPath, "theme.ts")
+    const configPath = path.join(dirPath, "config.ts")
+    const validComponentPath = path.join(slug, "index.tsx").replace(/\\/g, "/")
+    const validThemePath = path.join(slug, "theme.ts")
+    const validConfigPath = path.join(slug, "config.ts")
 
     if (!existsSync(componentPath)) return
 
@@ -150,7 +150,7 @@ export const getComponent = (slug: string) => async (locale: string) => {
 
     const components = await Promise.all(
       fileNames.map(async (name) => {
-        const filePath = joinPath(dirPath, name)
+        const filePath = path.join(dirPath, name).replace(/\\/g, "/")
         const code = await readFile(filePath, "utf-8")
 
         return { name, path: filePath, code }
