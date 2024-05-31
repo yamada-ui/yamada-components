@@ -15,17 +15,7 @@ type PullRequest = Awaited<ReturnType<typeof getPullRequest>>
 type PullRequestMap = { [key: number]: PullRequest }
 
 const COMMON_PARAMS = { owner: "yamada-ui", repo: "yamada-components" }
-const OMIT_GITHUB_IDS = [
-  "koralle",
-  "108yen",
-  "setodeve",
-  "hoshico",
-  "komura-c",
-  "imaimai17468",
-  "suzukisan22",
-  "hirotomoyamada",
-  "hajimemat",
-]
+const OMIT_GITHUB_IDS = ["hirotomoyamada", "hajimemat"]
 const DISCORD_USER_MAP: Record<string, string> = {
   hirotomoyamada: "434987704162451467",
   illionillion: "1000629510078738432",
