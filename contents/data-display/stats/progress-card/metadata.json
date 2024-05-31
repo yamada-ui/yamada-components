@@ -1,7 +1,11 @@
 {
   "en": {
     "title": "Progress Card",
-    "description": "This is a card with progress bar"
+    "description": "This is a card with progress bar."
+  },
+  "ja": {
+    "title": "進捗バー",
+    "description": "これは進捗バーのカードです。"
   },
   "authors": [
     {
@@ -22,5 +26,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/85816730?v=4",
       "html_url": "https://github.com/KenyaMasuko"
     }
-  ]
+  ],
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
 }
