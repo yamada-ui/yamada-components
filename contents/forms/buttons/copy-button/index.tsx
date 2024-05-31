@@ -1,15 +1,21 @@
-import { IconCheck, IconCopy } from "@tabler/icons-react"
-import { Button, Tooltip, useClipboard } from "@yamada-ui/react"
+import { Button, Icon, Tooltip, useClipboard } from "@yamada-ui/react"
+import { Check, Copy } from "lucide-react"
 import type { FC } from "react"
 
 const CopyButton: FC = () => {
   const { onCopy, hasCopied } = useClipboard("https://yamada-ui.com/")
 
   return (
-    <Tooltip label="Link copied!" bg="success" isOpen={hasCopied}>
+    <Tooltip label="Link copied!" bg="success" color="white" isOpen={hasCopied}>
       <Button
         onClick={onCopy}
-        rightIcon={hasCopied ? <IconCheck /> : <IconCopy />}
+        rightIcon={
+          hasCopied ? (
+            <Icon as={Check} fontSize="1.25em" />
+          ) : (
+            <Icon as={Copy} fontSize="1.25em" />
+          )
+        }
       >
         Copy link to clipboard
       </Button>
