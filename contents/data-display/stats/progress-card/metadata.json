@@ -1,7 +1,11 @@
 {
   "en": {
     "title": "Progress Card",
-    "description": "This is a card with progress bar"
+    "description": "This is a card with progress bar."
+  },
+  "ja": {
+    "title": "プログレスカード",
+    "description": "これはプログレスカードです。"
   },
   "authors": [
     {
@@ -10,5 +14,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
       "html_url": "https://github.com/hirotomoyamada"
     }
-  ]
+  ],
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
 }
