@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "With label",
+    "description": "This is a divider component with a label."
+  },
+  "ja": {
+    "title": "ラベル付き",
+    "description": "これは、ラベル付きの区切り線コンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "maxW": "2xl"
+    }
+  }
+}

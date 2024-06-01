@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "With title",
+    "description": "This is a divider component with a title."
+  },
+  "ja": {
+    "title": "タイトル付き",
+    "description": "これは、タイトル付きの区切り線コンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "maxW": "xl"
+    }
+  }
+}
