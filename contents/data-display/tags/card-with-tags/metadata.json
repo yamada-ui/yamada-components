@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Card with removable tags",
+    "description": "This is a card with tags which can be removed."
+  },
+  "ja": {
+    "title": "削除可能なタグ付きカード",
+    "description": "これは削除が可能なタグ付きカードです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "maxW": "xl"
+    }
+  }
+}

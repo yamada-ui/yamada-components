@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Tags",
+    "description": "Tags are components that are used to categorize or organize items using keywords that describe them."
+  },
+  "ja": {
+    "title": "タグ",
+    "description": "タグは、アイテムを分類または整理するために使用されるキーワードで識別するためのコンポーネントです。"
+  }
+}
