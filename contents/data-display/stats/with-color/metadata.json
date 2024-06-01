@@ -4,8 +4,8 @@
     "description": "This is a progress card with color."
   },
   "ja": {
-    "title": "色付き進捗バーカード",
-    "description": "これは色付きの進捗バーカードです。"
+    "title": "色付きプログレスカード",
+    "description": "これは色付きのプログレスバーカードです。"
   },
   "options": {
     "container": {
