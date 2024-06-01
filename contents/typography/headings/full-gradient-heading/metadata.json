@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Full Gradient Heading",
+    "description": "This is a full gradient heading that makes the text gradient from left to right."
+  },
+  "ja": {
+    "title": "グラデーションヘッダー",
+    "description": "これは、左から右へのグラデーションを使ったグラデーションヘッダーです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
