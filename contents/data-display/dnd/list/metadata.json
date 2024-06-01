@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Drag'n'Drop List",
+    "description": "Drag and Drop list is a component that allows you to reorder the items in a list."
+  },
+  "ja": {
+    "title": "ドラッグ＆ドロップリスト",
+    "description": "ドラッグ＆ドロップリストは、リストの項目を並べ替えるためのコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "maxW": "xl"
+    }
+  }
+}
