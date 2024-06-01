@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Partial Gradient Heading",
+    "description": "This is a component that makes the text partially gradient from left to right."
+  },
+  "ja": {
+    "title": "部分的なグラデーションヘッダー",
+    "description": "これは、左から右への部分的なグラデーションを使ったグラデーションヘッダーです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
