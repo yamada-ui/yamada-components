@@ -4,8 +4,8 @@
     "description": "This is a card with progress bar."
   },
   "ja": {
-    "title": "進捗バー",
-    "description": "これは進捗バーのカードです。"
+    "title": "プログレスカード",
+    "description": "これはプログレスバー付きのカードです。"
   },
   "authors": [
     {
