@@ -3,22 +3,10 @@
   "ja": { "title": "インプット", "description": "" },
   "authors": [
     {
-      "id": 60034520,
-      "login": "illionillion",
-      "avatar_url": "https://avatars.githubusercontent.com/u/60034520?v=4",
-      "html_url": "https://github.com/illionillion"
-    },
-    {
       "id": 84060430,
       "login": "hirotomoyamada",
       "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
       "html_url": "https://github.com/hirotomoyamada"
-    },
-    {
-      "id": 85816730,
-      "login": "KenyaMasuko",
-      "avatar_url": "https://avatars.githubusercontent.com/u/85816730?v=4",
-      "html_url": "https://github.com/KenyaMasuko"
     }
   ]
 }

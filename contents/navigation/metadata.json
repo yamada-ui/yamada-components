@@ -1,11 +1,13 @@
 {
-  "en": {
-    "title": "Navigation",
-    "description": ""
-  },
-  "ja": {
-    "title": "ナビゲーション",
-    "description": ""
-  },
-  "icon": "navigation"
+  "en": { "title": "Navigation", "description": "" },
+  "ja": { "title": "ナビゲーション", "description": "" },
+  "icon": "navigation",
+  "authors": [
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    }
+  ]
 }

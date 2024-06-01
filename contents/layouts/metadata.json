@@ -1,11 +1,13 @@
 {
-  "en": {
-    "title": "Layouts",
-    "description": ""
-  },
-  "ja": {
-    "title": "レイアウト",
-    "description": ""
-  },
-  "icon": "panels-top-left"
+  "en": { "title": "Layouts", "description": "" },
+  "ja": { "title": "レイアウト", "description": "" },
+  "icon": "panels-top-left",
+  "authors": [
+    {
+      "id": 84060430,
+      "login": "hirotomoyamada",
+      "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
+      "html_url": "https://github.com/hirotomoyamada"
+    }
+  ]
 }
