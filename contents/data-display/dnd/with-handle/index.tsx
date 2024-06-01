@@ -43,7 +43,7 @@ const elements = [
   },
 ]
 
-const List: FC = () => {
+const WithHandle: FC = () => {
   return (
     <Reorder>
       {elements.map((item) => (
@@ -73,4 +73,4 @@ const List: FC = () => {
   )
 }
 
-export default List
+export default WithHandle
