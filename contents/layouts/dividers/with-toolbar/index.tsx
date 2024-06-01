@@ -8,7 +8,7 @@ import {
 import { MessageSquare, Paperclip, Pen, Trash2 } from "lucide-react"
 import type { FC } from "react"
 
-const WithLabel: FC = () => {
+const WithToolbar: FC = () => {
   return (
     <HStack>
       <Divider />
@@ -23,4 +23,4 @@ const WithLabel: FC = () => {
   )
 }
 
-export default WithLabel
+export default WithToolbar

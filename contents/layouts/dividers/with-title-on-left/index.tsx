@@ -1,7 +1,7 @@
 import { HStack, Divider, Heading } from "@yamada-ui/react"
 import type { FC } from "react"
 
-const WithLabel: FC = () => {
+const WithTitleOnLeft: FC = () => {
   return (
     <HStack>
       <Heading as="h3" size="sm">
@@ -12,4 +12,4 @@ const WithLabel: FC = () => {
   )
 }
 
-export default WithLabel
+export default WithTitleOnLeft

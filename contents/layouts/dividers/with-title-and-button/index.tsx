@@ -2,7 +2,7 @@ import { HStack, Divider, Button, Icon, Heading } from "@yamada-ui/react"
 import { Plus } from "lucide-react"
 import type { FC } from "react"
 
-const WithLabel: FC = () => {
+const WithTitleAndButton: FC = () => {
   return (
     <HStack>
       <Heading as="h3" size="sm">
@@ -21,4 +21,4 @@ const WithLabel: FC = () => {
   )
 }
 
-export default WithLabel
+export default WithTitleAndButton
