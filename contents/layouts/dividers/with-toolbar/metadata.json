@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "With toolbar",
+    "description": "This is a divider component with a toolbar."
+  },
+  "ja": {
+    "title": "ツールバー付き",
+    "description": "これは、ツールバー付きの区切り線コンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "maxW": "2xl"
+    }
+  }
+}
