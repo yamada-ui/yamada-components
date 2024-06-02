@@ -1,4 +1,5 @@
 import { Octokit } from "@octokit/rest"
+import { isObject } from "@yamada-ui/react"
 import { config } from "dotenv"
 import { recursiveOctokit } from "./utils"
 
@@ -43,22 +44,22 @@ const DISCORD_USER_MAP: Record<string, string> = {
 }
 const REVIEWER_COUNT = 4
 
-// const GITHUB_JOINING_COMMENT = (id: string) =>
-//   [
-//     `@${id}`,
-//     `Hi, Thanks for the PR!`,
-//     `A week has passed since this PR was created, so maintainers will be joining this PR.`,
-//   ].join("\n\n")
-// const DISCORD_HELP_WANTED_COMMENT = (
-//   number: number,
-//   title: string,
-//   html_url: string,
-// ) =>
-//   [
-//     `<@&1202956318718304276>`,
-//     `Help!, I need somebody, Help!, not just anybody,\nHelp!, you know I need someone, Help!`,
-//     `[${number}: ${title}](${html_url})`,
-//   ].join("\n\n")
+const GITHUB_JOINING_COMMENT = (id: string) =>
+  [
+    `@${id}`,
+    `Hi, Thanks for the PR!`,
+    `A week has passed since this PR was created, so maintainers will be joining this PR.`,
+  ].join("\n\n")
+const DISCORD_HELP_WANTED_COMMENT = (
+  number: number,
+  title: string,
+  html_url: string,
+) =>
+  [
+    `<@&1202956318718304276>`,
+    `Help!, I need somebody, Help!, not just anybody,\nHelp!, you know I need someone, Help!`,
+    `[${number}: ${title}](${html_url})`,
+  ].join("\n\n")
 const DISCORD_REVIEW_COMMENT = (
   ids: string[],
   number: number,
@@ -279,69 +280,69 @@ const addReviewers = async (
   }
 }
 
-// const addComment = async (
-//   pullRequests: Issue[],
-//   pullRequestMap: PullRequestMap,
-//   collaborators: Collaborator[],
-// ) => {
-//   const collaboratorIds = collaborators.map(({ login }) => login)
+const addComment = async (
+  pullRequests: Issue[],
+  pullRequestMap: PullRequestMap,
+  collaborators: Collaborator[],
+) => {
+  const collaboratorIds = collaborators.map(({ login }) => login)
 
-//   const url = process.env.DISCORD_HELP_WANTED_WEBHOOK_URL
+  const url = process.env.DISCORD_HELP_WANTED_WEBHOOK_URL
 
-//   if (!url) throw new Error("Missing Discord Webhook URL\n")
+  if (!url) throw new Error("Missing Discord Webhook URL\n")
 
-//   await Promise.all(
-//     pullRequests.map(
-//       async ({ number, title, user, labels, created_at, html_url }) => {
-//         if (!user || user.type === "Bot") return
+  await Promise.all(
+    pullRequests.map(
+      async ({ number, title, user, labels, created_at, html_url }) => {
+        if (!user || user.type === "Bot") return
 
-//         if (
-//           labels.some(
-//             (label) => isObject(label) && "help wanted" === label?.name,
-//           )
-//         )
-//           return
+        if (
+          labels.some(
+            (label) => isObject(label) && "help wanted" === label?.name,
+          )
+        )
+          return
 
-//         if (collaboratorIds.includes(user.login)) return
+        if (collaboratorIds.includes(user.login)) return
 
-//         const createdTimestamp = new Date(created_at)
-//         const limitTimestamp = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+        const createdTimestamp = new Date(created_at)
+        const limitTimestamp = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
 
-//         if (createdTimestamp > limitTimestamp) return
+        if (createdTimestamp > limitTimestamp) return
 
-//         if (!pullRequestMap[number]) return
+        if (!pullRequestMap[number]) return
 
-//         const { head } = pullRequestMap[number]
+        const { head } = pullRequestMap[number]
 
-//         if (head.label === "yamada-ui:changeset-release/main") return
+        if (head.label === "yamada-ui:changeset-release/main") return
 
-//         await recursiveOctokit(() =>
-//           octokit.issues.createComment({
-//             ...COMMON_PARAMS,
-//             issue_number: number,
-//             body: GITHUB_JOINING_COMMENT(user.login),
-//           }),
-//         )
+        await recursiveOctokit(() =>
+          octokit.issues.createComment({
+            ...COMMON_PARAMS,
+            issue_number: number,
+            body: GITHUB_JOINING_COMMENT(user.login),
+          }),
+        )
 
-//         await recursiveOctokit(() =>
-//           octokit.issues.addLabels({
-//             ...COMMON_PARAMS,
-//             issue_number: number,
-//             labels: ["help wanted"],
-//           }),
-//         )
+        await recursiveOctokit(() =>
+          octokit.issues.addLabels({
+            ...COMMON_PARAMS,
+            issue_number: number,
+            labels: ["help wanted"],
+          }),
+        )
 
-//         console.log("Added comment", number, title)
+        console.log("Added comment", number, title)
 
-//         const content = DISCORD_HELP_WANTED_COMMENT(number, title, html_url)
+        const content = DISCORD_HELP_WANTED_COMMENT(number, title, html_url)
 
-//         await sendDiscordChannel(url, content)
+        await sendDiscordChannel(url, content)
 
-//         console.log("Send discord", number, title)
-//       },
-//     ),
-//   )
-// }
+        console.log("Send discord", number, title)
+      },
+    ),
+  )
+}
 
 const sendDiscordChannel = async (url: string, content: string) => {
   const data = { username: "GitHub", content }
@@ -369,7 +370,7 @@ const main = async () => {
       collaborators,
     )
 
-    // await addComment(pullRequests, pullRequestMap, collaborators)
+    await addComment(pullRequests, pullRequestMap, collaborators)
   } catch (e) {
     if (e instanceof Error) console.log(e.message)
   }
