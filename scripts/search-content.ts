@@ -7,25 +7,10 @@ import { glob } from "glob"
 import { prettier } from "./utils"
 import type { OriginMetadata } from "component"
 import { CONSTANT } from "constant"
+import type { SearchContent, SearchContentType } from "search-content"
 
 const DEFAULT_LOCALE = CONSTANT.I18N.DEFAULT_LOCALE
 const LOCALES = CONSTANT.I18N.LOCALES.map(({ value }) => value)
-
-type ContentType = "categoryGroup" | "category" | "component"
-type ContentHierarchy = {
-  categoryGroup: string
-  category?: string
-  component?: string
-}
-
-type Content = {
-  title: string
-  description?: string
-  type: ContentType
-  slug: string
-  labels: string[]
-  hierarchy: ContentHierarchy
-}
 
 const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
   s.start(`Getting the Yamada UI content paths`)
@@ -37,7 +22,7 @@ const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
   return metadataPaths
 }
 
-const getType = (slug: string): ContentType => {
+const getType = (slug: string): SearchContentType => {
   const hierarchy = slug.split("/").length - 1
 
   switch (hierarchy) {
@@ -102,7 +87,7 @@ const generateSearchContent = async (
         hierarchy.category = title
       }
 
-      const content: Content = {
+      const content: SearchContent = {
         title,
         description,
         type,

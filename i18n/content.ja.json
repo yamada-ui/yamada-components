@@ -1,19 +1,19 @@
 [
   {
-    "title": "タイポグラフィ",
-    "description": "",
-    "type": "categoryGroup",
-    "slug": "/typography",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "タイポグラフィ" }
-  },
-  {
     "title": "ページセクション",
     "description": "",
     "type": "categoryGroup",
     "slug": "/page-sections",
     "labels": [],
     "hierarchy": { "categoryGroup": "ページセクション" }
+  },
+  {
+    "title": "タイポグラフィ",
+    "description": "",
+    "type": "categoryGroup",
+    "slug": "/typography",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "タイポグラフィ" }
   },
   {
     "title": "オーバーレイ",
@@ -64,6 +64,14 @@
     "hierarchy": { "categoryGroup": "データディスプレイ" }
   },
   {
+    "title": "認証",
+    "description": "このプロセスは、ユーザーの身元を確認します。",
+    "type": "category",
+    "slug": "/page-sections/authentication",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "ページセクション", "category": "認証" }
+  },
+  {
     "title": "よくある質問",
     "description": "一般的な疑問を解答するセクション。",
     "type": "category",
@@ -86,28 +94,12 @@
     }
   },
   {
-    "title": "認証",
-    "description": "このプロセスは、ユーザーの身元を確認します。",
-    "type": "category",
-    "slug": "/page-sections/authentication",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "ページセクション", "category": "認証" }
-  },
-  {
     "title": "ヘッダー",
     "description": "ヘッダーは、コンテンツの簡単な紹介を提供するために使用されます。",
     "type": "category",
     "slug": "/layouts/headers",
     "labels": [],
     "hierarchy": { "categoryGroup": "レイアウト", "category": "ヘッダー" }
-  },
-  {
-    "title": "グリッド",
-    "description": "グリッドは、コンテンツを柔軟に構造化し、整列するために使用されます。",
-    "type": "category",
-    "slug": "/layouts/grids",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "レイアウト", "category": "グリッド" }
   },
   {
     "title": "フッター",
@@ -118,20 +110,28 @@
     "hierarchy": { "categoryGroup": "レイアウト", "category": "フッター" }
   },
   {
+    "title": "グリッド",
+    "description": "グリッドは、コンテンツを柔軟に構造化し、整列するために使用されます。",
+    "type": "category",
+    "slug": "/layouts/grids",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "レイアウト", "category": "グリッド" }
+  },
+  {
+    "title": "区切り線",
+    "description": "区切り線を使用して、ページの内容を区切ります。",
+    "type": "category",
+    "slug": "/layouts/dividers",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "レイアウト", "category": "区切り線" }
+  },
+  {
     "title": "インプット",
     "description": "",
     "type": "category",
     "slug": "/forms/inputs",
     "labels": [],
     "hierarchy": { "categoryGroup": "フォーム", "category": "インプット" }
-  },
-  {
-    "title": "ドロップゾーン",
-    "description": "ドロップゾーンは、ユーザーがファイルをドラッグアンドドロップしてアップロードできるエリアです。",
-    "type": "category",
-    "slug": "/forms/dropzones",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "フォーム", "category": "ドロップゾーン" }
   },
   {
     "title": "ボタン",
@@ -142,6 +142,25 @@
     "hierarchy": { "categoryGroup": "フォーム", "category": "ボタン" }
   },
   {
+    "title": "ドロップゾーン",
+    "description": "ドロップゾーンは、ユーザーがファイルをドラッグアンドドロップしてアップロードできるエリアです。",
+    "type": "category",
+    "slug": "/forms/dropzones",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "フォーム", "category": "ドロップゾーン" }
+  },
+  {
+    "title": "コメント",
+    "description": "コメントセクションで使用できるコンポーネントです。",
+    "type": "category",
+    "slug": "/data-display/comments",
+    "labels": ["comment", "data-display"],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "コメント"
+    }
+  },
+  {
     "title": "統計",
     "description": "",
     "type": "category",
@@ -150,14 +169,51 @@
     "hierarchy": { "categoryGroup": "データディスプレイ", "category": "統計" }
   },
   {
-    "title": "コメント",
-    "description": "コメントセクションで使用できるコンポーネントです。",
-    "type": "category",
-    "slug": "/data-display/comments",
+    "title": "認証フォーム",
+    "description": "認証フォームは、ユーザーの資格情報を確認するために使用されます。",
+    "type": "component",
+    "slug": "/page-sections/authentication/authentication-form",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "データディスプレイ",
-      "category": "コメント"
+      "categoryGroup": "ページセクション",
+      "category": "認証",
+      "component": "認証フォーム"
+    }
+  },
+  {
+    "title": "画像付き認証ページ",
+    "description": "このページには、背景画像付きの認証フォームが表示されます。",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "認証",
+      "component": "画像付き認証ページ"
+    }
+  },
+  {
+    "title": "パスワードを忘れた場合",
+    "description": "この機能は、ユーザーがパスワードを忘れた場合にリセットすることができます。",
+    "type": "component",
+    "slug": "/page-sections/authentication/forgot-password",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "認証",
+      "component": "パスワードを忘れた場合"
+    }
+  },
+  {
+    "title": "タイトル付き認証",
+    "description": "これはタイトルを含む認証フォームです。",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-title",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "認証",
+      "component": "タイトル付き認証"
     }
   },
   {
@@ -170,6 +226,18 @@
       "categoryGroup": "ページセクション",
       "category": "よくある質問",
       "component": "画像付き FAQ"
+    }
+  },
+  {
+    "title": "FAQ シンプル",
+    "description": "これはシンプルな FAQ です",
+    "type": "component",
+    "slug": "/page-sections/faq/simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "よくある質問",
+      "component": "FAQ シンプル"
     }
   },
   {
@@ -197,18 +265,6 @@
     }
   },
   {
-    "title": "FAQ シンプル",
-    "description": "これはシンプルな FAQ です",
-    "type": "component",
-    "slug": "/page-sections/faq/simple",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "ページセクション",
-      "category": "よくある質問",
-      "component": "FAQ シンプル"
-    }
-  },
-  {
     "title": "404ページ",
     "description": "このページは404ページです。",
     "type": "component",
@@ -218,66 +274,6 @@
       "categoryGroup": "ページセクション",
       "category": "エラーページ",
       "component": "404ページ"
-    }
-  },
-  {
-    "title": "画像付き認証ページ",
-    "description": "このページには、背景画像付きの認証フォームが表示されます。",
-    "type": "component",
-    "slug": "/page-sections/authentication/with-image",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "ページセクション",
-      "category": "認証",
-      "component": "画像付き認証ページ"
-    }
-  },
-  {
-    "title": "タイトル付き認証",
-    "description": "これはタイトルを含む認証フォームです。",
-    "type": "component",
-    "slug": "/page-sections/authentication/with-title",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "ページセクション",
-      "category": "認証",
-      "component": "タイトル付き認証"
-    }
-  },
-  {
-    "title": "パスワードを忘れた場合",
-    "description": "この機能は、ユーザーがパスワードを忘れた場合にリセットすることができます。",
-    "type": "component",
-    "slug": "/page-sections/authentication/forgot-password",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "ページセクション",
-      "category": "認証",
-      "component": "パスワードを忘れた場合"
-    }
-  },
-  {
-    "title": "認証フォーム",
-    "description": "認証フォームは、ユーザーの資格情報を確認するために使用されます。",
-    "type": "component",
-    "slug": "/page-sections/authentication/authentication-form",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "ページセクション",
-      "category": "認証",
-      "component": "認証フォーム"
-    }
-  },
-  {
-    "title": "マルチレイヤーのヘッダー",
-    "description": "これはマルチレイヤーのヘッダーです。",
-    "type": "component",
-    "slug": "/layouts/headers/double-header",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "ヘッダー",
-      "component": "マルチレイヤーのヘッダー"
     }
   },
   {
@@ -293,27 +289,15 @@
     }
   },
   {
-    "title": "非対称な列を持つグリッド",
-    "description": "ダイナミックでモダンなウェブデザインに最適な、非対称な列を特徴とするレスポンシブグリッドレイアウト。",
+    "title": "マルチレイヤーのヘッダー",
+    "description": "これはマルチレイヤーのヘッダーです。",
     "type": "component",
-    "slug": "/layouts/grids/asymmetrical-columns",
+    "slug": "/layouts/headers/double-header",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "レイアウト",
-      "category": "グリッド",
-      "component": "非対称な列を持つグリッド"
-    }
-  },
-  {
-    "title": "リーディングアイテム付きグリッド",
-    "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。",
-    "type": "component",
-    "slug": "/layouts/grids/leading-item",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "グリッド",
-      "component": "リーディングアイテム付きグリッド"
+      "category": "ヘッダー",
+      "component": "マルチレイヤーのヘッダー"
     }
   },
   {
@@ -353,6 +337,30 @@
     }
   },
   {
+    "title": "リーディングアイテム付きグリッド",
+    "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。",
+    "type": "component",
+    "slug": "/layouts/grids/leading-item",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "グリッド",
+      "component": "リーディングアイテム付きグリッド"
+    }
+  },
+  {
+    "title": "非対称な列を持つグリッド",
+    "description": "ダイナミックでモダンなウェブデザインに最適な、非対称な列を特徴とするレスポンシブグリッドレイアウト。",
+    "type": "component",
+    "slug": "/layouts/grids/asymmetrical-columns",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "グリッド",
+      "component": "非対称な列を持つグリッド"
+    }
+  },
+  {
     "title": "シンプルなフッター",
     "description": "これはシンプルなフッターです",
     "type": "component",
@@ -362,6 +370,90 @@
       "categoryGroup": "レイアウト",
       "category": "フッター",
       "component": "シンプルなフッター"
+    }
+  },
+  {
+    "title": "タイトルを左に表示",
+    "description": "これは、タイトルを左に表示する区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/with-title-on-left",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "タイトルを左に表示"
+    }
+  },
+  {
+    "title": "ツールバー付き",
+    "description": "これは、ツールバー付きの区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/with-toolbar",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "ツールバー付き"
+    }
+  },
+  {
+    "title": "タイトル付き",
+    "description": "これは、タイトル付きの区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/with-title",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "タイトル付き"
+    }
+  },
+  {
+    "title": "アイコン付き",
+    "description": "これは、アイコン付きの区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/with-icon",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "アイコン付き"
+    }
+  },
+  {
+    "title": "ラベル付き",
+    "description": "これは、ラベル付きの区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/with-label",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "ラベル付き"
+    }
+  },
+  {
+    "title": "ボタン付き",
+    "description": "これは、ボタン付きの区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/with-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "ボタン付き"
+    }
+  },
+  {
+    "title": "ラベルを左に表示",
+    "description": "これは、ラベルを左に表示する区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/label-on-left",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "ラベルを左に表示"
     }
   },
   {
@@ -389,18 +481,6 @@
     }
   },
   {
-    "title": "ボタン付きのドロップゾーン",
-    "description": "これはボタン付きのドロップゾーンです。",
-    "type": "component",
-    "slug": "/forms/dropzones/with-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "フォーム",
-      "category": "ドロップゾーン",
-      "component": "ボタン付きのドロップゾーン"
-    }
-  },
-  {
     "title": "クリップボードにコピーするボタン",
     "description": "これはテキストをクリップボードにコピーするボタンです",
     "type": "component",
@@ -413,15 +493,15 @@
     }
   },
   {
-    "title": "Progress Card",
-    "description": "This is a card with progress bar",
+    "title": "ボタン付きのドロップゾーン",
+    "description": "これはボタン付きのドロップゾーンです。",
     "type": "component",
-    "slug": "/data-display/stats/progress-card",
+    "slug": "/forms/dropzones/with-button",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "データディスプレイ",
-      "category": "統計",
-      "component": "Progress Card"
+      "categoryGroup": "フォーム",
+      "category": "ドロップゾーン",
+      "component": "ボタン付きのドロップゾーン"
     }
   },
   {
@@ -429,7 +509,7 @@
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、およびHTMLコンテンツを含むコメントテキストを表示するカードコンポーネント。",
     "type": "component",
     "slug": "/data-display/comments/with-html-content",
-    "labels": [],
+    "labels": ["comment", "data-display"],
     "hierarchy": {
       "categoryGroup": "データディスプレイ",
       "category": "コメント",
@@ -441,11 +521,35 @@
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、コメントテキストを表示するカードコンポーネント。",
     "type": "component",
     "slug": "/data-display/comments/comment",
-    "labels": [],
+    "labels": ["comment", "data-display"],
     "hierarchy": {
       "categoryGroup": "データディスプレイ",
       "category": "コメント",
       "component": "コメント"
+    }
+  },
+  {
+    "title": "タイトルとボタン付き",
+    "description": "これは、タイトルとボタン付きの区切り線コンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/dividers/with-title-and-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "区切り線",
+      "component": "タイトルとボタン付き"
+    }
+  },
+  {
+    "title": "Progress Card",
+    "description": "This is a card with progress bar",
+    "type": "component",
+    "slug": "/data-display/stats/progress-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "統計",
+      "component": "Progress Card"
     }
   }
 ]

@@ -1,3 +1,5 @@
+import { readFile } from "fs/promises"
+import path from "node:path"
 import type {
   GetServerSidePropsContext,
   GetStaticPathsContext,
@@ -14,6 +16,8 @@ import type {
   ComponentCategory,
   ComponentCategoryGroup,
 } from "component"
+import type { SearchContent } from "search-content"
+// import { useI18n } from "contexts/i18n-context"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -29,6 +33,32 @@ export const getStaticCommonProps = async ({
   const componentTree = await getComponentCategoryGroup()(locale)
 
   return { props: { componentTree } }
+}
+
+export const getServerSideSearchProps = async ({
+  locale,
+  query,
+}: GetServerSidePropsContext) => {
+  const { labels } = query
+  if (!labels)
+    return {
+      props: {},
+    }
+  const contents = await readFile(
+    path.join("i18n", `content.${locale}.json`),
+    "utf-8",
+  )
+  const json = JSON.parse(contents) as SearchContent[]
+  const labelsArray = Array.isArray(labels) ? labels : [labels]
+  const result = json.filter(
+    (v) =>
+      v.labels.some((label) => labelsArray.includes(label)) &&
+      v.type === "component",
+  )
+  // console.log(labels, result);
+  return {
+    props: { result },
+  }
 }
 
 export const getStaticComponentProps =

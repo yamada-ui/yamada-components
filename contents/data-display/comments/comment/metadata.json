@@ -7,6 +7,7 @@
     "title": "コメント",
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、コメントテキストを表示するカードコンポーネント。"
   },
+  "labels": ["comment", "data-display"],
   "authors": [
     {
       "id": 84060430,

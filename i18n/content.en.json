@@ -1,19 +1,19 @@
 [
   {
-    "title": "Typography",
-    "description": "",
-    "type": "categoryGroup",
-    "slug": "/typography",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Typography" }
-  },
-  {
     "title": "Page Sections",
     "description": "",
     "type": "categoryGroup",
     "slug": "/page-sections",
     "labels": [],
     "hierarchy": { "categoryGroup": "Page Sections" }
+  },
+  {
+    "title": "Typography",
+    "description": "",
+    "type": "categoryGroup",
+    "slug": "/typography",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Typography" }
   },
   {
     "title": "Overlay",
@@ -64,6 +64,17 @@
     "hierarchy": { "categoryGroup": "Data Display" }
   },
   {
+    "title": "Authentication",
+    "description": "This process verifies the identity of a user.",
+    "type": "category",
+    "slug": "/page-sections/authentication",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Authentication"
+    }
+  },
+  {
     "title": "Frequently Asked Questions",
     "description": "A section dedicated to answering common queries.",
     "type": "category",
@@ -83,31 +94,12 @@
     "hierarchy": { "categoryGroup": "Page Sections", "category": "Error Pages" }
   },
   {
-    "title": "Authentication",
-    "description": "This process verifies the identity of a user.",
-    "type": "category",
-    "slug": "/page-sections/authentication",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Authentication"
-    }
-  },
-  {
     "title": "Headers",
     "description": "Headers are used to provide a brief introduction to the content.",
     "type": "category",
     "slug": "/layouts/headers",
     "labels": [],
     "hierarchy": { "categoryGroup": "Layouts", "category": "Headers" }
-  },
-  {
-    "title": "Grids",
-    "description": "Grids are used to structure and align content in a flexible manner.",
-    "type": "category",
-    "slug": "/layouts/grids",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Layouts", "category": "Grids" }
   },
   {
     "title": "Footers",
@@ -118,20 +110,28 @@
     "hierarchy": { "categoryGroup": "Layouts", "category": "Footers" }
   },
   {
+    "title": "Grids",
+    "description": "Grids are used to structure and align content in a flexible manner.",
+    "type": "category",
+    "slug": "/layouts/grids",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Layouts", "category": "Grids" }
+  },
+  {
+    "title": "Dividers",
+    "description": "Dividers are used to separate content on a page with a horizontal line.",
+    "type": "category",
+    "slug": "/layouts/dividers",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Layouts", "category": "Dividers" }
+  },
+  {
     "title": "Inputs",
     "description": "",
     "type": "category",
     "slug": "/forms/inputs",
     "labels": [],
     "hierarchy": { "categoryGroup": "Forms", "category": "Inputs" }
-  },
-  {
-    "title": "Dropzones",
-    "description": "Dropzones are areas where users can drag and drop files for upload.",
-    "type": "category",
-    "slug": "/forms/dropzones",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Forms", "category": "Dropzones" }
   },
   {
     "title": "Buttons",
@@ -142,6 +142,22 @@
     "hierarchy": { "categoryGroup": "Forms", "category": "Buttons" }
   },
   {
+    "title": "Dropzones",
+    "description": "Dropzones are areas where users can drag and drop files for upload.",
+    "type": "category",
+    "slug": "/forms/dropzones",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Forms", "category": "Dropzones" }
+  },
+  {
+    "title": "Comments",
+    "description": "This is a component that can be used in comment sections.",
+    "type": "category",
+    "slug": "/data-display/comments",
+    "labels": ["comment", "data-display"],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Comments" }
+  },
+  {
     "title": "Stats",
     "description": "",
     "type": "category",
@@ -150,12 +166,52 @@
     "hierarchy": { "categoryGroup": "Data Display", "category": "Stats" }
   },
   {
-    "title": "Comments",
-    "description": "This is a component that can be used in comment sections.",
-    "type": "category",
-    "slug": "/data-display/comments",
+    "title": "Authentication Form",
+    "description": "Authentication Form is used to verify the user's credentials.",
+    "type": "component",
+    "slug": "/page-sections/authentication/authentication-form",
     "labels": [],
-    "hierarchy": { "categoryGroup": "Data Display", "category": "Comments" }
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Authentication",
+      "component": "Authentication Form"
+    }
+  },
+  {
+    "title": "Authentication page with image",
+    "description": "This page features an authentication form with a background image.",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Authentication",
+      "component": "Authentication page with image"
+    }
+  },
+  {
+    "title": "Forgot password",
+    "description": "This feature allows users to reset their password if they've forgotten it.",
+    "type": "component",
+    "slug": "/page-sections/authentication/forgot-password",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Authentication",
+      "component": "Forgot password"
+    }
+  },
+  {
+    "title": "Authentication with title",
+    "description": "This is an authentication form that includes a title.",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-title",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Authentication",
+      "component": "Authentication with title"
+    }
   },
   {
     "title": "FAQ with Image",
@@ -167,6 +223,18 @@
       "categoryGroup": "Page Sections",
       "category": "Frequently Asked Questions",
       "component": "FAQ with Image"
+    }
+  },
+  {
+    "title": "FAQ simple",
+    "description": "This is a simple FAQ.",
+    "type": "component",
+    "slug": "/page-sections/faq/simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Frequently Asked Questions",
+      "component": "FAQ simple"
     }
   },
   {
@@ -194,18 +262,6 @@
     }
   },
   {
-    "title": "FAQ simple",
-    "description": "This is a simple FAQ.",
-    "type": "component",
-    "slug": "/page-sections/faq/simple",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Frequently Asked Questions",
-      "component": "FAQ simple"
-    }
-  },
-  {
     "title": "404 page",
     "description": "This is a 404 page.",
     "type": "component",
@@ -215,66 +271,6 @@
       "categoryGroup": "Page Sections",
       "category": "Error Pages",
       "component": "404 page"
-    }
-  },
-  {
-    "title": "Authentication page with image",
-    "description": "This page features an authentication form with a background image.",
-    "type": "component",
-    "slug": "/page-sections/authentication/with-image",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Authentication",
-      "component": "Authentication page with image"
-    }
-  },
-  {
-    "title": "Authentication with title",
-    "description": "This is an authentication form that includes a title.",
-    "type": "component",
-    "slug": "/page-sections/authentication/with-title",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Authentication",
-      "component": "Authentication with title"
-    }
-  },
-  {
-    "title": "Forgot password",
-    "description": "This feature allows users to reset their password if they've forgotten it.",
-    "type": "component",
-    "slug": "/page-sections/authentication/forgot-password",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Authentication",
-      "component": "Forgot password"
-    }
-  },
-  {
-    "title": "Authentication Form",
-    "description": "Authentication Form is used to verify the user's credentials.",
-    "type": "component",
-    "slug": "/page-sections/authentication/authentication-form",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Authentication",
-      "component": "Authentication Form"
-    }
-  },
-  {
-    "title": "Header with multiple layers",
-    "description": "This is a header with multiple layers.",
-    "type": "component",
-    "slug": "/layouts/headers/double-header",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Headers",
-      "component": "Header with multiple layers"
     }
   },
   {
@@ -290,27 +286,15 @@
     }
   },
   {
-    "title": "Grid with Asymmetrical Columns",
-    "description": "A responsive grid layout featuring asymmetrical columns, ideal for dynamic and modern web design.",
+    "title": "Header with multiple layers",
+    "description": "This is a header with multiple layers.",
     "type": "component",
-    "slug": "/layouts/grids/asymmetrical-columns",
+    "slug": "/layouts/headers/double-header",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
-      "category": "Grids",
-      "component": "Grid with Asymmetrical Columns"
-    }
-  },
-  {
-    "title": "Grid with Leading Item",
-    "description": "A responsive grid layout with a leading item that changes arrangement based on screen size.",
-    "type": "component",
-    "slug": "/layouts/grids/leading-item",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Grids",
-      "component": "Grid with Leading Item"
+      "category": "Headers",
+      "component": "Header with multiple layers"
     }
   },
   {
@@ -350,6 +334,30 @@
     }
   },
   {
+    "title": "Grid with Leading Item",
+    "description": "A responsive grid layout with a leading item that changes arrangement based on screen size.",
+    "type": "component",
+    "slug": "/layouts/grids/leading-item",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Grids",
+      "component": "Grid with Leading Item"
+    }
+  },
+  {
+    "title": "Grid with Asymmetrical Columns",
+    "description": "A responsive grid layout featuring asymmetrical columns, ideal for dynamic and modern web design.",
+    "type": "component",
+    "slug": "/layouts/grids/asymmetrical-columns",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Grids",
+      "component": "Grid with Asymmetrical Columns"
+    }
+  },
+  {
     "title": "Simple Footer",
     "description": "This is a simple Footer.",
     "type": "component",
@@ -359,6 +367,90 @@
       "categoryGroup": "Layouts",
       "category": "Footers",
       "component": "Simple Footer"
+    }
+  },
+  {
+    "title": "With title on left",
+    "description": "This is a divider component with a title on the left.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-title-on-left",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With title on left"
+    }
+  },
+  {
+    "title": "With toolbar",
+    "description": "This is a divider component with a toolbar.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-toolbar",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With toolbar"
+    }
+  },
+  {
+    "title": "With title",
+    "description": "This is a divider component with a title.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-title",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With title"
+    }
+  },
+  {
+    "title": "With icon",
+    "description": "This is a divider component with an icon.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-icon",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With icon"
+    }
+  },
+  {
+    "title": "With label",
+    "description": "This is a divider component with a label.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-label",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With label"
+    }
+  },
+  {
+    "title": "With button",
+    "description": "This is a divider component with a button.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With button"
+    }
+  },
+  {
+    "title": "Label on left",
+    "description": "This is a divider component with a label on the left.",
+    "type": "component",
+    "slug": "/layouts/dividers/label-on-left",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "Label on left"
     }
   },
   {
@@ -386,18 +478,6 @@
     }
   },
   {
-    "title": "Dropzone with button",
-    "description": "This is a dropzone with button.",
-    "type": "component",
-    "slug": "/forms/dropzones/with-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Dropzones",
-      "component": "Dropzone with button"
-    }
-  },
-  {
     "title": "Copy to clipboard button",
     "description": "This is a button that copies the text to the clipboard",
     "type": "component",
@@ -410,15 +490,15 @@
     }
   },
   {
-    "title": "Progress Card",
-    "description": "This is a card with progress bar",
+    "title": "Dropzone with button",
+    "description": "This is a dropzone with button.",
     "type": "component",
-    "slug": "/data-display/stats/progress-card",
+    "slug": "/forms/dropzones/with-button",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "Data Display",
-      "category": "Stats",
-      "component": "Progress Card"
+      "categoryGroup": "Forms",
+      "category": "Dropzones",
+      "component": "Dropzone with button"
     }
   },
   {
@@ -426,7 +506,7 @@
     "description": "A card component displaying a user's avatar, username, timestamp, and comment text with HTML content.",
     "type": "component",
     "slug": "/data-display/comments/with-html-content",
-    "labels": [],
+    "labels": ["comment", "data-display"],
     "hierarchy": {
       "categoryGroup": "Data Display",
       "category": "Comments",
@@ -438,11 +518,35 @@
     "description": "A card component displaying a user's avatar, username, timestamp, and comment text.",
     "type": "component",
     "slug": "/data-display/comments/comment",
-    "labels": [],
+    "labels": ["comment", "data-display"],
     "hierarchy": {
       "categoryGroup": "Data Display",
       "category": "Comments",
       "component": "Comment"
+    }
+  },
+  {
+    "title": "With title and button",
+    "description": "This is a divider component with a title and a button.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-title-and-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With title and button"
+    }
+  },
+  {
+    "title": "Progress Card",
+    "description": "This is a card with progress bar",
+    "type": "component",
+    "slug": "/data-display/stats/progress-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Stats",
+      "component": "Progress Card"
     }
   }
 ]
