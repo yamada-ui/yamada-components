@@ -5,8 +5,10 @@ type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
 export const getServerSideProps = getServerSideSearchProps
 
-const Page: NextPageWithConfig<PageProps> = ({ result }) => {
-  return <>{JSON.stringify(result)}</>
+const Page: NextPageWithConfig<PageProps> = ({ components }) => {
+  console.log(components)
+
+  return <>component</>
 }
 
 export default Page

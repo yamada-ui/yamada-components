@@ -50,14 +50,19 @@ export const getServerSideSearchProps = async ({
   )
   const json = JSON.parse(contents) as SearchContent[]
   const labelsArray = Array.isArray(labels) ? labels : [labels]
-  const result = json.filter(
+  const filterd = json.filter(
     (v) =>
       v.labels.some((label) => labelsArray.includes(label)) &&
       v.type === "component",
   )
-  // console.log(labels, result);
+  const components = await Promise.all(
+    filterd.map(async (v) => {
+      const component = await getComponent(v.slug)(locale)
+      return component
+    }),
+  )
   return {
-    props: { result },
+    props: { components },
   }
 }
 
