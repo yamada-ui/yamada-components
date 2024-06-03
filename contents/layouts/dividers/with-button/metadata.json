@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "With button",
+    "description": "This is a divider component with a button."
+  },
+  "ja": {
+    "title": "ボタン付き",
+    "description": "これは、ボタン付きの区切り線コンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "maxW": "2xl"
+    }
+  }
+}
