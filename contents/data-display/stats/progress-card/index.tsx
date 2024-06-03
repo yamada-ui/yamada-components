@@ -2,7 +2,7 @@ import { Card, CardBody, Progress, Text } from "@yamada-ui/react"
 
 const ProgressCard = () => {
   return (
-    <Card textAlign="start" variant="outline" maxW="lg" mx="auto">
+    <Card textAlign="start" variant="outline" w="full" maxW="lg">
       <CardBody gap="0" p="lg">
         <Text fontSize="xs" fontWeight={700} color="gray">
           MONTHLY GOAL

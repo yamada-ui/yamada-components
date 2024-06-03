@@ -3,7 +3,7 @@ import type { FC } from "react"
 
 export const CommentWithHTMLContent: FC = () => {
   return (
-    <Card variant="outline" maxW="md" m="md" mx="auto">
+    <Card variant="outline" maxW="md">
       <CardBody flexDir="row" placeItems="start">
         <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />
         <VStack gap="sm">

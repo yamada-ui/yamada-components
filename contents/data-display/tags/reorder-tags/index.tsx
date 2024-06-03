@@ -18,7 +18,7 @@ const CardWithReorderTags: FC = () => {
   const [color, setColor] = useState(tags[0])
 
   return (
-    <Card variant="outline">
+    <Card variant="outline" w="full" maxW="lg">
       <CardHeader>
         <HStack>
           <Indicator size="lg" offset={1.5} ping colorScheme="primary">
