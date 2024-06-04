@@ -24,6 +24,8 @@ export const AppProvider: FC<AppProviderProps> = ({
   category,
   children,
 }) => {
+  console.log(componentTree)
+
   const value = useMemo(
     () => ({ componentTree, categoryGroup, category }),
     [componentTree, categoryGroup, category],

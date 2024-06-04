@@ -1,6 +1,6 @@
 import { ChevronIcon, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import type { FC } from "react"
-import { Fragment, memo } from "react"
+import { memo } from "react"
 import { Authors } from "./authors"
 import { ComponentCard } from "./component-card"
 import { NextLink } from "components/navigation"

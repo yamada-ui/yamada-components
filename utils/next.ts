@@ -17,7 +17,6 @@ import type {
   ComponentCategoryGroup,
 } from "component"
 import type { SearchContent } from "search-content"
-// import { useI18n } from "contexts/i18n-context"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -39,10 +38,16 @@ export const getServerSideSearchProps = async ({
   locale,
   query,
 }: GetServerSidePropsContext) => {
+  const componentTree = await getComponentCategoryGroup()(locale)
   const { labels } = query
   if (!labels)
     return {
-      props: {},
+      props: {
+        title: "Search Result Not labels",
+        description: "Search Result Not labels",
+        components: [],
+        componentTree,
+      },
     }
   const contents = await readFile(
     path.join("i18n", `content.${locale}.json`),
@@ -62,7 +67,12 @@ export const getServerSideSearchProps = async ({
     }),
   )
   return {
-    props: { components },
+    props: {
+      title: `Search Result ${labelsArray.join(", ")}`,
+      description: `Search Result ${labelsArray.join(", ")}`,
+      components,
+      componentTree,
+    },
   }
 }
 

@@ -1,19 +1,19 @@
 [
   {
-    "title": "Page Sections",
-    "description": "",
-    "type": "categoryGroup",
-    "slug": "/page-sections",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Page Sections" }
-  },
-  {
     "title": "Typography",
     "description": "",
     "type": "categoryGroup",
     "slug": "/typography",
     "labels": [],
     "hierarchy": { "categoryGroup": "Typography" }
+  },
+  {
+    "title": "Page Sections",
+    "description": "",
+    "type": "categoryGroup",
+    "slug": "/page-sections",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Page Sections" }
   },
   {
     "title": "Overlay",
@@ -40,20 +40,20 @@
     "hierarchy": { "categoryGroup": "Layouts" }
   },
   {
-    "title": "Feedback",
-    "description": "",
-    "type": "categoryGroup",
-    "slug": "/feedback",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Feedback" }
-  },
-  {
     "title": "Forms",
     "description": "",
     "type": "categoryGroup",
     "slug": "/forms",
     "labels": [],
     "hierarchy": { "categoryGroup": "Forms" }
+  },
+  {
+    "title": "Feedback",
+    "description": "",
+    "type": "categoryGroup",
+    "slug": "/feedback",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Feedback" }
   },
   {
     "title": "Data Display",
@@ -64,15 +64,12 @@
     "hierarchy": { "categoryGroup": "Data Display" }
   },
   {
-    "title": "Authentication",
-    "description": "This process verifies the identity of a user.",
+    "title": "Headings",
+    "description": "",
     "type": "category",
-    "slug": "/page-sections/authentication",
+    "slug": "/typography/headings",
     "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Authentication"
-    }
+    "hierarchy": { "categoryGroup": "Typography", "category": "Headings" }
   },
   {
     "title": "Frequently Asked Questions",
@@ -83,6 +80,17 @@
     "hierarchy": {
       "categoryGroup": "Page Sections",
       "category": "Frequently Asked Questions"
+    }
+  },
+  {
+    "title": "Authentication",
+    "description": "This process verifies the identity of a user.",
+    "type": "category",
+    "slug": "/page-sections/authentication",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Authentication"
     }
   },
   {
@@ -102,20 +110,20 @@
     "hierarchy": { "categoryGroup": "Layouts", "category": "Headers" }
   },
   {
-    "title": "Footers",
-    "description": "Footers are used to display important information at the bottom of the page.",
-    "type": "category",
-    "slug": "/layouts/footers",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Layouts", "category": "Footers" }
-  },
-  {
     "title": "Grids",
     "description": "Grids are used to structure and align content in a flexible manner.",
     "type": "category",
     "slug": "/layouts/grids",
     "labels": [],
     "hierarchy": { "categoryGroup": "Layouts", "category": "Grids" }
+  },
+  {
+    "title": "Footers",
+    "description": "Footers are used to display important information at the bottom of the page.",
+    "type": "category",
+    "slug": "/layouts/footers",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Layouts", "category": "Footers" }
   },
   {
     "title": "Dividers",
@@ -150,12 +158,12 @@
     "hierarchy": { "categoryGroup": "Forms", "category": "Dropzones" }
   },
   {
-    "title": "Comments",
-    "description": "This is a component that can be used in comment sections.",
+    "title": "Tags",
+    "description": "Tags are components that are used to categorize or organize items using keywords that describe them.",
     "type": "category",
-    "slug": "/data-display/comments",
-    "labels": ["comment", "data-display"],
-    "hierarchy": { "categoryGroup": "Data Display", "category": "Comments" }
+    "slug": "/data-display/tags",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Tags" }
   },
   {
     "title": "Stats",
@@ -166,15 +174,79 @@
     "hierarchy": { "categoryGroup": "Data Display", "category": "Stats" }
   },
   {
-    "title": "Authentication Form",
-    "description": "Authentication Form is used to verify the user's credentials.",
+    "title": "Comments",
+    "description": "This is a component that can be used in comment sections.",
+    "type": "category",
+    "slug": "/data-display/comments",
+    "labels": ["comment", "data-display"],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Comments" }
+  },
+  {
+    "title": "Drag'n'Drop",
+    "description": "Drag and drop components are used to reorder the items in a list.",
+    "type": "category",
+    "slug": "/data-display/dnd",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Drag'n'Drop" }
+  },
+  {
+    "title": "Full Gradient Heading",
+    "description": "This is a full gradient heading that makes the text gradient from left to right.",
     "type": "component",
-    "slug": "/page-sections/authentication/authentication-form",
+    "slug": "/typography/headings/full-gradient-heading",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Typography",
+      "category": "Headings",
+      "component": "Full Gradient Heading"
+    }
+  },
+  {
+    "title": "Partial Gradient Heading",
+    "description": "This is a component that makes the text partially gradient from left to right.",
+    "type": "component",
+    "slug": "/typography/headings/partial-gradient",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Typography",
+      "category": "Headings",
+      "component": "Partial Gradient Heading"
+    }
+  },
+  {
+    "title": "FAQ simple",
+    "description": "This is a simple FAQ.",
+    "type": "component",
+    "slug": "/page-sections/faq/simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Frequently Asked Questions",
+      "component": "FAQ simple"
+    }
+  },
+  {
+    "title": "FAQ with Image",
+    "description": "This is an FAQ component with an image.",
+    "type": "component",
+    "slug": "/page-sections/faq/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Frequently Asked Questions",
+      "component": "FAQ with Image"
+    }
+  },
+  {
+    "title": "Authentication with title",
+    "description": "This is an authentication form that includes a title.",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-title",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Page Sections",
       "category": "Authentication",
-      "component": "Authentication Form"
+      "component": "Authentication with title"
     }
   },
   {
@@ -202,51 +274,15 @@
     }
   },
   {
-    "title": "Authentication with title",
-    "description": "This is an authentication form that includes a title.",
+    "title": "Authentication Form",
+    "description": "Authentication Form is used to verify the user's credentials.",
     "type": "component",
-    "slug": "/page-sections/authentication/with-title",
+    "slug": "/page-sections/authentication/authentication-form",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Page Sections",
       "category": "Authentication",
-      "component": "Authentication with title"
-    }
-  },
-  {
-    "title": "FAQ with Image",
-    "description": "This is an FAQ component with an image.",
-    "type": "component",
-    "slug": "/page-sections/faq/with-image",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Frequently Asked Questions",
-      "component": "FAQ with Image"
-    }
-  },
-  {
-    "title": "FAQ simple",
-    "description": "This is a simple FAQ.",
-    "type": "component",
-    "slug": "/page-sections/faq/simple",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Frequently Asked Questions",
-      "component": "FAQ simple"
-    }
-  },
-  {
-    "title": "404 page with image",
-    "description": "This is a 404 page with image.",
-    "type": "component",
-    "slug": "/page-sections/error-pages/with-image",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Error Pages",
-      "component": "404 page with image"
+      "component": "Authentication Form"
     }
   },
   {
@@ -274,6 +310,18 @@
     }
   },
   {
+    "title": "404 page with image",
+    "description": "This is a 404 page with image.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Error Pages",
+      "component": "404 page with image"
+    }
+  },
+  {
     "title": "Simple Header",
     "description": "This is a simple header.",
     "type": "component",
@@ -295,42 +343,6 @@
       "categoryGroup": "Layouts",
       "category": "Headers",
       "component": "Header with multiple layers"
-    }
-  },
-  {
-    "title": "Footer with Social icons",
-    "description": "This is Footer with Social icons",
-    "type": "component",
-    "slug": "/layouts/footers/footer-social-icons",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Footer with Social icons"
-    }
-  },
-  {
-    "title": "Footer with links",
-    "description": "This is Footer with links",
-    "type": "component",
-    "slug": "/layouts/footers/footer-links",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Footer with links"
-    }
-  },
-  {
-    "title": "Footer with Centered links",
-    "description": "This is Footer with Centered links",
-    "type": "component",
-    "slug": "/layouts/footers/footer-centerd",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Footer with Centered links"
     }
   },
   {
@@ -358,6 +370,18 @@
     }
   },
   {
+    "title": "Footer with Social icons",
+    "description": "This is Footer with Social icons",
+    "type": "component",
+    "slug": "/layouts/footers/footer-social-icons",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Footers",
+      "component": "Footer with Social icons"
+    }
+  },
+  {
     "title": "Simple Footer",
     "description": "This is a simple Footer.",
     "type": "component",
@@ -370,15 +394,27 @@
     }
   },
   {
-    "title": "With title on left",
-    "description": "This is a divider component with a title on the left.",
+    "title": "Footer with Centered links",
+    "description": "This is Footer with Centered links",
     "type": "component",
-    "slug": "/layouts/dividers/with-title-on-left",
+    "slug": "/layouts/footers/footer-centerd",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "With title on left"
+      "category": "Footers",
+      "component": "Footer with Centered links"
+    }
+  },
+  {
+    "title": "Footer with links",
+    "description": "This is Footer with links",
+    "type": "component",
+    "slug": "/layouts/footers/footer-links",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Footers",
+      "component": "Footer with links"
     }
   },
   {
@@ -394,39 +430,27 @@
     }
   },
   {
-    "title": "With title",
-    "description": "This is a divider component with a title.",
+    "title": "With title on left",
+    "description": "This is a divider component with a title on the left.",
     "type": "component",
-    "slug": "/layouts/dividers/with-title",
+    "slug": "/layouts/dividers/with-title-on-left",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
       "category": "Dividers",
-      "component": "With title"
+      "component": "With title on left"
     }
   },
   {
-    "title": "With icon",
-    "description": "This is a divider component with an icon.",
+    "title": "With title and button",
+    "description": "This is a divider component with a title and a button.",
     "type": "component",
-    "slug": "/layouts/dividers/with-icon",
+    "slug": "/layouts/dividers/with-title-and-button",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
       "category": "Dividers",
-      "component": "With icon"
-    }
-  },
-  {
-    "title": "With label",
-    "description": "This is a divider component with a label.",
-    "type": "component",
-    "slug": "/layouts/dividers/with-label",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "With label"
+      "component": "With title and button"
     }
   },
   {
@@ -442,6 +466,42 @@
     }
   },
   {
+    "title": "With label",
+    "description": "This is a divider component with a label.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-label",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With label"
+    }
+  },
+  {
+    "title": "With icon",
+    "description": "This is a divider component with an icon.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-icon",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With icon"
+    }
+  },
+  {
+    "title": "With title",
+    "description": "This is a divider component with a title.",
+    "type": "component",
+    "slug": "/layouts/dividers/with-title",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Dividers",
+      "component": "With title"
+    }
+  },
+  {
     "title": "Label on left",
     "description": "This is a divider component with a label on the left.",
     "type": "component",
@@ -451,30 +511,6 @@
       "categoryGroup": "Layouts",
       "category": "Dividers",
       "component": "Label on left"
-    }
-  },
-  {
-    "title": "Password Input",
-    "description": "Password Input Component",
-    "type": "component",
-    "slug": "/forms/inputs/password-input",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Inputs",
-      "component": "Password Input"
-    }
-  },
-  {
-    "title": "Dropzone image preview",
-    "description": "This is a Dropzone with image preview.",
-    "type": "component",
-    "slug": "/forms/dropzones/with-image-preview",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Dropzones",
-      "component": "Dropzone image preview"
     }
   },
   {
@@ -490,6 +526,18 @@
     }
   },
   {
+    "title": "Password Input",
+    "description": "Password Input Component",
+    "type": "component",
+    "slug": "/forms/inputs/password-input",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Forms",
+      "category": "Inputs",
+      "component": "Password Input"
+    }
+  },
+  {
     "title": "Dropzone with button",
     "description": "This is a dropzone with button.",
     "type": "component",
@@ -499,6 +547,66 @@
       "categoryGroup": "Forms",
       "category": "Dropzones",
       "component": "Dropzone with button"
+    }
+  },
+  {
+    "title": "Reorder tags",
+    "description": "This is tags which can be reordered.",
+    "type": "component",
+    "slug": "/data-display/tags/reorder-tags",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Tags",
+      "component": "Reorder tags"
+    }
+  },
+  {
+    "title": "Dropzone image preview",
+    "description": "This is a Dropzone with image preview.",
+    "type": "component",
+    "slug": "/forms/dropzones/with-image-preview",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Forms",
+      "category": "Dropzones",
+      "component": "Dropzone image preview"
+    }
+  },
+  {
+    "title": "Progress card with color",
+    "description": "This is a progress card with color.",
+    "type": "component",
+    "slug": "/data-display/stats/with-color",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Stats",
+      "component": "Progress card with color"
+    }
+  },
+  {
+    "title": "Card with removable tags",
+    "description": "This is a card with tags which can be removed.",
+    "type": "component",
+    "slug": "/data-display/tags/card-with-tags",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Tags",
+      "component": "Card with removable tags"
+    }
+  },
+  {
+    "title": "Progress Card",
+    "description": "This is a card with progress bar.",
+    "type": "component",
+    "slug": "/data-display/stats/progress-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Stats",
+      "component": "Progress Card"
     }
   },
   {
@@ -526,27 +634,27 @@
     }
   },
   {
-    "title": "With title and button",
-    "description": "This is a divider component with a title and a button.",
+    "title": "Drag'n'Drop List",
+    "description": "Drag and Drop list is a component that allows you to reorder the items in a list.",
     "type": "component",
-    "slug": "/layouts/dividers/with-title-and-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "With title and button"
-    }
-  },
-  {
-    "title": "Progress Card",
-    "description": "This is a card with progress bar",
-    "type": "component",
-    "slug": "/data-display/stats/progress-card",
+    "slug": "/data-display/dnd/list",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Data Display",
-      "category": "Stats",
-      "component": "Progress Card"
+      "category": "Drag'n'Drop",
+      "component": "Drag'n'Drop List"
+    }
+  },
+  {
+    "title": "Drag'n'drop list with handle",
+    "description": "Drag and drop list with handle is a component that allows you to reorder the items in a list but with a handle.",
+    "type": "component",
+    "slug": "/data-display/dnd/with-handle",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Drag'n'Drop",
+      "component": "Drag'n'drop list with handle"
     }
   }
 ]
