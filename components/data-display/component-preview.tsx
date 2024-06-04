@@ -50,7 +50,12 @@ export const ComponentPreview = memo(
       const containerProps = useMemo<HTMLUIProps<"div">>(() => {
         const { centerContent, ...rest } = _containerProps ?? {}
 
-        let props = { ...rest }
+        let props: HTMLUIProps<"div"> = {
+          w: "full",
+          h: "full",
+          containerType: "inline-size",
+          ...rest,
+        }
 
         if (centerContent) {
           props = {
