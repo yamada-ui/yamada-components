@@ -38,7 +38,10 @@ const getType = (slug: string): SearchContentType => {
 }
 
 const getSlug = (path: string) =>
-  `/${path.replace(/^contents\//, "").replace(/\/metadata.json$/, "")}`
+  `/${path
+    .replace(/\\/g, "/")
+    .replace(/^contents\//, "")
+    .replace(/\/metadata.json$/, "")}`
 
 const getMetadata = async (metadataPath: string) => {
   const data = await readFile(metadataPath, "utf-8")
