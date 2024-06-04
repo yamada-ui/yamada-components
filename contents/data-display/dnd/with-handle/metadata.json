@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Drag'n'drop list with handle",
+    "description": "Drag and drop list with handle is a component that allows you to reorder the items in a list but with a handle."
+  },
+  "ja": {
+    "title": "ドラッグ＆ドロップリスト（ハンドル付き）",
+    "description": "ドラッグ＆ドロップリストは、ハンドル付きのリストの項目を並べ替えるためのコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "maxW": "xl"
+    }
+  }
+}
