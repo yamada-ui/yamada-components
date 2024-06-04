@@ -16,6 +16,7 @@ const PasswordInput: FC = () => {
         type={show ? "text" : "password"}
         placeholder="your password"
       />
+
       <InputRightElement w="4.5rem" isClick>
         <Button h="1.75rem" size="sm" onClick={toggle}>
           {show ? "Hide" : "Show"}

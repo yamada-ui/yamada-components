@@ -17,13 +17,11 @@ const WithButton: FC = () => {
   }
 
   return (
-    <VStack>
+    <VStack maxW="lg">
       <Dropzone
         openRef={openRef}
         accept={PDF_ACCEPT_TYPE}
-        maxW="lg"
         h="xs"
-        mx="auto"
         flexDir="column"
         multiple
       >
@@ -38,6 +36,7 @@ const WithButton: FC = () => {
             <Icon as={CloudUpload} boxSize="3.15rem" />
           </DropzoneIdle>
         </Center>
+
         <Text
           textAlign="center"
           fontWeight={700}
@@ -50,6 +49,7 @@ const WithButton: FC = () => {
           <DropzoneReject>Pdf file less than 30mb</DropzoneReject>
           <DropzoneIdle>Upload resume</DropzoneIdle>
         </Text>
+
         <Text
           textAlign="center"
           fontSize="sm"
@@ -62,10 +62,11 @@ const WithButton: FC = () => {
           <Text as="i">.pdf</Text> files that are less than 30mb in size.
         </Text>
       </Dropzone>
+
       <Button
         onClick={onOpen}
         w="xs"
-        mx="auto"
+        alignSelf="center"
         bottom="lg"
         rounded="3xl"
         colorScheme="primary"

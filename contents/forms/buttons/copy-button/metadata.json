@@ -7,7 +7,7 @@
     "title": "クリップボードにコピーするボタン",
     "description": "これはテキストをクリップボードにコピーするボタンです"
   },
-  "options": { "container": { "p": "md" } },
+  "options": { "container": { "centerContent": true, "p": "md" } },
   "authors": [
     {
       "id": 84060430,
