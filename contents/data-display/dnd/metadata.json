@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Drag'n'Drop",
+    "description": "Drag and drop components are used to reorder the items in a list."
+  },
+  "ja": {
+    "title": "ドラッグ＆ドロップ",
+    "description": "ドラッグ＆ドロップコンポーネントは、リストの項目を並べ替えるために使用されます。"
+  }
+}
