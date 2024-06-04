@@ -7,13 +7,6 @@
     "title": "認証フォーム",
     "description": "認証フォームは、ユーザーの資格情報を確認するために使用されます。"
   },
-  "options": {
-    "container": {
-      "py": "lg",
-      "containerType": "inline-size",
-      "bg": ["blackAlpha.100", "blackAlpha.500"]
-    }
-  },
   "authors": [
     {
       "id": 61367823,

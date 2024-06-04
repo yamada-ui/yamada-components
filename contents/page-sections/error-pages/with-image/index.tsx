@@ -1,18 +1,11 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Image,
-  Link,
-  Text,
-  VStack,
-} from "@yamada-ui/react"
+import { Button, Flex, Heading, Image, Text, VStack } from "@yamada-ui/react"
 
 const NotFoundImage = () => {
   return (
     <Flex
       alignItems="center"
       justifyContent="center"
+      p="lg"
       _container={[{ maxW: "768px", css: { flexDir: "column" } }]}
     >
       <VStack
@@ -23,13 +16,15 @@ const NotFoundImage = () => {
         <Heading as="h1" size="xl" textAlign="center">
           Something is not right...
         </Heading>
+
         <Text color="gray" textAlign="center">
           Page you are trying to open does not exist. You may have mistyped the
           address, or the page has been moved to another URL. If you think this
           is an error contact support.
         </Text>
+
         <Button
-          as={Link}
+          as="a"
           w="fit-content"
           _container={[{ maxW: "768px", css: { w: "100%" } }]}
           href="/"
@@ -41,6 +36,7 @@ const NotFoundImage = () => {
           Get back to home page
         </Button>
       </VStack>
+
       <Image
         alt="404 Not Found (Image by Sawaratsuki)"
         w="lg"

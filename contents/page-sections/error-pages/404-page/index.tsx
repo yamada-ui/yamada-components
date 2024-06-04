@@ -1,20 +1,23 @@
-import { Button, Heading, Link, Text, VStack } from "@yamada-ui/react"
+import { Button, Heading, Text, VStack } from "@yamada-ui/react"
 
 const NotFound = () => {
   return (
-    <VStack alignItems="center">
+    <VStack alignItems="center" p="lg">
       <Text fontSize="5xl" fontWeight="bold">
         404
       </Text>
+
       <Heading as="h1" size="xl" textAlign="center">
         You have found a secret place.
       </Heading>
+
       <Text textAlign="center" color="gray">
         Unfortunately, this is only a 404 page. You may have mistyped the
         address, or the page has been moved to another URL.
       </Text>
+
       <Button
-        as={Link}
+        as="a"
         w="fit-content"
         href="/"
         onClick={(e) => e.preventDefault()}

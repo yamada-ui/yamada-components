@@ -7,7 +7,6 @@
     "title": "画像付きの404ページ",
     "description": "これは画像付きの404ページです。"
   },
-  "options": { "container": { "p": "xl", "containerType": "inline-size" } },
   "authors": [
     {
       "id": 61367823,
