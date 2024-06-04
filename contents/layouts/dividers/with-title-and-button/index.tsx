@@ -4,11 +4,13 @@ import type { FC } from "react"
 
 const WithTitleAndButton: FC = () => {
   return (
-    <HStack>
+    <HStack w="full">
       <Heading as="h3" size="sm">
         Projects
       </Heading>
+
       <Divider />
+
       <Button
         leftIcon={<Icon as={Plus} />}
         variant="outline"

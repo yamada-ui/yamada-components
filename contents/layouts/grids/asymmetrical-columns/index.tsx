@@ -3,6 +3,8 @@ import { Grid, GridItem } from "@yamada-ui/react"
 const GridAsymmetrical = () => {
   return (
     <Grid
+      w="full"
+      maxW="4xl"
       gap="md"
       templateAreas={`
         "one one two two two"
@@ -25,8 +27,6 @@ const GridAsymmetrical = () => {
           },
         },
       ]}
-      maxW="4xl"
-      mx="auto"
     >
       <GridItem area="one" w="full" minH="4xs" rounded="md" bg="primary" />
       <GridItem area="two" w="full" minH="4xs" rounded="md" bg="primary" />
