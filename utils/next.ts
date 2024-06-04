@@ -55,13 +55,27 @@ export const getServerSideSearchProps = async ({
   )
   const json = JSON.parse(contents) as SearchContent[]
   const labelsArray = Array.isArray(labels) ? labels : [labels]
-  const filterd = json.filter(
-    (v) =>
-      v.labels.some((label) => labelsArray.includes(label)) &&
-      v.type === "component",
-  )
+  const filtered = json.filter((v) => {
+    if (
+      v.labels.some((label) =>
+        labelsArray.some((labelArray) =>
+          new RegExp(labelArray, "i").test(label),
+        ),
+      )
+    ) {
+      console.log(v)
+    }
+
+    return (
+      v.labels.some((label) =>
+        labelsArray.some((labelArray) =>
+          new RegExp(labelArray, "i").test(label),
+        ),
+      ) && v.type === "component"
+    )
+  })
   const components = await Promise.all(
-    filterd.map(async (v) => {
+    filtered.map(async (v) => {
       const component = await getComponent(v.slug)(locale)
       return component
     }),
