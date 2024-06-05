@@ -70,7 +70,6 @@ const DoubleHeader: FC = () => {
     <Box
       as="header"
       justifyContent="space-between"
-      containerType="inline-size"
       borderBottomWidth="1px"
       pt="sm"
       px="md"

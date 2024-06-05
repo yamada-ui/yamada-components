@@ -1,13 +1,4 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  HStack,
-  IconButton,
-  Image,
-  Link,
-  Text,
-} from "@yamada-ui/react"
+import { Flex, HStack, IconButton, Image, Link, Text } from "@yamada-ui/react"
 import { Instagram, Twitter, Youtube } from "lucide-react"
 import type { FC } from "react"
 
@@ -27,33 +18,28 @@ const FooterCentered: FC = () => {
   ))
 
   return (
-    <Box pt="4xl" containerType="inline-size">
-      <Divider />
-      <Flex
-        justifyContent="space-between"
-        alignItems="center"
-        flexDirection="row"
-        _container={[
-          { maxW: "768px", css: { flexDirection: "column", gap: "sm" } },
-        ]}
-        p="md"
-      >
-        <HStack gap="sm" py="2">
-          <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
-          <Text fontSize="lg">Yamada UI</Text>
-        </HStack>
-        <Flex gap="md">{items}</Flex>
-        <Flex gap="xs">
-          <IconButton variant="ghost" borderRadius="full" icon={<Twitter />} />
-          <IconButton variant="ghost" borderRadius="full" icon={<Youtube />} />
-          <IconButton
-            variant="ghost"
-            borderRadius="full"
-            icon={<Instagram />}
-          />
-        </Flex>
+    <Flex
+      w="full"
+      borderTopWidth="1px"
+      justifyContent="space-between"
+      alignItems="center"
+      flexDirection="row"
+      _container={[
+        { maxW: "768px", css: { flexDirection: "column", gap: "sm" } },
+      ]}
+      p="md"
+    >
+      <HStack gap="sm" py="2">
+        <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
+        <Text fontSize="lg">Yamada UI</Text>
+      </HStack>
+      <Flex gap="md">{items}</Flex>
+      <Flex gap="xs">
+        <IconButton variant="ghost" borderRadius="full" icon={<Twitter />} />
+        <IconButton variant="ghost" borderRadius="full" icon={<Youtube />} />
+        <IconButton variant="ghost" borderRadius="full" icon={<Instagram />} />
       </Flex>
-    </Box>
+    </Flex>
   )
 }
 

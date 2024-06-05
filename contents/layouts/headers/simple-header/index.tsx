@@ -40,7 +40,7 @@ const HeaderSimple: FC = () => {
   ))
 
   return (
-    <HStack as="header" py="sm" px="md" containerType="inline-size">
+    <HStack as="header" py="sm" px="md">
       <Box flex={1}>
         <Heading
           as="a"
