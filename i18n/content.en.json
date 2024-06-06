@@ -83,6 +83,14 @@
     }
   },
   {
+    "title": "Error Pages",
+    "description": "A collection of error pages for different scenarios.",
+    "type": "category",
+    "slug": "/page-sections/error-pages",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Page Sections", "category": "Error Pages" }
+  },
+  {
     "title": "Authentication",
     "description": "This process verifies the identity of a user.",
     "type": "category",
@@ -92,14 +100,6 @@
       "categoryGroup": "Page Sections",
       "category": "Authentication"
     }
-  },
-  {
-    "title": "Error Pages",
-    "description": "A collection of error pages for different scenarios.",
-    "type": "category",
-    "slug": "/page-sections/error-pages",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Page Sections", "category": "Error Pages" }
   },
   {
     "title": "Headers",
@@ -142,20 +142,20 @@
     "hierarchy": { "categoryGroup": "Forms", "category": "Inputs" }
   },
   {
-    "title": "Buttons",
-    "description": "",
-    "type": "category",
-    "slug": "/forms/buttons",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Forms", "category": "Buttons" }
-  },
-  {
     "title": "Dropzones",
     "description": "Dropzones are areas where users can drag and drop files for upload.",
     "type": "category",
     "slug": "/forms/dropzones",
     "labels": [],
     "hierarchy": { "categoryGroup": "Forms", "category": "Dropzones" }
+  },
+  {
+    "title": "Buttons",
+    "description": "",
+    "type": "category",
+    "slug": "/forms/buttons",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Forms", "category": "Buttons" }
   },
   {
     "title": "Tags",
@@ -174,14 +174,6 @@
     "hierarchy": { "categoryGroup": "Data Display", "category": "Stats" }
   },
   {
-    "title": "Comments",
-    "description": "This is a component that can be used in comment sections.",
-    "type": "category",
-    "slug": "/data-display/comments",
-    "labels": ["comment", "data-display"],
-    "hierarchy": { "categoryGroup": "Data Display", "category": "Comments" }
-  },
-  {
     "title": "Drag'n'Drop",
     "description": "Drag and drop components are used to reorder the items in a list.",
     "type": "category",
@@ -190,16 +182,12 @@
     "hierarchy": { "categoryGroup": "Data Display", "category": "Drag'n'Drop" }
   },
   {
-    "title": "Full Gradient Heading",
-    "description": "This is a full gradient heading that makes the text gradient from left to right.",
-    "type": "component",
-    "slug": "/typography/headings/full-gradient-heading",
+    "title": "Comments",
+    "description": "This is a component that can be used in comment sections.",
+    "type": "category",
+    "slug": "/data-display/comments",
     "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Typography",
-      "category": "Headings",
-      "component": "Full Gradient Heading"
-    }
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Comments" }
   },
   {
     "title": "Partial Gradient Heading",
@@ -211,6 +199,18 @@
       "categoryGroup": "Typography",
       "category": "Headings",
       "component": "Partial Gradient Heading"
+    }
+  },
+  {
+    "title": "Full Gradient Heading",
+    "description": "This is a full gradient heading that makes the text gradient from left to right.",
+    "type": "component",
+    "slug": "/typography/headings/full-gradient-heading",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Typography",
+      "category": "Headings",
+      "component": "Full Gradient Heading"
     }
   },
   {
@@ -235,6 +235,42 @@
       "categoryGroup": "Page Sections",
       "category": "Frequently Asked Questions",
       "component": "FAQ with Image"
+    }
+  },
+  {
+    "title": "404 page with image",
+    "description": "This is a 404 page with image.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Error Pages",
+      "component": "404 page with image"
+    }
+  },
+  {
+    "title": "500 page",
+    "description": "This is a 500 page.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/500-page",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Error Pages",
+      "component": "500 page"
+    }
+  },
+  {
+    "title": "404 page",
+    "description": "This is a 404 page.",
+    "type": "component",
+    "slug": "/page-sections/error-pages/404-page",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Error Pages",
+      "component": "404 page"
     }
   },
   {
@@ -283,42 +319,6 @@
       "categoryGroup": "Page Sections",
       "category": "Authentication",
       "component": "Authentication Form"
-    }
-  },
-  {
-    "title": "500 page",
-    "description": "This is a 500 page.",
-    "type": "component",
-    "slug": "/page-sections/error-pages/500-page",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Error Pages",
-      "component": "500 page"
-    }
-  },
-  {
-    "title": "404 page",
-    "description": "This is a 404 page.",
-    "type": "component",
-    "slug": "/page-sections/error-pages/404-page",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Error Pages",
-      "component": "404 page"
-    }
-  },
-  {
-    "title": "404 page with image",
-    "description": "This is a 404 page with image.",
-    "type": "component",
-    "slug": "/page-sections/error-pages/with-image",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Error Pages",
-      "component": "404 page with image"
     }
   },
   {
@@ -394,18 +394,6 @@
     }
   },
   {
-    "title": "Footer with Centered links",
-    "description": "This is Footer with Centered links",
-    "type": "component",
-    "slug": "/layouts/footers/footer-centerd",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Footer with Centered links"
-    }
-  },
-  {
     "title": "Footer with links",
     "description": "This is Footer with links",
     "type": "component",
@@ -415,6 +403,18 @@
       "categoryGroup": "Layouts",
       "category": "Footers",
       "component": "Footer with links"
+    }
+  },
+  {
+    "title": "Footer with Centered links",
+    "description": "This is Footer with Centered links",
+    "type": "component",
+    "slug": "/layouts/footers/footer-centerd",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Footers",
+      "component": "Footer with Centered links"
     }
   },
   {
@@ -454,15 +454,15 @@
     }
   },
   {
-    "title": "With button",
-    "description": "This is a divider component with a button.",
+    "title": "With title",
+    "description": "This is a divider component with a title.",
     "type": "component",
-    "slug": "/layouts/dividers/with-button",
+    "slug": "/layouts/dividers/with-title",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
       "category": "Dividers",
-      "component": "With button"
+      "component": "With title"
     }
   },
   {
@@ -490,15 +490,15 @@
     }
   },
   {
-    "title": "With title",
-    "description": "This is a divider component with a title.",
+    "title": "With button",
+    "description": "This is a divider component with a button.",
     "type": "component",
-    "slug": "/layouts/dividers/with-title",
+    "slug": "/layouts/dividers/with-button",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
       "category": "Dividers",
-      "component": "With title"
+      "component": "With button"
     }
   },
   {
@@ -514,18 +514,6 @@
     }
   },
   {
-    "title": "Copy to clipboard button",
-    "description": "This is a button that copies the text to the clipboard",
-    "type": "component",
-    "slug": "/forms/buttons/copy-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Buttons",
-      "component": "Copy to clipboard button"
-    }
-  },
-  {
     "title": "Password Input",
     "description": "Password Input Component",
     "type": "component",
@@ -535,30 +523,6 @@
       "categoryGroup": "Forms",
       "category": "Inputs",
       "component": "Password Input"
-    }
-  },
-  {
-    "title": "Dropzone with button",
-    "description": "This is a dropzone with button.",
-    "type": "component",
-    "slug": "/forms/dropzones/with-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Dropzones",
-      "component": "Dropzone with button"
-    }
-  },
-  {
-    "title": "Reorder tags",
-    "description": "This is tags which can be reordered.",
-    "type": "component",
-    "slug": "/data-display/tags/reorder-tags",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Data Display",
-      "category": "Tags",
-      "component": "Reorder tags"
     }
   },
   {
@@ -574,15 +538,39 @@
     }
   },
   {
-    "title": "Progress card with color",
-    "description": "This is a progress card with color.",
+    "title": "Dropzone with button",
+    "description": "This is a dropzone with button.",
     "type": "component",
-    "slug": "/data-display/stats/with-color",
+    "slug": "/forms/dropzones/with-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Forms",
+      "category": "Dropzones",
+      "component": "Dropzone with button"
+    }
+  },
+  {
+    "title": "Copy to clipboard button",
+    "description": "This is a button that copies the text to the clipboard",
+    "type": "component",
+    "slug": "/forms/buttons/copy-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Forms",
+      "category": "Buttons",
+      "component": "Copy to clipboard button"
+    }
+  },
+  {
+    "title": "Reorder tags",
+    "description": "This is tags which can be reordered.",
+    "type": "component",
+    "slug": "/data-display/tags/reorder-tags",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Data Display",
-      "category": "Stats",
-      "component": "Progress card with color"
+      "category": "Tags",
+      "component": "Reorder tags"
     }
   },
   {
@@ -598,6 +586,18 @@
     }
   },
   {
+    "title": "Progress card with color",
+    "description": "This is a progress card with color.",
+    "type": "component",
+    "slug": "/data-display/stats/with-color",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Stats",
+      "component": "Progress card with color"
+    }
+  },
+  {
     "title": "Progress Card",
     "description": "This is a card with progress bar.",
     "type": "component",
@@ -610,27 +610,27 @@
     }
   },
   {
+    "title": "Drag'n'drop list with handle",
+    "description": "Drag and drop list with handle is a component that allows you to reorder the items in a list but with a handle.",
+    "type": "component",
+    "slug": "/data-display/dnd/with-handle",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Drag'n'Drop",
+      "component": "Drag'n'drop list with handle"
+    }
+  },
+  {
     "title": "Comment with HTML Content",
     "description": "A card component displaying a user's avatar, username, timestamp, and comment text with HTML content.",
     "type": "component",
     "slug": "/data-display/comments/with-html-content",
-    "labels": ["comment", "data-display"],
+    "labels": ["sns", "media"],
     "hierarchy": {
       "categoryGroup": "Data Display",
       "category": "Comments",
       "component": "Comment with HTML Content"
-    }
-  },
-  {
-    "title": "Comment",
-    "description": "A card component displaying a user's avatar, username, timestamp, and comment text.",
-    "type": "component",
-    "slug": "/data-display/comments/comment",
-    "labels": ["comment", "data-display"],
-    "hierarchy": {
-      "categoryGroup": "Data Display",
-      "category": "Comments",
-      "component": "Comment"
     }
   },
   {
@@ -646,15 +646,15 @@
     }
   },
   {
-    "title": "Drag'n'drop list with handle",
-    "description": "Drag and drop list with handle is a component that allows you to reorder the items in a list but with a handle.",
+    "title": "Comment",
+    "description": "A card component displaying a user's avatar, username, timestamp, and comment text.",
     "type": "component",
-    "slug": "/data-display/dnd/with-handle",
-    "labels": [],
+    "slug": "/data-display/comments/comment",
+    "labels": ["sns", "media"],
     "hierarchy": {
       "categoryGroup": "Data Display",
-      "category": "Drag'n'Drop",
-      "component": "Drag'n'drop list with handle"
+      "category": "Comments",
+      "component": "Comment"
     }
   }
 ]

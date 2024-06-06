@@ -7,7 +7,7 @@
     "title": "HTMLコンテンツを含むコメント",
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、およびHTMLコンテンツを含むコメントテキストを表示するカードコンポーネント。"
   },
-  "labels": ["comment", "data-display"],
+  "labels": ["sns", "media"],
   "options": { "container": { "centerContent": true, "p": "md" } },
   "authors": [
     {
