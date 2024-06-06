@@ -1,6 +1,5 @@
 import {
   Box,
-  Container,
   HStack,
   Heading,
   IconButton,
@@ -41,71 +40,68 @@ const HeaderSimple: FC = () => {
   ))
 
   return (
-    <Box as="header">
-      <Container>
-        <HStack containerType="inline-size">
-          <Box flex={1}>
-            <Heading
-              as={Link}
-              size="lg"
-              color={["black", "white"]}
-              _hover={{ textDecor: "none" }}
-              onClick={(e) => e.preventDefault()}
-            >
-              Yamada UI
-            </Heading>
-          </Box>
-          <SegmentedControl
-            _container={[{ maxW: "750px", css: { display: "none" } }]}
-            gap={0}
-            as="nav"
-            value={active}
-          >
-            {items}
-          </SegmentedControl>
-          <IconButton
-            title="Menu"
-            type="button"
-            variant="unstyled"
-            p="1"
-            onClick={onToggle}
-            _container={[{ minW: "750px", css: { display: "none" } }]}
-            icon={
-              <>
-                <Box
-                  position="absolute"
-                  width="24px"
-                  height="1px"
-                  transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
-                  bg={["black", "white"]}
-                  transitionDuration="300ms"
-                  transitionProperty="all"
-                />
-                <Box
-                  position="absolute"
-                  width="24px"
-                  height="1px"
-                  transform={isOpen ? "translateX(20px)" : undefined}
-                  opacity={isOpen ? 0 : 1}
-                  bg={["black", "white"]}
-                  transitionDuration="400ms"
-                  transitionProperty="all"
-                />
-                <Box
-                  position="absolute"
-                  width="24px"
-                  height="1px"
-                  transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
-                  bg={["black", "white"]}
-                  transitionDuration="300ms"
-                  transitionProperty="all"
-                />
-              </>
-            }
-          />
-        </HStack>
-      </Container>
-    </Box>
+    <HStack as="header" py="sm" px="md">
+      <Box flex={1}>
+        <Heading
+          as="a"
+          size="lg"
+          whiteSpace="nowrap"
+          onClick={(e) => e.preventDefault()}
+        >
+          Yamada UI
+        </Heading>
+      </Box>
+
+      <SegmentedControl
+        _container={[{ maxW: "750px", css: { display: "none" } }]}
+        gap={0}
+        as="nav"
+        value={active}
+      >
+        {items}
+      </SegmentedControl>
+
+      <IconButton
+        title="Menu"
+        type="button"
+        variant="unstyled"
+        p="1"
+        onClick={onToggle}
+        _container={[{ minW: "750px", css: { display: "none" } }]}
+        icon={
+          <>
+            <Box
+              position="absolute"
+              width="24px"
+              height="1px"
+              transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
+              bg={["black", "white"]}
+              transitionDuration="300ms"
+              transitionProperty="all"
+            />
+            <Box
+              position="absolute"
+              width="24px"
+              height="1px"
+              transform={isOpen ? "translateX(20px)" : undefined}
+              opacity={isOpen ? 0 : 1}
+              bg={["black", "white"]}
+              transitionDuration="400ms"
+              transitionProperty="all"
+            />
+            <Box
+              position="absolute"
+              width="24px"
+              height="1px"
+              transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
+              bg={["black", "white"]}
+              transitionDuration="300ms"
+              transitionProperty="all"
+            />
+          </>
+        }
+      />
+    </HStack>
   )
 }
 

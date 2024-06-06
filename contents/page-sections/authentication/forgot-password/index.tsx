@@ -3,7 +3,7 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Container,
+  Center,
   FormControl,
   Heading,
   Icon,
@@ -18,7 +18,12 @@ import type { FC } from "react"
 
 const AuthenticationForm: FC = () => {
   return (
-    <Container gap="lg">
+    <Center
+      flexDirection="column"
+      p="lg"
+      bg={["blackAlpha.100", "blackAlpha.500"]}
+      gap="lg"
+    >
       <VStack gap="xs">
         <Heading as="h1" size="lg" textAlign="center">
           Forgot your password?
@@ -71,7 +76,7 @@ const AuthenticationForm: FC = () => {
           </Button>
         </CardFooter>
       </Card>
-    </Container>
+    </Center>
   )
 }
 

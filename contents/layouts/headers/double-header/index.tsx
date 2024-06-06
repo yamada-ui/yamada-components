@@ -1,6 +1,5 @@
 import {
   Box,
-  Container,
   HStack,
   Heading,
   IconButton,
@@ -68,78 +67,84 @@ const DoubleHeader: FC = () => {
   ))
 
   return (
-    <Box as="header" p="lg">
-      <Container
-        p="0"
-        borderBottomWidth="1px"
-        borderBottomColor={["blackAlpha.500", "whiteAlpha.500"]}
-        borderBottomStyle="solid"
-      >
-        <HStack justifyContent="space-between" containerType="inline-size">
-          <Box flex={1}>
-            <Heading
-              size="lg"
-              color={["black", "white"]}
-              as={Link}
-              _hover={{ textDecor: "none" }}
-              onClick={(e) => e.preventDefault()}
-            >
-              Yamada UI
-            </Heading>
-          </Box>
-          <VStack
-            flex={1}
-            _container={[{ maxW: "750px", css: { display: "none" } }]}
+    <Box
+      as="header"
+      justifyContent="space-between"
+      borderBottomWidth="1px"
+      pt="sm"
+      px="md"
+    >
+      <HStack _container={[{ maxW: "800px", css: { pb: "sm" } }]}>
+        <Box flex={1}>
+          <Heading
+            size="lg"
+            as="a"
+            whiteSpace="nowrap"
+            onClick={(e) => e.preventDefault()}
           >
-            <HStack justify="flex-end">{secondaryItems}</HStack>
-            <Tabs gap="0" as="nav" onChange={onChange}>
-              <TabList justifyContent="center" border="none">
-                {mainItems}
-              </TabList>
-            </Tabs>
-          </VStack>
-          <IconButton
-            title="Menu"
-            type="button"
-            variant="unstyled"
-            p="1"
-            onClick={onToggle}
-            _container={[{ minW: "750px", css: { display: "none" } }]}
-            icon={
-              <>
-                <Box
-                  position="absolute"
-                  width="24px"
-                  height="1px"
-                  transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
-                  bg={["black", "white"]}
-                  transitionDuration="300ms"
-                  transitionProperty="all"
-                />
-                <Box
-                  position="absolute"
-                  width="24px"
-                  height="1px"
-                  transform={isOpen ? "translateX(20px)" : undefined}
-                  opacity={isOpen ? 0 : 1}
-                  bg={["black", "white"]}
-                  transitionDuration="400ms"
-                  transitionProperty="all"
-                />
-                <Box
-                  position="absolute"
-                  width="24px"
-                  height="1px"
-                  transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
-                  bg={["black", "white"]}
-                  transitionDuration="300ms"
-                  transitionProperty="all"
-                />
-              </>
-            }
-          />
-        </HStack>
-      </Container>
+            Yamada UI
+          </Heading>
+        </Box>
+
+        <VStack
+          flex={1}
+          _container={[{ maxW: "800px", css: { display: "none" } }]}
+        >
+          <HStack justify="flex-end">{secondaryItems}</HStack>
+
+          <Tabs gap="0" as="nav" onChange={onChange}>
+            <TabList justifyContent="center" border="none">
+              {mainItems}
+            </TabList>
+          </Tabs>
+        </VStack>
+
+        <IconButton
+          title="Menu"
+          type="button"
+          variant="unstyled"
+          display="flex"
+          placeContent="center"
+          placeItems="center"
+          p="1"
+          onClick={onToggle}
+          _container={[{ minW: "800px", css: { display: "none" } }]}
+          icon={
+            <>
+              <Box
+                position="absolute"
+                width="24px"
+                height="1px"
+                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
+                bg={["black", "white"]}
+                transitionDuration="300ms"
+                transitionProperty="all"
+              />
+
+              <Box
+                position="absolute"
+                width="24px"
+                height="1px"
+                transform={isOpen ? "translateX(20px)" : undefined}
+                opacity={isOpen ? 0 : 1}
+                bg={["black", "white"]}
+                transitionDuration="400ms"
+                transitionProperty="all"
+              />
+
+              <Box
+                position="absolute"
+                width="24px"
+                height="1px"
+                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
+                bg={["black", "white"]}
+                transitionDuration="300ms"
+                transitionProperty="all"
+              />
+            </>
+          }
+        />
+      </HStack>
     </Box>
   )
 }

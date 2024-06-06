@@ -7,6 +7,13 @@
     "title": "リンク付きフッター",
     "description": "これはリンク付きフッターです"
   },
+  "options": {
+    "container": {
+      "minH": "xl",
+      "display": "flex",
+      "alignItems": "flex-end"
+    }
+  },
   "authors": [
     {
       "id": 84060430,

@@ -3,7 +3,7 @@ import type { FC } from "react"
 
 const LabelOnLeft: FC = () => {
   return (
-    <HStack>
+    <HStack w="full">
       <Text>Continue</Text>
       <Divider />
     </HStack>

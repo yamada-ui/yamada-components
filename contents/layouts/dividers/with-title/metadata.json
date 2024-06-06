@@ -7,10 +7,5 @@
     "title": "タイトル付き",
     "description": "これは、タイトル付きの区切り線コンポーネントです。"
   },
-  "options": {
-    "container": {
-      "p": "md",
-      "maxW": "xl"
-    }
-  }
+  "options": { "container": { "centerContent": true, "p": "md" } }
 }
