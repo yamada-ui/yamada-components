@@ -57,7 +57,11 @@ export const getServerSideSearchProps = async ({
     "utf-8",
   )
   const json = JSON.parse(contents) as SearchContent[]
-  const labelsArray = Array.isArray(labels) ? labels : [labels]
+  const labelsArray = Array.isArray(labels)
+    ? labels
+    : labels.includes(",")
+      ? labels.split(",")
+      : [labels]
   const filtered = json.filter((v) => {
     return (
       v.labels.some((label) =>
