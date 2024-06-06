@@ -19,17 +19,9 @@ export const CodeBlock: FC<CodeBlockProps> = ({ language, theme, ...rest }) => {
             style={{ ...style, backgroundColor: "inherit" }}
           >
             {tokens.map((line, index) => (
-              <Box
-                key={index}
-                minW="fit-content"
-                {...getLineProps({ line, key: index })}
-              >
+              <Box key={index} minW="fit-content" {...getLineProps({ line })}>
                 {line.map((token, index) => (
-                  <Text
-                    key={index}
-                    as="span"
-                    {...getTokenProps({ token, key: index })}
-                  />
+                  <Text key={index} as="span" {...getTokenProps({ token })} />
                 ))}
               </Box>
             ))}
