@@ -47,8 +47,12 @@ declare module "component" {
     items?: Component[]
   }
 
+  type ComponentContainerProps = HTMLUIProps<"div"> & {
+    centerContent?: boolean
+  }
+
   type MetadataOptions = {
-    container: HTMLUIProps<"div">
+    container: ComponentContainerProps
   }
 
   type SharedMetadata = {

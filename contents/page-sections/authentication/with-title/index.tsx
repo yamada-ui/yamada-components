@@ -3,8 +3,8 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Center,
   Checkbox,
-  Container,
   Flex,
   FormControl,
   Heading,
@@ -25,7 +25,12 @@ const AuthenticationForm: FC = () => {
   const [show, { toggle }] = useBoolean()
 
   return (
-    <Container gap="lg">
+    <Center
+      flexDirection="column"
+      p="lg"
+      bg={["blackAlpha.100", "blackAlpha.500"]}
+      gap="lg"
+    >
       <VStack gap="xs">
         <Heading as="h1" size="xl" textAlign="center">
           Welcome back!
@@ -93,7 +98,7 @@ const AuthenticationForm: FC = () => {
           </Button>
         </CardFooter>
       </Card>
-    </Container>
+    </Center>
   )
 }
 

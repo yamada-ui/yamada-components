@@ -3,6 +3,9 @@ import { Grid, GridItem } from "@yamada-ui/react"
 const LeadingItem = () => {
   return (
     <Grid
+      w="full"
+      maxW="4xl"
+      gap="md"
       templateAreas={`
         "one one two two"
         "one one three four"
@@ -19,9 +22,6 @@ const LeadingItem = () => {
           },
         },
       ]}
-      gap="md"
-      maxW="4xl"
-      mx="auto"
     >
       <GridItem area="one" w="full" minH="4xs" rounded="md" bg="primary" />
       <GridItem area="two" w="full" minH="4xs" rounded="md" bg="primary" />

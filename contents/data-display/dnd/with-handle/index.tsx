@@ -45,7 +45,7 @@ const elements = [
 
 const WithHandle: FC = () => {
   return (
-    <Reorder>
+    <Reorder maxW="xl">
       {elements.map((item) => (
         <ReorderItem key={item.name} label={item.name}>
           <HStack gap="0">

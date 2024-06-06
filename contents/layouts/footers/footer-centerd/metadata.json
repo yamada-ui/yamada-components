@@ -7,6 +7,7 @@
     "title": "中央揃えリンク付きフッター",
     "description": "これは中央揃えのリンク付きフッターです"
   },
+  "options": { "container": { "display": "flex", "alignItems": "flex-end" } },
   "authors": [
     {
       "id": 84060430,

@@ -7,10 +7,5 @@
     "title": "ドラッグ＆ドロップリスト（ハンドル付き）",
     "description": "ドラッグ＆ドロップリストは、ハンドル付きのリストの項目を並べ替えるためのコンポーネントです。"
   },
-  "options": {
-    "container": {
-      "p": "md",
-      "maxW": "xl"
-    }
-  }
+  "options": { "container": { "centerContent": true, "p": "md" } }
 }

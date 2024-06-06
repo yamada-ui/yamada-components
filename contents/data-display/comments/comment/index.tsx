@@ -3,7 +3,7 @@ import type { FC } from "react"
 
 export const Comment: FC = () => {
   return (
-    <Card variant="unstyled" maxW="md" m="md" mx="auto">
+    <Card variant="unstyled" maxW="md">
       <CardBody flexDir="row" placeItems="start">
         <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />
         <VStack gap="sm">

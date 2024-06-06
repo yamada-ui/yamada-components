@@ -4,8 +4,9 @@ import type { FC } from "react"
 
 const WithButton: FC = () => {
   return (
-    <HStack>
+    <HStack w="full">
       <Divider />
+
       <Button
         leftIcon={<Icon as={Plus} />}
         variant="outline"

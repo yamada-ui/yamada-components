@@ -3,7 +3,7 @@ import type { FC } from "react"
 
 const WithTitleOnLeft: FC = () => {
   return (
-    <HStack>
+    <HStack w="full">
       <Heading as="h3" size="sm">
         Projects
       </Heading>

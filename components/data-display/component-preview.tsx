@@ -9,22 +9,26 @@ import {
 import type {
   BoxProps,
   Dict,
+  HTMLUIProps,
   LoadingProps,
   ThemeConfig,
 } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
-import { memo } from "react"
-import type { Component } from "component"
+import { memo, useMemo } from "react"
+import type { Component, ComponentContainerProps } from "component"
 
 export type ComponentPreviewProps = BoxProps &
   Pick<Component, "paths"> & {
-    containerProps?: BoxProps
+    containerProps?: ComponentContainerProps
     loadingProps?: LoadingProps
   }
 
 export const ComponentPreview = memo(
   forwardRef<ComponentPreviewProps, "div">(
-    ({ paths, containerProps, loadingProps, ...rest }, ref) => {
+    (
+      { paths, containerProps: _containerProps, loadingProps, ...rest },
+      ref,
+    ) => {
       const Component = dynamic(() => import(`/contents/${paths.component}`))
 
       const { loading, value } = useAsync(async () => {
@@ -42,6 +46,28 @@ export const ComponentPreview = memo(
 
         return { theme, config }
       })
+
+      const containerProps = useMemo<HTMLUIProps<"div">>(() => {
+        const { centerContent, ...rest } = _containerProps ?? {}
+
+        let props: HTMLUIProps<"div"> = {
+          w: "full",
+          h: "full",
+          containerType: "inline-size",
+          ...rest,
+        }
+
+        if (centerContent) {
+          props = {
+            ...props,
+            display: "flex",
+            placeContent: "center",
+            placeItems: "center",
+          }
+        }
+
+        return props
+      }, [_containerProps])
 
       return (
         <Center

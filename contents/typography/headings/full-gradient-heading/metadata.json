@@ -7,9 +7,5 @@
     "title": "グラデーションヘッダー",
     "description": "これは、左から右へのグラデーションを使ったグラデーションヘッダーです。"
   },
-  "options": {
-    "container": {
-      "p": "md"
-    }
-  }
+  "options": { "container": { "centerContent": true, "p": "md" } }
 }

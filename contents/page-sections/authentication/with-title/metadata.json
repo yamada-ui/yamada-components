@@ -7,13 +7,6 @@
     "title": "タイトル付き認証",
     "description": "これはタイトルを含む認証フォームです。"
   },
-  "options": {
-    "container": {
-      "py": "lg",
-      "containerType": "inline-size",
-      "bg": ["blackAlpha.100", "blackAlpha.500"]
-    }
-  },
   "authors": [
     {
       "id": 61367823,

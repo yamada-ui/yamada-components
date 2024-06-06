@@ -3,7 +3,7 @@ import type { FC } from "react"
 
 const WithIcon: FC = () => {
   return (
-    <HStack>
+    <HStack w="full">
       <Divider />
       <Text>Continue</Text>
       <Divider />

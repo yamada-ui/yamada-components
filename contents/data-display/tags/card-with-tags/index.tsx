@@ -27,16 +27,19 @@ const CardWithTags: FC = () => {
     },
   ]
   const [tags, setTags] = useState(defaultTags)
+
   return (
-    <VStack>
+    <VStack w="full" maxW="lg">
       <Card variant="outline">
         <CardHeader>
           <Heading as="h3" size="lg">
             Issue #133
           </Heading>
         </CardHeader>
+
         <CardBody>
           <Text>Labels:</Text>
+
           <Wrap gap="sm">
             {tags.length > 0 ? (
               tags.map((tag, index) => (
@@ -59,6 +62,7 @@ const CardWithTags: FC = () => {
           </Wrap>
         </CardBody>
       </Card>
+
       <Button
         onClick={() => setTags(defaultTags)}
         colorScheme="primary"

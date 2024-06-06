@@ -4,7 +4,6 @@
     "title": "シンプルなヘッダー",
     "description": "これはシンプルなヘッダーです。"
   },
-  "options": { "container": { "p": "md" } },
   "authors": [
     {
       "id": 84060430,

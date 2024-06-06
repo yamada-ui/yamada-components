@@ -7,10 +7,5 @@
     "title": "アイコン付き",
     "description": "これは、アイコン付きの区切り線コンポーネントです。"
   },
-  "options": {
-    "container": {
-      "p": "md",
-      "maxW": "2xl"
-    }
-  }
+  "options": { "container": { "centerContent": true, "p": "md" } }
 }

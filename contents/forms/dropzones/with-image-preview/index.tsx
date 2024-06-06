@@ -4,26 +4,33 @@ import {
   CarouselSlide,
 } from "@yamada-ui/carousel"
 import { Dropzone } from "@yamada-ui/dropzone"
-import { Center, Image, Text, useLoading } from "@yamada-ui/react"
+import { Center, Image, Text, useLoading, VStack } from "@yamada-ui/react"
 import { useState } from "react"
 import type { FC } from "react"
 
 export const ImagePreviewDropzone: FC = () => {
   const [imageURL, setImageURL] = useState<string[]>([])
   const { page } = useLoading()
+
   const handleAcceptedFile = async (files: File[] | undefined) => {
     if (files === undefined || files.length === 0) return
+
     page.start({ message: "Loading..." })
+
     setImageURL([])
+
     await new Promise((resolve) => setTimeout(resolve, 5000))
+
     for (let i = 0; i < files.length; i++) {
       const file = files[i]
+
       setImageURL((prev) => [...prev, URL.createObjectURL(file)])
     }
     page.finish()
   }
+
   return (
-    <>
+    <VStack>
       <Dropzone
         multiple
         accept={{
@@ -33,6 +40,7 @@ export const ImagePreviewDropzone: FC = () => {
       >
         <Text>Drag and Drop Image File</Text>
       </Dropzone>
+
       <Carousel
         visibility={imageURL.length > 0 ? "visible" : "hidden"}
         align="center"
@@ -63,7 +71,7 @@ export const ImagePreviewDropzone: FC = () => {
           }}
         />
       </Carousel>
-    </>
+    </VStack>
   )
 }
 

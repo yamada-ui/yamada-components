@@ -7,10 +7,5 @@
     "title": "タイトルを左に表示",
     "description": "これは、タイトルを左に表示する区切り線コンポーネントです。"
   },
-  "options": {
-    "container": {
-      "p": "md",
-      "maxW": "2xl"
-    }
-  }
+  "options": { "container": { "centerContent": true, "p": "md" } }
 }

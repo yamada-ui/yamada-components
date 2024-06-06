@@ -7,7 +7,7 @@
     "title": "リーディングアイテム付きグリッド",
     "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。"
   },
-  "options": { "container": { "p": "md", "containerType": "inline-size" } },
+  "options": { "container": { "centerContent": true, "p": "md" } },
   "authors": [
     {
       "id": 84060430,

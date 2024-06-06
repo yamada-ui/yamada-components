@@ -8,6 +8,7 @@
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、およびHTMLコンテンツを含むコメントテキストを表示するカードコンポーネント。"
   },
   "labels": ["comment", "data-display"],
+  "options": { "container": { "centerContent": true, "p": "md" } },
   "authors": [
     {
       "id": 84060430,

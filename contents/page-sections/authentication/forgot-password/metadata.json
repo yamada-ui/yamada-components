@@ -7,13 +7,6 @@
     "title": "パスワードを忘れた場合",
     "description": "この機能は、ユーザーがパスワードを忘れた場合にリセットすることができます。"
   },
-  "options": {
-    "container": {
-      "py": "lg",
-      "containerType": "inline-size",
-      "bg": ["blackAlpha.100", "blackAlpha.500"]
-    }
-  },
   "authors": [
     {
       "id": 61367823,
