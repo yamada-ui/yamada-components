@@ -16,7 +16,7 @@ import type {
   ComponentCategory,
   ComponentCategoryGroup,
 } from "component"
-import type { SearchContent } from "search-content"
+import type { SearchContent, SearchResult } from "search-content"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -45,7 +45,10 @@ export const getServerSideSearchProps = async ({
       props: {
         title: "Search Result Not labels",
         description: "Search Result Not labels",
-        components: [],
+        components: {
+          contents: [],
+          labels: [],
+        },
         componentTree,
       },
     }
@@ -56,16 +59,6 @@ export const getServerSideSearchProps = async ({
   const json = JSON.parse(contents) as SearchContent[]
   const labelsArray = Array.isArray(labels) ? labels : [labels]
   const filtered = json.filter((v) => {
-    if (
-      v.labels.some((label) =>
-        labelsArray.some((labelArray) =>
-          new RegExp(labelArray, "i").test(label),
-        ),
-      )
-    ) {
-      console.log(v)
-    }
-
     return (
       v.labels.some((label) =>
         labelsArray.some((labelArray) =>
@@ -80,11 +73,15 @@ export const getServerSideSearchProps = async ({
       return component
     }),
   )
+  const result: SearchResult = {
+    contents: components,
+    labels: labelsArray,
+  }
   return {
     props: {
       title: `Search Result ${labelsArray.join(", ")}`,
       description: `Search Result ${labelsArray.join(", ")}`,
-      components,
+      components: result,
       componentTree,
     },
   }

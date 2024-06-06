@@ -1,5 +1,5 @@
 import type { InferGetServerSidePropsType, NextPageWithConfig } from "next"
-import { Category } from "components/data-display"
+import { SearchLabelsResult } from "components/data-display/search-labels-result"
 import { AppProvider } from "contexts/app-context"
 import { AppLayout } from "layouts/app-layout"
 import { getServerSideSearchProps } from "utils/next"
@@ -18,18 +18,11 @@ const Page: NextPageWithConfig<PageProps> = ({
     <AppProvider
       {...{
         componentTree,
-        categoryGroup: {
-          name: "",
-          slug: "/",
-          title,
-          isExpanded: true,
-          items: components,
-        },
-        category: { name: "", slug: "", title, items: components },
+        searchResult: components,
       }}
     >
       <AppLayout title={title} description={description}>
-        <Category />
+        <SearchLabelsResult />
       </AppLayout>
     </AppProvider>
   )
