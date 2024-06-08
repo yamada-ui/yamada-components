@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With badges",
+    "description": "This is a component that displays tabs with badges."
+  },
+  "ja": {
+    "title": "With badges",
+    "description": "これは、タブをバッジと共に表示するコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

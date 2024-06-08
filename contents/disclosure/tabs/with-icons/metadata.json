@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With icons",
+    "description": "This is a component that displays tabs with icons."
+  },
+  "ja": {
+    "title": "With icons",
+    "description": "これは、タブをアイコンと共に表示するコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

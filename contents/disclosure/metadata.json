@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Disclosure",
+    "description": "A component is available to save display space and display a large number of items."
+  },
+  "ja": {
+    "title": "Disclosure",
+    "description": "表示領域を節約して多数の項目を表示するコンポーネントが用意されています。"
+  }
+}
