@@ -28,9 +28,11 @@ export const SearchLabelsResult: FC = memo(() => {
           gap={{ base: "md", sm: "0" }}
           paddingBlock="md"
         >
-          <HStack>
+          <HStack gap="xs">
             {searchResult.labels.map((v) => (
-              <Tag key={v}>{v}</Tag>
+              <Tag key={v} justifyContent="center">
+                {v}
+              </Tag>
             ))}
           </HStack>
 
