@@ -42,6 +42,7 @@ import { NextLinkIconButton, Tree } from "components/navigation"
 import { MobileMenu } from "components/overlay"
 import { CONSTANT } from "constant"
 import { useI18n } from "contexts/i18n-context"
+import type { Locale } from "utils/i18n"
 
 export type HeaderProps = CenterProps & {}
 
@@ -235,7 +236,7 @@ const I18nButton: FC<I18nButtonProps> = memo(({ menuProps, ...rest }) => {
       />
 
       <MenuList>
-        <MenuOptionGroup<string>
+        <MenuOptionGroup<Locale>
           value={locale}
           onChange={changeLocale}
           type="radio"

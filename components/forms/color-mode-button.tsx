@@ -1,4 +1,4 @@
-import type { IconButtonProps, MenuProps } from "@yamada-ui/react"
+import type { ColorMode, IconButtonProps, MenuProps } from "@yamada-ui/react"
 import {
   IconButton,
   Menu,
@@ -51,7 +51,7 @@ export const ColorModeButton: FC<ColorModeButtonProps> = memo(
         />
 
         <MenuList>
-          <MenuOptionGroup<string>
+          <MenuOptionGroup<ColorMode | "system">
             value={internalColorMode}
             onChange={changeColorMode}
             type="radio"

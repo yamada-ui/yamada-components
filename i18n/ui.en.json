@@ -49,11 +49,15 @@
       }
     },
     "category-group": {
-      "back-to": "Back to all category groups",
       "count": "{label} categories"
     },
     "category": {
       "back-to": "Back to all categories",
+      "count": "{label} components"
+    },
+    "components": {
+      "back-to": "Back to all category groups",
+      "title": "of components",
       "count": "{label} components"
     },
     "footer": {

@@ -1,5 +1,3 @@
-import { readFile } from "fs/promises"
-import path from "node:path"
 import type {
   GetServerSidePropsContext,
   GetStaticPathsContext,
@@ -11,12 +9,12 @@ import {
   getComponentPaths,
   getComponent,
 } from "./component"
+import type { Locale } from "./i18n"
 import type {
   Component,
   ComponentCategory,
   ComponentCategoryGroup,
 } from "component"
-import type { SearchContent, SearchResult } from "search-content"
 
 export const getServerSideCommonProps = async ({
   req,
@@ -29,66 +27,9 @@ export const getServerSideCommonProps = async ({
 export const getStaticCommonProps = async ({
   locale,
 }: GetStaticPropsContext) => {
-  const componentTree = await getComponentCategoryGroup()(locale)
+  const componentTree = await getComponentCategoryGroup()(locale as Locale)
 
   return { props: { componentTree } }
-}
-
-export const getServerSideSearchProps = async ({
-  locale,
-  query,
-}: GetServerSidePropsContext) => {
-  const componentTree = await getComponentCategoryGroup()(locale)
-  const { labels } = query
-  if (!labels)
-    return {
-      props: {
-        title: "Search Result Not labels",
-        description: "Search Result Not labels",
-        components: {
-          contents: [],
-          labels: [],
-        },
-        componentTree,
-      },
-    }
-  const contents = await readFile(
-    path.join("i18n", `content.${locale}.json`),
-    "utf-8",
-  )
-  const json = JSON.parse(contents) as SearchContent[]
-  const labelsArray = Array.isArray(labels)
-    ? labels
-    : labels.includes(",")
-      ? labels.split(",")
-      : [labels]
-  const filtered = json.filter((v) => {
-    return (
-      v.labels.some((label) =>
-        labelsArray.some((labelArray) =>
-          new RegExp(labelArray, "i").test(label),
-        ),
-      ) && v.type === "component"
-    )
-  })
-  const components = await Promise.all(
-    filtered.map(async (v) => {
-      const component = await getComponent(v.slug)(locale)
-      return component
-    }),
-  )
-  const result: SearchResult = {
-    contents: components,
-    labels: labelsArray,
-  }
-  return {
-    props: {
-      title: `Search Result ${labelsArray.join(", ")}`,
-      description: `Search Result ${labelsArray.join(", ")}`,
-      components: result,
-      componentTree,
-    },
-  }
 }
 
 export const getStaticComponentProps =
@@ -108,7 +49,7 @@ export const getStaticComponentProps =
     const paths = toArray(params?.slug ?? [])
 
     const componentTree = await getComponentCategoryGroup()(
-      locale,
+      locale as Locale,
       `/${[categoryGroupName, ...paths].join("/")}`,
     )
 
@@ -123,15 +64,22 @@ export const getStaticComponentProps =
     }
 
     if (paths.length === 1) {
-      const _category = categoryGroup.items?.find(
+      const _category = categoryGroup?.items?.find(
         ({ name }) => name === paths.at(-1),
       )
 
-      const items: Component[] = await Promise.all(
-        _category.items?.map(({ slug }) => getComponent(slug)(locale)) ?? [],
-      )
+      const items: Component[] = (
+        await Promise.all(
+          _category?.items?.map(({ slug }) =>
+            getComponent(slug)(locale as Locale),
+          ) ?? [],
+        )
+      ).filter(Boolean) as Component[]
 
-      const category: ComponentCategory = { ..._category, items }
+      const category: ComponentCategory = {
+        ..._category,
+        items,
+      } as ComponentCategory
 
       const props = { categoryGroup, category, componentTree }
 
@@ -139,7 +87,7 @@ export const getStaticComponentProps =
     } else {
       const slug = [categoryGroupName, ...paths].join("/")
 
-      const component = await getComponent(slug)(locale)
+      const component = await getComponent(slug)(locale as Locale)
 
       const props = { component, componentTree }
 
