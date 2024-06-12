@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With link on right",
+    "description": "This is the alert component with a link on the right side."
+  },
+  "ja": {
+    "title": "リンクが入ったアラートコンポーネント",
+    "description": "アラートボックスの右側にリンクを入れたコンポーネントです"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

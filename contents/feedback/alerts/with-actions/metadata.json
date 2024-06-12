@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With actions",
+    "description": "This is the alert component with buttons."
+  },
+  "ja": {
+    "title": "ボタンが入ったアラートコンポーネント",
+    "description": "アラートボックスにボタンを入れたコンポーネントです"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
