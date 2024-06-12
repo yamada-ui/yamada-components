@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With description",
+    "description": "This is the alert component with a description."
+  },
+  "ja": {
+    "title": "説明が入ったアラートコンポーネント",
+    "description": "アラートボックスに説明を入れたコンポーネントです"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

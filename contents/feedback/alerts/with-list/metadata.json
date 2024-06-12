@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With list",
+    "description": "This is the alert component with an unordered list."
+  },
+  "ja": {
+    "title": "箇条書きの入ったアラートコンポーネント",
+    "description": "アラートボックスの説明として箇条書きを入れたコンポーネントです"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

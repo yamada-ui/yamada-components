@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With accent border",
+    "description": "This is the alert component with accent border on the left side."
+  },
+  "ja": {
+    "title": "ボーダーの入ったアラートコンポーネント",
+    "description": "アラートボックスの左側にボーダーを入れたコンポーネントです"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}

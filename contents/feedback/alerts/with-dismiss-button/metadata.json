@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "With dismiss button",
+    "description": "This is the alert component with a close button."
+  },
+  "ja": {
+    "title": "閉じるボタンが入ったアラートコンポーネント",
+    "description": "アラートボックスに閉じるボタンを入れたコンポーネントです"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
