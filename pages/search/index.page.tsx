@@ -10,7 +10,7 @@ import { Components } from "components/data-display"
 import { AppProvider } from "contexts/app-context"
 import { AppLayout } from "layouts/app-layout"
 import { getComponent, getComponentCategoryGroup } from "utils/component"
-import { getContents, type Locale } from "utils/i18n"
+import { getContents, getUI, type Locale } from "utils/i18n"
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -45,12 +45,14 @@ export const getServerSideProps = async ({
     )
   ).filter(Boolean) as Component[]
 
+  const ui = getUI(locale as Locale)
+
   return {
     props: {
-      title: ``,
-      description: ``,
-      components,
+      title: `${labels.join(", ")} ${ui.component.components.title}`,
+      description: ui.app.description,
       componentTree,
+      components,
       labels,
     },
   }
