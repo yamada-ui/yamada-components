@@ -49,7 +49,7 @@ export const MobileMenu: FC<MobileMenuProps> = memo(
         </DrawerHeader>
 
         <DrawerBody position="relative" my="sm">
-          <VStack as="nav" overflowY="scroll" overscrollBehavior="contain">
+          <VStack as="nav" overflowY="auto" overscrollBehavior="contain">
             {children}
           </VStack>
 
