@@ -9,6 +9,7 @@ import {
   getComponentPaths,
   getComponent,
 } from "./component"
+import type { Locale } from "./i18n"
 import type {
   Component,
   ComponentCategory,
@@ -26,7 +27,7 @@ export const getServerSideCommonProps = async ({
 export const getStaticCommonProps = async ({
   locale,
 }: GetStaticPropsContext) => {
-  const componentTree = await getComponentCategoryGroup()(locale)
+  const componentTree = await getComponentCategoryGroup()(locale as Locale)
 
   return { props: { componentTree } }
 }
@@ -48,7 +49,7 @@ export const getStaticComponentProps =
     const paths = toArray(params?.slug ?? [])
 
     const componentTree = await getComponentCategoryGroup()(
-      locale,
+      locale as Locale,
       `/${[categoryGroupName, ...paths].join("/")}`,
     )
 
@@ -63,15 +64,22 @@ export const getStaticComponentProps =
     }
 
     if (paths.length === 1) {
-      const _category = categoryGroup.items?.find(
+      const _category = categoryGroup?.items?.find(
         ({ name }) => name === paths.at(-1),
       )
 
-      const items: Component[] = await Promise.all(
-        _category.items?.map(({ slug }) => getComponent(slug)(locale)) ?? [],
-      )
+      const items: Component[] = (
+        await Promise.all(
+          _category?.items?.map(({ slug }) =>
+            getComponent(slug)(locale as Locale),
+          ) ?? [],
+        )
+      ).filter(Boolean) as Component[]
 
-      const category: ComponentCategory = { ..._category, items }
+      const category: ComponentCategory = {
+        ..._category,
+        items,
+      } as ComponentCategory
 
       const props = { categoryGroup, category, componentTree }
 
@@ -79,7 +87,7 @@ export const getStaticComponentProps =
     } else {
       const slug = [categoryGroupName, ...paths].join("/")
 
-      const component = await getComponent(slug)(locale)
+      const component = await getComponent(slug)(locale as Locale)
 
       const props = { component, componentTree }
 

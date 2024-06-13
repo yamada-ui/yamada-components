@@ -16,12 +16,12 @@ import { CONSTANT } from "constant"
 import { getCookie, setCookie } from "utils/storage"
 
 export const MOBILE_BREAKPOINTS = ["md", "sm"]
-
+export const DEFAULT_DIRECTION = "vertical"
 export type CodeDirection = ResizableProps["direction"]
 
 type ComponentLayoutOptions = {
-  title: string
-  description: string
+  title?: string
+  description?: string
 }
 
 export type ComponentLayoutProps = ComponentLayoutOptions
@@ -64,7 +64,10 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
       setCodeDirection((prev) => {
         const next = runIfFunc(valueOrFunc, prev)
 
-        setCookie(CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_DIRECTION, next)
+        setCookie(
+          CONSTANT.STORAGE.COMPONENT_CODE_PREVIEW_DIRECTION,
+          next ?? DEFAULT_DIRECTION,
+        )
 
         return next
       }),

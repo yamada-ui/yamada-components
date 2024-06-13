@@ -19,14 +19,14 @@ export const MobileMenu: FC<MobileMenuProps> = memo(
     const breakpoint = useBreakpoint()
 
     useEffect(() => {
-      if (!["lg", "md", "sm"].includes(breakpoint)) onClose()
+      if (!["lg", "md", "sm"].includes(breakpoint)) onClose?.()
     }, [breakpoint, onClose])
 
     useEffect(() => {
-      events.on("routeChangeComplete", onClose)
+      events.on("routeChangeComplete", () => onClose?.())
 
       return () => {
-        events.off("routeChangeComplete", onClose)
+        events.off("routeChangeComplete", () => onClose?.())
       }
     }, [events, onClose])
 

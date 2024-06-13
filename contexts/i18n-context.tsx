@@ -17,26 +17,17 @@ import {
 } from "react"
 import type { PropsWithChildren, FC } from "react"
 import { CONSTANT } from "constant"
-import CONTENT_EN from "i18n/content.en.json"
-import CONTENT_JA from "i18n/content.ja.json"
-import UI_EN from "i18n/ui.en.json"
-import UI_JA from "i18n/ui.ja.json"
-import type { Locale } from "utils/i18n"
-
-type UIData = typeof UI_EN
-
-const uiData = { ja: UI_JA, en: UI_EN }
-const contentData = { ja: CONTENT_JA, en: CONTENT_EN }
+import { getContents, getUI, type Locale, type UI } from "utils/i18n"
 
 type I18nContext = {
   locale: Locale
   t: (
-    path: Path<UIData> | StringLiteral,
+    path: Path<UI> | StringLiteral,
     replaceValue?: string | number | Record<string, string | number>,
     pattern?: string,
   ) => string
   tc: (
-    path: Path<UIData>,
+    path: Path<UI>,
     callback?: (str: string, index: number) => JSX.Element,
   ) => string | JSX.Element[]
   changeLocale: (locale: Locale & StringLiteral) => void
@@ -56,7 +47,8 @@ export type I18nProviderProps = PropsWithChildren
 export const I18nProvider: FC<I18nProviderProps> = ({ children }) => {
   const { locale, pathname, asPath, push } = useRouter()
 
-  const contents = useMemo(() => contentData[locale], [locale])
+  const ui = useMemo(() => getUI(locale as Locale), [locale])
+  const contents = useMemo(() => getContents(locale as Locale), [locale])
 
   const changeLocale = useCallback(
     (locale: Locale & StringLiteral) => {
@@ -67,11 +59,11 @@ export const I18nProvider: FC<I18nProviderProps> = ({ children }) => {
 
   const t = useCallback(
     (
-      path: Path<UIData> | StringLiteral,
+      path: Path<UI> | StringLiteral,
       replaceValue?: string | number | Record<string, string | number>,
       pattern: string = "label",
     ) => {
-      let value = get<string>(uiData[locale], path, "")
+      let value = get<string>(ui, path, "")
 
       if (isUndefined(replaceValue)) return value
 
@@ -90,15 +82,15 @@ export const I18nProvider: FC<I18nProviderProps> = ({ children }) => {
 
       return value
     },
-    [locale],
+    [ui],
   )
 
   const tc = useCallback(
     (
-      path: Path<UIData>,
+      path: Path<UI>,
       callback?: (str: string, index: number) => JSX.Element,
     ) => {
-      const strOrArray = get<string | string[]>(uiData[locale], path, "")
+      const strOrArray = get<string | string[]>(ui, path, "")
 
       if (isString(strOrArray)) {
         const match = strOrArray.match(/`([^`]+)`/)
@@ -116,7 +108,7 @@ export const I18nProvider: FC<I18nProviderProps> = ({ children }) => {
         ))
       }
     },
-    [locale],
+    [ui],
   )
 
   const value = useMemo(

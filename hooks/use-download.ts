@@ -17,7 +17,7 @@ export const useDownload = (props: UseDownloadProps = {}) => {
       const zip = new JSZip()
       const folder = zip.folder(folderName)
 
-      files.forEach(({ path, data }) => folder.file(path, data))
+      files.forEach(({ path, data }) => folder?.file(path, data))
 
       const content = await zip.generateAsync({ type: "blob" })
 

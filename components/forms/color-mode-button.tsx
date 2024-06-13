@@ -1,5 +1,5 @@
 import { Moon, Sun } from "@yamada-ui/lucide"
-import type { IconButtonProps, MenuProps } from "@yamada-ui/react"
+import type { IconButtonProps, MenuProps, ColorMode } from "@yamada-ui/react"
 import {
   IconButton,
   Menu,
@@ -51,7 +51,7 @@ export const ColorModeButton: FC<ColorModeButtonProps> = memo(
         />
 
         <MenuList>
-          <MenuOptionGroup<string>
+          <MenuOptionGroup<ColorMode | "system">
             value={internalColorMode}
             onChange={changeColorMode}
             type="radio"

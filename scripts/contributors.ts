@@ -32,12 +32,16 @@ const updateMetadata = async (path: string, _authors: Author[]) => {
   let data = await readFile(path, "utf-8")
 
   const metadata = JSON.parse(data) as Dict
-  const authors = _authors.map(({ id, login, avatar_url, html_url }) => ({
-    id,
-    login,
-    avatar_url,
-    html_url,
-  }))
+  const authors = _authors.map((author) => {
+    const { id, login, avatar_url, html_url } = author ?? {}
+
+    return {
+      id,
+      login,
+      avatar_url,
+      html_url,
+    }
+  })
 
   data = JSON.stringify({ ...metadata, authors })
   data = await prettier(data)
@@ -91,7 +95,7 @@ const getAuthors: p.RequiredRunner<
       const commitMap: Record<string, { count: number; author: Author }> = {}
 
       commits.forEach(({ author }) => {
-        if (author.type !== "User") return
+        if (author?.type !== "User") return
 
         if (commitMap.hasOwnProperty(author.id)) {
           commitMap[author.id] = {

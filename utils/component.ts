@@ -2,8 +2,11 @@ import { existsSync } from "fs"
 import { readdir, readFile } from "fs/promises"
 import path from "node:path"
 import { toKebabCase } from "@yamada-ui/react"
+import type { GetStaticPathsResult } from "next"
+import type { Locale } from "./i18n"
 import type {
   CommonMetadata,
+  Component,
   ComponentCategoryGroup,
   Metadata,
   OriginMetadata,
@@ -13,7 +16,7 @@ import { CONSTANT } from "constant"
 export const getComponentCategoryGroup =
   (targetPath: string = "contents", callback?: (metadata: Metadata) => void) =>
   async (
-    locale: string,
+    locale: Locale = CONSTANT.I18N.DEFAULT_LOCALE,
     currentSlug?: string,
   ): Promise<ComponentCategoryGroup[]> => {
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
@@ -33,8 +36,9 @@ export const getComponentCategoryGroup =
                 json[locale] ?? json[defaultLocale]
               const icon = json.icon ?? null
               const authors = json.authors ?? null
+              const labels = json.labels ?? null
 
-              callback?.({ ...metadata, icon, authors })
+              callback?.({ ...metadata, icon, authors, labels })
             } catch {}
           }
 
@@ -62,16 +66,17 @@ export const getComponentCategoryGroup =
           slug,
           isExpanded,
           ...(items.length ? { items } : {}),
-          ...metadata,
+          ...metadata!,
         }
       }),
     )
 
-    return componentTree.filter(Boolean)
+    return componentTree.filter(Boolean) as ComponentCategoryGroup[]
   }
 
 export const getComponentPaths =
-  (categoryGroupName: string) => async (locales: string[]) => {
+  (categoryGroupName: string) =>
+  async (locales: string[] = []) => {
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
     const categoryGroupPath = path.join("contents", categoryGroupName)
 
@@ -79,7 +84,8 @@ export const getComponentPaths =
       await getComponentCategoryGroup(categoryGroupPath)(defaultLocale)
 
     const getPaths =
-      (componentTree?: ComponentCategoryGroup[]) => (locale: string) =>
+      (componentTree?: ComponentCategoryGroup[]) =>
+      (locale: string): GetStaticPathsResult["paths"] =>
         (componentTree ?? []).flatMap(({ slug, items }) => {
           slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
 
@@ -102,7 +108,7 @@ export const getComponentPaths =
 const omitComponentFiles = (fileNames: string[]) =>
   fileNames.filter((fileName) => !["metadata.json"].includes(fileName))
 
-const getMetadata = (dirPath: string) => async (locale: string) => {
+const getMetadata = (dirPath: string) => async (locale: Locale) => {
   const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
 
   try {
@@ -111,60 +117,67 @@ const getMetadata = (dirPath: string) => async (locale: string) => {
     const metadata: CommonMetadata = json[locale] ?? json[defaultLocale]
     const options = json.options ?? null
     const authors = json.authors ?? null
+    const labels = json.labels ?? null
 
-    return { ...metadata, options, authors }
+    return { ...metadata, options, authors, labels }
   } catch {
     return null
   }
 }
 
-export const getComponent = (slug: string) => async (locale: string) => {
-  try {
-    slug = slug.replace(/^\//, "")
-    const name = slug.split("/").at(-1)
-    const dirPath = path.join("contents", slug)
-    const componentPath = path.join(dirPath, "index.tsx")
-    const themePath = path.join(dirPath, "theme.ts")
-    const configPath = path.join(dirPath, "config.ts")
-    const validComponentPath = path.join(slug, "index.tsx").replace(/\\/g, "/")
-    const validThemePath = path.join(slug, "theme.ts")
-    const validConfigPath = path.join(slug, "config.ts")
+export const getComponent =
+  (slug: string) =>
+  async (
+    locale: Locale = CONSTANT.I18N.DEFAULT_LOCALE,
+  ): Promise<Component | undefined> => {
+    try {
+      slug = slug.replace(/^\//, "")
+      const name = slug.split("/").at(-1)!
+      const dirPath = path.join("contents", slug)
+      const componentPath = path.join(dirPath, "index.tsx")
+      const themePath = path.join(dirPath, "theme.ts")
+      const configPath = path.join(dirPath, "config.ts")
+      const validComponentPath = path
+        .join(slug, "index.tsx")
+        .replace(/\\/g, "/")
+      const validThemePath = path.join(slug, "theme.ts")
+      const validConfigPath = path.join(slug, "config.ts")
 
-    if (!existsSync(componentPath)) return
+      if (!existsSync(componentPath)) return undefined
 
-    let fileNames = await readdir(dirPath)
+      let fileNames = await readdir(dirPath)
 
-    const metadata = await getMetadata(dirPath)(locale)
-    const hasTheme = existsSync(themePath)
-    const hasConfig = existsSync(configPath)
+      const metadata = await getMetadata(dirPath)(locale)
+      const hasTheme = existsSync(themePath)
+      const hasConfig = existsSync(configPath)
 
-    fileNames = omitComponentFiles(fileNames)
+      fileNames = omitComponentFiles(fileNames)
 
-    const paths = {
-      component: validComponentPath,
-      theme: hasTheme ? validThemePath : null,
-      config: hasConfig ? validConfigPath : null,
-    }
+      const paths = {
+        component: validComponentPath,
+        theme: hasTheme ? validThemePath : null,
+        config: hasConfig ? validConfigPath : null,
+      }
 
-    const components = await Promise.all(
-      fileNames.map(async (name) => {
-        const filePath = path.join(dirPath, name)
-        const code = await readFile(filePath, "utf-8")
+      const components = await Promise.all(
+        fileNames.map(async (name) => {
+          const filePath = path.join(dirPath, name)
+          const code = await readFile(filePath, "utf-8")
 
-        return { name, path: filePath, code }
-      }),
-    )
+          return { name, path: filePath, code }
+        }),
+      )
 
-    slug = `/${slug}`
+      slug = `/${slug}`
 
-    const data = {
-      name,
-      slug,
-      paths,
-      components,
-      metadata,
-    }
+      const data: Component = {
+        name,
+        slug,
+        paths,
+        components,
+        metadata,
+      }
 
-    return data
-  } catch {}
-}
+      return data
+    } catch {}
+  }

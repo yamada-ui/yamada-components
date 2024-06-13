@@ -218,15 +218,17 @@ const AuthorsButton: FC<AuthorsButtonProps> = memo(
           <ModalHeader>{t("component.authors.description")}</ModalHeader>
 
           <ModalBody>
-            {metadata.authors?.length ? (
+            {metadata?.authors?.length ? (
               <VStack>
-                {metadata.authors.map(({ id, login, avatar_url, html_url }) => (
-                  <HStack key={id} as="a" target="_blank" href={html_url}>
-                    <Avatar name={login} src={avatar_url} boxSize="10" />
+                {metadata?.authors.map(
+                  ({ id, login, avatar_url, html_url }) => (
+                    <HStack key={id} as="a" target="_blank" href={html_url}>
+                      <Avatar name={login} src={avatar_url} boxSize="10" />
 
-                    <Text fontWeight="semibold">{login}</Text>
-                  </HStack>
-                ))}
+                      <Text fontWeight="semibold">{login}</Text>
+                    </HStack>
+                  ),
+                )}
               </VStack>
             ) : (
               <Center w="full" h="4xs">

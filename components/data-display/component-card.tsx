@@ -10,9 +10,11 @@ import {
   noop,
   SegmentedControl,
   SegmentedControlButton,
+  Tag,
   VStack,
 } from "@yamada-ui/react"
 import type { SegmentedControlProps, StackProps } from "@yamada-ui/react"
+import Link from "next/link"
 import type { MutableRefObject, FC } from "react"
 import { memo, useMemo, useRef, useState } from "react"
 import { ComponentCodePreview } from "./component-code-preview"
@@ -53,15 +55,26 @@ export const ComponentCard = memo(
             py="sm"
             borderBottomWidth="1px"
           >
-            <Heading
-              as="h3"
-              size="sm"
-              fontWeight="semibold"
-              flex="1"
-              lineClamp={1}
-            >
-              {metadata.title}
-            </Heading>
+            <HStack flex="1">
+              <Heading as="h3" size="sm" fontWeight="semibold" lineClamp={1}>
+                {metadata?.title}
+              </Heading>
+
+              <HStack gap="sm">
+                {metadata?.labels?.slice(0, 5).map((label, index) => (
+                  <Link key={index} href={`/search?labels=${label}`}>
+                    <Tag
+                      size="sm"
+                      colorScheme="primary"
+                      variant="outline"
+                      cursor="pointer"
+                    >
+                      {label}
+                    </Tag>
+                  </Link>
+                ))}
+              </HStack>
+            </HStack>
 
             <HStack gap="sm">
               <IconButton
