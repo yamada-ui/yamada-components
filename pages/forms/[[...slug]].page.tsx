@@ -35,8 +35,8 @@ const Page: NextPageWithConfig<PageProps> = ({
   return (
     <AppProvider {...{ componentTree, categoryGroup, category }}>
       <AppLayout
-        title={category?.title ?? categoryGroup.title}
-        description={category?.description ?? categoryGroup.description}
+        title={category?.title ?? categoryGroup?.title}
+        description={category?.description ?? categoryGroup?.description}
         gap="md"
       >
         {category ? <Category /> : <CategoryGroup />}

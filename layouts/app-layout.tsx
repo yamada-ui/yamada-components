@@ -4,7 +4,7 @@ import { type FC } from "react"
 import { Footer, Header } from "components/layouts"
 import { SEO } from "components/media-and-icons"
 
-type AppLayoutOptions = { title: string; description: string }
+type AppLayoutOptions = { title?: string; description?: string }
 
 export type AppLayoutProps = StackProps & AppLayoutOptions
 

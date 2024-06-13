@@ -9,7 +9,7 @@ import { useI18n } from "contexts/i18n-context"
 
 export type CategoryGroupProps = {}
 
-export const CategoryGroup: FC = memo(() => {
+export const CategoryGroup: FC<CategoryGroupProps> = memo(() => {
   const { categoryGroup } = useApp()
   const { t } = useI18n()
 
@@ -34,18 +34,18 @@ export const CategoryGroup: FC = memo(() => {
             lineHeight="shorter"
             lineClamp={1}
           >
-            {categoryGroup.title}
+            {categoryGroup?.title}
           </Heading>
 
           <Text color="muted" whiteSpace="nowrap">
             {t(
               "component.category-group.count",
-              categoryGroup.items?.length ?? 0,
+              categoryGroup?.items?.length ?? 0,
             )}
           </Text>
         </HStack>
 
-        <Authors authors={categoryGroup.authors} />
+        <Authors authors={categoryGroup?.authors} />
       </HStack>
 
       <Grid
@@ -58,7 +58,7 @@ export const CategoryGroup: FC = memo(() => {
         }}
         gap="md"
       >
-        {categoryGroup.items?.map(({ name, title, slug, items }) => (
+        {categoryGroup?.items?.map(({ name, title, slug, items }) => (
           <CategoryCard key={name} {...{ title, slug, items }} />
         ))}
       </Grid>

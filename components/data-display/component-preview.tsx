@@ -32,8 +32,8 @@ export const ComponentPreview = memo(
       const Component = dynamic(() => import(`/contents/${paths.component}`))
 
       const { loading, value } = useAsync(async () => {
-        let theme: Dict
-        let config: ThemeConfig
+        let theme: Dict | undefined
+        let config: ThemeConfig | undefined
 
         if (paths.theme) {
           const module = await import(`/contents/${paths.theme}`)

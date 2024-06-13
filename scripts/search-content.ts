@@ -5,13 +5,13 @@ import c from "chalk"
 import { program } from "commander"
 import { glob } from "glob"
 import { prettier } from "./utils"
-import type { OriginMetadata } from "component"
+import type { ContentType, OriginMetadata } from "component"
 import { CONSTANT } from "constant"
+import type { Locale } from "utils/i18n"
 
 const DEFAULT_LOCALE = CONSTANT.I18N.DEFAULT_LOCALE
 const LOCALES = CONSTANT.I18N.LOCALES.map(({ value }) => value)
 
-type ContentType = "categoryGroup" | "category" | "component"
 type ContentHierarchy = {
   categoryGroup: string
   category?: string
@@ -53,7 +53,10 @@ const getType = (slug: string): ContentType => {
 }
 
 const getSlug = (path: string) =>
-  `/${path.replace(/^contents\//, "").replace(/\/metadata.json$/, "")}`
+  `/${path
+    .replace(/\\/g, "/")
+    .replace(/^contents\//, "")
+    .replace(/\/metadata.json$/, "")}`
 
 const getMetadata = async (metadataPath: string) => {
   const data = await readFile(metadataPath, "utf-8")
@@ -64,7 +67,7 @@ const getMetadata = async (metadataPath: string) => {
 
 const generateSearchContent = async (
   metadataPaths: string[],
-  locale: string,
+  locale: Locale,
 ) => {
   const contents = await Promise.all(
     metadataPaths.map(async (metadataPath) => {
@@ -125,6 +128,7 @@ const generateSearchContent = async (
 
 program.action(async () => {
   p.intro(c.magenta(`Generating Yamada Components search content`))
+
   const s = p.spinner()
 
   try {

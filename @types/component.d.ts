@@ -9,12 +9,15 @@ type LocaleMetadata<Y> = { [key in DefaultLocale]: Y } & {
 }
 
 declare module "component" {
+  type ContentType = "categoryGroup" | "category" | "component"
+
   type Author = {
     id: number
     login: string
     avatar_url: string
     html_url: string
   }
+
   type ComponentCode = {
     name: string
     path: string
@@ -23,8 +26,8 @@ declare module "component" {
 
   type ComponentPaths = {
     component: string
-    theme: string
-    config: string
+    theme: string | null
+    config: string | null
   }
 
   type Component = {
@@ -58,7 +61,7 @@ declare module "component" {
   type SharedMetadata = {
     icon?: string | null
     authors?: Author[] | null
-    labels?: string[]
+    labels?: string[] | null
     options?: MetadataOptions | null
   }
 
