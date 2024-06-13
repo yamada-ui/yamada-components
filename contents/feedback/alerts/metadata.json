@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Alerts",
+    "description": "This is alert examples for Yamada UI."
+  },
+  "ja": {
+    "title": "アラート",
+    "description": "アラートボックスによるフィードバックの例です。"
+  }
+}
