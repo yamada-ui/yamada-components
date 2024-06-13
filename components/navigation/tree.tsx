@@ -1,4 +1,7 @@
 import {
+  Brush,
+  Compass,
+  ExternalLink,
   GitPullRequestArrow,
   Layers,
   LayoutTemplate,
@@ -15,7 +18,6 @@ import {
   ChevronIcon,
   Collapse,
   HStack,
-  Icon,
   List,
   ListItem,
   Text,
@@ -30,12 +32,7 @@ import { useRouter } from "next/router"
 import { memo, useEffect } from "react"
 import type { FC } from "react"
 import type { ComponentCategoryGroup } from "component"
-import {
-  Brush,
-  Compass,
-  ExternalLink,
-  YamadaUI,
-} from "components/media-and-icons"
+import { YamadaUI } from "components/media-and-icons"
 import { CONSTANT } from "constant"
 import { useApp } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
@@ -250,43 +247,43 @@ type ListItemIconProps = { icon?: string } & IconProps
 const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
   switch (icon) {
     case "compass":
-      return <Compass {...rest} />
+      return <Compass size="2xl" {...rest} />
 
     case "panels-top-left":
-      return <Icon as={PanelsTopLeft} fontSize="1.5em" {...rest} />
+      return <PanelsTopLeft size="2xl" {...rest} />
 
     case "text-cursor-input":
-      return <Icon as={TextCursorInput} fontSize="1.5em" {...rest} />
+      return <TextCursorInput size="2xl" {...rest} />
 
     case "layout-template":
-      return <Icon as={LayoutTemplate} fontSize="1.5em" {...rest} />
+      return <LayoutTemplate size="2xl" {...rest} />
 
     case "line-chart":
-      return <Icon as={LineChart} fontSize="1.5em" {...rest} />
+      return <LineChart size="2xl" {...rest} />
 
     case "table":
-      return <Icon as={Table} fontSize="1.5em" {...rest} />
+      return <Table size="2xl" {...rest} />
 
     case "layers":
-      return <Icon as={Layers} fontSize="1.5em" {...rest} />
+      return <Layers size="2xl" {...rest} />
 
     case "navigation":
-      return <Icon as={Navigation} fontSize="1.5em" {...rest} />
+      return <Navigation size="2xl" {...rest} />
 
     case "text":
-      return <Icon as={TextIcon} fontSize="1.5em" {...rest} />
+      return <TextIcon size="2xl" {...rest} />
 
     case "tags":
-      return <Icon as={Tags} fontSize="1.5em" {...rest} />
+      return <Tags size="2xl" {...rest} />
 
     case "git-pull-request-arrow":
-      return <Icon as={GitPullRequestArrow} fontSize="1.5em" {...rest} />
+      return <GitPullRequestArrow size="2xl" {...rest} />
 
     case "yamada-ui":
       return <YamadaUI {...rest} />
 
     case "brush":
-      return <Brush {...rest} />
+      return <Brush size="2xl" {...rest} />
 
     default:
       return <></>

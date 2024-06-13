@@ -1,4 +1,4 @@
-import { Download, Users } from "@yamada-ui/lucide"
+import { Download, Users, Menu } from "@yamada-ui/lucide"
 import {
   Avatar,
   Center,
@@ -27,7 +27,6 @@ import { memo, useMemo } from "react"
 import { ColorModeButton, ThemeSchemeButton } from "components/forms"
 import {
   Github,
-  Hamburger,
   LayoutHorizontal,
   LayoutVertical,
 } from "components/media-and-icons"
@@ -176,7 +175,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
             display={{ base: "none", md: "inline-flex" }}
             color="muted"
             onClick={onOpen}
-            icon={<Hamburger />}
+            icon={<Menu />}
           />
         ) : (
           <CloseButton

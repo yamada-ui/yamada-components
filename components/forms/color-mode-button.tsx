@@ -1,3 +1,4 @@
+import { Moon, Sun } from "@yamada-ui/lucide"
 import type { IconButtonProps, MenuProps } from "@yamada-ui/react"
 import {
   IconButton,
@@ -11,7 +12,6 @@ import {
 } from "@yamada-ui/react"
 import type { FC } from "react"
 import { memo } from "react"
-import { Moon, Sun } from "components/media-and-icons"
 
 export type ColorModeButtonProps = IconButtonProps & {
   menuProps?: MenuProps

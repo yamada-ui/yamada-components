@@ -1,3 +1,4 @@
+import { Languages, Menu as MenuIcon } from "@yamada-ui/lucide"
 import type {
   CenterProps,
   IconButtonProps,
@@ -32,12 +33,7 @@ import {
   SearchButton,
   ThemeSchemeButton,
 } from "components/forms"
-import {
-  Discord,
-  Github,
-  Hamburger,
-  Translate,
-} from "components/media-and-icons"
+import { Discord, Github } from "components/media-and-icons"
 import { NextLinkIconButton, Tree } from "components/navigation"
 import { MobileMenu } from "components/overlay"
 import { CONSTANT } from "constant"
@@ -180,7 +176,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
             display={{ base: "none", lg: "inline-flex" }}
             color="muted"
             onClick={onOpen}
-            icon={<Hamburger />}
+            icon={<MenuIcon />}
           />
         ) : (
           <CloseButton
@@ -230,7 +226,7 @@ const I18nButton: FC<I18nButtonProps> = memo(({ menuProps, ...rest }) => {
         aria-label="Open language switching menu"
         variant="ghost"
         color="muted"
-        icon={<Translate />}
+        icon={<Languages />}
         {...rest}
       />
 

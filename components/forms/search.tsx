@@ -1,4 +1,9 @@
-import { LayoutList, PanelsTopLeft } from "@yamada-ui/lucide"
+import {
+  LayoutList,
+  PanelsTopLeft,
+  Search as SearchIcon,
+  ExternalLink,
+} from "@yamada-ui/lucide"
 import {
   ui,
   HStack,
@@ -34,7 +39,6 @@ import {
 } from "react"
 import type { FC, KeyboardEvent, RefObject } from "react"
 import scrollIntoView from "scroll-into-view-if-needed"
-import { ExternalLink, MagnifyingGlass } from "components/media-and-icons"
 import { useI18n } from "contexts/i18n-context"
 import { useEventListener } from "hooks/use-event-listener"
 
@@ -102,7 +106,7 @@ export const Search = memo(
           {...rest}
           onClick={handlerAll(rest.onClick, onOpen)}
         >
-          <MagnifyingGlass />
+          <SearchIcon />
           <Text flex="1">{tc("component.forms.search.message")}</Text>
           <Kbd>{actionKey} + K</Kbd>
         </HStack>
@@ -127,7 +131,7 @@ export const SearchButton = memo(
           color="muted"
           variant="ghost"
           _hover={{ bg: ["blackAlpha.100", "whiteAlpha.50"] }}
-          icon={<MagnifyingGlass />}
+          icon={<SearchIcon />}
           {...rest}
           onClick={handlerAll(rest.onClick, onOpen)}
         />
@@ -282,7 +286,7 @@ const SearchModal: FC<SearchModalProps> = memo(
               }}
             />
 
-            <MagnifyingGlass
+            <SearchIcon
               position="absolute"
               top="50%"
               left="0"
@@ -395,7 +399,7 @@ const SearchModal: FC<SearchModalProps> = memo(
 
                     {type === "component" ? (
                       <ExternalLink
-                        fontSize="1.25em"
+                        size="1.25em"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     ) : null}

@@ -1,3 +1,4 @@
+import { Palette } from "@yamada-ui/lucide"
 import type { BoxProps, IconButtonProps, PopoverProps } from "@yamada-ui/react"
 import {
   Box,
@@ -13,7 +14,6 @@ import {
 } from "@yamada-ui/react"
 import type { FC } from "react"
 import { memo } from "react"
-import { ColorPalette } from "components/media-and-icons"
 
 export type ThemeSchemeButtonProps = IconButtonProps & {
   popoverProps?: PopoverProps
@@ -40,7 +40,7 @@ export const ThemeSchemeButton: FC<ThemeSchemeButtonProps> = memo(
             aria-label="Open color mode switching menu"
             variant="ghost"
             color="muted"
-            icon={<ColorPalette />}
+            icon={<Palette size="1.6em" />}
             {...rest}
           />
         </PopoverTrigger>
