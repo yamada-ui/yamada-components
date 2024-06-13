@@ -49,16 +49,17 @@
       }
     },
     "category-group": {
-      "count": "{label} categories"
+      "count": "{label} categories",
+      "back-to": "Back to all category group"
     },
     "category": {
-      "back-to": "Back to all categories",
+      "back-to": "Back to category group",
       "count": "{label} components"
     },
     "components": {
-      "back-to": "Back to all category groups",
       "title": "of components",
-      "count": "{label} components"
+      "count": "{label} components",
+      "back-to": "Back to all category group"
     },
     "footer": {
       "description": "Built by `Hirotomo Yamada` and `these awesome people`"
