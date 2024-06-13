@@ -1,3 +1,4 @@
+import { Code, Download, ExternalLink, Eye } from "@yamada-ui/lucide"
 import {
   assignRef,
   Flex,
@@ -12,7 +13,6 @@ import {
   VStack,
 } from "@yamada-ui/react"
 import type { SegmentedControlProps, StackProps } from "@yamada-ui/react"
-import { Code2, Download, ExternalLink, Eye } from "lucide-react"
 import type { MutableRefObject, FC } from "react"
 import { memo, useMemo, useRef, useState } from "react"
 import { ComponentCodePreview } from "./component-code-preview"
@@ -139,7 +139,7 @@ const ViewModeControl: FC<ViewModeControlProps> = memo(
 
         <SegmentedControlButton value="code">
           <Flex alignItems="center" gap="sm">
-            <Icon as={Code2} fontSize="1.25em" color="muted" />
+            <Icon as={Code} fontSize="1.25em" color="muted" />
             Code
           </Flex>
         </SegmentedControlButton>

@@ -1,5 +1,5 @@
+import { Instagram, Twitter, Youtube } from "@yamada-ui/lucide"
 import { Flex, HStack, IconButton, Image, Link, Text } from "@yamada-ui/react"
-import { Instagram, Twitter, Youtube } from "lucide-react"
 import type { FC } from "react"
 
 const links = [

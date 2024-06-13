@@ -1,3 +1,4 @@
+import { X } from "@yamada-ui/lucide"
 import {
   forwardRef,
   handlerAll,
@@ -10,7 +11,6 @@ import {
   Tabs,
 } from "@yamada-ui/react"
 import type { TabsProps } from "@yamada-ui/react"
-import { X } from "lucide-react"
 import type { SetStateAction } from "react"
 import { memo, useRef } from "react"
 import { CodeBlock } from "./code-block"

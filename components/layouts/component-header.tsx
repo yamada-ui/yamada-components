@@ -1,3 +1,4 @@
+import { Download, Users } from "@yamada-ui/lucide"
 import {
   Avatar,
   Center,
@@ -21,7 +22,6 @@ import type {
   StackProps,
   UseDisclosureReturn,
 } from "@yamada-ui/react"
-import { Download, Users } from "lucide-react"
 import type { FC } from "react"
 import { memo, useMemo } from "react"
 import { ColorModeButton, ThemeSchemeButton } from "components/forms"

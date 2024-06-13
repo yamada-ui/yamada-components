@@ -1,4 +1,16 @@
 import {
+  GitPullRequestArrow,
+  Layers,
+  LayoutTemplate,
+  LineChart,
+  Navigation,
+  PanelsTopLeft,
+  Table,
+  Tags,
+  TextCursorInput,
+  Text as TextIcon,
+} from "@yamada-ui/lucide"
+import {
   Center,
   ChevronIcon,
   Collapse,
@@ -13,18 +25,6 @@ import {
   useBoolean,
 } from "@yamada-ui/react"
 import type { IconProps, ListProps } from "@yamada-ui/react"
-import {
-  GitPullRequestArrow,
-  Layers,
-  LayoutTemplate,
-  LineChart,
-  Navigation,
-  PanelsTopLeft,
-  Table,
-  Tags,
-  TextCursorInput,
-  TextIcon,
-} from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { memo, useEffect } from "react"

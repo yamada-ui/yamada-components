@@ -1,3 +1,4 @@
+import { MessageSquare, Paperclip, Pen, Trash2 } from "@yamada-ui/lucide"
 import {
   HStack,
   Divider,
@@ -5,7 +6,6 @@ import {
   ButtonGroup,
   IconButton,
 } from "@yamada-ui/react"
-import { MessageSquare, Paperclip, Pen, Trash2 } from "lucide-react"
 import type { FC } from "react"
 
 const WithToolbar: FC = () => {

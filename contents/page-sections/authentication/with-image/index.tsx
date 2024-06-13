@@ -1,3 +1,4 @@
+import { Eye, EyeOff } from "@yamada-ui/lucide"
 import {
   Box,
   Button,
@@ -13,7 +14,6 @@ import {
   VStack,
   useBoolean,
 } from "@yamada-ui/react"
-import { Eye, EyeOff } from "lucide-react"
 import type { FC } from "react"
 
 const AuthenticationForm: FC = () => {

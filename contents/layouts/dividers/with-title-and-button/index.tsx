@@ -1,5 +1,5 @@
+import { Plus } from "@yamada-ui/lucide"
 import { HStack, Divider, Button, Icon, Heading } from "@yamada-ui/react"
-import { Plus } from "lucide-react"
 import type { FC } from "react"
 
 const WithTitleAndButton: FC = () => {

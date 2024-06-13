@@ -1,3 +1,4 @@
+import { ArrowLeft } from "@yamada-ui/lucide"
 import {
   Button,
   Card,
@@ -13,7 +14,6 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { ArrowLeft } from "lucide-react"
 import type { FC } from "react"
 
 const AuthenticationForm: FC = () => {

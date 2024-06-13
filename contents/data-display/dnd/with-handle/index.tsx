@@ -1,3 +1,4 @@
+import { GripVertical } from "@yamada-ui/lucide"
 import {
   HStack,
   Icon,
@@ -7,7 +8,6 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { GripVertical } from "lucide-react"
 import type { FC } from "react"
 
 const elements = [

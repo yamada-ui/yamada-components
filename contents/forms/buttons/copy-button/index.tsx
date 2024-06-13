@@ -1,5 +1,5 @@
+import { Check, Copy } from "@yamada-ui/lucide"
 import { Button, Icon, Tooltip, useClipboard } from "@yamada-ui/react"
-import { Check, Copy } from "lucide-react"
 import type { FC } from "react"
 
 const CopyButton: FC = () => {

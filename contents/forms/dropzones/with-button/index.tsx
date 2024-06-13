@@ -5,8 +5,8 @@ import {
   DropzoneReject,
   PDF_ACCEPT_TYPE,
 } from "@yamada-ui/dropzone"
+import { CloudUpload } from "@yamada-ui/lucide"
 import { Center, Button, Icon, Text, VStack } from "@yamada-ui/react"
-import { CloudUpload } from "lucide-react"
 import { useRef, type FC } from "react"
 
 const WithButton: FC = () => {

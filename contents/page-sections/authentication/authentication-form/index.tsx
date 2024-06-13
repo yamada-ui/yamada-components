@@ -1,3 +1,4 @@
+import { Eye, EyeOff } from "@yamada-ui/lucide"
 import {
   Button,
   ButtonGroup,
@@ -20,7 +21,6 @@ import {
   VStack,
   useBoolean,
 } from "@yamada-ui/react"
-import { Eye, EyeOff } from "lucide-react"
 import type { FC } from "react"
 import { GoogleButton } from "./google-button"
 import { TwitterButton } from "./twitter-button"
