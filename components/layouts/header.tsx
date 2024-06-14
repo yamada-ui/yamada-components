@@ -177,7 +177,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
             display={{ base: "none", lg: "inline-flex" }}
             color="muted"
             onClick={onOpen}
-            icon={<MenuIcon />}
+            icon={<MenuIcon fontSize="2xl" />}
           />
         ) : (
           <CloseButton
@@ -227,7 +227,7 @@ const I18nButton: FC<I18nButtonProps> = memo(({ menuProps, ...rest }) => {
         aria-label="Open language switching menu"
         variant="ghost"
         color="muted"
-        icon={<Languages />}
+        icon={<Languages fontSize="2xl" />}
         {...rest}
       />
 

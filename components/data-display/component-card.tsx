@@ -5,12 +5,12 @@ import {
   forwardRef,
   Heading,
   HStack,
-  Icon,
   IconButton,
   noop,
   SegmentedControl,
   SegmentedControlButton,
   Tag,
+  Text,
   VStack,
 } from "@yamada-ui/react"
 import type { SegmentedControlProps, StackProps } from "@yamada-ui/react"
@@ -84,7 +84,7 @@ export const ComponentCard = memo(
                 display={{ base: "flex", sm: "none" }}
                 borderColor="border"
                 color="muted"
-                icon={<Icon as={Download} fontSize="1.125em" />}
+                icon={<Download fontSize="md" />}
                 onClick={() => onDownload()}
               />
 
@@ -96,7 +96,7 @@ export const ComponentCard = memo(
                 size="sm"
                 borderColor="border"
                 color="muted"
-                icon={<Icon as={ExternalLink} fontSize="1.125em" />}
+                icon={<ExternalLink fontSize="md" />}
               />
 
               <NextLinkIconButton
@@ -108,7 +108,7 @@ export const ComponentCard = memo(
                 display={{ base: "flex", sm: "none" }}
                 borderColor="border"
                 color="muted"
-                icon={<Github fontSize="0.875em" />}
+                icon={<Github boxSize="1rem" />}
               />
 
               <ViewModeControl
@@ -139,21 +139,22 @@ const ViewModeControl: FC<ViewModeControlProps> = memo(
     return (
       <SegmentedControl
         size="sm"
+        minW={{ base: "xs", md: "auto" }}
         defaultValue="preview"
         onChange={(mode) => modeRef.current(mode as Mode)}
         {...rest}
       >
         <SegmentedControlButton value="preview">
           <Flex alignItems="center" gap="sm">
-            <Icon as={Eye} fontSize="1.25em" color="muted" />
-            Preview
+            <Eye fontSize="md" color="muted" />
+            <Text display={{ base: "inline", md: "none" }}>Preview</Text>
           </Flex>
         </SegmentedControlButton>
 
         <SegmentedControlButton value="code">
           <Flex alignItems="center" gap="sm">
-            <Icon as={Code} fontSize="1.25em" color="muted" />
-            Code
+            <Code fontSize="md" color="muted" />
+            <Text display={{ base: "inline", md: "none" }}>Code</Text>
           </Flex>
         </SegmentedControlButton>
       </SegmentedControl>

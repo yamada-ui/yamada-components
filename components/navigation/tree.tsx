@@ -1,5 +1,4 @@
 import {
-  Brush,
   Compass,
   ExternalLink,
   GitPullRequestArrow,
@@ -7,6 +6,7 @@ import {
   LayoutTemplate,
   LineChart,
   Navigation,
+  Paintbrush,
   PanelsTopLeft,
   Table,
   Tags,
@@ -247,43 +247,43 @@ type ListItemIconProps = { icon?: string | null } & IconProps
 const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
   switch (icon) {
     case "compass":
-      return <Compass size="2xl" {...rest} />
+      return <Compass fontSize="2xl" {...rest} />
 
     case "panels-top-left":
-      return <PanelsTopLeft size="2xl" {...rest} />
+      return <PanelsTopLeft fontSize="2xl" {...rest} />
 
     case "text-cursor-input":
-      return <TextCursorInput size="2xl" {...rest} />
+      return <TextCursorInput fontSize="2xl" {...rest} />
 
     case "layout-template":
-      return <LayoutTemplate size="2xl" {...rest} />
+      return <LayoutTemplate fontSize="2xl" {...rest} />
 
     case "line-chart":
-      return <LineChart size="2xl" {...rest} />
+      return <LineChart fontSize="2xl" {...rest} />
 
     case "table":
-      return <Table size="2xl" {...rest} />
+      return <Table fontSize="2xl" {...rest} />
 
     case "layers":
-      return <Layers size="2xl" {...rest} />
+      return <Layers fontSize="2xl" {...rest} />
 
     case "navigation":
-      return <Navigation size="2xl" {...rest} />
+      return <Navigation fontSize="2xl" {...rest} />
 
     case "text":
-      return <TextIcon size="2xl" {...rest} />
+      return <TextIcon fontSize="2xl" {...rest} />
 
     case "tags":
-      return <Tags size="2xl" {...rest} />
+      return <Tags fontSize="2xl" {...rest} />
 
     case "git-pull-request-arrow":
-      return <GitPullRequestArrow size="2xl" {...rest} />
+      return <GitPullRequestArrow fontSize="2xl" {...rest} />
 
     case "yamada-ui":
-      return <YamadaUI {...rest} />
+      return <YamadaUI boxSize="1.5rem" {...rest} />
 
-    case "brush":
-      return <Brush size="2xl" {...rest} />
+    case "paintbrush":
+      return <Paintbrush fontSize="2xl" {...rest} />
 
     default:
       return <></>

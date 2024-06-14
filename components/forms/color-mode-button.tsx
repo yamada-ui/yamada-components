@@ -46,7 +46,13 @@ export const ColorModeButton: FC<ColorModeButtonProps> = memo(
           aria-label="Open color mode switching menu"
           variant="ghost"
           color="muted"
-          icon={colorMode === "dark" ? <Sun /> : <Moon />}
+          icon={
+            colorMode === "dark" ? (
+              <Sun fontSize="2xl" />
+            ) : (
+              <Moon fontSize="2xl" />
+            )
+          }
           {...rest}
         />
 

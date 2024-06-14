@@ -3,7 +3,6 @@ import {
   forwardRef,
   handlerAll,
   HStack,
-  Icon,
   IconButton,
   Tab,
   TabList,
@@ -83,8 +82,13 @@ export const ComponentCodePreview = memo(
                   variant="ghost"
                   display={{ base: "inline-flex", md: "none" }}
                   color="muted"
-                  fontSize="0.8em"
-                  icon={isVertical ? <LayoutHorizontal /> : <LayoutVertical />}
+                  icon={
+                    isVertical ? (
+                      <LayoutHorizontal boxSize="4" />
+                    ) : (
+                      <LayoutVertical boxSize="4" />
+                    )
+                  }
                   onClick={() =>
                     onCodeDirectionChange?.((prev) =>
                       prev === "vertical" ? "horizontal" : "vertical",
@@ -99,8 +103,8 @@ export const ComponentCodePreview = memo(
                   size="sm"
                   variant="ghost"
                   color="muted"
-                  fontSize="1em"
-                  icon={<Icon as={X} />}
+                  fontSize="lg"
+                  icon={<X />}
                   onClick={onCodePreviewClose}
                 />
               ) : null}

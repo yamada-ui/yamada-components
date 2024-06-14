@@ -5,7 +5,6 @@ import {
   Checkbox,
   FormControl,
   Heading,
-  Icon,
   Input,
   InputGroup,
   InputRightElement,
@@ -62,7 +61,7 @@ const AuthenticationForm: FC = () => {
                   onClick={toggle}
                   variant="ghost"
                 >
-                  {show ? <Icon as={EyeOff} /> : <Icon as={Eye} />}
+                  {show ? <EyeOff /> : <Eye />}
                 </Button>
               </InputRightElement>
             </InputGroup>

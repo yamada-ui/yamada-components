@@ -24,7 +24,7 @@ export const MENU = [
     isExternal: true,
   },
   {
-    icon: "brush",
+    icon: "paintbrush",
     name: "yamada-colors",
     href: {
       en: "https://yamada-colors.app",

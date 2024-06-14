@@ -35,7 +35,7 @@ export const CopyButton = memo(
                   },
                 }
               : {})}
-            icon={hasCopied ? <Check /> : <Copy />}
+            icon={hasCopied ? <Check fontSize="lg" /> : <Copy fontSize="md" />}
             {...rest}
             onClick={onCopy}
           />

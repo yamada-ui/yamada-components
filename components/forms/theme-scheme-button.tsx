@@ -40,7 +40,7 @@ export const ThemeSchemeButton: FC<ThemeSchemeButtonProps> = memo(
             aria-label="Open color mode switching menu"
             variant="ghost"
             color="muted"
-            icon={<Palette size="1.6em" />}
+            icon={<Palette fontSize="2xl" />}
             {...rest}
           />
         </PopoverTrigger>

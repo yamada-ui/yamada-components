@@ -7,7 +7,6 @@ import {
   Center,
   FormControl,
   Heading,
-  Icon,
   Input,
   Link,
   Spacer,
@@ -64,7 +63,7 @@ const AuthenticationForm: FC = () => {
             display="flex"
             _hover={{ textDecoration: "none" }}
           >
-            <Icon as={ArrowLeft} mr="xs" />
+            <ArrowLeft mr="xs" />
             Back to the login page
           </Link>
           <Spacer _container={[{ maxW: "400px", css: { display: "none" } }]} />

@@ -106,7 +106,7 @@ export const Search = memo(
           {...rest}
           onClick={handlerAll(rest.onClick, onOpen)}
         >
-          <SearchIcon />
+          <SearchIcon fontSize="xl" />
           <Text flex="1">{tc("component.forms.search.message")}</Text>
           <Kbd>{actionKey} + K</Kbd>
         </HStack>
@@ -131,7 +131,7 @@ export const SearchButton = memo(
           color="muted"
           variant="ghost"
           _hover={{ bg: ["blackAlpha.100", "whiteAlpha.50"] }}
-          icon={<SearchIcon />}
+          icon={<SearchIcon fontSize="2xl" />}
           {...rest}
           onClick={handlerAll(rest.onClick, onOpen)}
         />
@@ -287,6 +287,7 @@ const SearchModal: FC<SearchModalProps> = memo(
             />
 
             <SearchIcon
+              fontSize="2xl"
               position="absolute"
               top="50%"
               left="0"
@@ -340,13 +341,13 @@ const SearchModal: FC<SearchModalProps> = memo(
                     {type === "component" ? (
                       <Icon
                         as={PanelsTopLeft}
-                        fontSize="xl"
+                        fontSize="2xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     ) : (
                       <Icon
                         as={LayoutList}
-                        fontSize="xl"
+                        fontSize="2xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     )}
@@ -399,7 +400,7 @@ const SearchModal: FC<SearchModalProps> = memo(
 
                     {type === "component" ? (
                       <ExternalLink
-                        size="1.25em"
+                        fontSize="xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     ) : null}
