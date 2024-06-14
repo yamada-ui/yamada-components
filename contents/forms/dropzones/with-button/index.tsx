@@ -6,7 +6,7 @@ import {
   PDF_ACCEPT_TYPE,
 } from "@yamada-ui/dropzone"
 import { CloudUpload } from "@yamada-ui/lucide"
-import { Center, Button, Text, VStack } from "@yamada-ui/react"
+import { Center, Button, Text } from "@yamada-ui/react"
 import { useRef, type FC } from "react"
 
 const WithButton: FC = () => {
@@ -17,7 +17,7 @@ const WithButton: FC = () => {
   }
 
   return (
-    <VStack maxW="lg">
+    <Center maxW="lg" position="relative">
       <Dropzone
         openRef={openRef}
         accept={PDF_ACCEPT_TYPE}
@@ -25,7 +25,7 @@ const WithButton: FC = () => {
         flexDir="column"
         multiple
       >
-        <Center color="whiteAlpha.800">
+        <Center color={["blackAlpha.800", "whiteAlpha.800"]}>
           <DropzoneAccept>
             <CloudUpload boxSize="3.15rem" />
           </DropzoneAccept>
@@ -41,7 +41,7 @@ const WithButton: FC = () => {
           textAlign="center"
           fontWeight={700}
           fontSize="lg"
-          color="whiteAlpha.800"
+          color={["blackAlpha.800", "whiteAlpha.800"]}
           mt="lg"
           userSelect="none"
         >
@@ -66,14 +66,16 @@ const WithButton: FC = () => {
       <Button
         onClick={onOpen}
         w="xs"
-        alignSelf="center"
-        bottom="lg"
+        bottom="0"
+        transform="translate(0, 50%)"
+        position="absolute"
         rounded="3xl"
         colorScheme="primary"
+        z="1"
       >
         Select files
       </Button>
-    </VStack>
+    </Center>
   )
 }
 
