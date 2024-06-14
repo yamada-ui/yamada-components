@@ -1,4 +1,5 @@
-import type { ColorMode, IconButtonProps, MenuProps } from "@yamada-ui/react"
+import { Moon, Sun } from "@yamada-ui/lucide"
+import type { IconButtonProps, MenuProps, ColorMode } from "@yamada-ui/react"
 import {
   IconButton,
   Menu,
@@ -11,7 +12,6 @@ import {
 } from "@yamada-ui/react"
 import type { FC } from "react"
 import { memo } from "react"
-import { Moon, Sun } from "components/media-and-icons"
 
 export type ColorModeButtonProps = IconButtonProps & {
   menuProps?: MenuProps
@@ -46,7 +46,13 @@ export const ColorModeButton: FC<ColorModeButtonProps> = memo(
           aria-label="Open color mode switching menu"
           variant="ghost"
           color="muted"
-          icon={colorMode === "dark" ? <Sun /> : <Moon />}
+          icon={
+            colorMode === "dark" ? (
+              <Sun fontSize="2xl" />
+            ) : (
+              <Moon fontSize="2xl" />
+            )
+          }
           {...rest}
         />
 

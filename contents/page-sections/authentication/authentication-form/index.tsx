@@ -1,3 +1,4 @@
+import { Eye, EyeOff } from "@yamada-ui/lucide"
 import {
   Button,
   ButtonGroup,
@@ -10,7 +11,6 @@ import {
   FormControl,
   HStack,
   Heading,
-  Icon,
   Input,
   InputGroup,
   InputRightElement,
@@ -20,7 +20,6 @@ import {
   VStack,
   useBoolean,
 } from "@yamada-ui/react"
-import { Eye, EyeOff } from "lucide-react"
 import type { FC } from "react"
 import { GoogleButton } from "./google-button"
 import { TwitterButton } from "./twitter-button"
@@ -101,7 +100,7 @@ const AuthenticationForm: FC = () => {
                     onClick={toggle}
                     variant="ghost"
                   >
-                    {show ? <Icon as={EyeOff} /> : <Icon as={Eye} />}
+                    {show ? <EyeOff /> : <Eye />}
                   </Button>
                 </InputRightElement>
               </InputGroup>

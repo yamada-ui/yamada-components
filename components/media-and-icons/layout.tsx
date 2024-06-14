@@ -3,7 +3,7 @@ import { Icon } from "@yamada-ui/react"
 import { forwardRef } from "react"
 
 export const LayoutHorizontal = forwardRef<SVGSVGElement, IconProps>(
-  ({ boxSize = "1.25em", ...rest }, ref) => {
+  ({ boxSize = "1.5em", ...rest }, ref) => {
     return (
       <Icon
         ref={ref}
@@ -34,7 +34,7 @@ export const LayoutHorizontal = forwardRef<SVGSVGElement, IconProps>(
 LayoutHorizontal.displayName = "LayoutHorizontal"
 
 export const LayoutVertical = forwardRef<SVGSVGElement, IconProps>(
-  ({ boxSize = "1.25em", ...rest }, ref) => {
+  ({ boxSize = "1.5em", ...rest }, ref) => {
     return (
       <Icon
         ref={ref}

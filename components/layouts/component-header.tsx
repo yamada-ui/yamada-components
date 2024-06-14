@@ -1,3 +1,4 @@
+import { Download, Users, Menu } from "@yamada-ui/lucide"
 import {
   Avatar,
   Center,
@@ -6,7 +7,6 @@ import {
   handlerAll,
   Heading,
   HStack,
-  Icon,
   IconButton,
   Modal,
   ModalBody,
@@ -21,13 +21,11 @@ import type {
   StackProps,
   UseDisclosureReturn,
 } from "@yamada-ui/react"
-import { Download, Users } from "lucide-react"
 import type { FC } from "react"
 import { memo, useMemo } from "react"
 import { ColorModeButton, ThemeSchemeButton } from "components/forms"
 import {
   Github,
-  Hamburger,
   LayoutHorizontal,
   LayoutVertical,
 } from "components/media-and-icons"
@@ -149,7 +147,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
           variant="ghost"
           color="muted"
           display={{ base: "inline-flex", md: "none" }}
-          icon={<Icon as={Download} fontSize="1.375em" />}
+          icon={<Download fontSize="2xl" />}
           onClick={() => onDownload()}
         />
 
@@ -176,7 +174,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
             display={{ base: "none", md: "inline-flex" }}
             color="muted"
             onClick={onOpen}
-            icon={<Hamburger />}
+            icon={<Menu fontSize="2xl" />}
           />
         ) : (
           <CloseButton
@@ -210,7 +208,7 @@ const AuthorsButton: FC<AuthorsButtonProps> = memo(
           aria-label="Download the files"
           variant="ghost"
           color="muted"
-          icon={<Icon as={Users} fontSize="1.375em" />}
+          icon={<Users fontSize="2xl" />}
           onClick={onOpen}
           {...rest}
         />

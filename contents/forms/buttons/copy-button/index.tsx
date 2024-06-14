@@ -1,5 +1,5 @@
-import { Button, Icon, Tooltip, useClipboard } from "@yamada-ui/react"
-import { Check, Copy } from "lucide-react"
+import { Check, Copy } from "@yamada-ui/lucide"
+import { Button, Tooltip, useClipboard } from "@yamada-ui/react"
 import type { FC } from "react"
 
 const CopyButton: FC = () => {
@@ -10,11 +10,7 @@ const CopyButton: FC = () => {
       <Button
         onClick={onCopy}
         rightIcon={
-          hasCopied ? (
-            <Icon as={Check} fontSize="1.25em" />
-          ) : (
-            <Icon as={Copy} fontSize="1.25em" />
-          )
+          hasCopied ? <Check fontSize="1.25em" /> : <Copy fontSize="1.25em" />
         }
       >
         Copy link to clipboard

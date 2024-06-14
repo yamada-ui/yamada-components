@@ -1,3 +1,4 @@
+import { Instagram, Twitter, Youtube } from "@yamada-ui/lucide"
 import {
   Text,
   Flex,
@@ -10,7 +11,6 @@ import {
   Divider,
   SimpleGrid,
 } from "@yamada-ui/react"
-import { Instagram, Twitter, Youtube } from "lucide-react"
 import type { FC } from "react"
 
 const data = [

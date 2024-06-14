@@ -1,13 +1,12 @@
+import { GripVertical } from "@yamada-ui/lucide"
 import {
   HStack,
-  Icon,
   Reorder,
   ReorderItem,
   ReorderTrigger,
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { GripVertical } from "lucide-react"
 import type { FC } from "react"
 
 const elements = [
@@ -50,7 +49,7 @@ const WithHandle: FC = () => {
         <ReorderItem key={item.name} label={item.name}>
           <HStack gap="0">
             <ReorderTrigger ml="md" justifyContent="center">
-              <Icon as={GripVertical} color="gray" size="xl" />
+              <GripVertical color="gray" size="xl" />
             </ReorderTrigger>
             <Text
               fontSize="5xl"

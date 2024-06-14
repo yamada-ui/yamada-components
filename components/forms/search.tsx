@@ -1,4 +1,10 @@
 import {
+  LayoutList,
+  PanelsTopLeft,
+  Search as SearchIcon,
+  ExternalLink,
+} from "@yamada-ui/lucide"
+import {
   ui,
   HStack,
   Kbd,
@@ -19,7 +25,6 @@ import {
   Icon,
 } from "@yamada-ui/react"
 import type { StackProps, ModalProps, ButtonProps } from "@yamada-ui/react"
-import { LayoutList, PanelsTopLeft } from "lucide-react"
 import { matchSorter } from "match-sorter"
 import NextLink from "next/link"
 import { useRouter } from "next/router"
@@ -34,7 +39,6 @@ import {
 } from "react"
 import type { FC, KeyboardEvent, RefObject } from "react"
 import scrollIntoView from "scroll-into-view-if-needed"
-import { ExternalLink, MagnifyingGlass } from "components/media-and-icons"
 import { useI18n } from "contexts/i18n-context"
 import { useEventListener } from "hooks/use-event-listener"
 
@@ -102,7 +106,7 @@ export const Search = memo(
           {...rest}
           onClick={handlerAll(rest.onClick, onOpen)}
         >
-          <MagnifyingGlass />
+          <SearchIcon fontSize="xl" />
           <Text flex="1">{tc("component.forms.search.message")}</Text>
           <Kbd>{actionKey} + K</Kbd>
         </HStack>
@@ -127,7 +131,7 @@ export const SearchButton = memo(
           color="muted"
           variant="ghost"
           _hover={{ bg: ["blackAlpha.100", "whiteAlpha.50"] }}
-          icon={<MagnifyingGlass />}
+          icon={<SearchIcon fontSize="2xl" />}
           {...rest}
           onClick={handlerAll(rest.onClick, onOpen)}
         />
@@ -282,7 +286,8 @@ const SearchModal: FC<SearchModalProps> = memo(
               }}
             />
 
-            <MagnifyingGlass
+            <SearchIcon
+              fontSize="2xl"
               position="absolute"
               top="50%"
               left="0"
@@ -336,13 +341,13 @@ const SearchModal: FC<SearchModalProps> = memo(
                     {type === "component" ? (
                       <Icon
                         as={PanelsTopLeft}
-                        fontSize="xl"
+                        fontSize="2xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     ) : (
                       <Icon
                         as={LayoutList}
-                        fontSize="xl"
+                        fontSize="2xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     )}
@@ -395,7 +400,7 @@ const SearchModal: FC<SearchModalProps> = memo(
 
                     {type === "component" ? (
                       <ExternalLink
-                        fontSize="1.25em"
+                        fontSize="xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     ) : null}

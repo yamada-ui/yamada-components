@@ -1,3 +1,4 @@
+import { ArrowLeft } from "@yamada-ui/lucide"
 import {
   Button,
   Card,
@@ -6,14 +7,12 @@ import {
   Center,
   FormControl,
   Heading,
-  Icon,
   Input,
   Link,
   Spacer,
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { ArrowLeft } from "lucide-react"
 import type { FC } from "react"
 
 const AuthenticationForm: FC = () => {
@@ -64,7 +63,7 @@ const AuthenticationForm: FC = () => {
             display="flex"
             _hover={{ textDecoration: "none" }}
           >
-            <Icon as={ArrowLeft} mr="xs" />
+            <ArrowLeft mr="xs" />
             Back to the login page
           </Link>
           <Spacer _container={[{ maxW: "400px", css: { display: "none" } }]} />

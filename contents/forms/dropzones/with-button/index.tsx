@@ -5,8 +5,8 @@ import {
   DropzoneReject,
   PDF_ACCEPT_TYPE,
 } from "@yamada-ui/dropzone"
-import { Center, Button, Icon, Text, VStack } from "@yamada-ui/react"
-import { CloudUpload } from "lucide-react"
+import { CloudUpload } from "@yamada-ui/lucide"
+import { Center, Button, Text, VStack } from "@yamada-ui/react"
 import { useRef, type FC } from "react"
 
 const WithButton: FC = () => {
@@ -27,13 +27,13 @@ const WithButton: FC = () => {
       >
         <Center color="whiteAlpha.800">
           <DropzoneAccept>
-            <Icon as={CloudUpload} boxSize="3.15rem" />
+            <CloudUpload boxSize="3.15rem" />
           </DropzoneAccept>
           <DropzoneReject>
-            <Icon as={CloudUpload} boxSize="3.15rem" />
+            <CloudUpload boxSize="3.15rem" />
           </DropzoneReject>
           <DropzoneIdle>
-            <Icon as={CloudUpload} boxSize="3.15rem" />
+            <CloudUpload boxSize="3.15rem" />
           </DropzoneIdle>
         </Center>
 
