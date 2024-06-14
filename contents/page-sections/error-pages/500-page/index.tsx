@@ -2,7 +2,13 @@ import { Button, Heading, Text, VStack } from "@yamada-ui/react"
 
 const ServerError = () => {
   return (
-    <VStack alignItems="center" bg="primary" p="lg">
+    <VStack
+      justifyContent="center"
+      alignItems="center"
+      bg="primary"
+      p="lg"
+      h="full"
+    >
       <Text fontSize="9xl" fontWeight="bold" color="whiteAlpha.800">
         500
       </Text>
