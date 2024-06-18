@@ -1,0 +1,24 @@
+{
+  "en": {
+    "title": "Basic",
+    "description": ""
+  },
+  "ja": {
+    "title": "ベーシック",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  },
+  "authors": [
+    {
+      "id": 48846406,
+      "login": "nanikasi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/48846406?v=4",
+      "html_url": "https://github.com/nanikasi"
+    }
+  ]
+}
