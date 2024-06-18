@@ -7,7 +7,7 @@
     "title": "コメント",
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、コメントテキストを表示するカードコンポーネント。"
   },
-  "labels": ["sns", "media"],
+  "labels": ["sns", "media", "comment"],
   "options": { "container": { "centerContent": true, "p": "md" } },
   "authors": [
     {

@@ -38,6 +38,15 @@ export const getComponentCategoryGroup =
               const authors = json.authors ?? null
               const labels = json.labels ?? null
 
+              // labelのチェック
+              labels?.forEach((label) => {
+                if (CONSTANT.LABEL.includes(label)) {
+                  console.log(`${label} is correct`)
+                } else {
+                  console.log(`${label} is incorrect`)
+                }
+              })
+
               callback?.({ ...metadata, icon, authors, labels })
             } catch {}
           }
