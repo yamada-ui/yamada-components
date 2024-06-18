@@ -29,7 +29,6 @@ const checkInvalidLabels = (component: Component) => {
   const errorLabels = getInvalidLabels(component)
 
   if (errorLabels && errorLabels.length > 0) {
-    console.log(errorLabels)
     const msg = `
     You are using a label in the ${component.name} component that does not exist in label.ts.
 
