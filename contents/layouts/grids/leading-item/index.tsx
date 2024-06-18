@@ -21,6 +21,17 @@ const LeadingItem = () => {
             `,
           },
         },
+        {
+          maxW: "300px",
+          css: {
+            gridTemplateAreas: `
+              "one"
+              "two"
+              "three"
+              "four"
+            `,
+          },
+        },
       ]}
     >
       <GridItem area="one" w="full" minH="4xs" rounded="md" bg="primary" />
