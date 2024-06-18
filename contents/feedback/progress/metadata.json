@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Progress",
+    "description": "Progress is a component that shows the progress of a task."
+  },
+  "ja": {
+    "title": "進捗",
+    "description": "タスクの進捗を表示するコンポーネントです。"
+  }
+}

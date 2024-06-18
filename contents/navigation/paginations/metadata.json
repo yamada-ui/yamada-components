@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Paginations",
+    "description": "Pagination is a component that divides content into separate pages and allows users to navigate through them."
+  },
+  "ja": {
+    "title": "ページネーション",
+    "description": "コンテンツを複数のページに分割し、ユーザーがそれらをナビゲートできるようにするコンポーネントです。"
+  }
+}
