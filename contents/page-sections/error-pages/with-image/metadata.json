@@ -7,6 +7,11 @@
     "title": "画像付きの404ページ",
     "description": "これは画像付きの404ページです。"
   },
+  "options": {
+    "container": {
+      "centerContent": true
+    }
+  },
   "authors": [
     {
       "id": 61367823,
