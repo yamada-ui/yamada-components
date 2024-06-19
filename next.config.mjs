@@ -9,9 +9,6 @@ const nextConfig = {
     localeDetection: false,
   },
   productionBrowserSourceMaps: false,
-  experimental: {
-    optimizePackageImports: ["@yamada-ui/lucide"],
-  },
 }
 
 export default nextConfig
