@@ -1,5 +1,5 @@
 import type { ParsedUrlQuery } from "querystring"
-import { isArray } from "@yamada-ui/react"
+import { isArray, isEmpty } from "@yamada-ui/react"
 import type {
   InferGetServerSidePropsType,
   NextPageWithConfig,
@@ -44,6 +44,12 @@ export const getServerSideProps = async ({
       hits.map(async ({ slug }) => getComponent(slug)(locale as Locale)),
     )
   ).filter(Boolean) as Component[]
+
+  if (isEmpty(components)) {
+    return {
+      notFound: true,
+    }
+  }
 
   const ui = getUI(locale as Locale)
 
