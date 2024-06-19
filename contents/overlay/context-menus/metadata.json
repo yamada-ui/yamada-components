@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Context Menus",
+    "description": "Context Menu is a component that displays a menu of options or actions relevant to the current context or selection."
+  },
+  "ja": {
+    "title": "コンテキストメニュー",
+    "description": "現在のコンテキストまたは選択に関連するオプションまたはアクションのメニューを表示するコンポーネントです。"
+  }
+}

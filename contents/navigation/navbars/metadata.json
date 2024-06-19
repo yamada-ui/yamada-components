@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Navbars",
+    "description": "Navbar is a component that provides navigation links to different parts of a website."
+  },
+  "ja": {
+    "title": "ナビバー",
+    "description": "ナビバーは、ウェブサイトの異なる部分へのナビゲーションリンクを提供するコンポーネントです。"
+  }
+}
