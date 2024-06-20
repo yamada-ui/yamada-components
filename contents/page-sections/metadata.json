@@ -2,6 +2,7 @@
   "en": { "title": "Page Sections", "description": "" },
   "ja": { "title": "ページセクション", "description": "" },
   "icon": "layout-template",
+  "order": 9,
   "authors": [
     {
       "id": 84060430,
