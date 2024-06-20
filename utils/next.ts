@@ -8,6 +8,7 @@ import {
   getComponentCategoryGroup,
   getComponentPaths,
   getComponent,
+  checkInvalidLabels,
 } from "./component"
 import type { Locale } from "./i18n"
 import type {
@@ -15,31 +16,6 @@ import type {
   ComponentCategory,
   ComponentCategoryGroup,
 } from "component"
-import { CONSTANT } from "constant"
-
-const getInvalidLabels = (component: Component) => {
-  const invalidLabels = component?.metadata?.labels?.filter((label) => {
-    if (!CONSTANT.LABEL.includes(label)) {
-      return label
-    }
-  })
-  return invalidLabels
-}
-const checkInvalidLabels = (component: Component) => {
-  const errorLabels = getInvalidLabels(component)
-
-  if (errorLabels && errorLabels.length > 0) {
-    const msg = `
-    You are using a label in the ${component.name} component that does not exist in label.ts.
-
-    The following labels:
-    ${errorLabels.join(", ")}
-    
-    Modify the label in the relevant component's metadata.json or add the label to label.ts.
-    `
-    throw Error(msg)
-  }
-}
 
 export const getServerSideCommonProps = async ({
   req,
@@ -53,6 +29,7 @@ export const getStaticCommonProps = async ({
   locale,
 }: GetStaticPropsContext) => {
   const componentTree = await getComponentCategoryGroup()(locale as Locale)
+
   return { props: { componentTree } }
 }
 
@@ -94,9 +71,13 @@ export const getStaticComponentProps =
 
       const items: Component[] = (
         await Promise.all(
-          _category?.items?.map(({ slug }) =>
-            getComponent(slug)(locale as Locale),
-          ) ?? [],
+          _category?.items?.map(async ({ slug }) => {
+            const component = await getComponent(slug)(locale as Locale)
+
+            if (component) checkInvalidLabels(component)
+
+            return component
+          }) ?? [],
         )
       ).filter(Boolean) as Component[]
 
@@ -113,9 +94,9 @@ export const getStaticComponentProps =
 
       const component = await getComponent(slug)(locale as Locale)
 
-      const props = { component, componentTree }
-
       if (component) checkInvalidLabels(component)
+
+      const props = { component, componentTree }
 
       return { props, notFound: !component }
     }
