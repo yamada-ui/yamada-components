@@ -37,8 +37,9 @@ export const getComponentCategoryGroup =
               const icon = json.icon ?? null
               const authors = json.authors ?? null
               const labels = json.labels ?? null
+              const order = json.order ?? null
 
-              callback?.({ ...metadata, icon, authors, labels })
+              callback?.({ ...metadata, icon, authors, labels, order })
             } catch {}
           }
 
@@ -71,7 +72,11 @@ export const getComponentCategoryGroup =
       }),
     )
 
-    return componentTree.filter(Boolean) as ComponentCategoryGroup[]
+    return componentTree
+      .filter(Boolean)
+      .sort(
+        (a, b) => (a?.order ?? 530000) - (b?.order ?? 530000),
+      ) as ComponentCategoryGroup[]
   }
 
 export const getComponentPaths =

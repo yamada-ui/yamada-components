@@ -5,6 +5,7 @@
     "description": "これはシンプルなフッターです"
   },
   "options": { "container": { "display": "flex", "alignItems": "flex-end" } },
+  "order": 1,
   "authors": [
     {
       "id": 84060430,

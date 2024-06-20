@@ -63,6 +63,7 @@ declare module "component" {
     authors?: Author[] | null
     labels?: string[] | null
     options?: MetadataOptions | null
+    order?: number | null
   }
 
   type CommonMetadata = {
