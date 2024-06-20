@@ -38,7 +38,7 @@ const CardWithReorderTags: FC = () => {
           gap="sm"
         >
           {tags.map((tag) => (
-            <ReorderItem key={tag} label={tag} w="fit-content">
+            <ReorderItem key={tag} value={tag} label={tag} w="fit-content">
               <Tag colorScheme={tag}>{tag}</Tag>
             </ReorderItem>
           ))}
