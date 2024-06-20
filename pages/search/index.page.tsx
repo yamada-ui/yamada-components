@@ -14,29 +14,36 @@ import { getContents, getUI, type Locale } from "utils/i18n"
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
-const getResolvedQuery = (query: ParsedUrlQuery) =>
-  Object.entries(query).reduce(
+const getResolvedQuery = (query: ParsedUrlQuery, url?: string) => {
+  if (url && !Object.keys(query).length)
+    query = Object.fromEntries(new URL(url).searchParams.entries())
+
+  return Object.entries(query).reduce(
     (prev, [key, values]) => {
       prev[key] = isArray(values) ? values : values?.split(",") ?? []
 
       return prev
     },
-    {} as Record<string, string[]>,
+    {} as Record<string, string[] | undefined>,
   )
+}
 
 export const getServerSideProps = async ({
+  req,
   locale,
   query,
 }: GetServerSidePropsContext) => {
   const componentTree = await getComponentCategoryGroup()(locale as Locale)
 
   const contents = getContents(locale as Locale)
-  const { labels } = getResolvedQuery(query)
+  const { labels } = getResolvedQuery(query, req.headers.referer)
+
+  if (!labels) return { notFound: true }
 
   const hits = contents.filter((content) => {
     if (content.type !== "component") return false
 
-    return labels.some((label) => (content.labels as string[])?.includes(label))
+    return labels?.some((label) => content.labels.includes(label))
   })
 
   const components = (
@@ -45,11 +52,7 @@ export const getServerSideProps = async ({
     )
   ).filter(Boolean) as Component[]
 
-  if (isEmpty(components)) {
-    return {
-      notFound: true,
-    }
-  }
+  if (isEmpty(components)) return { notFound: true }
 
   const ui = getUI(locale as Locale)
 
@@ -73,7 +76,7 @@ const Page: NextPageWithConfig<PageProps> = ({
 }) => {
   return (
     <AppProvider {...{ componentTree, components }}>
-      <AppLayout title={title} description={description} gap="md">
+      <AppLayout {...{ title, description }} gap="md">
         <Components labels={labels} />
       </AppLayout>
     </AppProvider>
