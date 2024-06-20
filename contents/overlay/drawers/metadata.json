@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Drawers",
+    "description": "Drawers are components that provide a sliding panel from the edge of the screen, offering additional navigation or options."
+  },
+  "ja": {
+    "title": "ドロワー",
+    "description": "画面の端からスライドするパネルを提供し、追加のナビゲーションやオプションを提供するコンポーネントです。"
+  }
+}

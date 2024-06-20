@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Texts",
+    "description": "Texts are components that display readable content, supporting various styles and formats to present information clearly."
+  },
+  "ja": {
+    "title": "テキスト",
+    "description": "テキストは、様々なスタイルやフォーマットをサポートして情報を明確に提示する、読みやすいコンテンツを表示するコンポーネントです。"
+  }
+}

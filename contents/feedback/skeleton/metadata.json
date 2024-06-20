@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Skeletons",
+    "description": "Skeleton is a component that displays a placeholder preview of the content before the data gets loaded."
+  },
+  "ja": {
+    "title": "スケルトン",
+    "description": "データが読み込まれる前にコンテンツのプレースホルダープレビューを表示するコンポーネントです。"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Steppers",
+    "description": "Stepper is a component that displays steps in a process and guides users through it."
+  },
+  "ja": {
+    "title": "ステッパー",
+    "description": "プロセスのステップを表示し、ユーザーを案内するコンポーネントです。"
+  }
+}
