@@ -1,0 +1,19 @@
+{
+  "en": {
+    "title": "Cookie",
+    "description": "A component to display information for obtaining cookie consent."
+  },
+  "ja": {
+    "title": "Cookie",
+    "description": "Cookieの承諾を得るための情報を表示するコンポーネント"
+  },
+  "options": { "container": { "centerContent": true, "p": "md" } },
+  "authors": [
+    {
+      "id": 83833293,
+      "login": "setodeve",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83833293?v=4",
+      "html_url": "https://github.com/setodeve"
+    }
+  ]
+}

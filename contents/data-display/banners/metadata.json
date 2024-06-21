@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "Banners",
+    "description": "This is a component that can be used in banner sections."
+  },
+  "ja": {
+    "title": "Banners",
+    "description": "バーナーセクションで使用できるコンポーネントです。"
+  },
+  "authors": [
+    {
+      "id": 83833293,
+      "login": "setodeve",
+      "avatar_url": "https://avatars.githubusercontent.com/u/83833293?v=4",
+      "html_url": "https://github.com/setodeve"
+    }
+  ]
+}
