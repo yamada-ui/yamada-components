@@ -1,0 +1,13 @@
+{
+  "en": {
+    "title": "PrimaryButton",
+    "description": "A button that prompts a primary action."
+  },
+  "ja": {
+    "title": "プライマリボタン",
+    "description": "主要なアクションを促すボタンです。"
+  },
+  "options": {
+    "container": { "centerContent": true, "p": "xl" }
+  }
+}
