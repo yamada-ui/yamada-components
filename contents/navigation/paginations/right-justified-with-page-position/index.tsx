@@ -5,7 +5,7 @@ const RightJustifiedWithPagePosition: FC = () => {
   const [page, onChange] = useState<number>(1)
 
   return (
-    <Box>
+    <Box w="full">
       <Flex justifyContent={{ base: "end", sm: "center" }}>
         <Pagination
           page={page}
@@ -20,7 +20,7 @@ const RightJustifiedWithPagePosition: FC = () => {
         fontSize="sm"
         color={["gray.700", "gray.200"]}
         textAlign="right"
-        mt="md"
+        m="md"
       >
         Showing {page * 10 - 9}-{page * 10} of 100
       </Text>

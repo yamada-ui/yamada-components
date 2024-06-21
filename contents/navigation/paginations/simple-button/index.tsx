@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Pagination, Text } from "@yamada-ui/react"
+import { Box, Button, Pagination, Text } from "@yamada-ui/react"
 import { useState, type FC } from "react"
 
 const SimpleButton: FC = () => {
@@ -6,28 +6,26 @@ const SimpleButton: FC = () => {
 
   return (
     <Box>
-      <Flex justifyContent="end">
-        <Pagination
-          page={page}
-          onChange={onChange}
-          total={10}
-          innerProps={{ display: "none" }}
-          controlPrevProps={{
-            children: (
-              <Button variant="ghost" size="sm">
-                Prev
-              </Button>
-            ),
-          }}
-          controlNextProps={{
-            children: (
-              <Button variant="ghost" size="sm">
-                Next
-              </Button>
-            ),
-          }}
-        />
-      </Flex>
+      <Pagination
+        page={page}
+        onChange={onChange}
+        total={10}
+        innerProps={{ display: "none" }}
+        controlPrevProps={{
+          children: (
+            <Button variant="ghost" size="sm">
+              Prev
+            </Button>
+          ),
+        }}
+        controlNextProps={{
+          children: (
+            <Button variant="ghost" size="sm">
+              Next
+            </Button>
+          ),
+        }}
+      />
       <Text
         fontSize="sm"
         color={["gray.700", "gray.200"]}

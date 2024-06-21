@@ -3,7 +3,7 @@ import type { FC } from "react"
 
 const CenteredFullWidth: FC = () => {
   return (
-    <Flex justifyContent="center">
+    <Flex w="full" justifyContent="center">
       <Pagination size={{ base: "md", sm: "sm" }} w="full" total={10} />
     </Flex>
   )
