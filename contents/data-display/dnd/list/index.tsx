@@ -38,7 +38,7 @@ const List: FC = () => {
   return (
     <Reorder maxW="xl">
       {elements.map((item) => (
-        <ReorderItem key={item.name} label={item.name}>
+        <ReorderItem key={item.name} value={item.name}>
           <HStack>
             <Text
               fontSize="5xl"
