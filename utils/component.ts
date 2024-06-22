@@ -181,3 +181,13 @@ export const getComponent =
       return data
     } catch {}
   }
+
+export const checkInvalidLabels = ({ metadata, slug }: Component) => {
+  metadata?.labels?.forEach((label) => {
+    if (!CONSTANT.LABEL.includes(label)) {
+      throw Error(
+        `"${label}" is not a valid label.\nSee: "contents/${slug}/metadata.json"`,
+      )
+    }
+  })
+}

@@ -2,7 +2,7 @@
   "en": { "title": "Data Display", "description": "" },
   "ja": { "title": "データディスプレイ", "description": "" },
   "icon": "table",
-  "labels": ["data-display"],
+  "labels": [],
   "authors": [
     {
       "id": 84060430,
