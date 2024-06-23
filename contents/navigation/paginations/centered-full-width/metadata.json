@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Centered full width",
+    "description": "Centered full width"
+  },
+  "ja": {
+    "title": "横幅最大中央寄せ",
+    "description": "横幅最大中央寄せ"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}
