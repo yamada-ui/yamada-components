@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Navbar With SegmentedControl",
+    "description": "Navbar using SegmentedControl"
+  },
+  "ja": {
+    "title": "セグメンテッドコントロールナビゲーションバー",
+    "description": "セグメンテッドコントロールを使ったナビゲーションバー"
+  }
+}
