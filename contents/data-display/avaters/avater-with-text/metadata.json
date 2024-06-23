@@ -1,0 +1,11 @@
+{
+  "en": {
+    "title": "AvaterWithText",
+    "description": ""
+  },
+  "ja": {
+    "title": "AvaterWithText",
+    "description": ""
+  },
+  "options": { "container": { "centerContent": true, "p": "md" } }
+}
