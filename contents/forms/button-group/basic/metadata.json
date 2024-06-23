@@ -1,11 +1,11 @@
 {
   "en": {
     "title": "Basic",
-    "description": ""
+    "description": "A basic ButtonGroup with three buttons labeled Years, Months, and Days."
   },
   "ja": {
     "title": "ベーシック",
-    "description": ""
+    "description": "3つのボタン「Years」、「Months」、「Days」がある基本的なボタングループです。"
   },
   "options": {
     "container": {
