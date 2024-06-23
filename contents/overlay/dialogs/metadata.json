@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Dialogs",
+    "description": "Dialogs are components that display important information or collect input from users in a focused window."
+  },
+  "ja": {
+    "title": "ダイアログ",
+    "description": "重要な情報を表示したり、フォーカスされたウィンドウでユーザーから入力を収集するコンポーネントです。"
+  }
+}

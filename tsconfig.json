@@ -19,6 +19,14 @@
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./@types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "@types",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mjs",
+    "**/*.mts"
+  ],
   "exclude": ["node_modules"]
 }
