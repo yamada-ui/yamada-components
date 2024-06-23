@@ -8,6 +8,7 @@ import {
   getComponentCategoryGroup,
   getComponentPaths,
   getComponent,
+  checkInvalidLabels,
 } from "./component"
 import type { Locale } from "./i18n"
 import type {
@@ -70,9 +71,13 @@ export const getStaticComponentProps =
 
       const items: Component[] = (
         await Promise.all(
-          _category?.items?.map(({ slug }) =>
-            getComponent(slug)(locale as Locale),
-          ) ?? [],
+          _category?.items?.map(async ({ slug }) => {
+            const component = await getComponent(slug)(locale as Locale)
+
+            if (component) checkInvalidLabels(component)
+
+            return component
+          }) ?? [],
         )
       ).filter(Boolean) as Component[]
 
@@ -88,6 +93,8 @@ export const getStaticComponentProps =
       const slug = [categoryGroupName, ...paths].join("/")
 
       const component = await getComponent(slug)(locale as Locale)
+
+      if (component) checkInvalidLabels(component)
 
       const props = { component, componentTree }
 

@@ -3,7 +3,7 @@
   "ja": { "title": "データディスプレイ", "description": "" },
   "icon": "table",
   "order": 4,
-  "labels": ["data-display"],
+  "labels": [],
   "authors": [
     {
       "id": 84060430,
