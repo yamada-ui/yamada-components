@@ -19,8 +19,6 @@
     "format:check": "prettier --check --cache .",
     "format:write": "prettier --write --cache .",
     "quality": "pnpm format:check && pnpm lint && pnpm typecheck",
-    "observe:issue": "tsx scripts/observe-issues",
-    "observe:pr": "tsx scripts/observe-pull-requests",
     "clean": "rimraf .next",
     "clean:all": "rimraf .next node_modules"
   },
