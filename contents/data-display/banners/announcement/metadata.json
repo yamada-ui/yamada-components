@@ -1,0 +1,11 @@
+{
+  "en": {
+    "title": "Announcement",
+    "description": "A component to display announcement for event."
+  },
+  "ja": {
+    "title": "Announcement",
+    "description": "イベントのアナウンスを表示するコンポーネント"
+  },
+  "options": { "container": { "centerContent": true, "p": "md" } }
+}
