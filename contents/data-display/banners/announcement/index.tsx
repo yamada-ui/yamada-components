@@ -15,7 +15,7 @@ const Announcement: FC = () => {
           size="sm"
           padding="10px"
           color="white"
-          marginLeft="30%"
+          marginLeft="35%"
           fontWeight="500"
           isTruncated
         >
