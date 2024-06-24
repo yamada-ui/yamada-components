@@ -2,6 +2,7 @@
   "en": { "title": "Layouts", "description": "" },
   "ja": { "title": "レイアウト", "description": "" },
   "icon": "panels-top-left",
+  "order": 1,
   "authors": [
     {
       "id": 84060430,

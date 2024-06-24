@@ -2,6 +2,7 @@
   "en": { "title": "Forms", "description": "" },
   "ja": { "title": "フォーム", "description": "" },
   "icon": "text-cursor-input",
+  "order": 3,
   "authors": [
     {
       "id": 84060430,

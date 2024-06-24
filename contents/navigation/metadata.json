@@ -8,6 +8,7 @@
     "description": ""
   },
   "icon": "navigation",
+  "order": 5,
   "authors": [
     {
       "id": 84060430,

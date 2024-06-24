@@ -2,6 +2,7 @@
   "en": { "title": "Overlay", "description": "" },
   "ja": { "title": "オーバーレイ", "description": "" },
   "icon": "layers",
+  "order": 7,
   "authors": [
     {
       "id": 84060430,

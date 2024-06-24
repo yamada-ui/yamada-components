@@ -2,6 +2,7 @@
   "en": { "title": "Typography", "description": "" },
   "ja": { "title": "タイポグラフィ", "description": "" },
   "icon": "text",
+  "order": 2,
   "authors": [
     {
       "id": 84060430,
