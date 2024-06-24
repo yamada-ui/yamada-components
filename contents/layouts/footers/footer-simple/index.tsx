@@ -1,4 +1,12 @@
-import { Flex, HStack, Image, Link, Text } from "@yamada-ui/react"
+import {
+  Divider,
+  Flex,
+  HStack,
+  Image,
+  Link,
+  Text,
+  VStack,
+} from "@yamada-ui/react"
 import type { FC } from "react"
 
 const links = [
@@ -17,29 +25,32 @@ const FooterCentered: FC = () => {
   ))
 
   return (
-    <Flex
-      w="full"
-      borderTopWidth="1px"
-      justifyContent="space-between"
-      alignItems="center"
-      _container={[
-        {
-          maxW: "500px",
-          css: {
-            flexDirection: "column",
-            gap: "sm",
+    <VStack as="footer" gap="0" placeItems="center">
+      <Divider />
+      <Flex
+        w="full"
+        justifyContent="space-between"
+        alignItems="center"
+        _container={[
+          {
+            maxW: "500px",
+            css: {
+              flexDirection: "column",
+              gap: "sm",
+            },
           },
-        },
-      ]}
-      py="lg"
-      px="md"
-    >
-      <HStack gap="sm">
-        <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
-        <Text fontSize="lg">Yamada UI</Text>
-      </HStack>
-      <Flex gap="md">{items}</Flex>
-    </Flex>
+        ]}
+        px="md"
+        py="lg"
+        maxW="6xl"
+      >
+        <HStack gap="sm">
+          <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
+          <Text fontSize="lg">Yamada UI</Text>
+        </HStack>
+        <Flex gap="md">{items}</Flex>
+      </Flex>
+    </VStack>
   )
 }
 
