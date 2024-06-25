@@ -1,7 +1,7 @@
 import { Button, ButtonGroup } from "@yamada-ui/react"
 import type { FC } from "react"
 
-const Basic: FC = () => {
+const BasicButtonGroup: FC = () => {
   return (
     <ButtonGroup isAttached variant="outline">
       <Button>Years</Button>
@@ -11,4 +11,4 @@ const Basic: FC = () => {
   )
 }
 
-export default Basic
+export default BasicButtonGroup
