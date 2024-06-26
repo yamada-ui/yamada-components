@@ -1,13 +1,26 @@
 {
-  "en": { "title": "Navigation", "description": "" },
-  "ja": { "title": "ナビゲーション", "description": "" },
+  "en": {
+    "title": "Navigation",
+    "description": ""
+  },
+  "ja": {
+    "title": "ナビゲーション",
+    "description": ""
+  },
   "icon": "navigation",
+  "order": 5,
   "authors": [
     {
       "id": 84060430,
       "login": "hirotomoyamada",
       "avatar_url": "https://avatars.githubusercontent.com/u/84060430?v=4",
       "html_url": "https://github.com/hirotomoyamada"
+    },
+    {
+      "id": 77735745,
+      "login": "fffk10",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77735745?v=4",
+      "html_url": "https://github.com/fffk10"
     }
   ]
 }

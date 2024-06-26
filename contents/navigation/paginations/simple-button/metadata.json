@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Simple button",
+    "description": "Simple button"
+  },
+  "ja": {
+    "title": "シンプルボタン",
+    "description": "シンプルボタン"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}

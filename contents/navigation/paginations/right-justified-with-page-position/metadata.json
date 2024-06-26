@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Right-justified with page position",
+    "description": "Right-justified with page position"
+  },
+  "ja": {
+    "title": "右寄せページ位置付き",
+    "description": "右寄せページ位置付き"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}

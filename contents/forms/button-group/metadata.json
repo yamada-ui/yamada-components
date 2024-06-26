@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "ButtonGroup",
+    "description": "The ButtonGroup is used to group multiple buttons into one."
+  },
+  "ja": {
+    "title": "ボタングループ",
+    "description": "ボタングループは、複数のボタンを一つにまとめるために使用されます。"
+  }
+}
