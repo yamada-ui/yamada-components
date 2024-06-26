@@ -142,6 +142,7 @@ const ViewModeControl: FC<ViewModeControlProps> = memo(
         minW={{ base: "xs", md: "auto" }}
         defaultValue="preview"
         onChange={(mode) => modeRef.current(mode as Mode)}
+        z="0"
         {...rest}
       >
         <SegmentedControlButton value="preview">
