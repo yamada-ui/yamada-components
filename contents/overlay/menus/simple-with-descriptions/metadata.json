@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "SimpleWithDescriptions",
+    "description": ""
+  },
+  "ja": {
+    "title": "SimpleWithDescriptions",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  },
+  "order": 2
+}
