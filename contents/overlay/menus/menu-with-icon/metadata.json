@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "MenuWithIcon",
+    "description": ""
+  },
+  "ja": {
+    "title": "MenuWithIcon",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  },
+  "order": 3
+}
