@@ -10,11 +10,11 @@ const COMMON_PARAMS = { owner: "yamada-ui", repo: "yamada-components" }
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
 
 const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
-  s.start(`Getting the Yamada Components metadata paths`)
+  s.start("Getting the Yamada Components metadata paths")
 
   const metadataPaths = await glob("contents/**/metadata.json")
 
-  s.stop(`Got the Yamada Components metadata paths`)
+  s.stop("Got the Yamada Components metadata paths")
 
   return metadataPaths
 }
@@ -94,13 +94,13 @@ const createIssue = async (path: string, missing: string[]) => {
 }
 
 const main = async () => {
-  p.intro(c.magenta(`Checking Yamada Components metadata`))
+  p.intro(c.magenta("Checking Yamada Components metadata"))
   const s = p.spinner()
   const metadataPaths = await getMetadataPaths()(p, s)
 
   await Promise.all(metadataPaths.map(checkMetadata))
 
-  s.stop(`Checked Yamada Components metadata`)
+  s.stop("Checked Yamada Components metadata")
 }
 
 main()
