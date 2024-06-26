@@ -9,11 +9,11 @@ import type { FC } from "react"
 
 const WithDismissButton: FC = () => {
   return (
-    <Alert status="success" variant="subtle">
+    <Alert status="success" variant="subtle" maxW="5xl">
       <AlertIcon />
       <AlertTitle>Successfully uploaded</AlertTitle>
       <Spacer />
-      <CloseButton />
+      <CloseButton color="success.400" />
     </Alert>
   )
 }

@@ -11,7 +11,7 @@ import type { FC } from "react"
 
 const WithActions: FC = () => {
   return (
-    <Alert status="success" variant="subtle" alignItems="flex-start">
+    <Alert status="success" variant="subtle" alignItems="flex-start" maxW="5xl">
       <AlertIcon />
       <VStack gap={3}>
         <AlertTitle>Order completed</AlertTitle>
