@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "SimpleMenu",
+    "description": ""
+  },
+  "ja": {
+    "title": "SimpleMenu",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}
