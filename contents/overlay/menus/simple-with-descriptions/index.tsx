@@ -43,7 +43,7 @@ const SimpleWithDescriptions: FC = () => {
 
       <MenuList>
         {items.map((item, i) => (
-          <MenuItem key={i} as={VStack} alignItems="start">
+          <MenuItem key={i} as={VStack} alignItems="start" py="md">
             <Text
               as={Link}
               onClick={(e) => e.preventDefault()}
