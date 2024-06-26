@@ -1,0 +1,20 @@
+name: Metadata
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  insight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Create issues for metadata
+        run: pnpm check:metadata
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}

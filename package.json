@@ -15,6 +15,7 @@
     "gen:component": "plop component",
     "gen:search": "tsx scripts/search-content",
     "gen:contributors": "tsx scripts/contributors",
+    "check:metadata": "tsx scripts/metadata",
     "format": "prettier --write .",
     "format:check": "prettier --check --cache .",
     "format:write": "prettier --write --cache .",
