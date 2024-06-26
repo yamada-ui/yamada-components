@@ -4,7 +4,7 @@ import {
   AlertIcon,
   AlertTitle,
   Button,
-  HStack,
+  ButtonGroup,
   VStack,
 } from "@yamada-ui/react"
 import type { FC } from "react"
@@ -19,10 +19,14 @@ const WithActions: FC = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
           pariatur, ipsum similique veniam.
         </AlertDescription>
-        <HStack gap={1}>
-          <Button variant="ghost">View Status</Button>
-          <Button variant="ghost">Dismiss</Button>
-        </HStack>
+        <ButtonGroup gap="md">
+          <Button variant="ghost" colorScheme="success">
+            View Status
+          </Button>
+          <Button variant="ghost" colorScheme="success">
+            Dismiss
+          </Button>
+        </ButtonGroup>
       </VStack>
     </Alert>
   )
