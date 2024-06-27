@@ -1,11 +1,11 @@
 {
   "en": {
-    "title": "MenuWithIcon",
-    "description": ""
+    "title": "Menu With Icon",
+    "description": "Menu including icons"
   },
   "ja": {
-    "title": "MenuWithIcon",
-    "description": ""
+    "title": "メニューとアイコン",
+    "description": "アイコンを含めたメニュー"
   },
   "options": {
     "container": {

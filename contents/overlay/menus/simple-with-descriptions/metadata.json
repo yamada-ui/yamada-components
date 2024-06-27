@@ -1,11 +1,11 @@
 {
   "en": {
-    "title": "SimpleWithDescriptions",
-    "description": ""
+    "title": "Simple With Descriptions",
+    "description": "menu with descriptions"
   },
   "ja": {
-    "title": "SimpleWithDescriptions",
-    "description": ""
+    "title": "Simple With Descriptions",
+    "description": "説明つきのメニュー"
   },
   "options": {
     "container": {

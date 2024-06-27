@@ -1,11 +1,11 @@
 {
   "en": {
-    "title": "SimpleMenu",
-    "description": ""
+    "title": "Simple Menu",
+    "description": "a simple menu"
   },
   "ja": {
-    "title": "SimpleMenu",
-    "description": ""
+    "title": "シンプルメニュー",
+    "description": "シンプルなメニュー"
   },
   "options": {
     "container": {
