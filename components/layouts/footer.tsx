@@ -25,7 +25,6 @@ export const Footer = memo(
         position="sticky"
         top="100vh"
         w="full"
-        zIndex="-1"
         {...rest}
       >
         <VStack
