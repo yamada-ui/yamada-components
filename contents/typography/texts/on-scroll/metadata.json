@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Reveal Text on Scroll",
+    "description": "This example shows how you can reveal text on scroll."
+  },
+  "ja": {
+    "title": "スクロールしたときにテキストを表示する",
+    "description": "この例では、スクロールしたときにテキストを表示する方法を示しています。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true
+    }
+  }
+}
