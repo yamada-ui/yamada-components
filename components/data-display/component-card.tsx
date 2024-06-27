@@ -76,7 +76,7 @@ export const ComponentCard = memo(
               </HStack>
             </HStack>
 
-            <HStack gap="sm" zIndex="-1">
+            <HStack gap="sm">
               <IconButton
                 aria-label="Download the files"
                 variant="outline"
