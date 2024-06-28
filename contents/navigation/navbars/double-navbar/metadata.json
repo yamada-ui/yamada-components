@@ -1,0 +1,11 @@
+{
+  "en": {
+    "title": "DoubleNavbar",
+    "description": "Navigation bar divided into two sections"
+  },
+  "ja": {
+    "title": "ダブルナビバー",
+    "description": "2つのセクションに分かれたナビゲーションバー"
+  },
+  "order": 4
+}
