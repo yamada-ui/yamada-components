@@ -1,0 +1,11 @@
+{
+  "en": {
+    "title": "CircularAvatar",
+    "description": ""
+  },
+  "ja": {
+    "title": "CircularAvatar",
+    "description": ""
+  },
+  "options": { "container": { "centerContent": true, "p": "md" } }
+}
