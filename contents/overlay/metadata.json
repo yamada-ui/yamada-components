@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Overlay", "description": "" },
-  "ja": { "title": "オーバーレイ", "description": "" },
+  "en": {
+    "title": "Overlay",
+    "description": "Components such as Modal and Drawer are available to temporarily block interactions with the background UI."
+  },
+  "ja": {
+    "title": "オーバーレイ",
+    "description": "モーダルやドロワーなど、背景のUIとのインタラクションを一時的に遮断するコンポーネントが用意されています。"
+  },
   "icon": "layers",
   "order": 7,
   "authors": [
