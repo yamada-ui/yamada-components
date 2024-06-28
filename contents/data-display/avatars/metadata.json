@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Avatars",
+    "description": "Avatar is a component that displays a profile picture or an icon with initials representing a user."
+  },
+  "ja": {
+    "title": "アバター",
+    "description": "Avatarは、ユーザーを表すプロフィール写真やイニシャルのアイコンを表示するコンポーネントです。"
+  }
+}
