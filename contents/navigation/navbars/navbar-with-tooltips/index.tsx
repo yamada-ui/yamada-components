@@ -74,7 +74,7 @@ const NavbarWithTooltips: FC = () => {
         />
       </Center>
 
-      <Box flex={1} mt="50px">
+      <Box flex={1} mt="xl">
         <VStack gap={0}>
           {mockdata.map((link, index) => (
             <NavbarLink
