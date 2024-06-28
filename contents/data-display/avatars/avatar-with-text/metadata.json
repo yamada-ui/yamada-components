@@ -1,0 +1,11 @@
+{
+  "en": {
+    "title": "Avatar with Text",
+    "description": "This is a simple example of how to use the Avatar component with text."
+  },
+  "ja": {
+    "title": "テキスト付きアバター",
+    "description": "これはテキストを伴うアバターコンポーネントの使用例です。"
+  },
+  "options": { "container": { "centerContent": true, "p": "md" } }
+}
