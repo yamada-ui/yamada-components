@@ -1,6 +1,7 @@
 import {
   Box,
   Center,
+  extendConfig,
   forwardRef,
   Loading,
   UIProvider,
@@ -69,6 +70,13 @@ export const ComponentPreview = memo(
         return props
       }, [_containerProps])
 
+      const customConfig = extendConfig({
+        breakpoint: {
+          identifier: "@container",
+        },
+        ...value?.config,
+      })
+
       return (
         <Center
           ref={ref}
@@ -77,7 +85,7 @@ export const ComponentPreview = memo(
           minH="48"
           {...rest}
         >
-          <UIProvider {...value}>
+          <UIProvider config={customConfig} theme={value?.theme}>
             {!loading ? (
               <Box boxSize="full" flex="1" {...containerProps}>
                 <Component />
