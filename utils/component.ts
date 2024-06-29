@@ -140,13 +140,13 @@ export const getComponent =
       const name = slug.split("/").at(-1)!
       const dirPath = path.join("contents", slug)
       const componentPath = path.join(dirPath, "index.tsx")
-      const themePath = path.join(dirPath, "theme.ts")
-      const configPath = path.join(dirPath, "config.ts")
+      const themePath = path.join(dirPath, "theme.ts").replace(/\\/g, "/")
+      const configPath = path.join(dirPath, "config.ts").replace(/\\/g, "/")
       const validComponentPath = path
         .join(slug, "index.tsx")
         .replace(/\\/g, "/")
-      const validThemePath = path.join(slug, "theme.ts")
-      const validConfigPath = path.join(slug, "config.ts")
+      const validThemePath = path.join(slug, "theme.ts").replace(/\\/g, "/")
+      const validConfigPath = path.join(slug, "config.ts").replace(/\\/g, "/")
 
       if (!existsSync(componentPath)) return undefined
 
