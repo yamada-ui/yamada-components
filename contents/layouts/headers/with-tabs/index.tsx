@@ -22,11 +22,10 @@ import {
   MenuItem,
   MenuList,
   Tab,
+  TabList,
   TabPanels,
   Tabs,
-  type TabsProps,
   Text,
-  useBreakpointValue,
   VStack,
 } from "@yamada-ui/react"
 import { useState, type FC } from "react"
@@ -44,11 +43,6 @@ const tabs = [
 
 const WithTabs: FC = () => {
   const [active, setActive] = useState<number>(0)
-
-  const orientation = useBreakpointValue<TabsProps["orientation"]>({
-    base: "horizontal",
-    md: "vertical",
-  })
 
   return (
     <Flex
@@ -122,26 +116,28 @@ const WithTabs: FC = () => {
           variant="unstyled"
           onChange={setActive}
           index={active}
-          orientation={orientation}
+          orientation="vertical"
           justifyContent={{ base: "center", md: "flex-end" }}
         >
-          {tabs.map((tab, index) => (
-            <Tab
-              key={tab}
-              value={tab}
-              data-active={active === index || undefined}
-              bg={active === index ? ["white", "black"] : undefined}
-              borderTopLeftRadius="md"
-              borderTopRightRadius={{ base: "md", md: "none" }}
-              borderBottomLeftRadius={{ base: "none", md: "md" }}
-              fontWeight="semibold"
-              as="a"
-              href={`/${tab.toLocaleLowerCase()}`}
-              onClick={(e) => e.preventDefault()}
-            >
-              {tab}
-            </Tab>
-          ))}
+          <TabList flexDir={{ base: "row", md: "column" }}>
+            {tabs.map((tab, index) => (
+              <Tab
+                key={tab}
+                value={tab}
+                data-active={active === index || undefined}
+                bg={active === index ? ["white", "black"] : undefined}
+                borderTopLeftRadius="md"
+                borderTopRightRadius={{ base: "md", md: "none" }}
+                borderBottomLeftRadius={{ base: "none", md: "md" }}
+                fontWeight="semibold"
+                as="a"
+                href={`/${tab.toLocaleLowerCase()}`}
+                onClick={(e) => e.preventDefault()}
+              >
+                {tab}
+              </Tab>
+            ))}
+          </TabList>
           <TabPanels display="none" />
         </Tabs>
       </VStack>
