@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Dialogs",
-    "description": "Dialogs are components that display important information or collect input from users in a focused window."
+    "description": "Dialog is a component used to confirm or interrupt user actions."
   },
   "ja": {
     "title": "ダイアログ",
-    "description": "重要な情報を表示したり、フォーカスされたウィンドウでユーザーから入力を収集するコンポーネントです。"
+    "description": "ダイアログは、ユーザーに実行の確認または中断に使用されるコンポーネントです。"
   }
 }

@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Alerts",
-    "description": "This is alert examples for Yamada UI."
+    "description": "Alert is a component that conveys information to the user."
   },
   "ja": {
     "title": "アラート",
-    "description": "アラートボックスによるフィードバックの例です。"
+    "description": "アラートは、ユーザーに情報を伝達するコンポーネントです。"
   }
 }

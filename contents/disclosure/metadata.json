@@ -1,11 +1,11 @@
 {
   "en": {
     "title": "Disclosure",
-    "description": "A component is available to save display space and display a large number of items."
+    "description": "Components such as Accordion or Tabs are available to save display space while showing numerous items."
   },
   "ja": {
     "title": "ディスクロージャー",
-    "description": "表示領域を節約して多数の項目を表示するコンポーネントが用意されています。"
+    "description": "アコーディオンやタブなど、表示領域を節約して多数の項目を表示するコンポーネントが用意されています。"
   },
   "order": 6
 }

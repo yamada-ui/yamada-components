@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Dividers",
-    "description": "Dividers are used to separate content on a page with a horizontal line."
+    "description": "Divider is a component that represents a division between elements."
   },
   "ja": {
     "title": "区切り線",
-    "description": "区切り線を使用して、ページの内容を区切ります。"
+    "description": "区切り線は、要素間において区切りを表すコンポーネントです。"
   }
 }

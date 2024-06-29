@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Inputs", "description": "" },
-  "ja": { "title": "インプット", "description": "" },
+  "en": {
+    "title": "Inputs",
+    "description": "Input is a component used to obtain text input from the user."
+  },
+  "ja": {
+    "title": "インプット",
+    "description": "インプットは、ユーザーからのテキスト入力を取得するために使用されるコンポーネントです。"
+  },
   "authors": [
     {
       "id": 84060430,

@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Headings",
-    "description": ""
+    "description": "Heading is a component that represents section headings."
   },
   "ja": {
-    "title": "Headings",
-    "description": ""
+    "title": "見出し",
+    "description": "見出しは、セクションの見出しを表すコンポーネントです。"
   }
 }
