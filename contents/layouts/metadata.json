@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Layouts", "description": "" },
-  "ja": { "title": "レイアウト", "description": "" },
+  "en": {
+    "title": "Layouts",
+    "description": "Components for building the layout of the project, such as Box and Stack, are available."
+  },
+  "ja": {
+    "title": "レイアウト",
+    "description": "ボックスやスタックなど、プロジェクトのレイアウトを構築するコンポーネントが用意されています。"
+  },
   "icon": "panels-top-left",
   "order": 1,
   "authors": [

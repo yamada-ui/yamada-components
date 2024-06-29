@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Stats", "description": "" },
-  "ja": { "title": "統計", "description": "" },
+  "en": {
+    "title": "Stats",
+    "description": "Stat is used to display numbers or data within a box."
+  },
+  "ja": {
+    "title": "統計",
+    "description": "統計は、数値やデータをボックス内に表示するために使用されます。"
+  },
   "authors": [
     {
       "id": 84060430,

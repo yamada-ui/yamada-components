@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Feedback", "description": "" },
-  "ja": { "title": "フィードバック", "description": "" },
+  "en": {
+    "title": "Feedback",
+    "description": "Components such as Alert and Skeleton are available for notifying users and prompting them to wait while content is loading."
+  },
+  "ja": {
+    "title": "フィードバック",
+    "description": "アラートやスケルトンなど、ユーザーへの通知やコンテンツの読み込み中にユーザーへ待機を促すコンポーネントが用意されています。"
+  },
   "icon": "line-chart",
   "order": 8,
   "authors": [

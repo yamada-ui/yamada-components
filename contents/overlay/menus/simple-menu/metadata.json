@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Simple Menu",
+    "description": "a simple menu"
+  },
+  "ja": {
+    "title": "シンプルメニュー",
+    "description": "シンプルなメニュー"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  },
+  "order": 1
+}

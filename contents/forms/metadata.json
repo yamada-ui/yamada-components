@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Forms", "description": "" },
-  "ja": { "title": "フォーム", "description": "" },
+  "en": {
+    "title": "Forms",
+    "description": "Components for building forms in the project, such as Input and Select, are available."
+  },
+  "ja": {
+    "title": "フォーム",
+    "description": "インプットやセレクトなど、プロジェクトのフォームを構築するコンポーネントが用意されています。"
+  },
   "icon": "text-cursor-input",
   "order": 3,
   "authors": [

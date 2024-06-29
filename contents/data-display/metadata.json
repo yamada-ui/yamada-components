@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Data Display", "description": "" },
-  "ja": { "title": "データディスプレイ", "description": "" },
+  "en": {
+    "title": "Data Display",
+    "description": "Components for constructing the display of project data, such as Table and Calendar, are available."
+  },
+  "ja": {
+    "title": "データディスプレイ",
+    "description": "テーブルやカレンダーなど、プロジェクトのデータの表示を構築するコンポーネントが用意されています。"
+  },
   "icon": "table",
   "order": 4,
   "labels": [],

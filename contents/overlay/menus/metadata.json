@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Menus",
-    "description": "Menus are components that display a list of choices on a temporary surface. They appear when users interact with a button, action, or other control."
+    "description": "Menu is a component that displays a common dropdown menu."
   },
   "ja": {
     "title": "メニュー",
-    "description": "メニューは、一時的な面上に選択肢のリストを表示するコンポーネントです。ユーザーがボタン、アクション、または他のコントロールと対話すると表示されます。"
+    "description": "メニューは、一般的なドロップダウンメニューを表示するコンポーネントです。"
   }
 }

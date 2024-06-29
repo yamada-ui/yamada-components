@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Skeletons",
-    "description": "Skeleton is a component that displays a placeholder preview of the content before the data gets loaded."
+    "description": "Skeleton is a component that acts as a placeholder until content is loaded."
   },
   "ja": {
     "title": "スケルトン",
-    "description": "データが読み込まれる前にコンテンツのプレースホルダープレビューを表示するコンポーネントです。"
+    "description": "スケルトンは、コンテンツが読み込まれるまでのプレースホルダーとして機能するコンポーネントです。"
   }
 }

@@ -4,8 +4,8 @@
     "description": "This is a full gradient heading that makes the text gradient from left to right."
   },
   "ja": {
-    "title": "グラデーションヘッダー",
-    "description": "これは、左から右へのグラデーションを使ったグラデーションヘッダーです。"
+    "title": "グラデーション見出し",
+    "description": "これは、左から右へのグラデーションを使った見出しです。"
   },
   "options": { "container": { "centerContent": true, "p": "md" } }
 }

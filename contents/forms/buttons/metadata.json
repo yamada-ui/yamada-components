@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Buttons", "description": "" },
-  "ja": { "title": "ボタン", "description": "" },
+  "en": {
+    "title": "Buttons",
+    "description": "Button is an interactive component that allows users to perform actions such as submitting forms and toggling modals."
+  },
+  "ja": {
+    "title": "ボタン",
+    "description": "ボタンは、フォームの送信、モーダルの開閉など、ユーザーが操作できるインタラクティブなコンポーネントです。"
+  },
   "authors": [
     {
       "id": 84060430,
