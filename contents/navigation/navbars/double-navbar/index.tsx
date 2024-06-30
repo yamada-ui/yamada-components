@@ -1,11 +1,11 @@
 import {
-  BarChart3,
-  Calendar,
-  Fingerprint,
-  Gauge,
-  Home,
+  BarChart3Icon,
+  CalendarIcon,
+  FingerprintIcon,
+  GaugeIcon,
+  HomeIcon,
   Settings,
-  User,
+  UserIcon,
 } from "@yamada-ui/lucide"
 import {
   Avatar,
@@ -22,12 +22,12 @@ import {
 import { useState, type FC } from "react"
 
 const mainLinksMockdata = [
-  { icon: Home, label: "Home" },
-  { icon: Gauge, label: "Dashboard" },
-  { icon: BarChart3, label: "Analytics" },
-  { icon: Calendar, label: "Releases" },
-  { icon: User, label: "Account" },
-  { icon: Fingerprint, label: "Security" },
+  { icon: HomeIcon, label: "Home" },
+  { icon: GaugeIcon, label: "Dashboard" },
+  { icon: BarChart3Icon, label: "Analytics" },
+  { icon: CalendarIcon, label: "Releases" },
+  { icon: UserIcon, label: "Account" },
+  { icon: FingerprintIcon, label: "Security" },
   { icon: Settings, label: "Settings" },
 ]
 
