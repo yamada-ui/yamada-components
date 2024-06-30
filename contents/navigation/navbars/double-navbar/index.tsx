@@ -4,7 +4,7 @@ import {
   FingerprintIcon,
   GaugeIcon,
   HomeIcon,
-  Settings,
+  SettingsIcon,
   UserIcon,
 } from "@yamada-ui/lucide"
 import {
@@ -28,7 +28,7 @@ const mainLinksMockdata = [
   { icon: CalendarIcon, label: "Releases" },
   { icon: UserIcon, label: "Account" },
   { icon: FingerprintIcon, label: "Security" },
-  { icon: Settings, label: "Settings" },
+  { icon: SettingsIcon, label: "Settings" },
 ]
 
 const linksMockdata = [
