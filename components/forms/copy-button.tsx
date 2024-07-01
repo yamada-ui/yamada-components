@@ -1,4 +1,4 @@
-import { Check, Copy } from "@yamada-ui/lucide"
+import { CheckIcon, CopyIcon } from "@yamada-ui/lucide"
 import type { ButtonProps } from "@yamada-ui/react"
 import { forwardRef, IconButton, useClipboard, Tooltip } from "@yamada-ui/react"
 import { memo } from "react"
@@ -35,7 +35,13 @@ export const CopyButton = memo(
                   },
                 }
               : {})}
-            icon={hasCopied ? <Check fontSize="lg" /> : <Copy fontSize="md" />}
+            icon={
+              hasCopied ? (
+                <CheckIcon fontSize="lg" />
+              ) : (
+                <CopyIcon fontSize="md" />
+              )
+            }
             {...rest}
             onClick={onCopy}
           />
