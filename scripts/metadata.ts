@@ -1,7 +1,6 @@
 import { readFile } from "fs/promises"
 import * as p from "@clack/prompts"
 import { Octokit } from "@octokit/rest"
-import { isEmpty } from "@yamada-ui/react"
 import c from "chalk"
 import { glob } from "glob"
 
@@ -20,77 +19,103 @@ const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
 }
 
 const checkMetadata = async (filePath: string) => {
-  const data = await readFile(filePath, "utf-8")
+  const path = filePath.replace(/\\/g, "/")
+
+  const data = await readFile(path, "utf-8")
+
   const metadata = JSON.parse(data)
 
   const locales = ["ja", "en"]
   const fields = ["title", "description"]
-  const missing = [] as string[]
+  const missing = locales.reduce(
+    (acc, locale) => {
+      acc[locale] = []
+      return acc
+    },
+    {} as Record<string, string[]>,
+  )
 
   locales.forEach((locale) => {
     fields.forEach((field) => {
       if (!metadata[locale]?.[field] || metadata[locale][field].length === 0) {
-        missing.push(`${locale}.${field}`)
+        missing[locale].push(field)
       }
     })
   })
 
-  if (!isEmpty(missing)) {
-    await createIssue(filePath, missing)
+  const hasMissing = Object.values(missing).some((fields) => fields.length > 0)
+
+  if (hasMissing) {
+    try {
+      await createIssue(path, missing)
+    } catch (e) {
+      console.log(
+        `Failed to create issue for ${path}\n${e instanceof Error ? e.message : "Message is missing"}`,
+      )
+    }
   }
 }
 
-const ISSUE_TITLE = (path: string, missing: string[]) =>
-  `Missing \`${missing.join("`, `")}\` in \`${path}\``
+const getLocation = (path: string) => {
+  const pathSegments = path.replace(/\\/g, "/").split("/")
+  return pathSegments.length > 3 ? pathSegments[2] : pathSegments[1]
+}
 
-const ISSUE_BODY = (path: string, missing: string[], title: string) => `
-Thank you for submitting a feature request! 😎
+const ISSUE_TITLE = (path: string, missing: Record<string, string[]>) => {
+  const missingFields = Object.values(missing).flat()
+  const uniqueFields = [...new Set(missingFields)]
+  return `Missing \`${uniqueFields.join(" and ")}\` in ${getLocation(path)}`
+}
 
-If you have an idea for a new feature topic, notice something is not working as intended, or feel there is an error with the current functionality, you are in the right place!
+const ISSUE_BODY = (path: string, missing: Record<string, string[]>) => `
+### Provide the exact quote of the error or issue
 
-**Subject**
-${title}
+The following are missing and need to be added in \`${getLocation(path)}\`:
 
-**Description**
-The following are missing and need to be added in \`${path}\`:
+${Object.entries(missing)
+  .map(([locale, fields]) =>
+    fields
+      .map(
+        (field) =>
+          `- Missing ${locale === "en" ? "English" : locale === "ja" ? "Japanese" : locale.charAt(0).toUpperCase() + locale.slice(1)} ${field} in \`${path.replace(/\\/g, "/")}\``,
+      )
+      .join("\n"),
+  )
+  .join("\n")}
 
-${missing.map((m) => `- Empty ${m} in ${path}`).join("\n")}
+### Does the feature already exist? Please link to it.
 
-**Are you willing to participate in the development of this feature and create a pull request?**
+_No response_
+
+### Are you willing to participate in fixing this issue and create a pull request with the fix?
+
 None
-
-This issue will be automatically unassigned after two weeks have passed since it was assigned.
-Once unassigned, it may be picked up by someone else for work.
 `
 
-const createIssue = async (path: string, missing: string[]) => {
+const createIssue = async (path: string, missing: Record<string, string[]>) => {
   const { owner, repo } = COMMON_PARAMS
 
   const title = ISSUE_TITLE(path, missing)
-  const body = ISSUE_BODY(path, missing, title)
+  const body = ISSUE_BODY(path, missing)
 
-  const existingIssues = await octokit.rest.issues.listForRepo({
-    owner,
-    repo,
-    state: "open",
+  const existingIssues = await octokit.rest.search.issuesAndPullRequests({
+    q: `repo:${owner}/${repo} is:open is:issue ${title} in:title`,
   })
 
-  const issueExists = existingIssues.data.some((issue) => issue.title === title)
+  console.log(existingIssues.data.total_count)
 
-  if (issueExists) {
+  if (existingIssues.data.total_count > 0) {
     console.log(`An open issue with the title "${title}" already exists.`)
     return
   }
 
-  const issue = await octokit.rest.issues.create({
+  await octokit.rest.issues.create({
     owner,
     repo,
     title,
     body,
     labels: ["enhancement"],
   })
-
-  console.log(`Created issue ${issue.data.number} for ${path}`)
 }
 
 const main = async () => {

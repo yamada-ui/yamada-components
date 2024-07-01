@@ -2,7 +2,7 @@ name: Metadata
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   insight:
