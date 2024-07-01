@@ -1,18 +1,18 @@
 import {
-  ArrowRightLeft,
-  BellRing,
-  Database,
-  FileText,
-  Files,
-  Fingerprint,
-  Key,
-  LogOut,
-  MessageSquareText,
-  MessagesSquare,
-  Receipt,
-  Settings,
-  ShoppingCart,
-  Users,
+  ArrowRightLeftIcon,
+  BellRingIcon,
+  DatabaseIcon,
+  FileTextIcon,
+  FilesIcon,
+  FingerprintIcon,
+  KeyIcon,
+  LogOutIcon,
+  MessageSquareTextIcon,
+  MessagesSquareIcon,
+  ReceiptIcon,
+  SettingsIcon,
+  ShoppingCartIcon,
+  UsersIcon,
 } from "@yamada-ui/lucide"
 import {
   Badge,
@@ -31,22 +31,22 @@ import { useState, type FC } from "react"
 
 const tabs = {
   account: [
-    { link: "", label: "Notifications", icon: BellRing },
-    { link: "", label: "Billing", icon: Receipt },
-    { link: "", label: "Security", icon: Fingerprint },
-    { link: "", label: "SSH Keys", icon: Key },
-    { link: "", label: "Databases", icon: Database },
-    { link: "", label: "Authentication", icon: Users },
-    { link: "", label: "Other Settings", icon: Settings },
+    { link: "", label: "Notifications", icon: BellRingIcon },
+    { link: "", label: "Billing", icon: ReceiptIcon },
+    { link: "", label: "Security", icon: FingerprintIcon },
+    { link: "", label: "SSH Keys", icon: KeyIcon },
+    { link: "", label: "Databases", icon: DatabaseIcon },
+    { link: "", label: "Authentication", icon: UsersIcon },
+    { link: "", label: "Other Settings", icon: SettingsIcon },
   ],
   general: [
-    { link: "", label: "Orders", icon: ShoppingCart },
-    { link: "", label: "Receipts", icon: FileText },
-    { link: "", label: "Reviews", icon: MessageSquareText },
-    { link: "", label: "Messages", icon: MessagesSquare },
-    { link: "", label: "Customers", icon: Users },
-    { link: "", label: "Refunds", icon: Receipt },
-    { link: "", label: "Files", icon: Files },
+    { link: "", label: "Orders", icon: ShoppingCartIcon },
+    { link: "", label: "Receipts", icon: FileTextIcon },
+    { link: "", label: "Reviews", icon: MessageSquareTextIcon },
+    { link: "", label: "Messages", icon: MessagesSquareIcon },
+    { link: "", label: "Customers", icon: UsersIcon },
+    { link: "", label: "Refunds", icon: ReceiptIcon },
+    { link: "", label: "Files", icon: FilesIcon },
   ],
 }
 
@@ -141,7 +141,7 @@ const NavbarWithSegmentedcontrol: FC = () => {
             textDecor: "none",
           }}
         >
-          <ArrowRightLeft />
+          <ArrowRightLeftIcon />
           <Text>Change account</Text>
         </Button>
 
@@ -157,7 +157,7 @@ const NavbarWithSegmentedcontrol: FC = () => {
             textDecor: "none",
           }}
         >
-          <LogOut />
+          <LogOutIcon />
           <Text>Logout</Text>
         </Button>
       </Box>
