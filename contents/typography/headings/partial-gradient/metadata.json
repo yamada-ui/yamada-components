@@ -4,8 +4,8 @@
     "description": "This is a component that makes the text partially gradient from left to right."
   },
   "ja": {
-    "title": "部分的なグラデーションヘッダー",
-    "description": "これは、左から右への部分的なグラデーションを使ったグラデーションヘッダーです。"
+    "title": "部分的なグラデーションの見出し",
+    "description": "これは、左から右への部分的なグラデーションを使ったグラデーションの見出しです。"
   },
   "options": { "container": { "centerContent": true, "p": "md" } }
 }

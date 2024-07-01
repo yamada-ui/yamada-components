@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "With Tabs",
+    "description": "A header component with tabs."
+  },
+  "ja": {
+    "title": "タブ付きヘッダー",
+    "description": "タブ付きヘッダーのコンポーネントです。"
+  }
+}

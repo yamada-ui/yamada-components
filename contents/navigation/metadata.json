@@ -1,11 +1,11 @@
 {
   "en": {
     "title": "Navigation",
-    "description": ""
+    "description": "Components such as Link and Breadcrumb are available to display hyperlinks and the location of pages within the project."
   },
   "ja": {
     "title": "ナビゲーション",
-    "description": ""
+    "description": "リンクやパンくずなど、ハイパーリンクやプロジェクト内でのページの位置を表示するコンポーネントが用意されています。"
   },
   "icon": "navigation",
   "order": 5,

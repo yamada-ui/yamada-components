@@ -11,12 +11,11 @@ import type { FC } from "react"
 
 const WithList: FC = () => {
   return (
-    <Alert status="error" variant="subtle" alignItems="flex-start">
+    <Alert status="error" variant="subtle" alignItems="flex-start" maxW="5xl">
       <AlertIcon />
       <Box>
         <AlertTitle mb={3}>
-          There were 2 errors with your submission Your password must be at
-          least.
+          There were 2 errors with your submission.
         </AlertTitle>
         <AlertDescription>
           <DiscList>

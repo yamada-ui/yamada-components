@@ -1,6 +1,7 @@
 import {
   Box,
   Center,
+  extendConfig,
   forwardRef,
   Loading,
   UIProvider,
@@ -43,6 +44,11 @@ export const ComponentPreview = memo(
           const module = await import(`/contents/${paths.config}`)
           config = module.default ?? module.theme
         }
+
+        config = extendConfig({
+          breakpoint: { identifier: "@container" },
+          ...config,
+        })
 
         return { theme, config }
       })

@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Typography", "description": "" },
-  "ja": { "title": "タイポグラフィ", "description": "" },
+  "en": {
+    "title": "Typography",
+    "description": "Components such as Heading and Text are available for constructing text in your project."
+  },
+  "ja": {
+    "title": "タイポグラフィ",
+    "description": "見出しやテキストなど、プロジェクトのテキストを構築するコンポーネントが用意されています。"
+  },
   "icon": "text",
   "order": 2,
   "authors": [

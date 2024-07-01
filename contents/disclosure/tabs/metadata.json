@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Tabs",
-    "description": "A component that switches between different display areas."
+    "description": "Tabs is a component for switching between different display areas."
   },
   "ja": {
-    "title": "タブズ",
-    "description": "異なる表示領域を切り替えるコンポーネントです。"
+    "title": "タブ",
+    "description": "タブは、異なる表示領域を切り替えるコンポーネントです。"
   }
 }

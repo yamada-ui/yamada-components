@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Menu With Icon",
+    "description": "Menu including icons"
+  },
+  "ja": {
+    "title": "メニューとアイコン",
+    "description": "アイコンを含めたメニュー"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  },
+  "order": 3
+}

@@ -9,8 +9,7 @@ import type { FC } from "react"
 
 const WithDescription: FC = () => {
   return (
-    <Alert status="warning" variant="subtle" alignItems="flex-start">
-      {/* FIXME: Change Alert Icon */}
+    <Alert status="warning" variant="subtle" alignItems="flex-start" maxW="5xl">
       <AlertIcon />
       <VStack>
         <AlertTitle>Attention needed</AlertTitle>
