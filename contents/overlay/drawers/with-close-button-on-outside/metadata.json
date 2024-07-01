@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "WithCloseButtonOnOutside",
+    "description": ""
+  },
+  "ja": {
+    "title": "WithCloseButtonOnOutside",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
