@@ -1,13 +1,13 @@
 import {
-  ArrowRightLeft,
-  Calendar,
-  Fingerprint,
-  Gauge,
-  Home,
-  Laptop,
-  LogOut,
-  Settings,
-  User,
+  ArrowRightLeftIcon,
+  CalendarIcon,
+  FingerprintIcon,
+  GaugeIcon,
+  HomeIcon,
+  LaptopIcon,
+  LogOutIcon,
+  SettingsIcon,
+  UserIcon,
 } from "@yamada-ui/lucide"
 import type { Component, IconProps } from "@yamada-ui/react"
 import {
@@ -21,13 +21,13 @@ import {
 import { useState, type FC } from "react"
 
 const mockdata = [
-  { icon: Home, label: "Home" },
-  { icon: Gauge, label: "Dashboard" },
-  { icon: Laptop, label: "Analytics" },
-  { icon: Calendar, label: "Releases" },
-  { icon: User, label: "Account" },
-  { icon: Fingerprint, label: "Security" },
-  { icon: Settings, label: "Settings" },
+  { icon: HomeIcon, label: "Home" },
+  { icon: GaugeIcon, label: "Dashboard" },
+  { icon: LaptopIcon, label: "Analytics" },
+  { icon: CalendarIcon, label: "Releases" },
+  { icon: UserIcon, label: "Account" },
+  { icon: FingerprintIcon, label: "Security" },
+  { icon: SettingsIcon, label: "Settings" },
 ]
 
 interface NavbarLinkProps {
@@ -88,8 +88,8 @@ const NavbarWithTooltips: FC = () => {
       </Box>
 
       <VStack gap={0}>
-        <NavbarLink icon={ArrowRightLeft} label="Change account" />
-        <NavbarLink icon={LogOut} label="Logout" />
+        <NavbarLink icon={ArrowRightLeftIcon} label="Change account" />
+        <NavbarLink icon={LogOutIcon} label="Logout" />
       </VStack>
     </VStack>
   )
