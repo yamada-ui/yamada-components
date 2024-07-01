@@ -102,8 +102,6 @@ const createIssue = async (path: string, missing: Record<string, string[]>) => {
     q: `repo:${owner}/${repo} is:open is:issue ${title} in:title`,
   })
 
-  console.log(existingIssues.data.total_count)
-
   if (existingIssues.data.total_count > 0) {
     console.log(`An open issue with the title "${title}" already exists.`)
     return
@@ -114,7 +112,6 @@ const createIssue = async (path: string, missing: Record<string, string[]>) => {
     repo,
     title,
     body,
-    labels: ["enhancement"],
   })
 }
 
