@@ -1,4 +1,4 @@
-import { X } from "@yamada-ui/lucide"
+import { XIcon } from "@yamada-ui/lucide"
 import {
   forwardRef,
   handlerAll,
@@ -104,7 +104,7 @@ export const ComponentCodePreview = memo(
                   variant="ghost"
                   color="muted"
                   fontSize="lg"
-                  icon={<X />}
+                  icon={<XIcon />}
                   onClick={onCodePreviewClose}
                 />
               ) : null}
