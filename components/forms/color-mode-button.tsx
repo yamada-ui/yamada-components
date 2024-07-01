@@ -1,4 +1,4 @@
-import { Moon, Sun } from "@yamada-ui/lucide"
+import { MoonIcon, SunIcon } from "@yamada-ui/lucide"
 import type { IconButtonProps, MenuProps, ColorMode } from "@yamada-ui/react"
 import {
   IconButton,
@@ -48,9 +48,9 @@ export const ColorModeButton: FC<ColorModeButtonProps> = memo(
           color="muted"
           icon={
             colorMode === "dark" ? (
-              <Sun fontSize="2xl" />
+              <SunIcon fontSize="2xl" />
             ) : (
-              <Moon fontSize="2xl" />
+              <MoonIcon fontSize="2xl" />
             )
           }
           {...rest}
