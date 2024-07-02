@@ -39,7 +39,7 @@ const QuestProgress: FC = () => {
         <Text>Time remaining：12hours</Text>
       </HStack>
       {mockDatas.map((data, i) => (
-        <Card flexDir="row" key={i}>
+        <Card flexDir="row" key={`${data.content}-${i}`}>
           <VStack>
             <CardHeader fontSize="lg">
               {i + 1}. {data.content}
