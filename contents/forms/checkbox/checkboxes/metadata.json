@@ -1,0 +1,13 @@
+{
+  "en": {
+    "title": "チェックボクシズ",
+    "description": "複数のチェックボックスをグループ化した基本的なチェックボックスグループです。"
+  },
+  "ja": {
+    "title": "Checkboxes",
+    "description": "A basic checkbox group, which groups several checkboxes."
+  },
+  "options": {
+    "container": { "centerContent": true, "p": "xl" }
+  }
+}
