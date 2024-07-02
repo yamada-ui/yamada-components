@@ -13,19 +13,19 @@ import {
 } from "@yamada-ui/react"
 import type { FC } from "react"
 
-const mockDatas = [
+const mockData = [
   {
-    content: "Solve 5 question",
+    content: "Solve 5 questions",
     current: 5,
     max: 5,
   },
   {
-    content: "Solve 10 question",
+    content: "Solve 10 questions",
     current: 10,
     max: 10,
   },
   {
-    content: "Solve 15 question",
+    content: "Solve 15 questions",
     current: 12,
     max: 15,
   },
@@ -33,12 +33,12 @@ const mockDatas = [
 
 const QuestProgress: FC = () => {
   return (
-    <Container m="auto">
+    <Container borderBlock="solid">
       <Heading>Daily Quests</Heading>
       <HStack justifyContent="end">
-        <Text>Time remaining：12hours</Text>
+        <Text>Time remaining: 12 hours</Text>
       </HStack>
-      {mockDatas.map((data, i) => (
+      {mockData.map((data, i) => (
         <Card flexDir="row" key={`${data.content}-${i}`}>
           <VStack>
             <CardHeader fontSize="lg">
