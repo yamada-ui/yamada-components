@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Quest Progress",
+    "description": "Quest progress bar"
+  },
+  "ja": {
+    "title": "クエストプログレス",
+    "description": "クエストのプログレスバー"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
