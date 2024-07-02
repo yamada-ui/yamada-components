@@ -1,4 +1,9 @@
-import { Code, Download, ExternalLink, Eye } from "@yamada-ui/lucide"
+import {
+  CodeIcon,
+  DownloadIcon,
+  ExternalLinkIcon,
+  EyeIcon,
+} from "@yamada-ui/lucide"
 import {
   assignRef,
   Flex,
@@ -84,7 +89,7 @@ export const ComponentCard = memo(
                 display={{ base: "flex", sm: "none" }}
                 borderColor="border"
                 color="muted"
-                icon={<Download fontSize="md" />}
+                icon={<DownloadIcon fontSize="md" />}
                 onClick={() => onDownload()}
               />
 
@@ -96,7 +101,7 @@ export const ComponentCard = memo(
                 size="sm"
                 borderColor="border"
                 color="muted"
-                icon={<ExternalLink fontSize="md" />}
+                icon={<ExternalLinkIcon fontSize="md" />}
               />
 
               <NextLinkIconButton
@@ -146,14 +151,14 @@ const ViewModeControl: FC<ViewModeControlProps> = memo(
       >
         <SegmentedControlButton value="preview">
           <Flex alignItems="center" gap="sm">
-            <Eye fontSize="md" color="muted" />
+            <EyeIcon fontSize="md" color="muted" />
             <Text display={{ base: "inline", md: "none" }}>Preview</Text>
           </Flex>
         </SegmentedControlButton>
 
         <SegmentedControlButton value="code">
           <Flex alignItems="center" gap="sm">
-            <Code fontSize="md" color="muted" />
+            <CodeIcon fontSize="md" color="muted" />
             <Text display={{ base: "inline", md: "none" }}>Code</Text>
           </Flex>
         </SegmentedControlButton>
