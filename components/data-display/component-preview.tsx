@@ -1,12 +1,20 @@
+import createEmotionCache from "@emotion/cache"
+import { CacheProvider } from "@emotion/react"
+import weakMemoize from "@emotion/weak-memoize"
 import {
   Box,
   Center,
   extendConfig,
   forwardRef,
   Loading,
-  UIProvider,
   useAsync,
+  ui,
+  createColorModeManager,
+  createThemeSchemeManager,
+  ColorModeScript,
+  ThemeSchemeScript,
 } from "@yamada-ui/react"
+import * as UIComponents from "@yamada-ui/react"
 import type {
   BoxProps,
   Dict,
@@ -15,14 +23,40 @@ import type {
   ThemeConfig,
 } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
-import { memo, useMemo } from "react"
+import type { FC } from "react"
+import { memo, useEffect, useMemo, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import type { Component, ComponentContainerProps } from "component"
+import { theme as defaultTheme, config as defaultConfig } from "theme"
+
+const UIProvider: FC<UIComponents.UIProviderProps> = ({
+  theme = defaultTheme,
+  config = defaultConfig,
+  children,
+}) => {
+  return (
+    <UIComponents.ThemeProvider theme={theme} config={config}>
+      <UIComponents.LoadingProvider {...config.loading}>
+        <UIComponents.ResetStyle />
+        <UIComponents.GlobalStyle />
+
+        {children}
+
+        <UIComponents.NoticeProvider {...config.notice} />
+      </UIComponents.LoadingProvider>
+    </UIComponents.ThemeProvider>
+  )
+}
 
 export type ComponentPreviewProps = BoxProps &
   Pick<Component, "paths"> & {
     containerProps?: ComponentContainerProps
     loadingProps?: LoadingProps
   }
+
+const createCache = weakMemoize((container: Node) =>
+  createEmotionCache({ container, key: "iframe-css" }),
+)
 
 export const ComponentPreview = memo(
   forwardRef<ComponentPreviewProps, "div">(
@@ -31,6 +65,33 @@ export const ComponentPreview = memo(
       ref,
     ) => {
       const Component = dynamic(() => import(`/contents/${paths.component}`))
+
+      const colorModeManager = createColorModeManager("ssr")
+      const themeSchemeManager = createThemeSchemeManager("ssr")
+
+      const iframeRef = useRef<HTMLIFrameElement>(null)
+      const headRef = useRef<HTMLHeadElement | null>(null)
+      const bodyRef = useRef<HTMLElement | null>(null)
+      const head = headRef.current
+      const body = bodyRef.current
+      const [, forceUpdate] = useState({})
+
+      useEffect(() => {
+        if (!iframeRef.current) return
+
+        const iframe = iframeRef.current
+
+        headRef.current = iframe.contentDocument?.head ?? null
+        bodyRef.current = iframe.contentDocument?.body ?? null
+
+        document
+          .querySelectorAll('style, link[rel="stylesheet"]')
+          .forEach((style) => {
+            headRef?.current?.appendChild(style.cloneNode(true))
+          })
+
+        forceUpdate({})
+      }, [])
 
       const { loading, value } = useAsync(async () => {
         let theme: Dict | undefined
@@ -60,6 +121,7 @@ export const ComponentPreview = memo(
           w: "full",
           h: "full",
           containerType: "inline-size",
+          overflow: "auto",
           ...rest,
         }
 
@@ -76,25 +138,57 @@ export const ComponentPreview = memo(
       }, [_containerProps])
 
       return (
-        <Center
-          ref={ref}
-          flexDirection="column"
-          boxSize="full"
-          minH="48"
-          {...rest}
+        <ui.iframe
+          title="component-preview-iframe"
+          ref={iframeRef}
+          w="full"
+          minH="md"
+          h="full"
+          display={rest.display}
         >
-          <UIProvider {...value}>
-            {!loading ? (
-              <Box boxSize="full" flex="1" {...containerProps}>
-                <Component />
-              </Box>
-            ) : (
-              <Center boxSize="full" flex="1">
-                <Loading size="6xl" {...loadingProps} />
-              </Center>
-            )}
-          </UIProvider>
-        </Center>
+          {head && body
+            ? createPortal(
+                <>
+                  <ColorModeScript
+                    type="cookie"
+                    nonce="testing"
+                    initialColorMode={defaultConfig.initialColorMode}
+                  />
+                  <ThemeSchemeScript
+                    type="cookie"
+                    nonce="testing"
+                    initialThemeScheme={defaultConfig.initialThemeScheme}
+                  />
+                  <CacheProvider value={createCache(head)}>
+                    <UIProvider
+                      {...value}
+                      colorModeManager={colorModeManager}
+                      themeSchemeManager={themeSchemeManager}
+                    >
+                      <Center
+                        ref={ref}
+                        flexDirection="column"
+                        boxSize="full"
+                        minH="48"
+                        {...rest}
+                      >
+                        {!loading ? (
+                          <Box boxSize="full" flex="1" {...containerProps}>
+                            <Component />
+                          </Box>
+                        ) : (
+                          <Center boxSize="full" flex="1">
+                            <Loading size="6xl" {...loadingProps} />
+                          </Center>
+                        )}
+                      </Center>
+                    </UIProvider>
+                  </CacheProvider>
+                </>,
+                body,
+              )
+            : undefined}
+        </ui.iframe>
       )
     },
   ),
