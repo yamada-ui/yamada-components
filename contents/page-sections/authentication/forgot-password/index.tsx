@@ -1,4 +1,4 @@
-import { ArrowLeft as ArrowLeftIcon } from "@yamada-ui/lucide"
+import { ArrowLeftIcon } from "@yamada-ui/lucide"
 import {
   Button,
   Card,
