@@ -9,18 +9,21 @@ import {
   Loading,
   useAsync,
   ui,
-  createColorModeManager,
-  createThemeSchemeManager,
-  ColorModeScript,
-  ThemeSchemeScript,
+  ThemeProvider,
+  LoadingProvider,
+  ResetStyle,
+  GlobalStyle,
+  NoticeProvider,
+  useColorMode,
+  useTheme,
 } from "@yamada-ui/react"
-import * as UIComponents from "@yamada-ui/react"
 import type {
   BoxProps,
   Dict,
   HTMLUIProps,
   LoadingProps,
   ThemeConfig,
+  UIProviderProps,
 } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import type { FC } from "react"
@@ -29,22 +32,22 @@ import { createPortal } from "react-dom"
 import type { Component, ComponentContainerProps } from "component"
 import { theme as defaultTheme, config as defaultConfig } from "theme"
 
-const UIProvider: FC<UIComponents.UIProviderProps> = ({
+const UIProvider: FC<UIProviderProps> = ({
   theme = defaultTheme,
   config = defaultConfig,
   children,
 }) => {
   return (
-    <UIComponents.ThemeProvider theme={theme} config={config}>
-      <UIComponents.LoadingProvider {...config.loading}>
-        <UIComponents.ResetStyle />
-        <UIComponents.GlobalStyle />
+    <ThemeProvider theme={theme} config={config}>
+      <LoadingProvider {...config.loading}>
+        <ResetStyle />
+        <GlobalStyle />
 
         {children}
 
-        <UIComponents.NoticeProvider {...config.notice} />
-      </UIComponents.LoadingProvider>
-    </UIComponents.ThemeProvider>
+        <NoticeProvider {...config.notice} />
+      </LoadingProvider>
+    </ThemeProvider>
   )
 }
 
@@ -66,9 +69,8 @@ export const ComponentPreview = memo(
     ) => {
       const Component = dynamic(() => import(`/contents/${paths.component}`))
 
-      const colorModeManager = createColorModeManager("ssr")
-      const themeSchemeManager = createThemeSchemeManager("ssr")
-
+      const { colorMode } = useColorMode()
+      const { themeScheme } = useTheme()
       const iframeRef = useRef<HTMLIFrameElement>(null)
       const headRef = useRef<HTMLHeadElement | null>(null)
       const bodyRef = useRef<HTMLElement | null>(null)
@@ -84,14 +86,20 @@ export const ComponentPreview = memo(
         headRef.current = iframe.contentDocument?.head ?? null
         bodyRef.current = iframe.contentDocument?.body ?? null
 
-        document
-          .querySelectorAll('style, link[rel="stylesheet"]')
-          .forEach((style) => {
-            headRef?.current?.appendChild(style.cloneNode(true))
-          })
-
         forceUpdate({})
       }, [])
+
+      useEffect(() => {
+        if (!iframeRef.current) return
+
+        const iframe = iframeRef.current
+
+        if (iframe.contentDocument) {
+          iframe.contentDocument.documentElement.dataset.mode = colorMode
+          iframe.contentDocument.documentElement.dataset.theme = themeScheme
+          iframe.contentDocument.documentElement.style.colorScheme = colorMode
+        }
+      }, [colorMode, themeScheme])
 
       const { loading, value } = useAsync(async () => {
         let theme: Dict | undefined
@@ -149,22 +157,8 @@ export const ComponentPreview = memo(
           {head && body
             ? createPortal(
                 <>
-                  <ColorModeScript
-                    type="cookie"
-                    nonce="testing"
-                    initialColorMode={defaultConfig.initialColorMode}
-                  />
-                  <ThemeSchemeScript
-                    type="cookie"
-                    nonce="testing"
-                    initialThemeScheme={defaultConfig.initialThemeScheme}
-                  />
                   <CacheProvider value={createCache(head)}>
-                    <UIProvider
-                      {...value}
-                      colorModeManager={colorModeManager}
-                      themeSchemeManager={themeSchemeManager}
-                    >
+                    <UIProvider {...value}>
                       <Center
                         ref={ref}
                         flexDirection="column"

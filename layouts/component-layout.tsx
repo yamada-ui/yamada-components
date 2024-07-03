@@ -102,7 +102,7 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
       setCodeDirection(codeDirection)
     }
 
-    screen?.finish()
+    screen.finish()
   }, [isMounted])
 
   return (
