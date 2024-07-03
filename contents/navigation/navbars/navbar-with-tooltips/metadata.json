@@ -1,11 +1,11 @@
 {
   "en": {
-    "title": "NavbarWithTooltips",
-    "description": ""
+    "title": "Navbar With Tooltips",
+    "description": "Navigation bar with tooltips implemented"
   },
   "ja": {
     "title": "ツールチップナビゲーションバー",
-    "description": ""
+    "description": "ツールチップを実装したナビゲーションバー"
   },
   "order": 3
 }
