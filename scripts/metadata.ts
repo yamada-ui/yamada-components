@@ -220,6 +220,7 @@ const createIssue = async (
     repo,
     title,
     body,
+    labels: ["good first issue"],
   })
 }
 
