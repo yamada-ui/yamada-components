@@ -1,6 +1,12 @@
 {
-  "en": { "title": "Page Sections", "description": "" },
-  "ja": { "title": "ページセクション", "description": "" },
+  "en": {
+    "title": "Page Sections",
+    "description": "There are components available that combine multiple components to create a single section of functionality, such as authentication and error pages."
+  },
+  "ja": {
+    "title": "ページセクション",
+    "description": "認証やエラーページなど、複数のコンポーネントを使用して1セクションの機能としたコンポーネントが用意されています。"
+  },
   "icon": "layout-template",
   "order": 9,
   "authors": [
