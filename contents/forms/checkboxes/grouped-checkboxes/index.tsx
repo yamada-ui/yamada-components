@@ -1,7 +1,7 @@
 import { Checkbox, CheckboxGroup } from "@yamada-ui/react"
 import type { FC } from "react"
 
-const Checkboxes: FC = () => {
+const GroupedCheckboxes: FC = () => {
   return (
     <CheckboxGroup>
       <Checkbox>Yamada UI</Checkbox>
@@ -11,4 +11,4 @@ const Checkboxes: FC = () => {
   )
 }
 
-export default Checkboxes
+export default GroupedCheckboxes
