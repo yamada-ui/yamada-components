@@ -1,4 +1,4 @@
-import { ArrowLeft } from "@yamada-ui/lucide"
+import { ArrowLeftIcon } from "@yamada-ui/lucide"
 import {
   Button,
   Card,
@@ -63,7 +63,7 @@ const AuthenticationForm: FC = () => {
             display="flex"
             _hover={{ textDecoration: "none" }}
           >
-            <ArrowLeft mr="xs" />
+            <ArrowLeftIcon mr="xs" />
             Back to the login page
           </Link>
           <Spacer _container={[{ maxW: "400px", css: { display: "none" } }]} />

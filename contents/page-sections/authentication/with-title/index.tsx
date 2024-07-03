@@ -1,4 +1,4 @@
-import { Eye, EyeOff } from "@yamada-ui/lucide"
+import { EyeIcon, EyeOffIcon } from "@yamada-ui/lucide"
 import {
   Button,
   Card,
@@ -74,7 +74,7 @@ const AuthenticationForm: FC = () => {
                   onClick={toggle}
                   variant="ghost"
                 >
-                  {show ? <EyeOff /> : <Eye />}
+                  {show ? <EyeOffIcon /> : <EyeIcon />}
                 </Button>
               </InputRightElement>
             </InputGroup>
