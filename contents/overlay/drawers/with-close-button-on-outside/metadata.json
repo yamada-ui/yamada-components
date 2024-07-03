@@ -11,6 +11,7 @@
     "container": {
       "centerContent": true,
       "p": "md"
-    }
+    },
+    "iframe": true
   }
 }

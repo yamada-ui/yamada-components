@@ -16,6 +16,7 @@ import {
   NoticeProvider,
   useColorMode,
   useTheme,
+  UIProvider,
 } from "@yamada-ui/react"
 import type {
   BoxProps,
@@ -32,7 +33,7 @@ import { createPortal } from "react-dom"
 import type { Component, ComponentContainerProps } from "component"
 import { theme as defaultTheme, config as defaultConfig } from "theme"
 
-const UIProvider: FC<UIProviderProps> = ({
+const CustomUIProvider: FC<UIProviderProps> = ({
   theme = defaultTheme,
   config = defaultConfig,
   children,
@@ -55,6 +56,7 @@ export type ComponentPreviewProps = BoxProps &
   Pick<Component, "paths"> & {
     containerProps?: ComponentContainerProps
     loadingProps?: LoadingProps
+    iframe?: boolean
   }
 
 const createCache = weakMemoize((container: Node) =>
@@ -64,7 +66,7 @@ const createCache = weakMemoize((container: Node) =>
 export const ComponentPreview = memo(
   forwardRef<ComponentPreviewProps, "div">(
     (
-      { paths, containerProps: _containerProps, loadingProps, ...rest },
+      { paths, containerProps: _containerProps, loadingProps, iframe, ...rest },
       ref,
     ) => {
       const Component = dynamic(() => import(`/contents/${paths.component}`))
@@ -129,7 +131,6 @@ export const ComponentPreview = memo(
           w: "full",
           h: "full",
           containerType: "inline-size",
-          overflow: "auto",
           ...rest,
         }
 
@@ -145,7 +146,7 @@ export const ComponentPreview = memo(
         return props
       }, [_containerProps])
 
-      return (
+      return iframe ? (
         <ui.iframe
           title="component-preview-iframe"
           ref={iframeRef}
@@ -158,7 +159,7 @@ export const ComponentPreview = memo(
             ? createPortal(
                 <>
                   <CacheProvider value={createCache(head)}>
-                    <UIProvider {...value}>
+                    <CustomUIProvider {...value}>
                       <Center
                         ref={ref}
                         flexDirection="column"
@@ -176,13 +177,33 @@ export const ComponentPreview = memo(
                           </Center>
                         )}
                       </Center>
-                    </UIProvider>
+                    </CustomUIProvider>
                   </CacheProvider>
                 </>,
                 body,
               )
             : undefined}
         </ui.iframe>
+      ) : (
+        <Center
+          ref={ref}
+          flexDirection="column"
+          boxSize="full"
+          minH="48"
+          {...rest}
+        >
+          <UIProvider {...value}>
+            {!loading ? (
+              <Box boxSize="full" flex="1" {...containerProps}>
+                <Component />
+              </Box>
+            ) : (
+              <Center boxSize="full" flex="1">
+                <Loading size="6xl" {...loadingProps} />
+              </Center>
+            )}
+          </UIProvider>
+        </Center>
       )
     },
   ),
