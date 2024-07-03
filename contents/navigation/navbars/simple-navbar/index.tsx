@@ -1,13 +1,13 @@
 import {
-  ArrowRightLeft,
-  BellRing,
-  Database,
-  Fingerprint,
-  Key,
-  LogOut,
-  Receipt,
-  Settings,
-  Users,
+  ArrowRightLeftIcon,
+  BellRingIcon,
+  DatabaseIcon,
+  FingerprintIcon,
+  KeyIcon,
+  LogOutIcon,
+  ReceiptIcon,
+  SettingsIcon,
+  UsersIcon,
 } from "@yamada-ui/lucide"
 import {
   Badge,
@@ -22,13 +22,13 @@ import {
 import { useState, type FC } from "react"
 
 const data = [
-  { link: "", label: "Notifications", icon: BellRing },
-  { link: "", label: "Billing", icon: Receipt },
-  { link: "", label: "Security", icon: Fingerprint },
-  { link: "", label: "SSH Keys", icon: Key },
-  { link: "", label: "Databases", icon: Database },
-  { link: "", label: "Authentication", icon: Users },
-  { link: "", label: "Other Settings", icon: Settings },
+  { link: "", label: "Notifications", icon: BellRingIcon },
+  { link: "", label: "Billing", icon: ReceiptIcon },
+  { link: "", label: "Security", icon: FingerprintIcon },
+  { link: "", label: "SSH Keys", icon: KeyIcon },
+  { link: "", label: "Databases", icon: DatabaseIcon },
+  { link: "", label: "Authentication", icon: UsersIcon },
+  { link: "", label: "Other Settings", icon: SettingsIcon },
 ]
 
 const SimpleNavbar: FC = () => {
@@ -115,7 +115,7 @@ const SimpleNavbar: FC = () => {
             textDecor: "none",
           }}
         >
-          <ArrowRightLeft />
+          <ArrowRightLeftIcon />
           <Text>Change account</Text>
         </Button>
 
@@ -131,7 +131,7 @@ const SimpleNavbar: FC = () => {
             textDecor: "none",
           }}
         >
-          <LogOut />
+          <LogOutIcon />
           <Text>Logout</Text>
         </Button>
       </Box>
