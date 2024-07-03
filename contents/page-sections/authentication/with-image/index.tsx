@@ -1,4 +1,4 @@
-import { Eye as EyeIcon, EyeOff as EyeOffIcon } from "@yamada-ui/lucide";
+import { EyeIcon, EyeOffIcon } from "@yamada-ui/lucide"
 import {
   Box,
   Button,
