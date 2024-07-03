@@ -33,13 +33,13 @@ const mockData = [
 
 const QuestProgress: FC = () => {
   return (
-    <Container borderBlock="solid">
+    <Container>
       <Heading>Daily Quests</Heading>
       <HStack justifyContent="end">
         <Text>Time remaining: 12 hours</Text>
       </HStack>
       {mockData.map((data, i) => (
-        <Card flexDir="row" key={`${data.content}-${i}`}>
+        <Card flexDir="row" key={`${data.content}-${i}`} variant="subtle">
           <VStack>
             <CardHeader fontSize="lg">
               {i + 1}. {data.content}
