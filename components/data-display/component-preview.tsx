@@ -157,29 +157,27 @@ export const ComponentPreview = memo(
         >
           {head && body
             ? createPortal(
-                <>
-                  <CacheProvider value={createCache(head)}>
-                    <CustomUIProvider {...value}>
-                      <Center
-                        ref={ref}
-                        flexDirection="column"
-                        boxSize="full"
-                        minH="48"
-                        {...rest}
-                      >
-                        {!loading ? (
-                          <Box boxSize="full" flex="1" {...containerProps}>
-                            <Component />
-                          </Box>
-                        ) : (
-                          <Center boxSize="full" flex="1">
-                            <Loading size="6xl" {...loadingProps} />
-                          </Center>
-                        )}
-                      </Center>
-                    </CustomUIProvider>
-                  </CacheProvider>
-                </>,
+                <CacheProvider value={createCache(head)}>
+                  <CustomUIProvider {...value}>
+                    <Center
+                      ref={ref}
+                      flexDirection="column"
+                      boxSize="full"
+                      minH="48"
+                      {...rest}
+                    >
+                      {!loading ? (
+                        <Box boxSize="full" flex="1" {...containerProps}>
+                          <Component />
+                        </Box>
+                      ) : (
+                        <Center boxSize="full" flex="1">
+                          <Loading size="6xl" {...loadingProps} />
+                        </Center>
+                      )}
+                    </Center>
+                  </CustomUIProvider>
+                </CacheProvider>,
                 body,
               )
             : undefined}
