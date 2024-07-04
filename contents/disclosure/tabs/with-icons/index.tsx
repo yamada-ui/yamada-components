@@ -1,4 +1,4 @@
-import { Building2, CreditCard, UserRound, Users } from "@yamada-ui/lucide"
+import { Building2Icon, CreditCardIcon, UserRoundIcon, UsersIcon } from "@yamada-ui/lucide"
 import { Tab, Tabs } from "@yamada-ui/react"
 import type { FC } from "react"
 
@@ -6,19 +6,19 @@ const WithIcons: FC = () => {
   return (
     <Tabs>
       <Tab gap="sm">
-        <UserRound />
+        <UserRoundIcon />
         My Account
       </Tab>
       <Tab gap="sm">
-        <Building2 />
+        <Building2Icon />
         Company
       </Tab>
       <Tab gap="sm">
-        <Users />
+        <UsersIcon />
         Team Members
       </Tab>
       <Tab gap="sm">
-        <CreditCard />
+        <CreditCardIcon />
         Billing
       </Tab>
     </Tabs>
