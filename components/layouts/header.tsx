@@ -1,4 +1,4 @@
-import { Languages, Menu as MenuIcon } from "@yamada-ui/lucide"
+import { LanguagesIcon, MenuIcon } from "@yamada-ui/lucide"
 import type {
   CenterProps,
   IconButtonProps,
@@ -227,7 +227,7 @@ const I18nButton: FC<I18nButtonProps> = memo(({ menuProps, ...rest }) => {
         aria-label="Open language switching menu"
         variant="ghost"
         color="muted"
-        icon={<Languages fontSize="2xl" />}
+        icon={<LanguagesIcon fontSize="2xl" />}
         {...rest}
       />
 
