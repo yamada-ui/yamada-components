@@ -1,4 +1,4 @@
-import { Download, Users, Menu } from "@yamada-ui/lucide"
+import { DownloadIcon, UsersIcon, MenuIcon } from "@yamada-ui/lucide"
 import {
   Avatar,
   Center,
@@ -147,7 +147,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
           variant="ghost"
           color="muted"
           display={{ base: "inline-flex", md: "none" }}
-          icon={<Download fontSize="2xl" />}
+          icon={<DownloadIcon fontSize="2xl" />}
           onClick={() => onDownload()}
         />
 
@@ -174,7 +174,7 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
             display={{ base: "none", md: "inline-flex" }}
             color="muted"
             onClick={onOpen}
-            icon={<Menu fontSize="2xl" />}
+            icon={<MenuIcon fontSize="2xl" />}
           />
         ) : (
           <CloseButton
@@ -208,7 +208,7 @@ const AuthorsButton: FC<AuthorsButtonProps> = memo(
           aria-label="Download the files"
           variant="ghost"
           color="muted"
-          icon={<Users fontSize="2xl" />}
+          icon={<UsersIcon fontSize="2xl" />}
           onClick={onOpen}
           {...rest}
         />
