@@ -1,8 +1,8 @@
 import {
-  LayoutList,
-  PanelsTopLeft,
-  Search as SearchIcon,
-  ExternalLink,
+  LayoutListIcon,
+  PanelsTopLeftIcon,
+  SearchIcon,
+  ExternalLinkIcon,
 } from "@yamada-ui/lucide"
 import {
   ui,
@@ -340,13 +340,13 @@ const SearchModal: FC<SearchModalProps> = memo(
                   >
                     {type === "component" ? (
                       <Icon
-                        as={PanelsTopLeft}
+                        as={PanelsTopLeftIcon}
                         fontSize="2xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
                     ) : (
                       <Icon
-                        as={LayoutList}
+                        as={LayoutListIcon}
                         fontSize="2xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
@@ -399,7 +399,7 @@ const SearchModal: FC<SearchModalProps> = memo(
                     </VStack>
 
                     {type === "component" ? (
-                      <ExternalLink
+                      <ExternalLinkIcon
                         fontSize="xl"
                         color={["blackAlpha.700", "whiteAlpha.600"]}
                       />
