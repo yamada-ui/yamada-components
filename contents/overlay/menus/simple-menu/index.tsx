@@ -1,4 +1,4 @@
-import { ChevronDown } from "@yamada-ui/lucide"
+import { ChevronDownIcon } from "@yamada-ui/lucide"
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@yamada-ui/react"
 import type { FC } from "react"
 
@@ -14,7 +14,7 @@ const items = [
 const SimpleMenu: FC = () => {
   return (
     <Menu>
-      <MenuButton as={Button} variant="ghost" rightIcon={<ChevronDown />}>
+      <MenuButton as={Button} variant="ghost" rightIcon={<ChevronDownIcon />}>
         Solutions
       </MenuButton>
 
