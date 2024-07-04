@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Youtube } from "@yamada-ui/lucide"
+import { InstagramIcon, TwitterIcon, YoutubeIcon } from "@yamada-ui/lucide"
 import {
   ButtonGroup,
   Divider,
@@ -37,12 +37,12 @@ const FooterCentered: FC = () => {
           <Text fontSize="lg">Yamada UI</Text>
         </HStack>
         <ButtonGroup>
-          <IconButton variant="ghost" borderRadius="full" icon={<Twitter />} />
-          <IconButton variant="ghost" borderRadius="full" icon={<Youtube />} />
+          <IconButton variant="ghost" borderRadius="full" icon={<TwitterIcon />} />
+          <IconButton variant="ghost" borderRadius="full" icon={<YoutubeIcon />} />
           <IconButton
             variant="ghost"
             borderRadius="full"
-            icon={<Instagram />}
+            icon={<InstagramIcon />}
           />
         </ButtonGroup>
       </Flex>

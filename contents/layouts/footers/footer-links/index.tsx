@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Youtube } from "@yamada-ui/lucide"
+import { InstagramIcon, TwitterIcon, YoutubeIcon } from "@yamada-ui/lucide"
 import {
   Text,
   Flex,
@@ -165,17 +165,17 @@ const FooterLinks: FC = () => {
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<Twitter />}
+              icon={<TwitterIcon />}
             />
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<Youtube />}
+              icon={<YoutubeIcon />}
             />
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<Instagram />}
+              icon={<InstagramIcon />}
             />
           </ButtonGroup>
         </Flex>
