@@ -187,6 +187,7 @@ const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
         <ComponentPreview
           paths={paths}
           containerProps={metadata?.options?.container}
+          iframe={metadata?.options?.iframe}
           display={mode === "preview" ? "flex" : "none"}
           z="1"
         />
