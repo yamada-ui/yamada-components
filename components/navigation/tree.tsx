@@ -1,17 +1,17 @@
 import {
-  Compass,
-  ExternalLink,
-  GitPullRequestArrow,
-  Layers,
-  LayoutTemplate,
-  LineChart,
-  Navigation,
-  Paintbrush,
-  PanelsTopLeft,
-  Table,
-  Tags,
-  TextCursorInput,
-  Text as TextIcon,
+  CompassIcon,
+  ExternalLinkIcon,
+  GitPullRequestArrowIcon,
+  LayersIcon,
+  LayoutTemplateIcon,
+  LineChartIcon,
+  NavigationIcon,
+  PaintbrushIcon,
+  PanelsTopLeftIcon,
+  TableIcon,
+  TagsIcon,
+  TextCursorInputIcon,
+  TextIcon,
 } from "@yamada-ui/lucide"
 import {
   Center,
@@ -211,7 +211,7 @@ const ListItemLink: FC<ListItemLinkProps> = memo(
             {title}
           </Text>
 
-          {isComponent ? <ExternalLink fontSize="1.25em" /> : null}
+          {isComponent ? <ExternalLinkIcon fontSize="1.25em" /> : null}
         </Text>
 
         {withToggleButton ? (
@@ -247,43 +247,43 @@ type ListItemIconProps = { icon?: string | null } & IconProps
 const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
   switch (icon) {
     case "compass":
-      return <Compass fontSize="2xl" {...rest} />
+      return <CompassIcon fontSize="2xl" {...rest} />
 
     case "panels-top-left":
-      return <PanelsTopLeft fontSize="2xl" {...rest} />
+      return <PanelsTopLeftIcon fontSize="2xl" {...rest} />
 
     case "text-cursor-input":
-      return <TextCursorInput fontSize="2xl" {...rest} />
+      return <TextCursorInputIcon fontSize="2xl" {...rest} />
 
     case "layout-template":
-      return <LayoutTemplate fontSize="2xl" {...rest} />
+      return <LayoutTemplateIcon fontSize="2xl" {...rest} />
 
     case "line-chart":
-      return <LineChart fontSize="2xl" {...rest} />
+      return <LineChartIcon fontSize="2xl" {...rest} />
 
     case "table":
-      return <Table fontSize="2xl" {...rest} />
+      return <TableIcon fontSize="2xl" {...rest} />
 
     case "layers":
-      return <Layers fontSize="2xl" {...rest} />
+      return <LayersIcon fontSize="2xl" {...rest} />
 
     case "navigation":
-      return <Navigation fontSize="2xl" {...rest} />
+      return <NavigationIcon fontSize="2xl" {...rest} />
 
     case "text":
       return <TextIcon fontSize="2xl" {...rest} />
 
     case "tags":
-      return <Tags fontSize="2xl" {...rest} />
+      return <TagsIcon fontSize="2xl" {...rest} />
 
     case "git-pull-request-arrow":
-      return <GitPullRequestArrow fontSize="2xl" {...rest} />
+      return <GitPullRequestArrowIcon fontSize="2xl" {...rest} />
 
     case "yamada-ui":
       return <YamadaUI boxSize="1.5rem" {...rest} />
 
     case "paintbrush":
-      return <Paintbrush fontSize="2xl" {...rest} />
+      return <PaintbrushIcon fontSize="2xl" {...rest} />
 
     default:
       return <></>
