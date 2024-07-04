@@ -1,10 +1,10 @@
 import {
-  ChevronDown,
-  BarChartHorizontal,
-  MousePointerClick,
-  Fingerprint,
-  Workflow,
-  RefreshCcw,
+  ChevronDownIcon,
+  BarChartHorizontalIcon,
+  MousePointerClickIcon,
+  FingerprintIcon,
+  WorkflowIcon,
+  RefreshCcwIcon,
 } from "@yamada-ui/lucide"
 import {
   Button,
@@ -23,34 +23,34 @@ const items = [
   {
     name: "Analytics",
     description: "Get a better understanding of your traffic",
-    icon: BarChartHorizontal,
+    icon: BarChartHorizontalIcon,
   },
   {
     name: "Engagement",
     description: "Speak directly to your customers",
-    icon: MousePointerClick,
+    icon: MousePointerClickIcon,
   },
   {
     name: "Security",
     description: "Your customers' data will be safe and secure",
-    icon: Fingerprint,
+    icon: FingerprintIcon,
   },
   {
     name: "Integrations",
     description: "Connect with third-party tools",
-    icon: Workflow,
+    icon: WorkflowIcon,
   },
   {
     name: "Automations",
     description: "Build strategic funnels that will convert",
-    icon: RefreshCcw,
+    icon: RefreshCcwIcon,
   },
 ]
 
 const MenuWithIcon: FC = () => {
   return (
     <Menu>
-      <MenuButton as={Button} variant="ghost" rightIcon={<ChevronDown />}>
+      <MenuButton as={Button} variant="ghost" rightIcon={<ChevronDownIcon />}>
         Solutions
       </MenuButton>
 
