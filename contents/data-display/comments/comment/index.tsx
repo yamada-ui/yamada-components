@@ -11,15 +11,15 @@ export const Comment: FC = () => {
                   "avatar user empty"
                   "avatar content content"
                 `,
-            md: `
+            sm: `
                   "avatar user empty"
                   "content content content"
                 `,
           }}
           gap="sm"
-          placeItems={{ base: "start", md: "center" }}
+          placeItems={{ base: "start", sm: "center" }}
         >
-          <GridItem area="avatar" pr={{ base: "sm", md: "xs" }}>
+          <GridItem area="avatar" pr={{ base: "sm", sm: "xs" }}>
             <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />
           </GridItem>
           <GridItem area="user">
