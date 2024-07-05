@@ -61,9 +61,7 @@ const ProfileSkeleton: FC = () => {
           <SkeletonText isLoaded={isLoaded} fadeDuration={2}>
             <SkeletonText isLoaded={isLoaded} lineClamp={1} textHeight={6}>
               <Text fontSize="md">
-                フロントエンドとバックエンドを勉強している
-                <br />
-                大学生エンジニアです。
+                A student engineer who is studying front-end and back-end.
               </Text>
             </SkeletonText>
           </SkeletonText>
