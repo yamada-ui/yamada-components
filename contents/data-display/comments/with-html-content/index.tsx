@@ -14,29 +14,20 @@ export const CommentWithHTMLContent: FC = () => {
     <Card variant="outline" maxW="md">
       <CardBody>
         <Grid
-          templateAreas={`
-            "avatar user empty"
-            "avatar content content"
-          `}
-          gap="sm"
-          _container={[
-            {
-              maxW: "300px",
-              css: {
-                gridTemplateAreas: `
+          templateAreas={{
+            base: `
+                  "avatar user empty"
+                  "avatar content content"
+                `,
+            md: `
                   "avatar user empty"
                   "content content content"
                 `,
-                placeItems: "center",
-              },
-            },
-          ]}
+          }}
+          gap="sm"
+          placeItems={{ base: "start", md: "center" }}
         >
-          <GridItem
-            area="avatar"
-            pr="sm"
-            _container={[{ maxW: "300px", css: { pr: "xs" } }]}
-          >
+          <GridItem area="avatar" pr={{ base: "sm", md: "xs" }}>
             <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />
           </GridItem>
           <GridItem area="user" placeItems="center">
