@@ -1,4 +1,4 @@
-import { GripVertical } from "@yamada-ui/lucide"
+import { GripVerticalIcon } from "@yamada-ui/lucide"
 import {
   HStack,
   Reorder,
@@ -49,7 +49,7 @@ const WithHandle: FC = () => {
         <ReorderItem key={item.name} value={item.name}>
           <HStack gap="0">
             <ReorderTrigger ml="md" justifyContent="center">
-              <GripVertical color="gray" size="xl" />
+              <GripVerticalIcon color="gray" size="xl" />
             </ReorderTrigger>
             <Text
               fontSize="5xl"
