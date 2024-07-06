@@ -92,8 +92,19 @@ const MailItem: FC<{
       </ContextMenuTrigger>
 
       <MenuList>
-        <MenuItem onClick={handleDelete}>Delete</MenuItem>
-        <MenuItem onClick={handleArchive}>
+        <MenuItem icon={<TrashIcon color="danger" />} onClick={handleDelete}>
+          Delete
+        </MenuItem>
+        <MenuItem
+          icon={
+            isArchived ? (
+              <ArchiveRestoreIcon color="success" />
+            ) : (
+              <ArchiveIcon color="danger" />
+            )
+          }
+          onClick={handleArchive}
+        >
           {isArchived ? "Remove Archive" : "Archive"}
         </MenuItem>
       </MenuList>
