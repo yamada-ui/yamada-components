@@ -6,31 +6,31 @@ const mailsData = [
   {
     id: 1,
     title: "GitHub",
-    description: "You assigned on review. #905",
+    description: "Your review was requested on #905",
     time: "19:20",
   },
   {
     id: 2,
     title: "GitHub",
-    description: "You assigned on review. #904",
+    description: "Your review was requested on #904",
     time: "19:13",
   },
   {
     id: 3,
     title: "GitHub",
-    description: "You assigned on review. #903",
+    description: "Your review was requested on #903",
     time: "19:10",
   },
   {
     id: 4,
     title: "GitHub",
-    description: "You assigned on review. #902",
+    description: "Your review was requested on #902",
     time: "19:00",
   },
   {
     id: 5,
     title: "GitHub",
-    description: "You assigned on review. #901",
+    description: "Your review was requested on #901",
     time: "18:55",
   },
 ]
