@@ -1,0 +1,13 @@
+{
+  "en": {
+    "title": "Mail Box",
+    "description": "Mailbox context menu"
+  },
+  "ja": {
+    "title": "メールボックス",
+    "description": "メールボックスのコンテキストメニュー"
+  },
+  "options": {
+    "iframe": true
+  }
+}
