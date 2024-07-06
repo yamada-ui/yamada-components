@@ -72,6 +72,7 @@ const MailItem: FC<{
       onOpen={() => {
         setCurrentId(id)
       }}
+      isOpen={id === currentId}
     >
       <ContextMenuTrigger
         as={Center}
@@ -127,10 +128,11 @@ const MailBox: FC = () => {
         w: "full",
         h: "full",
       }}
+      onChange={() => setCurrentId(0)}
     >
       <Tab>Main</Tab>
       <Tab>Archive</Tab>
-      <TabPanel p={0} w="full" h="full">
+      <TabPanel p={0} w="full" h="full" onClick={() => setCurrentId(0)}>
         {mainMails.length > 0 ? (
           mainMails.map((mail) => (
             <MailItem
@@ -158,7 +160,7 @@ const MailBox: FC = () => {
           </Center>
         )}
       </TabPanel>
-      <TabPanel p={0} w="full" h="full">
+      <TabPanel p={0} w="full" h="full" onClick={() => setCurrentId(0)}>
         {archiveMails.length > 0 ? (
           archiveMails.map((mail) => (
             <MailItem
