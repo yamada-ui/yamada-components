@@ -16,7 +16,6 @@ import {
   NoticeProvider,
   useColorMode,
   useTheme,
-  UIProvider,
 } from "@yamada-ui/react"
 import type {
   BoxProps,
@@ -33,7 +32,7 @@ import { createPortal } from "react-dom"
 import type { Component, ComponentContainerProps } from "component"
 import { theme as defaultTheme, config as defaultConfig } from "theme"
 
-const CustomUIProvider: FC<UIProviderProps> = ({
+const UIProvider: FC<UIProviderProps> = ({
   theme = defaultTheme,
   config = defaultConfig,
   children,
@@ -158,7 +157,7 @@ export const ComponentPreview = memo(
           {head && body
             ? createPortal(
                 <CacheProvider value={createCache(head)}>
-                  <CustomUIProvider {...value}>
+                  <UIProvider {...value}>
                     <Center
                       ref={ref}
                       flexDirection="column"
@@ -176,7 +175,7 @@ export const ComponentPreview = memo(
                         </Center>
                       )}
                     </Center>
-                  </CustomUIProvider>
+                  </UIProvider>
                 </CacheProvider>,
                 body,
               )
@@ -190,17 +189,15 @@ export const ComponentPreview = memo(
           minH="48"
           {...rest}
         >
-          <UIProvider {...value}>
-            {!loading ? (
-              <Box boxSize="full" flex="1" {...containerProps}>
-                <Component />
-              </Box>
-            ) : (
-              <Center boxSize="full" flex="1">
-                <Loading size="6xl" {...loadingProps} />
-              </Center>
-            )}
-          </UIProvider>
+          {!loading ? (
+            <Box boxSize="full" flex="1" {...containerProps}>
+              <Component />
+            </Box>
+          ) : (
+            <Center boxSize="full" flex="1">
+              <Loading size="6xl" {...loadingProps} />
+            </Center>
+          )}
         </Center>
       )
     },
