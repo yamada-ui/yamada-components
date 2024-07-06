@@ -108,76 +108,74 @@ const MailBox: FC = () => {
   const [currentId, setCurrentId] = useState<number>(0)
 
   return (
-    <>
-      <Tabs
-        w="full"
-        h="full"
-        tabPanelsProps={{
-          w: "full",
-          h: "full",
-        }}
-      >
-        <Tab>Main</Tab>
-        <Tab>Archive</Tab>
-        <TabPanel p={0} w="full" h="full">
-          {mainMails.length > 0 ? (
-            mainMails.map((mail) => (
-              <MailItem
-                key={mail.id}
-                {...mail}
-                handleArchive={() => {
-                  setMainMails((prev) =>
-                    prev.filter((prevMail) => prevMail.id !== mail.id),
-                  )
-                  setArchiveMails((prev) => [...prev, mail])
-                  setCurrentId(0)
-                }}
-                handleDelete={() => {
-                  setMainMails((prev) =>
-                    prev.filter((prevMail) => prevMail.id !== mail.id),
-                  )
-                }}
-                currentId={currentId}
-                setCurrentId={setCurrentId}
-              />
-            ))
-          ) : (
-            <Center w="full" h="full">
-              <Text>No email.</Text>
-            </Center>
-          )}
-        </TabPanel>
-        <TabPanel p={0} w="full" h="full">
-          {archiveMails.length > 0 ? (
-            archiveMails.map((mail) => (
-              <MailItem
-                key={mail.id}
-                {...mail}
-                handleArchive={() => {
-                  setArchiveMails((prev) =>
-                    prev.filter((prevMail) => prevMail.id !== mail.id),
-                  )
-                  setMainMails((prev) => [...prev, mail])
-                  setCurrentId(0)
-                }}
-                handleDelete={() => {
-                  setArchiveMails((prev) =>
-                    prev.filter((prevMail) => prevMail.id !== mail.id),
-                  )
-                }}
-                currentId={currentId}
-                setCurrentId={setCurrentId}
-                isArchived
-              />
-            ))
-          ) : (
-            <Center w="full" h="full">
-              <Text>No email.</Text>
-            </Center>
-          )}
-        </TabPanel>
-      </Tabs>
-    </>
+    <Tabs
+      w="full"
+      h="full"
+      tabPanelsProps={{
+        w: "full",
+        h: "full",
+      }}
+    >
+      <Tab>Main</Tab>
+      <Tab>Archive</Tab>
+      <TabPanel p={0} w="full" h="full">
+        {mainMails.length > 0 ? (
+          mainMails.map((mail) => (
+            <MailItem
+              key={mail.id}
+              {...mail}
+              handleArchive={() => {
+                setMainMails((prev) =>
+                  prev.filter((prevMail) => prevMail.id !== mail.id),
+                )
+                setArchiveMails((prev) => [...prev, mail])
+                setCurrentId(0)
+              }}
+              handleDelete={() => {
+                setMainMails((prev) =>
+                  prev.filter((prevMail) => prevMail.id !== mail.id),
+                )
+              }}
+              currentId={currentId}
+              setCurrentId={setCurrentId}
+            />
+          ))
+        ) : (
+          <Center w="full" h="full">
+            <Text>No email.</Text>
+          </Center>
+        )}
+      </TabPanel>
+      <TabPanel p={0} w="full" h="full">
+        {archiveMails.length > 0 ? (
+          archiveMails.map((mail) => (
+            <MailItem
+              key={mail.id}
+              {...mail}
+              handleArchive={() => {
+                setArchiveMails((prev) =>
+                  prev.filter((prevMail) => prevMail.id !== mail.id),
+                )
+                setMainMails((prev) => [...prev, mail])
+                setCurrentId(0)
+              }}
+              handleDelete={() => {
+                setArchiveMails((prev) =>
+                  prev.filter((prevMail) => prevMail.id !== mail.id),
+                )
+              }}
+              currentId={currentId}
+              setCurrentId={setCurrentId}
+              isArchived
+            />
+          ))
+        ) : (
+          <Center w="full" h="full">
+            <Text>No email.</Text>
+          </Center>
+        )}
+      </TabPanel>
+    </Tabs>
   )
 }
 
