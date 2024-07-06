@@ -4,8 +4,8 @@
     "description": "This is a component that can be used in banner sections."
   },
   "ja": {
-    "title": "Banners",
-    "description": "バーナーセクションで使用できるコンポーネントです。"
+    "title": "バナー",
+    "description": "バナーセクションで使用できるコンポーネントです。"
   },
   "authors": [
     {
