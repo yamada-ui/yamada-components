@@ -46,7 +46,7 @@ export const MailItem: FC<{
         justifyContent="space-between"
         borderBottomWidth="1px"
         borderBottomStyle="solid"
-        bgColor={id === currentId ? "primary" : undefined}
+        bgColor={id === currentId ? ["blue.200", "blue.500"] : undefined}
       >
         <HStack gap="md">
           <Text>{title}</Text>
