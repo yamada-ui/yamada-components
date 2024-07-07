@@ -18,18 +18,18 @@ const CookieDialog: FC = () => {
 
       <Dialog
         isOpen={isOpen}
-        header="About cookies"
-        success="I agree"
+        header="Cookie Consent"
+        success="Accept"
         onSuccess={onClose}
-        cancel="I disagree"
+        cancel="Decline"
         onCancel={onClose}
       >
         <Text>
-          We use cookies to improve your experience. Click "I agree" to accept
-          or "I disagree" to decline. You can also manage settings in your
-          browser.
+          We use cookies to enhance your experience on our website. By clicking
+          "Accept", you agree to our use of cookies for analytics and
+          personalized content. For more information, please read our{" "}
+          <Link href="./dialogs">Cookie Policy.</Link>
         </Text>
-        <Link href="./dialogs">Privacy Policy</Link>
       </Dialog>
     </Center>
   )
