@@ -10,10 +10,10 @@ const CookieDialog: FC = () => {
       <Dialog
         isOpen={isOpen}
         header="Cookie Consent"
-        success="Accept"
-        onSuccess={onClose}
         cancel="Decline"
         onCancel={onClose}
+        success="Accept"
+        onSuccess={onClose}
       >
         <Text>
           We use cookies to enhance your experience on our website. By clicking
