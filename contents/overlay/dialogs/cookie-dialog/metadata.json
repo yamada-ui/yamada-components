@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Cookie Dialog",
+    "description": "This dialog is used to request consent for the use of cookies."
+  },
+  "ja": {
+    "title": "Cookieダイアログ",
+    "description": "Cookieの使用について同意を求めるために使用するダイアログです。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}
