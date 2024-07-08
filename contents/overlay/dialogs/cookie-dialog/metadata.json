@@ -1,6 +1,6 @@
 {
   "en": {
-    "title": "CookieDialog",
+    "title": "Cookie Dialog",
     "description": "This dialog is used to request consent for the use of cookies."
   },
   "ja": {
@@ -9,6 +9,7 @@
   },
   "options": {
     "container": {
+      "centerContent": true,
       "p": "md"
     }
   }
