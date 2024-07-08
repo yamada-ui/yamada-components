@@ -52,9 +52,9 @@ const tabs = {
 
 type TabsKey = keyof typeof tabs
 
-const NavbarWithSegmentedcontrol: FC = () => {
+const NavbarWithSegmentedControl: FC = () => {
   const [section, setSection] = useState<TabsKey>("account")
-  const [active, setActive] = useState<string>(tabs[section][0]["label"])
+  const [active, setActive] = useState<string>(tabs[section][0].label)
 
   return (
     <VStack
@@ -87,9 +87,9 @@ const NavbarWithSegmentedcontrol: FC = () => {
           onChange={(value) => setSection(value as TabsKey)}
           transitionTimingFunction="ease"
         >
-          {(Object.keys(tabs) as TabsKey[]).map((tab, i) => (
+          {(Object.keys(tabs) as TabsKey[]).map((tab) => (
             <SegmentedControlButton
-              key={i}
+              key={tab}
               value={tab}
               data-active={section === tab || undefined}
             >
@@ -165,4 +165,4 @@ const NavbarWithSegmentedcontrol: FC = () => {
   )
 }
 
-export default NavbarWithSegmentedcontrol
+export default NavbarWithSegmentedControl
