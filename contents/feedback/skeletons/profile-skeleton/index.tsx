@@ -15,7 +15,7 @@ const ProfileSkeleton: FC = () => {
   const [isLoaded, { toggle }] = useBoolean()
 
   return (
-    <VStack maxW="md" position="relative">
+    <VStack maxW="md">
       <Button onClick={toggle} colorScheme="primary" placeSelf="flex-end">
         Toggle
       </Button>
