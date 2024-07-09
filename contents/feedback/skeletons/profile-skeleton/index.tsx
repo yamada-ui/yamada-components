@@ -16,13 +16,7 @@ const ProfileSkeleton: FC = () => {
 
   return (
     <VStack maxW="md" position="relative">
-      <Button
-        position="absolute"
-        top="-xl"
-        right="0"
-        onClick={toggle}
-        colorScheme="primary"
-      >
+      <Button onClick={toggle} colorScheme="primary" placeSelf="flex-end">
         Toggle
       </Button>
       <HStack>
