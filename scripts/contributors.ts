@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "fs/promises"
+import { readFile, writeFile } from "node:fs/promises"
 import * as p from "@clack/prompts"
 import { Octokit } from "@octokit/rest"
 import type { Dict } from "@yamada-ui/react"
@@ -19,11 +19,11 @@ config()
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
 
 const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
-  s.start(`Getting the Yamada UI metadata paths`)
+  s.start("Getting the Yamada UI metadata paths")
 
   const metadataPaths = await glob("contents/**/metadata.json")
 
-  s.stop(`Got the Yamada UI metadata paths`)
+  s.stop("Got the Yamada UI metadata paths")
 
   return metadataPaths
 }
@@ -50,7 +50,7 @@ const updateMetadata = async (path: string, _authors: Author[]) => {
 }
 
 const getCommits = async (path: string) => {
-  let commits: Commit[] = []
+  const commits: Commit[] = []
   let page = 1
   let count = 0
   const perPage = 100
@@ -84,20 +84,22 @@ const getAuthors: p.RequiredRunner<
   [string[]],
   Promise<Record<string, Author[]>>
 > = (paths) => async (_, s) => {
-  s.start(`Getting the Yamada UI contributors`)
+  s.start("Getting the Yamada UI contributors")
 
   const authorMap: Record<string, Author[]> = {}
 
   await Promise.all(
     paths.map(async (path) => {
-      const commits = await getCommits(path.replace(/\/metadata.json$/, ""))
+      const commits = await getCommits(
+        path.replace(/\\/g, "/").replace(/\/metadata.json$/, ""),
+      )
 
       const commitMap: Record<string, { count: number; author: Author }> = {}
 
-      commits.forEach(({ author }) => {
+      for (const { author } of commits) {
         if (author?.type !== "User") return
 
-        if (commitMap.hasOwnProperty(author.id)) {
+        if (Object.prototype.hasOwnProperty.call(commitMap, author.id)) {
           commitMap[author.id] = {
             count: commitMap[author.id].count + 1,
             author,
@@ -105,7 +107,7 @@ const getAuthors: p.RequiredRunner<
         } else {
           commitMap[author.id] = { count: 1, author }
         }
-      })
+      }
 
       authorMap[path] = Object.values(commitMap)
         .sort((a, b) => b.count - a.count)
@@ -113,13 +115,13 @@ const getAuthors: p.RequiredRunner<
     }),
   )
 
-  s.stop(`Got the Yamada UI contributors`)
+  s.stop("Got the Yamada UI contributors")
 
   return authorMap
 }
 
 const main = async () => {
-  p.intro(c.magenta(`Generating Yamada UI contributors`))
+  p.intro(c.magenta("Generating Yamada UI contributors"))
 
   const s = p.spinner()
 
@@ -129,7 +131,7 @@ const main = async () => {
     const metadataPaths = await getMetadataPaths()(p, s)
     const authorMap = await getAuthors(metadataPaths)(p, s)
 
-    s.start(`Writing the metadata`)
+    s.start("Writing the metadata")
 
     await Promise.all(
       Object.entries(authorMap).map(async ([path, authors]) => {
@@ -137,7 +139,7 @@ const main = async () => {
       }),
     )
 
-    s.stop(`Wrote the metadata`)
+    s.stop("Wrote the metadata")
 
     const end = process.hrtime.bigint()
     const duration = (Number(end - start) / 1e9).toFixed(2)
