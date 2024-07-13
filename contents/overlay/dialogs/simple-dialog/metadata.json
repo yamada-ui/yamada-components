@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Simple Dialog",
+    "description": "It is a simple dialog."
+  },
+  "ja": {
+    "title": "シンプルなダイアログ",
+    "description": "シンプルなダイアログです。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}
