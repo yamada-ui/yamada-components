@@ -12,6 +12,7 @@ import {
 } from "@yamada-ui/react"
 import { useState, type FC } from "react"
 
+const keyword = "delete"
 const InputDialog: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [monitoringInput, setMonitoringInput] = useState(true)
@@ -21,7 +22,7 @@ const InputDialog: FC = () => {
     setText("")
   }
   useUpdateEffect(() => {
-    if (text === "delete") {
+    if (text === keyword) {
       setMonitoringInput(false)
     } else {
       setMonitoringInput(true)
@@ -53,11 +54,11 @@ const InputDialog: FC = () => {
           <VStack>
             <Text>
               This action cannot be undone. If you really want to delete it,
-              type 'delete'.
+              type '{keyword}'.
             </Text>
             <Input
               value={text}
-              placeholder="delete"
+              placeholder={keyword}
               focusBorderColor={monitoringInput ? "red.500" : "blue.500"}
               onChange={(e) => setText(e.target.value)}
             />
