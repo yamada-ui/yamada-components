@@ -38,7 +38,7 @@ const InputDialog: FC = () => {
         cancel="Cancel"
         onCancel={handleOnClose}
         success={{
-          colorScheme: "red",
+          colorScheme: "danger",
           isDisabled: monitoringInput,
           children: "Delete",
         }}
@@ -46,7 +46,7 @@ const InputDialog: FC = () => {
       >
         <DialogHeader>
           <VStack alignItems="center">
-            <TriangleAlert boxSize="80px" color="red" />
+            <TriangleAlert boxSize="80px" color="danger" />
             <Text>Are you sure?</Text>
           </VStack>
         </DialogHeader>
@@ -59,7 +59,7 @@ const InputDialog: FC = () => {
             <Input
               value={text}
               placeholder={keyword}
-              focusBorderColor={monitoringInput ? "red.500" : "blue.500"}
+              focusBorderColor={monitoringInput ? "danger.500" : "blue.500"}
               onChange={(e) => setText(e.target.value)}
             />
           </VStack>

@@ -11,7 +11,6 @@ import type { FC } from "react"
 
 const SimpleDialog: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-
   return (
     <>
       <Button onClick={onOpen}>Open Dialog</Button>
@@ -20,12 +19,15 @@ const SimpleDialog: FC = () => {
         onClose={onClose}
         cancel="Cancel"
         onCancel={onClose}
-        success="Delete"
+        success={{
+          colorScheme: "danger",
+          children: "Delete",
+        }}
         onSuccess={onClose}
       >
         <DialogHeader>
           <VStack alignItems="center">
-            <Trash2 boxSize="80px" color="red" />
+            <Trash2 boxSize="80px" color="danger" />
             <Text>Are you sure?</Text>
           </VStack>
         </DialogHeader>
