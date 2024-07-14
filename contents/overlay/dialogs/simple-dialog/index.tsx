@@ -24,6 +24,7 @@ const SimpleDialog: FC = () => {
           children: "Delete",
         }}
         onSuccess={onClose}
+        blockScrollOnMount={false}
       >
         <DialogHeader>
           <VStack alignItems="center">

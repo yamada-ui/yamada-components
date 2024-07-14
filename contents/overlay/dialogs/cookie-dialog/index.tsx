@@ -14,6 +14,7 @@ const CookieDialog: FC = () => {
         onCancel={onClose}
         success="Accept"
         onSuccess={onClose}
+        blockScrollOnMount={false}
       >
         <Text>
           We use cookies to enhance your experience on our website. By clicking

@@ -43,6 +43,7 @@ const InputDialog: FC = () => {
           children: "Delete",
         }}
         onSuccess={handleOnClose}
+        blockScrollOnMount={false}
       >
         <DialogHeader>
           <VStack alignItems="center">
@@ -50,7 +51,7 @@ const InputDialog: FC = () => {
             <Text>Are you sure?</Text>
           </VStack>
         </DialogHeader>
-        <DialogBody>
+        <DialogBody p="2">
           <VStack>
             <Text>
               This action cannot be undone. If you really want to delete it,
