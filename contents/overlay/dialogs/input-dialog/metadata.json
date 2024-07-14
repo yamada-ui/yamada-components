@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "Input Keyword Dialog",
+    "description": "Dialog to confirm execution by entering keywords."
+  },
+  "ja": {
+    "title": "キーワードチェック型ダイアログ",
+    "description": "キーワードを入力して実行を確認するダイアログ。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    },
+    "iframe": true
+  },
+  "order": 2
+}
