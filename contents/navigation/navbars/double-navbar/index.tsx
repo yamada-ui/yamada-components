@@ -3,7 +3,7 @@ import {
   CalendarIcon,
   FingerprintIcon,
   GaugeIcon,
-  HomeIcon,
+  HouseIcon,
   SettingsIcon,
   UserIcon,
 } from "@yamada-ui/lucide"
@@ -22,7 +22,7 @@ import {
 import { useState, type FC } from "react"
 
 const mainLinksMockdata = [
-  { icon: HomeIcon, label: "Home" },
+  { icon: HouseIcon, label: "Home" },
   { icon: GaugeIcon, label: "Dashboard" },
   { icon: BarChart3Icon, label: "Analytics" },
   { icon: CalendarIcon, label: "Releases" },
