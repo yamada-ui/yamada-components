@@ -112,7 +112,7 @@ export const CookieData = [
     id: 3,
     title: "Statistics",
     description:
-      "These cookies track your online activity to help advertisers deliver more relevant ads or limit the number of times you see an ad. They can share this information with other organizations or advertisers. These are persistent cookies and are almost always from third parties.",
+      "These cookies gather data on your website usage, such as the pages you visit and the links you click. This information is aggregated and anonymized, meaning it cannot identify you. They are used solely to improve website functionality and include cookies from third-party analytics services if used exclusively by the website owner.",
     tableData: [
       {
         provider: "Son_Goku",
