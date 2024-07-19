@@ -9,7 +9,7 @@ import {
 } from "@yamada-ui/react"
 import { type FC, useState } from "react"
 import { CategoryItem } from "./category-item"
-import { CookieData } from "./data"
+import { cookieData } from "./data"
 
 const ComplexCookieDialog: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -55,7 +55,7 @@ const ComplexCookieDialog: FC = () => {
             </Link>
           </TabPanel>
           <TabPanel>
-            {CookieData.map((category) => (
+            {cookieData.map((category) => (
               <CategoryItem
                 key={category.id}
                 isChecked={categoryCheck[category.id]}

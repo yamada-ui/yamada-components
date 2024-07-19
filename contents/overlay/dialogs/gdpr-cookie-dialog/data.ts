@@ -1,4 +1,4 @@
-export const CookieData = [
+export const cookieData = [
   {
     id: 1,
     title: "Strictly Necessary",
