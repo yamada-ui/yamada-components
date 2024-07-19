@@ -196,23 +196,25 @@ export const ComponentPreview = memo(
             : undefined}
         </ui.iframe>
       ) : (
-        <Center
-          ref={ref}
-          flexDirection="column"
-          boxSize="full"
-          minH="48"
-          {...rest}
-        >
-          {!loading ? (
-            <Box boxSize="full" flex="1" {...containerProps}>
-              <Component />
-            </Box>
-          ) : (
-            <Center boxSize="full" flex="1">
-              <Loading size="6xl" {...loadingProps} />
-            </Center>
-          )}
-        </Center>
+        <UIProvider {...{ ...value, environment, themeSchemeManager }}>
+          <Center
+            ref={ref}
+            flexDirection="column"
+            boxSize="full"
+            minH="48"
+            {...rest}
+          >
+            {!loading ? (
+              <Box boxSize="full" flex="1" {...containerProps}>
+                <Component />
+              </Box>
+            ) : (
+              <Center boxSize="full" flex="1">
+                <Loading size="6xl" {...loadingProps} />
+              </Center>
+            )}
+          </Center>
+        </UIProvider>
       )
     },
   ),
