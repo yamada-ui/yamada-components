@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "GDPR Cookie Dialog",
+    "description": "GDPR-compliant cookie dialog."
+  },
+  "ja": {
+    "title": "GDPR Cookie ダイアログ",
+    "description": "GDPRに対応したクッキーのダイアログです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    },
+    "iframe": true
+  },
+  "order": 4
+}
