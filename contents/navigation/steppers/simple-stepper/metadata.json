@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "SimpleStepper",
+    "description": ""
+  },
+  "ja": {
+    "title": "SimpleStepper",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    },
+    "iframe": true
+  }
+}
