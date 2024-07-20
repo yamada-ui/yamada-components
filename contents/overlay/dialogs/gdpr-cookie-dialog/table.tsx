@@ -1,6 +1,29 @@
 import { Table } from "@yamada-ui/table"
 import { type FC, useMemo } from "react"
 
+const columns = [
+  {
+    header: "Provider",
+    accessorKey: "provider",
+  },
+  {
+    header: "Domain",
+    accessorKey: "domain",
+  },
+  {
+    header: "Name",
+    accessorKey: "cookie",
+  },
+  {
+    header: "Expiration",
+    accessorKey: "expiration",
+  },
+  {
+    header: "Description",
+    accessorKey: "description",
+  },
+]
+
 export const CookieTable: FC<{
   tableData: {
     provider: string
@@ -10,31 +33,6 @@ export const CookieTable: FC<{
     description: string
   }[]
 }> = ({ tableData }) => {
-  const columns = useMemo(
-    () => [
-      {
-        header: "Provider",
-        accessorKey: "provider",
-      },
-      {
-        header: "Domain",
-        accessorKey: "domain",
-      },
-      {
-        header: "Name",
-        accessorKey: "cookie",
-      },
-      {
-        header: "Expiration",
-        accessorKey: "expiration",
-      },
-      {
-        header: "Description",
-        accessorKey: "description",
-      },
-    ],
-    [],
-  )
   const data = useMemo(
     () =>
       tableData.map((item) => ({
