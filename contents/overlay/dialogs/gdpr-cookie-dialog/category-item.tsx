@@ -17,7 +17,7 @@ export const CategoryItem: FC<{
   title: string
   description: string
   isDisabled?: boolean
-  isChecked?: boolean
+  isChecked: boolean
   onCheckChange: (isChecked: boolean) => void
   tableData?: {
     provider: string

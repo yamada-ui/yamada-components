@@ -15,7 +15,15 @@ const ComplexCookieDialog: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [categoryCheck, setCategoryCheck] = useState<{
     [key: number]: boolean
-  }>({})
+  }>(
+    cookieData.reduce(
+      (acc, item) => {
+        acc[item.id] = item.isChecked ?? false
+        return acc
+      },
+      {} as Record<number, boolean>,
+    ),
+  )
 
   const handleCheckChange = (id: number, isChecked: boolean) => {
     setCategoryCheck((prev) => ({ ...prev, [id]: isChecked }))
