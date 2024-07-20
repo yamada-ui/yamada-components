@@ -1,11 +1,11 @@
 {
   "en": {
     "title": "SimpleStepper",
-    "description": ""
+    "description": "Simple stepper component"
   },
   "ja": {
-    "title": "SimpleStepper",
-    "description": ""
+    "title": "シンプルステッパー",
+    "description": "シンプルなステッパーコンポーネント"
   },
   "options": {
     "container": {
