@@ -25,8 +25,7 @@ const AuthenticationForm: FC = () => {
     >
       <VStack
         p="lg"
-        w="xl"
-        _container={[{ maxW: "700px", css: { w: "full" } }]}
+        w={{ md: "full", base: "xl" }}
         bg={["white", "black"]}
         h="full"
       >
