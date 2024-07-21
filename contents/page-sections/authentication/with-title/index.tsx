@@ -13,7 +13,6 @@ import {
   InputGroup,
   InputRightElement,
   Link,
-  Spacer,
   Text,
   VStack,
   useBoolean,
@@ -83,11 +82,12 @@ const AuthenticationForm: FC = () => {
 
         <CardFooter flexDir="column">
           <Flex
-            _container={[{ maxW: "350px", css: { flexDir: "column" } }]}
+            flexDir={{ sm: "column", base: "row" }}
+            gap={{ sm: "xs", base: undefined }}
+            justifyContent="space-between"
             w="full"
           >
             <Checkbox>Remember me</Checkbox>
-            <Spacer />
             <Link href="#" onClick={(e) => e.preventDefault()}>
               Forgot password?
             </Link>
