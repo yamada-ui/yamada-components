@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "Three Buttons Dialog",
+    "description": "Dialog with three buttons."
+  },
+  "ja": {
+    "title": "3つのボタンを備えたダイアログ",
+    "description": "3つのボタンを備えたダイアログです。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    },
+    "iframe": true
+  },
+  "order": 2
+}
