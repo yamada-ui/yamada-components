@@ -2,6 +2,7 @@ import { EyeIcon, EyeOffIcon } from "@yamada-ui/lucide"
 import {
   Box,
   Button,
+  Center,
   Checkbox,
   FormControl,
   Heading,
@@ -21,13 +22,15 @@ const AuthenticationForm: FC = () => {
   return (
     <Box
       w="full"
+      h="full"
       bgImg="url(https://images.unsplash.com/photo-1484242857719-4b9144542727?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1280&q=80)"
     >
-      <VStack
+      <Center
         p="lg"
         w={{ md: "full", base: "xl" }}
         bg={["white", "black"]}
         h="full"
+        flexDir="column"
       >
         <Heading as="h1" size="lg" textAlign="center">
           Welcome back to Yamada UI!
@@ -82,7 +85,7 @@ const AuthenticationForm: FC = () => {
             </Link>
           </Text>
         </VStack>
-      </VStack>
+      </Center>
     </Box>
   )
 }
