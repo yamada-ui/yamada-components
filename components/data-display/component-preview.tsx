@@ -136,6 +136,7 @@ export const ComponentPreview = memo(
           w: "full",
           h: "full",
           containerType: "inline-size",
+          overflow: "auto",
           ...rest,
         }
 
