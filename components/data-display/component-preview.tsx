@@ -16,6 +16,8 @@ import {
   NoticeProvider,
   useColorMode,
   useTheme,
+  EnvironmentProvider,
+  createThemeSchemeManager,
 } from "@yamada-ui/react"
 import type {
   BoxProps,
@@ -24,6 +26,7 @@ import type {
   LoadingProps,
   ThemeConfig,
   UIProviderProps,
+  Environment,
 } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import type { FC } from "react"
@@ -32,22 +35,24 @@ import { createPortal } from "react-dom"
 import type { Component, ComponentContainerProps } from "component"
 import { theme as defaultTheme, config as defaultConfig } from "theme"
 
-const UIProvider: FC<UIProviderProps> = ({
+const UIProvider: FC<UIProviderProps & { environment?: Environment }> = ({
   theme = defaultTheme,
   config = defaultConfig,
   children,
+  environment,
+  ...rest
 }) => {
   return (
-    <ThemeProvider theme={theme} config={config}>
-      <LoadingProvider {...config.loading}>
-        <ResetStyle />
-        <GlobalStyle />
-
-        {children}
-
-        <NoticeProvider {...config.notice} />
-      </LoadingProvider>
-    </ThemeProvider>
+    <EnvironmentProvider environment={environment}>
+      <ThemeProvider theme={theme} config={config} {...rest}>
+        <LoadingProvider {...config.loading}>
+          <ResetStyle />
+          <GlobalStyle />
+          {children}
+          <NoticeProvider {...config.notice} />
+        </LoadingProvider>
+      </ThemeProvider>
+    </EnvironmentProvider>
   )
 }
 
@@ -78,6 +83,7 @@ export const ComponentPreview = memo(
       const head = headRef.current
       const body = bodyRef.current
       const [, forceUpdate] = useState({})
+      const themeSchemeManager = createThemeSchemeManager("cookie")
 
       useEffect(() => {
         if (!iframeRef.current) return
@@ -145,6 +151,12 @@ export const ComponentPreview = memo(
         return props
       }, [_containerProps])
 
+      const environment: Environment = {
+        getDocument: () => iframeRef.current?.contentDocument ?? document,
+        getWindow: () =>
+          iframeRef.current?.contentDocument?.defaultView ?? window,
+      }
+
       return iframe ? (
         <ui.iframe
           title="component-preview-iframe"
@@ -157,7 +169,9 @@ export const ComponentPreview = memo(
           {head && body
             ? createPortal(
                 <CacheProvider value={createCache(head)}>
-                  <UIProvider {...value}>
+                  <UIProvider
+                    {...{ ...value, environment, themeSchemeManager }}
+                  >
                     <Center
                       ref={ref}
                       flexDirection="column"
@@ -182,23 +196,25 @@ export const ComponentPreview = memo(
             : undefined}
         </ui.iframe>
       ) : (
-        <Center
-          ref={ref}
-          flexDirection="column"
-          boxSize="full"
-          minH="48"
-          {...rest}
-        >
-          {!loading ? (
-            <Box boxSize="full" flex="1" {...containerProps}>
-              <Component />
-            </Box>
-          ) : (
-            <Center boxSize="full" flex="1">
-              <Loading size="6xl" {...loadingProps} />
-            </Center>
-          )}
-        </Center>
+        <UIProvider {...{ ...value, environment, themeSchemeManager }}>
+          <Center
+            ref={ref}
+            flexDirection="column"
+            boxSize="full"
+            minH="48"
+            {...rest}
+          >
+            {!loading ? (
+              <Box boxSize="full" flex="1" {...containerProps}>
+                <Component />
+              </Box>
+            ) : (
+              <Center boxSize="full" flex="1">
+                <Loading size="6xl" {...loadingProps} />
+              </Center>
+            )}
+          </Center>
+        </UIProvider>
       )
     },
   ),
