@@ -57,6 +57,7 @@ declare module "component" {
   type MetadataOptions = {
     iframe?: boolean
     container?: ComponentContainerProps
+    fileList?: string[]
   }
 
   type SharedMetadata = {

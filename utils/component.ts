@@ -164,14 +164,35 @@ export const getComponent =
         config: hasConfig ? validConfigPath : null,
       }
 
-      const components = await Promise.all(
-        fileNames.map(async (name) => {
-          const filePath = path.join(dirPath, name)
-          const code = await readFile(filePath, "utf-8")
+      const fileList = metadata?.options?.fileList // string[]
 
-          return { name, path: filePath, code }
-        }),
-      )
+      const components = (
+        await Promise.all(
+          fileNames.map(async (name) => {
+            const filePath = path.join(dirPath, name)
+            const code = await readFile(filePath, "utf-8")
+
+            return { name, path: filePath, code }
+          }),
+        )
+      ).sort((componentA, componentB) => {
+        if (fileList) {
+          const positionA = fileList.indexOf(componentA.name)
+          const positionB = fileList.indexOf(componentB.name)
+
+          if (positionA !== -1 && positionB !== -1) {
+            return positionA - positionB
+          } else if (positionA !== -1) {
+            return -1
+          } else if (positionB !== -1) {
+            return 1
+          }
+        }
+
+        if (componentA.name === "index.tsx") return -1
+        if (componentB.name === "index.tsx") return 1
+        return 0
+      })
 
       slug = `/${slug}`
 

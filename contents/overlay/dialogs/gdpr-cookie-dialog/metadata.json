@@ -12,7 +12,8 @@
       "p": "md",
       "centerContent": true
     },
-    "iframe": true
+    "iframe": true,
+    "fileList": ["index.tsx", "category-item.tsx", "table.tsx", "data.ts"]
   },
   "order": 5
 }
