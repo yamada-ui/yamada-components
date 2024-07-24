@@ -10,7 +10,8 @@
   "options": {
     "container": {
       "centerContent": true,
-      "p": "md"
+      "p": "md",
+      "fileList": ["index.tsx", "ripple-step.tsx"]
     },
     "iframe": true
   }
