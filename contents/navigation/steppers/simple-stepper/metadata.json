@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "SimpleStepper",
+    "description": "Simple stepper component"
+  },
+  "ja": {
+    "title": "シンプルステッパー",
+    "description": "シンプルなステッパーコンポーネント"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md",
+      "fileList": ["index.tsx", "ripple-step.tsx"]
+    },
+    "iframe": true
+  }
+}

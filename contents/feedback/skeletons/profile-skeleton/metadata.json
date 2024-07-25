@@ -6,5 +6,11 @@
   "ja": {
     "title": "プロフィールスケルトン",
     "description": "プロフィールスケルトン"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
   }
 }

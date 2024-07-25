@@ -47,7 +47,7 @@ const AuthenticationForm: FC = () => {
             variant="outline"
             gap="md"
             w="full"
-            _container={[{ maxW: "400px", css: { flexDir: "column" } }]}
+            flexDir={{ sm: "column", base: "row" }}
           >
             <GoogleButton
               w="full"
@@ -109,8 +109,8 @@ const AuthenticationForm: FC = () => {
         </CardBody>
 
         <CardFooter
-          pt="md"
-          _container={[{ maxW: "400px", css: { flexDir: "column", pt: "xs" } }]}
+          flexDir={{ sm: "column", base: "row" }}
+          pt={{ sm: "xs", base: "md" }}
         >
           <Link
             href="#"
@@ -121,12 +121,12 @@ const AuthenticationForm: FC = () => {
           >
             Don't have an account? Register
           </Link>
-          <Spacer _container={[{ maxW: "400px", css: { display: "none" } }]} />
+          <Spacer display={{ sm: "none" }} />
           <Button
             colorScheme="primary"
             rounded="full"
             px="lg"
-            _container={[{ maxW: "400px", css: { w: "full" } }]}
+            w={{ sm: "full" }}
           >
             Login
           </Button>

@@ -1,0 +1,19 @@
+{
+  "en": {
+    "title": "GDPR Cookie Dialog",
+    "description": "GDPR-compliant cookie dialog."
+  },
+  "ja": {
+    "title": "GDPR Cookie ダイアログ",
+    "description": "GDPRに対応したクッキーのダイアログです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    },
+    "iframe": true,
+    "fileList": ["index.tsx", "category-item.tsx", "table.tsx", "data.ts"]
+  },
+  "order": 5
+}

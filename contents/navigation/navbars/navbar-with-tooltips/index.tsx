@@ -3,7 +3,7 @@ import {
   CalendarIcon,
   FingerprintIcon,
   GaugeIcon,
-  HomeIcon,
+  HouseIcon,
   LaptopIcon,
   LogOutIcon,
   SettingsIcon,
@@ -21,7 +21,7 @@ import {
 import { useState, type FC } from "react"
 
 const mockdata = [
-  { icon: HomeIcon, label: "Home" },
+  { icon: HouseIcon, label: "Home" },
   { icon: GaugeIcon, label: "Dashboard" },
   { icon: LaptopIcon, label: "Analytics" },
   { icon: CalendarIcon, label: "Releases" },

@@ -9,7 +9,6 @@ import {
   Heading,
   Input,
   Link,
-  Spacer,
   Text,
   VStack,
 } from "@yamada-ui/react"
@@ -51,7 +50,8 @@ const AuthenticationForm: FC = () => {
         </CardBody>
 
         <CardFooter
-          _container={[{ maxW: "400px", css: { flexDir: "column" } }]}
+          flexDir={{ base: "row", sm: "column" }}
+          justifyContent="space-between"
         >
           <Link
             href="#"
@@ -66,11 +66,7 @@ const AuthenticationForm: FC = () => {
             <ArrowLeftIcon mr="xs" />
             Back to the login page
           </Link>
-          <Spacer _container={[{ maxW: "400px", css: { display: "none" } }]} />
-          <Button
-            colorScheme="primary"
-            _container={[{ maxW: "400px", css: { w: "full" } }]}
-          >
+          <Button colorScheme="primary" w={{ sm: "full" }}>
             Reset password
           </Button>
         </CardFooter>
