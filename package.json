@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "lefthook install",
     "dev": "next dev",
     "build": "next build",
     "build:profile": "next build --profile",
