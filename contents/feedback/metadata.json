@@ -7,7 +7,7 @@
     "title": "フィードバック",
     "description": "アラートやスケルトンなど、ユーザーへの通知やコンテンツの読み込み中にユーザーへ待機を促すコンポーネントが用意されています。"
   },
-  "icon": "line-chart",
+  "icon": "chart-line",
   "order": 8,
   "authors": [
     {

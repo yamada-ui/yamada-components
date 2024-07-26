@@ -1,6 +1,6 @@
 import {
   ChevronDownIcon,
-  BarChartHorizontalIcon,
+  ChartBarIcon,
   MousePointerClickIcon,
   FingerprintIcon,
   WorkflowIcon,
@@ -23,7 +23,7 @@ const items = [
   {
     name: "Analytics",
     description: "Get a better understanding of your traffic",
-    icon: BarChartHorizontalIcon,
+    icon: ChartBarIcon,
   },
   {
     name: "Engagement",
