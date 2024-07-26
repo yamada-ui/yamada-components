@@ -1,5 +1,5 @@
 import {
-  BarChart3Icon,
+  ChartColumnIcon,
   CalendarIcon,
   FingerprintIcon,
   GaugeIcon,
@@ -24,7 +24,7 @@ import { useState, type FC } from "react"
 const mainLinksMockdata = [
   { icon: HouseIcon, label: "Home" },
   { icon: GaugeIcon, label: "Dashboard" },
-  { icon: BarChart3Icon, label: "Analytics" },
+  { icon: ChartColumnIcon, label: "Analytics" },
   { icon: CalendarIcon, label: "Releases" },
   { icon: UserIcon, label: "Account" },
   { icon: FingerprintIcon, label: "Security" },
