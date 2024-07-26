@@ -53,7 +53,7 @@ const HeaderSimple: FC = () => {
       </Box>
 
       <SegmentedControl
-        _container={[{ maxW: "750px", css: { display: "none" } }]}
+        display={{ md: "none", base: "flex" }}
         gap={0}
         as="nav"
         value={active}
@@ -67,7 +67,7 @@ const HeaderSimple: FC = () => {
         variant="unstyled"
         p="1"
         onClick={onToggle}
-        _container={[{ minW: "750px", css: { display: "none" } }]}
+        display={{ md: "block", base: "none" }}
         icon={
           <>
             <Box

@@ -74,7 +74,7 @@ const DoubleHeader: FC = () => {
       pt="sm"
       px="md"
     >
-      <HStack _container={[{ maxW: "800px", css: { pb: "sm" } }]}>
+      <HStack pb={{ md: "sm" }}>
         <Box flex={1}>
           <Heading
             size="lg"
@@ -86,10 +86,7 @@ const DoubleHeader: FC = () => {
           </Heading>
         </Box>
 
-        <VStack
-          flex={1}
-          _container={[{ maxW: "800px", css: { display: "none" } }]}
-        >
+        <VStack flex={1} display={{ md: "none" }}>
           <HStack justify="flex-end">{secondaryItems}</HStack>
 
           <Tabs gap="0" as="nav" onChange={onChange}>
@@ -103,12 +100,11 @@ const DoubleHeader: FC = () => {
           title="Menu"
           type="button"
           variant="unstyled"
-          display="flex"
+          display={{ base: "none", md: "flex" }}
           placeContent="center"
           placeItems="center"
           p="1"
           onClick={onToggle}
-          _container={[{ minW: "800px", css: { display: "none" } }]}
           icon={
             <>
               <Box
