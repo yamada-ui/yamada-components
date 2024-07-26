@@ -4,7 +4,7 @@ import {
   GitPullRequestArrowIcon,
   LayersIcon,
   LayoutTemplateIcon,
-  LineChartIcon,
+  ChartLineIcon,
   NavigationIcon,
   PaintbrushIcon,
   PanelsTopLeftIcon,
@@ -258,8 +258,8 @@ const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
     case "layout-template":
       return <LayoutTemplateIcon fontSize="2xl" {...rest} />
 
-    case "line-chart":
-      return <LineChartIcon fontSize="2xl" {...rest} />
+    case "chart-line":
+      return <ChartLineIcon fontSize="2xl" {...rest} />
 
     case "table":
       return <TableIcon fontSize="2xl" {...rest} />
