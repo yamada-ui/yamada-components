@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Form Drawer",
+    "description": "Contact form made by Drawer"
+  },
+  "ja": {
+    "title": "ドロワー製フォーム",
+    "description": "ドロワー製のフォーム"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    },
+    "iframe": true
+  }
+}
