@@ -1,11 +1,11 @@
 {
   "en": {
     "title": "Navigation Drawer",
-    "description": ""
+    "description": "Drawer component with navigation."
   },
   "ja": {
     "title": "ナビゲーションドロワー",
-    "description": ""
+    "description": "ナビゲーションを備えたドロワーコンポーネント。"
   },
   "options": {
     "container": {
