@@ -28,7 +28,15 @@ export const getServerSideCommonProps = async ({
 export const getStaticCommonProps = async ({
   locale,
 }: GetStaticPropsContext) => {
-  const componentTree = await getComponentCategoryGroup()(locale as Locale)
+  const componentTree = (
+    await getComponentCategoryGroup()(locale as Locale)
+  ).filter(({ items }) => items)
+
+  for (const component of componentTree) {
+    if (component.items) {
+      component.items = component.items.filter(({ items }) => items)
+    }
+  }
 
   return { props: { componentTree } }
 }
@@ -53,6 +61,12 @@ export const getStaticComponentProps =
       locale as Locale,
       `/${[categoryGroupName, ...paths].join("/")}`,
     )
+
+    for (const component of componentTree) {
+      if (component.items) {
+        component.items = component.items.filter(({ items }) => items)
+      }
+    }
 
     const categoryGroup = componentTree.find(
       ({ name }) => name === categoryGroupName,

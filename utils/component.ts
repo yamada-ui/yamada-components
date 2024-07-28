@@ -72,11 +72,13 @@ export const getComponentCategoryGroup =
       }),
     )
 
-    return componentTree
+    const filteredComponentCategoryGroup = componentTree
       .filter(Boolean)
       .sort(
         (a, b) => (a?.order ?? 530000) - (b?.order ?? 530000),
       ) as ComponentCategoryGroup[]
+
+    return filteredComponentCategoryGroup
   }
 
 export const getComponentPaths =
@@ -92,6 +94,8 @@ export const getComponentPaths =
       (componentTree?: ComponentCategoryGroup[]) =>
       (locale: string): GetStaticPathsResult["paths"] =>
         (componentTree ?? []).flatMap(({ slug, items }) => {
+          if (!items) return []
+
           slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
 
           const resolvedSlug = slug.split("/")
