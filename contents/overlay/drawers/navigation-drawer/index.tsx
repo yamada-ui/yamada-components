@@ -59,11 +59,12 @@ const NavigationDrawer: FC = () => {
         blockScrollOnMount={false}
         overflow="auto"
       >
-        <DrawerHeader mb="xl">
+        <DrawerHeader pb="lg">
           <Heading size="lg" color="primary">
             Yamada Component
           </Heading>
         </DrawerHeader>
+        <Divider variant="solid" />
         <DrawerBody overflow="auto">
           <VStack flex={1}>
             {tabData.top.map((item) => (
