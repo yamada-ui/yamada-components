@@ -1,7 +1,11 @@
 {
   "name": "yamada-components",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.6.0",
   "scripts": {
     "prepare": "husky",
     "dev": "next dev",
