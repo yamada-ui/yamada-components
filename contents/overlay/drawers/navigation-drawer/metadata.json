@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Navigation Drawer",
+    "description": ""
+  },
+  "ja": {
+    "title": "ナビゲーションドロワー",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    },
+    "iframe": true
+  }
+}
