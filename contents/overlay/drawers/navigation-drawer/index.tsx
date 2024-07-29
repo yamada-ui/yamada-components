@@ -1,12 +1,12 @@
 import {
-  House,
-  Search,
-  Bell,
-  Heart,
-  Diamond,
-  User,
-  Settings,
-  LogOut,
+  HouseIcon,
+  SearchIcon,
+  BellIcon,
+  HeartIcon,
+  DiamondIcon,
+  UserIcon,
+  SettingsIcon,
+  LogOutIcon,
 } from "@yamada-ui/lucide"
 import {
   Button,
@@ -21,28 +21,22 @@ import {
   VStack,
 } from "@yamada-ui/react"
 import type { FC } from "react"
-import React from "react"
 
 const NavigationDrawer: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  type TabData = {
-    top: { link: string; label: string; icon: React.ElementType }[]
-    bottom: { link: string; label: string; icon: React.ElementType }[]
-  }
-
-  const tabData: TabData = {
+  const tabData = {
     top: [
-      { link: "", label: "Home", icon: House },
-      { link: "", label: "Search", icon: Search },
-      { link: "", label: "Notifications", icon: Bell },
-      { link: "", label: "Favorites", icon: Heart },
-      { link: "", label: "Premium Plan", icon: Diamond },
+      { link: "", label: "Home", icon: HouseIcon },
+      { link: "", label: "Search", icon: SearchIcon },
+      { link: "", label: "Notifications", icon: BellIcon },
+      { link: "", label: "Favorites", icon: HeartIcon },
+      { link: "", label: "Premium Plan", icon: DiamondIcon },
     ],
     bottom: [
-      { link: "", label: "Profile", icon: User },
-      { link: "", label: "Setting", icon: Settings },
-      { link: "", label: "Logout", icon: LogOut },
+      { link: "", label: "Profile", icon: UserIcon },
+      { link: "", label: "Settings", icon: SettingsIcon },
+      { link: "", label: "Logout", icon: LogOutIcon },
     ],
   }
   return (
@@ -61,7 +55,7 @@ const NavigationDrawer: FC = () => {
       >
         <DrawerHeader pb="lg">
           <Heading size="lg" color="primary">
-            Yamada Component
+            Yamada Components
           </Heading>
         </DrawerHeader>
         <Divider variant="solid" />
@@ -78,7 +72,7 @@ const NavigationDrawer: FC = () => {
                 w="full"
                 justifyContent="left"
               >
-                {React.createElement(item.icon, { size: "xl" })}
+                <item.icon fontSize="xl" />
                 <Text fontSize="xl">{item.label}</Text>
               </Button>
             ))}
@@ -96,7 +90,7 @@ const NavigationDrawer: FC = () => {
                 w="full"
                 justifyContent="left"
               >
-                {React.createElement(item.icon, { size: "xl" })}
+                <item.icon fontSize="xl" />
                 <Text fontSize="xl">{item.label}</Text>
               </Button>
             ))}
