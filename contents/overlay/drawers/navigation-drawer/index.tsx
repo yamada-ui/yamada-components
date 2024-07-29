@@ -13,7 +13,6 @@ import {
   Divider,
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   Heading,
   Text,
@@ -97,7 +96,6 @@ const NavigationDrawer: FC = () => {
             ))}
           </VStack>
         </DrawerBody>
-        <DrawerFooter></DrawerFooter>
       </Drawer>
     </>
   )
