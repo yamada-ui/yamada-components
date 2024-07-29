@@ -35,7 +35,7 @@ const NavigationDrawer: FC = () => {
     ],
     bottom: [
       { link: "", label: "Profile", icon: UserIcon },
-      { link: "", label: "Setting", icon: SettingsIcon },
+      { link: "", label: "Settings", icon: SettingsIcon },
       { link: "", label: "Logout", icon: LogOutIcon },
     ],
   }
@@ -55,7 +55,7 @@ const NavigationDrawer: FC = () => {
       >
         <DrawerHeader pb="lg">
           <Heading size="lg" color="primary">
-            Yamada Component
+            Yamada Components
           </Heading>
         </DrawerHeader>
         <Divider variant="solid" />
