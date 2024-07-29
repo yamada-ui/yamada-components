@@ -22,23 +22,24 @@ import {
 } from "@yamada-ui/react"
 import type { FC } from "react"
 
+const tabData = {
+  top: [
+    { link: "", label: "Home", icon: HouseIcon },
+    { link: "", label: "Search", icon: SearchIcon },
+    { link: "", label: "Notifications", icon: BellIcon },
+    { link: "", label: "Favorites", icon: HeartIcon },
+    { link: "", label: "Premium Plan", icon: DiamondIcon },
+  ],
+  bottom: [
+    { link: "", label: "Profile", icon: UserIcon },
+    { link: "", label: "Settings", icon: SettingsIcon },
+    { link: "", label: "Logout", icon: LogOutIcon },
+  ],
+}
+
 const NavigationDrawer: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const tabData = {
-    top: [
-      { link: "", label: "Home", icon: HouseIcon },
-      { link: "", label: "Search", icon: SearchIcon },
-      { link: "", label: "Notifications", icon: BellIcon },
-      { link: "", label: "Favorites", icon: HeartIcon },
-      { link: "", label: "Premium Plan", icon: DiamondIcon },
-    ],
-    bottom: [
-      { link: "", label: "Profile", icon: UserIcon },
-      { link: "", label: "Settings", icon: SettingsIcon },
-      { link: "", label: "Logout", icon: LogOutIcon },
-    ],
-  }
   return (
     <>
       <Button onClick={onOpen}>Open Drawer</Button>
