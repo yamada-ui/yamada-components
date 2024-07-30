@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Contact Form Drawer",
+    "description": "A drawer component containing a contact form."
+  },
+  "ja": {
+    "title": "お問い合わせフォームのドロワー",
+    "description": "お問い合わせフォームを含むドロワーコンポーネント。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    },
+    "iframe": true
+  }
+}
