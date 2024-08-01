@@ -81,7 +81,11 @@ export const Search = memo(
 
       ev.preventDefault()
 
-      isOpen ? onClose() : onOpen()
+      if (isOpen) {
+        onClose()
+      } else {
+        onOpen()
+      }
     })
 
     return (
@@ -176,7 +180,7 @@ const SearchModal: FC<SearchModalProps> = memo(
 
         eventRef.current = "keyboard"
 
-        const actions: Record<string, Function | undefined> = {
+        const actions: Record<string, (ev: KeyboardEvent<HTMLInputElement>)=> void | undefined> = {
           ArrowDown: () => {
             if (selectedIndex + 1 === hits.length) return
 

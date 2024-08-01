@@ -40,7 +40,9 @@ export const getComponentCategoryGroup =
               const order = json.order ?? null
 
               callback?.({ ...metadata, icon, authors, labels, order })
-            } catch {}
+            } catch (e) {
+              console.error("getComponentCategoryGroup Error: ", e);
+            }
           }
 
           return
@@ -205,7 +207,9 @@ export const getComponent =
       }
 
       return data
-    } catch {}
+    } catch (e) {
+      console.error("getComponent Error: ", e);
+    }
   }
 
 export const checkInvalidLabels = ({ metadata, slug }: Component) => {
