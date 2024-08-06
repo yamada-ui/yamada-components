@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Temperature Chart",
+    "description": ""
+  },
+  "ja": {
+    "title": "Temperature Chart",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
