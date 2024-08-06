@@ -11,7 +11,7 @@ import FAQ from "./faq.svg"
 const WithImage = () => {
   return (
     <Flex
-      flexDir={{ base: "none", md: "column" }}
+      flexDir={{ base: "row", md: "column" }}
       gap="lg"
       py="xl"
       px="md"
