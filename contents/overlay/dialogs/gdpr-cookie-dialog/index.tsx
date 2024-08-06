@@ -13,9 +13,7 @@ import { cookieData } from "./data"
 
 const ComplexCookieDialog: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [categoryCheck, setCategoryCheck] = useState<{
-    [key: number]: boolean
-  }>(
+  const [categoryCheck, setCategoryCheck] = useState<Record<number, boolean>>(
     cookieData.reduce(
       (acc, item) => {
         acc[item.id] = item.isChecked ?? false

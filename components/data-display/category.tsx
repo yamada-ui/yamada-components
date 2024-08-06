@@ -7,9 +7,7 @@ import { NextLink } from "components/navigation"
 import { useApp } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
 
-export type CategoryProps = {}
-
-export const Category: FC<CategoryProps> = memo(() => {
+export const Category: FC = memo(() => {
   const { categoryGroup, category } = useApp()
   const { t } = useI18n()
 
