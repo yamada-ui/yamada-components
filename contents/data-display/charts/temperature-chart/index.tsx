@@ -11,15 +11,26 @@ const formatDate = (date: Date) => {
 
 const TemperatureChart: FC = () => {
   const [startDate, setStartDate] = useState(new Date())
+  const [isPreviousDisabled, setIsPreviousDisabled] = useState(false)
+  const [isNextDisabled, setIsNextDisabled] = useState(false)
 
   const { value } = useAsync(async () => {
+    const today = new Date()
+    const twoWeeksAhead = new Date()
+    twoWeeksAhead.setDate(today.getDate() + 13)
+    const fourMonthsAgo = new Date()
+    fourMonthsAgo.setMonth(today.getMonth() - 4)
+
+    setIsNextDisabled(startDate > twoWeeksAhead)
+    setIsPreviousDisabled(startDate < fourMonthsAgo)
+
     const endDate = new Date(startDate)
     endDate.setDate(startDate.getDate() - 7)
-    const startDateString = formatDate(startDate)
-    const endDateString = formatDate(endDate)
+    const startDateString = formatDate(endDate)
+    const endDateString = formatDate(startDate)
 
     const response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=35.6785,34.6937,43.0642,26.2124&longitude=139.6823,135.5023,141.3468,127.6792&hourly=temperature_2m&timezone=Asia%2FTokyo&start_date=${endDateString}&end_date=${startDateString}`,
+      `https://api.open-meteo.com/v1/forecast?latitude=35.6785,34.6937,43.0642,26.2124&longitude=139.6823,135.5023,141.3468,127.6792&hourly=temperature_2m&timezone=Asia%2FTokyo&start_date=${startDateString}&end_date=${endDateString}`,
       { cache: "force-cache" },
     )
 
@@ -84,8 +95,12 @@ const TemperatureChart: FC = () => {
     <Container m="auto">
       <Heading>This is a Temperature chart.</Heading>
       <HStack>
-        <Button onClick={handlePreviousWeek}>Previous Week</Button>
-        <Button onClick={handleNextWeek}>Next Week</Button>
+        <Button onClick={handlePreviousWeek} isDisabled={isPreviousDisabled}>
+          Previous Week
+        </Button>
+        <Button onClick={handleNextWeek} isDisabled={isNextDisabled}>
+          Next Week
+        </Button>
       </HStack>
       <LineChart
         data={value ? value : []}
