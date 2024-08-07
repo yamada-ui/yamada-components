@@ -2,6 +2,16 @@ import { LineChart } from "@yamada-ui/charts"
 import { Container, Heading, useAsync } from "@yamada-ui/react"
 import { type FC } from "react"
 
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString)
+  const year = date.getFullYear()
+  const month = (date.getMonth() + 1).toString().padStart(2, "0")
+  const day = date.getDate().toString().padStart(2, "0")
+  const hours = date.getHours().toString().padStart(2, "0")
+  const minutes = date.getMinutes().toString().padStart(2, "0")
+  return `${year}-${month}-${day} ${hours}:${minutes}`
+}
+
 const TemperatureChart: FC = () => {
   const { value } = useAsync(async () => {
     const response = await fetch(
@@ -37,7 +47,8 @@ const TemperatureChart: FC = () => {
             throw new Error("Unexpected location index")
         }
         region.hourly.time.forEach((time, i) => {
-          if (!acc[i]) acc[i] = { date: time } as Record<string, any>
+          const formattedTime = formatDate(time)
+          if (!acc[i]) acc[i] = { date: formattedTime } as Record<string, any>
           acc[i][locationKey] = region.hourly.temperature_2m[i]
         })
         return acc
