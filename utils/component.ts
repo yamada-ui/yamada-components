@@ -94,11 +94,10 @@ export const getComponentPaths =
       (componentTree?: ComponentCategoryGroup[]) =>
       (locale: string): GetStaticPathsResult["paths"] =>
         (componentTree ?? []).flatMap(({ slug, items }) => {
-          if (!items) return []
-
           slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
 
           const resolvedSlug = slug.split("/")
+          if (!items) return [{ params: { slug: resolvedSlug }, locale }]
 
           return [
             { params: { slug: resolvedSlug }, locale },
@@ -168,7 +167,7 @@ export const getComponent =
         config: hasConfig ? validConfigPath : null,
       }
 
-      const fileList = metadata?.options?.fileList // string[]
+      const fileList = metadata?.options?.fileList
 
       const components = (
         await Promise.all(
