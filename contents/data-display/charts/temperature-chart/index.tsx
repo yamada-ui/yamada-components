@@ -1,23 +1,28 @@
 import { LineChart } from "@yamada-ui/charts"
-import { Container, Heading, useAsync } from "@yamada-ui/react"
-import { type FC } from "react"
+import { Button, Container, Heading, HStack, useAsync } from "@yamada-ui/react"
+import { useState, type FC } from "react"
 
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
+const formatDate = (date: Date) => {
   const year = date.getFullYear()
   const month = (date.getMonth() + 1).toString().padStart(2, "0")
   const day = date.getDate().toString().padStart(2, "0")
-  const hours = date.getHours().toString().padStart(2, "0")
-  const minutes = date.getMinutes().toString().padStart(2, "0")
-  return `${year}-${month}-${day} ${hours}:${minutes}`
+  return `${year}-${month}-${day}`
 }
 
 const TemperatureChart: FC = () => {
+  const [startDate, setStartDate] = useState(new Date())
+
   const { value } = useAsync(async () => {
+    const endDate = new Date(startDate)
+    endDate.setDate(startDate.getDate() - 7)
+    const startDateString = formatDate(startDate)
+    const endDateString = formatDate(endDate)
+
     const response = await fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=35.6785,34.6937,43.0642,26.2124&longitude=139.6823,135.5023,141.3468,127.6792&hourly=temperature_2m&timezone=Asia%2FTokyo",
+      `https://api.open-meteo.com/v1/forecast?latitude=35.6785,34.6937,43.0642,26.2124&longitude=139.6823,135.5023,141.3468,127.6792&hourly=temperature_2m&timezone=Asia%2FTokyo&start_date=${endDateString}&end_date=${startDateString}`,
       { cache: "force-cache" },
     )
+
     const data = (await response.json()) as Array<{
       latitude: number
       longitude: number
@@ -47,7 +52,7 @@ const TemperatureChart: FC = () => {
             throw new Error("Unexpected location index")
         }
         region.hourly.time.forEach((time, i) => {
-          const formattedTime = formatDate(time)
+          const formattedTime = time.replace("T", " ")
           if (!acc[i]) acc[i] = { date: formattedTime } as Record<string, any>
           acc[i][locationKey] = region.hourly.temperature_2m[i]
         })
@@ -57,11 +62,31 @@ const TemperatureChart: FC = () => {
     )
 
     return formattedData
-  })
+  }, [startDate])
+
+  const handlePreviousWeek = () => {
+    setStartDate((prevDate) => {
+      const newDate = new Date(prevDate)
+      newDate.setDate(prevDate.getDate() - 7)
+      return newDate
+    })
+  }
+
+  const handleNextWeek = () => {
+    setStartDate((prevDate) => {
+      const newDate = new Date(prevDate)
+      newDate.setDate(prevDate.getDate() + 7)
+      return newDate
+    })
+  }
 
   return (
     <Container m="auto">
       <Heading>This is a Temperature chart.</Heading>
+      <HStack>
+        <Button onClick={handlePreviousWeek}>Previous Week</Button>
+        <Button onClick={handleNextWeek}>Next Week</Button>
+      </HStack>
       <LineChart
         data={value ? value : []}
         series={[
