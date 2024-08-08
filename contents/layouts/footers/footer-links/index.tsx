@@ -100,7 +100,7 @@ const FooterLinks: FC = () => {
               />
               <Text fontSize="lg">Yamada UI</Text>
             </HStack>
-            <Text fontSize="sm" color="GrayText" textAlign={{ md: "center" }}>
+            <Text fontSize="sm" color="muted" textAlign={{ md: "center" }}>
               Unleash the Power of Styling, Animation, and Flexibility in React
               Apps
             </Text>
@@ -119,7 +119,7 @@ const FooterLinks: FC = () => {
           py="lg"
           gap={{ md: "md" }}
         >
-          <Text color="GrayText" fontSize="sm">
+          <Text color="muted" fontSize="sm">
             © 2024 Yamada UI. All rights reserved.
           </Text>
           <ButtonGroup gap="xs">
