@@ -1,10 +1,14 @@
 import { LineChart } from "@yamada-ui/charts"
 import {
-  Button,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@yamada-ui/lucide"
+import {
   Center,
   Container,
   Heading,
   HStack,
+  IconButton,
   Loading,
   Text,
   useAsync,
@@ -108,18 +112,22 @@ const WeeklyTemperatureChart: FC = () => {
   return (
     <Container m="auto" maxW="container.md" p={4}>
       <Heading mb={6}>Weekly Temperature Chart</Heading>
-      <HStack mb={4} justifyContent="space-between">
-        <Button onClick={handlePreviousWeek} isDisabled={isPreviousDisabled}>
-          Previous Week
-        </Button>
+      <HStack mb={4} justifyContent="center">
+        <IconButton
+          onClick={handlePreviousWeek}
+          isDisabled={isPreviousDisabled}
+          icon={<ChevronLeftIcon />}
+        />
         <Text>{`${startDateString} 〜 ${endDateString}`}</Text>
-        <Button onClick={handleNextWeek} isDisabled={isNextDisabled}>
-          Next Week
-        </Button>
+        <IconButton
+          onClick={handleNextWeek}
+          isDisabled={isNextDisabled}
+          icon={<ChevronRightIcon />}
+        />
       </HStack>
       {loading ? (
         <Center w="full" height="md">
-          <Loading />
+          <Loading w="5xs" h="5xs" />
         </Center>
       ) : (
         <LineChart
