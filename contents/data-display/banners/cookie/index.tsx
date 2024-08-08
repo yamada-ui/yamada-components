@@ -16,13 +16,10 @@ const Banner: FC = () => {
     <Card variant="outline" maxW="md" shadow="sm">
       <CardBody>
         <Grid
-          templateAreas={{
-            base: `
+          templateAreas={`
             "title title close"
             "content content content"
-            "empty button button"
-          `,
-          }}
+            "empty button button"`}
           gap="sm"
         >
           <GridItem area="title">
