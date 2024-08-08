@@ -19,15 +19,8 @@ const FooterCentered: FC = () => {
         w="full"
         justifyContent="space-between"
         alignItems="center"
-        _container={[
-          {
-            maxW: "300px",
-            css: {
-              flexDirection: "column",
-              gap: "sm",
-            },
-          },
-        ]}
+        flexDir={{ sm: "column" }}
+        gap={{ sm: "sm" }}
         px="md"
         py="lg"
         maxW="6xl"
@@ -36,13 +29,21 @@ const FooterCentered: FC = () => {
           <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
           <Text fontSize="lg">Yamada UI</Text>
         </HStack>
-        <ButtonGroup>
-          <IconButton variant="ghost" borderRadius="full" icon={<TwitterIcon />} />
-          <IconButton variant="ghost" borderRadius="full" icon={<YoutubeIcon />} />
+        <ButtonGroup gap="xs">
           <IconButton
             variant="ghost"
             borderRadius="full"
-            icon={<InstagramIcon />}
+            icon={<TwitterIcon fontSize="2xl" />}
+          />
+          <IconButton
+            variant="ghost"
+            borderRadius="full"
+            icon={<YoutubeIcon fontSize="2xl" />}
+          />
+          <IconButton
+            variant="ghost"
+            borderRadius="full"
+            icon={<InstagramIcon fontSize="2xl" />}
           />
         </ButtonGroup>
       </Flex>
