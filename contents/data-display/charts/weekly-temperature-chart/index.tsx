@@ -1,9 +1,11 @@
 import { LineChart } from "@yamada-ui/charts"
 import {
   Button,
+  Center,
   Container,
   Heading,
   HStack,
+  Loading,
   Text,
   useAsync,
 } from "@yamada-ui/react"
@@ -21,7 +23,7 @@ const WeeklyTemperatureChart: FC = () => {
   const [isPreviousDisabled, setIsPreviousDisabled] = useState(false)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
 
-  const { value } = useAsync(async () => {
+  const { value, loading } = useAsync(async () => {
     const today = new Date()
     const twoWeeksAhead = new Date()
     twoWeeksAhead.setDate(today.getDate() + 13)
@@ -115,19 +117,25 @@ const WeeklyTemperatureChart: FC = () => {
           Next Week
         </Button>
       </HStack>
-      <LineChart
-        data={value ? value : []}
-        series={[
-          { dataKey: "Tokyo", color: "red" },
-          { dataKey: "Osaka", color: "green" },
-          { dataKey: "Hokkaido", color: "blue" },
-          { dataKey: "Okinawa", color: "purple" },
-        ]}
-        dataKey="date"
-        withDots={false}
-        withActiveDots={false}
-        unit="°C"
-      />
+      {loading ? (
+        <Center w="full" height="md">
+          <Loading />
+        </Center>
+      ) : (
+        <LineChart
+          data={value ? value : []}
+          series={[
+            { dataKey: "Tokyo", color: "red" },
+            { dataKey: "Osaka", color: "green" },
+            { dataKey: "Hokkaido", color: "blue" },
+            { dataKey: "Okinawa", color: "purple" },
+          ]}
+          dataKey="date"
+          withDots={false}
+          withActiveDots={false}
+          unit="°C"
+        />
+      )}
     </Container>
   )
 }
