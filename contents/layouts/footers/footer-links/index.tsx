@@ -126,17 +126,17 @@ const FooterLinks: FC = () => {
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<TwitterIcon size="2xl" />}
+              icon={<TwitterIcon fontSize="2xl" />}
             />
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<YoutubeIcon size="2xl" />}
+              icon={<YoutubeIcon fontSize="2xl" />}
             />
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<InstagramIcon size="2xl" />}
+              icon={<InstagramIcon fontSize="2xl" />}
             />
           </ButtonGroup>
         </Flex>
