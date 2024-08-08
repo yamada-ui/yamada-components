@@ -72,11 +72,13 @@ export const getComponentCategoryGroup =
       }),
     )
 
-    return componentTree
+    const filteredComponentCategoryGroup = componentTree
       .filter(Boolean)
       .sort(
         (a, b) => (a?.order ?? 530000) - (b?.order ?? 530000),
       ) as ComponentCategoryGroup[]
+
+    return filteredComponentCategoryGroup
   }
 
 export const getComponentPaths =
@@ -95,6 +97,7 @@ export const getComponentPaths =
           slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
 
           const resolvedSlug = slug.split("/")
+          if (!items) return [{ params: { slug: resolvedSlug }, locale }]
 
           return [
             { params: { slug: resolvedSlug }, locale },
@@ -164,7 +167,7 @@ export const getComponent =
         config: hasConfig ? validConfigPath : null,
       }
 
-      const fileList = metadata?.options?.fileList // string[]
+      const fileList = metadata?.options?.fileList
 
       const components = (
         await Promise.all(
