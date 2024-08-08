@@ -1,0 +1,11 @@
+{
+  "en": {
+    "title": "Avatar with Hover",
+    "description": "This is a usage example of the avatar component with hover effect."
+  },
+  "ja": {
+    "title": "アバターとホバーの組み合わせ",
+    "description": "アバターとホバーの組み合わせの使用例です。"
+  },
+  "options": { "container": { "centerContent": true, "p": "md" } }
+}
