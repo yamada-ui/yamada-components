@@ -1,10 +1,10 @@
 {
   "en": {
     "title": "Charts",
-    "description": ""
+    "description": "Examples with Chart Components"
   },
   "ja": {
-    "title": "Charts",
-    "description": ""
+    "title": "チャート",
+    "description": "チャートのコンポーネントを使った例"
   }
 }

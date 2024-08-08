@@ -1,5 +1,12 @@
 import { LineChart } from "@yamada-ui/charts"
-import { Button, Container, Heading, HStack, useAsync } from "@yamada-ui/react"
+import {
+  Button,
+  Container,
+  Heading,
+  HStack,
+  Text,
+  useAsync,
+} from "@yamada-ui/react"
 import { useState, type FC } from "react"
 
 const formatDate = (date: Date) => {
@@ -9,7 +16,7 @@ const formatDate = (date: Date) => {
   return `${year}-${month}-${day}`
 }
 
-const TemperatureChart: FC = () => {
+const WeeklyTemperatureChart: FC = () => {
   const [startDate, setStartDate] = useState(new Date())
   const [isPreviousDisabled, setIsPreviousDisabled] = useState(false)
   const [isNextDisabled, setIsNextDisabled] = useState(false)
@@ -19,7 +26,7 @@ const TemperatureChart: FC = () => {
     const twoWeeksAhead = new Date()
     twoWeeksAhead.setDate(today.getDate() + 13)
     const fourMonthsAgo = new Date()
-    fourMonthsAgo.setMonth(today.getMonth() - 4)
+    fourMonthsAgo.setMonth(today.getMonth() - 3)
 
     setIsNextDisabled(startDate > twoWeeksAhead)
     setIsPreviousDisabled(startDate < fourMonthsAgo)
@@ -91,13 +98,19 @@ const TemperatureChart: FC = () => {
     })
   }
 
+  const endDate = new Date(startDate)
+  endDate.setDate(startDate.getDate() - 7)
+  const startDateString = formatDate(endDate)
+  const endDateString = formatDate(startDate)
+
   return (
-    <Container m="auto">
-      <Heading>This is a Temperature chart.</Heading>
-      <HStack>
+    <Container m="auto" maxW="container.md" p={4}>
+      <Heading mb={6}>Weekly Temperature Chart</Heading>
+      <HStack mb={4} justifyContent="space-between">
         <Button onClick={handlePreviousWeek} isDisabled={isPreviousDisabled}>
           Previous Week
         </Button>
+        <Text>{`${startDateString} 〜 ${endDateString}`}</Text>
         <Button onClick={handleNextWeek} isDisabled={isNextDisabled}>
           Next Week
         </Button>
@@ -119,4 +132,4 @@ const TemperatureChart: FC = () => {
   )
 }
 
-export default TemperatureChart
+export default WeeklyTemperatureChart
