@@ -186,7 +186,7 @@ export const ComponentPreview = memo(
                         </Box>
                       ) : (
                         <Center boxSize="full" flex="1">
-                          <Loading size="6xl" {...loadingProps} />
+                          <Loading boxSize="6xl" {...loadingProps} />
                         </Center>
                       )}
                     </Center>
@@ -211,7 +211,7 @@ export const ComponentPreview = memo(
               </Box>
             ) : (
               <Center boxSize="full" flex="1">
-                <Loading size="6xl" {...loadingProps} />
+                <Loading boxSize="6xl" {...loadingProps} />
               </Center>
             )}
           </Center>
