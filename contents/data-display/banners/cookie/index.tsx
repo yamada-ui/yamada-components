@@ -19,21 +19,8 @@ const Banner: FC = () => {
           templateAreas={`
             "title title close"
             "content content content"
-            "empty button button"
-          `}
+            "empty button button"`}
           gap="sm"
-          _container={[
-            {
-              maxW: "300px",
-              css: {
-                gridTemplateAreas: `
-                  "title title close"
-                  "content content content"
-                  "empty button button"
-                `,
-              },
-            },
-          ]}
         >
           <GridItem area="title">
             <Text fontSize="md">Allow cookies</Text>
@@ -46,7 +33,9 @@ const Banner: FC = () => {
               dangerouslySetInnerHTML={{
                 __html: `<p>This website uses cookies to enhance user experience and to improve the website. By clicking "Accept all", you consent to the use of cookies. For more details, please refer to our Privacy Policy.</p>`,
               }}
-              onClick={(e) => e.preventDefault()}
+              onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) =>
+                e.preventDefault()
+              }
               color="gray"
               fontSize="xs"
             />

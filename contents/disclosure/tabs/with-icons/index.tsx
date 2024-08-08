@@ -1,4 +1,9 @@
-import { Building2Icon, CreditCardIcon, UserRoundIcon, UsersIcon } from "@yamada-ui/lucide"
+import {
+  Building2Icon,
+  CreditCardIcon,
+  UserRoundIcon,
+  UsersIcon,
+} from "@yamada-ui/lucide"
 import { Tab, Tabs } from "@yamada-ui/react"
 import type { FC } from "react"
 
