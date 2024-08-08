@@ -1,8 +1,5 @@
 import { LineChart } from "@yamada-ui/charts"
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@yamada-ui/lucide"
+import { ChevronLeftIcon, ChevronRightIcon } from "@yamada-ui/lucide"
 import {
   Center,
   Container,
@@ -127,7 +124,7 @@ const WeeklyTemperatureChart: FC = () => {
       </HStack>
       {loading ? (
         <Center w="full" height="md">
-          <Loading w="5xs" h="5xs" />
+          <Loading boxSize="5xs" />
         </Center>
       ) : (
         <LineChart
