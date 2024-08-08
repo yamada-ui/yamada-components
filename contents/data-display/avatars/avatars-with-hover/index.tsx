@@ -13,7 +13,7 @@ const AvatarWithHover: FC = () => {
       }}
       gap="-3"
     >
-      {users.map((user) => (
+      {users.map((user, index) => (
         <Box
           key={user.id}
           position="relative"
@@ -35,9 +35,13 @@ const AvatarWithHover: FC = () => {
             },
           }}
           bg={["white", "black"]}
-          transitionDelay="300ms"
           transitionDuration="slower"
           transitionProperty="transform, margin-inline, z-index"
+          display={{
+            sm: index > 3 ? "none" : "flex",
+            md: index > 4 ? "none" : "flex",
+            lg: index > 6 ? "none" : "flex",
+          }}
         >
           <Tooltip label={user.name} placement="top" flexShrink="0">
             <Avatar name={user.name} src={user.src} size="lg" />

@@ -24,4 +24,14 @@ export const users = [
     name: "taroj1205",
     src: "https://avatars.githubusercontent.com/u/61367823?v=4",
   },
+  {
+    id: 6,
+    name: "taroj1205",
+    src: "https://avatars.githubusercontent.com/u/61367823?v=4",
+  },
+  {
+    id: 7,
+    name: "taroj1205",
+    src: "https://avatars.githubusercontent.com/u/61367823?v=4",
+  },
 ]

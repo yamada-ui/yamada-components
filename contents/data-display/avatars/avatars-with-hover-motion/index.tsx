@@ -7,9 +7,9 @@ const AvatarWithHoverFramer: FC = () => {
     <AvatarGroup
       as={Motion}
       whileHover={{
-        width: "350px",
+        width: "500px",
       }}
-      gap="-3"
+      gap="-20"
       justifyContent="space-between"
       display="flex"
     >
