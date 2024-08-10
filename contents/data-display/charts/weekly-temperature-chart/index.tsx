@@ -98,7 +98,7 @@ const WeeklyTemperatureChart: FC = () => {
   return (
     <Container m="auto" maxW="container.md" p={4}>
       <Heading mb={6}>Weekly Temperature Chart</Heading>
-      <Center mb={4}>
+      <Center mb={4} gap="md">
         <IconButton
           onClick={handlePreviousWeek}
           isDisabled={isPreviousDisabled}
