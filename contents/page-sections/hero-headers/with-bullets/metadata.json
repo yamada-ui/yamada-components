@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "HeroWithBullets",
+    "description": ""
+  },
+  "ja": {
+    "title": "HeroWithBullets",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  },
+  "order": 2
+}
