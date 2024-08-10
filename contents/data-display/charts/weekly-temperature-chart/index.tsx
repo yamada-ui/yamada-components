@@ -62,12 +62,13 @@ const WeeklyTemperatureChart: FC = () => {
         }
         region.hourly.time.forEach((time, i) => {
           const formattedTime = time.replace("T", " ")
-          if (!acc[i]) acc[i] = { date: formattedTime } as Record<string, any>
+          if (!acc[i])
+            acc[i] = { date: formattedTime } as Record<string, number | string>
           acc[i][locationKey] = region.hourly.temperature_2m[i]
         })
         return acc
       },
-      [] as Array<Record<string, any>>,
+      [] as Array<Record<string, number | string>>,
     )
 
     return formattedData
