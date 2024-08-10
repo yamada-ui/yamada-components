@@ -1,5 +1,6 @@
 name: "Bug Report"
 description: "File a bug report"
+labels: ["triage"]
 body:
   - type: markdown
     attributes:
@@ -21,8 +22,8 @@ body:
       required: true
   - type: input
     attributes:
-      label: Does the feature already exist? Please link to it.
-      description: "Example: https://yamada-components.app/colors/ffffff"
+      label: Does the component already exist? Please link to it.
+      description: "Example: https://yamada-components.app/layouts/headers/simple-header"
   - type: dropdown
     id: participate
     attributes:
