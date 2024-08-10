@@ -123,7 +123,7 @@ const WeeklyTemperatureChart: FC = () => {
         />
       </HStack>
       {loading ? (
-        <Center w="full" height="md">
+        <Center height="md">
           <Loading boxSize="5xs" />
         </Center>
       ) : (
