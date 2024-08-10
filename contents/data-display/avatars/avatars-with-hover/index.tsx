@@ -7,7 +7,6 @@ const AvatarWithHover: FC = () => {
     <AvatarGroup
       _hover={{
         div: {
-          marginInline: "xs",
           transitionDelay: "0s",
         },
       }}
@@ -23,15 +22,19 @@ const AvatarWithHover: FC = () => {
             "&:hover": {
               transform: "scale(1.5)",
               zIndex: 1,
+              marginInline: "xs",
             },
             "&:hover + div": {
               transform: "scale(1.2)",
+              marginInline: "xs",
             },
             "&:has(+ div:hover)": {
               transform: "scale(1.2)",
+              marginInline: "xs",
             },
             "&:not(:hover)": {
               zIndex: 0,
+              marginInline: "-3",
             },
           }}
           bg={["white", "black"]}
