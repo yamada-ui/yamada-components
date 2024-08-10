@@ -53,24 +53,13 @@ const WeeklyTemperatureChart: FC = () => {
       }
     }>
 
+    const locationKeys = ["Tokyo", "Osaka", "Hokkaido", "Okinawa"]
+
     const formattedData = data.reduce(
       (acc, region, index) => {
-        let locationKey: string
-        switch (index) {
-          case 0:
-            locationKey = "Tokyo"
-            break
-          case 1:
-            locationKey = "Osaka"
-            break
-          case 2:
-            locationKey = "Hokkaido"
-            break
-          case 3:
-            locationKey = "Okinawa"
-            break
-          default:
-            throw new Error("Unexpected location index")
+        const locationKey = locationKeys[index]
+        if (!locationKey) {
+          throw new Error("Unexpected location index")
         }
         region.hourly.time.forEach((time, i) => {
           const formattedTime = time.replace("T", " ")
