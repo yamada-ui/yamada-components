@@ -10,7 +10,6 @@ const AvatarWithHover: FC = () => {
           transitionDelay: "0s",
         },
       }}
-      gap="-3"
     >
       {users.map((user, index) => (
         <Box
@@ -20,21 +19,17 @@ const AvatarWithHover: FC = () => {
           sx={{
             borderWidth: "3px",
             "&:hover": {
-              transform: "scale(1.5)",
+              transform: "scale(1.4)",
               zIndex: 1,
-              marginInline: "xs",
             },
             "&:hover + div": {
-              transform: "scale(1.2)",
-              marginInline: "xs",
+              transform: "scale(1.1)",
             },
             "&:has(+ div:hover)": {
-              transform: "scale(1.2)",
-              marginInline: "xs",
+              transform: "scale(1.1)",
             },
             "&:not(:hover)": {
               zIndex: 0,
-              marginInline: "-3",
             },
           }}
           bg={["white", "black"]}

@@ -10,15 +10,20 @@ const AvatarWithHoverFramer: FC = () => {
         maxWidth: "450px",
       }}
       maxW="md"
+      w="full"
       gap="-20"
       justifyContent="space-between"
       display="flex"
     >
-      {users.map((user) => (
+      {users.map((user, index) => (
         <Motion
           key={user.id}
           position="relative"
           whileHover={{
+            scale: 1.3,
+            zIndex: 1,
+          }}
+          whileTap={{
             scale: 1.3,
             zIndex: 1,
           }}
@@ -28,6 +33,9 @@ const AvatarWithHoverFramer: FC = () => {
           bg={["white", "black"]}
           transitionDelay="0s"
           transitionDuration="fast"
+          display={{
+            sm: index > 5 ? "none" : "flex",
+          }}
         >
           <Tooltip label={user.name} placement="top" flexShrink="0">
             <Avatar name={user.name} src={user.src} size="lg" />
