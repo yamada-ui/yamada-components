@@ -7,9 +7,4 @@
     "title": "週間気温チャート",
     "description": "1週間の気温の線グラフを表示します。"
   },
-  "options": {
-    "container": {
-      "p": "md"
-    }
-  }
 }
