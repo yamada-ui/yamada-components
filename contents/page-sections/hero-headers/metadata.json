@@ -1,10 +1,10 @@
 {
   "en": {
-    "title": "HeroHeaders",
-    "description": ""
+    "title": "Hero Headers",
+    "description": "This category contains various hero header components."
   },
   "ja": {
-    "title": "HeroHeaders",
-    "description": ""
+    "title": "ヒーローヘッダー",
+    "description": "このカテゴリには、さまざまなヒーローヘッダーコンポーネントが含まれています。"
   }
 }
