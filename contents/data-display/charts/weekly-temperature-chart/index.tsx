@@ -4,7 +4,6 @@ import {
   Center,
   Container,
   Heading,
-  HStack,
   IconButton,
   Loading,
   Text,
@@ -98,7 +97,7 @@ const WeeklyTemperatureChart: FC = () => {
   return (
     <Container m="auto" maxW="container.md" p={4}>
       <Heading mb={6}>Weekly Temperature Chart</Heading>
-      <HStack mb={4} justifyContent="center">
+      <Center mb={4}>
         <IconButton
           onClick={handlePreviousWeek}
           isDisabled={isPreviousDisabled}
@@ -110,7 +109,7 @@ const WeeklyTemperatureChart: FC = () => {
           isDisabled={isNextDisabled}
           icon={<ChevronRightIcon />}
         />
-      </HStack>
+      </Center>
       {loading ? (
         <Center height="md">
           <Loading boxSize="5xs" />
