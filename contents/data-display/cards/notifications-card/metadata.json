@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "AccountCard",
+    "description": ""
+  },
+  "ja": {
+    "title": "AccountCard",
+    "description": ""
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Share Document Card",
+    "description": "A card to share a document link and manage access permissions."
+  },
+  "ja": {
+    "title": "ドキュメント共有カード",
+    "description": "ドキュメントのリンクを共有し、アクセス権限を管理するためのカード。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

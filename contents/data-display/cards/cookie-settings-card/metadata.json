@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Cookie Settings Card",
+    "description": "A card to manage your cookie preferences."
+  },
+  "ja": {
+    "title": "クッキー設定カード",
+    "description": "クッキーの設定を管理するためのカード。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Cards",
+    "description": "Card is a component that groups and displays related information."
+  },
+  "ja": {
+    "title": "カード",
+    "description": "カードは、関連する情報をグループ化して表示するコンポーネントです。デフォルトでは、section要素をレンダリングします。"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Payment Method Card",
+    "description": "A card to add and manage your payment methods."
+  },
+  "ja": {
+    "title": "支払い方法カード",
+    "description": "支払い方法を追加および管理するためのカード。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}
