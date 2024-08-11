@@ -8,10 +8,11 @@ import {
   useBreakpoint,
 } from "@yamada-ui/react"
 import { useRouter } from "next/router"
-import type { FC, ReactNode } from "react"
+import type { FC, PropsWithChildren, ReactNode } from "react"
 import { memo, useEffect } from "react"
 
-export type MobileMenuProps = DrawerProps & { header?: ReactNode }
+export type MobileMenuProps = DrawerProps &
+  PropsWithChildren<{ header?: ReactNode }>
 
 export const MobileMenu: FC<MobileMenuProps> = memo(
   ({ isOpen, onClose, header, children, ...rest }) => {
