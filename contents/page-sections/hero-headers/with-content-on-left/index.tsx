@@ -20,10 +20,10 @@ const HeroWithContentOnLeft: FC = () => {
     >
       <Box position="absolute" inset={0} zIndex="0" bg="blackAlpha.700" />
       <VStack as={Center} px="xl" h="full" zIndex="1" py="xl" gap="lg">
-        <Heading as="h2" size="3xl" fontWeight={900} maxW="xl">
+        <Heading as="h2" size="3xl" fontWeight={900} maxW="xl" color="white">
           Unleash the Power of Styling, Animation, and Flexibility in React Apps
         </Heading>
-        <Text fontSize="xl" maxW="xl">
+        <Text fontSize="xl" maxW="xl" color="white">
           Yamada UI is a versatile React component library, unleashing the power
           of your application's animation and flexibility. It provides an
           intuitive and efficient way to integrate advanced styling into your
@@ -34,12 +34,12 @@ const HeroWithContentOnLeft: FC = () => {
           as="a"
           href="/getting-started"
           bgGradient={[
-            "linear(to-r, primary.700, primary.400)",
-            "linear(to-r, primary.700, primary.400)",
+            "linear(to-r, primary.700, primary.500)",
+            "linear(to-r, primary.700, primary.500)",
           ]}
           _hover={{
             bgGradient: [
-              "linear(to-r, primary.600, primary.300)",
+              "linear(to-r, primary.600, primary.400)",
               "linear(to-r, primary.600, primary.300)",
             ],
           }}
@@ -47,6 +47,7 @@ const HeroWithContentOnLeft: FC = () => {
           w="fit-content"
           size="lg"
           onClick={(e) => e.preventDefault()}
+          color="white"
         >
           Get started
         </Button>
