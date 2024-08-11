@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Get in Touch Form",
+    "description": "Please fill out the form below to get in touch with us."
+  },
+  "ja": {
+    "title": "お問い合わせフォーム",
+    "description": "以下のフォームにご記入の上、お問い合わせください。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}
