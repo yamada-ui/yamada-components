@@ -20,7 +20,7 @@ const Form: FC = () => {
     <Container
       bgGradient="linear(to-r, primary.700, primary.500)"
       flexDir={{ base: "row", md: "column" }}
-      p="2xl"
+      p={{ base: "2xl", sm: "md", md: "lg" }}
     >
       <VStack gap="sm" color="white">
         <Heading as="h2" size="lg">
