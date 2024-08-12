@@ -11,44 +11,15 @@ import FAQ from "./faq.svg"
 const WithImage = () => {
   return (
     <Flex
-      _container={[
-        {
-          maxW: "900px",
-          css: {
-            flexDir: "column",
-          },
-        },
-      ]}
+      flexDir={{ lg: "column" }}
       gap="lg"
       py="xl"
       px="md"
       alignItems="center"
       justifyContent="center"
     >
-      <Image
-        src={FAQ.src}
-        alt="faq"
-        w="lg"
-        _container={[
-          {
-            maxW: "900px",
-            css: {
-              w: "90%",
-            },
-          },
-        ]}
-      />
-      <VStack
-        maxW="xl"
-        _container={[
-          {
-            maxW: "900px",
-            css: {
-              maxW: "100%",
-            },
-          },
-        ]}
-      >
+      <Image src={FAQ.src} alt="faq" w={{ base: "lg", sm: "full" }} />
+      <VStack maxW={{ base: "xl", sm: "full" }}>
         <Heading pl="md" size="md">
           Frequently Asked Questions
         </Heading>
