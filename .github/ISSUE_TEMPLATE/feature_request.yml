@@ -7,7 +7,7 @@ body:
       value: |
         Thank you for submitting a component request! 😎
 
-        If you have an idea for a new component or notice something is not working as intended, you are in the right place!
+        If you have an idea for a new component, you are in the right place!
   - type: input
     id: subject
     attributes:
