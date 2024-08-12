@@ -29,19 +29,14 @@ const NavigationDrawer: FC = () => {
         size="sm"
         blockScrollOnMount={false}
         overflowY="auto"
-        sx={{
-          ".ui-drawer__inner": {
-            gap: "md",
-          },
-        }}
       >
-        <DrawerHeader m="0">
+        <DrawerHeader>
           <Heading as="h2" size="lg">
             Yamada Components
           </Heading>
         </DrawerHeader>
-        <Divider />
-        <DrawerBody m="0">
+        <Divider mt="md" />
+        <DrawerBody>
           <ButtonGroup direction="column" w="full" gap="sm">
             {tabData.top.map((item) => (
               <Button
@@ -61,8 +56,8 @@ const NavigationDrawer: FC = () => {
             ))}
           </ButtonGroup>
         </DrawerBody>
-        <Divider />
-        <DrawerFooter m="0">
+        <Divider mb="md" />
+        <DrawerFooter>
           <ButtonGroup direction="column" w="full" gap="sm">
             {tabData.bottom.map((item) => (
               <Button
