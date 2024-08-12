@@ -1,14 +1,6 @@
+import { RangeDatePicker } from "@yamada-ui/calendar"
 import { LineChart } from "@yamada-ui/charts"
-import { ChevronLeftIcon, ChevronRightIcon } from "@yamada-ui/lucide"
-import {
-  Center,
-  Container,
-  Heading,
-  IconButton,
-  Loading,
-  Text,
-  useAsync,
-} from "@yamada-ui/react"
+import { Center, Container, Heading, Loading, useAsync } from "@yamada-ui/react"
 import { useState, type FC } from "react"
 
 const formatDate = (date: Date) => {
@@ -19,24 +11,25 @@ const formatDate = (date: Date) => {
 }
 
 const WeeklyTemperatureChart: FC = () => {
-  const [startDate, setStartDate] = useState(new Date())
-  const [isPreviousDisabled, setIsPreviousDisabled] = useState(false)
-  const [isNextDisabled, setIsNextDisabled] = useState(false)
+  const today = new Date()
+  const nextWeek = new Date()
+  nextWeek.setDate(today.getDate() + 6)
+
+  const pastThreeMonths = new Date()
+  pastThreeMonths.setMonth(today.getMonth() - 3)
+
+  const futureTwoWeeks = new Date()
+  futureTwoWeeks.setDate(today.getDate() + 13)
+
+  const [dateRange, setDateRange] = useState<
+    [(Date | undefined)?, (Date | undefined)?]
+  >([today, nextWeek])
 
   const { value, loading } = useAsync(async () => {
-    const today = new Date()
-    const twoWeeksAhead = new Date()
-    twoWeeksAhead.setDate(today.getDate() + 13)
-    const fourMonthsAgo = new Date()
-    fourMonthsAgo.setMonth(today.getMonth() - 3)
+    if (!dateRange[0] || !dateRange[1]) return []
 
-    setIsNextDisabled(startDate > twoWeeksAhead)
-    setIsPreviousDisabled(startDate < fourMonthsAgo)
-
-    const endDate = new Date(startDate)
-    endDate.setDate(startDate.getDate() - 7)
-    const startDateString = formatDate(endDate)
-    const endDateString = formatDate(startDate)
+    const startDateString = formatDate(dateRange[0])
+    const endDateString = formatDate(dateRange[1])
 
     const response = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=35.6785,34.6937,43.0642,26.2124&longitude=139.6823,135.5023,141.3468,127.6792&hourly=temperature_2m&timezone=Asia%2FTokyo&start_date=${startDateString}&end_date=${endDateString}`,
@@ -72,46 +65,21 @@ const WeeklyTemperatureChart: FC = () => {
     )
 
     return formattedData
-  }, [startDate])
-
-  const handlePreviousWeek = () => {
-    setStartDate((prevDate) => {
-      const newDate = new Date(prevDate)
-      newDate.setDate(prevDate.getDate() - 7)
-      return newDate
-    })
-  }
-
-  const handleNextWeek = () => {
-    setStartDate((prevDate) => {
-      const newDate = new Date(prevDate)
-      newDate.setDate(prevDate.getDate() + 7)
-      return newDate
-    })
-  }
-
-  const endDate = new Date(startDate)
-  endDate.setDate(startDate.getDate() - 7)
-  const startDateString = formatDate(endDate)
-  const endDateString = formatDate(startDate)
+  }, [dateRange])
 
   return (
     <Container m="auto" maxW="container.md" p={4}>
       <Heading mb={6}>Weekly Temperature Chart</Heading>
       <Center mb={4} gap="md">
-        <IconButton
-          onClick={handlePreviousWeek}
-          isDisabled={isPreviousDisabled}
-          icon={<ChevronLeftIcon />}
-        />
-        <Text>{`${startDateString} 〜 ${endDateString}`}</Text>
-        <IconButton
-          onClick={handleNextWeek}
-          isDisabled={isNextDisabled}
-          icon={<ChevronRightIcon />}
+        <RangeDatePicker
+          placeholder="YYYY/MM/DD"
+          minDate={pastThreeMonths}
+          maxDate={futureTwoWeeks}
+          value={dateRange}
+          onChange={(range) => setDateRange(range)}
         />
       </Center>
-      {loading ? (
+      {loading || value?.length === 0 ? (
         <Center height="md">
           <Loading boxSize="5xs" />
         </Center>
