@@ -11,15 +11,15 @@ import FAQ from "./faq.svg"
 const WithImage = () => {
   return (
     <Flex
-      flexDir={{ base: "row", md: "column" }}
+      flexDir={{ lg: "column" }}
       gap="lg"
       py="xl"
       px="md"
       alignItems="center"
       justifyContent="center"
     >
-      <Image src={FAQ.src} alt="faq" w={{ base: "3xl", md: "full" }} />
-      <VStack maxW={{ base: "full", md: "3xl" }}>
+      <Image src={FAQ.src} alt="faq" w={{ base: "lg", sm: "full" }} />
+      <VStack maxW={{ base: "xl", sm: "full" }}>
         <Heading pl="md" size="md">
           Frequently Asked Questions
         </Heading>
