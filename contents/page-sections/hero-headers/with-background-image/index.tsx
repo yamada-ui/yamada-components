@@ -20,7 +20,13 @@ const HeroWithBackgroundImage: FC = () => {
       h="full"
     >
       <Box position="absolute" inset={0} zIndex="0" bg="blackAlpha.700" />
-      <VStack as={Center} px="xl" h="full" zIndex="1" py="xl" gap="lg">
+      <VStack
+        as={Center}
+        p={{ base: "lg", md: "md" }}
+        h="full"
+        zIndex="1"
+        gap="lg"
+      >
         <Heading as="h2" size="3xl" fontWeight={900} maxW="xl" color="white">
           Automated AI code reviews for any stack
         </Heading>
