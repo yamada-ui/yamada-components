@@ -1,5 +1,6 @@
 name: "Bug Report (日本語)"
 description: "バグ報告を作成します"
+labels: ["triage"]
 body:
   - type: markdown
     attributes:
@@ -21,8 +22,8 @@ body:
       required: true
   - type: input
     attributes:
-      label: "機能はすでに存在しますか？リンクを貼ってください。"
-      description: "例: https://yamada-components.app/colors/ffffff"
+      label: "コンポーネントはすでに存在しますか？リンクを貼ってください。"
+      description: "例: https://yamada-components.app/layouts/headers/simple-header"
   - type: dropdown
     id: participate
     attributes:
