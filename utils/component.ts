@@ -167,7 +167,7 @@ export const getComponent =
         config: hasConfig ? validConfigPath : null,
       }
 
-      const fileList = metadata?.options?.fileList
+      const filesOrder = metadata?.options?.files?.order
 
       const components = (
         await Promise.all(
@@ -179,9 +179,9 @@ export const getComponent =
           }),
         )
       ).sort((componentA, componentB) => {
-        if (fileList) {
-          const positionA = fileList.indexOf(componentA.name)
-          const positionB = fileList.indexOf(componentB.name)
+        if (filesOrder) {
+          const positionA = filesOrder.indexOf(componentA.name)
+          const positionB = filesOrder.indexOf(componentB.name)
 
           if (positionA !== -1 && positionB !== -1) {
             return positionA - positionB
