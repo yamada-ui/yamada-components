@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Hero with Bullets",
+    "description": "This is a hero section with a list of features."
+  },
+  "ja": {
+    "title": "箇条書きのあるヒーロー",
+    "description": "これは機能のリストがあるヒーローセクションです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  },
+  "order": 2
+}
