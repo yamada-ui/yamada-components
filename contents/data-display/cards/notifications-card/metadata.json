@@ -1,11 +1,11 @@
 {
   "en": {
-    "title": "AccountCard",
-    "description": ""
+    "title": "Notifications Card",
+    "description": "A card component that allows users to choose their notification preferences."
   },
   "ja": {
-    "title": "AccountCard",
-    "description": ""
+    "title": "通知カード",
+    "description": "ユーザーが通知の設定を選択できるカードコンポーネント。"
   },
   "options": {
     "container": {
