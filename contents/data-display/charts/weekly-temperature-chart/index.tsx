@@ -68,9 +68,9 @@ const WeeklyTemperatureChart: FC = () => {
   }, [dateRange])
 
   return (
-    <Container m="auto" maxW="container.md" p={4}>
-      <Heading mb={6}>Weekly Temperature Chart</Heading>
-      <Center mb={4} gap="md">
+    <Container m="auto" maxW="container.md">
+      <Heading>Weekly Temperature Chart</Heading>
+      <Center gap="md">
         <RangeDatePicker
           placeholder="YYYY/MM/DD"
           minDate={pastThreeMonths}
