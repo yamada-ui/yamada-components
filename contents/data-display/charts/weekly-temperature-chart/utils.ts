@@ -1,3 +1,5 @@
+import { locationKeys } from "./locations"
+
 export const PERIOD_SUGGEST = ["7d", "14d", "1M", "2M", "3M"] as const
 
 export const formatDate = (date: Date) => {
@@ -24,8 +26,6 @@ export const getWeeklyTemperatureData = async (
       temperature_2m: number[]
     }
   }>
-
-  const locationKeys = ["Tokyo", "Osaka", "Hokkaido", "Okinawa"]
 
   const formattedData = data.reduce(
     (acc, region, index) => {

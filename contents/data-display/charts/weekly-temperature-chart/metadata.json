@@ -10,6 +10,9 @@
   "options": {
     "container": {
       "minH": "3xl"
+    },
+    "files": {
+      "order": ["index.tsx", "utils.ts", "location.ts"]
     }
   }
 }
