@@ -68,7 +68,7 @@ const WeeklyTemperatureChart: FC = () => {
   }, [dateRange])
 
   return (
-    <Container m="auto" maxW="container.md">
+    <Container m="auto" maxW="md">
       <Heading>Weekly Temperature Chart</Heading>
       <Center gap="md">
         <RangeDatePicker
@@ -76,7 +76,7 @@ const WeeklyTemperatureChart: FC = () => {
           minDate={pastThreeMonths}
           maxDate={futureTwoWeeks}
           value={dateRange}
-          onChange={(range) => setDateRange(range)}
+          onChange={setDateRange}
         />
       </Center>
       {loading || value?.length === 0 ? (
