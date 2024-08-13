@@ -9,7 +9,7 @@
   },
   "options": {
     "container": {
-      "p": "md"
+      "minH": "3xl"
     }
   }
 }
