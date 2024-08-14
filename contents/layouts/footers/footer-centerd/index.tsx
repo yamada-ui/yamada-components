@@ -48,16 +48,8 @@ const FooterCentered: FC = () => {
         </HStack>
         <Flex gap="md">{items}</Flex>
         <ButtonGroup>
-          <IconButton
-            variant="ghost"
-            borderRadius="full"
-            icon={<TwitterIcon />}
-          />
-          <IconButton
-            variant="ghost"
-            borderRadius="full"
-            icon={<YoutubeIcon />}
-          />
+          <IconButton variant="ghost" borderRadius="full" icon={<TwitterIcon />} />
+          <IconButton variant="ghost" borderRadius="full" icon={<YoutubeIcon />} />
           <IconButton
             variant="ghost"
             borderRadius="full"
