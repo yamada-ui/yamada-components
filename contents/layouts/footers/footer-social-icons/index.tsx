@@ -37,16 +37,8 @@ const FooterCentered: FC = () => {
           <Text fontSize="lg">Yamada UI</Text>
         </HStack>
         <ButtonGroup>
-          <IconButton
-            variant="ghost"
-            borderRadius="full"
-            icon={<TwitterIcon />}
-          />
-          <IconButton
-            variant="ghost"
-            borderRadius="full"
-            icon={<YoutubeIcon />}
-          />
+          <IconButton variant="ghost" borderRadius="full" icon={<TwitterIcon />} />
+          <IconButton variant="ghost" borderRadius="full" icon={<YoutubeIcon />} />
           <IconButton
             variant="ghost"
             borderRadius="full"
