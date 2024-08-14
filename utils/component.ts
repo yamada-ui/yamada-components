@@ -169,6 +169,13 @@ export const getComponent =
 
       const filesOrder = metadata?.options?.files?.order
 
+      const orderMap = new Map<string, number>()
+      if (filesOrder) {
+        for (const [index, fileName] of filesOrder.entries()) {
+          orderMap.set(fileName, index)
+        }
+      }
+
       const components = (
         await Promise.all(
           fileNames.map(async (name) => {
@@ -179,22 +186,16 @@ export const getComponent =
           }),
         )
       ).sort((componentA, componentB) => {
-        if (filesOrder) {
-          const positionA = filesOrder.indexOf(componentA.name)
-          const positionB = filesOrder.indexOf(componentB.name)
+        const positionA = orderMap.get(componentA.name) ?? Infinity
+        const positionB = orderMap.get(componentB.name) ?? Infinity
 
-          if (positionA !== -1 && positionB !== -1) {
-            return positionA - positionB
-          } else if (positionA !== -1) {
-            return -1
-          } else if (positionB !== -1) {
-            return 1
-          }
+        const indexPosition = orderMap.get("index.tsx")
+        if (indexPosition === undefined) {
+          if (componentA.name === "index.tsx") return -1
+          if (componentB.name === "index.tsx") return 1
         }
 
-        if (componentA.name === "index.tsx") return -1
-        if (componentB.name === "index.tsx") return 1
-        return 0
+        return positionA - positionB
       })
 
       slug = `/${slug}`

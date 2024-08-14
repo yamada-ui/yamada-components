@@ -14,7 +14,7 @@
     },
     "iframe": true,
     "files": {
-      "order": ["index.tsx", "category-item.tsx", "table.tsx", "data.ts"]
+      "order": ["category-item.tsx", "table.tsx", "data.ts"]
     }
   },
   "order": 5
