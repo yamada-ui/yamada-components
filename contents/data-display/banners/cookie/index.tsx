@@ -11,7 +11,7 @@ import {
 } from "@yamada-ui/react"
 import type { FC } from "react"
 
-const Banner: FC = () => {
+const CookieBanner: FC = () => {
   return (
     <Card variant="outline" maxW="md" shadow="sm">
       <CardBody>
@@ -33,9 +33,7 @@ const Banner: FC = () => {
               dangerouslySetInnerHTML={{
                 __html: `<p>This website uses cookies to enhance user experience and to improve the website. By clicking "Accept all", you consent to the use of cookies. For more details, please refer to our Privacy Policy.</p>`,
               }}
-              onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) =>
-                e.preventDefault()
-              }
+              onClick={(e) => e.preventDefault()}
               color="gray"
               fontSize="xs"
             />
@@ -56,4 +54,4 @@ const Banner: FC = () => {
   )
 }
 
-export default Banner
+export default CookieBanner
