@@ -6,7 +6,7 @@ import {
   PieChart,
   RadarChart,
 } from "@yamada-ui/charts"
-import { Grid, GridItem } from "@yamada-ui/react"
+import { GridItem, SimpleGrid } from "@yamada-ui/react"
 import { useMemo, type FC } from "react"
 
 const SimpleCharts: FC = () => {
@@ -26,14 +26,10 @@ const SimpleCharts: FC = () => {
   )
 
   return (
-    <Grid
-      templateAreas={`
-        "areaChart lineChart barChart pieChart donutChart radarChart"
-      `}
-      gap="sm"
-    >
-      <GridItem area="areaChart" boxSize="sm">
+    <SimpleGrid columns={{ base: 6, lg: 3, md: 2, sm: 1 }} gap="md">
+      <GridItem>
         <AreaChart
+          boxSize="2xs"
           data={mappedData}
           series={[{ dataKey: "value", color: "primary.500" }]}
           dataKey="index"
@@ -47,8 +43,9 @@ const SimpleCharts: FC = () => {
         />
       </GridItem>
 
-      <GridItem area="lineChart" boxSize="sm">
+      <GridItem>
         <LineChart
+          boxSize="2xs"
           data={mappedData}
           series={[{ dataKey: "value", color: "primary.500" }]}
           dataKey="index"
@@ -62,8 +59,9 @@ const SimpleCharts: FC = () => {
         />
       </GridItem>
 
-      <GridItem area="barChart" boxSize="sm">
+      <GridItem>
         <BarChart
+          boxSize="2xs"
           data={mappedData}
           series={[{ dataKey: "value", color: "primary.500" }]}
           dataKey="index"
@@ -75,24 +73,27 @@ const SimpleCharts: FC = () => {
         />
       </GridItem>
 
-      <GridItem area="pieChart" boxSize="sm">
+      <GridItem>
         <PieChart
+          boxSize="2xs"
           data={pieChartData}
           pieProps={{ isAnimationActive: true }}
           withTooltip={false}
         />
       </GridItem>
 
-      <GridItem area="donutChart" boxSize="sm">
+      <GridItem>
         <DonutChart
+          boxSize="2xs"
           data={pieChartData}
           pieProps={{ isAnimationActive: true }}
           withTooltip={false}
         />
       </GridItem>
 
-      <GridItem area="radarChart" boxSize="sm">
+      <GridItem>
         <RadarChart
+          boxSize="2xs"
           data={mappedData}
           series={[{ dataKey: "value", color: "primary.500" }]}
           dataKey="index"
@@ -101,7 +102,7 @@ const SimpleCharts: FC = () => {
           withTooltip={false}
         />
       </GridItem>
-    </Grid>
+    </SimpleGrid>
   )
 }
 
