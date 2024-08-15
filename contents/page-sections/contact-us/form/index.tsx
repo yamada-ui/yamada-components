@@ -47,7 +47,7 @@ const Form: FC = () => {
             as="a"
             href="https://twitter.com/hirotomoyamada"
             variant="ghost"
-            onClick={e => e.preventDefault()}
+            onClick={(e) => e.preventDefault()}
           />
           <IconButton
             icon={<YoutubeIcon fontSize="2xl" color="white" />}
@@ -55,7 +55,7 @@ const Form: FC = () => {
             as="a"
             href="https://youtube.com/hirotomoyamada"
             variant="ghost"
-            onClick={e => e.preventDefault()}
+            onClick={(e) => e.preventDefault()}
           />
           <IconButton
             icon={<InstagramIcon fontSize="2xl" color="white" />}
@@ -63,11 +63,17 @@ const Form: FC = () => {
             as="a"
             href="https://instagram.com/hirotomoyamada"
             variant="ghost"
-            onClick={e => e.preventDefault()}
+            onClick={(e) => e.preventDefault()}
           />
         </ButtonGroup>
       </VStack>
-      <VStack bg={["white", "black"]} as="form" rounded="md" p="lg">
+      <VStack
+        bg={["white", "black"]}
+        as="form"
+        rounded="md"
+        p="lg"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <FormControl label="Email" isRequired>
           <Input type="email" placeholder="your@email.com" />
         </FormControl>
