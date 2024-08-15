@@ -38,12 +38,14 @@ const BookmarkCard: FC = () => {
         />
       </CardBody>
 
-      <CardFooter>
+      <CardFooter flexDir={{ sm: "column" }}>
         <Text>Photo by Pixabay from Pexels</Text>
 
-        <Spacer />
+        <Spacer display={{ sm: "none" }} />
 
-        <Button colorScheme="primary">Explore</Button>
+        <Button colorScheme="primary" w={{ sm: "full" }}>
+          Explore
+        </Button>
       </CardFooter>
     </Card>
   )

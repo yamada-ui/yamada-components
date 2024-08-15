@@ -30,7 +30,12 @@ const AccountCard: FC = () => {
       </CardHeader>
 
       <CardBody>
-        <ButtonGroup variant="outline" gap="sm" w="full">
+        <ButtonGroup
+          variant="outline"
+          gap="sm"
+          w="full"
+          flexDir={{ sm: "column" }}
+        >
           <Button w="full" leftIcon={<GithubIcon boxSize="1.25rem" />}>
             GitHub
           </Button>
