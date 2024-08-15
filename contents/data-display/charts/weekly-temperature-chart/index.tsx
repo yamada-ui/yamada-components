@@ -42,7 +42,7 @@ const WeeklyTemperatureChart: FC = () => {
       const startDateString = formatDate(dateRange[0])
       const endDateString = formatDate(dateRange[1])
 
-      return getWeeklyTemperatureData(startDateString, endDateString)
+      return await getWeeklyTemperatureData(startDateString, endDateString)
     } catch {
       return []
     }
