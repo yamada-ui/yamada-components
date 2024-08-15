@@ -5,6 +5,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   FormControl,
+  Heading,
   HStack,
   Input,
   Textarea,
@@ -25,15 +26,19 @@ const FormDrawer: FC = () => {
         onClose={onClose}
         blockScrollOnMount={false}
       >
-        <DrawerHeader>Contact Us</DrawerHeader>
+        <DrawerHeader>
+          <Heading as="h3" size="md">
+            Contact Us
+          </Heading>
+        </DrawerHeader>
 
         <DrawerBody>
           <HStack>
             <FormControl isRequired label="First Name">
-              <Input placeholder="John" />
+              <Input placeholder="Hirotomo" />
             </FormControl>
-            <FormControl label="Last Name">
-              <Input placeholder="Doe" />
+            <FormControl isRequired label="Last Name">
+              <Input placeholder="Yamada" />
             </FormControl>
           </HStack>
           <FormControl isRequired label="Email">
@@ -44,13 +49,8 @@ const FormDrawer: FC = () => {
           </FormControl>
         </DrawerBody>
 
-        <DrawerFooter justifyContent="center">
-          <Button
-            type="submit"
-            w="full"
-            colorScheme="primary"
-            onClick={onClose}
-          >
+        <DrawerFooter>
+          <Button type="submit" w="full" colorScheme="primary">
             Send message
           </Button>
         </DrawerFooter>
