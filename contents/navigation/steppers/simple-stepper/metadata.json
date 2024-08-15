@@ -12,9 +12,6 @@
       "centerContent": true,
       "p": "md"
     },
-    "iframe": true,
-    "files": {
-      "order": ["index.tsx", "ripple-step.tsx"]
-    }
+    "iframe": true
   }
 }
