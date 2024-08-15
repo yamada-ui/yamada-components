@@ -43,7 +43,13 @@ const PaymentMethod: FC = () => {
   const years = Array.from({ length: 10 }, (_, i) => currentYear + i)
 
   return (
-    <Card maxW="md" rounded="xl" variant="outline" as="form">
+    <Card
+      maxW="md"
+      rounded="xl"
+      variant="outline"
+      as="form"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
         <Heading as="h2" size="md">
           Payment method

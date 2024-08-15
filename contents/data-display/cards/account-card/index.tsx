@@ -18,7 +18,13 @@ import type { FC } from "react"
 
 const AccountCard: FC = () => {
   return (
-    <Card rounded="xl" variant="outline" w="md" as="form">
+    <Card
+      rounded="xl"
+      variant="outline"
+      w="md"
+      as="form"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
         <Heading as="h2" size="md">
           Create an account

@@ -17,7 +17,13 @@ import type { FC } from "react"
 
 const ReportIssueCard: FC = () => {
   return (
-    <Card w="md" rounded="xl" variant="outline">
+    <Card
+      w="md"
+      rounded="xl"
+      variant="outline"
+      as="form"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
         <Heading as="h2" size="md">
           Report an issue
@@ -68,7 +74,9 @@ const ReportIssueCard: FC = () => {
       <CardFooter justifyContent="flex-end">
         <Button variant="ghost">Cancel</Button>
 
-        <Button colorScheme="primary">Submit</Button>
+        <Button type="submit" colorScheme="primary">
+          Submit
+        </Button>
       </CardFooter>
     </Card>
   )
