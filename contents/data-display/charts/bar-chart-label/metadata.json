@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "BarChart - Label",
+    "description": "BarChart with label."
+  },
+  "ja": {
+    "title": "BarChart - Label",
+    "description": "ラベル付きBarChart。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}
