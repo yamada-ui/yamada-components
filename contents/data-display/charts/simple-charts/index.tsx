@@ -10,19 +10,21 @@ import { GridItem, SimpleGrid } from "@yamada-ui/react"
 import { useMemo, type FC } from "react"
 
 const SimpleCharts: FC = () => {
+  const data = useMemo(() => [10, 20, 40, 20, 60], [])
+
   const mappedData = useMemo(
-    () => [10, 20, 40, 20, 60].map((value, index) => ({ value, index })),
-    [],
+    () => data.map((value, index) => ({ value, index })),
+    [data],
   )
 
   const pieChartData = useMemo(
     () =>
-      [10, 20, 40, 20, 60].map((value, index) => ({
+      data.map((value, index) => ({
         name: `${index}`,
         value,
         color: `primary.${(index + 1) * 100}`,
       })),
-    [],
+    [data],
   )
 
   return (
