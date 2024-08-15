@@ -9,8 +9,7 @@
   },
   "options": {
     "container": {
-      "p": "md",
-      "centerContent": true
+      "p": "md"
     }
   }
 }
