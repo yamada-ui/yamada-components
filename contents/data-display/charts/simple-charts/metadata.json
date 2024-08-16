@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Simple Charts",
+    "description": "Simplified chart."
+  },
+  "ja": {
+    "title": "シンプルなチャート",
+    "description": "簡易的なチャート。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}
