@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Image Card",
+    "description": "A card component displaying an image with a header, body, and footer."
+  },
+  "ja": {
+    "title": "イメージカード",
+    "description": "ヘッダー、ボディ、フッターを持つ画像を表示するカードコンポーネント。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

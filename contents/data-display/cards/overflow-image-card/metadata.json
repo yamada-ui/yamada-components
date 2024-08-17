@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Overflow Image Card",
+    "description": "A card component displaying an image with a header, body, and footer, showcasing Yamada UI."
+  },
+  "ja": {
+    "title": "オーバーフローイメージカード",
+    "description": "ヘッダー、ボディ、フッターを持つ画像を表示するカードコンポーネントで、Yamada UIを紹介します。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

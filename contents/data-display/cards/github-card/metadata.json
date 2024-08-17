@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "GitHub Card",
+    "description": "A card component displaying GitHub repository information with options to star the repository."
+  },
+  "ja": {
+    "title": "GitHubカード",
+    "description": "GitHubリポジトリ情報を表示し、リポジトリにスターを付けるオプションがあるカードコンポーネント。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}
