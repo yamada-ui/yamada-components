@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "contents/**"
+    paths-ignore:
+      - "contents/**/metadata.json"
     branches:
       - main
 
