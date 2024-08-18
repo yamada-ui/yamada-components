@@ -66,7 +66,6 @@ export const ComponentBody = memo(
       }, [breakpoint])
 
       const isMobile = MOBILE_BREAKPOINTS.includes(breakpoint)
-      const isVertical = codeDirection === "vertical"
 
       return (
         <Resizable
@@ -117,7 +116,6 @@ export const ComponentBody = memo(
                   codeDirection={codeDirection}
                   onCodeDirectionChange={onCodeDirectionChange}
                   onCodePreviewClose={onCodePreviewClose}
-                  borderTopWidth={isVertical ? "0px" : "1px"}
                 />
               </ResizableItem>
             </>
