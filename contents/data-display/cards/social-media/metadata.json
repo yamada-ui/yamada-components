@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Social Media Card",
+    "description": "A card to display social media profile information and follow status."
+  },
+  "ja": {
+    "title": "ソーシャルメディアカード",
+    "description": "ソーシャルメディアのプロフィール情報とフォローステータスを表示するカード。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

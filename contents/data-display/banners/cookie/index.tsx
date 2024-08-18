@@ -11,7 +11,7 @@ import {
 } from "@yamada-ui/react"
 import type { FC } from "react"
 
-const Banner: FC = () => {
+const CookieBanner: FC = () => {
   return (
     <Card variant="outline" maxW="md" shadow="sm">
       <CardBody>
@@ -19,21 +19,8 @@ const Banner: FC = () => {
           templateAreas={`
             "title title close"
             "content content content"
-            "empty button button"
-          `}
+            "empty button button"`}
           gap="sm"
-          _container={[
-            {
-              maxW: "300px",
-              css: {
-                gridTemplateAreas: `
-                  "title title close"
-                  "content content content"
-                  "empty button button"
-                `,
-              },
-            },
-          ]}
         >
           <GridItem area="title">
             <Text fontSize="md">Allow cookies</Text>
@@ -67,4 +54,4 @@ const Banner: FC = () => {
   )
 }
 
-export default Banner
+export default CookieBanner

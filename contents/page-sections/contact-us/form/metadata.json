@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Contact Form",
+    "description": "This section contains a contact form where users can leave their email and receive a response within 24 hours."
+  },
+  "ja": {
+    "title": "お問い合わせフォーム",
+    "description": "このセクションには、ユーザーがメールアドレスを残し、24時間以内に返信を受け取ることができるお問い合わせフォームが含まれています。"
+  }
+}

@@ -10,9 +10,11 @@
   "options": {
     "container": {
       "centerContent": true,
-      "p": "md",
-      "fileList": ["index.tsx", "ripple-step.tsx"]
+      "p": "md"
     },
-    "iframe": true
+    "iframe": true,
+    "files": {
+      "order": ["index.tsx", "ripple-step.tsx"]
+    }
   }
 }

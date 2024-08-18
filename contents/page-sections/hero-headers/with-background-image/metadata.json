@@ -1,0 +1,11 @@
+{
+  "en": {
+    "title": "Hero with Background Image",
+    "description": "This is a hero section with a background image."
+  },
+  "ja": {
+    "title": "背景画像のあるヒーロー",
+    "description": "これは背景画像のあるヒーローセクションです。"
+  },
+  "order": 1
+}

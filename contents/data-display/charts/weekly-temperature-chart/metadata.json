@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "Weekly Temperature Chart",
+    "description": "Displays a line graph of temperatures for a week."
+  },
+  "ja": {
+    "title": "週間気温チャート",
+    "description": "1週間の気温の線グラフを表示します。"
+  },
+  "options": {
+    "container": {
+      "minH": "3xl"
+    },
+    "files": {
+      "order": ["index.tsx", "utils.ts", "location.ts"]
+    }
+  }
+}

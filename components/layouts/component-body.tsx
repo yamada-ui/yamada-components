@@ -89,6 +89,7 @@ export const ComponentBody = memo(
               borderTopWidth="1px"
               containerProps={metadata?.options?.container}
               iframe={metadata?.options?.iframe}
+              isFullHeight
             />
           </ResizableItem>
 

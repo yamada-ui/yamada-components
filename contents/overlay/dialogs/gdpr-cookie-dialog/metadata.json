@@ -13,7 +13,9 @@
       "centerContent": true
     },
     "iframe": true,
-    "fileList": ["index.tsx", "category-item.tsx", "table.tsx", "data.ts"]
+    "files": {
+      "order": ["index.tsx", "category-item.tsx", "table.tsx", "data.ts"]
+    }
   },
   "order": 5
 }

@@ -18,15 +18,16 @@ import {
   useTheme,
   EnvironmentProvider,
   createThemeSchemeManager,
+  Flex,
 } from "@yamada-ui/react"
 import type {
-  BoxProps,
   Dict,
   HTMLUIProps,
   LoadingProps,
   ThemeConfig,
   UIProviderProps,
   Environment,
+  FlexProps,
 } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
 import type { FC } from "react"
@@ -56,11 +57,12 @@ const UIProvider: FC<UIProviderProps & { environment?: Environment }> = ({
   )
 }
 
-export type ComponentPreviewProps = BoxProps &
+export type ComponentPreviewProps = FlexProps &
   Pick<Component, "paths"> & {
     containerProps?: ComponentContainerProps
     loadingProps?: LoadingProps
     iframe?: boolean
+    isFullHeight?: boolean
   }
 
 const createCache = weakMemoize((container: Node) =>
@@ -70,7 +72,16 @@ const createCache = weakMemoize((container: Node) =>
 export const ComponentPreview = memo(
   forwardRef<ComponentPreviewProps, "div">(
     (
-      { paths, containerProps: _containerProps, loadingProps, iframe, ...rest },
+      {
+        h,
+        minH,
+        paths,
+        containerProps: _containerProps,
+        loadingProps,
+        iframe,
+        isFullHeight,
+        ...rest
+      },
       ref,
     ) => {
       const Component = dynamic(() => import(`/contents/${paths.component}`))
@@ -149,8 +160,16 @@ export const ComponentPreview = memo(
           }
         }
 
+        if (isFullHeight) {
+          props = {
+            ...props,
+            h: "full",
+            minH: "full",
+          }
+        }
+
         return props
-      }, [_containerProps])
+      }, [_containerProps, isFullHeight])
 
       const environment: Environment = {
         getDocument: () => iframeRef.current?.contentDocument ?? document,
@@ -158,64 +177,52 @@ export const ComponentPreview = memo(
           iframeRef.current?.contentDocument?.defaultView ?? window,
       }
 
-      return iframe ? (
-        <ui.iframe
-          title="component-preview-iframe"
-          ref={iframeRef}
-          w="full"
-          minH="md"
-          h="full"
-          display={rest.display}
-        >
-          {head && body
-            ? createPortal(
-                <CacheProvider value={createCache(head)}>
-                  <UIProvider
-                    {...{ ...value, environment, themeSchemeManager }}
-                  >
-                    <Center
-                      ref={ref}
-                      flexDirection="column"
-                      boxSize="full"
-                      minH="48"
-                      {...rest}
-                    >
-                      {!loading ? (
-                        <Box boxSize="full" flex="1" {...containerProps}>
-                          <Component />
-                        </Box>
-                      ) : (
-                        <Center boxSize="full" flex="1">
-                          <Loading size="6xl" {...loadingProps} />
-                        </Center>
-                      )}
-                    </Center>
-                  </UIProvider>
-                </CacheProvider>,
-                body,
-              )
-            : undefined}
-        </ui.iframe>
-      ) : (
-        <UIProvider {...{ ...value, environment, themeSchemeManager }}>
-          <Center
-            ref={ref}
-            flexDirection="column"
-            boxSize="full"
-            minH="48"
-            {...rest}
-          >
-            {!loading ? (
-              <Box boxSize="full" flex="1" {...containerProps}>
-                <Component />
-              </Box>
-            ) : (
-              <Center boxSize="full" flex="1">
-                <Loading size="6xl" {...loadingProps} />
-              </Center>
-            )}
-          </Center>
-        </UIProvider>
+      h ??= containerProps.h
+      minH ??= containerProps.minH ?? "md"
+
+      return (
+        <Flex ref={ref} flexDirection="column" h={h} minH={minH} {...rest}>
+          {iframe ? (
+            <ui.iframe
+              title="component-preview-iframe"
+              ref={iframeRef}
+              flex="1"
+            >
+              {head && body
+                ? createPortal(
+                    <CacheProvider value={createCache(head)}>
+                      <UIProvider
+                        {...{ ...value, environment, themeSchemeManager }}
+                      >
+                        {!loading ? (
+                          <Box boxSize="full" {...containerProps}>
+                            <Component />
+                          </Box>
+                        ) : (
+                          <Center boxSize="full">
+                            <Loading fontSize="6xl" {...loadingProps} />
+                          </Center>
+                        )}
+                      </UIProvider>
+                    </CacheProvider>,
+                    body,
+                  )
+                : undefined}
+            </ui.iframe>
+          ) : (
+            <UIProvider {...{ ...value, environment, themeSchemeManager }}>
+              {!loading ? (
+                <Box boxSize="full" flex="1" {...containerProps}>
+                  <Component />
+                </Box>
+              ) : (
+                <Center boxSize="full" flex="1">
+                  <Loading fontSize="6xl" {...loadingProps} />
+                </Center>
+              )}
+            </UIProvider>
+          )}
+        </Flex>
       )
     },
   ),

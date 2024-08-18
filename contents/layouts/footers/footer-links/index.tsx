@@ -10,6 +10,8 @@ import {
   Divider,
   SimpleGrid,
   ButtonGroup,
+  List,
+  ListItem,
 } from "@yamada-ui/react"
 import type { FC } from "react"
 
@@ -46,23 +48,28 @@ const data = [
 const FooterLinks: FC = () => {
   const groups = data.map((group) => {
     const links = group.links.map((link, index) => (
-      <Link
-        key={index}
-        href={link.link}
-        onClick={(event) => event.preventDefault()}
-        fontSize="sm"
-      >
-        {link.label}
-      </Link>
+      <ListItem key={index}>
+        <Link
+          href={link.link}
+          onClick={(event) => event.preventDefault()}
+          fontSize="sm"
+        >
+          {link.label}
+        </Link>
+      </ListItem>
     ))
 
     return (
-      <VStack gap="xs" key={group.title}>
-        <Text fontSize="lg" fontWeight="semibold">
-          {group.title}
-        </Text>
-        {links}
-      </VStack>
+      <List gap="md" key={group.title}>
+        <ListItem>
+          <Text fontSize="lg" fontWeight="semibold">
+            {group.title}
+          </Text>
+        </ListItem>
+        <ListItem>
+          <List gap="xs">{links}</List>
+        </ListItem>
+      </List>
     )
   })
 
@@ -74,34 +81,17 @@ const FooterLinks: FC = () => {
       bg={["blackAlpha.100", "blackAlpha.500"]}
     >
       <Divider borderColor={["blackAlpha.300", "border"]} />
-      <VStack py="xl" px="md" placeItems="center" maxW="6xl">
+      <VStack gap="0" py="xl" px="md" placeItems="center" maxW="6xl">
         <Flex
-          justifyContent="space-between"
-          _container={[
-            {
-              maxW: "768px",
-              css: {
-                flexDirection: "column",
-                gap: "sm",
-                alignItems: "center",
-              },
-            },
-          ]}
-          p="md"
+          justifyContent={{ base: "space-between", md: "center" }}
+          alignItems="center"
+          flexDir={{ md: "column" }}
+          px="md"
+          py="lg"
           w="full"
         >
           <VStack maxW="xs">
-            <HStack
-              gap="sm"
-              _container={[
-                {
-                  maxW: "768px",
-                  css: {
-                    mx: "auto",
-                  },
-                },
-              ]}
-            >
+            <HStack gap="sm" justifyContent={{ base: "start", md: "center" }}>
               <Image
                 src="/favicon.svg"
                 width={30}
@@ -110,72 +100,43 @@ const FooterLinks: FC = () => {
               />
               <Text fontSize="lg">Yamada UI</Text>
             </HStack>
-            <Text
-              fontSize="sm"
-              color="GrayText"
-              textAlign="left"
-              _container={[
-                {
-                  maxW: "768px",
-                  css: {
-                    textAlign: "center",
-                  },
-                },
-              ]}
-            >
+            <Text fontSize="sm" color="muted" textAlign={{ md: "center" }}>
               Unleash the Power of Styling, Animation, and Flexibility in React
               Apps
             </Text>
           </VStack>
-          <SimpleGrid
-            columns={3}
-            _container={[
-              {
-                maxW: "768px",
-                css: {
-                  display: "none",
-                },
-              },
-            ]}
-          >
+          <SimpleGrid columns={3} display={{ base: "grid", md: "none" }}>
             {groups}
           </SimpleGrid>
         </Flex>
         <Divider borderColor={["blackAlpha.300", "border"]} />
         <Flex
-          flexDir="row"
+          flexDir={{ md: "column" }}
           placeItems="center"
           justifyContent="space-between"
           w="full"
-          _container={[
-            {
-              maxW: "768px",
-              css: {
-                flexDir: "column",
-                alignItems: "center",
-              },
-            },
-          ]}
-          p="md"
+          px="md"
+          py="lg"
+          gap={{ md: "md" }}
         >
-          <Text color="GrayText" fontSize="sm">
+          <Text color="muted" fontSize="sm">
             © 2024 Yamada UI. All rights reserved.
           </Text>
-          <ButtonGroup>
+          <ButtonGroup gap="xs">
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<TwitterIcon />}
+              icon={<TwitterIcon fontSize="2xl" />}
             />
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<YoutubeIcon />}
+              icon={<YoutubeIcon fontSize="2xl" />}
             />
             <IconButton
               variant="ghost"
               borderRadius="full"
-              icon={<InstagramIcon />}
+              icon={<InstagramIcon fontSize="2xl" />}
             />
           </ButtonGroup>
         </Flex>
