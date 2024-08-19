@@ -49,7 +49,12 @@ export const ComponentCodePreview = memo(
             currentCodeRef.current = components[index].code
           })}
         >
-          <TabList position="sticky" top="0" bg={["white", "black"]}>
+          <TabList
+            position="sticky"
+            top="0"
+            bg={["white", "black"]}
+            borderTopWidth={isVertical ? "0px" : "1px"}
+          >
             <HStack
               tabIndex={-1}
               mb="-px"
