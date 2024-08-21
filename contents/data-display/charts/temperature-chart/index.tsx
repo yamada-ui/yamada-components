@@ -11,7 +11,7 @@ import {
   Option,
 } from "@yamada-ui/react"
 import { useMemo, useState, type FC } from "react"
-import CustomRadioGroup from "./customRadio"
+import CustomRadioGroup from "./custom-radio"
 import { formatDate, getTemperatureData, locationKeys } from "./utils"
 
 type RangeType = "2w" | "1w" | "1d"
