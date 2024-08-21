@@ -14,7 +14,7 @@ import { useState, type FC, useCallback, useRef, useMemo } from "react"
 import { locationKeys, locationColors } from "./locations"
 import { formatDate, getWeeklyTemperatureData, PERIOD_SUGGEST } from "./utils"
 
-const WeeklyTemperatureChart: FC = () => {
+const DateRangeTemperatureCharts: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const today = new Date()
   const nextWeek = new Date()
@@ -86,7 +86,7 @@ const WeeklyTemperatureChart: FC = () => {
 
   return (
     <Container>
-      <Heading>Weekly Temperature Chart</Heading>
+      <Heading>Date Range Temperature Charts</Heading>
       <Center gap="md">
         <RangeDatePicker
           placeholder="YYYY/MM/DD"
@@ -147,4 +147,4 @@ const WeeklyTemperatureChart: FC = () => {
   )
 }
 
-export default WeeklyTemperatureChart
+export default DateRangeTemperatureCharts
