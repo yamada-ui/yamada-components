@@ -7,6 +7,7 @@
     "title": "シンプルなチャート",
     "description": "簡易的なチャート。"
   },
+  "order": "1",
   "options": {
     "container": {
       "centerContent": true,
