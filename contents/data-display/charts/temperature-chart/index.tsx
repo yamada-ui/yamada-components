@@ -2,13 +2,13 @@ import { AreaChart } from "@yamada-ui/charts"
 import {
   Center,
   Heading,
-  HStack,
   Loading,
   Select,
   Text,
   useAsync,
   VStack,
   Option,
+  Stack,
 } from "@yamada-ui/react"
 import { useMemo, useState, type FC } from "react"
 import CustomRadioGroup from "./custom-radio"
@@ -87,21 +87,28 @@ const TemperatureChart: FC = () => {
 
   return (
     <VStack as="article">
-      <HStack
+      <Stack
         as="header"
-        borderBottomWidth="1px"
+        gap={0}
+        direction={{ base: "row", lg: "column" }}
+        alignItems={{ base: "center", lg: "flex-start" }}
         justifyContent="space-between"
+        borderBottomWidth="1px"
       >
-        <Heading px="md" py="sm">
-          Temperature in Japan
-        </Heading>
+        <VStack px="md" py="sm" gap={0}>
+          <Heading isTruncated>Temperature forecast in Japan</Heading>
+          <Text isTruncated color={["blackAlpha.700", "whiteAlpha.600"]}>
+            Showing Japanese temperature for the 2 weeks later
+          </Text>
+        </VStack>
 
         <CustomRadioGroup
+          w="full"
           options={options}
           onChange={setLocation}
           value={location}
         />
-      </HStack>
+      </Stack>
 
       <VStack px="md" py="sm" gap="md" alignItems="flex-end">
         <Select
@@ -110,8 +117,8 @@ const TemperatureChart: FC = () => {
           onChange={(value) => setDateRange(value as RangeType)}
         >
           <Option value="2w">2 weeks later</Option>
-          <Option value="1w">1 week later</Option>
-          <Option value="1d">tomorrow</Option>
+          <Option value="1w">Next week</Option>
+          <Option value="1d">Tomorrow</Option>
         </Select>
 
         {loading ? (
