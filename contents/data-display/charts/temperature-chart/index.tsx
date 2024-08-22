@@ -103,7 +103,6 @@ const TemperatureChart: FC = () => {
         </VStack>
 
         <CustomRadioGroup
-          w="full"
           options={options}
           onChange={setLocation}
           value={location}

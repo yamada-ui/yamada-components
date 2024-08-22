@@ -1,8 +1,4 @@
-import type {
-  StackProps,
-  UseRadioGroupProps,
-  UseRadioGroupReturn,
-} from "@yamada-ui/react"
+import type { UseRadioGroupProps, UseRadioGroupReturn } from "@yamada-ui/react"
 import {
   Box,
   Input,
@@ -54,36 +50,19 @@ const CustomRadio: FC<CustomRadioProps> = ({
   )
 }
 
-export type CustomRadioGroupProps = Omit<StackProps, "onChange"> &
-  UseRadioGroupProps<string> & {
-    options: { value: string; currentTemperature: number }[]
-  }
+export type CustomRadioGroupProps = UseRadioGroupProps<string> & {
+  options: { value: string; currentTemperature: number }[]
+}
 
-const CustomRadioGroup = ({
-  options,
-  id,
-  name,
-  value,
-  defaultValue,
-  onChange,
-  isNative,
-  ...rest
-}: CustomRadioGroupProps) => {
-  const { getContainerProps, getRadioProps } = useRadioGroup<string>({
-    id,
-    name,
-    value,
-    defaultValue,
-    onChange,
-    isNative,
-  })
+const CustomRadioGroup = ({ options, ...props }: CustomRadioGroupProps) => {
+  const { getContainerProps, getRadioProps } = useRadioGroup<string>(props)
 
   return (
     <Stack
+      w="full"
       gap={0}
       direction={{ base: "row", sm: "column" }}
       {...getContainerProps()}
-      {...rest}
     >
       {options.map(({ value, currentTemperature }, index) => (
         <CustomRadio
