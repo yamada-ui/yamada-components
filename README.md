@@ -28,7 +28,7 @@ Highly functional samples that are not included in the Yamada UI documentation s
 
 ## Support
 
-Please support this project with you or your organization. Your logo will appear here with a link to your website. We'll appreciate some support. [[Contribute](https://opencollective.com/yamada-components/contribute)]
+Please support this project with you or your organization. Your logo will appear here with a link to your website. We'll appreciate some support. [[Contribute](https://opencollective.com/yamada-ui/contribute)]
 
 ## Contributing
 
