@@ -98,7 +98,13 @@ const TemperatureChart: FC = () => {
         <VStack px="md" py="sm" gap={0}>
           <Heading isTruncated>Temperature forecast in Japan</Heading>
           <Text isTruncated color={["blackAlpha.700", "whiteAlpha.600"]}>
-            Showing Japanese temperature for the 2 weeks later
+            {`Showing temperature in Japan for ${
+              dateRange === "2w"
+                ? "the next two weeks"
+                : dateRange === "1w"
+                  ? "the next week"
+                  : "tomorrow"
+            }.`}
           </Text>
         </VStack>
 
