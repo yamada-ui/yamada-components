@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Donut Active",
+    "description": "Donut Chart with active elements."
+  },
+  "ja": {
+    "title": "ドーナッツアクティブ",
+    "description": "アクティブな要素を持つDonutChart。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}
