@@ -1,6 +1,4 @@
-import { locationKeys } from "./locations"
-
-export const PERIOD_SUGGEST = ["7d", "14d", "1M", "2M", "3M"] as const
+export const locationKeys = ["Tokyo", "Osaka", "Hokkaido", "Okinawa"]
 
 export const formatDate = (date: Date) => {
   const year = date.getFullYear()
@@ -9,7 +7,7 @@ export const formatDate = (date: Date) => {
   return `${year}-${month}-${day}`
 }
 
-export const getWeeklyTemperatureData = async (
+export const getTemperatureData = async (
   startDateString: string,
   endDateString: string,
 ) => {
@@ -35,13 +33,25 @@ export const getWeeklyTemperatureData = async (
   const formattedData = data.reduce(
     (acc, region, index) => {
       const locationKey = locationKeys[index]
+
       if (!locationKey) {
         throw new Error("Unexpected location index")
       }
+
       region.hourly.time.forEach((time, i) => {
-        const formattedTime = time.replace("T", " ")
+        const formattedTime = new Date(time).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        })
+
         if (!acc[i])
-          acc[i] = { date: formattedTime } as Record<string, number | string>
+          acc[i] = { formattedDate: formattedTime, date: time } as Record<
+            string,
+            number | string
+          >
         acc[i][locationKey] = region.hourly.temperature_2m[i]
       })
       return acc
