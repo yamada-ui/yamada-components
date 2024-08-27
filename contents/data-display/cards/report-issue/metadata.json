@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Report Issue Card",
+    "description": "A card to report issues and provide details about the problem."
+  },
+  "ja": {
+    "title": "問題報告カード",
+    "description": "問題を報告し、詳細を提供するためのカード。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

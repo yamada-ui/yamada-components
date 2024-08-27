@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Account Card",
+    "description": "A card to create an account with an email address."
+  },
+  "ja": {
+    "title": "アカウントカード",
+    "description": "メールアドレスでアカウントを作成するカード。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}

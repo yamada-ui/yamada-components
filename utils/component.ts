@@ -169,6 +169,13 @@ export const getComponent =
 
       const filesOrder = metadata?.options?.files?.order
 
+      const filePositions = new Map<string, number>()
+      if (filesOrder) {
+        for (const [index, file] of filesOrder.entries()) {
+          filePositions.set(file, index)
+        }
+      }
+
       const components = (
         await Promise.all(
           fileNames.map(async (name) => {
@@ -179,21 +186,22 @@ export const getComponent =
           }),
         )
       ).sort((componentA, componentB) => {
-        if (filesOrder) {
-          const positionA = filesOrder.indexOf(componentA.name)
-          const positionB = filesOrder.indexOf(componentB.name)
+        const positionA = filePositions.get(componentA.name) ?? Infinity
+        const positionB = filePositions.get(componentB.name) ?? Infinity
 
-          if (positionA !== -1 && positionB !== -1) {
-            return positionA - positionB
-          } else if (positionA !== -1) {
-            return -1
-          } else if (positionB !== -1) {
-            return 1
-          }
+        if (positionA !== Infinity || positionB !== Infinity) {
+          return positionA - positionB
         }
 
         if (componentA.name === "index.tsx") return -1
         if (componentB.name === "index.tsx") return 1
+
+        const isTsxA = componentA.name.endsWith(".tsx")
+        const isTsxB = componentB.name.endsWith(".tsx")
+
+        if (isTsxA && !isTsxB) return -1
+        if (!isTsxA && isTsxB) return 1
+
         return 0
       })
 
