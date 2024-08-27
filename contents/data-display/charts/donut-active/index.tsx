@@ -75,7 +75,7 @@ const DonutActive: FC = () => {
     <VStack my="md" gap="md" alignItems="center">
       <Select
         maxW="xs"
-        size="sm"
+        placement="right-start"
         defaultValue="USA"
         items={items}
         onChange={(value) => {
