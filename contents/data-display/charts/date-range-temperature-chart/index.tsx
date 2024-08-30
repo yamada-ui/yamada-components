@@ -86,7 +86,7 @@ const DateRangeTemperatureChart: FC = () => {
 
   return (
     <Container>
-      <Heading>Date Range Temperature Chart</Heading>
+      <Heading as="h2">Date Range Temperature Chart</Heading>
       <Center gap="md">
         <RangeDatePicker
           placeholder="YYYY/MM/DD"
