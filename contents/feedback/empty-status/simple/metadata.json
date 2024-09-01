@@ -1,0 +1,15 @@
+{
+  "en": {
+    "title": "Simple",
+    "description": "It's a simple component for empty status."
+  },
+  "ja": {
+    "title": "シンプル",
+    "description": "空のステータスを表現したシンプルなコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  }
+}
