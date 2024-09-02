@@ -113,7 +113,7 @@ const importTSESConfig = {
         alwaysTryTypes: true,
       },
     },
-  }
+  },
 }
 
 /** @type {Pick<TSESLintConfig, "name" | "files" | "rules">} */
@@ -151,6 +151,10 @@ const typescriptTSESConfigArray = [
       // If you want to unify the type definition method to either `type` or `interface`, you can enable this rule.
       // https://typescript-eslint.io/rules/consistent-type-definitions
       "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        { prefer: "type-imports" },
+      ],
     },
   },
 
