@@ -12,10 +12,7 @@
       "p": "md",
       "centerContent": true
     },
-    "iframe": true,
-    "files": {
-      "order": ["index.tsx", "category-item.tsx", "table.tsx", "data.ts"]
-    }
+    "iframe": true
   },
   "order": 5
 }
