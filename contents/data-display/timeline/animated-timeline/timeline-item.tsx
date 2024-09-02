@@ -45,6 +45,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({
         bg: "primary",
         opacity: 0.5,
         rounded: "full",
+        zIndex: "beerus",
       }}
       bg={["white", "black"]}
       fontSize="24"
