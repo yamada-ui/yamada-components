@@ -12,23 +12,30 @@ import {
 } from "@yamada-ui/react"
 import { useMemo, useState, type FC } from "react"
 import CustomRadioGroup from "./custom-radio"
-import { formatDate, getTemperatureData, locationKeys } from "./utils"
+import { getTemperatureData, locationKeys } from "./utils"
 
 type RangeType = "2w" | "1w" | "1d"
 
 const TemperatureChart: FC = () => {
-  const today = useMemo(() => new Date(), [])
+  const oneWeekLater = useMemo(() => {
+    const date = new Date()
+    date.setDate(date.getDate() + 7)
+
+    return date
+  }, [])
+  const oneDayLater = useMemo(() => {
+    const date = new Date()
+    date.setDate(date.getDate() + 1)
+
+    return date
+  }, [])
+
   const [dateRange, setDateRange] = useState<RangeType>("2w")
   const [location, setLocation] = useState("Tokyo")
 
   const { value, loading } = useAsync(async () => {
     try {
-      const twoWeek = new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000)
-
-      const startDateString = formatDate(today)
-      const endDateString = formatDate(twoWeek)
-
-      return await getTemperatureData(startDateString, endDateString)
+      return await getTemperatureData()
     } catch {
       return []
     }
@@ -39,22 +46,14 @@ const TemperatureChart: FC = () => {
       case "2w":
         return value
       case "1w":
-        return value?.filter(
-          ({ date }) =>
-            new Date(date) <=
-            new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000),
-        )
+        return value?.filter(({ date }) => new Date(date) <= oneWeekLater)
       case "1d":
-        return value?.filter(
-          ({ date }) =>
-            new Date(date) <=
-            new Date(today.getTime() + 1 * 24 * 60 * 60 * 1000),
-        )
+        return value?.filter(({ date }) => new Date(date) <= oneDayLater)
 
       default:
         break
     }
-  }, [dateRange, today, value])
+  }, [dateRange, oneDayLater, value, oneWeekLater])
 
   const domain = useMemo(() => {
     const domainMargin = 3
