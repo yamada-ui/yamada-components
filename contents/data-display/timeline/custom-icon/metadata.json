@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Custom Icon",
+    "description": "This is a timeline component with a custom icon."
+  },
+  "ja": {
+    "title": "カスタムアイコン",
+    "description": "カスタムアイコンを使用したタイムラインコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  },
+  "order": 2
+}
