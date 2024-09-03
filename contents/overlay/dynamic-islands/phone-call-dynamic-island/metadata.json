@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Phone Call Dynamic Island",
+    "description": "An interactive component that expands and collapses on click, featuring call controls such as mute and end call."
+  },
+  "ja": {
+    "title": "電話通話のダイナミックアイランド",
+    "description": "クリックで展開および折りたたみが可能なインタラクティブコンポーネント。ミュートや通話終了などのコントロールを備えています。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  },
+  "order": 4
+}
