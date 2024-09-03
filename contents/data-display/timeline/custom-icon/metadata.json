@@ -12,5 +12,13 @@
       "p": "md"
     }
   },
-  "order": 2
+  "order": 2,
+  "files": {
+    "order": [
+      "index.tsx",
+      "timeline-item.tsx",
+      "timeline.ts",
+      "calendar-icon.tsx"
+    ]
+  }
 }

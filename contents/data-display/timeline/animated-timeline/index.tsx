@@ -9,34 +9,15 @@ import {
   IconButton,
   Container,
 } from "@yamada-ui/react"
-import type { FC} from "react";
+import type { FC } from "react"
 import { useState } from "react"
 import { items } from "./timeline"
 import { TimelineItem } from "./timeline-item"
-
-const generateDesktopTemplateAreas = () => {
-  const templateAreas: string[] = []
-  for (let i = 0; i < items.length; i++) {
-    templateAreas.push(`"left-side-${i} line right-side-${i}"`)
-  }
-  return templateAreas
-}
-
-const generateTabletTemplateAreas = () => {
-  const templateAreas: string[] = []
-  for (let i = 0; i < items.length; i++) {
-    templateAreas.push(`"line left-side-${i} right-side-${i}"`)
-  }
-  return templateAreas
-}
-
-const generateMobileTemplateAreas = () => {
-  const templateAreas: string[] = []
-  for (let i = 0; i < items.length; i++) {
-    templateAreas.push(`"left-side-${i} left-side-${i} left-side-${i}"`)
-  }
-  return templateAreas
-}
+import {
+  generateDesktopTemplateAreas,
+  generateMobileTemplateAreas,
+  generateTabletTemplateAreas,
+} from "./utils"
 
 const AnimatedTimeline: FC = () => {
   const [key, setKey] = useState(0)

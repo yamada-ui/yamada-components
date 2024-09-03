@@ -2,22 +2,11 @@ import { Divider, List, Grid, GridItem, ListItem } from "@yamada-ui/react"
 import type { FC } from "react"
 import { items } from "./timeline"
 import { TimelineItem } from "./timeline-item"
-
-const generateDesktopTemplateAreas = () => {
-  const templateAreas: string[] = []
-  for (let i = 0; i < items.length; i++) {
-    templateAreas.push(`"left-side-${i} line right-side-${i}"`)
-  }
-  return templateAreas
-}
-
-const generateMobileTemplateAreas = () => {
-  const templateAreas: string[] = []
-  for (let i = 0; i < items.length; i++) {
-    templateAreas.push(`"line left-side-${i} right-side-${i}"`)
-  }
-  return templateAreas
-}
+import {
+  generateDesktopTemplateAreas,
+  generateMobileTemplateAreas,
+  generateTabletTemplateAreas,
+} from "./utils"
 
 const TimelineWithMiddleLine: FC = () => {
   return (
@@ -28,10 +17,13 @@ const TimelineWithMiddleLine: FC = () => {
       maxW="4xl"
       gridTemplateAreas={{
         base: `
-        ${generateDesktopTemplateAreas().join(" ")}
-        `,
+          ${generateDesktopTemplateAreas().join(" ")}
+          `,
+        sm: `
+          ${generateMobileTemplateAreas().join(" ")}
+          `,
         lg: `
-        ${generateMobileTemplateAreas().join(" ")}`,
+          ${generateTabletTemplateAreas().join(" ")}`,
       }}
       gap="xl"
     >

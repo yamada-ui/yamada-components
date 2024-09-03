@@ -40,14 +40,13 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       top="8"
       transform="translateY(-50%)"
       _after={{
-        display: "block",
         position: "absolute",
         height: "6",
         width: "6",
         bg: "primary",
         opacity: 0.5,
         rounded: "full",
-        zIndex: "beerus",
+        content: { base: '""', sm: undefined },
       }}
       bg={["white", "black"]}
       fontSize="24"

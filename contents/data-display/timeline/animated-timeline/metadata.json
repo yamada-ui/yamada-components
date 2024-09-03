@@ -12,5 +12,13 @@
       "centerContent": true
     }
   },
-  "order": 4
+  "order": 4,
+  "files": {
+    "order": [
+      "index.tsx",
+      "timeline-item.tsx",
+      "timeline.ts",
+      "calendar-icon.tsx"
+    ]
+  }
 }
