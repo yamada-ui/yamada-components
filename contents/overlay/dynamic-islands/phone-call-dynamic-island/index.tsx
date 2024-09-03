@@ -12,7 +12,7 @@ import {
   VStack,
   AnimatePresence,
 } from "@yamada-ui/react"
-import type { FC} from "react";
+import type { FC } from "react"
 import { useRef, useState } from "react"
 
 const PhoneCallDynamicIsland: FC = () => {

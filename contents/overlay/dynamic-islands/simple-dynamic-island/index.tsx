@@ -6,7 +6,7 @@ import {
   useDisclosure,
   useOutsideClick,
 } from "@yamada-ui/react"
-import type { FC} from "react";
+import type { FC } from "react"
 import { useRef } from "react"
 
 const SimpleDynamicIsland: FC = () => {
