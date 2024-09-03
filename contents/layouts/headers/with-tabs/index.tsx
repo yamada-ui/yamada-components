@@ -132,7 +132,9 @@ const WithTabs: FC = () => {
                 fontWeight="semibold"
                 as="a"
                 href={`/${tab.toLocaleLowerCase()}`}
-                onClick={(e) => e.preventDefault()}
+                onClick={(e: { preventDefault: () => any }) =>
+                  e.preventDefault()
+                }
               >
                 {tab}
               </Tab>
