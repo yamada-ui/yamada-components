@@ -6,13 +6,14 @@ import { FaRegCreditCard } from "react-icons/fa6"
 const Simple: FC = () => {
   return (
     <Flex direction="column" justifyContent="center" alignItems="center" h="md">
-      <Icon as={FaRegCreditCard} fontSize="80px" marginLeft="3px" />
+      <Icon as={FaRegCreditCard} fontSize="8xl" marginLeft="3px" />
 
       <Wrap
         direction="column"
         justifyContent="center"
         alignItems="center"
-        margin="10px 0 25px 0"
+        marginTop="2xs"
+        marginBottom="md"
       >
         <Text
           fontSize="2xl"
