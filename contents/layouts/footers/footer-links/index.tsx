@@ -53,6 +53,7 @@ const FooterLinks: FC = () => {
           href={link.link}
           onClick={(event) => event.preventDefault()}
           fontSize="sm"
+          color="muted"
         >
           {link.label}
         </Link>
@@ -78,7 +79,7 @@ const FooterLinks: FC = () => {
       alignItems="center"
       as="footer"
       gap="0"
-      bg={["blackAlpha.100", "blackAlpha.500"]}
+      bg={["white", "whiteAlpha.100"]}
     >
       <Divider borderColor={["blackAlpha.300", "border"]} />
       <VStack gap="0" py="xl" px="md" placeItems="center" maxW="6xl">
