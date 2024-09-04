@@ -30,7 +30,7 @@ const AvatarWithHoverFramer: FC = () => {
           borderRadius="full"
           borderWidth="3px"
           zIndex={0}
-          bg={["white", "black"]}
+          borderColor={["white", "black"]}
           transitionDelay="0s"
           transitionDuration="fast"
           display={{
