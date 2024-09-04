@@ -7,14 +7,8 @@ export const Comment: FC = () => {
       <CardBody>
         <Grid
           templateAreas={{
-            base: `
-                  "avatar user empty"
-                  "avatar content content"
-                `,
-            sm: `
-                  "avatar user empty"
-                  "content content content"
-                `,
+            base: `"avatar user empty" "avatar content content"`,
+            sm: `"avatar user empty" "content content content"`,
           }}
           gap="sm"
           placeItems={{ base: "start", sm: "center" }}
@@ -23,13 +17,13 @@ export const Comment: FC = () => {
             <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />
           </GridItem>
           <GridItem area="user">
-            <Text fontSize="sm">taroj1205</Text>
-            <Text color="gray" fontSize="xs">
+            <Text lineClamp={1}>taroj1205</Text>
+            <Text color="muted" lineClamp={1}>
               10 minutes ago
             </Text>
           </GridItem>
           <GridItem area="content">
-            <Text fontSize="sm">
+            <Text>
               This Pokémon likes to lick its palms that are sweetened by being
               soaked in honey. Teddiursa concocts its own honey by blending
               fruits and pollen collected by Beedrill. Blastoise has water
