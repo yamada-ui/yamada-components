@@ -1,11 +1,11 @@
 import {
   Box,
+  Button,
+  ButtonGroup,
   HStack,
   Heading,
   IconButton,
   Link,
-  SegmentedControl,
-  SegmentedControlButton,
   useDisclosure,
 } from "@yamada-ui/react"
 import type { FC } from "react"
@@ -23,28 +23,37 @@ const HeaderSimple: FC = () => {
   const { isOpen, onToggle } = useDisclosure()
 
   const items = links.map((link) => (
-    <SegmentedControlButton
+    <Button
       key={link.label}
       as={Link}
+      variant={active === link.label ? "solid" : "ghost"}
+      colorScheme={active === link.label ? "primary" : undefined}
       href={link.link}
       value={link.label}
-      data-active={active === link.link || undefined}
+      data-active={active === link.label || undefined}
+      fontSize="xs"
       _hover={{ textDecor: "none" }}
+      px="sm"
+      py="xs"
+      lineHeight="1"
+      size="sm"
+      borderRadius="sm"
+      fontWeight={500}
       onClick={(event) => {
         event.preventDefault()
         setActive(link.label)
       }}
     >
       {link.label}
-    </SegmentedControlButton>
+    </Button>
   ))
 
   return (
-    <HStack as="header" py="sm" px="md">
+    <HStack as="header" py="sm" px="md" borderBottomWidth="1">
       <Box flex={1}>
         <Heading
           as="a"
-          size="lg"
+          size="md"
           whiteSpace="nowrap"
           onClick={(e) => e.preventDefault()}
         >
@@ -52,14 +61,9 @@ const HeaderSimple: FC = () => {
         </Heading>
       </Box>
 
-      <SegmentedControl
-        display={{ md: "none", base: "flex" }}
-        gap={0}
-        as="nav"
-        value={active}
-      >
+      <ButtonGroup display={{ md: "none", base: "flex" }} gap="sm" as="nav">
         {items}
-      </SegmentedControl>
+      </ButtonGroup>
 
       <IconButton
         title="Menu"
