@@ -27,7 +27,14 @@ const HeroWithBackgroundImage: FC = () => {
         zIndex="1"
         gap="lg"
       >
-        <Heading as="h2" size="3xl" fontWeight={900} maxW="xl" color="white">
+        <Heading
+          as="h2"
+          size="3xl"
+          fontWeight={900}
+          maxW="xl"
+          color="white"
+          lineHeight="1.2"
+        >
           Automated AI code reviews for any stack
         </Heading>
         <Text fontSize="xl" maxW="xl" color="white">

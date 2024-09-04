@@ -20,7 +20,14 @@ const HeroWithContentOnLeft: FC = () => {
     >
       <Box position="absolute" inset={0} zIndex="0" bg="blackAlpha.700" />
       <VStack as={Center} px="xl" h="full" zIndex="1" py="xl" gap="lg">
-        <Heading as="h2" size="3xl" fontWeight={900} maxW="xl" color="white">
+        <Heading
+          as="h2"
+          size="3xl"
+          fontWeight={900}
+          maxW="xl"
+          color="white"
+          lineHeight="1.2"
+        >
           Unleash the Power of Styling, Animation, and Flexibility in React Apps
         </Heading>
         <Text fontSize="xl" maxW="xl" color="white">
