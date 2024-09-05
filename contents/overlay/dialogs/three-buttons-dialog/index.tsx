@@ -18,7 +18,7 @@ const ThreeButtonsDialog: FC = () => {
       <Button onClick={onOpen}>Open Dialog</Button>
       <Dialog isOpen={isOpen} onClose={onClose} blockScrollOnMount={false}>
         <DialogHeader>
-          <CircleHelp boxSize="50px" color="info" />
+          <CircleHelp boxSize="8" color="info" />
           <Text>Unsaved changes</Text>
         </DialogHeader>
         <Text>Do you want to save changes to '{name}' before closing?</Text>
@@ -30,7 +30,7 @@ const ThreeButtonsDialog: FC = () => {
           <Button onClick={onClose} variant="ghost" colorScheme="danger">
             Discard
           </Button>
-          <Button onClick={onClose} variant="outline" colorScheme="primary">
+          <Button onClick={onClose} variant="outline" colorScheme="info">
             Save
           </Button>
         </DialogFooter>

@@ -37,8 +37,8 @@ export const CategoryItem: FC<{
   const color = useColorModeValue("#dcdcde", "#434248")
   return (
     <>
-      <Accordion isToggle>
-        <AccordionItem>
+      <Accordion variant="unstyled" isToggle>
+        <AccordionItem borderBottom={`1px solid ${color}`}>
           <AccordionLabel p="0">
             {title}
             <Spacer />

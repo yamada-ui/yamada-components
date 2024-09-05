@@ -12,7 +12,10 @@ const CookieDialog: FC = () => {
         header="Cookie Consent"
         cancel="Decline"
         onCancel={onClose}
-        success="Accept"
+        success={{
+          children: "Accept",
+          colorScheme: "info",
+        }}
         onSuccess={onClose}
         blockScrollOnMount={false}
       >

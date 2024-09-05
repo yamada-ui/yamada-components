@@ -47,11 +47,11 @@ const InputDialog: FC = () => {
       >
         <DialogHeader>
           <VStack alignItems="center">
-            <TriangleAlert boxSize="80px" color="danger" />
+            <TriangleAlert boxSize="16" color="danger" />
             <Text>Are you sure?</Text>
           </VStack>
         </DialogHeader>
-        <DialogBody p="2">
+        <DialogBody>
           <VStack>
             <Text>
               This action cannot be undone. If you really want to delete it,

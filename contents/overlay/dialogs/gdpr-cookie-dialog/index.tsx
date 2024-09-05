@@ -5,6 +5,7 @@ import {
   Tab,
   TabPanel,
   Tabs,
+  Text,
   useDisclosure,
 } from "@yamada-ui/react"
 import { type FC, useState } from "react"
@@ -50,19 +51,22 @@ const ComplexCookieDialog: FC = () => {
           <Tab>Consent</Tab>
           <Tab>Details</Tab>
 
-          <TabPanel>
-            We use cookies to enhance your experience on our website. By
-            managing your preferences, you can control the cookies that are set
-            during your visit. Our cookies are categorized for your convenience,
-            allowing you to adjust settings for different types of cookies
-            independently. By clicking "Save & Accept", you agree to our use of
-            cookies as per your settings. For more detailed information on each
-            cookie category and to make informed choices, please review our{" "}
-            <Link href="/privacy/cookie" onClick={(e) => e.preventDefault()}>
-              Cookie Policy.
-            </Link>
+          <TabPanel minH="sm">
+            <Text>
+              We use cookies to enhance your experience on our website. By
+              managing your preferences, you can control the cookies that are
+              set during your visit. Our cookies are categorized for your
+              convenience, allowing you to adjust settings for different types
+              of cookies independently. By clicking "Save & Accept", you agree
+              to our use of cookies as per your settings. For more detailed
+              information on each cookie category and to make informed choices,
+              please review our{" "}
+              <Link href="/privacy/cookie" onClick={(e) => e.preventDefault()}>
+                Cookie Policy.
+              </Link>
+            </Text>
           </TabPanel>
-          <TabPanel>
+          <TabPanel minH="sm">
             {cookieData.map((category) => (
               <CategoryItem
                 key={category.id}

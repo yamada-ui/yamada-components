@@ -28,7 +28,7 @@ const SimpleDialog: FC = () => {
       >
         <DialogHeader>
           <VStack alignItems="center">
-            <Trash2 boxSize="80px" color="danger" />
+            <Trash2 boxSize="16" color="danger" />
             <Text>Are you sure?</Text>
           </VStack>
         </DialogHeader>
