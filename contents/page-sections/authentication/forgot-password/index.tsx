@@ -61,7 +61,6 @@ const AuthenticationForm: FC = () => {
             justifyContent="center"
             alignItems="center"
             display="flex"
-            _hover={{ textDecoration: "none" }}
           >
             <ArrowLeftIcon mr="xs" />
             Back to the login page
