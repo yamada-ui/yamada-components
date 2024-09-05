@@ -36,7 +36,7 @@ const AuthenticationForm: FC = () => {
         bg={["white", "black"]}
         p="md"
       >
-        <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+        <CardHeader gap="0">
           <Heading as="h2" size="md">
             Welcome to Yamada UI, login with
           </Heading>
