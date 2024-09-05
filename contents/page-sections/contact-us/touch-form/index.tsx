@@ -1,5 +1,9 @@
 import {
   Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
   Container,
   Flex,
   FormControl,
@@ -17,7 +21,6 @@ const GetInTouch: FC = () => {
   return (
     <Container
       flexDir={{ base: "row", md: "column" }}
-      bg={["whiteAlpha.500", "blackAlpha.500"]}
       maxW="5xl"
       rounded="2xl"
       gap={{ base: "xl", md: "lg" }}
@@ -38,7 +41,7 @@ const GetInTouch: FC = () => {
         <VStack>
           {contacts.map((contact) => (
             <HStack key={contact.name}>
-              <contact.icon fontSize="xl" />
+              <contact.icon fontSize="2xl" />
               <VStack gap="0">
                 <Text fontSize="xs">{contact.name}</Text>
                 <Text>{contact.value}</Text>
@@ -47,28 +50,43 @@ const GetInTouch: FC = () => {
           ))}
         </VStack>
       </VStack>
-      <VStack py={{ base: "xl", md: "sm" }} px="lg" as="form">
-        <Heading as="h3" size="md">
-          Get in touch
-        </Heading>
-        <Flex flexDir={{ base: "row", md: "column" }} gap="md">
-          <FormControl label="Name">
-            <Input type="text" placeholder="Hirotomo Yamada" />
+      <Card
+        bg={["white", "black"]}
+        as="form"
+        rounded="md"
+        p="md"
+        minW="xl"
+        h="fit-content"
+        boxShadow="none"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+          <Heading as="h2" size="lg">
+            Get in touch
+          </Heading>
+        </CardHeader>
+        <CardBody>
+          <Flex flexDir={{ base: "row", md: "column" }} gap="md">
+            <FormControl label="Name">
+              <Input type="text" placeholder="Hirotomo Yamada" />
+            </FormControl>
+            <FormControl label="Email" isRequired>
+              <Input type="email" placeholder="your@email.com" />
+            </FormControl>
+          </Flex>
+          <FormControl label="Subject" isRequired>
+            <Input type="text" placeholder="Subject" />
           </FormControl>
-          <FormControl label="Email" isRequired>
-            <Input type="email" placeholder="your@email.com" />
+          <FormControl label="Message">
+            <Textarea placeholder="Please include all relevant information" />
           </FormControl>
-        </Flex>
-        <FormControl label="Subject" isRequired>
-          <Input type="text" placeholder="Subject" />
-        </FormControl>
-        <FormControl label="Message">
-          <Textarea placeholder="Please include all relevant information" />
-        </FormControl>
-        <Button colorScheme="primary" type="submit" placeSelf="flex-end">
-          Send message
-        </Button>
-      </VStack>
+        </CardBody>
+        <CardFooter justifyContent="flex-end" pt={{ sm: "xs", base: "md" }}>
+          <Button colorScheme="primary" type="submit">
+            Send message
+          </Button>
+        </CardFooter>
+      </Card>
     </Container>
   )
 }
