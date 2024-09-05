@@ -1,16 +1,16 @@
 {
   "en": {
-    "title": "Simple Dynamic Island",
-    "description": "A basic interactive component that expands and collapses on click, featuring an avatar and multiple links."
+    "title": "Dynamic Island",
+    "description": "A responsive component that expands and collapses on click, featuring an avatar and multiple links."
   },
   "ja": {
-    "title": "シンプルなダイナミックアイランド",
-    "description": "クリックで展開および折りたたみが可能な基本的なインタラクティブコンポーネント。アバターと複数のリンクを備えています。"
+    "title": "ダイナミックアイランド",
+    "description": "クリックで展開および折りたたみが可能なレスポンシブコンポーネント。アバターと複数のリンクを備えています。"
   },
   "options": {
     "container": {
       "p": "md"
     }
   },
-  "order": 1
+  "order": 2
 }
