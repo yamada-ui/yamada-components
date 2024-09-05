@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "Hangman Login",
+    "description": "A login component with a hangman game overlay. Users can log in with email or social accounts, and incorrect password attempts are tracked visually with a hangman game."
+  },
+  "ja": {
+    "title": "ハングマンログイン",
+    "description": "ハングマンゲームのオーバーレイを備えたログインコンポーネントです。ユーザーはメールまたはソーシャルアカウントでログインでき、パスワードの誤入力回数がハングマンゲームで視覚的に追跡されます。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  },
+  "iframe": true
+}
