@@ -79,7 +79,7 @@ const DoubleHeader: FC = () => {
       pt="sm"
       px="md"
     >
-      <HStack pb={{ md: "sm" }}>
+      <HStack maxW="6xl" mx="auto" pb={{ md: "sm" }}>
         <Box flex={1}>
           <Heading
             size="md"
@@ -92,12 +92,12 @@ const DoubleHeader: FC = () => {
         </Box>
 
         <VStack flex={1} gap="sm" display={{ base: "flex", md: "none" }}>
-          <HStack pt="md" gap="md" justify="flex-end">
+          <HStack pt="md" pr="sm" gap="md" justify="flex-end">
             {secondaryItems}
           </HStack>
 
           <Tabs gap="0" as="nav" onChange={onChange}>
-            <TabList justifyContent="center" border="none">
+            <TabList justifyContent="flex-end" border="none">
               {mainItems}
             </TabList>
           </Tabs>
