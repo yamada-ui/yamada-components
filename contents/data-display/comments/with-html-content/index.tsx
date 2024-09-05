@@ -15,14 +15,8 @@ export const CommentWithHTMLContent: FC = () => {
       <CardBody>
         <Grid
           templateAreas={{
-            base: `
-                  "avatar user empty"
-                  "avatar content content"
-                `,
-            sm: `
-                  "avatar user empty"
-                  "content content content"
-                `,
+            base: `"avatar user empty" "avatar content content"`,
+            sm: `"avatar user empty" "content content content"`,
           }}
           gap="sm"
           placeItems={{ base: "start", sm: "center" }}
@@ -31,8 +25,8 @@ export const CommentWithHTMLContent: FC = () => {
             <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />
           </GridItem>
           <GridItem area="user" placeItems="center">
-            <Text fontSize="sm">taroj1205</Text>
-            <Text color="gray" fontSize="xs">
+            <Text lineClamp={1}>taroj1205</Text>
+            <Text color="muted" lineClamp={1}>
               10 minutes ago
             </Text>
           </GridItem>
@@ -41,8 +35,7 @@ export const CommentWithHTMLContent: FC = () => {
               dangerouslySetInnerHTML={{
                 __html: `<p>I use <a href="https://heroku.com/" rel="noopener noreferrer" target="_blank">Heroku</a> to host my Node.js application, but MongoDB add-on appears to be too <strong>expensive</strong>. I consider switching to <a href="https://www.digitalocean.com/" rel="noopener noreferrer" target="_blank">Digital Ocean</a> VPS to save some cash.</p>`,
               }}
-              fontSize="sm"
-              css={{
+              sx={{
                 "& a": {
                   color: "var(--ui-colors-link)",
                   textDecoration: "underline",

@@ -18,7 +18,7 @@ const HeroWithBullets: FC = () => {
   return (
     <Container flexDir="row">
       <VStack>
-        <Heading as="h2" size="2xl">
+        <Heading as="h2" size="3xl" lineHeight="1.2">
           <Text as="span" color="primary">
             Unleash the Power
           </Text>{" "}

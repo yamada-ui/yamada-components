@@ -40,7 +40,9 @@ const DoubleHeader: FC = () => {
         key={item.label}
         value={item.label}
         color={["blackAlpha.700", "whiteAlpha.700"]}
-        onClick={(event) => event.preventDefault()}
+        onClick={(event: { preventDefault: () => any }) =>
+          event.preventDefault()
+        }
         data-active={active || undefined}
         fontWeight={700}
         borderBottomWidth="2px"

@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Chart with Text",
+    "description": "Chart with retained text."
+  },
+  "ja": {
+    "title": "テキスト付チャート",
+    "description": "テキストを保持したチャート。"
+  },
+  "order": "5",
+  "options": {
+    "container": {
+      "centerContent": true
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Dynamic Island",
+    "description": "A responsive component that expands and collapses on click, featuring an avatar and multiple links."
+  },
+  "ja": {
+    "title": "ダイナミックアイランド",
+    "description": "クリックで展開および折りたたみが可能なレスポンシブコンポーネント。アバターと複数のリンクを備えています。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  },
+  "order": 2
+}

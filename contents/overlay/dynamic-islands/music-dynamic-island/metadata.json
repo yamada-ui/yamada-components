@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Music Dynamic Island",
+    "description": "A dynamic and interactive music player component that expands and collapses on click, featuring play, pause, next, and previous controls."
+  },
+  "ja": {
+    "title": "音楽のダイナミックアイランド",
+    "description": "クリックで展開および折りたたみが可能な動的でインタラクティブな音楽プレーヤーコンポーネント。再生、一時停止、次へ、前へコントロールを備えています。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  },
+  "order": 4
+}
