@@ -6,14 +6,27 @@ const ServerError = () => {
       justifyContent="center"
       alignItems="center"
       bg="primary"
-      p="lg"
+      px={{ base: "lg", md: "md" }}
       h="full"
+      minH="3xl"
     >
-      <Text fontSize="9xl" fontWeight="bold" color="whiteAlpha.800">
+      <Heading
+        as="h2"
+        fontSize="9xl"
+        fontWeight="bold"
+        color="whiteAlpha.800"
+        lineHeight="1"
+      >
         500
-      </Text>
+      </Heading>
 
-      <Heading as="h1" size="xl" color="white" textAlign="center">
+      <Heading
+        as="h3"
+        size="xl"
+        color="white"
+        textAlign="center"
+        lineHeight="1"
+      >
         Something bad just happened...
       </Heading>
 
@@ -26,7 +39,9 @@ const ServerError = () => {
         as="a"
         w="fit-content"
         href="/"
-        colorScheme="gray"
+        color="black"
+        bg="white"
+        _hover={{ bg: "gray.100" }}
         onClick={(e) => e.preventDefault()}
       >
         Refresh the page

@@ -9,7 +9,7 @@ const NotFoundImage = () => {
       flexDir={{ base: "row", md: "column" }}
     >
       <VStack maxW="lg" order={{ base: 1, md: 2 }}>
-        <Heading size="xl" textAlign="center">
+        <Heading size="xl" textAlign="center" lineHeight="1">
           Something is not right...
         </Heading>
 
