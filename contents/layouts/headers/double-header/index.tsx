@@ -39,7 +39,9 @@ const DoubleHeader: FC = () => {
         href={item.link}
         key={item.label}
         value={item.label}
-        color={["blackAlpha.700", "whiteAlpha.700"]}
+        color={
+          active ? ["black", "white"] : ["blackAlpha.700", "whiteAlpha.700"]
+        }
         onClick={(event: { preventDefault: () => any }) =>
           event.preventDefault()
         }
@@ -48,6 +50,8 @@ const DoubleHeader: FC = () => {
         fontWeight={700}
         px="sm"
         borderBottomWidth="1"
+        marginBottom="-1px"
+        borderBottomColor={active ? "primary" : undefined}
         _hover={{
           textDecor: "none",
           color: !active ? ["black", "white"] : undefined,
@@ -96,7 +100,7 @@ const DoubleHeader: FC = () => {
             {secondaryItems}
           </HStack>
 
-          <Tabs gap="0" as="nav" onChange={onChange}>
+          <Tabs gap="0" as="nav" onChange={onChange} variant="unstyled">
             <TabList justifyContent="flex-end" border="none">
               {mainItems}
             </TabList>
