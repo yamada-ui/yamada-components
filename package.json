@@ -12,7 +12,7 @@
     "build": "next build",
     "build:profile": "next build --profile",
     "start": "next start",
-    "lint": "eslint . --max-warnings=0 --config eslint.config.mjs",
+    "lint": "eslint . --max-warnings=0 --cache",
     "lint:inspect": "pnpm dlx @eslint/config-inspector",
     "typecheck": "tsc --noEmit",
     "gen:category-group": "plop category-group",
