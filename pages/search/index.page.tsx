@@ -20,7 +20,7 @@ const getResolvedQuery = (query: ParsedUrlQuery, url?: string) => {
 
   return Object.entries(query).reduce(
     (prev, [key, values]) => {
-      prev[key] = isArray(values) ? values : values?.split(",") ?? []
+      prev[key] = isArray(values) ? values : (values?.split(",") ?? [])
 
       return prev
     },

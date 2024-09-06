@@ -10,15 +10,11 @@
   "options": {
     "container": {
       "centerContent": true
+    },
+
+    "files": {
+      "order": ["timeline-item.tsx", "timeline.ts", "calendar-icon.tsx"]
     }
   },
-  "order": 4,
-  "files": {
-    "order": [
-      "index.tsx",
-      "timeline-item.tsx",
-      "timeline.ts",
-      "calendar-icon.tsx"
-    ]
-  }
+  "order": 4
 }

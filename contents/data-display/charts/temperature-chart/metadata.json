@@ -11,9 +11,6 @@
   "options": {
     "container": {
       "minH": "3xl"
-    },
-    "files": {
-      "order": ["index.tsx", "custom-radio.tsx", "utils.ts"]
     }
   }
 }

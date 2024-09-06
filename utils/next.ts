@@ -28,11 +28,9 @@ export const getServerSideCommonProps = async ({
 export const getStaticCommonProps = async ({
   locale,
 }: GetStaticPropsContext) => {
-const componentTree = (
-    await getComponentCategoryGroup()(locale as Locale)
-  )
-.filter(({ items }) => items)
-    .map(component => ({
+  const componentTree = (await getComponentCategoryGroup()(locale as Locale))
+    .filter(({ items }) => items)
+    .map((component) => ({
       ...component,
       items: component.items?.filter(({ items }) => items),
     }))

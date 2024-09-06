@@ -10,15 +10,10 @@
   "options": {
     "container": {
       "p": "md"
+    },
+    "files": {
+      "order": ["timeline-item.tsx", "timeline.ts", "calendar-icon.tsx"]
     }
   },
-  "order": 2,
-  "files": {
-    "order": [
-      "index.tsx",
-      "timeline-item.tsx",
-      "timeline.ts",
-      "calendar-icon.tsx"
-    ]
-  }
+  "order": 2
 }

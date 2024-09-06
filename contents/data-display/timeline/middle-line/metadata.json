@@ -11,15 +11,10 @@
     "container": {
       "p": "md",
       "centerContent": true
+    },
+    "files": {
+      "order": ["timeline-item.tsx", "timeline.ts", "calendar-icon.tsx"]
     }
   },
-  "order": 3,
-  "files": {
-    "order": [
-      "index.tsx",
-      "timeline-item.tsx",
-      "timeline.ts",
-      "calendar-icon.tsx"
-    ]
-  }
+  "order": 3
 }
