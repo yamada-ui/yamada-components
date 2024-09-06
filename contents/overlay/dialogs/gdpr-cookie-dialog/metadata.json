@@ -10,7 +10,8 @@
   "options": {
     "container": {
       "p": "md",
-      "centerContent": true
+      "centerContent": true,
+      "h": "2xl"
     },
     "iframe": true
   },
