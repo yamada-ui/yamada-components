@@ -7,7 +7,6 @@
     "title": "BarChart - Label",
     "description": "ラベル付きBarChart。"
   },
-  "order": "2",
   "options": {
     "container": {
       "centerContent": true,

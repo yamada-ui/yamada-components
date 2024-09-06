@@ -1,10 +1,20 @@
 {
   "en": {
     "title": "Timeline",
-    "description": ""
+    "description": "A component that visually represents a sequence of events in chronological order."
   },
   "ja": {
-    "title": "Timeline",
-    "description": ""
+    "title": "タイムライン",
+    "description": "イベントの順序を時系列で視覚的に表現するコンポーネント。"
+  },
+  "options": {
+    "files": {
+      "order": [
+        "simple-timeline",
+        "custom-icon",
+        "middle-line",
+        "animated-timeline"
+      ]
+    }
   }
 }

@@ -4,7 +4,6 @@
     "title": "シンプルなフッター",
     "description": "これはシンプルなフッターです"
   },
-  "order": 1,
   "options": { "container": { "display": "flex", "alignItems": "flex-end" } },
   "authors": [
     {
