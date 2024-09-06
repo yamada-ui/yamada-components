@@ -6,5 +6,10 @@
   "ja": {
     "title": "タブ付きヘッダー",
     "description": "タブ付きヘッダーのコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "minH": "lg"
+    }
   }
 }

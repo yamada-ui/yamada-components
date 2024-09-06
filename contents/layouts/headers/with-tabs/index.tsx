@@ -80,32 +80,67 @@ const WithTabs: FC = () => {
                 w="6"
                 rounded="full"
               />
-              <Text color={["black", "white"]}>taroj1205</Text>
+              <Text
+                color={["black", "white"]}
+                fontSize="md"
+                fontWeight="medium"
+              >
+                taroj1205
+              </Text>
             </MenuButton>
 
             <MenuList>
-              <MenuItem icon={<HeartIcon color="pink.500" />}>
+              <MenuItem fontSize="sm" icon={<HeartIcon color="pink.500" />}>
                 Liked posts
               </MenuItem>
-              <MenuItem icon={<StarIcon color="yellow.500" />}>
+              <MenuItem fontSize="sm" icon={<StarIcon color="yellow.500" />}>
                 Saved posts
               </MenuItem>
-              <MenuItem icon={<MessageSquareIcon color="blue.500" />}>
+              <MenuItem
+                fontSize="sm"
+                icon={<MessageSquareIcon color="blue.500" />}
+              >
                 Your comments
               </MenuItem>
-              <MenuGroup label="Settings">
-                <MenuItem icon={<SettingsIcon />}>Account settings</MenuItem>
-                <MenuItem icon={<ArrowLeftRightIcon />}>
+              <MenuGroup
+                label="Settings"
+                __css={{
+                  ".ui-menu__item--group-label": {
+                    fontSize: "xs",
+                    fontWeight: "medium",
+                  },
+                }}
+              >
+                <MenuItem fontSize="sm" icon={<SettingsIcon />}>
+                  Account settings
+                </MenuItem>
+                <MenuItem fontSize="sm" icon={<ArrowLeftRightIcon />}>
                   Change account
                 </MenuItem>
-                <MenuItem icon={<LogOutIcon />}>Logout</MenuItem>
+                <MenuItem fontSize="sm" icon={<LogOutIcon />}>
+                  Logout
+                </MenuItem>
               </MenuGroup>
 
               <MenuDivider />
 
-              <MenuGroup label="Danger zone">
-                <MenuItem icon={<PauseIcon />}>Pause subscription</MenuItem>
-                <MenuItem color="danger" icon={<TrashIcon color="danger" />}>
+              <MenuGroup
+                label="Danger zone"
+                __css={{
+                  ".ui-menu__item--group-label": {
+                    fontSize: "xs",
+                    fontWeight: "medium",
+                  },
+                }}
+              >
+                <MenuItem fontSize="sm" icon={<PauseIcon />}>
+                  Pause subscription
+                </MenuItem>
+                <MenuItem
+                  fontSize="sm"
+                  color="danger"
+                  icon={<TrashIcon color="danger" />}
+                >
                   Delete account
                 </MenuItem>
               </MenuGroup>
@@ -129,7 +164,8 @@ const WithTabs: FC = () => {
                 borderTopLeftRadius="md"
                 borderTopRightRadius={{ base: "md", md: "none" }}
                 borderBottomLeftRadius={{ base: "none", md: "md" }}
-                fontWeight="semibold"
+                fontWeight="medium"
+                fontSize="sm"
                 as="a"
                 href={`/${tab.toLocaleLowerCase()}`}
                 onClick={(e: { preventDefault: () => any }) =>
