@@ -102,15 +102,7 @@ const WithTabs: FC = () => {
               >
                 Your comments
               </MenuItem>
-              <MenuGroup
-                label="Settings"
-                __css={{
-                  ".ui-menu__item--group-label": {
-                    fontSize: "xs",
-                    fontWeight: "medium",
-                  },
-                }}
-              >
+              <MenuGroup label="Settings">
                 <MenuItem fontSize="sm" icon={<SettingsIcon />}>
                   Account settings
                 </MenuItem>
@@ -124,15 +116,7 @@ const WithTabs: FC = () => {
 
               <MenuDivider />
 
-              <MenuGroup
-                label="Danger zone"
-                __css={{
-                  ".ui-menu__item--group-label": {
-                    fontSize: "xs",
-                    fontWeight: "medium",
-                  },
-                }}
-              >
+              <MenuGroup label="Danger zone">
                 <MenuItem fontSize="sm" icon={<PauseIcon />}>
                   Pause subscription
                 </MenuItem>
