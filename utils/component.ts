@@ -37,7 +37,6 @@ export const getComponentCategoryGroup =
               const icon = json.icon ?? null
               const authors = json.authors ?? null
               const labels = json.labels ?? null
-              const order = json.order ?? null
               const options = json.options ?? null
 
               callback?.({
@@ -45,7 +44,6 @@ export const getComponentCategoryGroup =
                 icon,
                 authors,
                 labels,
-                order,
                 options,
               })
             } catch {}
@@ -64,17 +62,19 @@ export const getComponentCategoryGroup =
         const slug = targetPath.replace(/\\/g, "/").replace(/^contents\//, "/")
         const isExpanded =
           slug === currentSlug ||
-          items.some(
-            ({ slug, items }) =>
-              slug === currentSlug ||
-              items?.some(({ slug }) => slug === currentSlug),
+          items?.some(
+            ({ slug: itemSlug, items: itemItems }) =>
+              slug === itemSlug ||
+              itemItems?.some(
+                ({ slug: itemItemSlug }) => slug === itemItemSlug,
+              ),
           )
 
         return {
           name,
           slug,
           isExpanded,
-          ...(items.length ? { items } : {}),
+          ...(items?.length ? { items } : {}),
           ...metadata!,
         }
       }),
@@ -82,11 +82,6 @@ export const getComponentCategoryGroup =
 
     const filteredComponentCategoryGroup = componentTree
       .filter(Boolean)
-      .sort((a, b) => {
-        const orderA = a?.order ?? 530000
-        const orderB = b?.order ?? 530000
-        return orderA - orderB
-      })
       .map((category) => {
         const ordering = category?.options?.files?.order ?? []
         category?.items?.sort((itemA, itemB) => {
