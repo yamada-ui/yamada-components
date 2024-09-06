@@ -1,0 +1,25 @@
+{
+  "en": {
+    "title": "With line in the middle",
+    "description": "This is a timeline component that has a line in the middle."
+  },
+  "ja": {
+    "title": "中央に線があるタイムライン",
+    "description": "中央に線があるタイムラインコンポーネントです。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  },
+  "order": 3,
+  "files": {
+    "order": [
+      "index.tsx",
+      "timeline-item.tsx",
+      "timeline.ts",
+      "calendar-icon.tsx"
+    ]
+  }
+}

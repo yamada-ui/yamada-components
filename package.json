@@ -54,7 +54,6 @@
     "scroll-into-view-if-needed": "^3.1.0"
   },
   "devDependencies": {
-    "glob": "^11.0.0",
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@eslint/compat": "^1.1.1",
@@ -84,6 +83,7 @@
     "eslint-plugin-unused-imports": "^4.1.3",
     "eslint-plugin-vitest": "^0.5.4",
     "globals": "^15.8.0",
+    "glob": "^11.0.0",
     "lefthook": "^1.7.12",
     "plop": "^4.0.1",
     "prettier": "^3.3.3",

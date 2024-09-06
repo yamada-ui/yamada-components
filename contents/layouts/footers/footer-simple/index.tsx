@@ -19,7 +19,12 @@ const links = [
 
 const FooterCentered: FC = () => {
   const items = links.map((link) => (
-    <Link key={link.label} href={link.link} onClick={(e) => e.preventDefault()}>
+    <Link
+      key={link.label}
+      href={link.link}
+      onClick={(e) => e.preventDefault()}
+      color="muted"
+    >
       {link.label}
     </Link>
   ))
