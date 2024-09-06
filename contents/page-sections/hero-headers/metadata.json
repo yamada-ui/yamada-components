@@ -6,5 +6,10 @@
   "ja": {
     "title": "ヒーローヘッダー",
     "description": "このカテゴリには、さまざまなヒーローヘッダーコンポーネントが含まれています。"
+  },
+  "options": {
+    "files": {
+      "order": ["with-background-image", "with-bullets", "with-content-on-left"]
+    }
   }
 }
