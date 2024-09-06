@@ -38,8 +38,16 @@ export const getComponentCategoryGroup =
               const authors = json.authors ?? null
               const labels = json.labels ?? null
               const order = json.order ?? null
+              const options = json.options ?? null
 
-              callback?.({ ...metadata, icon, authors, labels, order })
+              callback?.({
+                ...metadata,
+                icon,
+                authors,
+                labels,
+                order,
+                options,
+              })
             } catch {}
           }
 
@@ -74,9 +82,45 @@ export const getComponentCategoryGroup =
 
     const filteredComponentCategoryGroup = componentTree
       .filter(Boolean)
-      .sort(
-        (a, b) => (a?.order ?? 530000) - (b?.order ?? 530000),
-      ) as ComponentCategoryGroup[]
+      .sort((a, b) => {
+        const orderA = a?.order ?? 530000
+        const orderB = b?.order ?? 530000
+        return orderA - orderB
+      })
+      .map((category) => {
+        const ordering = category?.options?.files?.order ?? []
+        category?.items?.sort((itemA, itemB) => {
+          const indexA = ordering.indexOf(itemA.name)
+          const indexB = ordering.indexOf(itemB.name)
+
+          return (
+            (indexA === -1 ? 530000 : indexA) -
+            (indexB === -1 ? 530000 : indexB)
+          )
+        })
+        return category
+      }) as ComponentCategoryGroup[]
+
+    const globalMetadataPath = path.join("contents", "metadata.json")
+
+    if (existsSync(globalMetadataPath)) {
+      const data = await readFile(globalMetadataPath, "utf-8")
+      const globalMetadata: Metadata = JSON.parse(data)
+
+      if (globalMetadata?.options?.files?.order) {
+        const ordering = globalMetadata.options.files.order
+
+        filteredComponentCategoryGroup.sort((categoryA, categoryB) => {
+          const indexA = ordering.indexOf(categoryA.name)
+          const indexB = ordering.indexOf(categoryB.name)
+
+          return (
+            (indexA === -1 ? 530000 : indexA) -
+            (indexB === -1 ? 530000 : indexB)
+          )
+        })
+      }
+    }
 
     return filteredComponentCategoryGroup
   }
