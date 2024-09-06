@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Simple Timeline",
+    "description": "This is simple timeline."
+  },
+  "ja": {
+    "title": "シンプルなタイムライン",
+    "description": "シンプルなタイムラインです。"
+  },
+  "options": {
+    "container": {
+      "p": "md"
+    }
+  },
+  "order": 1
+}
