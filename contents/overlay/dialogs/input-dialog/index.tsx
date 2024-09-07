@@ -51,7 +51,7 @@ const InputDialog: FC = () => {
             <Text>Are you sure?</Text>
           </VStack>
         </DialogHeader>
-        <DialogBody>
+        <DialogBody overflow="visible">
           <VStack>
             <Text>
               This action cannot be undone. If you really want to delete it,
