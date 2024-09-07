@@ -43,7 +43,10 @@ const ComplexCookieDialog: FC = () => {
           onClose()
           setCategoryCheck({})
         }}
-        success="Save & Accept"
+        success={{
+          children: "Save & Accept",
+          colorScheme: "info",
+        }}
         onSuccess={onClose}
         blockScrollOnMount={false}
       >
