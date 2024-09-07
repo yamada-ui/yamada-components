@@ -8,7 +8,6 @@ import {
   Spacer,
   Switch,
   VStack,
-  useColorModeValue,
 } from "@yamada-ui/react"
 import type { FC } from "react"
 import { CookieTable } from "./table"
@@ -34,11 +33,13 @@ export const CategoryItem: FC<{
   tableData,
   onCheckChange,
 }) => {
-  const color = useColorModeValue("#dcdcde", "#434248")
   return (
     <>
       <Accordion variant="unstyled" isToggle>
-        <AccordionItem borderBottom={`1px solid ${color}`}>
+        <AccordionItem
+          borderBottom="1px solid"
+          borderColor={["blackAlpha.300", "whiteAlpha.300"]}
+        >
           <AccordionLabel p="0">
             {title}
             <Spacer />
@@ -54,13 +55,23 @@ export const CategoryItem: FC<{
           </AccordionLabel>
           <AccordionPanel>
             <VStack>
-              <Text>{description}</Text>
+              <Text color={["blackAlpha.700", "whiteAlpha.700"]}>
+                {description}
+              </Text>
               {tableData === undefined ? (
-                <Box border={`1px solid ${color}`} p="2">
+                <Box
+                  border="1px solid"
+                  borderColor={["blackAlpha.300", "whiteAlpha.300"]}
+                  fontSize="sm"
+                  p="2"
+                >
                   We do not use cookies of this type.
                 </Box>
               ) : (
-                <Box overflowX="auto">
+                <Box
+                  overflowX="auto"
+                  color={["blackAlpha.700", "whiteAlpha.700"]}
+                >
                   <CookieTable tableData={tableData} />
                 </Box>
               )}

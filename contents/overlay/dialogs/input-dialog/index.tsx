@@ -53,7 +53,7 @@ const InputDialog: FC = () => {
         </DialogHeader>
         <DialogBody overflow="visible">
           <VStack>
-            <Text>
+            <Text color={["blackAlpha.700", "whiteAlpha.700"]}>
               This action cannot be undone. If you really want to delete it,
               type '{keyword}'.
             </Text>

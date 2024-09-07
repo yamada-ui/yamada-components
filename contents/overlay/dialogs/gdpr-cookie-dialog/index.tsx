@@ -51,11 +51,11 @@ const ComplexCookieDialog: FC = () => {
         blockScrollOnMount={false}
       >
         <Tabs variant="sticky" isFitted>
-          <Tab>Consent</Tab>
-          <Tab>Details</Tab>
+          <Tab fontWeight="600">Consent</Tab>
+          <Tab fontWeight="600">Details</Tab>
 
           <TabPanel minH="sm">
-            <Text>
+            <Text color={["blackAlpha.700", "whiteAlpha.700"]}>
               We use cookies to enhance your experience on our website. By
               managing your preferences, you can control the cookies that are
               set during your visit. Our cookies are categorized for your

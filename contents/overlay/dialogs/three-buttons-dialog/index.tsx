@@ -21,7 +21,9 @@ const ThreeButtonsDialog: FC = () => {
           <CircleHelp boxSize="8" color="info" />
           <Text>Unsaved changes</Text>
         </DialogHeader>
-        <Text>Do you want to save changes to '{name}' before closing?</Text>
+        <Text color={["blackAlpha.700", "whiteAlpha.700"]}>
+          Do you want to save changes to '{name}' before closing?
+        </Text>
         <DialogFooter>
           <Button onClick={onClose} variant="ghost">
             Cancel
