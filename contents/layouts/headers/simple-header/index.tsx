@@ -5,7 +5,6 @@ import {
   Container,
   Heading,
   IconButton,
-  Link,
   useDisclosure,
 } from "@yamada-ui/react"
 import type { FC } from "react"
@@ -25,14 +24,12 @@ const HeaderSimple: FC = () => {
   const items = links.map((link) => (
     <Button
       key={link.label}
-      as={Link}
       variant={active === link.label ? "solid" : "ghost"}
       colorScheme={active === link.label ? "primary" : undefined}
+      as="a"
       href={link.link}
-      value={link.label}
       data-active={active === link.label || undefined}
       fontSize="xs"
-      _hover={{ textDecor: "none" }}
       px="sm"
       py="xs"
       lineHeight="1"
