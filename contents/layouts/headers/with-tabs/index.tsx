@@ -154,6 +154,9 @@ const WithTabs: FC = () => {
                 onClick={(e: { preventDefault: () => any }) =>
                   e.preventDefault()
                 }
+                _hover={{
+                  opacity: 0.7,
+                }}
               >
                 {tab}
               </Tab>
