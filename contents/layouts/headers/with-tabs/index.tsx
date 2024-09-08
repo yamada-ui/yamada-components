@@ -135,7 +135,6 @@ const WithTabs: FC = () => {
           variant="unstyled"
           onChange={setActive}
           index={active}
-          orientation="vertical"
           justifyContent={{ base: "center", md: "flex-end" }}
         >
           <TabList flexDir={{ base: "row", md: "column" }}>
