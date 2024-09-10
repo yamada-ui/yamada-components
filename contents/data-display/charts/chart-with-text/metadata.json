@@ -7,7 +7,6 @@
     "title": "テキスト付チャート",
     "description": "テキストを保持したチャート。"
   },
-  "order": "5",
   "options": {
     "container": {
       "centerContent": true

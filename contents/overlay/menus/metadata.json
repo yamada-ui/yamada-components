@@ -6,5 +6,10 @@
   "ja": {
     "title": "メニュー",
     "description": "メニューは、一般的なドロップダウンメニューを表示するコンポーネントです。"
+  },
+  "options": {
+    "files": {
+      "order": ["simple-with-descriptions", "menu-with-icon"]
+    }
   }
 }

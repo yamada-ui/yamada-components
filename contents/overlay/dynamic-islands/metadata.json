@@ -6,5 +6,16 @@
   "ja": {
     "title": "ダイナミックアイランド",
     "description": "コンテンツを動的に展開および折りたたむ多用途のUIコンポーネント。魅力的でインタラクティブなユーザー体験を提供します。"
+  },
+  "options": {
+    "files": {
+      "order": [
+        "simple-dynamic-island",
+        "dynamic-island",
+        "springy-dynamic-island",
+        "music-dynamic-island",
+        "phone-call-dynamic-island"
+      ]
+    }
   }
 }

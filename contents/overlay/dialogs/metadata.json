@@ -6,5 +6,16 @@
   "ja": {
     "title": "ダイアログ",
     "description": "ダイアログは、ユーザーに実行の確認または中断に使用されるコンポーネントです。"
+  },
+  "options": {
+    "files": {
+      "order": [
+        "simple-dialog",
+        "three-buttons-dialog",
+        "input-dialog",
+        "cookie-dialog",
+        "gdpr-cookie-dialog"
+      ]
+    }
   }
 }

@@ -7,7 +7,11 @@
     "title": "フッター",
     "description": "フッターは、ページの下部に重要な情報を表示するために使用されます。"
   },
-  "order": 2,
+  "options": {
+    "files": {
+      "order": ["footer-simple", "footer-social-icons"]
+    }
+  },
   "authors": [
     {
       "id": 84060430,
