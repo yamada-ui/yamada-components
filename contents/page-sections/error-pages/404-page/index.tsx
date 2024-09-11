@@ -2,7 +2,7 @@ import { Button, Heading, Text, VStack } from "@yamada-ui/react"
 
 const NotFound = () => {
   return (
-    <VStack alignItems="center" p="lg" maxW="2xl">
+    <VStack alignItems="center" p="lg">
       <Heading as="h2" fontSize="9xl" fontWeight="bold" lineHeight="1">
         404
       </Heading>

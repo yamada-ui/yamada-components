@@ -55,7 +55,8 @@ const GetInTouch: FC = () => {
         as="form"
         rounded="md"
         p="md"
-        minW="xl"
+        w="full"
+        maxW="xl"
         h="fit-content"
         boxShadow="none"
         onSubmit={(e) => e.preventDefault()}
@@ -66,7 +67,7 @@ const GetInTouch: FC = () => {
           </Heading>
         </CardHeader>
         <CardBody>
-          <Flex flexDir={{ base: "row", md: "column" }} gap="md">
+          <Flex flexDir={{ base: "row", md: "column" }} gap="md" w="full">
             <FormControl label="Name">
               <Input type="text" placeholder="Hirotomo Yamada" />
             </FormControl>
@@ -81,7 +82,10 @@ const GetInTouch: FC = () => {
             <Textarea placeholder="Please include all relevant information" />
           </FormControl>
         </CardBody>
-        <CardFooter justifyContent="flex-end" pt={{ sm: "xs", base: "md" }}>
+        <CardFooter
+          justifyContent={{ base: "flex-end", md: "center" }}
+          pt={{ sm: "xs", base: "md" }}
+        >
           <Button colorScheme="primary" type="submit">
             Send message
           </Button>
