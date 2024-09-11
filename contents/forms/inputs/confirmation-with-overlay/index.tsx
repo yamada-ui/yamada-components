@@ -7,7 +7,7 @@ import {
   Motion,
 } from "@yamada-ui/react"
 import { type FC, useState } from "react"
-import { Indicator } from "./indicator"
+import { Overlay } from "./overlay"
 
 const ConfirmationWithOverlay: FC = () => {
   const [password, setPassword] = useState("")
@@ -15,7 +15,7 @@ const ConfirmationWithOverlay: FC = () => {
 
   return (
     <VStack gap="md" maxW="lg">
-      <Box position="relative">
+      <Box position="relative" overflow="clip">
         <Input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -24,6 +24,7 @@ const ConfirmationWithOverlay: FC = () => {
           borderColor="gray.300"
           borderWidth={1}
           borderRadius="md"
+          fontSize="15px"
         />
         <AnimatePresence>
           {confirmedPassword.length > 0 && (
@@ -35,10 +36,11 @@ const ConfirmationWithOverlay: FC = () => {
               height="full"
               exit={{ width: 0, height: 0 }}
               transition={{ duration: 0, delay: 0.1 }}
+              pointerEvents="none"
             >
               <AnimatePresence>
                 {Array.from(confirmedPassword).map((item, index) => (
-                  <Indicator
+                  <Overlay
                     key={`${item}-${index}`}
                     password={password}
                     confirmedPassword={confirmedPassword}
@@ -59,6 +61,7 @@ const ConfirmationWithOverlay: FC = () => {
         borderColor="gray.300"
         borderWidth={1}
         borderRadius="md"
+        fontSize="15px"
       />
     </VStack>
   )

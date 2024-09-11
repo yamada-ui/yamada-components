@@ -1,13 +1,13 @@
 import { Motion } from "@yamada-ui/react"
 import React from "react"
 
-interface IndicatorProps {
+interface OverlayProps {
   index: number
   password: string
   confirmedPassword: string
 }
 
-export const Indicator: React.FC<IndicatorProps> = ({
+export const Overlay: React.FC<OverlayProps> = ({
   index,
   password,
   confirmedPassword,
