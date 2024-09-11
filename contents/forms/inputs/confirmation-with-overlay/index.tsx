@@ -37,6 +37,8 @@ const ConfirmationWithOverlay: FC = () => {
               exit={{ width: 0, height: 0 }}
               transition={{ duration: 0, delay: 0.1 }}
               pointerEvents="none"
+              maxW="calc($sizes.lg - 1.2rem)"
+              overflow="clip"
             >
               <AnimatePresence>
                 {Array.from(confirmedPassword).map((item, index) => (
