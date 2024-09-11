@@ -44,6 +44,7 @@ export const ImagePreviewDropzone: FC = () => {
             alt={`image-${index}`}
             width={200}
             height={200}
+            objectFit="contain"
           />
         ))}
       </Wrap>
