@@ -1,6 +1,6 @@
 import type { BarProps } from "@yamada-ui/charts"
 import { BarChart } from "@yamada-ui/charts"
-import { type FC } from "react"
+import type { FC } from "react"
 
 const data = [
   { month: "January", desktop: 186 },
