@@ -1,18 +1,25 @@
 import type { BarProps } from "@yamada-ui/charts"
 import { BarChart } from "@yamada-ui/charts"
-import type { FC } from "react"
-
-const data = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
-const series: BarProps[] = [{ dataKey: "desktop", color: "primary.500" }]
+import { useMemo, type FC } from "react"
 
 const BarChartLabel: FC = () => {
+  const data = useMemo(
+    () => [
+      { month: "January", desktop: 186 },
+      { month: "February", desktop: 305 },
+      { month: "March", desktop: 237 },
+      { month: "April", desktop: 73 },
+      { month: "May", desktop: 209 },
+      { month: "June", desktop: 214 },
+    ],
+    [],
+  )
+
+  const series: BarProps[] = useMemo(
+    () => [{ dataKey: "desktop", color: "primary.500" }],
+    [],
+  )
+
   return (
     <BarChart
       mx="auto"
