@@ -49,7 +49,7 @@ function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
         colorScheme={active ? "primary" : undefined}
         variant={active ? "solid" : "ghost"}
         data-active={active || undefined}
-        icon={<Icon size="xl" />}
+        icon={<Icon fontSize="xl" />}
       />
     </Tooltip>
   )
@@ -65,12 +65,12 @@ const NavbarWithTooltips: FC = () => {
       h="full"
       p="md"
       borderRight="1px solid"
-      borderRightColor={["blackAlpha.500", "whiteAlpha.500"]}
+      borderRightColor="border"
     >
       <Center>
         <Avatar
           src="https://avatars.githubusercontent.com/u/84060430?v=4"
-          size="md"
+          size="sm"
         />
       </Center>
 

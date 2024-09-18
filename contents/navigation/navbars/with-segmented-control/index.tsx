@@ -15,7 +15,6 @@ import {
   UsersIcon,
 } from "@yamada-ui/lucide"
 import {
-  Badge,
   Box,
   Button,
   HStack,
@@ -23,6 +22,7 @@ import {
   Link,
   SegmentedControl,
   SegmentedControlButton,
+  Tag,
   Text,
   VStack,
   toCamelCase,
@@ -64,20 +64,22 @@ const NavbarWithSegmentedControl: FC = () => {
       h="full"
       p="md"
       borderRight="1px solid"
-      borderRightColor={["blackAlpha.500", "whiteAlpha.500"]}
+      borderRightColor="border"
     >
       <Box flex={1}>
         <HStack justifyContent="space-between" pb="md" mb="md" as="header">
           <Heading
             as="a"
-            size="lg"
+            size="md"
             whiteSpace="nowrap"
             color={["black", "white"]}
             onClick={(e) => e.preventDefault()}
           >
             Yamada UI
           </Heading>
-          <Badge fontWeight={700}>v2.0.0</Badge>
+          <Tag fontWeight={500} fontSize="xs">
+            v2.0.0
+          </Tag>
         </HStack>
         <SegmentedControl
           display="flex"
