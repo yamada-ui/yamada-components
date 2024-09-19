@@ -57,7 +57,7 @@ const DoubleNavbar: FC = () => {
       h="full"
       bgColor={["whiteAlpha.500", "blackAlpha.500"]}
       borderRight="1px solid"
-      borderRightColor={["blackAlpha.500", "whiteAlpha.500"]}
+      borderRightColor="border"
     >
       <Flex flex={1}>
         <VStack
@@ -93,7 +93,7 @@ const DoubleNavbar: FC = () => {
           ))}
         </VStack>
         <Box flex={1} bgColor={["gray.50", "gray.900"]} pr="md">
-          <Heading mb="xl" p="md" pt="18px" h="80px">
+          <Heading mb="xl" p="md" pt="18px" h="80px" fontSize="2xl">
             {active}
           </Heading>
           {linksMockdata.map((link) => (
@@ -119,7 +119,7 @@ const DoubleNavbar: FC = () => {
               _hover={{
                 textDecor: "none",
                 background:
-                  link === activeLink ? undefined : "rgba(224, 97, 6, 0.12)",
+                  link === activeLink ? undefined : ["gray.100", "gray.950"],
               }}
               borderTopLeftRadius={0}
               borderBottomLeftRadius={0}
