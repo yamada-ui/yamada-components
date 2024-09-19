@@ -37,12 +37,15 @@ export const getComponentCategoryGroup =
               const icon = json.icon ?? null
               const authors = json.authors ?? null
               const labels = json.labels ?? null
-              const order = json.order ?? null
-
-              callback?.({ ...metadata, icon, authors, labels, order })
-            } catch (e) {
-              console.error("getComponentCategoryGroup Error: ", e)
-            }
+              const options = json.options ?? null
+              callback?.({
+                ...metadata,
+                icon,
+                authors,
+                labels,
+                options,
+              })
+            } catch {}
           }
 
           return
@@ -58,17 +61,19 @@ export const getComponentCategoryGroup =
         const slug = targetPath.replace(/\\/g, "/").replace(/^contents\//, "/")
         const isExpanded =
           slug === currentSlug ||
-          items.some(
-            ({ slug, items }) =>
-              slug === currentSlug ||
-              items?.some(({ slug }) => slug === currentSlug),
+          items?.some(
+            ({ slug: itemSlug, items: itemItems }) =>
+              slug === itemSlug ||
+              itemItems?.some(
+                ({ slug: itemItemSlug }) => slug === itemItemSlug,
+              ),
           )
 
         return {
           name,
           slug,
           isExpanded,
-          ...(items.length ? { items } : {}),
+          ...(items?.length ? { items } : {}),
           ...metadata!,
         }
       }),
@@ -76,9 +81,40 @@ export const getComponentCategoryGroup =
 
     const filteredComponentCategoryGroup = componentTree
       .filter(Boolean)
-      .sort(
-        (a, b) => (a?.order ?? 530000) - (b?.order ?? 530000),
-      ) as ComponentCategoryGroup[]
+      .map((category) => {
+        const ordering = category?.options?.files?.order ?? []
+        category?.items?.sort((itemA, itemB) => {
+          const indexA = ordering.indexOf(itemA.name)
+          const indexB = ordering.indexOf(itemB.name)
+
+          return (
+            (indexA === -1 ? 530000 : indexA) -
+            (indexB === -1 ? 530000 : indexB)
+          )
+        })
+        return category
+      }) as ComponentCategoryGroup[]
+
+    const globalMetadataPath = path.join("contents", "metadata.json")
+
+    if (existsSync(globalMetadataPath)) {
+      const data = await readFile(globalMetadataPath, "utf-8")
+      const globalMetadata: Metadata = JSON.parse(data)
+
+      if (globalMetadata?.options?.files?.order) {
+        const ordering = globalMetadata.options.files.order
+
+        filteredComponentCategoryGroup.sort((categoryA, categoryB) => {
+          const indexA = ordering.indexOf(categoryA.name)
+          const indexB = ordering.indexOf(categoryB.name)
+
+          return (
+            (indexA === -1 ? 530000 : indexA) -
+            (indexB === -1 ? 530000 : indexB)
+          )
+        })
+      }
+    }
 
     return filteredComponentCategoryGroup
   }
@@ -169,14 +205,10 @@ export const getComponent =
         config: hasConfig ? validConfigPath : null,
       }
 
-      const filesOrder = metadata?.options?.files?.order
+      const ordering = metadata?.options?.files?.order ?? []
 
-      const filePositions = new Map<string, number>()
-      if (filesOrder) {
-        for (const [index, file] of filesOrder.entries()) {
-          filePositions.set(file, index)
-        }
-      }
+      const filePositions: Record<string, number> = {}
+      ordering.forEach((file, index) => (filePositions[file] = index))
 
       const components = (
         await Promise.all(
@@ -188,15 +220,25 @@ export const getComponent =
           }),
         )
       ).sort((componentA, componentB) => {
-        const positionA = filePositions.get(componentA.name) ?? Infinity
-        const positionB = filePositions.get(componentB.name) ?? Infinity
+        const positionA = filePositions[componentA.name] ?? Infinity
+        const positionB = filePositions[componentB.name] ?? Infinity
+
+        if (
+          componentA.name === "index.tsx" &&
+          !ordering.includes("index.tsx")
+        ) {
+          return -1
+        }
+        if (
+          componentB.name === "index.tsx" &&
+          !ordering.includes("index.tsx")
+        ) {
+          return 1
+        }
 
         if (positionA !== Infinity || positionB !== Infinity) {
           return positionA - positionB
         }
-
-        if (componentA.name === "index.tsx") return -1
-        if (componentB.name === "index.tsx") return 1
 
         const isTsxA = componentA.name.endsWith(".tsx")
         const isTsxB = componentB.name.endsWith(".tsx")

@@ -7,7 +7,6 @@
     "title": "ドーナッツアクティブ",
     "description": "アクティブな要素を持つDonutChart。"
   },
-  "order": "4",
   "options": {
     "container": {
       "centerContent": true

@@ -1,10 +1,5 @@
-import {
-  Carousel,
-  CarouselIndicators,
-  CarouselSlide,
-} from "@yamada-ui/carousel"
 import { Dropzone } from "@yamada-ui/dropzone"
-import { Center, Image, Text, useLoading, VStack } from "@yamada-ui/react"
+import { Center, Image, Text, useLoading, VStack, Wrap } from "@yamada-ui/react"
 import { useState } from "react"
 import type { FC } from "react"
 
@@ -19,7 +14,7 @@ export const ImagePreviewDropzone: FC = () => {
 
     setImageURL([])
 
-    await new Promise((resolve) => setTimeout(resolve, 5000))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     for (const file of files) {      
       setImageURL((prev) => [...prev, URL.createObjectURL(file)])
@@ -28,7 +23,7 @@ export const ImagePreviewDropzone: FC = () => {
   }
 
   return (
-    <VStack>
+    <VStack maxW="5xl">
       <Dropzone
         multiple
         accept={{
@@ -36,39 +31,21 @@ export const ImagePreviewDropzone: FC = () => {
         }}
         onDropAccepted={handleAcceptedFile}
       >
-        <Text>Drag and Drop Image File</Text>
+        <Text>Drag and Drop Image Files</Text>
       </Dropzone>
 
-      <Carousel
-        visibility={imageURL.length > 0 ? "visible" : "hidden"}
-        align="center"
-        controlProps={{
-          background: "blackAlpha.500",
-        }}
-      >
+      <Wrap as={Center} gap="md">
         {imageURL.map((url, index) => (
-          <CarouselSlide key={index} as={Center} position="relative">
-            <Image
-              src={url}
-              w="full"
-              h="full"
-              objectFit="contain"
-              alt="image"
-            />
-          </CarouselSlide>
+          <Image
+            key={index}
+            src={url}
+            alt={`image-${index}`}
+            width={200}
+            height={200}
+            objectFit="contain"
+          />
         ))}
-
-        <CarouselIndicators
-          sx={{
-            "& > button": {
-              _selected: {
-                background: "blackAlpha.950",
-              },
-              background: "blackAlpha.500",
-            },
-          }}
-        />
-      </Carousel>
+      </Wrap>
     </VStack>
   )
 }

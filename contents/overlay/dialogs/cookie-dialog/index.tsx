@@ -12,11 +12,14 @@ const CookieDialog: FC = () => {
         header="Cookie Consent"
         cancel="Decline"
         onCancel={onClose}
-        success="Accept"
+        success={{
+          children: "Accept",
+          colorScheme: "info",
+        }}
         onSuccess={onClose}
         blockScrollOnMount={false}
       >
-        <Text>
+        <Text color={["blackAlpha.700", "whiteAlpha.700"]}>
           We use cookies to enhance your experience on our website. By clicking
           "Accept", you agree to our use of cookies for analytics and
           personalized content. For more information, please read our{" "}

@@ -1,0 +1,16 @@
+{
+  "options": {
+    "files": {
+      "order": [
+        "layouts",
+        "typography",
+        "forms",
+        "data-display",
+        "navigation",
+        "overlay",
+        "feedback",
+        "page-sections"
+      ]
+    }
+  }
+}

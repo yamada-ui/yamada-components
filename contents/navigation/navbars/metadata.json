@@ -6,5 +6,15 @@
   "ja": {
     "title": "ナビバー",
     "description": "ナビバーは、ウェブサイトの異なる部分へのナビゲーションリンクを提供するコンポーネントです。"
+  },
+  "options": {
+    "files": {
+      "order": [
+        "simple-navbar",
+        "with-segmented-control",
+        "navbar-with-tooltips",
+        "double-navbar"
+      ]
+    }
   }
 }

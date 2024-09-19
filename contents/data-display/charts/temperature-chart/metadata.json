@@ -7,13 +7,9 @@
     "title": "気温チャート",
     "description": "気温の線グラフを表示します。"
   },
-  "order": "3",
   "options": {
     "container": {
       "minH": "3xl"
-    },
-    "files": {
-      "order": ["index.tsx", "custom-radio.tsx", "utils.ts"]
     }
   }
 }

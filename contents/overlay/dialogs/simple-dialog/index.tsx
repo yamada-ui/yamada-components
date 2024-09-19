@@ -28,11 +28,11 @@ const SimpleDialog: FC = () => {
       >
         <DialogHeader>
           <VStack alignItems="center">
-            <Trash2 boxSize="80px" color="danger" />
+            <Trash2 boxSize="16" color="danger" />
             <Text>Are you sure?</Text>
           </VStack>
         </DialogHeader>
-        <Text>
+        <Text color={["blackAlpha.700", "whiteAlpha.700"]}>
           This action cannot be undone. Are you sure you want to delete this
           item?
         </Text>
