@@ -31,8 +31,9 @@ const DynamicIsland: FC = () => {
   }
 
   return (
-    <Center
-      as={Motion}
+    <Motion
+      display="flex"
+      alignItems="center"
       initial={{ width: 200, height: 32, paddingInline: "0.4rem" }}
       animate={{
         width: isOpen ? 300 : 200,
@@ -101,7 +102,7 @@ const DynamicIsland: FC = () => {
           </Center>
         </Motion>
       ) : null}
-    </Center>
+    </Motion>
   )
 }
 
