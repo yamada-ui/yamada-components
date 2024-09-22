@@ -158,7 +158,9 @@ const SearchModal: FC<SearchModalProps> = memo(
     const directionRef = useRef<"up" | "down">("down")
     const compositionRef = useRef<boolean>(false)
     const containerRef = useRef<HTMLDivElement>(null)
-    const itemRefs = useRef<Map<number, RefObject<HTMLDivElement>>>(new Map())
+    const itemRefs = useRef<Map<number, RefObject<HTMLAnchorElement>>>(
+      new Map(),
+    )
 
     const hits = useMemo(() => {
       if (query.length < 1) return []
@@ -180,7 +182,10 @@ const SearchModal: FC<SearchModalProps> = memo(
 
         eventRef.current = "keyboard"
 
-        const actions: Record<string, (ev: KeyboardEvent<HTMLInputElement>)=> void | undefined> = {
+        const actions: Record<
+          string,
+          (ev: KeyboardEvent<HTMLInputElement>) => void | undefined
+        > = {
           ArrowDown: () => {
             if (selectedIndex + 1 === hits.length) return
 
@@ -309,7 +314,7 @@ const SearchModal: FC<SearchModalProps> = memo(
             <VStack as="ul" gap="sm">
               {hits.map(({ title, type, slug, hierarchy }, index) => {
                 const isSelected = index === selectedIndex
-                const ref = createRef<HTMLDivElement>()
+                const ref = createRef<HTMLAnchorElement>()
 
                 itemRefs.current.set(index, ref)
 

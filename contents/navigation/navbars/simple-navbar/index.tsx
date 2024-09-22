@@ -10,12 +10,12 @@ import {
   UsersIcon,
 } from "@yamada-ui/lucide"
 import {
-  Badge,
   Box,
   Button,
   HStack,
   Heading,
   Link,
+  Tag,
   Text,
   VStack,
 } from "@yamada-ui/react"
@@ -54,14 +54,16 @@ const SimpleNavbar: FC = () => {
         >
           <Heading
             as="a"
-            size="lg"
+            size="md"
             whiteSpace="nowrap"
             color="white"
             onClick={(e) => e.preventDefault()}
           >
             Yamada UI
           </Heading>
-          <Badge fontWeight={700}>v2.0.0</Badge>
+          <Tag fontWeight={500} fontSize="xs">
+            v2.0.0
+          </Tag>
         </HStack>
         {data.map((item) => (
           <Button
