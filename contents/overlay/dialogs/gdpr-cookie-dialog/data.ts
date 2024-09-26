@@ -170,5 +170,6 @@ export const cookieData = [
     id: 5,
     title: "Other",
     description: "Other Cookies are cookies that do not belong to a category.",
+    isDisabled: true,
   },
 ]

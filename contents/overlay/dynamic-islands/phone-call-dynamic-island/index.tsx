@@ -9,7 +9,6 @@ import {
   Box,
   ButtonGroup,
   HStack,
-  VStack,
   AnimatePresence,
   useBreakpointValue,
 } from "@yamada-ui/react"
@@ -103,8 +102,12 @@ const PhoneCallDynamicIsland: FC = () => {
       </AnimatePresence>
 
       {isOpen && (
-        <VStack
-          as={Motion}
+        <Motion
+          display="flex"
+          flexDirection="column"
+          alignItems="stretch"
+          w="full"
+          gap="md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -152,7 +155,7 @@ const PhoneCallDynamicIsland: FC = () => {
               colorScheme="danger"
             />
           </ButtonGroup>
-        </VStack>
+        </Motion>
       )}
     </Center>
   )

@@ -7,7 +7,6 @@
     "title": "ソーシャルアイコン付きフッター",
     "description": "これはソーシャルアイコン付きのフッターです"
   },
-  "order": 2,
   "options": { "container": { "display": "flex", "alignItems": "flex-end" } },
   "authors": [
     {

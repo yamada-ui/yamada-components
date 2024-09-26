@@ -8,7 +8,11 @@
     "description": "ボックスやスタックなど、プロジェクトのレイアウトを構築するコンポーネントが用意されています。"
   },
   "icon": "panels-top-left",
-  "order": 1,
+  "options": {
+    "files": {
+      "order": ["headers", "footers", "dividers", "grids"]
+    }
+  },
   "authors": [
     {
       "id": 84060430,

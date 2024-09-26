@@ -22,7 +22,12 @@ const links = [
 
 const FooterCentered: FC = () => {
   const items = links.map((link) => (
-    <Link key={link.label} href={link.link} onClick={(e) => e.preventDefault()}>
+    <Link
+      key={link.label}
+      href={link.link}
+      onClick={(e) => e.preventDefault()}
+      color="muted"
+    >
       {link.label}
     </Link>
   ))
@@ -48,17 +53,17 @@ const FooterCentered: FC = () => {
         <ButtonGroup gap="xs">
           <IconButton
             variant="ghost"
-            borderRadius="full"
+            rounded="full"
             icon={<TwitterIcon fontSize="2xl" />}
           />
           <IconButton
             variant="ghost"
-            borderRadius="full"
+            rounded="full"
             icon={<YoutubeIcon fontSize="2xl" />}
           />
           <IconButton
             variant="ghost"
-            borderRadius="full"
+            rounded="full"
             icon={<InstagramIcon fontSize="2xl" />}
           />
         </ButtonGroup>

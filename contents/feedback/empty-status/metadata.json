@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Empty status",
+    "description": "Empty Status shows a state with no data."
+  },
+  "ja": {
+    "title": "空のステータス",
+    "description": "空のステータスはデータが何もない状態を表すコンポーネントです"
+  }
+}

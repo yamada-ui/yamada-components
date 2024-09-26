@@ -65,7 +65,7 @@ const QuestProgress: FC = () => {
           <Center w="32" flexDir="column">
             {data.current >= data.max ? (
               <>
-                <CircleCheckBigIcon size="6xl" />
+                <CircleCheckBigIcon fontSize="6xl" />
                 <Text>Clear!!</Text>
               </>
             ) : undefined}

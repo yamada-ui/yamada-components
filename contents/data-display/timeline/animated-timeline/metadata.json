@@ -1,0 +1,18 @@
+{
+  "en": {
+    "title": "With animation",
+    "description": "This is a timeline component with animation."
+  },
+  "ja": {
+    "title": "アニメーションを使用したタイムライン",
+    "description": "アニメーションを使用したタイムラインです。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true
+    },
+    "files": {
+      "order": ["timeline-item.tsx", "timeline.ts", "calendar-icon.tsx"]
+    }
+  }
+}

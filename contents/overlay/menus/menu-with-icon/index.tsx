@@ -57,7 +57,7 @@ const MenuWithIcon: FC = () => {
       <MenuList>
         {items.map((item, i) => (
           <MenuItem key={i} as={HStack} gap="md" py="md">
-            <item.icon size="xl" />
+            <item.icon fontSize="xl" />
             <VStack alignItems="start">
               <Text
                 as={Link}

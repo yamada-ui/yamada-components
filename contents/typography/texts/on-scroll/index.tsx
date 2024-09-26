@@ -34,7 +34,6 @@ const OnScroll: FC = () => {
           pt="md"
           bgGradient="linear(to-l, #7928CA, #FF0080)"
           bgClip="text"
-          fontWeight="semibold"
           maxW="xl"
           textAlign="center"
           z="-1"

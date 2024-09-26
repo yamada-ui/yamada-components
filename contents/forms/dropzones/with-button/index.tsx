@@ -24,6 +24,7 @@ const WithButton: FC = () => {
         h="xs"
         flexDir="column"
         multiple
+        gap="md"
       >
         <Center color={["blackAlpha.800", "whiteAlpha.800"]}>
           <DropzoneAccept>
@@ -42,7 +43,6 @@ const WithButton: FC = () => {
           fontWeight={700}
           fontSize="lg"
           color={["blackAlpha.800", "whiteAlpha.800"]}
-          mt="lg"
           userSelect="none"
         >
           <DropzoneAccept>Drop files here</DropzoneAccept>
@@ -55,7 +55,6 @@ const WithButton: FC = () => {
           fontSize="sm"
           mt="xs"
           color="gray"
-          px="md"
           userSelect="none"
         >
           Drag&apos;n&apos;drop files here to upload. We can accept only{" "}

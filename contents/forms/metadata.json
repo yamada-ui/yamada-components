@@ -8,7 +8,6 @@
     "description": "インプットやセレクトなど、プロジェクトのフォームを構築するコンポーネントが用意されています。"
   },
   "icon": "text-cursor-input",
-  "order": 3,
   "authors": [
     {
       "id": 84060430,

@@ -16,11 +16,11 @@ import {
   Box,
   ButtonGroup,
   HStack,
-  VStack,
   AnimatePresence,
   useDisclosure,
   useBreakpointValue,
- useBoolean } from "@yamada-ui/react"
+  useBoolean,
+} from "@yamada-ui/react"
 import type { FC } from "react"
 import { useRef } from "react"
 
@@ -109,8 +109,12 @@ const MusicDynamicIsland: FC = () => {
       </AnimatePresence>
 
       {isOpen && (
-        <VStack
-          as={Motion}
+        <Motion
+          display="flex"
+          flexDirection="column"
+          alignItems="stretch"
+          w="full"
+          gap="md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -178,7 +182,7 @@ const MusicDynamicIsland: FC = () => {
               colorScheme="whiteAlpha"
             />
           </ButtonGroup>
-        </VStack>
+        </Motion>
       )}
       <audio ref={audioRef} />
     </Center>
