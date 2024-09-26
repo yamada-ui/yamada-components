@@ -45,8 +45,7 @@ const PhoneCallDynamicIsland: FC = () => {
   }
 
   return (
-    <Center
-      as={Motion}
+    <Motion
       initial={{
         width: 200,
         height: 40,
@@ -65,7 +64,9 @@ const PhoneCallDynamicIsland: FC = () => {
       onMouseLeave={onClose}
       bg={["black", "blackAlpha.600"]}
       shadow="xl"
+      display="flex"
       justifyContent="space-between"
+      alignItems="center"
       cursor="pointer"
       position="fixed"
       bottom="lg"
@@ -163,7 +164,7 @@ const PhoneCallDynamicIsland: FC = () => {
           </ButtonGroup>
         </Motion>
       )}
-    </Center>
+    </Motion>
   )
 }
 

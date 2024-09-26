@@ -54,8 +54,8 @@ const MusicDynamicIsland: FC = () => {
   }
 
   return (
-    <Center
-      as={Motion}
+    <Motion
+      display="flex"
       initial={{
         width: 200,
         height: 40,
@@ -75,6 +75,7 @@ const MusicDynamicIsland: FC = () => {
       bg={["black", "blackAlpha.600"]}
       shadow="xl"
       justifyContent="space-between"
+      alignItems="center"
       cursor="pointer"
       position="fixed"
       bottom="lg"
@@ -185,7 +186,7 @@ const MusicDynamicIsland: FC = () => {
         </Motion>
       )}
       <audio ref={audioRef} />
-    </Center>
+    </Motion>
   )
 }
 

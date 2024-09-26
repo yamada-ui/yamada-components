@@ -26,8 +26,7 @@ const DynamicIsland: FC = () => {
   })
 
   return (
-    <Center
-      as={Motion}
+    <Motion
       initial={{
         width: 250,
         height: 40,
@@ -45,7 +44,9 @@ const DynamicIsland: FC = () => {
       onClick={onToggle}
       bg={["black", "blackAlpha.600"]}
       shadow="2xl"
+      display="flex"
       justifyContent="space-between"
+      alignItems="center"
       cursor="pointer"
       position="fixed"
       bottom="lg"
@@ -113,7 +114,7 @@ const DynamicIsland: FC = () => {
           </Center>
         </Motion>
       )}
-    </Center>
+    </Motion>
   )
 }
 
