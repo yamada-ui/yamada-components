@@ -147,12 +147,18 @@ const PhoneCallDynamicIsland: FC = () => {
               }
               onClick={toggleMute}
               colorScheme="whiteAlpha"
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
             />
             <IconButton
               aria-label="End Call"
               icon={<PhoneOffIcon fontSize="xl" />}
               onClick={handleEndCall}
               colorScheme="danger"
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
             />
           </ButtonGroup>
         </Motion>
