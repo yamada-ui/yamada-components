@@ -82,7 +82,7 @@ const PhoneCallDynamicIsland: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               position="absolute"
-              left="sm"
+              left="md"
             >
               <PhoneIcon color="success" fontSize="xl" />
             </Center>
@@ -91,7 +91,7 @@ const PhoneCallDynamicIsland: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               position="absolute"
-              right="sm"
+              right="md"
             >
               <Text fontSize="sm" color="white">
                 00:25

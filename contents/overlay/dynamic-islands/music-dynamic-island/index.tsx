@@ -91,7 +91,7 @@ const MusicDynamicIsland: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               position="absolute"
-              left="sm"
+              left="md"
             >
               <ImageIcon color="white" fontSize="xl" />
             </Center>
@@ -100,7 +100,7 @@ const MusicDynamicIsland: FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               position="absolute"
-              right="sm"
+              right="md"
             >
               <AudioLinesIcon color="white" fontSize="xl" />
             </Center>
