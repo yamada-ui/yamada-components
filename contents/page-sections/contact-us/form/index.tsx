@@ -37,7 +37,7 @@ const Form: FC = () => {
         p={{ base: "2xl", sm: "md", lg: "lg" }}
         gap="md"
       >
-        <VStack gap="sm" color="white" w="full">
+        <VStack gap="sm" color="white" w="full" maxW={{lg: "xl"}}>
           <Heading as="h2" size="lg">
             Contact us
           </Heading>
