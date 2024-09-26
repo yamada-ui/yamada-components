@@ -89,7 +89,7 @@ const Form: FC = () => {
           bg={["white", "black"]}
           as="form"
           rounded="md"
-          p={{ base: "md", md: "sm" }}
+          p={{ base: "md", lg: "sm" }}
           w="full"
           maxW="xl"
           h="fit-content"
