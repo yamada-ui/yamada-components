@@ -37,7 +37,7 @@ const Form: FC = () => {
         p={{ base: "2xl", sm: "md", lg: "lg" }}
         gap="md"
       >
-        <VStack gap="sm" color="white" w="full" maxW={{lg: "xl"}}>
+        <VStack gap="sm" color="white" w="full" maxW={{ lg: "xl" }}>
           <Heading as="h2" size="lg">
             Contact us
           </Heading>
@@ -108,10 +108,7 @@ const Form: FC = () => {
               <Textarea placeholder="Your message" />
             </FormControl>
           </CardBody>
-          <CardFooter
-            justifyContent={{ base: "flex-end", md: "center" }}
-            justifyContent={{ base: "flex-end", sm: "center" }}
-          >
+          <CardFooter justifyContent={{ base: "flex-end", md: "center" }}>
             <Button colorScheme="primary" type="submit">
               Send message
             </Button>
