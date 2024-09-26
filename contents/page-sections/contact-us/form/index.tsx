@@ -110,7 +110,7 @@ const Form: FC = () => {
           </CardBody>
           <CardFooter
             justifyContent={{ base: "flex-end", md: "center" }}
-            pt={{ sm: "xs", base: "md" }}
+            justifyContent={{ base: "flex-end", sm: "center" }}
           >
             <Button colorScheme="primary" type="submit">
               Send message
