@@ -25,6 +25,7 @@ const GetInTouch: FC = () => {
       rounded="2xl"
       gap={{ base: "xl", md: "lg" }}
       p={{ base: "lg", md: "xs" }}
+      m="auto"
     >
       <VStack
         bgGradient="linear(to-r, primary.700, primary.500)"
