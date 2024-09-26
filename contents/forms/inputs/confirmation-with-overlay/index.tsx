@@ -3,7 +3,6 @@ import {
   Box,
   VStack,
   AnimatePresence,
-  Center,
   Motion,
 } from "@yamada-ui/react"
 import { type FC, useState } from "react"
@@ -28,8 +27,10 @@ const ConfirmationWithOverlay: FC = () => {
         />
         <AnimatePresence>
           {confirmedPassword.length > 0 && (
-            <Center
-              as={Motion}
+            <Motion
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
               position="absolute"
               top={0}
               left="0.5rem"
@@ -50,7 +51,7 @@ const ConfirmationWithOverlay: FC = () => {
                   />
                 ))}
               </AnimatePresence>
-            </Center>
+            </Motion>
           )}
         </AnimatePresence>
       </Box>
