@@ -91,6 +91,7 @@ const Form: FC = () => {
           rounded="md"
           p={{ base: "md", lg: "sm" }}
           w="full"
+          mx="auto"
           maxW="xl"
           h="fit-content"
           placeSelf={{ lg: "flex-start" }}
