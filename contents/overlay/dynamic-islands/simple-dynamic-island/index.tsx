@@ -70,7 +70,7 @@ const DynamicIsland: FC = () => {
           animate={{ opacity: 1, translateY: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
-          <Center gap="lg">
+          <Center gap="md">
             <Link
               href="/"
               onClick={(e) => {
