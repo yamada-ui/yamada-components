@@ -4,9 +4,8 @@ type DefaultLocale = "en"
 type Locale = "en" | "ja"
 type OtherLocale = Exclude<Locale, DefaultLocale>
 
-type LocaleMetadata<Y> = { [key in DefaultLocale]: Y } & {
-  [key in OtherLocale]?: Y
-}
+type LocaleMetadata<Y> = Record<DefaultLocale, Y> &
+  Partial<Record<OtherLocale, Y>>
 
 declare module "component" {
   type ContentType = "categoryGroup" | "category" | "component"
@@ -57,6 +56,7 @@ declare module "component" {
   type MetadataOptions = {
     iframe?: boolean
     container?: ComponentContainerProps
+    ignore: boolean
     files?: {
       order?: string[]
     }
@@ -67,7 +67,6 @@ declare module "component" {
     authors?: Author[] | null
     labels?: string[] | null
     options?: MetadataOptions | null
-    order?: number | null
   }
 
   type CommonMetadata = {

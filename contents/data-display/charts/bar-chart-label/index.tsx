@@ -14,6 +14,7 @@ const BarChartLabel: FC = () => {
     ],
     [],
   )
+
   const series: BarProps[] = useMemo(
     () => [{ dataKey: "desktop", color: "primary.500" }],
     [],
@@ -21,6 +22,8 @@ const BarChartLabel: FC = () => {
 
   return (
     <BarChart
+      mx="auto"
+      maxW="xl"
       data={data}
       series={series}
       dataKey="month"

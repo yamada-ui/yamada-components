@@ -39,13 +39,19 @@ const DoubleHeader: FC = () => {
         href={item.link}
         key={item.label}
         value={item.label}
-        color={["blackAlpha.700", "whiteAlpha.700"]}
+        color={
+          active ? ["black", "white"] : ["blackAlpha.700", "whiteAlpha.700"]
+        }
         onClick={(event: { preventDefault: () => any }) =>
           event.preventDefault()
         }
+        fontSize="xs"
         data-active={active || undefined}
         fontWeight={700}
-        borderBottomWidth="2px"
+        px="sm"
+        borderBottomWidth="1"
+        marginBottom="-1px"
+        borderBottomColor={active ? "primary" : undefined}
         _hover={{
           textDecor: "none",
           color: !active ? ["black", "white"] : undefined,
@@ -63,6 +69,7 @@ const DoubleHeader: FC = () => {
       onClick={(event) => event.preventDefault()}
       color={["blackAlpha.700", "whiteAlpha.700"]}
       _hover={{ textDecor: "none", color: ["black", "white"] }}
+      fontSize="xs"
     >
       {item.label}
     </Link>
@@ -76,10 +83,10 @@ const DoubleHeader: FC = () => {
       pt="sm"
       px="md"
     >
-      <HStack pb={{ md: "sm" }}>
+      <HStack maxW="6xl" mx="auto" pb={{ md: "sm" }}>
         <Box flex={1}>
           <Heading
-            size="lg"
+            size="md"
             as="a"
             whiteSpace="nowrap"
             onClick={(e) => e.preventDefault()}
@@ -88,11 +95,13 @@ const DoubleHeader: FC = () => {
           </Heading>
         </Box>
 
-        <VStack flex={1} display={{ md: "none" }}>
-          <HStack justify="flex-end">{secondaryItems}</HStack>
+        <VStack flex={1} gap="sm" display={{ base: "flex", md: "none" }}>
+          <HStack pt="md" pr="sm" gap="md" justify="flex-end">
+            {secondaryItems}
+          </HStack>
 
-          <Tabs gap="0" as="nav" onChange={onChange}>
-            <TabList justifyContent="center" border="none">
+          <Tabs gap="0" as="nav" onChange={onChange} variant="unstyled">
+            <TabList justifyContent="flex-end" border="none">
               {mainItems}
             </TabList>
           </Tabs>

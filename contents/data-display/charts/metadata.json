@@ -6,5 +6,16 @@
   "ja": {
     "title": "チャート",
     "description": "チャートのコンポーネントを使った例"
+  },
+  "options": {
+    "files": {
+      "order": [
+        "simple-charts",
+        "bar-chart-label",
+        "temperature-chart",
+        "donut-active",
+        "chart-with-text"
+      ]
+    }
   }
 }

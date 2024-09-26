@@ -16,8 +16,8 @@ const AvatarWithHover: FC = () => {
           key={user.id}
           position="relative"
           borderRadius="full"
+          borderColor={["white", "black"]}
           sx={{
-            borderWidth: "3px",
             "&:hover": {
               transform: "scale(1.4)",
               zIndex: 1,
@@ -32,7 +32,6 @@ const AvatarWithHover: FC = () => {
               zIndex: 0,
             },
           }}
-          bg={["white", "black"]}
           transitionDuration="slower"
           transitionProperty="transform, margin-inline, z-index"
           display={{
