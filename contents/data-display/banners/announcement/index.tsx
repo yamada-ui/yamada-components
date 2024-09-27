@@ -20,7 +20,12 @@ const Announcement: FC = () => {
           isTruncated
         >
           Yamada UI Con 20xx is on June 7th in Online.{" "}
-          <Link href="#" color="white" fontWeight="bold">
+          <Link
+            href="#"
+            color="white"
+            fontWeight="bold"
+            onClick={(e) => e.preventDefault()}
+          >
             Get your ticket →
           </Link>
         </Text>
