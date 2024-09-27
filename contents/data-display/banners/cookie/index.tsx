@@ -28,10 +28,10 @@ const CookieBanner: FC = () => {
       </CardBody>
       <CardFooter>
         <HStack w="full" gap="sm" justifyContent="end">
-          <Button variant="outline" padding="4" size="xs">
+          <Button variant="outline" px="4" h="10" size="xs">
             Cookies preferences
           </Button>
-          <Button variant="outline" padding="4" colorScheme="sky" size="xs">
+          <Button variant="outline" px="4" h="10" colorScheme="sky" size="xs">
             Accept all
           </Button>
         </HStack>
