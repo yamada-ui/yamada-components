@@ -160,6 +160,9 @@ const MusicDynamicIsland: FC = () => {
               icon={<ChevronLeftIcon fontSize="xl" />}
               onClick={handlePrev}
               colorScheme="whiteAlpha"
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
             />
             <IconButton
               aria-label={isPlaying ? "Pause" : "Play"}
@@ -175,12 +178,18 @@ const MusicDynamicIsland: FC = () => {
                 toggle()
               }}
               colorScheme="whiteAlpha"
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
             />
             <IconButton
               aria-label="Next"
               icon={<ChevronRightIcon fontSize="xl" />}
               onClick={handleNext}
               colorScheme="whiteAlpha"
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
             />
           </ButtonGroup>
         </Motion>
