@@ -9,7 +9,7 @@
   },
   "options": {
     "files": {
-      "order": ["simple-header", "double-header", "with-tabs"]
+      "order": ["simple-header", "double-header", "with-search", "with-tabs"]
     }
   },
   "authors": [
