@@ -47,7 +47,6 @@ const WithTabs: FC = () => {
   return (
     <Flex
       as="header"
-      bg={["blackAlpha.100", "blackAlpha.500"]}
       placeContent="center"
       w={{ base: "full", md: "fit-content" }}
       h={{ base: "fit-content", md: "full" }}
