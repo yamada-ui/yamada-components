@@ -10,6 +10,7 @@ import {
   ButtonGroup,
   HStack,
   AnimatePresence,
+  useBreakpointValue,
 } from "@yamada-ui/react"
 import type { FC } from "react"
 import { useRef, useState } from "react"
@@ -18,22 +19,20 @@ const PhoneCallDynamicIsland: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const ref = useRef<HTMLDivElement>(null)
   const [isMuted, setIsMuted] = useState(false)
+  const width = useBreakpointValue({
+    base: 380,
+    md: 320,
+  })
 
   useOutsideClick({
     ref,
     handler: () => {
-      if (isOpen) {
-        onClose()
-      }
+      if (isOpen) onClose()
     },
   })
 
   const handleExpand = () => {
-    if (isOpen) {
-      onClose()
-    } else {
-      onOpen()
-    }
+    if (!isOpen) onOpen()
   }
 
   const toggleMute = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -46,29 +45,34 @@ const PhoneCallDynamicIsland: FC = () => {
   }
 
   return (
-    <Center
-      as={Motion}
+    <Motion
       initial={{
         width: 200,
-        height: 32,
+        height: 40,
         paddingInline: "0.4rem",
-        borderRadius: 99999,
+        paddingBlock: "0.5rem",
       }}
       animate={{
-        width: isOpen ? 400 : 200,
-        height: isOpen ? 200 : 32,
+        width: isOpen ? width : 200,
+        height: isOpen ? 200 : 40,
         paddingInline: isOpen ? "1rem" : "0.4rem",
-        borderRadius: isOpen ? 50 : 100,
+        paddingBlock: isOpen ? "1.5rem" : "0.5rem",
       }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       onClick={handleExpand}
+      onMouseEnter={onOpen}
+      onMouseLeave={onClose}
       bg={["black", "blackAlpha.600"]}
       shadow="xl"
+      display="flex"
       justifyContent="space-between"
+      alignItems="center"
       cursor="pointer"
       position="fixed"
-      top="md"
+      bottom="lg"
       left="50%"
       transform="translateX(-50%)"
+      rounded="3xl"
       ref={ref}
     >
       <AnimatePresence>
@@ -77,22 +81,18 @@ const PhoneCallDynamicIsland: FC = () => {
             <Center
               as={Motion}
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-              }}
+              animate={{ opacity: 1 }}
               position="absolute"
-              left="sm"
+              left="md"
             >
               <PhoneIcon color="success" fontSize="xl" />
             </Center>
             <Center
               as={Motion}
               initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-              }}
+              animate={{ opacity: 1 }}
               position="absolute"
-              right="sm"
+              right="md"
             >
               <Text fontSize="sm" color="white">
                 00:25
@@ -110,55 +110,61 @@ const PhoneCallDynamicIsland: FC = () => {
           w="full"
           gap="md"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, paddingInline: "1.5rem" }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
+          width="full"
+          paddingInline="lg"
         >
-          <Center gap="md" flexDir="column">
-            <Center width="full">
-              <PhoneIcon color="white" fontSize="6xl" />
-              <Box ml="md" flex="1">
-                <Text fontSize="lg" color="white">
-                  John Doe
-                </Text>
-                <Text fontSize="sm" color="whiteAlpha.700">
-                  Mobile
-                </Text>
-              </Box>
-            </Center>
-
-            <HStack w="full" justifyContent="space-between">
-              <Text fontSize="xs" color="whiteAlpha.700">
-                00:25
+          <HStack w="full" justify="space-between">
+            <PhoneIcon color="white" fontSize="4xl" />
+            <Box ml="md" flex="1">
+              <Text fontSize="lg" color="white">
+                John Doe
               </Text>
-              <Text fontSize="xs" color="whiteAlpha.700">
-                Ongoing Call
+              <Text fontSize="sm" color="whiteAlpha.700">
+                Mobile
               </Text>
-            </HStack>
+            </Box>
+          </HStack>
 
-            <ButtonGroup size="lg" variant="ghost" gap="md">
-              <IconButton
-                aria-label={isMuted ? "Unmute" : "Mute"}
-                icon={
-                  isMuted ? (
-                    <MicOffIcon fontSize="xl" />
-                  ) : (
-                    <MicIcon fontSize="xl" />
-                  )
-                }
-                onClick={toggleMute}
-                colorScheme="whiteAlpha"
-              />
-              <IconButton
-                aria-label="End Call"
-                icon={<PhoneOffIcon fontSize="xl" />}
-                onClick={handleEndCall}
-                colorScheme="danger"
-              />
-            </ButtonGroup>
-          </Center>
+          <HStack w="full" justifyContent="space-between">
+            <Text fontSize="xs" color="whiteAlpha.700">
+              00:25
+            </Text>
+            <Text fontSize="xs" color="whiteAlpha.700">
+              Ongoing Call
+            </Text>
+          </HStack>
+
+          <ButtonGroup as={Center} size="lg" variant="ghost" gap="md">
+            <IconButton
+              aria-label={isMuted ? "Unmute" : "Mute"}
+              icon={
+                isMuted ? (
+                  <MicOffIcon fontSize="xl" />
+                ) : (
+                  <MicIcon fontSize="xl" />
+                )
+              }
+              onClick={toggleMute}
+              colorScheme="whiteAlpha"
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
+            />
+            <IconButton
+              aria-label="End Call"
+              icon={<PhoneOffIcon fontSize="xl" />}
+              onClick={handleEndCall}
+              colorScheme="danger"
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
+            />
+          </ButtonGroup>
         </Motion>
       )}
-    </Center>
+    </Motion>
   )
 }
 
