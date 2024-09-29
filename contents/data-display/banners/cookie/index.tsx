@@ -7,6 +7,7 @@ import {
   HStack,
   CardHeader,
   CardFooter,
+  Link,
 } from "@yamada-ui/react"
 import type { FC } from "react"
 
@@ -23,7 +24,7 @@ const CookieBanner: FC = () => {
         <Text color="gray" fontSize="xs">
           This website uses cookies to enhance user experience and to improve
           the website. By clicking "Accept all", you consent to the use of
-          cookies. For more details, please refer to our {" "}
+          cookies. For more details, please refer to our{" "}
           <Link href="/privacy" onClick={(e) => e.preventDefault()}>
             Privacy Policy
           </Link>
