@@ -22,7 +22,28 @@ const RightJustifiedWithPagePosition: FC = () => {
         textAlign="right"
         m="md"
       >
-        Showing {page * 10 - 9}-{page * 10} of 100
+        {/* Showing {page * 10 - 9} - {page * 10} of 100 */}
+        Showing{" "}
+        <span
+          style={{
+            display: "inline-block",
+            minWidth: "20px",
+            textAlign: "center",
+          }}
+        >
+          {page * 10 - 9}
+        </span>
+        -
+        <span
+          style={{
+            display: "inline-block",
+            minWidth: "30px",
+            textAlign: "center",
+          }}
+        >
+          {page * 10}
+        </span>{" "}
+        of 100
       </Text>
     </Box>
   )
