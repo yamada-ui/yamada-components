@@ -137,16 +137,14 @@ const WithTabs: FC = () => {
           index={active}
           justifyContent={{ base: "center", md: "flex-end" }}
         >
-          <TabList
-            flexDir={{ base: "row", md: "column" }}
-            bg={["#e0e0e0", "#000"]}
-          >
+          <TabList flexDir={{ base: "row", md: "column" }}>
             {tabs.map((tab, index) => (
               <Tab
                 key={tab}
                 value={tab}
                 data-active={active === index || undefined}
-                bg={active === index ? ["white", "black"] : undefined}
+                bg={active === index ? ["white", "black"] : "inherit"}
+                color={active === index ? ["black", "white"] : "inherit"}
                 borderTopLeftRadius="md"
                 borderTopRightRadius={{ base: "md", md: "none" }}
                 borderBottomLeftRadius={{ base: "none", md: "md" }}
@@ -159,13 +157,13 @@ const WithTabs: FC = () => {
                 }
                 _hover={{
                   opacity: 0.7,
-                  bg: ["#d3d3d3", "#444"],
                 }}
               >
                 {tab}
               </Tab>
             ))}
           </TabList>
+
           <TabPanels display="none" />
         </Tabs>
       </VStack>
