@@ -50,6 +50,7 @@ const WithTabs: FC = () => {
       placeContent="center"
       w={{ base: "full", md: "fit-content" }}
       h={{ base: "fit-content", md: "full" }}
+      bg={["#f5f5f5", "#333"]}
     >
       <VStack maxW="6xl" gap="0" px={{ base: "md", md: "0" }}>
         <Flex
@@ -136,7 +137,10 @@ const WithTabs: FC = () => {
           index={active}
           justifyContent={{ base: "center", md: "flex-end" }}
         >
-          <TabList flexDir={{ base: "row", md: "column" }}>
+          <TabList
+            flexDir={{ base: "row", md: "column" }}
+            bg={["#e0e0e0", "#000"]}
+          >
             {tabs.map((tab, index) => (
               <Tab
                 key={tab}
@@ -155,6 +159,7 @@ const WithTabs: FC = () => {
                 }
                 _hover={{
                   opacity: 0.7,
+                  bg: ["#d3d3d3", "#444"],
                 }}
               >
                 {tab}
