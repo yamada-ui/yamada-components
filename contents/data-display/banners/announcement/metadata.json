@@ -7,5 +7,8 @@
     "title": "Announcement",
     "description": "イベントのアナウンスを表示するコンポーネント"
   },
-  "options": { "container": { "centerContent": true, "p": "md" } }
+  "options": {
+    "container": { "centerContent": true, "p": "md" },
+    "iframe": true
+  }
 }

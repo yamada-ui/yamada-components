@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "With search box",
+    "description": "This is the header component with search box."
+  },
+  "ja": {
+    "title": "検索ボックス付きヘッダー",
+    "description": "検索ボックス付きのヘッダーのコンポーネントです。"
+  }
+}

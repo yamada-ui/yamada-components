@@ -45,7 +45,9 @@ export const getComponentCategoryGroup =
                 labels,
                 options,
               })
-            } catch {}
+            } catch (e) {
+              console.error("getComponentCategoryGroup: ", e)
+            }
           }
 
           return
@@ -80,6 +82,7 @@ export const getComponentCategoryGroup =
     )
 
     const filteredComponentCategoryGroup = componentTree
+      .filter((category) => !category?.options?.ignore)
       .filter(Boolean)
       .map((category) => {
         const ordering = category?.options?.files?.order ?? []

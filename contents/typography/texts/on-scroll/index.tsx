@@ -37,6 +37,7 @@ const OnScroll: FC = () => {
           maxW="xl"
           textAlign="center"
           z="-1"
+          fontWeight="bold"
         >
           {text.split("").map((char, index) => (
             <Text

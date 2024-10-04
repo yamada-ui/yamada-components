@@ -3,11 +3,11 @@ import { Button, Heading, Text, VStack } from "@yamada-ui/react"
 const NotFound = () => {
   return (
     <VStack alignItems="center" p="lg">
-      <Text fontSize="5xl" fontWeight="bold">
+      <Heading as="h2" fontSize="9xl" fontWeight="bold" lineHeight="1">
         404
-      </Text>
+      </Heading>
 
-      <Heading as="h1" size="xl" textAlign="center">
+      <Heading as="h3" size="xl" textAlign="center" lineHeight="1">
         You have found a secret place.
       </Heading>
 

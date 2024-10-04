@@ -40,7 +40,7 @@ const QuestProgress: FC = () => {
       </HStack>
       {mockData.map((data, i) => (
         <Card flexDir="row" key={`${data.content}-${i}`} variant="subtle">
-          <VStack>
+          <VStack gap="0">
             <CardHeader fontSize="lg">
               {i + 1}. {data.content}
             </CardHeader>
@@ -59,13 +59,14 @@ const QuestProgress: FC = () => {
                 }}
                 value={(data.current / data.max) * 100}
                 h="7"
+                borderRadius="3xl"
               />
             </CardBody>
           </VStack>
           <Center w="32" flexDir="column">
             {data.current >= data.max ? (
               <>
-                <CircleCheckBigIcon size="6xl" />
+                <CircleCheckBigIcon fontSize="6xl" />
                 <Text>Clear!!</Text>
               </>
             ) : undefined}

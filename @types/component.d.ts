@@ -56,6 +56,7 @@ declare module "component" {
   type MetadataOptions = {
     iframe?: boolean
     container?: ComponentContainerProps
+    ignore: boolean
     files?: {
       order?: string[]
     }

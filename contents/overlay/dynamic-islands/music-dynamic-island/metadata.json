@@ -10,6 +10,7 @@
   "options": {
     "container": {
       "p": "md"
-    }
+    },
+    "iframe": true
   }
 }

@@ -87,7 +87,7 @@ const DoubleNavbar: FC = () => {
                 colorScheme={active === link.label ? "primary" : undefined}
                 variant={active === link.label ? "solid" : "ghost"}
                 data-active={active === link.label || undefined}
-                icon={<link.icon size="xl" />}
+                icon={<link.icon fontSize="xl" />}
               />
             </Tooltip>
           ))}
