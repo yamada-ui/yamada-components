@@ -1,7 +1,13 @@
 [
   {
+    "type": "categoryGroup",
+    "slug": "/metadata.json",
+    "labels": [],
+    "hierarchy": {}
+  },
+  {
     "title": "タイポグラフィ",
-    "description": "",
+    "description": "見出しやテキストなど、プロジェクトのテキストを構築するコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/typography",
     "labels": [],
@@ -9,7 +15,7 @@
   },
   {
     "title": "ページセクション",
-    "description": "",
+    "description": "認証やエラーページなど、複数のコンポーネントを使用して1セクションの機能としたコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/page-sections",
     "labels": [],
@@ -17,7 +23,7 @@
   },
   {
     "title": "オーバーレイ",
-    "description": "",
+    "description": "モーダルやドロワーなど、背景のUIとのインタラクションを一時的に遮断するコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/overlay",
     "labels": [],
@@ -25,7 +31,7 @@
   },
   {
     "title": "ナビゲーション",
-    "description": "",
+    "description": "リンクやパンくずなど、ハイパーリンクやプロジェクト内でのページの位置を表示するコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/navigation",
     "labels": [],
@@ -33,7 +39,7 @@
   },
   {
     "title": "レイアウト",
-    "description": "",
+    "description": "ボックスやスタックなど、プロジェクトのレイアウトを構築するコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/layouts",
     "labels": [],
@@ -41,7 +47,7 @@
   },
   {
     "title": "フォーム",
-    "description": "",
+    "description": "インプットやセレクトなど、プロジェクトのフォームを構築するコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/forms",
     "labels": [],
@@ -49,37 +55,45 @@
   },
   {
     "title": "フィードバック",
-    "description": "",
+    "description": "アラートやスケルトンなど、ユーザーへの通知やコンテンツの読み込み中にユーザーへ待機を促すコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/feedback",
     "labels": [],
     "hierarchy": { "categoryGroup": "フィードバック" }
   },
   {
-    "title": "ディスクロージャー",
-    "description": "表示領域を節約して多数の項目を表示するコンポーネントが用意されています。",
-    "type": "categoryGroup",
-    "slug": "/disclosure",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "ディスクロージャー" }
-  },
-  {
     "title": "データディスプレイ",
-    "description": "",
+    "description": "テーブルやカレンダーなど、プロジェクトのデータの表示を構築するコンポーネントが用意されています。",
     "type": "categoryGroup",
     "slug": "/data-display",
     "labels": [],
     "hierarchy": { "categoryGroup": "データディスプレイ" }
   },
   {
-    "title": "エラーページ",
-    "description": "様々なシナリオのエラーページのコレクション。",
+    "title": "見出し",
+    "description": "見出しは、セクションの見出しを表すコンポーネントです。",
     "type": "category",
-    "slug": "/page-sections/error-pages",
+    "slug": "/typography/headings",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "タイポグラフィ", "category": "見出し" }
+  },
+  {
+    "title": "テキスト",
+    "description": "テキストは、テキストの段落を表すコンポーネントです。",
+    "type": "category",
+    "slug": "/typography/texts",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "タイポグラフィ", "category": "テキスト" }
+  },
+  {
+    "title": "ヒーローヘッダー",
+    "description": "このカテゴリには、さまざまなヒーローヘッダーコンポーネントが含まれています。",
+    "type": "category",
+    "slug": "/page-sections/hero-headers",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "ページセクション",
-      "category": "エラーページ"
+      "category": "ヒーローヘッダー"
     }
   },
   {
@@ -94,6 +108,28 @@
     }
   },
   {
+    "title": "エラーページ",
+    "description": "様々なシナリオのエラーページのコレクション。",
+    "type": "category",
+    "slug": "/page-sections/error-pages",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "エラーページ"
+    }
+  },
+  {
+    "title": "お問い合わせ",
+    "description": "お問い合わせは、ページに追加することができるページセクションです。メールアドレス、電話番号、住所などの連絡先情報を追加することができます。",
+    "type": "category",
+    "slug": "/page-sections/contact-us",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "お問い合わせ"
+    }
+  },
+  {
     "title": "認証",
     "description": "このプロセスは、ユーザーの身元を確認します。",
     "type": "category",
@@ -102,12 +138,69 @@
     "hierarchy": { "categoryGroup": "ページセクション", "category": "認証" }
   },
   {
-    "title": "Headings",
-    "description": "",
+    "title": "メニュー",
+    "description": "メニューは、一般的なドロップダウンメニューを表示するコンポーネントです。",
     "type": "category",
-    "slug": "/typography/headings",
+    "slug": "/overlay/menus",
     "labels": [],
-    "hierarchy": { "categoryGroup": "タイポグラフィ", "category": "Headings" }
+    "hierarchy": { "categoryGroup": "オーバーレイ", "category": "メニュー" }
+  },
+  {
+    "title": "コンテキストメニュー",
+    "description": "コンテキストは、右クリックでトリガーされ、ポインターの位置にメニューを表示します。",
+    "type": "category",
+    "slug": "/overlay/context-menus",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "コンテキストメニュー"
+    }
+  },
+  {
+    "title": "ダイナミックアイランド",
+    "description": "コンテンツを動的に展開および折りたたむ多用途のUIコンポーネント。魅力的でインタラクティブなユーザー体験を提供します。",
+    "type": "category",
+    "slug": "/overlay/dynamic-islands",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイナミックアイランド"
+    }
+  },
+  {
+    "title": "ダイアログ",
+    "description": "ダイアログは、ユーザーに実行の確認または中断に使用されるコンポーネントです。",
+    "type": "category",
+    "slug": "/overlay/dialogs",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "オーバーレイ", "category": "ダイアログ" }
+  },
+  {
+    "title": "ステッパー",
+    "description": "プロセスのステップを表示し、ユーザーを案内するコンポーネントです。",
+    "type": "category",
+    "slug": "/navigation/steppers",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "ナビゲーション", "category": "ステッパー" }
+  },
+  {
+    "title": "ページネーション",
+    "description": "ページネーションは、コンテンツのページ分割とナビゲーションを管理するためのコンポーネントです。",
+    "type": "category",
+    "slug": "/navigation/paginations",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ページネーション"
+    }
+  },
+  {
+    "title": "ナビバー",
+    "description": "ナビバーは、ウェブサイトの異なる部分へのナビゲーションリンクを提供するコンポーネントです。",
+    "type": "category",
+    "slug": "/navigation/navbars",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "ナビゲーション", "category": "ナビバー" }
   },
   {
     "title": "ヘッダー",
@@ -119,11 +212,78 @@
   },
   {
     "title": "グリッド",
-    "description": "グリッドは、コンテンツを柔軟に構造化し、整列するために使用されます。",
+    "description": "グリッドは、グリッドレイアウトを管理するためのコンポーネントです。また、便利なスタイルのショートハンドが用意されています。",
     "type": "category",
     "slug": "/layouts/grids",
     "labels": [],
     "hierarchy": { "categoryGroup": "レイアウト", "category": "グリッド" }
+  },
+  {
+    "title": "ドロップゾーン",
+    "description": "ドロップゾーンは、ファイルをドラッグアンドドロップでアップロードするために使用されるコンポーネントです。",
+    "type": "category",
+    "slug": "/forms/dropzones",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "フォーム", "category": "ドロップゾーン" }
+  },
+  {
+    "title": "ボタン",
+    "description": "ボタンは、フォームの送信、モーダルの開閉など、ユーザーが操作できるインタラクティブなコンポーネントです。",
+    "type": "category",
+    "slug": "/forms/buttons",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "フォーム", "category": "ボタン" }
+  },
+  {
+    "title": "区切り線",
+    "description": "区切り線は、要素間において区切りを表すコンポーネントです。",
+    "type": "category",
+    "slug": "/layouts/dividers",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "レイアウト", "category": "区切り線" }
+  },
+  {
+    "title": "プログレス",
+    "description": "プログレスは、進行状況を視覚的に示すためのコンポーネントです。",
+    "type": "category",
+    "slug": "/feedback/progress",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "フィードバック", "category": "プログレス" }
+  },
+  {
+    "title": "スケルトン",
+    "description": "スケルトンは、コンテンツが読み込まれるまでのプレースホルダーとして機能するコンポーネントです。",
+    "type": "category",
+    "slug": "/feedback/skeletons",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "フィードバック", "category": "スケルトン" }
+  },
+  {
+    "title": "空のステータス",
+    "description": "空のステータスはデータが何もない状態を表すコンポーネントです",
+    "type": "category",
+    "slug": "/feedback/empty-status",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "フィードバック",
+      "category": "空のステータス"
+    }
+  },
+  {
+    "title": "ボタングループ",
+    "description": "ボタングループは、複数のボタンを一つにまとめるために使用されます。",
+    "type": "category",
+    "slug": "/forms/button-group",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "フォーム", "category": "ボタングループ" }
+  },
+  {
+    "title": "アラート",
+    "description": "アラートは、ユーザーに情報を伝達するコンポーネントです。",
+    "type": "category",
+    "slug": "/feedback/alerts",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "フィードバック", "category": "アラート" }
   },
   {
     "title": "フッター",
@@ -134,75 +294,8 @@
     "hierarchy": { "categoryGroup": "レイアウト", "category": "フッター" }
   },
   {
-    "title": "インプット",
-    "description": "",
-    "type": "category",
-    "slug": "/forms/inputs",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "フォーム", "category": "インプット" }
-  },
-  {
-    "title": "ドロップゾーン",
-    "description": "ドロップゾーンは、ユーザーがファイルをドラッグアンドドロップしてアップロードできるエリアです。",
-    "type": "category",
-    "slug": "/forms/dropzones",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "フォーム", "category": "ドロップゾーン" }
-  },
-  {
-    "title": "ボタン",
-    "description": "",
-    "type": "category",
-    "slug": "/forms/buttons",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "フォーム", "category": "ボタン" }
-  },
-  {
-    "title": "区切り線",
-    "description": "区切り線を使用して、ページの内容を区切ります。",
-    "type": "category",
-    "slug": "/layouts/dividers",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "レイアウト", "category": "区切り線" }
-  },
-  {
-    "title": "アラート",
-    "description": "アラートボックスによるフィードバックの例です。",
-    "type": "category",
-    "slug": "/feedback/alerts",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "フィードバック", "category": "アラート" }
-  },
-  {
-    "title": "タブズ",
-    "description": "異なる表示領域を切り替えるコンポーネントです。",
-    "type": "category",
-    "slug": "/disclosure/tabs",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "ディスクロージャー", "category": "タブズ" }
-  },
-  {
-    "title": "タグ",
-    "description": "タグは、アイテムを分類または整理するために使用されるキーワードで識別するためのコンポーネントです。",
-    "type": "category",
-    "slug": "/data-display/tags",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "データディスプレイ", "category": "タグ" }
-  },
-  {
-    "title": "ドラッグ＆ドロップ",
-    "description": "ドラッグ＆ドロップコンポーネントは、リストの項目を並べ替えるために使用されます。",
-    "type": "category",
-    "slug": "/data-display/dnd",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "データディスプレイ",
-      "category": "ドラッグ＆ドロップ"
-    }
-  },
-  {
     "title": "統計",
-    "description": "",
+    "description": "統計は、数値やデータをボックス内に表示するために使用されます。",
     "type": "category",
     "slug": "/data-display/stats",
     "labels": [],
@@ -217,6 +310,151 @@
     "hierarchy": {
       "categoryGroup": "データディスプレイ",
       "category": "コメント"
+    }
+  },
+  {
+    "title": "ドラッグ＆ドロップ",
+    "description": "ドラッグ＆ドロップコンポーネントは、リストの項目を並べ替えるために使用されます。",
+    "type": "category",
+    "slug": "/data-display/dnd",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "ドラッグ＆ドロップ"
+    }
+  },
+  {
+    "title": "チャート",
+    "description": "チャートのコンポーネントを使った例",
+    "type": "category",
+    "slug": "/data-display/charts",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "チャート"
+    }
+  },
+  {
+    "title": "アバター",
+    "description": "Avatarは、ユーザーを表すプロフィール写真やイニシャルのアイコンを表示するコンポーネントです。",
+    "type": "category",
+    "slug": "/data-display/avatars",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "アバター"
+    }
+  },
+  {
+    "title": "カード",
+    "description": "カードは、関連する情報をグループ化して表示するコンポーネントです。デフォルトでは、section要素をレンダリングします。",
+    "type": "category",
+    "slug": "/data-display/cards",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "データディスプレイ", "category": "カード" }
+  },
+  {
+    "title": "バナー",
+    "description": "バナーセクションで使用できるコンポーネントです。",
+    "type": "category",
+    "slug": "/data-display/banners",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "データディスプレイ", "category": "バナー" }
+  },
+  {
+    "title": "部分的なグラデーションの見出し",
+    "description": "これは、左から右への部分的なグラデーションを使ったグラデーションの見出しです。",
+    "type": "component",
+    "slug": "/typography/headings/partial-gradient",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "タイポグラフィ",
+      "category": "見出し",
+      "component": "部分的なグラデーションの見出し"
+    }
+  },
+  {
+    "title": "グラデーション見出し",
+    "description": "これは、左から右へのグラデーションを使った見出しです。",
+    "type": "component",
+    "slug": "/typography/headings/full-gradient-heading",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "タイポグラフィ",
+      "category": "見出し",
+      "component": "グラデーション見出し"
+    }
+  },
+  {
+    "title": "スクロールしたときにテキストを表示する",
+    "description": "この例では、スクロールしたときにテキストを表示する方法を示しています。",
+    "type": "component",
+    "slug": "/typography/texts/on-scroll",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "タイポグラフィ",
+      "category": "テキスト",
+      "component": "スクロールしたときにテキストを表示する"
+    }
+  },
+  {
+    "title": "コンテンツが左側にあるヒーロー",
+    "description": "これはヒーローセクションで、コンテンツが左側にある。",
+    "type": "component",
+    "slug": "/page-sections/hero-headers/with-content-on-left",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "ヒーローヘッダー",
+      "component": "コンテンツが左側にあるヒーロー"
+    }
+  },
+  {
+    "title": "箇条書きのあるヒーロー",
+    "description": "これは機能のリストがあるヒーローセクションです。",
+    "type": "component",
+    "slug": "/page-sections/hero-headers/with-bullets",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "ヒーローヘッダー",
+      "component": "箇条書きのあるヒーロー"
+    }
+  },
+  {
+    "title": "背景画像のあるヒーロー",
+    "description": "これは背景画像のあるヒーローセクションです。",
+    "type": "component",
+    "slug": "/page-sections/hero-headers/with-background-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "ヒーローヘッダー",
+      "component": "背景画像のあるヒーロー"
+    }
+  },
+  {
+    "title": "画像付き FAQ",
+    "description": "これは画像付きの FAQ コンポーネントです。",
+    "type": "component",
+    "slug": "/page-sections/faq/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "よくある質問",
+      "component": "画像付き FAQ"
+    }
+  },
+  {
+    "title": "FAQ シンプル",
+    "description": "これはシンプルな FAQ です",
+    "type": "component",
+    "slug": "/page-sections/faq/simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "よくある質問",
+      "component": "FAQ シンプル"
     }
   },
   {
@@ -256,15 +494,27 @@
     }
   },
   {
-    "title": "画像付き FAQ",
-    "description": "これは画像付きの FAQ コンポーネントです。",
+    "title": "お問い合わせフォーム",
+    "description": "以下のフォームにご記入の上、お問い合わせください。",
     "type": "component",
-    "slug": "/page-sections/faq/with-image",
+    "slug": "/page-sections/contact-us/touch-form",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "ページセクション",
-      "category": "よくある質問",
-      "component": "画像付き FAQ"
+      "category": "お問い合わせ",
+      "component": "お問い合わせフォーム"
+    }
+  },
+  {
+    "title": "お問い合わせフォーム",
+    "description": "このセクションには、ユーザーがメールアドレスを残し、24時間以内に返信を受け取ることができるお問い合わせフォームが含まれています。",
+    "type": "component",
+    "slug": "/page-sections/contact-us/form",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "お問い合わせ",
+      "component": "お問い合わせフォーム"
     }
   },
   {
@@ -280,6 +530,18 @@
     }
   },
   {
+    "title": "画像付き認証ページ",
+    "description": "このページには、背景画像付きの認証フォームが表示されます。",
+    "type": "component",
+    "slug": "/page-sections/authentication/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ページセクション",
+      "category": "認証",
+      "component": "画像付き認証ページ"
+    }
+  },
+  {
     "title": "パスワードを忘れた場合",
     "description": "この機能は、ユーザーがパスワードを忘れた場合にリセットすることができます。",
     "type": "component",
@@ -292,27 +554,39 @@
     }
   },
   {
-    "title": "FAQ シンプル",
-    "description": "これはシンプルな FAQ です",
+    "title": "メニューとアイコン",
+    "description": "アイコンを含めたメニュー",
     "type": "component",
-    "slug": "/page-sections/faq/simple",
+    "slug": "/overlay/menus/menu-with-icon",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "ページセクション",
-      "category": "よくある質問",
-      "component": "FAQ シンプル"
+      "categoryGroup": "オーバーレイ",
+      "category": "メニュー",
+      "component": "メニューとアイコン"
     }
   },
   {
-    "title": "画像付き認証ページ",
-    "description": "このページには、背景画像付きの認証フォームが表示されます。",
+    "title": "メールボックス",
+    "description": "メールボックスのコンテキストメニュー",
     "type": "component",
-    "slug": "/page-sections/authentication/with-image",
+    "slug": "/overlay/context-menus/mail-box",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "ページセクション",
-      "category": "認証",
-      "component": "画像付き認証ページ"
+      "categoryGroup": "オーバーレイ",
+      "category": "コンテキストメニュー",
+      "component": "メールボックス"
+    }
+  },
+  {
+    "title": "説明つきのメニュー",
+    "description": "説明つきのメニュー",
+    "type": "component",
+    "slug": "/overlay/menus/simple-with-descriptions",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "メニュー",
+      "component": "説明つきのメニュー"
     }
   },
   {
@@ -328,39 +602,206 @@
     }
   },
   {
-    "title": "部分的なグラデーションヘッダー",
-    "description": "これは、左から右への部分的なグラデーションを使ったグラデーションヘッダーです。",
+    "title": "ダイナミックアイランド",
+    "description": "クリックで展開および折りたたみが可能なレスポンシブコンポーネント。アバターと複数のリンクを備えています。",
     "type": "component",
-    "slug": "/typography/headings/partial-gradient",
+    "slug": "/overlay/dynamic-islands/simple-dynamic-island",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "タイポグラフィ",
-      "category": "Headings",
-      "component": "部分的なグラデーションヘッダー"
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイナミックアイランド",
+      "component": "ダイナミックアイランド"
     }
   },
   {
-    "title": "グラデーションヘッダー",
-    "description": "これは、左から右へのグラデーションを使ったグラデーションヘッダーです。",
+    "title": "音楽のダイナミックアイランド",
+    "description": "クリックで展開および折りたたみが可能な動的でインタラクティブな音楽プレーヤーコンポーネント。再生、一時停止、次へ、前へコントロールを備えています。",
     "type": "component",
-    "slug": "/typography/headings/full-gradient-heading",
+    "slug": "/overlay/dynamic-islands/music-dynamic-island",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "タイポグラフィ",
-      "category": "Headings",
-      "component": "グラデーションヘッダー"
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイナミックアイランド",
+      "component": "音楽のダイナミックアイランド"
     }
   },
   {
-    "title": "リーディングアイテム付きグリッド",
-    "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。",
+    "title": "シンプルなダイアログ",
+    "description": "シンプルなダイアログです。",
     "type": "component",
-    "slug": "/layouts/grids/leading-item",
+    "slug": "/overlay/dialogs/simple-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイアログ",
+      "component": "シンプルなダイアログ"
+    }
+  },
+  {
+    "title": "キーワードチェック型ダイアログ",
+    "description": "キーワードを入力して実行を確認するダイアログ。",
+    "type": "component",
+    "slug": "/overlay/dialogs/input-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイアログ",
+      "component": "キーワードチェック型ダイアログ"
+    }
+  },
+  {
+    "title": "GDPR Cookie ダイアログ",
+    "description": "GDPRに対応したクッキーのダイアログです。",
+    "type": "component",
+    "slug": "/overlay/dialogs/gdpr-cookie-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイアログ",
+      "component": "GDPR Cookie ダイアログ"
+    }
+  },
+  {
+    "title": "Cookieダイアログ",
+    "description": "Cookieの使用について同意を求めるために使用するダイアログです。",
+    "type": "component",
+    "slug": "/overlay/dialogs/cookie-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイアログ",
+      "component": "Cookieダイアログ"
+    }
+  },
+  {
+    "title": "シンプルステッパー",
+    "description": "シンプルなステッパーコンポーネント",
+    "type": "component",
+    "slug": "/navigation/steppers/simple-stepper",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ステッパー",
+      "component": "シンプルステッパー"
+    }
+  },
+  {
+    "title": "シンプルボタン",
+    "description": "シンプルボタン",
+    "type": "component",
+    "slug": "/navigation/paginations/simple-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ページネーション",
+      "component": "シンプルボタン"
+    }
+  },
+  {
+    "title": "右寄せページ位置付き",
+    "description": "右寄せページ位置付き",
+    "type": "component",
+    "slug": "/navigation/paginations/right-justified-with-page-position",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ページネーション",
+      "component": "右寄せページ位置付き"
+    }
+  },
+  {
+    "title": "セグメンテッドコントロールナビゲーションバー",
+    "description": "セグメンテッドコントロールを使ったナビゲーションバー。",
+    "type": "component",
+    "slug": "/navigation/navbars/with-segmented-control",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ナビバー",
+      "component": "セグメンテッドコントロールナビゲーションバー"
+    }
+  },
+  {
+    "title": "シンプルナビバー",
+    "description": "シンプルなナビバー",
+    "type": "component",
+    "slug": "/navigation/navbars/simple-navbar",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ナビバー",
+      "component": "シンプルナビバー"
+    }
+  },
+  {
+    "title": "ツールチップナビゲーションバー",
+    "description": "ツールチップを実装したナビゲーションバー",
+    "type": "component",
+    "slug": "/navigation/navbars/navbar-with-tooltips",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ナビバー",
+      "component": "ツールチップナビゲーションバー"
+    }
+  },
+  {
+    "title": "ダブルナビバー",
+    "description": "2つのセクションに分かれたナビゲーションバー",
+    "type": "component",
+    "slug": "/navigation/navbars/double-navbar",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "ナビゲーション",
+      "category": "ナビバー",
+      "component": "ダブルナビバー"
+    }
+  },
+  {
+    "title": "タブ付きヘッダー",
+    "description": "タブ付きヘッダーのコンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/headers/with-tabs",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "レイアウト",
-      "category": "グリッド",
-      "component": "リーディングアイテム付きグリッド"
+      "category": "ヘッダー",
+      "component": "タブ付きヘッダー"
+    }
+  },
+  {
+    "title": "電話通話のダイナミックアイランド",
+    "description": "クリックで展開および折りたたみが可能なインタラクティブコンポーネント。ミュートや通話終了などのコントロールを備えています。",
+    "type": "component",
+    "slug": "/overlay/dynamic-islands/phone-call-dynamic-island",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイナミックアイランド",
+      "component": "電話通話のダイナミックアイランド"
+    }
+  },
+  {
+    "title": "タイムライン",
+    "description": "イベントの順序を時系列で視覚的に表現するコンポーネント。",
+    "type": "category",
+    "slug": "/data-display/timeline",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "タイムライン"
+    }
+  },
+  {
+    "title": "検索ボックス付きヘッダー",
+    "description": "検索ボックス付きのヘッダーのコンポーネントです。",
+    "type": "component",
+    "slug": "/layouts/headers/with-search",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "レイアウト",
+      "category": "ヘッダー",
+      "component": "検索ボックス付きヘッダー"
     }
   },
   {
@@ -376,27 +817,15 @@
     }
   },
   {
-    "title": "ソーシャルアイコン付きフッター",
-    "description": "これはソーシャルアイコン付きのフッターです",
+    "title": "シンプルなヘッダー",
+    "description": "これはシンプルなヘッダーです。",
     "type": "component",
-    "slug": "/layouts/footers/footer-social-icons",
+    "slug": "/layouts/headers/simple-header",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "レイアウト",
-      "category": "フッター",
-      "component": "ソーシャルアイコン付きフッター"
-    }
-  },
-  {
-    "title": "リンク付きフッター",
-    "description": "これはリンク付きフッターです",
-    "type": "component",
-    "slug": "/layouts/footers/footer-links",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "フッター",
-      "component": "リンク付きフッター"
+      "category": "ヘッダー",
+      "component": "シンプルなヘッダー"
     }
   },
   {
@@ -412,39 +841,15 @@
     }
   },
   {
-    "title": "シンプルなフッター",
-    "description": "これはシンプルなフッターです",
+    "title": "リーディングアイテム付きグリッド",
+    "description": "画面サイズに応じて配置が変わるリーディングアイテム付きのレスポンシブグリッドレイアウト。",
     "type": "component",
-    "slug": "/layouts/footers/footer-simple",
+    "slug": "/layouts/grids/leading-item",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "レイアウト",
-      "category": "フッター",
-      "component": "シンプルなフッター"
-    }
-  },
-  {
-    "title": "中央揃えリンク付きフッター",
-    "description": "これは中央揃えのリンク付きフッターです",
-    "type": "component",
-    "slug": "/layouts/footers/footer-centerd",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "フッター",
-      "component": "中央揃えリンク付きフッター"
-    }
-  },
-  {
-    "title": "シンプルなヘッダー",
-    "description": "これはシンプルなヘッダーです。",
-    "type": "component",
-    "slug": "/layouts/headers/simple-header",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "ヘッダー",
-      "component": "シンプルなヘッダー"
+      "category": "グリッド",
+      "component": "リーディングアイテム付きグリッド"
     }
   },
   {
@@ -460,30 +865,6 @@
     }
   },
   {
-    "title": "パスワード入力",
-    "description": "パスワードを入力するコンポーネント",
-    "type": "component",
-    "slug": "/forms/inputs/password-input",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "フォーム",
-      "category": "インプット",
-      "component": "パスワード入力"
-    }
-  },
-  {
-    "title": "クリップボードにコピーするボタン",
-    "description": "これはテキストをクリップボードにコピーするボタンです",
-    "type": "component",
-    "slug": "/forms/buttons/copy-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "フォーム",
-      "category": "ボタン",
-      "component": "クリップボードにコピーするボタン"
-    }
-  },
-  {
     "title": "ボタン付きのドロップゾーン",
     "description": "これはボタン付きのドロップゾーンです。",
     "type": "component",
@@ -493,30 +874,6 @@
       "categoryGroup": "フォーム",
       "category": "ドロップゾーン",
       "component": "ボタン付きのドロップゾーン"
-    }
-  },
-  {
-    "title": "タイトルを左に表示",
-    "description": "これは、タイトルを左に表示する区切り線コンポーネントです。",
-    "type": "component",
-    "slug": "/layouts/dividers/with-title-on-left",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "区切り線",
-      "component": "タイトルを左に表示"
-    }
-  },
-  {
-    "title": "タイトル付き",
-    "description": "これは、タイトル付きの区切り線コンポーネントです。",
-    "type": "component",
-    "slug": "/layouts/dividers/with-title",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "区切り線",
-      "component": "タイトル付き"
     }
   },
   {
@@ -532,18 +889,6 @@
     }
   },
   {
-    "title": "アイコン付き",
-    "description": "これは、アイコン付きの区切り線コンポーネントです。",
-    "type": "component",
-    "slug": "/layouts/dividers/with-icon",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "区切り線",
-      "component": "アイコン付き"
-    }
-  },
-  {
     "title": "ツールバー付き",
     "description": "これは、ツールバー付きの区切り線コンポーネントです。",
     "type": "component",
@@ -553,30 +898,6 @@
       "categoryGroup": "レイアウト",
       "category": "区切り線",
       "component": "ツールバー付き"
-    }
-  },
-  {
-    "title": "タイトルとボタン付き",
-    "description": "これは、タイトルとボタン付きの区切り線コンポーネントです。",
-    "type": "component",
-    "slug": "/layouts/dividers/with-title-and-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "区切り線",
-      "component": "タイトルとボタン付き"
-    }
-  },
-  {
-    "title": "ラベルを左に表示",
-    "description": "これは、ラベルを左に表示する区切り線コンポーネントです。",
-    "type": "component",
-    "slug": "/layouts/dividers/label-on-left",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "レイアウト",
-      "category": "区切り線",
-      "component": "ラベルを左に表示"
     }
   },
   {
@@ -592,6 +913,42 @@
     }
   },
   {
+    "title": "クエストプログレス",
+    "description": "クエストのプログレスバー",
+    "type": "component",
+    "slug": "/feedback/progress/quest-progress",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "フィードバック",
+      "category": "プログレス",
+      "component": "クエストプログレス"
+    }
+  },
+  {
+    "title": "プロフィールスケルトン",
+    "description": "プロフィールスケルトン",
+    "type": "component",
+    "slug": "/feedback/skeletons/profile-skeleton",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "フィードバック",
+      "category": "スケルトン",
+      "component": "プロフィールスケルトン"
+    }
+  },
+  {
+    "title": "シンプル",
+    "description": "空のステータスを表現したシンプルなコンポーネントです。",
+    "type": "component",
+    "slug": "/feedback/empty-status/simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "フィードバック",
+      "category": "空のステータス",
+      "component": "シンプル"
+    }
+  },
+  {
     "title": "箇条書きの入ったアラートコンポーネント",
     "description": "アラートボックスの説明として箇条書きを入れたコンポーネントです",
     "type": "component",
@@ -601,6 +958,18 @@
       "categoryGroup": "フィードバック",
       "category": "アラート",
       "component": "箇条書きの入ったアラートコンポーネント"
+    }
+  },
+  {
+    "title": "閉じるボタンが入ったアラートコンポーネント",
+    "description": "アラートボックスに閉じるボタンを入れたコンポーネントです",
+    "type": "component",
+    "slug": "/feedback/alerts/with-dismiss-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "フィードバック",
+      "category": "アラート",
+      "component": "閉じるボタンが入ったアラートコンポーネント"
     }
   },
   {
@@ -616,15 +985,15 @@
     }
   },
   {
-    "title": "閉じるボタンが入ったアラートコンポーネント",
-    "description": "アラートボックスに閉じるボタンを入れたコンポーネントです",
+    "title": "説明が入ったアラートコンポーネント",
+    "description": "アラートボックスに説明を入れたコンポーネントです",
     "type": "component",
-    "slug": "/feedback/alerts/with-dismiss-button",
+    "slug": "/feedback/alerts/with-description",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "フィードバック",
       "category": "アラート",
-      "component": "閉じるボタンが入ったアラートコンポーネント"
+      "component": "説明が入ったアラートコンポーネント"
     }
   },
   {
@@ -652,99 +1021,63 @@
     }
   },
   {
-    "title": "説明が入ったアラートコンポーネント",
-    "description": "アラートボックスに説明を入れたコンポーネントです",
+    "title": "ソーシャルアイコン付きフッター",
+    "description": "これはソーシャルアイコン付きのフッターです",
     "type": "component",
-    "slug": "/feedback/alerts/with-description",
+    "slug": "/layouts/footers/footer-social-icons",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "フィードバック",
-      "category": "アラート",
-      "component": "説明が入ったアラートコンポーネント"
+      "categoryGroup": "レイアウト",
+      "category": "フッター",
+      "component": "ソーシャルアイコン付きフッター"
     }
   },
   {
-    "title": "アイコン付き",
-    "description": "これは、タブをアイコンと共に表示するコンポーネントです。",
+    "title": "シンプルなフッター",
+    "description": "これはシンプルなフッターです",
     "type": "component",
-    "slug": "/disclosure/tabs/with-icons",
+    "slug": "/layouts/footers/footer-simple",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "ディスクロージャー",
-      "category": "タブズ",
-      "component": "アイコン付き"
+      "categoryGroup": "レイアウト",
+      "category": "フッター",
+      "component": "シンプルなフッター"
     }
   },
   {
-    "title": "バッジ付き",
-    "description": "これは、タブをバッジと共に表示するコンポーネントです。",
+    "title": "リンク付きフッター",
+    "description": "これはリンク付きフッターです",
     "type": "component",
-    "slug": "/disclosure/tabs/with-badges",
+    "slug": "/layouts/footers/footer-links",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "ディスクロージャー",
-      "category": "タブズ",
-      "component": "バッジ付き"
+      "categoryGroup": "レイアウト",
+      "category": "フッター",
+      "component": "リンク付きフッター"
     }
   },
   {
-    "title": "横幅最大",
-    "description": "これは、タブを横幅いっぱいに表示するコンポーネントです。",
+    "title": "中央揃えリンク付きフッター",
+    "description": "これは中央揃えのリンク付きフッターです",
     "type": "component",
-    "slug": "/disclosure/tabs/with-full-width",
+    "slug": "/layouts/footers/footer-centered",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "ディスクロージャー",
-      "category": "タブズ",
-      "component": "横幅最大"
+      "categoryGroup": "レイアウト",
+      "category": "フッター",
+      "component": "中央揃えリンク付きフッター"
     }
   },
   {
-    "title": "タグを並べ替える",
-    "description": "これはタグを並べ替えることができます。",
+    "title": "色付きプログレスカード",
+    "description": "これは色付きのプログレスバーカードです。",
     "type": "component",
-    "slug": "/data-display/tags/reorder-tags",
+    "slug": "/data-display/stats/with-color",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "データディスプレイ",
-      "category": "タグ",
-      "component": "タグを並べ替える"
-    }
-  },
-  {
-    "title": "削除可能なタグ付きカード",
-    "description": "これは削除が可能なタグ付きカードです。",
-    "type": "component",
-    "slug": "/data-display/tags/card-with-tags",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "データディスプレイ",
-      "category": "タグ",
-      "component": "削除可能なタグ付きカード"
-    }
-  },
-  {
-    "title": "ドラッグ＆ドロップリスト（ハンドル付き）",
-    "description": "ドラッグ＆ドロップリストは、ハンドル付きのリストの項目を並べ替えるためのコンポーネントです。",
-    "type": "component",
-    "slug": "/data-display/dnd/with-handle",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "データディスプレイ",
-      "category": "ドラッグ＆ドロップ",
-      "component": "ドラッグ＆ドロップリスト（ハンドル付き）"
-    }
-  },
-  {
-    "title": "ドラッグ＆ドロップリスト",
-    "description": "ドラッグ＆ドロップリストは、リストの項目を並べ替えるためのコンポーネントです。",
-    "type": "component",
-    "slug": "/data-display/dnd/list",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "データディスプレイ",
-      "category": "ドラッグ＆ドロップ",
-      "component": "ドラッグ＆ドロップリスト"
+      "category": "統計",
+      "component": "色付きプログレスカード"
     }
   },
   {
@@ -772,18 +1105,6 @@
     }
   },
   {
-    "title": "色付きプログレスカード",
-    "description": "これは色付きのプログレスバーカードです。",
-    "type": "component",
-    "slug": "/data-display/stats/with-color",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "データディスプレイ",
-      "category": "統計",
-      "component": "色付きプログレスカード"
-    }
-  },
-  {
     "title": "コメント",
     "description": "ユーザーのアバター、ユーザー名、タイムスタンプ、コメントテキストを表示するカードコンポーネント。",
     "type": "component",
@@ -793,6 +1114,342 @@
       "categoryGroup": "データディスプレイ",
       "category": "コメント",
       "component": "コメント"
+    }
+  },
+  {
+    "title": "ドラッグ＆ドロップリスト（ハンドル付き）",
+    "description": "ドラッグ＆ドロップリストは、ハンドル付きのリストの項目を並べ替えるためのコンポーネントです。",
+    "type": "component",
+    "slug": "/data-display/dnd/with-handle",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "ドラッグ＆ドロップ",
+      "component": "ドラッグ＆ドロップリスト（ハンドル付き）"
+    }
+  },
+  {
+    "title": "ドラッグ＆ドロップリスト",
+    "description": "ドラッグ＆ドロップリストは、リストの項目を並べ替えるためのコンポーネントです。",
+    "type": "component",
+    "slug": "/data-display/dnd/list",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "ドラッグ＆ドロップ",
+      "component": "ドラッグ＆ドロップリスト"
+    }
+  },
+  {
+    "title": "気温チャート",
+    "description": "気温の線グラフを表示します。",
+    "type": "component",
+    "slug": "/data-display/charts/temperature-chart",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "チャート",
+      "component": "気温チャート"
+    }
+  },
+  {
+    "title": "シンプルなチャート",
+    "description": "簡易的なチャート。",
+    "type": "component",
+    "slug": "/data-display/charts/simple-charts",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "チャート",
+      "component": "シンプルなチャート"
+    }
+  },
+  {
+    "title": "ドーナッツアクティブ",
+    "description": "アクティブな要素を持つDonutChart。",
+    "type": "component",
+    "slug": "/data-display/charts/donut-active",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "チャート",
+      "component": "ドーナッツアクティブ"
+    }
+  },
+  {
+    "title": "テキスト付チャート",
+    "description": "テキストを保持したチャート。",
+    "type": "component",
+    "slug": "/data-display/charts/chart-with-text",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "チャート",
+      "component": "テキスト付チャート"
+    }
+  },
+  {
+    "title": "BarChart - Label",
+    "description": "ラベル付きBarChart。",
+    "type": "component",
+    "slug": "/data-display/charts/bar-chart-label",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "チャート",
+      "component": "BarChart - Label"
+    }
+  },
+  {
+    "title": "アバターとホバーの組み合わせ (Framer) *モバイル端末非対応",
+    "description": "Framerを使ったアバターとホバーの組み合わせの使用例です。",
+    "type": "component",
+    "slug": "/data-display/avatars/avatars-with-hover-motion",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "アバター",
+      "component": "アバターとホバーの組み合わせ (Framer) *モバイル端末非対応"
+    }
+  },
+  {
+    "title": "ソーシャルメディアカード",
+    "description": "ソーシャルメディアのプロフィール情報とフォローステータスを表示するカード。",
+    "type": "component",
+    "slug": "/data-display/cards/social-media",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "ソーシャルメディアカード"
+    }
+  },
+  {
+    "title": "テキスト付きアバター",
+    "description": "これはテキストを伴うアバターコンポーネントの使用例です。",
+    "type": "component",
+    "slug": "/data-display/avatars/avatar-with-text",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "アバター",
+      "component": "テキスト付きアバター"
+    }
+  },
+  {
+    "title": "アバターとホバーの組み合わせ",
+    "description": "アバターとホバーの組み合わせの使用例です。",
+    "type": "component",
+    "slug": "/data-display/avatars/avatars-with-hover",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "アバター",
+      "component": "アバターとホバーの組み合わせ"
+    }
+  },
+  {
+    "title": "ドキュメント共有カード",
+    "description": "ドキュメントのリンクを共有し、アクセス権限を管理するためのカード。",
+    "type": "component",
+    "slug": "/data-display/cards/share-document",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "ドキュメント共有カード"
+    }
+  },
+  {
+    "title": "オーバーフローイメージカード",
+    "description": "ヘッダー、ボディ、フッターを持つ画像を表示するカードコンポーネントで、Yamada UIを紹介します。",
+    "type": "component",
+    "slug": "/data-display/cards/overflow-image-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "オーバーフローイメージカード"
+    }
+  },
+  {
+    "title": "通知カード",
+    "description": "ユーザーが通知の設定を選択できるカードコンポーネント。",
+    "type": "component",
+    "slug": "/data-display/cards/notifications-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "通知カード"
+    }
+  },
+  {
+    "title": "問題報告カード",
+    "description": "問題を報告し、詳細を提供するためのカード。",
+    "type": "component",
+    "slug": "/data-display/cards/report-issue",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "問題報告カード"
+    }
+  },
+  {
+    "title": "支払い方法カード",
+    "description": "支払い方法を追加および管理するためのカード。",
+    "type": "component",
+    "slug": "/data-display/cards/payment-method",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "支払い方法カード"
+    }
+  },
+  {
+    "title": "イメージカード",
+    "description": "ヘッダー、ボディ、フッターを持つ画像を表示するカードコンポーネント。",
+    "type": "component",
+    "slug": "/data-display/cards/image-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "イメージカード"
+    }
+  },
+  {
+    "title": "ブックマークカード",
+    "description": "ブックマークを保存および管理するためのカード。",
+    "type": "component",
+    "slug": "/data-display/cards/bookmark-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "ブックマークカード"
+    }
+  },
+  {
+    "title": "アカウントカード",
+    "description": "メールアドレスでアカウントを作成するカード。",
+    "type": "component",
+    "slug": "/data-display/cards/account-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "アカウントカード"
+    }
+  },
+  {
+    "title": "GitHubカード",
+    "description": "GitHubリポジトリ情報を表示し、リポジトリにスターを付けるオプションがあるカードコンポーネント。",
+    "type": "component",
+    "slug": "/data-display/cards/github-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "GitHubカード"
+    }
+  },
+  {
+    "title": "クッキー設定カード",
+    "description": "クッキーの設定を管理するためのカード。",
+    "type": "component",
+    "slug": "/data-display/cards/cookie-settings-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "カード",
+      "component": "クッキー設定カード"
+    }
+  },
+  {
+    "title": "Cookie",
+    "description": "Cookieの承諾を得るための情報を表示するコンポーネント",
+    "type": "component",
+    "slug": "/data-display/banners/cookie",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "バナー",
+      "component": "Cookie"
+    }
+  },
+  {
+    "title": "Announcement",
+    "description": "イベントのアナウンスを表示するコンポーネント",
+    "type": "component",
+    "slug": "/data-display/banners/announcement",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "バナー",
+      "component": "Announcement"
+    }
+  },
+  {
+    "title": "シンプルなタイムライン",
+    "description": "シンプルなタイムラインです。",
+    "type": "component",
+    "slug": "/data-display/timeline/simple-timeline",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "タイムライン",
+      "component": "シンプルなタイムライン"
+    }
+  },
+  {
+    "title": "アニメーションを使用したタイムライン",
+    "description": "アニメーションを使用したタイムラインです。",
+    "type": "component",
+    "slug": "/data-display/timeline/animated-timeline",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "タイムライン",
+      "component": "アニメーションを使用したタイムライン"
+    }
+  },
+  {
+    "title": "中央に線があるタイムライン",
+    "description": "中央に線があるタイムラインコンポーネントです。",
+    "type": "component",
+    "slug": "/data-display/timeline/middle-line",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "タイムライン",
+      "component": "中央に線があるタイムライン"
+    }
+  },
+  {
+    "title": "カスタムアイコン",
+    "description": "カスタムアイコンを使用したタイムラインコンポーネントです。",
+    "type": "component",
+    "slug": "/data-display/timeline/custom-icon",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "データディスプレイ",
+      "category": "タイムライン",
+      "component": "カスタムアイコン"
+    }
+  },
+  {
+    "title": "3つのボタンを備えたダイアログ",
+    "description": "3つのボタンを備えたダイアログです。",
+    "type": "component",
+    "slug": "/overlay/dialogs/three-buttons-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "オーバーレイ",
+      "category": "ダイアログ",
+      "component": "3つのボタンを備えたダイアログ"
     }
   }
 ]

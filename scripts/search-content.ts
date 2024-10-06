@@ -55,53 +55,61 @@ const generateSearchContent = async (
   metadataPaths: string[],
   locale: Locale,
 ) => {
-  const contents = await Promise.all(
-    metadataPaths.map(async (metadataPath) => {
-      const metadata = await getMetadata(metadataPath)
+  const contents = (
+    await Promise.all(
+      metadataPaths.map(async (metadataPath) => {
+        const metadata = await getMetadata(metadataPath)
 
-      const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
-      const description =
-        metadata[locale]?.description ?? metadata[DEFAULT_LOCALE]?.description
-      const labels = metadata.labels ?? []
-      const slug = getSlug(metadataPath)
-      const type = getType(slug)
-      const [, categoryGroup, category, component] = slug.split("/")
-
-      const hierarchy = { categoryGroup, category, component }
-
-      hierarchy[type] = title
-
-      if (type === "category" || type === "component") {
-        const metadata = await getMetadata(
-          path.join("contents", categoryGroup, "metadata.json"),
-        )
+        if (metadata.options?.ignore) {
+          return null
+        }
 
         const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+        const description =
+          metadata[locale]?.description ?? metadata[DEFAULT_LOCALE]?.description
+        const labels = metadata.labels ?? []
+        const slug = getSlug(metadataPath)
+        const type = getType(slug)
+        const [, categoryGroup, category, component] = slug.split("/")
 
-        hierarchy.categoryGroup = title
-      }
+        const hierarchy = { categoryGroup, category, component }
 
-      if (type === "component") {
-        const metadata = await getMetadata(
-          path.join("contents", categoryGroup, category, "metadata.json"),
-        )
+        hierarchy[type] = title
 
-        const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+        if (type === "category" || type === "component") {
+          const metadata = await getMetadata(
+            path.join("contents", categoryGroup, "metadata.json"),
+          )
 
-        hierarchy.category = title
-      }
+          const title =
+            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
 
-      const content: Content = {
-        title,
-        description,
-        type,
-        slug,
-        labels,
-        hierarchy,
-      }
-      return content
-    }),
-  )
+          hierarchy.categoryGroup = title
+        }
+
+        if (type === "component") {
+          const metadata = await getMetadata(
+            path.join("contents", categoryGroup, category, "metadata.json"),
+          )
+
+          const title =
+            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+
+          hierarchy.category = title
+        }
+
+        const content: Content = {
+          title,
+          description,
+          type,
+          slug,
+          labels,
+          hierarchy,
+        }
+        return content
+      }),
+    )
+  ).filter(Boolean)
 
   const data = await prettier(JSON.stringify(contents), {
     parser: "json",
