@@ -1,7 +1,13 @@
 [
   {
+    "type": "categoryGroup",
+    "slug": "/metadata.json",
+    "labels": [],
+    "hierarchy": {}
+  },
+  {
     "title": "Typography",
-    "description": "",
+    "description": "Components such as Heading and Text are available for constructing text in your project.",
     "type": "categoryGroup",
     "slug": "/typography",
     "labels": [],
@@ -9,7 +15,7 @@
   },
   {
     "title": "Page Sections",
-    "description": "",
+    "description": "There are components available that combine multiple components to create a single section of functionality, such as authentication and error pages.",
     "type": "categoryGroup",
     "slug": "/page-sections",
     "labels": [],
@@ -17,7 +23,7 @@
   },
   {
     "title": "Overlay",
-    "description": "",
+    "description": "Components such as Modal and Drawer are available to temporarily block interactions with the background UI.",
     "type": "categoryGroup",
     "slug": "/overlay",
     "labels": [],
@@ -25,7 +31,7 @@
   },
   {
     "title": "Navigation",
-    "description": "",
+    "description": "Components such as Link and Breadcrumb are available to display hyperlinks and the location of pages within the project.",
     "type": "categoryGroup",
     "slug": "/navigation",
     "labels": [],
@@ -33,7 +39,7 @@
   },
   {
     "title": "Layouts",
-    "description": "",
+    "description": "Components for building the layout of the project, such as Box and Stack, are available.",
     "type": "categoryGroup",
     "slug": "/layouts",
     "labels": [],
@@ -41,7 +47,7 @@
   },
   {
     "title": "Forms",
-    "description": "",
+    "description": "Components for building forms in the project, such as Input and Select, are available.",
     "type": "categoryGroup",
     "slug": "/forms",
     "labels": [],
@@ -49,35 +55,46 @@
   },
   {
     "title": "Feedback",
-    "description": "",
+    "description": "Components such as Alert and Skeleton are available for notifying users and prompting them to wait while content is loading.",
     "type": "categoryGroup",
     "slug": "/feedback",
     "labels": [],
     "hierarchy": { "categoryGroup": "Feedback" }
   },
   {
-    "title": "Disclosure",
-    "description": "A component is available to save display space and display a large number of items.",
-    "type": "categoryGroup",
-    "slug": "/disclosure",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Disclosure" }
-  },
-  {
     "title": "Data Display",
-    "description": "",
+    "description": "Components for constructing the display of project data, such as Table and Calendar, are available.",
     "type": "categoryGroup",
     "slug": "/data-display",
     "labels": [],
     "hierarchy": { "categoryGroup": "Data Display" }
   },
   {
-    "title": "Error Pages",
-    "description": "A collection of error pages for different scenarios.",
+    "title": "Texts",
+    "description": "Text is a component that represents a paragraph of text.",
     "type": "category",
-    "slug": "/page-sections/error-pages",
+    "slug": "/typography/texts",
     "labels": [],
-    "hierarchy": { "categoryGroup": "Page Sections", "category": "Error Pages" }
+    "hierarchy": { "categoryGroup": "Typography", "category": "Texts" }
+  },
+  {
+    "title": "Headings",
+    "description": "Heading is a component that represents section headings.",
+    "type": "category",
+    "slug": "/typography/headings",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Typography", "category": "Headings" }
+  },
+  {
+    "title": "Hero Headers",
+    "description": "This category contains various hero header components.",
+    "type": "category",
+    "slug": "/page-sections/hero-headers",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Hero Headers"
+    }
   },
   {
     "title": "Frequently Asked Questions",
@@ -91,6 +108,22 @@
     }
   },
   {
+    "title": "Error Pages",
+    "description": "A collection of error pages for different scenarios.",
+    "type": "category",
+    "slug": "/page-sections/error-pages",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Page Sections", "category": "Error Pages" }
+  },
+  {
+    "title": "Contact us",
+    "description": "Contact us is a page section that can be added to any page. It can be used to add contact information such as an email address, phone number, or address.",
+    "type": "category",
+    "slug": "/page-sections/contact-us",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Page Sections", "category": "Contact us" }
+  },
+  {
     "title": "Authentication",
     "description": "This process verifies the identity of a user.",
     "type": "category",
@@ -102,12 +135,60 @@
     }
   },
   {
-    "title": "Headings",
-    "description": "",
+    "title": "Menus",
+    "description": "Menu is a component that displays a common dropdown menu.",
     "type": "category",
-    "slug": "/typography/headings",
+    "slug": "/overlay/menus",
     "labels": [],
-    "hierarchy": { "categoryGroup": "Typography", "category": "Headings" }
+    "hierarchy": { "categoryGroup": "Overlay", "category": "Menus" }
+  },
+  {
+    "title": "Dynamic Islands",
+    "description": "A versatile UI component that dynamically expands and collapses to display content, providing an engaging and interactive user experience.",
+    "type": "category",
+    "slug": "/overlay/dynamic-islands",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Overlay", "category": "Dynamic Islands" }
+  },
+  {
+    "title": "Dialogs",
+    "description": "Dialog is a component used to confirm or interrupt user actions.",
+    "type": "category",
+    "slug": "/overlay/dialogs",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Overlay", "category": "Dialogs" }
+  },
+  {
+    "title": "Context Menus",
+    "description": "Context Menu is triggered by a right click and displays a menu at the pointer's position.",
+    "type": "category",
+    "slug": "/overlay/context-menus",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Overlay", "category": "Context Menus" }
+  },
+  {
+    "title": "Steppers",
+    "description": "Stepper is a component that displays steps in a process and guides users through it.",
+    "type": "category",
+    "slug": "/navigation/steppers",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Navigation", "category": "Steppers" }
+  },
+  {
+    "title": "Paginations",
+    "description": "Pagination is a component for managing the pagination and navigation of content.",
+    "type": "category",
+    "slug": "/navigation/paginations",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Navigation", "category": "Paginations" }
+  },
+  {
+    "title": "Navbars",
+    "description": "Navbar is a component that provides navigation links to different parts of a website.",
+    "type": "category",
+    "slug": "/navigation/navbars",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Navigation", "category": "Navbars" }
   },
   {
     "title": "Headers",
@@ -119,7 +200,7 @@
   },
   {
     "title": "Grids",
-    "description": "Grids are used to structure and align content in a flexible manner.",
+    "description": "Grid is a component for managing grid layouts. It also comes with handy style shorthand.",
     "type": "category",
     "slug": "/layouts/grids",
     "labels": [],
@@ -134,16 +215,16 @@
     "hierarchy": { "categoryGroup": "Layouts", "category": "Footers" }
   },
   {
-    "title": "Inputs",
-    "description": "",
+    "title": "Dividers",
+    "description": "Divider is a component that represents a division between elements.",
     "type": "category",
-    "slug": "/forms/inputs",
+    "slug": "/layouts/dividers",
     "labels": [],
-    "hierarchy": { "categoryGroup": "Forms", "category": "Inputs" }
+    "hierarchy": { "categoryGroup": "Layouts", "category": "Dividers" }
   },
   {
     "title": "Dropzones",
-    "description": "Dropzones are areas where users can drag and drop files for upload.",
+    "description": "Dropzone is a component used for uploading files via drag and drop.",
     "type": "category",
     "slug": "/forms/dropzones",
     "labels": [],
@@ -151,43 +232,67 @@
   },
   {
     "title": "Buttons",
-    "description": "",
+    "description": "Button is an interactive component that allows users to perform actions such as submitting forms and toggling modals.",
     "type": "category",
     "slug": "/forms/buttons",
     "labels": [],
     "hierarchy": { "categoryGroup": "Forms", "category": "Buttons" }
   },
   {
-    "title": "Dividers",
-    "description": "Dividers are used to separate content on a page with a horizontal line.",
+    "title": "Button Group",
+    "description": "The button group is used to group multiple buttons into one.",
     "type": "category",
-    "slug": "/layouts/dividers",
+    "slug": "/forms/button-group",
     "labels": [],
-    "hierarchy": { "categoryGroup": "Layouts", "category": "Dividers" }
+    "hierarchy": { "categoryGroup": "Forms", "category": "Button Group" }
+  },
+  {
+    "title": "Skeletons",
+    "description": "Skeleton is a component that acts as a placeholder until content is loaded.",
+    "type": "category",
+    "slug": "/feedback/skeletons",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Feedback", "category": "Skeletons" }
+  },
+  {
+    "title": "Progress",
+    "description": "Progress is a component for visually indicating progress.",
+    "type": "category",
+    "slug": "/feedback/progress",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Feedback", "category": "Progress" }
+  },
+  {
+    "title": "Empty status",
+    "description": "Empty Status shows a state with no data.",
+    "type": "category",
+    "slug": "/feedback/empty-status",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Feedback", "category": "Empty status" }
   },
   {
     "title": "Alerts",
-    "description": "This is alert examples for Yamada UI.",
+    "description": "Alert is a component that conveys information to the user.",
     "type": "category",
     "slug": "/feedback/alerts",
     "labels": [],
     "hierarchy": { "categoryGroup": "Feedback", "category": "Alerts" }
   },
   {
-    "title": "Tabs",
-    "description": "A component that switches between different display areas.",
+    "title": "Timeline",
+    "description": "A component that visually represents a sequence of events in chronological order.",
     "type": "category",
-    "slug": "/disclosure/tabs",
+    "slug": "/data-display/timeline",
     "labels": [],
-    "hierarchy": { "categoryGroup": "Disclosure", "category": "Tabs" }
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Timeline" }
   },
   {
-    "title": "Tags",
-    "description": "Tags are components that are used to categorize or organize items using keywords that describe them.",
+    "title": "Stats",
+    "description": "Stat is used to display numbers or data within a box.",
     "type": "category",
-    "slug": "/data-display/tags",
+    "slug": "/data-display/stats",
     "labels": [],
-    "hierarchy": { "categoryGroup": "Data Display", "category": "Tags" }
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Stats" }
   },
   {
     "title": "Drag'n'Drop",
@@ -198,20 +303,140 @@
     "hierarchy": { "categoryGroup": "Data Display", "category": "Drag'n'Drop" }
   },
   {
-    "title": "Stats",
-    "description": "",
-    "type": "category",
-    "slug": "/data-display/stats",
-    "labels": [],
-    "hierarchy": { "categoryGroup": "Data Display", "category": "Stats" }
-  },
-  {
     "title": "Comments",
     "description": "This is a component that can be used in comment sections.",
     "type": "category",
     "slug": "/data-display/comments",
     "labels": [],
     "hierarchy": { "categoryGroup": "Data Display", "category": "Comments" }
+  },
+  {
+    "title": "Charts",
+    "description": "Examples with Chart Components",
+    "type": "category",
+    "slug": "/data-display/charts",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Charts" }
+  },
+  {
+    "title": "Cards",
+    "description": "Card is a component that groups and displays related information.",
+    "type": "category",
+    "slug": "/data-display/cards",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Cards" }
+  },
+  {
+    "title": "Banners",
+    "description": "This is a component that can be used in banner sections.",
+    "type": "category",
+    "slug": "/data-display/banners",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Banners" }
+  },
+  {
+    "title": "Avatars",
+    "description": "Avatar is a component that displays a profile picture or an icon with initials representing a user.",
+    "type": "category",
+    "slug": "/data-display/avatars",
+    "labels": [],
+    "hierarchy": { "categoryGroup": "Data Display", "category": "Avatars" }
+  },
+  {
+    "title": "Reveal Text on Scroll",
+    "description": "This example shows how you can reveal text on scroll.",
+    "type": "component",
+    "slug": "/typography/texts/on-scroll",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Typography",
+      "category": "Texts",
+      "component": "Reveal Text on Scroll"
+    }
+  },
+  {
+    "title": "Partial Gradient Heading",
+    "description": "This is a component that makes the text partially gradient from left to right.",
+    "type": "component",
+    "slug": "/typography/headings/partial-gradient",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Typography",
+      "category": "Headings",
+      "component": "Partial Gradient Heading"
+    }
+  },
+  {
+    "title": "Full Gradient Heading",
+    "description": "This is a full gradient heading that makes the text gradient from left to right.",
+    "type": "component",
+    "slug": "/typography/headings/full-gradient-heading",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Typography",
+      "category": "Headings",
+      "component": "Full Gradient Heading"
+    }
+  },
+  {
+    "title": "Hero with Content on Left",
+    "description": "This is a hero section with content on the left.",
+    "type": "component",
+    "slug": "/page-sections/hero-headers/with-content-on-left",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Hero Headers",
+      "component": "Hero with Content on Left"
+    }
+  },
+  {
+    "title": "Hero with Bullets",
+    "description": "This is a hero section with a list of features.",
+    "type": "component",
+    "slug": "/page-sections/hero-headers/with-bullets",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Hero Headers",
+      "component": "Hero with Bullets"
+    }
+  },
+  {
+    "title": "Hero with Background Image",
+    "description": "This is a hero section with a background image.",
+    "type": "component",
+    "slug": "/page-sections/hero-headers/with-background-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Hero Headers",
+      "component": "Hero with Background Image"
+    }
+  },
+  {
+    "title": "FAQ with Image",
+    "description": "This is an FAQ component with an image.",
+    "type": "component",
+    "slug": "/page-sections/faq/with-image",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Frequently Asked Questions",
+      "component": "FAQ with Image"
+    }
+  },
+  {
+    "title": "FAQ simple",
+    "description": "This is a simple FAQ.",
+    "type": "component",
+    "slug": "/page-sections/faq/simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Frequently Asked Questions",
+      "component": "FAQ simple"
+    }
   },
   {
     "title": "404 page with image",
@@ -250,15 +475,27 @@
     }
   },
   {
-    "title": "FAQ with Image",
-    "description": "This is an FAQ component with an image.",
+    "title": "Get in Touch Form",
+    "description": "Please fill out the form below to get in touch with us.",
     "type": "component",
-    "slug": "/page-sections/faq/with-image",
+    "slug": "/page-sections/contact-us/touch-form",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Page Sections",
-      "category": "Frequently Asked Questions",
-      "component": "FAQ with Image"
+      "category": "Contact us",
+      "component": "Get in Touch Form"
+    }
+  },
+  {
+    "title": "Contact Form",
+    "description": "This section contains a contact form where users can leave their email and receive a response within 24 hours.",
+    "type": "component",
+    "slug": "/page-sections/contact-us/form",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Contact us",
+      "component": "Contact Form"
     }
   },
   {
@@ -274,30 +511,6 @@
     }
   },
   {
-    "title": "Forgot password",
-    "description": "This feature allows users to reset their password if they've forgotten it.",
-    "type": "component",
-    "slug": "/page-sections/authentication/forgot-password",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Authentication",
-      "component": "Forgot password"
-    }
-  },
-  {
-    "title": "FAQ simple",
-    "description": "This is a simple FAQ.",
-    "type": "component",
-    "slug": "/page-sections/faq/simple",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Page Sections",
-      "category": "Frequently Asked Questions",
-      "component": "FAQ simple"
-    }
-  },
-  {
     "title": "Authentication page with image",
     "description": "This page features an authentication form with a background image.",
     "type": "component",
@@ -307,6 +520,18 @@
       "categoryGroup": "Page Sections",
       "category": "Authentication",
       "component": "Authentication page with image"
+    }
+  },
+  {
+    "title": "Forgot password",
+    "description": "This feature allows users to reset their password if they've forgotten it.",
+    "type": "component",
+    "slug": "/page-sections/authentication/forgot-password",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Page Sections",
+      "category": "Authentication",
+      "component": "Forgot password"
     }
   },
   {
@@ -322,111 +547,243 @@
     }
   },
   {
-    "title": "Partial Gradient Heading",
-    "description": "This is a component that makes the text partially gradient from left to right.",
+    "title": "Simple With Descriptions",
+    "description": "menu with descriptions",
     "type": "component",
-    "slug": "/typography/headings/partial-gradient",
+    "slug": "/overlay/menus/simple-with-descriptions",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "Typography",
-      "category": "Headings",
-      "component": "Partial Gradient Heading"
+      "categoryGroup": "Overlay",
+      "category": "Menus",
+      "component": "Simple With Descriptions"
     }
   },
   {
-    "title": "Full Gradient Heading",
-    "description": "This is a full gradient heading that makes the text gradient from left to right.",
+    "title": "Menu With Icon",
+    "description": "Menu including icons",
     "type": "component",
-    "slug": "/typography/headings/full-gradient-heading",
+    "slug": "/overlay/menus/menu-with-icon",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "Typography",
-      "category": "Headings",
-      "component": "Full Gradient Heading"
+      "categoryGroup": "Overlay",
+      "category": "Menus",
+      "component": "Menu With Icon"
     }
   },
   {
-    "title": "Grid with Leading Item",
-    "description": "A responsive grid layout with a leading item that changes arrangement based on screen size.",
+    "title": "Dynamic Island",
+    "description": "A responsive component that expands and collapses on click, featuring an avatar and multiple links.",
     "type": "component",
-    "slug": "/layouts/grids/leading-item",
+    "slug": "/overlay/dynamic-islands/simple-dynamic-island",
     "labels": [],
     "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Grids",
-      "component": "Grid with Leading Item"
+      "categoryGroup": "Overlay",
+      "category": "Dynamic Islands",
+      "component": "Dynamic Island"
     }
   },
   {
-    "title": "Header with multiple layers",
-    "description": "This is a header with multiple layers.",
+    "title": "Phone Call Dynamic Island",
+    "description": "An interactive component that expands and collapses on click, featuring call controls such as mute and end call.",
     "type": "component",
-    "slug": "/layouts/headers/double-header",
+    "slug": "/overlay/dynamic-islands/phone-call-dynamic-island",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Dynamic Islands",
+      "component": "Phone Call Dynamic Island"
+    }
+  },
+  {
+    "title": "Music Dynamic Island",
+    "description": "A dynamic and interactive music player component that expands and collapses on click, featuring play, pause, next, and previous controls.",
+    "type": "component",
+    "slug": "/overlay/dynamic-islands/music-dynamic-island",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Dynamic Islands",
+      "component": "Music Dynamic Island"
+    }
+  },
+  {
+    "title": "Three Buttons Dialog",
+    "description": "Dialog with three buttons.",
+    "type": "component",
+    "slug": "/overlay/dialogs/three-buttons-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Dialogs",
+      "component": "Three Buttons Dialog"
+    }
+  },
+  {
+    "title": "Simple Dialog",
+    "description": "It is a simple dialog.",
+    "type": "component",
+    "slug": "/overlay/dialogs/simple-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Dialogs",
+      "component": "Simple Dialog"
+    }
+  },
+  {
+    "title": "Input Keyword Dialog",
+    "description": "Dialog to confirm execution by entering keywords.",
+    "type": "component",
+    "slug": "/overlay/dialogs/input-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Dialogs",
+      "component": "Input Keyword Dialog"
+    }
+  },
+  {
+    "title": "GDPR Cookie Dialog",
+    "description": "GDPR-compliant cookie dialog.",
+    "type": "component",
+    "slug": "/overlay/dialogs/gdpr-cookie-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Dialogs",
+      "component": "GDPR Cookie Dialog"
+    }
+  },
+  {
+    "title": "Cookie Dialog",
+    "description": "This dialog is used to request consent for the use of cookies.",
+    "type": "component",
+    "slug": "/overlay/dialogs/cookie-dialog",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Dialogs",
+      "component": "Cookie Dialog"
+    }
+  },
+  {
+    "title": "Mail Box",
+    "description": "Mailbox context menu",
+    "type": "component",
+    "slug": "/overlay/context-menus/mail-box",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Overlay",
+      "category": "Context Menus",
+      "component": "Mail Box"
+    }
+  },
+  {
+    "title": "SimpleStepper",
+    "description": "Simple stepper component",
+    "type": "component",
+    "slug": "/navigation/steppers/simple-stepper",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Navigation",
+      "category": "Steppers",
+      "component": "SimpleStepper"
+    }
+  },
+  {
+    "title": "Simple button",
+    "description": "Simple button",
+    "type": "component",
+    "slug": "/navigation/paginations/simple-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Navigation",
+      "category": "Paginations",
+      "component": "Simple button"
+    }
+  },
+  {
+    "title": "Right-justified with page position",
+    "description": "Right-justified with page position",
+    "type": "component",
+    "slug": "/navigation/paginations/right-justified-with-page-position",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Navigation",
+      "category": "Paginations",
+      "component": "Right-justified with page position"
+    }
+  },
+  {
+    "title": "Navbar with Segmented Control",
+    "description": "Navbar that uses segmented control.",
+    "type": "component",
+    "slug": "/navigation/navbars/with-segmented-control",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Navigation",
+      "category": "Navbars",
+      "component": "Navbar with Segmented Control"
+    }
+  },
+  {
+    "title": "Simple Navbar",
+    "description": "This is simple navibar",
+    "type": "component",
+    "slug": "/navigation/navbars/simple-navbar",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Navigation",
+      "category": "Navbars",
+      "component": "Simple Navbar"
+    }
+  },
+  {
+    "title": "Navbar With Tooltips",
+    "description": "Navigation bar with tooltips implemented",
+    "type": "component",
+    "slug": "/navigation/navbars/navbar-with-tooltips",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Navigation",
+      "category": "Navbars",
+      "component": "Navbar With Tooltips"
+    }
+  },
+  {
+    "title": "Double Navbar",
+    "description": "Navigation bar divided into two sections",
+    "type": "component",
+    "slug": "/navigation/navbars/double-navbar",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Navigation",
+      "category": "Navbars",
+      "component": "Double Navbar"
+    }
+  },
+  {
+    "title": "With Tabs",
+    "description": "A header component with tabs.",
+    "type": "component",
+    "slug": "/layouts/headers/with-tabs",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
       "category": "Headers",
-      "component": "Header with multiple layers"
+      "component": "With Tabs"
     }
   },
   {
-    "title": "Footer with Social icons",
-    "description": "This is Footer with Social icons",
+    "title": "With search box",
+    "description": "This is the header component with search box.",
     "type": "component",
-    "slug": "/layouts/footers/footer-social-icons",
+    "slug": "/layouts/headers/with-search",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Footer with Social icons"
-    }
-  },
-  {
-    "title": "Footer with links",
-    "description": "This is Footer with links",
-    "type": "component",
-    "slug": "/layouts/footers/footer-links",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Footer with links"
-    }
-  },
-  {
-    "title": "Grid with Asymmetrical Columns",
-    "description": "A responsive grid layout featuring asymmetrical columns, ideal for dynamic and modern web design.",
-    "type": "component",
-    "slug": "/layouts/grids/asymmetrical-columns",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Grids",
-      "component": "Grid with Asymmetrical Columns"
-    }
-  },
-  {
-    "title": "Simple Footer",
-    "description": "This is a simple Footer.",
-    "type": "component",
-    "slug": "/layouts/footers/footer-simple",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Simple Footer"
-    }
-  },
-  {
-    "title": "Footer with Centered links",
-    "description": "This is Footer with Centered links",
-    "type": "component",
-    "slug": "/layouts/footers/footer-centerd",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Footers",
-      "component": "Footer with Centered links"
+      "category": "Headers",
+      "component": "With search box"
     }
   },
   {
@@ -442,99 +799,87 @@
     }
   },
   {
-    "title": "Dropzone image preview",
-    "description": "This is a Dropzone with image preview.",
+    "title": "Header with multiple layers",
+    "description": "This is a header with multiple layers.",
     "type": "component",
-    "slug": "/forms/dropzones/with-image-preview",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Dropzones",
-      "component": "Dropzone image preview"
-    }
-  },
-  {
-    "title": "Password Input",
-    "description": "Password Input Component",
-    "type": "component",
-    "slug": "/forms/inputs/password-input",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Inputs",
-      "component": "Password Input"
-    }
-  },
-  {
-    "title": "Copy to clipboard button",
-    "description": "This is a button that copies the text to the clipboard",
-    "type": "component",
-    "slug": "/forms/buttons/copy-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Buttons",
-      "component": "Copy to clipboard button"
-    }
-  },
-  {
-    "title": "Dropzone with button",
-    "description": "This is a dropzone with button.",
-    "type": "component",
-    "slug": "/forms/dropzones/with-button",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Forms",
-      "category": "Dropzones",
-      "component": "Dropzone with button"
-    }
-  },
-  {
-    "title": "With title on left",
-    "description": "This is a divider component with a title on the left.",
-    "type": "component",
-    "slug": "/layouts/dividers/with-title-on-left",
+    "slug": "/layouts/headers/double-header",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "With title on left"
+      "category": "Headers",
+      "component": "Header with multiple layers"
     }
   },
   {
-    "title": "With title",
-    "description": "This is a divider component with a title.",
+    "title": "Grid with Leading Item",
+    "description": "A responsive grid layout with a leading item that changes arrangement based on screen size.",
     "type": "component",
-    "slug": "/layouts/dividers/with-title",
+    "slug": "/layouts/grids/leading-item",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "With title"
+      "category": "Grids",
+      "component": "Grid with Leading Item"
     }
   },
   {
-    "title": "With label",
-    "description": "This is a divider component with a label.",
+    "title": "Grid with Asymmetrical Columns",
+    "description": "A responsive grid layout featuring asymmetrical columns, ideal for dynamic and modern web design.",
     "type": "component",
-    "slug": "/layouts/dividers/with-label",
+    "slug": "/layouts/grids/asymmetrical-columns",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "With label"
+      "category": "Grids",
+      "component": "Grid with Asymmetrical Columns"
     }
   },
   {
-    "title": "With icon",
-    "description": "This is a divider component with an icon.",
+    "title": "Footer with Social icons",
+    "description": "This is Footer with Social icons",
     "type": "component",
-    "slug": "/layouts/dividers/with-icon",
+    "slug": "/layouts/footers/footer-social-icons",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "With icon"
+      "category": "Footers",
+      "component": "Footer with Social icons"
+    }
+  },
+  {
+    "title": "Simple Footer",
+    "description": "This is a simple Footer.",
+    "type": "component",
+    "slug": "/layouts/footers/footer-simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Footers",
+      "component": "Simple Footer"
+    }
+  },
+  {
+    "title": "Footer with links",
+    "description": "This is Footer with links",
+    "type": "component",
+    "slug": "/layouts/footers/footer-links",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Footers",
+      "component": "Footer with links"
+    }
+  },
+  {
+    "title": "Footer with Centered links",
+    "description": "This is Footer with Centered links",
+    "type": "component",
+    "slug": "/layouts/footers/footer-centered",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Layouts",
+      "category": "Footers",
+      "component": "Footer with Centered links"
     }
   },
   {
@@ -550,27 +895,15 @@
     }
   },
   {
-    "title": "With title and button",
-    "description": "This is a divider component with a title and a button.",
+    "title": "With label",
+    "description": "This is a divider component with a label.",
     "type": "component",
-    "slug": "/layouts/dividers/with-title-and-button",
+    "slug": "/layouts/dividers/with-label",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Layouts",
       "category": "Dividers",
-      "component": "With title and button"
-    }
-  },
-  {
-    "title": "Label on left",
-    "description": "This is a divider component with a label on the left.",
-    "type": "component",
-    "slug": "/layouts/dividers/label-on-left",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Layouts",
-      "category": "Dividers",
-      "component": "Label on left"
+      "component": "With label"
     }
   },
   {
@@ -583,6 +916,66 @@
       "categoryGroup": "Layouts",
       "category": "Dividers",
       "component": "With button"
+    }
+  },
+  {
+    "title": "Dropzone image preview",
+    "description": "This is a Dropzone with image preview.",
+    "type": "component",
+    "slug": "/forms/dropzones/with-image-preview",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Forms",
+      "category": "Dropzones",
+      "component": "Dropzone image preview"
+    }
+  },
+  {
+    "title": "Dropzone with button",
+    "description": "This is a dropzone with button.",
+    "type": "component",
+    "slug": "/forms/dropzones/with-button",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Forms",
+      "category": "Dropzones",
+      "component": "Dropzone with button"
+    }
+  },
+  {
+    "title": "Profile Skeleton",
+    "description": "Profile Skeleton",
+    "type": "component",
+    "slug": "/feedback/skeletons/profile-skeleton",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Feedback",
+      "category": "Skeletons",
+      "component": "Profile Skeleton"
+    }
+  },
+  {
+    "title": "Quest Progress",
+    "description": "Quest progress bar",
+    "type": "component",
+    "slug": "/feedback/progress/quest-progress",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Feedback",
+      "category": "Progress",
+      "component": "Quest Progress"
+    }
+  },
+  {
+    "title": "Simple",
+    "description": "It's a simple component for empty status.",
+    "type": "component",
+    "slug": "/feedback/empty-status/simple",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Feedback",
+      "category": "Empty status",
+      "component": "Simple"
     }
   },
   {
@@ -622,6 +1015,18 @@
     }
   },
   {
+    "title": "With description",
+    "description": "This is the alert component with a description.",
+    "type": "component",
+    "slug": "/feedback/alerts/with-description",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Feedback",
+      "category": "Alerts",
+      "component": "With description"
+    }
+  },
+  {
     "title": "With actions",
     "description": "This is the alert component with buttons.",
     "type": "component",
@@ -646,75 +1051,75 @@
     }
   },
   {
-    "title": "With description",
-    "description": "This is the alert component with a description.",
+    "title": "Simple Timeline",
+    "description": "This is simple timeline.",
     "type": "component",
-    "slug": "/feedback/alerts/with-description",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Feedback",
-      "category": "Alerts",
-      "component": "With description"
-    }
-  },
-  {
-    "title": "With icons",
-    "description": "This is a component that displays tabs with icons.",
-    "type": "component",
-    "slug": "/disclosure/tabs/with-icons",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Disclosure",
-      "category": "Tabs",
-      "component": "With icons"
-    }
-  },
-  {
-    "title": "With badges",
-    "description": "This is a component that displays tabs with badges.",
-    "type": "component",
-    "slug": "/disclosure/tabs/with-badges",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Disclosure",
-      "category": "Tabs",
-      "component": "With badges"
-    }
-  },
-  {
-    "title": "With Full-width",
-    "description": "This is a component that displays tabs in full width.",
-    "type": "component",
-    "slug": "/disclosure/tabs/with-full-width",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Disclosure",
-      "category": "Tabs",
-      "component": "With Full-width"
-    }
-  },
-  {
-    "title": "Reorder tags",
-    "description": "This is tags which can be reordered.",
-    "type": "component",
-    "slug": "/data-display/tags/reorder-tags",
+    "slug": "/data-display/timeline/simple-timeline",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Data Display",
-      "category": "Tags",
-      "component": "Reorder tags"
+      "category": "Timeline",
+      "component": "Simple Timeline"
     }
   },
   {
-    "title": "Card with removable tags",
-    "description": "This is a card with tags which can be removed.",
+    "title": "With line in the middle",
+    "description": "This is a timeline component that has a line in the middle.",
     "type": "component",
-    "slug": "/data-display/tags/card-with-tags",
+    "slug": "/data-display/timeline/middle-line",
     "labels": [],
     "hierarchy": {
       "categoryGroup": "Data Display",
-      "category": "Tags",
-      "component": "Card with removable tags"
+      "category": "Timeline",
+      "component": "With line in the middle"
+    }
+  },
+  {
+    "title": "Custom Icon",
+    "description": "This is a timeline component with a custom icon.",
+    "type": "component",
+    "slug": "/data-display/timeline/custom-icon",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Timeline",
+      "component": "Custom Icon"
+    }
+  },
+  {
+    "title": "With animation",
+    "description": "This is a timeline component with animation.",
+    "type": "component",
+    "slug": "/data-display/timeline/animated-timeline",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Timeline",
+      "component": "With animation"
+    }
+  },
+  {
+    "title": "Progress card with color",
+    "description": "This is a progress card with color.",
+    "type": "component",
+    "slug": "/data-display/stats/with-color",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Stats",
+      "component": "Progress card with color"
+    }
+  },
+  {
+    "title": "Progress Card",
+    "description": "This is a card with progress bar.",
+    "type": "component",
+    "slug": "/data-display/stats/progress-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Stats",
+      "component": "Progress Card"
     }
   },
   {
@@ -742,18 +1147,6 @@
     }
   },
   {
-    "title": "Progress Card",
-    "description": "This is a card with progress bar.",
-    "type": "component",
-    "slug": "/data-display/stats/progress-card",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Data Display",
-      "category": "Stats",
-      "component": "Progress Card"
-    }
-  },
-  {
     "title": "Comment with HTML Content",
     "description": "A card component displaying a user's avatar, username, timestamp, and comment text with HTML content.",
     "type": "component",
@@ -766,18 +1159,6 @@
     }
   },
   {
-    "title": "Progress card with color",
-    "description": "This is a progress card with color.",
-    "type": "component",
-    "slug": "/data-display/stats/with-color",
-    "labels": [],
-    "hierarchy": {
-      "categoryGroup": "Data Display",
-      "category": "Stats",
-      "component": "Progress card with color"
-    }
-  },
-  {
     "title": "Comment",
     "description": "A card component displaying a user's avatar, username, timestamp, and comment text.",
     "type": "component",
@@ -787,6 +1168,258 @@
       "categoryGroup": "Data Display",
       "category": "Comments",
       "component": "Comment"
+    }
+  },
+  {
+    "title": "Temperature Chart",
+    "description": "Displays a line graph of temperatures.",
+    "type": "component",
+    "slug": "/data-display/charts/temperature-chart",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Charts",
+      "component": "Temperature Chart"
+    }
+  },
+  {
+    "title": "Simple Charts",
+    "description": "Simplified chart.",
+    "type": "component",
+    "slug": "/data-display/charts/simple-charts",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Charts",
+      "component": "Simple Charts"
+    }
+  },
+  {
+    "title": "Donut Active",
+    "description": "Donut Chart with active elements.",
+    "type": "component",
+    "slug": "/data-display/charts/donut-active",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Charts",
+      "component": "Donut Active"
+    }
+  },
+  {
+    "title": "Chart with Text",
+    "description": "Chart with retained text.",
+    "type": "component",
+    "slug": "/data-display/charts/chart-with-text",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Charts",
+      "component": "Chart with Text"
+    }
+  },
+  {
+    "title": "BarChart - Label",
+    "description": "BarChart with label.",
+    "type": "component",
+    "slug": "/data-display/charts/bar-chart-label",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Charts",
+      "component": "BarChart - Label"
+    }
+  },
+  {
+    "title": "Social Media Card",
+    "description": "A card to display social media profile information and follow status.",
+    "type": "component",
+    "slug": "/data-display/cards/social-media",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Social Media Card"
+    }
+  },
+  {
+    "title": "Share Document Card",
+    "description": "A card to share a document link and manage access permissions.",
+    "type": "component",
+    "slug": "/data-display/cards/share-document",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Share Document Card"
+    }
+  },
+  {
+    "title": "Report Issue Card",
+    "description": "A card to report issues and provide details about the problem.",
+    "type": "component",
+    "slug": "/data-display/cards/report-issue",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Report Issue Card"
+    }
+  },
+  {
+    "title": "Payment Method Card",
+    "description": "A card to add and manage your payment methods.",
+    "type": "component",
+    "slug": "/data-display/cards/payment-method",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Payment Method Card"
+    }
+  },
+  {
+    "title": "Overflow Image Card",
+    "description": "A card component displaying an image with a header, body, and footer, showcasing Yamada UI.",
+    "type": "component",
+    "slug": "/data-display/cards/overflow-image-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Overflow Image Card"
+    }
+  },
+  {
+    "title": "Notifications Card",
+    "description": "A card component that allows users to choose their notification preferences.",
+    "type": "component",
+    "slug": "/data-display/cards/notifications-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Notifications Card"
+    }
+  },
+  {
+    "title": "Image Card",
+    "description": "A card component displaying an image with a header, body, and footer.",
+    "type": "component",
+    "slug": "/data-display/cards/image-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Image Card"
+    }
+  },
+  {
+    "title": "GitHub Card",
+    "description": "A card component displaying GitHub repository information with options to star the repository.",
+    "type": "component",
+    "slug": "/data-display/cards/github-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "GitHub Card"
+    }
+  },
+  {
+    "title": "Cookie Settings Card",
+    "description": "A card to manage your cookie preferences.",
+    "type": "component",
+    "slug": "/data-display/cards/cookie-settings-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Cookie Settings Card"
+    }
+  },
+  {
+    "title": "Bookmark Card",
+    "description": "A card to save and manage your bookmarks.",
+    "type": "component",
+    "slug": "/data-display/cards/bookmark-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Bookmark Card"
+    }
+  },
+  {
+    "title": "Account Card",
+    "description": "A card to create an account with an email address.",
+    "type": "component",
+    "slug": "/data-display/cards/account-card",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Cards",
+      "component": "Account Card"
+    }
+  },
+  {
+    "title": "Cookie",
+    "description": "A component to display information for obtaining cookie consent.",
+    "type": "component",
+    "slug": "/data-display/banners/cookie",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Banners",
+      "component": "Cookie"
+    }
+  },
+  {
+    "title": "Announcement",
+    "description": "A component to display announcement for event.",
+    "type": "component",
+    "slug": "/data-display/banners/announcement",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Banners",
+      "component": "Announcement"
+    }
+  },
+  {
+    "title": "Avatar with Hover (framer) *Mobile not supported",
+    "description": "This is a usage example of the avatar component with hover effect using framer.",
+    "type": "component",
+    "slug": "/data-display/avatars/avatars-with-hover-motion",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Avatars",
+      "component": "Avatar with Hover (framer) *Mobile not supported"
+    }
+  },
+  {
+    "title": "Avatar with Hover",
+    "description": "This is a usage example of the avatar component with hover effect.",
+    "type": "component",
+    "slug": "/data-display/avatars/avatars-with-hover",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Avatars",
+      "component": "Avatar with Hover"
+    }
+  },
+  {
+    "title": "Avatar with Text",
+    "description": "This is a simple example of how to use the Avatar component with text.",
+    "type": "component",
+    "slug": "/data-display/avatars/avatar-with-text",
+    "labels": [],
+    "hierarchy": {
+      "categoryGroup": "Data Display",
+      "category": "Avatars",
+      "component": "Avatar with Text"
     }
   }
 ]
