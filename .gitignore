@@ -4,7 +4,6 @@ node-jiti
 
 # dependencies
 node_modules
-package-lock.json
 
 # compiled
 .vercel

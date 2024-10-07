@@ -1,4 +1,4 @@
-import { Text, Pagination, Flex, Box } from "@yamada-ui/react"
+import { Text, Pagination, Flex, Box, ui } from "@yamada-ui/react"
 import { useState, type FC } from "react"
 
 const RightJustifiedWithPagePosition: FC = () => {
@@ -22,27 +22,14 @@ const RightJustifiedWithPagePosition: FC = () => {
         textAlign="right"
         m="md"
       >
-        {/* Showing {page * 10 - 9} - {page * 10} of 100 */}
         Showing{" "}
-        <span
-          style={{
-            display: "inline-block",
-            minWidth: "20px",
-            textAlign: "center",
-          }}
-        >
+        <ui.span display="inline-block" minWidth="20px" textAlign="center">
           {page * 10 - 9}
-        </span>
+        </ui.span>
         -
-        <span
-          style={{
-            display: "inline-block",
-            minWidth: "30px",
-            textAlign: "center",
-          }}
-        >
+        <ui.span display="inline-block" minWidth="30px" textAlign="center">
           {page * 10}
-        </span>{" "}
+        </ui.span>{" "}
         of 100
       </Text>
     </Box>
