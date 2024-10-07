@@ -20,10 +20,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   }
 
   const enterAnimation = {
-    width:
-      index === 0 || index === password.length - 1
-        ? "calc(9px + 0.25rem)"
-        : "9px",
+    width: isFirstItem || isLastItem ? "calc(0.498rem + 0.3rem)" : "0.498rem",
     borderTopLeftRadius: isFirstItem ? "6px" : "0px",
     borderBottomLeftRadius: isFirstItem ? "6px" : "0px",
     borderTopRightRadius: isLastItem ? "6px" : "0px",
