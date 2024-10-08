@@ -47,10 +47,10 @@ const WithTabs: FC = () => {
   return (
     <Flex
       as="header"
-      bg={["blackAlpha.100", "blackAlpha.500"]}
       placeContent="center"
       w={{ base: "full", md: "fit-content" }}
       h={{ base: "fit-content", md: "full" }}
+      bg={["#f5f5f5", "#333"]}
     >
       <VStack maxW="6xl" gap="0" px={{ base: "md", md: "0" }}>
         <Flex
@@ -143,7 +143,8 @@ const WithTabs: FC = () => {
                 key={tab}
                 value={tab}
                 data-active={active === index || undefined}
-                bg={active === index ? ["white", "black"] : undefined}
+                bg={active === index ? ["white", "black"] : "inherit"}
+                color={active === index ? ["black", "white"] : "inherit"}
                 borderTopLeftRadius="md"
                 borderTopRightRadius={{ base: "md", md: "none" }}
                 borderBottomLeftRadius={{ base: "none", md: "md" }}
@@ -162,6 +163,7 @@ const WithTabs: FC = () => {
               </Tab>
             ))}
           </TabList>
+
           <TabPanels display="none" />
         </Tabs>
       </VStack>
