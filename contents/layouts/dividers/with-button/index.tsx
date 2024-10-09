@@ -1,6 +1,6 @@
-import { PlusIcon } from "@yamada-ui/lucide"
-import { HStack, Divider, Button } from "@yamada-ui/react"
 import type { FC } from "react"
+import { PlusIcon } from "@yamada-ui/lucide"
+import { Button, Divider, HStack } from "@yamada-ui/react"
 
 const WithButton: FC = () => {
   return (
@@ -8,10 +8,10 @@ const WithButton: FC = () => {
       <Divider />
 
       <Button
-        leftIcon={<PlusIcon />}
-        variant="outline"
-        minW="fit-content"
         size="sm"
+        variant="outline"
+        leftIcon={<PlusIcon />}
+        minW="fit-content"
       >
         Button Text
       </Button>

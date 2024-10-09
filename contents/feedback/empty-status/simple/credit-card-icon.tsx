@@ -3,15 +3,15 @@ import type { FC } from "react"
 const CreditCardIcon: FC = () => {
   return (
     <svg
-      version="1.1"
       id="_x32_"
+      fill="currentColor"
+      height="110px"
+      version="1.1"
+      viewBox="0 0 512 512"
+      width="110px"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="110px"
-      height="110px"
-      viewBox="0 0 512 512"
       xmlSpace="preserve"
-      fill="currentColor"
     >
       <g>
         <path

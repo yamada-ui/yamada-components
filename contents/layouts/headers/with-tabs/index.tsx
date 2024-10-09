@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   ArrowLeftRightIcon,
   ChevronDownIcon,
@@ -28,7 +29,7 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { useState, type FC } from "react"
+import { useState } from "react"
 
 const tabs = [
   "Home",
@@ -47,22 +48,22 @@ const WithTabs: FC = () => {
   return (
     <Flex
       as="header"
+      bg={["#f5f5f5", "#333"]}
+      h={{ base: "fit-content", md: "full" }}
       placeContent="center"
       w={{ base: "full", md: "fit-content" }}
-      h={{ base: "fit-content", md: "full" }}
-      bg={["#f5f5f5", "#333"]}
     >
-      <VStack maxW="6xl" gap="0" px={{ base: "md", md: "0" }}>
+      <VStack gap="0" maxW="6xl" px={{ base: "md", md: "0" }}>
         <Flex
-          flexDir={{ base: "row", md: "column" }}
-          py="md"
-          px={{ base: "0", md: "md" }}
-          justifyContent="space-between"
-          gap="md"
           alignItems={{ base: "center", md: "flex-start" }}
+          flexDir={{ base: "row", md: "column" }}
+          gap="md"
+          justifyContent="space-between"
+          px={{ base: "0", md: "md" }}
+          py="md"
         >
           <HStack gap="sm">
-            <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
+            <Image src="/favicon.svg" alt="Yamada UI" height={30} width={30} />
             <Heading as="h2" fontSize="lg">
               Yamada UI
             </Heading>
@@ -77,8 +78,8 @@ const WithTabs: FC = () => {
                 src="https://avatars.githubusercontent.com/u/61367823?s=80&v=4"
                 alt="taroj1205"
                 h="6"
-                w="6"
                 rounded="full"
+                w="6"
               />
               <Text
                 color={["black", "white"]}
@@ -121,8 +122,8 @@ const WithTabs: FC = () => {
                   Pause subscription
                 </MenuItem>
                 <MenuItem
-                  fontSize="sm"
                   color="danger"
+                  fontSize="sm"
                   icon={<TrashIcon color="danger" />}
                 >
                   Delete account
@@ -133,31 +134,31 @@ const WithTabs: FC = () => {
         </Flex>
         <Tabs
           variant="unstyled"
-          onChange={setActive}
           index={active}
           justifyContent={{ base: "center", md: "flex-end" }}
+          onChange={setActive}
         >
           <TabList flexDir={{ base: "row", md: "column" }}>
             {tabs.map((tab, index) => (
               <Tab
                 key={tab}
-                value={tab}
-                data-active={active === index || undefined}
-                bg={active === index ? ["white", "black"] : "inherit"}
-                color={active === index ? ["black", "white"] : "inherit"}
-                borderTopLeftRadius="md"
-                borderTopRightRadius={{ base: "md", md: "none" }}
-                borderBottomLeftRadius={{ base: "none", md: "md" }}
-                fontWeight="medium"
-                fontSize="sm"
                 as="a"
                 href={`/${tab.toLocaleLowerCase()}`}
-                onClick={(e: { preventDefault: () => any }) =>
-                  e.preventDefault()
-                }
+                data-active={active === index || undefined}
+                bg={active === index ? ["white", "black"] : "inherit"}
+                borderBottomLeftRadius={{ base: "none", md: "md" }}
+                borderTopLeftRadius="md"
+                borderTopRightRadius={{ base: "md", md: "none" }}
+                color={active === index ? ["black", "white"] : "inherit"}
+                fontSize="sm"
+                fontWeight="medium"
+                value={tab}
                 _hover={{
                   opacity: 0.7,
                 }}
+                onClick={(e: { preventDefault: () => any }) =>
+                  e.preventDefault()
+                }
               >
                 {tab}
               </Tab>

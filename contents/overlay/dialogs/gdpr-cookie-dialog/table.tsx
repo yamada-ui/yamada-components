@@ -1,46 +1,47 @@
+import type { FC } from "react"
 import { Table } from "@yamada-ui/table"
-import { type FC, useMemo } from "react"
+import { useMemo } from "react"
 
 const columns = [
   {
-    header: "Provider",
     accessorKey: "provider",
+    header: "Provider",
   },
   {
-    header: "Domain",
     accessorKey: "domain",
+    header: "Domain",
   },
   {
-    header: "Name",
     accessorKey: "cookie",
+    header: "Name",
   },
   {
-    header: "Expiration",
     accessorKey: "expiration",
+    header: "Expiration",
   },
   {
-    header: "Description",
     accessorKey: "description",
+    header: "Description",
   },
 ]
 
 export const CookieTable: FC<{
   tableData: {
-    provider: string
-    domain: string
     cookie: string
-    expiration: string
     description: string
+    domain: string
+    expiration: string
+    provider: string
   }[]
 }> = ({ tableData }) => {
   const data = useMemo(
     () =>
       tableData.map((item) => ({
-        provider: item.provider,
-        domain: item.domain,
         cookie: item.cookie,
-        expiration: item.expiration,
         description: item.description,
+        domain: item.domain,
+        expiration: item.expiration,
+        provider: item.provider,
       })),
     [tableData],
   )

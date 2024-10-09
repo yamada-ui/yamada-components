@@ -1,10 +1,10 @@
-import { readFile, writeFile } from "node:fs/promises"
+import type { Dict } from "@yamada-ui/react"
 import * as p from "@clack/prompts"
 import { Octokit } from "@octokit/rest"
-import type { Dict } from "@yamada-ui/react"
 import c from "chalk"
 import { config } from "dotenv"
 import { glob } from "glob"
+import { readFile, writeFile } from "node:fs/promises"
 import { prettier, recursiveOctokit } from "./utils"
 
 type Commit = Awaited<
@@ -33,13 +33,13 @@ const updateMetadata = async (path: string, _authors: Author[]) => {
 
   const metadata = JSON.parse(data) as Dict
   const authors = _authors.map((author) => {
-    const { id, login, avatar_url, html_url } = author ?? {}
+    const { id, avatar_url, html_url, login } = author ?? {}
 
     return {
       id,
-      login,
       avatar_url,
       html_url,
+      login,
     }
   })
 
@@ -58,10 +58,10 @@ const getCommits = async (path: string) => {
   const listForRepo = async () => {
     const { data } = await octokit.repos.listCommits({
       ...COMMON_PARAMS,
-      sha: "main",
+      page,
       path,
       per_page: perPage,
-      page,
+      sha: "main",
     })
 
     commits.push(...data)
@@ -82,11 +82,11 @@ const getCommits = async (path: string) => {
 
 const getAuthors: p.RequiredRunner<
   [string[]],
-  Promise<Record<string, Author[]>>
+  Promise<{ [key: string]: Author[] }>
 > = (paths) => async (_, s) => {
   s.start("Getting the Yamada UI contributors")
 
-  const authorMap: Record<string, Author[]> = {}
+  const authorMap: { [key: string]: Author[] } = {}
 
   await Promise.all(
     paths.map(async (path) => {
@@ -94,18 +94,18 @@ const getAuthors: p.RequiredRunner<
         path.replace(/\\/g, "/").replace(/\/metadata.json$/, ""),
       )
 
-      const commitMap: Record<string, { count: number; author: Author }> = {}
+      const commitMap: { [key: string]: { author: Author; count: number } } = {}
 
       for (const { author } of commits) {
         if (author?.type !== "User") return
 
         if (Object.prototype.hasOwnProperty.call(commitMap, author.id)) {
           commitMap[author.id] = {
-            count: commitMap[author.id].count + 1,
             author,
+            count: commitMap[author.id].count + 1,
           }
         } else {
-          commitMap[author.id] = { count: 1, author }
+          commitMap[author.id] = { author, count: 1 }
         }
       }
 

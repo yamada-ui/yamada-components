@@ -1,9 +1,3 @@
-import { existsSync } from "fs"
-import { readdir, readFile } from "fs/promises"
-import path from "node:path"
-import { toKebabCase } from "@yamada-ui/react"
-import type { GetStaticPathsResult } from "next"
-import type { Locale } from "./i18n"
 import type {
   CommonMetadata,
   Component,
@@ -11,10 +5,16 @@ import type {
   Metadata,
   OriginMetadata,
 } from "component"
+import type { GetStaticPathsResult } from "next"
+import type { Locale } from "./i18n"
+import { toKebabCase } from "@yamada-ui/react"
 import { CONSTANT } from "constant"
+import { existsSync } from "fs"
+import { readdir, readFile } from "fs/promises"
+import path from "node:path"
 
 export const getComponentCategoryGroup =
-  (targetPath: string = "contents", callback?: (metadata: Metadata) => void) =>
+  (targetPath = "contents", callback?: (metadata: Metadata) => void) =>
   async (
     locale: Locale = CONSTANT.I18N.DEFAULT_LOCALE,
     currentSlug?: string,
@@ -41,8 +41,8 @@ export const getComponentCategoryGroup =
 
               callback?.({
                 ...metadata,
-                icon,
                 authors,
+                icon,
                 labels,
                 options,
               })
@@ -62,8 +62,8 @@ export const getComponentCategoryGroup =
         const slug = targetPath.replace(/\\/g, "/").replace(/^contents\//, "/")
         const isExpanded =
           slug === currentSlug ||
-          items?.some(
-            ({ slug: itemSlug, items: itemItems }) =>
+          items.some(
+            ({ items: itemItems, slug: itemSlug }) =>
               slug === itemSlug ||
               itemItems?.some(
                 ({ slug: itemItemSlug }) => slug === itemItemSlug,
@@ -72,9 +72,9 @@ export const getComponentCategoryGroup =
 
         return {
           name,
-          slug,
           isExpanded,
-          ...(items?.length ? { items } : {}),
+          slug,
+          ...(items.length ? { items } : {}),
           ...metadata!,
         }
       }),
@@ -103,7 +103,7 @@ export const getComponentCategoryGroup =
       const data = await readFile(globalMetadataPath, "utf-8")
       const globalMetadata: Metadata = JSON.parse(data)
 
-      if (globalMetadata?.options?.files?.order) {
+      if (globalMetadata.options?.files?.order) {
         const ordering = globalMetadata.options.files.order
 
         filteredComponentCategoryGroup.sort((categoryA, categoryB) => {
@@ -133,20 +133,20 @@ export const getComponentPaths =
     const getPaths =
       (componentTree?: ComponentCategoryGroup[]) =>
       (locale: string): GetStaticPathsResult["paths"] =>
-        (componentTree ?? []).flatMap(({ slug, items }) => {
+        (componentTree ?? []).flatMap(({ items, slug }) => {
           slug = slug.replace(new RegExp(`^/${categoryGroupName}/`), "")
 
           const resolvedSlug = slug.split("/")
-          if (!items) return [{ params: { slug: resolvedSlug }, locale }]
+          if (!items) return [{ locale, params: { slug: resolvedSlug } }]
 
           return [
-            { params: { slug: resolvedSlug }, locale },
+            { locale, params: { slug: resolvedSlug } },
             ...getPaths(items)(locale),
           ]
         })
 
     const paths = locales.flatMap((locale) => [
-      { params: { slug: [] }, locale },
+      { locale, params: { slug: [] } },
       ...getPaths(componentTree)(locale),
     ])
 
@@ -167,7 +167,7 @@ const getMetadata = (dirPath: string) => async (locale: Locale) => {
     const authors = json.authors ?? null
     const labels = json.labels ?? null
 
-    return { ...metadata, options, authors, labels }
+    return { ...metadata, authors, labels, options }
   } catch {
     return null
   }
@@ -203,13 +203,13 @@ export const getComponent =
 
       const paths = {
         component: validComponentPath,
-        theme: hasTheme ? validThemePath : null,
         config: hasConfig ? validConfigPath : null,
+        theme: hasTheme ? validThemePath : null,
       }
 
       const ordering = metadata?.options?.files?.order ?? []
 
-      const filePositions: Record<string, number> = {}
+      const filePositions: { [key: string]: number } = {}
       ordering.forEach((file, index) => (filePositions[file] = index))
 
       const components = (
@@ -218,7 +218,7 @@ export const getComponent =
             const filePath = path.join(dirPath, name)
             const code = await readFile(filePath, "utf-8")
 
-            return { name, path: filePath, code }
+            return { name, code, path: filePath }
           }),
         )
       ).sort((componentA, componentB) => {
@@ -255,10 +255,10 @@ export const getComponent =
 
       const data: Component = {
         name,
-        slug,
-        paths,
         components,
         metadata,
+        paths,
+        slug,
       }
 
       return data

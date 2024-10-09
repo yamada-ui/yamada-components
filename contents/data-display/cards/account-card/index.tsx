@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { GithubIcon, TwitterIcon } from "@yamada-ui/lucide"
 import {
   Button,
@@ -8,24 +9,23 @@ import {
   CardHeader,
   Divider,
   FormControl,
-  HStack,
   Heading,
+  HStack,
   Input,
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const AccountCard: FC = () => {
   return (
     <Card
-      rounded="xl"
-      variant="outline"
-      w="md"
       as="form"
+      variant="outline"
+      rounded="xl"
+      w="md"
       onSubmit={(e) => e.preventDefault()}
     >
-      <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+      <CardHeader alignItems="flex-start" flexDirection="column" gap="0">
         <Heading as="h2" size="md">
           Create an account
         </Heading>
@@ -38,15 +38,15 @@ const AccountCard: FC = () => {
       <CardBody>
         <ButtonGroup
           variant="outline"
+          flexDir={{ sm: "column" }}
           gap="sm"
           w="full"
-          flexDir={{ sm: "column" }}
         >
-          <Button w="full" leftIcon={<GithubIcon boxSize="1.25rem" />}>
+          <Button leftIcon={<GithubIcon boxSize="1.25rem" />} w="full">
             GitHub
           </Button>
 
-          <Button w="full" leftIcon={<TwitterIcon boxSize="1.25rem" />}>
+          <Button leftIcon={<TwitterIcon boxSize="1.25rem" />} w="full">
             Twitter
           </Button>
         </ButtonGroup>
@@ -54,7 +54,7 @@ const AccountCard: FC = () => {
         <HStack w="full">
           <Divider />
 
-          <Text whiteSpace="nowrap" fontSize="sm" color="muted">
+          <Text color="muted" fontSize="sm" whiteSpace="nowrap">
             OR CONTINUE WITH
           </Text>
 
@@ -73,7 +73,7 @@ const AccountCard: FC = () => {
       </CardBody>
 
       <CardFooter>
-        <Button type="submit" w="full" colorScheme="primary">
+        <Button type="submit" colorScheme="primary" w="full">
           Create account
         </Button>
       </CardFooter>

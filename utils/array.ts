@@ -3,7 +3,7 @@ export type MixedArray = string | string[] | undefined
 export const toArray = (mixedArray: MixedArray) =>
   (Array.isArray(mixedArray) ? mixedArray.flat() : [mixedArray]).filter(Boolean)
 
-export const flattenArray = <T extends any = any>(array: T[], key: keyof T) => {
+export const flattenArray = <T = any>(array: T[], key: keyof T) => {
   let result: T[] = []
 
   array.forEach((item) => {
@@ -18,7 +18,7 @@ export const flattenArray = <T extends any = any>(array: T[], key: keyof T) => {
   return result
 }
 
-export const includes = <T extends ReadonlyArray<unknown>>(
+export const includes = <T extends readonly unknown[]>(
   array: T,
   searchElement: unknown,
 ): searchElement is T[number] => array.includes(searchElement)

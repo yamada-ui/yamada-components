@@ -1,30 +1,30 @@
+import type { FC } from "react"
 import {
   Box,
-  HStack,
   Heading,
+  HStack,
   IconButton,
   Link,
   Tab,
   TabList,
   Tabs,
-  VStack,
   useDisclosure,
+  VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { useState } from "react"
 
 const userLinks = [
-  { link: "#", label: "Privacy & Security" },
-  { link: "#", label: "Account settings" },
-  { link: "#", label: "Support options" },
+  { label: "Privacy & Security", link: "#" },
+  { label: "Account settings", link: "#" },
+  { label: "Support options", link: "#" },
 ]
 
 const mainLinks = [
-  { link: "#", label: "Book a demo" },
-  { link: "#", label: "Documentation" },
-  { link: "#", label: "Community" },
-  { link: "#", label: "Academy" },
-  { link: "#", label: "Forums" },
+  { label: "Book a demo", link: "#" },
+  { label: "Documentation", link: "#" },
+  { label: "Community", link: "#" },
+  { label: "Academy", link: "#" },
+  { label: "Forums", link: "#" },
 ]
 
 const DoubleHeader: FC = () => {
@@ -35,27 +35,27 @@ const DoubleHeader: FC = () => {
     const active = i === index
     return (
       <Tab
+        key={item.label}
         as={Link}
         href={item.link}
-        key={item.label}
-        value={item.label}
+        data-active={active || undefined}
+        borderBottomColor={active ? "primary" : undefined}
+        borderBottomWidth="1"
         color={
           active ? ["black", "white"] : ["blackAlpha.700", "whiteAlpha.700"]
         }
+        fontSize="xs"
+        fontWeight={700}
+        marginBottom="-1px"
+        px="sm"
+        value={item.label}
+        _hover={{
+          color: !active ? ["black", "white"] : undefined,
+          textDecor: "none",
+        }}
         onClick={(event: { preventDefault: () => any }) =>
           event.preventDefault()
         }
-        fontSize="xs"
-        data-active={active || undefined}
-        fontWeight={700}
-        px="sm"
-        borderBottomWidth="1"
-        marginBottom="-1px"
-        borderBottomColor={active ? "primary" : undefined}
-        _hover={{
-          textDecor: "none",
-          color: !active ? ["black", "white"] : undefined,
-        }}
       >
         {item.label}
       </Tab>
@@ -64,12 +64,12 @@ const DoubleHeader: FC = () => {
 
   const secondaryItems = userLinks.map((item) => (
     <Link
-      href={item.link}
       key={item.label}
-      onClick={(event) => event.preventDefault()}
+      href={item.link}
       color={["blackAlpha.700", "whiteAlpha.700"]}
-      _hover={{ textDecor: "none", color: ["black", "white"] }}
       fontSize="xs"
+      _hover={{ color: ["black", "white"], textDecor: "none" }}
+      onClick={(event) => event.preventDefault()}
     >
       {item.label}
     </Link>
@@ -78,16 +78,16 @@ const DoubleHeader: FC = () => {
   return (
     <Box
       as="header"
-      justifyContent="space-between"
       borderBottomWidth="1px"
+      justifyContent="space-between"
       pt="sm"
       px="md"
     >
       <HStack maxW="6xl" mx="auto" pb={{ md: "sm" }}>
         <Box flex={1}>
           <Heading
-            size="md"
             as="a"
+            size="md"
             whiteSpace="nowrap"
             onClick={(e) => e.preventDefault()}
           >
@@ -95,61 +95,61 @@ const DoubleHeader: FC = () => {
           </Heading>
         </Box>
 
-        <VStack flex={1} gap="sm" display={{ base: "flex", md: "none" }}>
-          <HStack pt="md" pr="sm" gap="md" justify="flex-end">
+        <VStack display={{ base: "flex", md: "none" }} flex={1} gap="sm">
+          <HStack gap="md" justify="flex-end" pr="sm" pt="md">
             {secondaryItems}
           </HStack>
 
-          <Tabs gap="0" as="nav" onChange={onChange} variant="unstyled">
-            <TabList justifyContent="flex-end" border="none">
+          <Tabs as="nav" variant="unstyled" gap="0" onChange={onChange}>
+            <TabList border="none" justifyContent="flex-end">
               {mainItems}
             </TabList>
           </Tabs>
         </VStack>
 
         <IconButton
-          title="Menu"
           type="button"
           variant="unstyled"
           display={{ base: "none", md: "flex" }}
-          placeContent="center"
-          placeItems="center"
-          p="1"
-          onClick={onToggle}
           icon={
             <>
               <Box
-                position="absolute"
-                width="24px"
-                height="1px"
-                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
                 bg={["black", "white"]}
+                height="1px"
+                position="absolute"
+                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
                 transitionDuration="300ms"
                 transitionProperty="all"
+                width="24px"
               />
 
               <Box
-                position="absolute"
-                width="24px"
-                height="1px"
-                transform={isOpen ? "translateX(20px)" : undefined}
-                opacity={isOpen ? 0 : 1}
                 bg={["black", "white"]}
+                height="1px"
+                opacity={isOpen ? 0 : 1}
+                position="absolute"
+                transform={isOpen ? "translateX(20px)" : undefined}
                 transitionDuration="400ms"
                 transitionProperty="all"
+                width="24px"
               />
 
               <Box
-                position="absolute"
-                width="24px"
-                height="1px"
-                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
                 bg={["black", "white"]}
+                height="1px"
+                position="absolute"
+                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
                 transitionDuration="300ms"
                 transitionProperty="all"
+                width="24px"
               />
             </>
           }
+          p="1"
+          placeContent="center"
+          placeItems="center"
+          title="Menu"
+          onClick={onToggle}
         />
       </HStack>
     </Box>

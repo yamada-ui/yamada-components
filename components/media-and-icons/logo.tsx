@@ -6,8 +6,8 @@ export const Logo = forwardRef<SVGSVGElement, IconProps>(({ ...rest }, ref) => {
   return (
     <Icon
       ref={ref}
-      xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 913 196"
+      xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
       <path

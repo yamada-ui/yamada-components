@@ -1,5 +1,6 @@
+import type { FC } from "react"
 import { Box, Button, Pagination, Text, ui } from "@yamada-ui/react"
-import { useState, type FC } from "react"
+import { useState } from "react"
 
 const SimpleButton: FC = () => {
   const [page, onChange] = useState<number>(1)
@@ -7,31 +8,31 @@ const SimpleButton: FC = () => {
   return (
     <Box>
       <Pagination
-        page={page}
-        onChange={onChange}
-        total={10}
         justifyContent="center"
-        innerProps={{ display: "none" }}
-        controlPrevProps={{
-          children: (
-            <Button variant="ghost" size="sm">
-              Prev
-            </Button>
-          ),
-        }}
+        page={page}
+        total={10}
         controlNextProps={{
           children: (
-            <Button variant="ghost" size="sm">
+            <Button size="sm" variant="ghost">
               Next
             </Button>
           ),
         }}
+        controlPrevProps={{
+          children: (
+            <Button size="sm" variant="ghost">
+              Prev
+            </Button>
+          ),
+        }}
+        innerProps={{ display: "none" }}
+        onChange={onChange}
       />
       <Text
-        fontSize="sm"
         color={["gray.700", "gray.200"]}
-        textAlign="right"
+        fontSize="sm"
         mt="md"
+        textAlign="right"
       >
         Showing{" "}
         <ui.span display="inline-block" minWidth="20px" textAlign="center">

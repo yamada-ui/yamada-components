@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Alert,
   AlertIcon,
@@ -5,11 +6,10 @@ import {
   CloseButton,
   Spacer,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const WithDismissButton: FC = () => {
   return (
-    <Alert status="success" variant="subtle" maxW="5xl">
+    <Alert variant="subtle" maxW="5xl" status="success">
       <AlertIcon />
       <AlertTitle>Successfully uploaded</AlertTitle>
       <Spacer />

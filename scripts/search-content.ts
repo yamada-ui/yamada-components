@@ -1,14 +1,14 @@
-import { readFile, writeFile } from "fs/promises"
-import path from "path"
+import type { ContentType, OriginMetadata } from "component"
+import type { Content } from "search"
+import type { Locale } from "utils/i18n"
 import * as p from "@clack/prompts"
 import c from "chalk"
 import { program } from "commander"
-import { glob } from "glob"
-import { prettier } from "./utils"
-import type { ContentType, OriginMetadata } from "component"
 import { CONSTANT } from "constant"
-import type { Content } from "search"
-import type { Locale } from "utils/i18n"
+import { readFile, writeFile } from "fs/promises"
+import { glob } from "glob"
+import path from "path"
+import { prettier } from "./utils"
 
 const DEFAULT_LOCALE = CONSTANT.I18N.DEFAULT_LOCALE
 const LOCALES = CONSTANT.I18N.LOCALES.map(({ value }) => value)
@@ -72,7 +72,7 @@ const generateSearchContent = async (
         const type = getType(slug)
         const [, categoryGroup, category, component] = slug.split("/")
 
-        let hierarchy = { categoryGroup, category, component }
+        let hierarchy = { category, categoryGroup, component }
 
         hierarchy[type] = title
 
@@ -99,12 +99,12 @@ const generateSearchContent = async (
         }
 
         const content: Content = {
-          title,
-          description,
           type,
-          slug,
-          labels,
+          description,
           hierarchy,
+          labels,
+          slug,
+          title,
         }
         return content
       }),
@@ -133,7 +133,9 @@ program.action(async () => {
     s.start(`Generating table of contents and writing files`)
 
     await Promise.all(
-      LOCALES.map((locale) => generateSearchContent(metadataPaths, locale)),
+      LOCALES.map(async (locale) =>
+        generateSearchContent(metadataPaths, locale),
+      ),
     )
 
     s.stop(`Wrote files`)

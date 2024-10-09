@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { ChevronDownIcon } from "@yamada-ui/lucide"
 import {
   Button,
@@ -9,7 +10,6 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const items = [
   {
@@ -46,9 +46,9 @@ const SimpleWithDescriptions: FC = () => {
           <MenuItem key={i} as={VStack} alignItems="start" py="md">
             <Text
               as={Link}
-              onClick={(e) => e.preventDefault()}
               color={["black", "white"]}
               _hover={{ textDecor: "none" }}
+              onClick={(e) => e.preventDefault()}
             >
               {item.name}
             </Text>

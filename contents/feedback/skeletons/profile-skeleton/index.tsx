@@ -1,33 +1,33 @@
+import type { FC } from "react"
 import {
-  Button,
-  SkeletonCircle,
   Avatar,
+  Button,
+  HStack,
+  Skeleton,
+  SkeletonCircle,
   SkeletonText,
   Text,
   useBoolean,
   VStack,
-  HStack,
-  Skeleton,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const ProfileSkeleton: FC = () => {
   const [isLoaded, { toggle }] = useBoolean()
 
   return (
     <VStack maxW="md">
-      <Button onClick={toggle} colorScheme="primary" placeSelf="flex-end">
+      <Button colorScheme="primary" placeSelf="flex-end" onClick={toggle}>
         Toggle
       </Button>
       <HStack>
-        <SkeletonCircle isLoaded={isLoaded} fadeDuration={2}>
+        <SkeletonCircle fadeDuration={2} isLoaded={isLoaded}>
           <Avatar src="https://avatars.githubusercontent.com/u/157810570?v=4" />
         </SkeletonCircle>
         <SkeletonText
-          textHeight="base"
-          lineClamp={1}
-          isLoaded={isLoaded}
           fadeDuration={2}
+          isLoaded={isLoaded}
+          lineClamp={1}
+          textHeight="base"
         >
           <Text fontSize="xl">Kaito Suzuki</Text>
 
@@ -36,7 +36,7 @@ const ProfileSkeleton: FC = () => {
           </Text>
         </SkeletonText>
       </HStack>
-      <Skeleton isLoaded={isLoaded} fadeDuration={2}>
+      <Skeleton fadeDuration={2} isLoaded={isLoaded}>
         <Text fontSize="md">
           A student engineer who is studying front-end and back-end.
         </Text>

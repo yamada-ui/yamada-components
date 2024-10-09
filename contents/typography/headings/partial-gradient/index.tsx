@@ -1,5 +1,5 @@
-import { Heading } from "@yamada-ui/react"
 import type { FC } from "react"
+import { Heading } from "@yamada-ui/react"
 
 const PartialGradient: FC = () => {
   return (
@@ -7,8 +7,8 @@ const PartialGradient: FC = () => {
       Full gradient heading using{" "}
       <Heading
         as="span"
-        bgGradient="linear(to-l, #7928CA, #FF0080)"
         bgClip="text"
+        bgGradient="linear(to-l, #7928CA, #FF0080)"
       >
         Yamada UI
       </Heading>{" "}

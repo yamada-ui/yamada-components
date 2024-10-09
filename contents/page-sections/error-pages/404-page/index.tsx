@@ -7,22 +7,22 @@ const NotFound = () => {
         404
       </Heading>
 
-      <Heading as="h3" size="xl" textAlign="center" lineHeight="1">
+      <Heading as="h3" size="xl" lineHeight="1" textAlign="center">
         You have found a secret place.
       </Heading>
 
-      <Text textAlign="center" color="gray">
+      <Text color="gray" textAlign="center">
         Unfortunately, this is only a 404 page. You may have mistyped the
         address, or the page has been moved to another URL.
       </Text>
 
       <Button
         as="a"
-        w="fit-content"
         href="/"
-        onClick={(e) => e.preventDefault()}
-        variant="ghost"
         colorScheme="link"
+        variant="ghost"
+        w="fit-content"
+        onClick={(e) => e.preventDefault()}
       >
         Take me back to home page
       </Button>

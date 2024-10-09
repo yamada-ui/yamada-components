@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Box,
   Button,
@@ -7,30 +8,29 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const HeroWithContentOnLeft: FC = () => {
   return (
     <Container
       bgImage="url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)"
-      bgSize="cover"
       bgPosition="center"
-      minH="fit-content"
+      bgSize="cover"
       h="full"
+      minH="fit-content"
     >
-      <Box position="absolute" inset={0} zIndex="0" bg="blackAlpha.700" />
-      <VStack as={Center} px="xl" h="full" zIndex="1" py="xl" gap="lg">
+      <Box bg="blackAlpha.700" inset={0} position="absolute" zIndex="0" />
+      <VStack as={Center} gap="lg" h="full" px="xl" py="xl" zIndex="1">
         <Heading
           as="h2"
           size="3xl"
-          fontWeight={900}
-          maxW="xl"
           color="white"
+          fontWeight={900}
           lineHeight="1.2"
+          maxW="xl"
         >
           Unleash the Power of Styling, Animation, and Flexibility in React Apps
         </Heading>
-        <Text fontSize="xl" maxW="xl" color="white">
+        <Text color="white" fontSize="xl" maxW="xl">
           Yamada UI is a versatile React component library, unleashing the power
           of your application's animation and flexibility. It provides an
           intuitive and efficient way to integrate advanced styling into your
@@ -40,21 +40,21 @@ const HeroWithContentOnLeft: FC = () => {
         <Button
           as="a"
           href="/getting-started"
+          size="lg"
           bgGradient={[
             "linear(to-r, primary.700, primary.500)",
             "linear(to-r, primary.700, primary.500)",
           ]}
+          color="white"
+          rounded="full"
+          w="fit-content"
           _hover={{
             bgGradient: [
               "linear(to-r, primary.600, primary.400)",
               "linear(to-r, primary.600, primary.300)",
             ],
           }}
-          rounded="full"
-          w="fit-content"
-          size="lg"
           onClick={(e) => e.preventDefault()}
-          color="white"
         >
           Get started
         </Button>

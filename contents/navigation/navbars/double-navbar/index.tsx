@@ -1,6 +1,7 @@
+import type { FC } from "react"
 import {
-  ChartColumnIcon,
   CalendarIcon,
+  ChartColumnIcon,
   FingerprintIcon,
   GaugeIcon,
   HouseIcon,
@@ -19,7 +20,7 @@ import {
   Tooltip,
   VStack,
 } from "@yamada-ui/react"
-import { useState, type FC } from "react"
+import { useState } from "react"
 
 const mainLinksMockdata = [
   { icon: HouseIcon, label: "Home" },
@@ -52,17 +53,17 @@ const DoubleNavbar: FC = () => {
   return (
     <VStack
       as="nav"
-      w="300px"
-      minH="750px"
-      h="full"
       bgColor={["whiteAlpha.500", "blackAlpha.500"]}
       borderRight="1px solid"
       borderRightColor="border"
+      h="full"
+      minH="750px"
+      w="300px"
     >
       <Flex flex={1}>
         <VStack
-          alignItems="center"
           as="aside"
+          alignItems="center"
           flex="0 0 calc(3.75rem * 1)"
           pt="md"
         >
@@ -76,53 +77,53 @@ const DoubleNavbar: FC = () => {
           {mainLinksMockdata.map((link) => (
             <Tooltip key={link.label} placement="right">
               <IconButton
-                onClick={(e) => {
-                  e.preventDefault()
-                  setActive(link.label)
-                }}
-                w="44px"
-                h="44px"
-                borderRadius="md"
                 as={Center}
                 colorScheme={active === link.label ? "primary" : undefined}
                 variant={active === link.label ? "solid" : "ghost"}
                 data-active={active === link.label || undefined}
+                borderRadius="md"
+                h="44px"
                 icon={<link.icon fontSize="xl" />}
+                w="44px"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setActive(link.label)
+                }}
               />
             </Tooltip>
           ))}
         </VStack>
-        <Box flex={1} bgColor={["gray.50", "gray.900"]} pr="md">
-          <Heading mb="xl" p="md" pt="18px" h="80px" fontSize="2xl">
+        <Box bgColor={["gray.50", "gray.900"]} flex={1} pr="md">
+          <Heading fontSize="2xl" h="80px" mb="xl" p="md" pt="18px">
             {active}
           </Heading>
           {linksMockdata.map((link) => (
             <Button
-              as={Link}
               key={link}
-              data-active={activeLink === link || undefined}
+              as={Link}
               href="#"
+              variant="ghost"
+              data-active={activeLink === link || undefined}
+              alignItems="center"
+              display="flex"
+              justifyContent="left"
               onClick={(event) => {
                 event.preventDefault()
                 setActiveLink(link)
               }}
-              variant="ghost"
-              display="flex"
-              justifyContent="left"
-              alignItems="center"
               {...(link === activeLink
                 ? {
-                    color: "white",
                     backgroundColor: "primary",
+                    color: "white",
                   }
                 : {})}
+              borderBottomLeftRadius={0}
+              borderTopLeftRadius={0}
               _hover={{
-                textDecor: "none",
                 background:
                   link === activeLink ? undefined : ["gray.100", "gray.950"],
+                textDecor: "none",
               }}
-              borderTopLeftRadius={0}
-              borderBottomLeftRadius={0}
             >
               {link}
             </Button>

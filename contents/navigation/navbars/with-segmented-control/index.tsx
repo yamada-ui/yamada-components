@@ -1,9 +1,10 @@
+import type { FC } from "react"
 import {
   ArrowRightLeftIcon,
   BellRingIcon,
   DatabaseIcon,
-  FileTextIcon,
   FilesIcon,
+  FileTextIcon,
   FingerprintIcon,
   KeyIcon,
   LogOutIcon,
@@ -17,36 +18,36 @@ import {
 import {
   Box,
   Button,
-  HStack,
   Heading,
+  HStack,
   Link,
   SegmentedControl,
   SegmentedControlButton,
   Tag,
   Text,
-  VStack,
   toCamelCase,
+  VStack,
 } from "@yamada-ui/react"
-import { useState, type FC } from "react"
+import { useState } from "react"
 
 const tabs = {
   account: [
-    { link: "", label: "Notifications", icon: BellRingIcon },
-    { link: "", label: "Billing", icon: ReceiptIcon },
-    { link: "", label: "Security", icon: FingerprintIcon },
-    { link: "", label: "SSH Keys", icon: KeyIcon },
-    { link: "", label: "Databases", icon: DatabaseIcon },
-    { link: "", label: "Authentication", icon: UsersIcon },
-    { link: "", label: "Other Settings", icon: SettingsIcon },
+    { icon: BellRingIcon, label: "Notifications", link: "" },
+    { icon: ReceiptIcon, label: "Billing", link: "" },
+    { icon: FingerprintIcon, label: "Security", link: "" },
+    { icon: KeyIcon, label: "SSH Keys", link: "" },
+    { icon: DatabaseIcon, label: "Databases", link: "" },
+    { icon: UsersIcon, label: "Authentication", link: "" },
+    { icon: SettingsIcon, label: "Other Settings", link: "" },
   ],
   general: [
-    { link: "", label: "Orders", icon: ShoppingCartIcon },
-    { link: "", label: "Receipts", icon: FileTextIcon },
-    { link: "", label: "Reviews", icon: MessageSquareTextIcon },
-    { link: "", label: "Messages", icon: MessagesSquareIcon },
-    { link: "", label: "Customers", icon: UsersIcon },
-    { link: "", label: "Refunds", icon: ReceiptIcon },
-    { link: "", label: "Files", icon: FilesIcon },
+    { icon: ShoppingCartIcon, label: "Orders", link: "" },
+    { icon: FileTextIcon, label: "Receipts", link: "" },
+    { icon: MessageSquareTextIcon, label: "Reviews", link: "" },
+    { icon: MessagesSquareIcon, label: "Messages", link: "" },
+    { icon: UsersIcon, label: "Customers", link: "" },
+    { icon: ReceiptIcon, label: "Refunds", link: "" },
+    { icon: FilesIcon, label: "Files", link: "" },
   ],
 }
 
@@ -59,41 +60,41 @@ const NavbarWithSegmentedControl: FC = () => {
   return (
     <VStack
       as="nav"
-      w="300px"
-      minH="700px"
-      h="full"
-      p="md"
       borderRight="1px solid"
       borderRightColor="border"
+      h="full"
+      minH="700px"
+      p="md"
+      w="300px"
     >
       <Box flex={1}>
-        <HStack justifyContent="space-between" pb="md" mb="md" as="header">
+        <HStack as="header" justifyContent="space-between" mb="md" pb="md">
           <Heading
             as="a"
             size="md"
-            whiteSpace="nowrap"
             color={["black", "white"]}
+            whiteSpace="nowrap"
             onClick={(e) => e.preventDefault()}
           >
             Yamada UI
           </Heading>
-          <Tag fontWeight={500} fontSize="xs">
+          <Tag fontSize="xs" fontWeight={500}>
             v2.0.0
           </Tag>
         </HStack>
         <SegmentedControl
-          display="flex"
           size="sm"
+          display="flex"
           mb="xl"
+          transitionTimingFunction="ease"
           value={section}
           onChange={(value) => setSection(value as TabsKey)}
-          transitionTimingFunction="ease"
         >
           {(Object.keys(tabs) as TabsKey[]).map((tab) => (
             <SegmentedControlButton
               key={tab}
-              value={tab}
               data-active={section === tab || undefined}
+              value={tab}
             >
               {toCamelCase(tab)}
             </SegmentedControlButton>
@@ -101,18 +102,18 @@ const NavbarWithSegmentedControl: FC = () => {
         </SegmentedControl>
         {tabs[section].map((item) => (
           <Button
-            as={Link}
-            data-active={item.label === active || undefined}
-            href={item.link}
             key={item.label}
+            as={Link}
+            href={item.link}
             variant="ghost"
+            data-active={item.label === active || undefined}
+            alignItems="center"
             display="flex"
             justifyContent="left"
-            alignItems="center"
             {...(item.label === active
               ? {
-                  color: ["white", "black"],
                   backgroundColor: "primary",
+                  color: ["white", "black"],
                 }
               : {})}
             _hover={{
@@ -129,19 +130,19 @@ const NavbarWithSegmentedControl: FC = () => {
         ))}
       </Box>
 
-      <Box as="footer" pt="md" mt="md">
+      <Box as="footer" mt="md" pt="md">
         <Button
           as={Link}
           href="#"
-          onClick={(event) => event.preventDefault()}
           variant="ghost"
+          alignItems="center"
           color={["black", "white"]}
           display="flex"
           justifyContent="left"
-          alignItems="center"
           _hover={{
             textDecor: "none",
           }}
+          onClick={(event) => event.preventDefault()}
         >
           <ArrowRightLeftIcon />
           <Text>Change account</Text>
@@ -149,15 +150,15 @@ const NavbarWithSegmentedControl: FC = () => {
 
         <Button
           as={Link}
-          onClick={(event) => event.preventDefault()}
           variant="ghost"
+          alignItems="center"
           color={["black", "white"]}
           display="flex"
           justifyContent="left"
-          alignItems="center"
           _hover={{
             textDecor: "none",
           }}
+          onClick={(event) => event.preventDefault()}
         >
           <LogOutIcon />
           <Text>Logout</Text>

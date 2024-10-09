@@ -1,3 +1,4 @@
+import type { Dispatch, FC, SetStateAction } from "react"
 import { ArchiveIcon, ArchiveRestoreIcon, TrashIcon } from "@yamada-ui/lucide"
 import {
   Center,
@@ -8,45 +9,44 @@ import {
   MenuList,
   Text,
 } from "@yamada-ui/react"
-import type { Dispatch, FC, SetStateAction } from "react"
 
 export const MailItem: FC<{
   id: number
   currentId: number
-  title: string
   description: string
-  time: string
-  isArchived?: boolean
-  handleDelete?: () => void
-  handleArchive?: () => void
   setCurrentId: Dispatch<SetStateAction<number>>
+  time: string
+  title: string
+  handleArchive?: () => void
+  handleDelete?: () => void
+  isArchived?: boolean
 }> = ({
   id,
   currentId,
-  time,
   description,
-  title,
-  isArchived,
   handleArchive,
   handleDelete,
+  isArchived,
   setCurrentId,
+  time,
+  title,
 }) => {
   return (
     <ContextMenu
+      isOpen={id === currentId}
       onOpen={() => {
         setCurrentId(id)
       }}
-      isOpen={id === currentId}
     >
       <ContextMenuTrigger
         as={Center}
-        w="full"
-        p="md"
+        bgColor={id === currentId ? ["blue.200", "blue.500"] : undefined}
+        borderBottomStyle="solid"
+        borderBottomWidth="1px"
         flexDir="row"
         justifyContent="space-between"
-        borderBottomWidth="1px"
-        borderBottomStyle="solid"
-        bgColor={id === currentId ? ["blue.200", "blue.500"] : undefined}
+        p="md"
+        w="full"
       >
         <HStack gap="md">
           <Text>{title}</Text>

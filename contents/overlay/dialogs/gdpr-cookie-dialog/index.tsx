@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Button,
   Dialog,
@@ -8,22 +9,19 @@ import {
   Text,
   useDisclosure,
 } from "@yamada-ui/react"
-import { type FC, useState } from "react"
+import { useState } from "react"
 import { CategoryItem } from "./category-item"
 import { cookieData } from "./data"
 
 const ComplexCookieDialog: FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onClose, onOpen } = useDisclosure()
   const [categoryCheck, setCategoryCheck] = useState<{
     [key: number]: boolean
   }>(
-    cookieData.reduce(
-      (acc, item) => {
-        acc[item.id] = item.isChecked ?? false
-        return acc
-      },
-      {} as Record<number, boolean>,
-    ),
+    cookieData.reduce<{ [key: number]: boolean }>((acc, item) => {
+      acc[item.id] = item.isChecked ?? false
+      return acc
+    }, {}),
   )
 
   const handleCheckChange = (id: number, isChecked: boolean) => {
@@ -35,20 +33,20 @@ const ComplexCookieDialog: FC = () => {
       <Button onClick={onOpen}>Open Dialog</Button>
 
       <Dialog
-        isOpen={isOpen}
         size="6xl"
-        header="Yamada Components"
+        blockScrollOnMount={false}
         cancel="Decline"
+        header="Yamada Components"
+        isOpen={isOpen}
+        success={{
+          colorScheme: "info",
+          children: "Save & Accept",
+        }}
         onCancel={() => {
           onClose()
           setCategoryCheck({})
         }}
-        success={{
-          children: "Save & Accept",
-          colorScheme: "info",
-        }}
         onSuccess={onClose}
-        blockScrollOnMount={false}
       >
         <Tabs variant="sticky" isFitted>
           <Tab fontWeight="600">Consent</Tab>

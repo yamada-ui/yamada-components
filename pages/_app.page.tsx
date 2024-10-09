@@ -1,27 +1,27 @@
+import type { AppPropsWithConfig } from "next/app"
+import type { FC } from "react"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import {
-  UIProvider,
   createColorModeManager,
   createThemeSchemeManager,
   merge,
   runIfFunc,
+  UIProvider,
 } from "@yamada-ui/react"
-import type { AppPropsWithConfig } from "next/app"
+import { I18nProvider } from "contexts/i18n-context"
 import { Inter } from "next/font/google"
 import Head from "next/head"
-import { type FC } from "react"
-import { I18nProvider } from "contexts/i18n-context"
-import { theme, config } from "theme"
+import { config, theme } from "theme"
 
 const inter = Inter({
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin", "latin-ext"],
   style: "normal",
   display: "block",
+  subsets: ["latin", "latin-ext"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 })
 
-const App: FC<AppPropsWithConfig> = ({ Component, pageProps, router }) => {
+const App: FC<AppPropsWithConfig> = ({ Component, router, pageProps }) => {
   const { cookies } = pageProps
   const colorModeManager = createColorModeManager("ssr", cookies)
   const themeSchemeManager = createThemeSchemeManager("ssr", cookies)
@@ -33,15 +33,15 @@ const App: FC<AppPropsWithConfig> = ({ Component, pageProps, router }) => {
     <>
       <Head>
         <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Yamada Components</title>
-        <link rel="icon" href="/favicon.svg" />
+        <link href="/favicon.svg" rel="icon" />
       </Head>
 
       <UIProvider
-        theme={theme}
-        config={computedConfig}
         colorModeManager={colorModeManager}
+        config={computedConfig}
+        theme={theme}
         themeSchemeManager={themeSchemeManager}
       >
         <I18nProvider>

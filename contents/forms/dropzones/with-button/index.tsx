@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Dropzone,
   DropzoneAccept,
@@ -6,8 +7,8 @@ import {
   PDF_ACCEPT_TYPE,
 } from "@yamada-ui/dropzone"
 import { CloudUploadIcon } from "@yamada-ui/lucide"
-import { Center, Button, Text } from "@yamada-ui/react"
-import { useRef, type FC } from "react"
+import { Button, Center, Text } from "@yamada-ui/react"
+import { useRef } from "react"
 
 const WithButton: FC = () => {
   const openRef = useRef<() => void>(null)
@@ -19,12 +20,12 @@ const WithButton: FC = () => {
   return (
     <Center maxW="lg" position="relative">
       <Dropzone
-        openRef={openRef}
         accept={PDF_ACCEPT_TYPE}
-        h="xs"
         flexDir="column"
-        multiple
         gap="md"
+        h="xs"
+        multiple
+        openRef={openRef}
       >
         <Center color={["blackAlpha.800", "whiteAlpha.800"]}>
           <DropzoneAccept>
@@ -39,10 +40,10 @@ const WithButton: FC = () => {
         </Center>
 
         <Text
-          textAlign="center"
-          fontWeight={700}
-          fontSize="lg"
           color={["blackAlpha.800", "whiteAlpha.800"]}
+          fontSize="lg"
+          fontWeight={700}
+          textAlign="center"
           userSelect="none"
         >
           <DropzoneAccept>Drop files here</DropzoneAccept>
@@ -51,10 +52,10 @@ const WithButton: FC = () => {
         </Text>
 
         <Text
-          textAlign="center"
+          color="gray"
           fontSize="sm"
           mt="xs"
-          color="gray"
+          textAlign="center"
           userSelect="none"
         >
           Drag&apos;n&apos;drop files here to upload. We can accept only{" "}
@@ -63,14 +64,14 @@ const WithButton: FC = () => {
       </Dropzone>
 
       <Button
-        onClick={onOpen}
-        w="xs"
+        colorScheme="primary"
         bottom="0"
-        transform="translate(0, 50%)"
         position="absolute"
         rounded="3xl"
-        colorScheme="primary"
+        transform="translate(0, 50%)"
+        w="xs"
         z="1"
+        onClick={onOpen}
       >
         Select files
       </Button>
