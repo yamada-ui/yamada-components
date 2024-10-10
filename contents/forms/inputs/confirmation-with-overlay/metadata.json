@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "Password Confirmation with Overlay",
+    "description": "A component that allows users to enter and confirm their password, with a visual overlay indicating character matches."
+  },
+  "ja": {
+    "title": "オーバーレイ付きパスワード確認",
+    "description": "ユーザーがパスワードを入力し確認するためのコンポーネントで、文字の一致を示す視覚的なオーバーレイが表示されます。"
+  },
+  "options": {
+    "container": {
+      "p": "md",
+      "centerContent": true
+    }
+  }
+}
