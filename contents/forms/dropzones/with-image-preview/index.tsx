@@ -16,9 +16,7 @@ export const ImagePreviewDropzone: FC = () => {
 
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i]
-
+    for (const file of files) {
       setImageURL((prev) => [...prev, URL.createObjectURL(file)])
     }
     page.finish()

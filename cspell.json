@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "language": "en",
-  "words": ["Hirotomo", "jiti", "ratelimit", "tseslint"],
+  "words": ["Hirotomo", "jiti", "ratelimit", "tseslint", "yamcha"],
   "ignorePaths": ["node_modules", "pnpm-lock.yaml"]
 }

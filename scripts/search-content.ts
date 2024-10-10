@@ -72,7 +72,7 @@ const generateSearchContent = async (
         const type = getType(slug)
         const [, categoryGroup, category, component] = slug.split("/")
 
-        let hierarchy = { category, categoryGroup, component }
+        const hierarchy = { category, categoryGroup, component }
 
         hierarchy[type] = title
 

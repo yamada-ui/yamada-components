@@ -194,7 +194,14 @@ const MusicDynamicIsland: FC = () => {
           </ButtonGroup>
         </Motion>
       ) : null}
-      <audio ref={audioRef} />
+      <audio ref={audioRef} src="/audio.mp3" controls>
+        <track
+          src="/audio.vtt"
+          kind="captions"
+          label="English captions"
+          srcLang="en"
+        />
+      </audio>
     </Motion>
   )
 }

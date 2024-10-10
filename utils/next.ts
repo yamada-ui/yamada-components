@@ -17,7 +17,7 @@ import {
   getComponentPaths,
 } from "./component"
 
-export const getServerSideCommonProps = async ({
+export const getServerSideCommonProps = ({
   req,
 }: GetServerSidePropsContext) => {
   const cookies = req.headers.cookie ?? ""

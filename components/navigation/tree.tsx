@@ -283,7 +283,7 @@ const ListItemIcon: FC<ListItemIconProps> = memo(({ icon, ...rest }) => {
       return <PaintbrushIcon fontSize="2xl" {...rest} />
 
     default:
-      return <></>
+      return undefined
   }
 })
 

@@ -20,10 +20,10 @@ export const getComponentCategoryGroup =
     currentSlug?: string,
   ): Promise<ComponentCategoryGroup[]> => {
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
-    const dirents = await readdir(targetPath, { withFileTypes: true })
+    const dirs = await readdir(targetPath, { withFileTypes: true })
 
     const componentTree = await Promise.all(
-      dirents.map(async (dirent) => {
+      dirs.map(async (dirent) => {
         const name = toKebabCase(dirent.name)
         const targetPath = path.join(dirent.path, name)
 
@@ -38,7 +38,6 @@ export const getComponentCategoryGroup =
               const authors = json.authors ?? null
               const labels = json.labels ?? null
               const options = json.options ?? null
-
               callback?.({
                 ...metadata,
                 authors,
@@ -46,7 +45,9 @@ export const getComponentCategoryGroup =
                 labels,
                 options,
               })
-            } catch {}
+            } catch (e) {
+              console.error("getComponentCategoryGroup: ", e)
+            }
           }
 
           return
@@ -262,7 +263,9 @@ export const getComponent =
       }
 
       return data
-    } catch {}
+    } catch (e) {
+      console.error("getComponent Error: ", e)
+    }
   }
 
 export const checkInvalidLabels = ({ metadata, slug }: Component) => {

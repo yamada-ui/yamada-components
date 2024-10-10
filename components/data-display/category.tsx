@@ -7,9 +7,7 @@ import { memo } from "react"
 import { Authors } from "./authors"
 import { ComponentCard } from "./component-card"
 
-export interface CategoryProps {}
-
-export const Category: FC<CategoryProps> = memo(() => {
+export const Category: FC = memo(() => {
   const { category, categoryGroup } = useApp()
   const { t } = useI18n()
 
