@@ -1,10 +1,11 @@
+import type { HTMLUIProps } from "@yamada-ui/react"
 import { Box, Pagination, Text, ui } from "@yamada-ui/react"
 import { useState, type FC } from "react"
 
 const SimpleButton: FC = () => {
   const [page, onChange] = useState<number>(1)
 
-  const buttonStyles = {
+  const buttonStyles: HTMLUIProps<"button"> = {
     p: "sm",
     w: 20,
     display: "flex",
