@@ -158,15 +158,17 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
         <ThemeSchemeButton
           display={{ base: "inline-flex", lg: !isMobile ? "none" : undefined }}
         />
-
-        {CONSTANT.I18N.LOCALES.length > 1 ? (
-          <I18nButton
-            display={{
-              base: "inline-flex",
-              md: !isMobile ? "none" : undefined,
-            }}
-          />
-        ) : null}
+        {
+          /* eslint-disable @typescript-eslint/no-unnecessary-condition */
+          CONSTANT.I18N.LOCALES.length > 1 ? (
+            <I18nButton
+              display={{
+                base: "inline-flex",
+                md: !isMobile ? "none" : undefined,
+              }}
+            />
+          ) : null
+        }
 
         <ColorModeButton />
 

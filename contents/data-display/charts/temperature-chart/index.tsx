@@ -79,7 +79,7 @@ const TemperatureChart: FC = () => {
   const options = useMemo(
     () =>
       locationKeys.map((location) => ({
-        currentTemperature: (value?.[0][location] as number) ?? 0,
+        currentTemperature: (value?.[0][location] as number) || 0,
         value: location,
       })),
     [value],

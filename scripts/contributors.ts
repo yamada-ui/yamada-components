@@ -146,7 +146,7 @@ const main = async () => {
 
     p.outro(c.green(`Done in ${duration}s\n`))
   } catch (e) {
-    if (e instanceof Error) console.log(e.message)
+    if (e instanceof Error) console.error(e.message)
   }
 }
 
