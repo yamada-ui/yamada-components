@@ -1,8 +1,16 @@
-import { Box, Button, Pagination, Text, ui } from "@yamada-ui/react"
+import type { HTMLUIProps } from "@yamada-ui/react"
+import { Box, Pagination, Text, ui } from "@yamada-ui/react"
 import { useState, type FC } from "react"
 
 const SimpleButton: FC = () => {
   const [page, onChange] = useState<number>(1)
+
+  const buttonStyles: HTMLUIProps<"button"> = {
+    p: "sm",
+    w: 20,
+    display: "flex",
+    justifyContent: "center",
+  }
 
   return (
     <Box>
@@ -13,18 +21,12 @@ const SimpleButton: FC = () => {
         justifyContent="center"
         innerProps={{ display: "none" }}
         controlPrevProps={{
-          children: (
-            <Button variant="ghost" size="sm">
-              Prev
-            </Button>
-          ),
+          children: "Prev",
+          ...buttonStyles,
         }}
         controlNextProps={{
-          children: (
-            <Button variant="ghost" size="sm">
-              Next
-            </Button>
-          ),
+          children: "Next",
+          ...buttonStyles,
         }}
       />
       <Text
