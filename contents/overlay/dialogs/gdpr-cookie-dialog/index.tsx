@@ -71,7 +71,7 @@ const ComplexCookieDialog: FC = () => {
             {cookieData.map((category) => (
               <CategoryItem
                 key={category.id}
-                isChecked={categoryCheck[category.id]}
+                isChecked={categoryCheck[category.id] || false}
                 onCheckChange={(isChecked) =>
                   handleCheckChange(category.id, isChecked)
                 }
