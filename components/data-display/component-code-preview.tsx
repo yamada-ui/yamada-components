@@ -37,7 +37,9 @@ export const ComponentCodePreview = memo(
       },
       ref,
     ) => {
-      const currentCodeRef = useRef<string>(components[0].code)
+      const code =
+        components.length && components[0]?.code ? components[0].code : ""
+      const currentCodeRef = useRef<string>(code)
 
       const isVertical = codeDirection === "vertical"
 
@@ -46,7 +48,11 @@ export const ComponentCodePreview = memo(
           ref={ref}
           {...rest}
           onChange={handlerAll(rest.onChange, (index) => {
-            currentCodeRef.current = components[index].code
+            const code =
+              components.length && components[index]?.code
+                ? components[index].code
+                : ""
+            currentCodeRef.current = code
           })}
         >
           <TabList

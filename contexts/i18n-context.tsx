@@ -1,5 +1,6 @@
-import type { Dict, Path, StringLiteral } from "@yamada-ui/react"
+import type { Path, StringLiteral } from "@yamada-ui/react"
 import type { FC, PropsWithChildren } from "react"
+import type { Content } from "search"
 import type { Locale, UI } from "utils/i18n"
 import {
   getMemoizedObject as get,
@@ -22,7 +23,7 @@ import { getContents, getUI } from "utils/i18n"
 
 interface I18nContext {
   changeLocale: (locale: Locale & StringLiteral) => void
-  contents: Dict[]
+  contents: Content[]
   locale: Locale
   t: (
     path: Path<UI> | StringLiteral,

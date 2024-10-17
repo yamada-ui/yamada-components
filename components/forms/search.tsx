@@ -1,5 +1,6 @@
 import type { ButtonProps, ModalProps, StackProps } from "@yamada-ui/react"
 import type { FC, KeyboardEvent, RefObject } from "react"
+import type { Content } from "search"
 import {
   ExternalLinkIcon,
   LayoutListIcon,
@@ -162,7 +163,7 @@ const SearchModal: FC<SearchModalProps> = memo(
       new Map(),
     )
 
-    const hits = useMemo(() => {
+    const hits: Content[] = useMemo(() => {
       if (query.length < 1) return []
 
       return matchSorter(contents, query, {
@@ -204,7 +205,7 @@ const SearchModal: FC<SearchModalProps> = memo(
             setSelectedIndex(hits.length - 1)
           },
           Enter: () => {
-            if (!hits.length) return
+            if (!hits.length || !hits[selectedIndex]) return
 
             const { type, slug } = hits[selectedIndex]
 
@@ -392,7 +393,7 @@ const SearchModal: FC<SearchModalProps> = memo(
                                 query={query}
                                 markProps={{ variant: "text-accent" }}
                               >
-                                {hierarchy.category}
+                                {hierarchy.category || ""}
                               </Highlight>
                             </>
                           ) : null}

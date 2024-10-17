@@ -55,7 +55,7 @@ const DonutActive: FC = () => {
             fontSize="5xl"
             fontWeight="bold"
           >
-            {data[activeIndex].value}
+            {data[activeIndex]?.value}
           </Text>
           <Text
             as="tspan"
