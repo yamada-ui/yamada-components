@@ -1,3 +1,4 @@
+import type { HTMLUIProps } from "@yamada-ui/react"
 import type { FC } from "react"
 import { Box, Button, Pagination, Text, ui } from "@yamada-ui/react"
 import { useState } from "react"
@@ -5,18 +6,20 @@ import { useState } from "react"
 const SimpleButton: FC = () => {
   const [page, onChange] = useState<number>(1)
 
+  const buttonStyles: HTMLUIProps<"button"> = {
+    display: "flex",
+    justifyContent: "center",
+    p: "sm",
+    w: 20,
+  }
+
   return (
     <Box>
       <Pagination
         justifyContent="center"
-        page={page}
-        total={10}
         controlNextProps={{
-          children: (
-            <Button size="sm" variant="ghost">
-              Next
-            </Button>
-          ),
+          children: "Next",
+          ...buttonStyles,
         }}
         controlPrevProps={{
           children: (
