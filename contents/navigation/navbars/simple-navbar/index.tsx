@@ -33,7 +33,7 @@ const data = [
 ]
 
 const SimpleNavbar: FC = () => {
-  const [active, setActive] = useState<string>(data[0].label)
+  const [active, setActive] = useState<string>(data[0]?.label || "")
 
   return (
     <VStack
