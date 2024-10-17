@@ -18,6 +18,7 @@ const HeroWithBackgroundImage: FC = () => {
       bgPosition="center"
       minH="fit-content"
       h="full"
+      position="relative"
     >
       <Box position="absolute" inset={0} zIndex="0" bg="blackAlpha.700" />
       <VStack

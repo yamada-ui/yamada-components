@@ -17,6 +17,7 @@ const HeroWithContentOnLeft: FC = () => {
       bgPosition="center"
       minH="fit-content"
       h="full"
+      position="relative"
     >
       <Box position="absolute" inset={0} zIndex="0" bg="blackAlpha.700" />
       <VStack as={Center} px="xl" h="full" zIndex="1" py="xl" gap="lg">
