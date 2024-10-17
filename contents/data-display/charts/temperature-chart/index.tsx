@@ -47,9 +47,9 @@ const TemperatureChart: FC = () => {
       case "2w":
         return value
       case "1w":
-        return value?.filter(({ date }) => new Date(date) <= oneWeekLater)
+        return value?.filter(({ date }) => new Date(date || "") <= oneWeekLater)
       case "1d":
-        return value?.filter(({ date }) => new Date(date) <= oneDayLater)
+        return value?.filter(({ date }) => new Date(date || "") <= oneDayLater)
 
       default:
         break
@@ -79,7 +79,7 @@ const TemperatureChart: FC = () => {
   const options = useMemo(
     () =>
       locationKeys.map((location) => ({
-        currentTemperature: (value?.[0][location] as number) || 0,
+        currentTemperature: (value?.[0]?.[location] as number) || 0,
         value: location,
       })),
     [value],

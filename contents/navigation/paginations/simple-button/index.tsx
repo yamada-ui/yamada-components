@@ -17,6 +17,7 @@ const SimpleButton: FC = () => {
     <Box>
       <Pagination
         justifyContent="center"
+        total={100}
         controlNextProps={{
           children: "Next",
           ...buttonStyles,

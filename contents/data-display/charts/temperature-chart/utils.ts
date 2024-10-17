@@ -12,22 +12,23 @@ type FetchedData = {
 export const locationKeys = ["Tokyo", "Osaka", "Hokkaido", "Okinawa"]
 
 const dataFormatter = (data: FetchedData): Dict<number | string>[] => {
-  const result: Dict<number | string>[] = data[0].hourly.time.map((date) => ({
-    date,
-    formattedDate: new Date(date).toLocaleDateString("en-US", {
-      day: "numeric",
-      hour: "2-digit",
-      hour12: false,
-      minute: "2-digit",
-      month: "short",
-    }),
-  }))
+  const result: Dict<number | string>[] =
+    data[0]?.hourly.time.map((date) => ({
+      date,
+      formattedDate: new Date(date).toLocaleDateString("en-US", {
+        day: "numeric",
+        hour: "2-digit",
+        hour12: false,
+        minute: "2-digit",
+        month: "short",
+      }),
+    })) || []
 
   data.forEach(({ hourly: { temperature_2m } }, index) => {
     const locationKey = locationKeys[index]
 
     temperature_2m.forEach((temp, index) => {
-      result[index][locationKey] = temp
+      if (result[index]) result[index][locationKey || ""] = temp
     })
   })
 
