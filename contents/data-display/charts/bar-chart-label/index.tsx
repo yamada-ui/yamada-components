@@ -1,43 +1,44 @@
 import type { BarProps } from "@yamada-ui/charts"
+import type { FC } from "react"
 import { BarChart } from "@yamada-ui/charts"
-import { useMemo, type FC } from "react"
+import { useMemo } from "react"
 
 const BarChartLabel: FC = () => {
   const data = useMemo(
     () => [
-      { month: "January", desktop: 186 },
-      { month: "February", desktop: 305 },
-      { month: "March", desktop: 237 },
-      { month: "April", desktop: 73 },
-      { month: "May", desktop: 209 },
-      { month: "June", desktop: 214 },
+      { desktop: 186, month: "January" },
+      { desktop: 305, month: "February" },
+      { desktop: 237, month: "March" },
+      { desktop: 73, month: "April" },
+      { desktop: 209, month: "May" },
+      { desktop: 214, month: "June" },
     ],
     [],
   )
 
   const series: BarProps[] = useMemo(
-    () => [{ dataKey: "desktop", color: "primary.500" }],
+    () => [{ color: "primary.500", dataKey: "desktop" }],
     [],
   )
 
   return (
     <BarChart
-      mx="auto"
-      maxW="xl"
       data={data}
-      series={series}
       dataKey="month"
+      gridAxis="none"
+      maxW="xl"
+      mx="auto"
+      series={series}
+      tooltipAnimationDuration={300}
+      withYAxis={false}
+      barProps={{
+        isAnimationActive: true,
+        label: { fontSize: 14, offset: 12, position: "top" },
+        radius: 8,
+      }}
       chartProps={{
         margin: { top: 20 },
       }}
-      barProps={{
-        isAnimationActive: true,
-        radius: 8,
-        label: { position: "top", offset: 12, fontSize: 14 },
-      }}
-      withYAxis={false}
-      gridAxis="none"
-      tooltipAnimationDuration={300}
     />
   )
 }

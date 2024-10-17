@@ -1,18 +1,11 @@
-import {
-  Text,
-  VStack,
-  ui,
-  useRadio,
-  Box,
-  Center,
-  type UseRadioGroupReturn,
-} from "@yamada-ui/react"
+import type { UseRadioGroupReturn } from "@yamada-ui/react"
 import type { FC, ReactNode } from "react"
+import { Box, Center, Text, ui, useRadio, VStack } from "@yamada-ui/react"
 
 export const CustomRadio: FC<
-  ReturnType<UseRadioGroupReturn["getRadioProps"]> & { icon: ReactNode }
+  { icon: ReactNode } & ReturnType<UseRadioGroupReturn["getRadioProps"]>
 > = ({ icon, value, ...rest }) => {
-  const { getInputProps, getIconProps } = useRadio({ value, ...rest })
+  const { getIconProps, getInputProps } = useRadio({ value, ...rest })
 
   return (
     <Box as="label" w="full">
@@ -21,13 +14,15 @@ export const CustomRadio: FC<
       <Box
         as={VStack}
         {...getIconProps()}
-        cursor="pointer"
-        py={{ base: "md", sm: "sm" }}
-        px={{ base: "lg", sm: "md" }}
-        rounded="md"
-        gap="xs"
-        borderWidth="3px"
         borderColor={["blackAlpha.200", "whiteAlpha.100"]}
+        borderWidth="3px"
+        cursor="pointer"
+        gap="xs"
+        px={{ base: "lg", sm: "md" }}
+        py={{ base: "md", sm: "sm" }}
+        rounded="md"
+        transitionDuration="slow"
+        transitionProperty="background"
         _checked={{
           borderColor: ["primary", "primary"],
         }}
@@ -37,12 +32,10 @@ export const CustomRadio: FC<
             bg: ["transparent", "transparent"],
           },
         }}
-        transitionProperty="background"
-        transitionDuration="slow"
       >
         <Center>{icon}</Center>
 
-        <Text as="span" textAlign="center" fontSize={{ base: "md", sm: "xs" }}>
+        <Text as="span" fontSize={{ base: "md", sm: "xs" }} textAlign="center">
           {value}
         </Text>
       </Box>

@@ -1,11 +1,6 @@
-import {
-  Input,
-  Box,
-  VStack,
-  AnimatePresence,
-  Motion,
-} from "@yamada-ui/react"
-import { type FC, useState } from "react"
+import type { FC } from "react"
+import { AnimatePresence, Box, Input, Motion, VStack } from "@yamada-ui/react"
+import { useState } from "react"
 import { Overlay } from "./overlay"
 
 const ConfirmationWithOverlay: FC = () => {
@@ -14,40 +9,40 @@ const ConfirmationWithOverlay: FC = () => {
 
   return (
     <VStack gap="md" maxW="lg">
-      <Box position="relative" overflow="clip">
+      <Box overflow="clip" position="relative">
         <Input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter password"
           type="password"
           borderColor="gray.300"
-          borderWidth={1}
           borderRadius="md"
+          borderWidth={1}
           fontSize="15px"
+          placeholder="Enter password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <AnimatePresence>
           {confirmedPassword.length > 0 && (
             <Motion
-              display="flex"
-              justifyContent="center"
               alignItems="center"
-              position="absolute"
-              top={0}
-              left="0.5rem"
+              display="flex"
+              exit={{ height: 0, width: 0 }}
               height="full"
-              exit={{ width: 0, height: 0 }}
-              transition={{ duration: 0, delay: 0.1 }}
-              pointerEvents="none"
+              justifyContent="center"
+              left="0.5rem"
               maxW="calc($sizes.lg - 1.2rem)"
               overflow="clip"
+              pointerEvents="none"
+              position="absolute"
+              top={0}
+              transition={{ delay: 0.1, duration: 0 }}
             >
               <AnimatePresence>
                 {Array.from(confirmedPassword).map((item, index) => (
                   <Overlay
                     key={`${item}-${index}`}
-                    password={password}
                     confirmedPassword={confirmedPassword}
                     index={index}
+                    password={password}
                   />
                 ))}
               </AnimatePresence>
@@ -57,14 +52,14 @@ const ConfirmationWithOverlay: FC = () => {
       </Box>
 
       <Input
-        value={confirmedPassword}
-        onChange={(e) => setConfirmedPassword(e.target.value)}
-        placeholder="Confirm password"
         type="password"
         borderColor="gray.300"
-        borderWidth={1}
         borderRadius="md"
+        borderWidth={1}
         fontSize="15px"
+        placeholder="Confirm password"
+        value={confirmedPassword}
+        onChange={(e) => setConfirmedPassword(e.target.value)}
       />
     </VStack>
   )

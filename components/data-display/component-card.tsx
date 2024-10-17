@@ -1,3 +1,6 @@
+import type { SegmentedControlProps, StackProps } from "@yamada-ui/react"
+import type { Component } from "component"
+import type { FC, MutableRefObject } from "react"
 import {
   CodeIcon,
   DownloadIcon,
@@ -18,47 +21,44 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { SegmentedControlProps, StackProps } from "@yamada-ui/react"
-import Link from "next/link"
-import type { MutableRefObject, FC } from "react"
-import { memo, useMemo, useRef, useState } from "react"
-import { ComponentCodePreview } from "./component-code-preview"
-import { ComponentPreview } from "./component-preview"
-import type { Component } from "component"
 import { Github } from "components/media-and-icons"
 import { NextLinkIconButton } from "components/navigation"
 import { CONSTANT } from "constant"
 import { useDownload } from "hooks/use-download"
+import Link from "next/link"
+import { memo, useMemo, useRef, useState } from "react"
+import { ComponentCodePreview } from "./component-code-preview"
+import { ComponentPreview } from "./component-preview"
 
-type Mode = "preview" | "code"
+type Mode = "code" | "preview"
 
-export type ComponentCardProps = StackProps & Component
+export type ComponentCardProps = Component & StackProps
 
 export const ComponentCard = memo(
   forwardRef<ComponentCardProps, "div">(
-    ({ name, metadata, slug, paths, components, ...rest }, ref) => {
+    ({ name, components, metadata, paths, slug, ...rest }, ref) => {
       const modeRef = useRef<(mode: Mode) => void>(noop)
       const files = useMemo(
-        () => components.map(({ name, code }) => ({ path: name, data: code })),
+        () => components.map(({ name, code }) => ({ data: code, path: name })),
         [components],
       )
-      const { onDownload } = useDownload({ folderName: name, files })
+      const { onDownload } = useDownload({ files, folderName: name })
 
       return (
         <VStack
           ref={ref}
           as="article"
           borderWidth="1px"
-          rounded="md"
           gap="0"
+          rounded="md"
           {...rest}
         >
           <HStack
             as="header"
+            borderBottomWidth="1px"
             gap={{ base: "md", sm: "sm" }}
             px="md"
             py="sm"
-            borderBottomWidth="1px"
           >
             <HStack flex="1">
               <Heading as="h3" size="sm" fontWeight="semibold" lineClamp={1}>
@@ -69,8 +69,8 @@ export const ComponentCard = memo(
                 {metadata?.labels?.slice(0, 5).map((label, index) => (
                   <Link key={index} href={`/search?labels=${label}`}>
                     <Tag
-                      size="sm"
                       colorScheme="primary"
+                      size="sm"
                       variant="outline"
                       cursor="pointer"
                     >
@@ -83,49 +83,49 @@ export const ComponentCard = memo(
 
             <HStack gap="sm" z="0">
               <IconButton
-                aria-label="Download the files"
-                variant="outline"
                 size="sm"
-                display={{ base: "flex", sm: "none" }}
+                variant="outline"
+                aria-label="Download the files"
                 borderColor="border"
                 color="muted"
+                display={{ base: "flex", sm: "none" }}
                 icon={<DownloadIcon fontSize="md" />}
-                onClick={() => onDownload()}
+                onClick={async () => onDownload()}
               />
 
               <NextLinkIconButton
-                aria-label="Open component preview"
                 href={slug}
-                isExternal
-                variant="outline"
                 size="sm"
+                variant="outline"
+                aria-label="Open component preview"
                 borderColor="border"
                 color="muted"
                 icon={<ExternalLinkIcon fontSize="md" />}
+                isExternal
               />
 
               <NextLinkIconButton
-                aria-label="GitHub source code"
                 href={`${CONSTANT.SNS.GITHUB.EDIT_URL}${slug}`}
-                isExternal
-                variant="outline"
                 size="sm"
-                display={{ base: "flex", sm: "none" }}
+                variant="outline"
+                aria-label="GitHub source code"
                 borderColor="border"
                 color="muted"
+                display={{ base: "flex", sm: "none" }}
                 icon={<Github boxSize="1rem" />}
+                isExternal
               />
 
               <ViewModeControl
-                modeRef={modeRef}
                 display={{ base: "flex", sm: "none" }}
+                modeRef={modeRef}
               />
             </HStack>
           </HStack>
 
           <ComponentCardBody
             modeRef={modeRef}
-            {...{ metadata, paths, components }}
+            {...{ components, metadata, paths }}
           />
         </VStack>
       )
@@ -135,30 +135,30 @@ export const ComponentCard = memo(
 
 ComponentCard.displayName = "ComponentCard"
 
-type ViewModeControlProps = SegmentedControlProps & {
+type ViewModeControlProps = {
   modeRef: MutableRefObject<(mode: Mode) => void>
-}
+} & SegmentedControlProps
 
 const ViewModeControl: FC<ViewModeControlProps> = memo(
   ({ modeRef, ...rest }) => {
     return (
       <SegmentedControl
         size="sm"
-        minW={{ base: "xs", md: "auto" }}
         defaultValue="preview"
+        minW={{ base: "xs", md: "auto" }}
         onChange={(mode) => modeRef.current(mode as Mode)}
         {...rest}
       >
         <SegmentedControlButton value="preview">
           <Flex alignItems="center" gap="sm">
-            <EyeIcon fontSize="md" color="muted" />
+            <EyeIcon color="muted" fontSize="md" />
             <Text display={{ base: "inline", md: "none" }}>Preview</Text>
           </Flex>
         </SegmentedControlButton>
 
         <SegmentedControlButton value="code">
           <Flex alignItems="center" gap="sm">
-            <CodeIcon fontSize="md" color="muted" />
+            <CodeIcon color="muted" fontSize="md" />
             <Text display={{ base: "inline", md: "none" }}>Code</Text>
           </Flex>
         </SegmentedControlButton>
@@ -169,15 +169,12 @@ const ViewModeControl: FC<ViewModeControlProps> = memo(
 
 ViewModeControl.displayName = "ViewModeControl"
 
-type ComponentCardBodyProps = Pick<
-  Component,
-  "paths" | "components" | "metadata"
-> & {
+type ComponentCardBodyProps = {
   modeRef: MutableRefObject<(mode: Mode) => void>
-}
+} & Pick<Component, "components" | "metadata" | "paths">
 
 const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
-  ({ modeRef, paths, components, metadata }) => {
+  ({ components, metadata, modeRef, paths }) => {
     const [mode, setMode] = useState<Mode>("preview")
 
     assignRef(modeRef, setMode)
@@ -185,11 +182,11 @@ const ComponentCardBody: FC<ComponentCardBodyProps> = memo(
     return (
       <>
         <ComponentPreview
-          paths={paths}
-          containerProps={metadata?.options?.container}
-          iframe={metadata?.options?.iframe}
           display={mode === "preview" ? "flex" : "none"}
+          iframe={metadata?.options?.iframe}
+          paths={paths}
           z="1"
+          containerProps={metadata?.options?.container}
         />
         <ComponentCodePreview
           components={components}

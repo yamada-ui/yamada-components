@@ -1,59 +1,59 @@
+import type { FC } from "react"
 import {
   Card,
   CardBody,
   CardHeader,
-  Heading,
-  Text,
   Center,
-  VStack,
+  Heading,
   HStack,
   Tag,
+  Text,
+  VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { CalendarIcon } from "./calendar-icon"
 
 interface TimelineItemProps {
   date: string
-  title: string
   description: string
-  latest?: boolean
   side: "left" | "right"
+  title: string
+  latest?: boolean
 }
 
 export const TimelineItem: FC<TimelineItemProps> = ({
   date,
-  title,
   description,
   latest = false,
   side,
+  title,
 }) => (
   <Card
-    position="relative"
-    maxW="md"
     gap="sm"
+    maxW="md"
     placeSelf={side === "right" ? "flex-end" : undefined}
+    position="relative"
   >
     <Center
+      bg={["white", "black"]}
+      display={{ base: "flex", sm: "none" }}
+      fontSize="24"
+      h="6"
+      left={{ base: side === "right" ? "-3.9rem" : undefined, lg: "-3.9rem" }}
       position="absolute"
+      right={{ base: side === "left" ? "-3.75rem" : undefined, lg: undefined }}
+      rounded="full"
       top="8"
       transform="translateY(-50%)"
-      _after={{
-        position: "absolute",
-        height: "6",
-        width: "6",
-        bg: "primary",
-        opacity: 0.5,
-        rounded: "full",
-        content: { base: '""', sm: undefined },
-      }}
-      bg={["white", "black"]}
-      fontSize="24"
-      rounded="full"
       w="6"
-      h="6"
-      right={{ base: side === "left" ? "-3.75rem" : undefined, lg: undefined }}
-      left={{ base: side === "right" ? "-3.9rem" : undefined, lg: "-3.9rem" }}
-      display={{ base: "flex", sm: "none" }}
+      _after={{
+        bg: "primary",
+        content: { base: '""', sm: undefined },
+        height: "6",
+        opacity: 0.5,
+        position: "absolute",
+        rounded: "full",
+        width: "6",
+      }}
     >
       <CalendarIcon fontSize="xs" />
     </Center>
@@ -63,14 +63,14 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           <Heading as="h3" fontSize="lg">
             {title}
           </Heading>
-          {latest && <Tag>Latest</Tag>}
+          {latest ? <Tag>Latest</Tag> : null}
         </HStack>
-        <Text as="time" color="muted" fontWeight="semibold" fontSize="sm">
+        <Text as="time" color="muted" fontSize="sm" fontWeight="semibold">
           {date}
         </Text>
       </VStack>
     </CardHeader>
-    <CardBody pt="0" pb="md">
+    <CardBody pb="md" pt="0">
       <Text>{description}</Text>
     </CardBody>
   </Card>

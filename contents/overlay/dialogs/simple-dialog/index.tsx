@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { Trash2 } from "@yamada-ui/lucide"
 import {
   Button,
@@ -7,24 +8,23 @@ import {
   useDisclosure,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const SimpleDialog: FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onClose, onOpen } = useDisclosure()
   return (
     <>
       <Button onClick={onOpen}>Open Dialog</Button>
       <Dialog
-        isOpen={isOpen}
-        onClose={onClose}
+        blockScrollOnMount={false}
         cancel="Cancel"
-        onCancel={onClose}
+        isOpen={isOpen}
         success={{
           colorScheme: "danger",
           children: "Delete",
         }}
+        onCancel={onClose}
+        onClose={onClose}
         onSuccess={onClose}
-        blockScrollOnMount={false}
       >
         <DialogHeader>
           <VStack alignItems="center">

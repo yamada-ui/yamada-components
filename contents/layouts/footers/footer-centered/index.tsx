@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { InstagramIcon, TwitterIcon, YoutubeIcon } from "@yamada-ui/lucide"
 import {
   ButtonGroup,
@@ -10,14 +11,13 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const links = [
-  { link: "#", label: "Home" },
-  { link: "#", label: "Contact" },
-  { link: "#", label: "Privacy" },
-  { link: "#", label: "Terms" },
-  { link: "#", label: "About" },
+  { label: "Home", link: "#" },
+  { label: "Contact", link: "#" },
+  { label: "Privacy", link: "#" },
+  { label: "Terms", link: "#" },
+  { label: "About", link: "#" },
 ]
 
 const FooterCentered: FC = () => {
@@ -25,46 +25,46 @@ const FooterCentered: FC = () => {
     <Link
       key={link.label}
       href={link.link}
-      onClick={(e) => e.preventDefault()}
       color="muted"
+      onClick={(e) => e.preventDefault()}
     >
       {link.label}
     </Link>
   ))
 
   return (
-    <VStack alignItems="center" as="footer" gap="0">
+    <VStack as="footer" alignItems="center" gap="0">
       <Divider />
       <Flex
-        w="full"
-        justifyContent="space-between"
         alignItems="center"
         flexDirection={{ md: "column" }}
         gap={{ md: "sm" }}
+        justifyContent="space-between"
         maxW="6xl"
         px="md"
         py="lg"
+        w="full"
       >
         <HStack gap="sm" py="2">
-          <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
+          <Image src="/favicon.svg" alt="Yamada UI" height={30} width={30} />
           <Text fontSize="lg">Yamada UI</Text>
         </HStack>
         <HStack>{items}</HStack>
         <ButtonGroup gap="xs">
           <IconButton
             variant="ghost"
-            rounded="full"
             icon={<TwitterIcon fontSize="2xl" />}
+            rounded="full"
           />
           <IconButton
             variant="ghost"
-            rounded="full"
             icon={<YoutubeIcon fontSize="2xl" />}
+            rounded="full"
           />
           <IconButton
             variant="ghost"
-            rounded="full"
             icon={<InstagramIcon fontSize="2xl" />}
+            rounded="full"
           />
         </ButtonGroup>
       </Flex>

@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Button,
   Card,
@@ -5,15 +6,14 @@ import {
   CardFooter,
   CardHeader,
   Heading,
-  Text,
   Switch,
+  Text,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const CookieSettings: FC = () => {
   return (
-    <Card w="xl" rounded="xl" variant="outline">
-      <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+    <Card variant="outline" rounded="xl" w="xl">
+      <CardHeader alignItems="flex-start" flexDirection="column" gap="0">
         <Heading as="h2" size="md">
           Cookie Settings
         </Heading>
@@ -46,7 +46,7 @@ const CookieSettings: FC = () => {
       </CardBody>
 
       <CardFooter>
-        <Button w="full" variant="outline" colorScheme="primary">
+        <Button colorScheme="primary" variant="outline" w="full">
           Save Preferences
         </Button>
       </CardFooter>

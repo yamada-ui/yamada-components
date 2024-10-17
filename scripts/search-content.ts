@@ -1,14 +1,14 @@
-import { readFile, writeFile } from "fs/promises"
-import path from "path"
+import type { ContentType, OriginMetadata } from "component"
+import type { Content } from "search"
+import type { Locale } from "utils/i18n"
 import * as p from "@clack/prompts"
 import c from "chalk"
 import { program } from "commander"
-import { glob } from "glob"
-import { prettier } from "./utils"
-import type { ContentType, OriginMetadata } from "component"
 import { CONSTANT } from "constant"
-import type { Content } from "search"
-import type { Locale } from "utils/i18n"
+import { readFile, writeFile } from "fs/promises"
+import { glob } from "glob"
+import path from "path"
+import { prettier } from "./utils"
 
 const DEFAULT_LOCALE = CONSTANT.I18N.DEFAULT_LOCALE
 const LOCALES = CONSTANT.I18N.LOCALES.map(({ value }) => value)
@@ -64,47 +64,51 @@ const generateSearchContent = async (
           return null
         }
 
-        const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+        const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE].title
         const description =
-          metadata[locale]?.description ?? metadata[DEFAULT_LOCALE]?.description
+          metadata[locale]?.description ?? metadata[DEFAULT_LOCALE].description
         const labels = metadata.labels ?? []
         const slug = getSlug(metadataPath)
         const type = getType(slug)
         const [, categoryGroup, category, component] = slug.split("/")
 
-        let hierarchy = { categoryGroup, category, component }
+        const hierarchy = {
+          category: category || "",
+          categoryGroup: categoryGroup || "",
+          component: component || "",
+        }
 
         hierarchy[type] = title
 
-        if (type === "category" || type === "component") {
+        if ((type === "category" || type === "component") && categoryGroup) {
           const metadata = await getMetadata(
             path.join("contents", categoryGroup, "metadata.json"),
           )
 
           const title =
-            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE].title
 
           hierarchy.categoryGroup = title
         }
 
-        if (type === "component") {
+        if (type === "component" && categoryGroup && category) {
           const metadata = await getMetadata(
             path.join("contents", categoryGroup, category, "metadata.json"),
           )
 
           const title =
-            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE].title
 
           hierarchy.category = title
         }
 
         const content: Content = {
-          title,
-          description,
           type,
-          slug,
-          labels,
+          description,
           hierarchy,
+          labels,
+          slug,
+          title,
         }
         return content
       }),
@@ -133,7 +137,9 @@ program.action(async () => {
     s.start(`Generating table of contents and writing files`)
 
     await Promise.all(
-      LOCALES.map((locale) => generateSearchContent(metadataPaths, locale)),
+      LOCALES.map(async (locale) =>
+        generateSearchContent(metadataPaths, locale),
+      ),
     )
 
     s.stop(`Wrote files`)

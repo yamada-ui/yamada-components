@@ -1,17 +1,17 @@
-import { Avatar, Card, CardBody, GridItem, Grid, Text } from "@yamada-ui/react"
 import type { FC } from "react"
+import { Avatar, Card, CardBody, Grid, GridItem, Text } from "@yamada-ui/react"
 
 export const Comment: FC = () => {
   return (
     <Card variant="unstyled" maxW="md">
       <CardBody>
         <Grid
+          gap="sm"
+          placeItems={{ base: "start", sm: "center" }}
           templateAreas={{
             base: `"avatar user empty" "avatar content content"`,
             sm: `"avatar user empty" "content content content"`,
           }}
-          gap="sm"
-          placeItems={{ base: "start", sm: "center" }}
         >
           <GridItem area="avatar" pr={{ base: "sm", sm: "xs" }}>
             <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />

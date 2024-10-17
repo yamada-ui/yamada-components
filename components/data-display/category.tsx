@@ -1,38 +1,36 @@
-import { ChevronIcon, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import type { FC } from "react"
-import { memo } from "react"
-import { Authors } from "./authors"
-import { ComponentCard } from "./component-card"
+import { ChevronIcon, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import { NextLink } from "components/navigation"
 import { useApp } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
+import { memo } from "react"
+import { Authors } from "./authors"
+import { ComponentCard } from "./component-card"
 
-export type CategoryProps = {}
-
-export const Category: FC<CategoryProps> = memo(() => {
-  const { categoryGroup, category } = useApp()
+export const Category: FC = memo(() => {
+  const { category, categoryGroup } = useApp()
   const { t } = useI18n()
 
   return (
     <>
-      <NextLink alignSelf="start" href={categoryGroup?.slug}>
-        <ChevronIcon transform="rotate(90deg)" fontSize="1.25em" me="xs" />
+      <NextLink href={categoryGroup?.slug} alignSelf="start">
+        <ChevronIcon fontSize="1.25em" me="xs" transform="rotate(90deg)" />
         {t("component.category.back-to")}
       </NextLink>
 
       <HStack as="header" gap={{ base: "md", sm: "sm" }}>
         <HStack
+          alignItems={{ base: "end", sm: "stretch" }}
           flex="1"
           flexDirection={{ base: "row", sm: "column" }}
-          alignItems={{ base: "end", sm: "stretch" }}
           gap={{ base: "md", sm: "0" }}
         >
           <Heading
             as="h2"
             size="lg"
             fontWeight="semibold"
-            lineHeight="shorter"
             lineClamp={1}
+            lineHeight="shorter"
           >
             {category?.title}
           </Heading>

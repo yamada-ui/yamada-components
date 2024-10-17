@@ -1,20 +1,20 @@
+import type { FC } from "react"
 import { CreditCardIcon } from "@yamada-ui/lucide"
 import {
+  Autocomplete,
+  AutocompleteOption,
   Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   FormControl,
-  HStack,
   Heading,
+  HStack,
   Input,
   Text,
   useRadioGroup,
-  Autocomplete,
-  AutocompleteOption,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { AppleIcon } from "./apple"
 import { CustomRadio } from "./custom-radio"
 import { PaypalIcon } from "./paypal"
@@ -44,13 +44,13 @@ const PaymentMethod: FC = () => {
 
   return (
     <Card
+      as="form"
+      variant="outline"
       maxW="md"
       rounded="xl"
-      variant="outline"
-      as="form"
       onSubmit={(e) => e.preventDefault()}
     >
-      <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+      <CardHeader alignItems="flex-start" flexDirection="column" gap="0">
         <Heading as="h2" size="md">
           Payment method
         </Heading>
@@ -83,9 +83,9 @@ const PaymentMethod: FC = () => {
         </FormControl>
 
         <HStack
-          w="full"
           flexDirection={{ base: "row", sm: "column" }}
           gap={{ base: "sm", sm: "md" }}
+          w="full"
         >
           <FormControl isRequired label="Expires">
             <Autocomplete placeholder="Month" placement="top">
@@ -114,7 +114,7 @@ const PaymentMethod: FC = () => {
       </CardBody>
 
       <CardFooter>
-        <Button type="submit" w="full" colorScheme="primary">
+        <Button type="submit" colorScheme="primary" w="full">
           Continue
         </Button>
       </CardFooter>

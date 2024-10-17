@@ -1,19 +1,19 @@
+import type { FC } from "react"
 import { BellIcon, EyeOffIcon, UserIcon } from "@yamada-ui/lucide"
 import {
   Card,
   CardBody,
   CardHeader,
-  HStack,
   Heading,
+  HStack,
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const NotificationsCard: FC = () => {
   return (
-    <Card maxW="xl" rounded="xl" variant="outline">
-      <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+    <Card variant="outline" maxW="xl" rounded="xl">
+      <CardHeader alignItems="flex-start" flexDirection="column" gap="0">
         <Heading size="md">Notifications</Heading>
 
         <Text color="muted">Choose what you want to be notified about.</Text>
@@ -23,10 +23,10 @@ const NotificationsCard: FC = () => {
         <VStack gap="sm">
           <HStack
             cursor="pointer"
-            _hover={{ bg: ["blackAlpha.50", "whiteAlpha.50"] }}
-            w="full"
-            rounded="md"
             p="md"
+            rounded="md"
+            w="full"
+            _hover={{ bg: ["blackAlpha.50", "whiteAlpha.50"] }}
           >
             <BellIcon fontSize="2xl" />
 
@@ -37,11 +37,11 @@ const NotificationsCard: FC = () => {
           </HStack>
 
           <HStack
-            cursor="pointer"
             bg={["blackAlpha.50", "whiteAlpha.50"]}
-            w="full"
-            rounded="md"
+            cursor="pointer"
             p="md"
+            rounded="md"
+            w="full"
           >
             <UserIcon fontSize="2xl" />
 
@@ -53,10 +53,10 @@ const NotificationsCard: FC = () => {
 
           <HStack
             cursor="pointer"
-            _hover={{ bg: ["blackAlpha.50", "whiteAlpha.50"] }}
-            w="full"
-            rounded="md"
             p="md"
+            rounded="md"
+            w="full"
+            _hover={{ bg: ["blackAlpha.50", "whiteAlpha.50"] }}
           >
             <EyeOffIcon fontSize="2xl" />
 

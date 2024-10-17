@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Alert,
   AlertDescription,
@@ -5,11 +6,10 @@ import {
   AlertTitle,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const WithDescription: FC = () => {
   return (
-    <Alert status="warning" variant="subtle" alignItems="flex-start" maxW="5xl">
+    <Alert variant="subtle" alignItems="flex-start" maxW="5xl" status="warning">
       <AlertIcon />
       <VStack>
         <AlertTitle>Attention needed</AlertTitle>

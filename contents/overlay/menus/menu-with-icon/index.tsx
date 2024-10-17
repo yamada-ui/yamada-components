@@ -1,10 +1,11 @@
+import type { FC } from "react"
 import {
-  ChevronDownIcon,
   ChartBarIcon,
-  MousePointerClickIcon,
+  ChevronDownIcon,
   FingerprintIcon,
-  WorkflowIcon,
+  MousePointerClickIcon,
   RefreshCcwIcon,
+  WorkflowIcon,
 } from "@yamada-ui/lucide"
 import {
   Button,
@@ -17,7 +18,6 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const items = [
   {
@@ -61,9 +61,9 @@ const MenuWithIcon: FC = () => {
             <VStack alignItems="start">
               <Text
                 as={Link}
-                onClick={(e) => e.preventDefault()}
                 color={["black", "white"]}
                 _hover={{ textDecor: "none" }}
+                onClick={(e) => e.preventDefault()}
               >
                 {item.name}
               </Text>

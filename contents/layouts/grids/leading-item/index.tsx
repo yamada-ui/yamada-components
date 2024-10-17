@@ -3,18 +3,12 @@ import { Grid, GridItem } from "@yamada-ui/react"
 const LeadingItem = () => {
   return (
     <Grid
-      w="full"
-      maxW="4xl"
       gap="md"
+      maxW="4xl"
       templateAreas={{
         base: `
           "one one two two"
           "one one three four"
-        `,
-        md: `
-          "one one"
-          "two two"
-          "three four"
         `,
         sm: `
           "one"
@@ -22,12 +16,18 @@ const LeadingItem = () => {
           "three"
           "four"
         `,
+        md: `
+          "one one"
+          "two two"
+          "three four"
+        `,
       }}
+      w="full"
     >
-      <GridItem area="one" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="two" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="three" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="four" w="full" minH="4xs" rounded="md" bg="primary" />
+      <GridItem area="one" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="two" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="three" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="four" bg="primary" minH="4xs" rounded="md" w="full" />
     </Grid>
   )
 }

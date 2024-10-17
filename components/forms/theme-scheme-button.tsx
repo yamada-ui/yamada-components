@@ -1,5 +1,6 @@
-import { PaletteIcon } from "@yamada-ui/lucide"
 import type { BoxProps, IconButtonProps, PopoverProps } from "@yamada-ui/react"
+import type { FC } from "react"
+import { PaletteIcon } from "@yamada-ui/lucide"
 import {
   Box,
   IconButton,
@@ -12,33 +13,32 @@ import {
   useRipple,
   useTheme,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { memo } from "react"
 
-export type ThemeSchemeButtonProps = IconButtonProps & {
+export type ThemeSchemeButtonProps = {
   popoverProps?: PopoverProps
-}
+} & IconButtonProps
 
 export const ThemeSchemeButton: FC<ThemeSchemeButtonProps> = memo(
   ({ popoverProps, ...rest }) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const { theme, changeThemeScheme } = useTheme()
+    const { isOpen, onClose, onOpen } = useDisclosure()
+    const { changeThemeScheme, theme } = useTheme()
     const { colorSchemes = [] } = theme
 
     return (
       <Popover
         {...popoverProps}
-        isOpen={isOpen}
-        onOpen={onOpen}
-        onClose={onClose}
-        placement="bottom"
         closeOnButton={false}
+        isOpen={isOpen}
+        placement="bottom"
         restoreFocus={false}
+        onClose={onClose}
+        onOpen={onOpen}
       >
         <PopoverTrigger>
           <IconButton
-            aria-label="Open color mode switching menu"
             variant="ghost"
+            aria-label="Open color mode switching menu"
             color="muted"
             icon={<PaletteIcon fontSize="2xl" />}
             {...rest}
@@ -69,9 +69,9 @@ export const ThemeSchemeButton: FC<ThemeSchemeButtonProps> = memo(
 
 ThemeSchemeButton.displayName = "ThemeSchemeButton"
 
-type ColorButtonProps = BoxProps & {
+type ColorButtonProps = {
   colorScheme: string
-}
+} & BoxProps
 
 const ColorButton: FC<ColorButtonProps> = memo(({ colorScheme, ...rest }) => {
   const { onPointerDown, ...rippleProps } = useRipple({})
@@ -80,19 +80,19 @@ const ColorButton: FC<ColorButtonProps> = memo(({ colorScheme, ...rest }) => {
     <Box
       as="button"
       type="button"
-      position="relative"
-      overflow="hidden"
       bg={`${colorScheme}.500`}
-      minW={{ base: "12", md: "10" }}
-      minH={{ base: "12", md: "10" }}
-      rounded="md"
       boxShadow="inner"
+      minH={{ base: "12", md: "10" }}
+      minW={{ base: "12", md: "10" }}
       outline="0"
-      _hover={{ bg: `${colorScheme}.600` }}
+      overflow="hidden"
+      position="relative"
+      rounded="md"
+      transitionDuration="slower"
+      transitionProperty="common"
       _active={{ bg: `${colorScheme}.700` }}
       _focusVisible={{ shadow: "outline" }}
-      transitionProperty="common"
-      transitionDuration="slower"
+      _hover={{ bg: `${colorScheme}.600` }}
       {...rest}
       onPointerDown={onPointerDown}
     >

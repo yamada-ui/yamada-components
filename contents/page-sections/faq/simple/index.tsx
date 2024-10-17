@@ -1,8 +1,8 @@
-import { Accordion, AccordionItem, VStack, Heading } from "@yamada-ui/react"
+import { Accordion, AccordionItem, Heading, VStack } from "@yamada-ui/react"
 
 const Simple = () => {
   return (
-    <VStack gap="lg" py="xl" px="md">
+    <VStack gap="lg" px="md" py="xl">
       <Heading textAlign="center">Frequently Asked Questions</Heading>
       <Accordion variant="card" isToggle maxW="2xl" mx="auto">
         <AccordionItem label="How can I reset my password?">

@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { BookmarkIcon } from "@yamada-ui/lucide"
 import {
   Button,
@@ -6,17 +7,16 @@ import {
   CardFooter,
   CardHeader,
   Heading,
-  Text,
-  VStack,
-  Spacer,
   IconButton,
   Image,
+  Spacer,
+  Text,
+  VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const BookmarkCard: FC = () => {
   return (
-    <Card w="md" rounded="xl" variant="outline">
+    <Card variant="outline" rounded="xl" w="md">
       <CardHeader>
         <VStack gap="xs">
           <Heading as="h2" size="md">
@@ -33,8 +33,8 @@ const BookmarkCard: FC = () => {
         <Image
           src="https://images.pexels.com/photos/248195/pexels-photo-248195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Japan"
-          w="full"
           rounded="md"
+          w="full"
         />
       </CardBody>
 

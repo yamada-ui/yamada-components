@@ -1,30 +1,30 @@
 import type { UseRadioGroupProps, UseRadioGroupReturn } from "@yamada-ui/react"
+import type { FC } from "react"
 import {
   Box,
   Input,
+  Stack,
+  Text,
   useRadio,
   useRadioGroup,
-  Text,
-  Stack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
-type CustomRadioProps = ReturnType<UseRadioGroupReturn["getRadioProps"]> & {
+type CustomRadioProps = {
   currentTemperature: number
-}
+} & ReturnType<UseRadioGroupReturn["getRadioProps"]>
 
 const CustomRadio: FC<CustomRadioProps> = ({
   currentTemperature,
   ...props
 }) => {
-  const { getInputProps, getIconProps, getContainerProps } = useRadio(props)
+  const { getContainerProps, getIconProps, getInputProps } = useRadio(props)
 
   return (
     <Box
       as="label"
-      w="full"
       borderLeftWidth={{ base: "1px", lg: 0 }}
       borderTopWidth={{ base: 0, lg: "1px" }}
+      w="full"
       {...getContainerProps()}
     >
       <Input {...getInputProps()} />
@@ -32,17 +32,17 @@ const CustomRadio: FC<CustomRadioProps> = ({
       <Box
         {...getIconProps()}
         cursor="pointer"
-        py={{ base: "lg", sm: "sm" }}
         px={{ base: "lg", sm: "md" }}
+        py={{ base: "lg", sm: "sm" }}
         _checked={{
           bg: ["blackAlpha.50", "whiteAlpha.100"],
         }}
       >
-        <Text fontSize="md" color={["blackAlpha.700", "whiteAlpha.600"]}>
+        <Text color={["blackAlpha.700", "whiteAlpha.600"]} fontSize="md">
           {props.value}
         </Text>
 
-        <Text fontWeight="bold" fontSize="2xl" minW="5xs">
+        <Text fontSize="2xl" fontWeight="bold" minW="5xs">
           {currentTemperature}℃
         </Text>
       </Box>
@@ -50,21 +50,21 @@ const CustomRadio: FC<CustomRadioProps> = ({
   )
 }
 
-export type CustomRadioGroupProps = UseRadioGroupProps<string> & {
-  options: { value: string; currentTemperature: number }[]
-}
+export type CustomRadioGroupProps = {
+  options: { currentTemperature: number; value: string }[]
+} & UseRadioGroupProps
 
 const CustomRadioGroup = ({ options, ...props }: CustomRadioGroupProps) => {
   const { getContainerProps, getRadioProps } = useRadioGroup<string>(props)
 
   return (
     <Stack
-      w="full"
-      gap={0}
       direction={{ base: "row", sm: "column" }}
+      gap={0}
+      w="full"
       {...getContainerProps()}
     >
-      {options.map(({ value, currentTemperature }, index) => (
+      {options.map(({ currentTemperature, value }, index) => (
         <CustomRadio
           key={index}
           currentTemperature={currentTemperature}

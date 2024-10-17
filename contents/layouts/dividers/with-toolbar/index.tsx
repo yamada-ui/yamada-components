@@ -1,11 +1,11 @@
+import type { FC } from "react"
 import {
   MessageSquareIcon,
   PaperclipIcon,
   PenIcon,
   Trash2Icon,
 } from "@yamada-ui/lucide"
-import { HStack, Divider, ButtonGroup, IconButton } from "@yamada-ui/react"
-import type { FC } from "react"
+import { ButtonGroup, Divider, HStack, IconButton } from "@yamada-ui/react"
 
 const WithToolbar: FC = () => {
   return (
@@ -13,10 +13,10 @@ const WithToolbar: FC = () => {
       <Divider />
 
       <ButtonGroup isAttached>
-        <IconButton icon={<PenIcon />} variant="outline" />
-        <IconButton icon={<PaperclipIcon />} variant="outline" />
-        <IconButton icon={<MessageSquareIcon />} variant="outline" />
-        <IconButton icon={<Trash2Icon />} variant="outline" />
+        <IconButton variant="outline" icon={<PenIcon />} />
+        <IconButton variant="outline" icon={<PaperclipIcon />} />
+        <IconButton variant="outline" icon={<MessageSquareIcon />} />
+        <IconButton variant="outline" icon={<Trash2Icon />} />
       </ButtonGroup>
 
       <Divider />

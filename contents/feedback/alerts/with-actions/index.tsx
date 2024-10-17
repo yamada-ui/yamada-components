@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Alert,
   AlertDescription,
@@ -7,11 +8,10 @@ import {
   ButtonGroup,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const WithActions: FC = () => {
   return (
-    <Alert status="success" variant="subtle" alignItems="flex-start" maxW="5xl">
+    <Alert variant="subtle" alignItems="flex-start" maxW="5xl" status="success">
       <AlertIcon />
       <VStack gap={3}>
         <AlertTitle>Order completed</AlertTitle>
@@ -20,10 +20,10 @@ const WithActions: FC = () => {
           pariatur, ipsum similique veniam.
         </AlertDescription>
         <ButtonGroup gap="md">
-          <Button variant="ghost" colorScheme="success">
+          <Button colorScheme="success" variant="ghost">
             View Status
           </Button>
-          <Button variant="ghost" colorScheme="success">
+          <Button colorScheme="success" variant="ghost">
             Dismiss
           </Button>
         </ButtonGroup>

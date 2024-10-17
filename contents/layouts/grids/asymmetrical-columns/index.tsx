@@ -3,9 +3,8 @@ import { Grid, GridItem } from "@yamada-ui/react"
 const GridAsymmetrical = () => {
   return (
     <Grid
-      w="full"
-      maxW="4xl"
       gap="md"
+      maxW="4xl"
       templateAreas={{
         base: `
           "one one two two two"
@@ -22,14 +21,15 @@ const GridAsymmetrical = () => {
           "seven"
         `,
       }}
+      w="full"
     >
-      <GridItem area="one" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="two" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="three" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="four" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="five" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="six" w="full" minH="4xs" rounded="md" bg="primary" />
-      <GridItem area="seven" w="full" minH="4xs" rounded="md" bg="primary" />
+      <GridItem area="one" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="two" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="three" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="four" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="five" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="six" bg="primary" minH="4xs" rounded="md" w="full" />
+      <GridItem area="seven" bg="primary" minH="4xs" rounded="md" w="full" />
     </Grid>
   )
 }

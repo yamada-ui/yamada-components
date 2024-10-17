@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Box,
   Button,
@@ -7,35 +8,34 @@ import {
   IconButton,
   useDisclosure,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { useState } from "react"
 
 const links = [
-  { link: "/about", label: "Features" },
-  { link: "/pricing", label: "Pricing" },
-  { link: "/learn", label: "Learn" },
-  { link: "/community", label: "Community" },
+  { label: "Features", link: "/about" },
+  { label: "Pricing", link: "/pricing" },
+  { label: "Learn", link: "/learn" },
+  { label: "Community", link: "/community" },
 ]
 
 const HeaderSimple: FC = () => {
-  const [active, setActive] = useState<string>(links[0].label)
+  const [active, setActive] = useState<string>(links[0]?.label || "")
   const { isOpen, onToggle } = useDisclosure()
 
   const items = links.map((link) => (
     <Button
       key={link.label}
-      variant={active === link.label ? "solid" : "ghost"}
-      colorScheme={active === link.label ? "primary" : undefined}
       as="a"
       href={link.link}
+      colorScheme={active === link.label ? "primary" : undefined}
+      size="sm"
+      variant={active === link.label ? "solid" : "ghost"}
       data-active={active === link.label || undefined}
+      borderRadius="sm"
       fontSize="xs"
+      fontWeight={500}
+      lineHeight="1"
       px="sm"
       py="xs"
-      lineHeight="1"
-      size="sm"
-      borderRadius="sm"
-      fontWeight={500}
       onClick={(event) => {
         event.preventDefault()
         setActive(link.label)
@@ -46,7 +46,7 @@ const HeaderSimple: FC = () => {
   ))
 
   return (
-    <Box as="header" p="md" borderBottomWidth="1">
+    <Box as="header" borderBottomWidth="1" p="md">
       <Container flexDir="row" maxW="6xl" mx="auto" p={0}>
         <Box flex={1}>
           <Heading
@@ -58,48 +58,48 @@ const HeaderSimple: FC = () => {
             Yamada UI
           </Heading>
         </Box>
-        <ButtonGroup display={{ md: "none", base: "flex" }} gap="sm" as="nav">
+        <ButtonGroup as="nav" display={{ base: "flex", md: "none" }} gap="sm">
           {items}
         </ButtonGroup>
         <IconButton
-          title="Menu"
           type="button"
           variant="unstyled"
-          p="1"
-          onClick={onToggle}
-          display={{ md: "block", base: "none" }}
+          display={{ base: "none", md: "block" }}
           icon={
             <>
               <Box
-                position="absolute"
-                width="24px"
-                height="1px"
-                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
                 bg={["black", "white"]}
+                height="1px"
+                position="absolute"
+                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
                 transitionDuration="300ms"
                 transitionProperty="all"
+                width="24px"
               />
               <Box
-                position="absolute"
-                width="24px"
-                height="1px"
-                transform={isOpen ? "translateX(20px)" : undefined}
-                opacity={isOpen ? 0 : 1}
                 bg={["black", "white"]}
+                height="1px"
+                opacity={isOpen ? 0 : 1}
+                position="absolute"
+                transform={isOpen ? "translateX(20px)" : undefined}
                 transitionDuration="400ms"
                 transitionProperty="all"
+                width="24px"
               />
               <Box
-                position="absolute"
-                width="24px"
-                height="1px"
-                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
                 bg={["black", "white"]}
+                height="1px"
+                position="absolute"
+                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
                 transitionDuration="300ms"
                 transitionProperty="all"
+                width="24px"
               />
             </>
           }
+          p="1"
+          title="Menu"
+          onClick={onToggle}
         />
       </Container>
     </Box>

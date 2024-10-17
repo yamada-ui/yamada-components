@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Button,
   Card,
@@ -6,21 +7,20 @@ import {
   CardHeader,
   Divider,
   Heading,
-  Text,
   Spacer,
   Tag,
+  Text,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const ImageCard: FC = () => {
   return (
     <Card
-      maxW="xl"
-      rounded="xl"
       variant="outline"
-      h="sm"
       bgImage="https://picsum.photos/400?grayscale"
       bgSize="cover"
+      h="sm"
+      maxW="xl"
+      rounded="xl"
     >
       <CardHeader>
         <Tag>New</Tag>
@@ -37,8 +37,8 @@ const ImageCard: FC = () => {
       <CardFooter
         backdropFilter="blur(10px)"
         bg="blackAlpha.500"
-        roundedBottom="xl"
         pt={4}
+        roundedBottom="xl"
       >
         <Text color="white">Captured on 26 March 2024</Text>
 

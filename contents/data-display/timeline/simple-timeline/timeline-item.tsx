@@ -1,48 +1,48 @@
+import type { FC } from "react"
 import {
+  Badge,
   Box,
   Card,
   CardBody,
   CardHeader,
   Heading,
-  Badge,
-  Text,
   ListItem,
+  Text,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 interface TimelineItemProps {
   date: string
-  title: string
   description: string
+  title: string
 }
 
 export const TimelineItem: FC<TimelineItemProps> = ({
   date,
-  title,
   description,
+  title,
 }) => (
   <Card
     as={ListItem}
     variant="subtle"
-    position="relative"
-    maxW="xl"
     bg="transparent"
-    pt="sm"
     gap="sm"
+    maxW="xl"
+    position="relative"
+    pt="sm"
   >
-    <Badge position="absolute" top="0" left="md" colorScheme="primary">
+    <Badge colorScheme="primary" left="md" position="absolute" top="0">
       {date}
     </Badge>
     <Box
-      position="absolute"
-      left="-2.05rem"
-      top="15%"
-      transform="translateY(-50%)"
       bg="primary"
       fontSize="24"
-      rounded="full"
-      w="3"
       h="3"
+      left="-2.05rem"
+      position="absolute"
+      rounded="full"
+      top="15%"
+      transform="translateY(-50%)"
+      w="3"
     />
     <CardHeader>
       <Heading as="h3" fontSize="lg">

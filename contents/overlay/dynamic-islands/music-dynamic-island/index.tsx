@@ -1,27 +1,27 @@
+import type { FC } from "react"
 import {
-  PauseIcon,
-  PlayIcon,
+  AudioLinesIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  AudioLinesIcon,
   ImageIcon,
+  PauseIcon,
+  PlayIcon,
 } from "@yamada-ui/lucide"
 import {
-  Center,
-  Motion,
-  useOutsideClick,
-  IconButton,
-  Text,
-  Progress,
+  AnimatePresence,
   Box,
   ButtonGroup,
+  Center,
   HStack,
-  AnimatePresence,
-  useDisclosure,
-  useBreakpointValue,
+  IconButton,
+  Motion,
+  Progress,
+  Text,
   useBoolean,
+  useBreakpointValue,
+  useDisclosure,
+  useOutsideClick,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { useRef } from "react"
 
 const MusicDynamicIsland: FC = () => {
@@ -55,51 +55,51 @@ const MusicDynamicIsland: FC = () => {
 
   return (
     <Motion
+      ref={ref}
+      alignItems="center"
+      animate={{
+        height: isOpen ? 200 : 40,
+        paddingBlock: isOpen ? "1.5rem" : "0.5rem",
+        paddingInline: isOpen ? "1rem" : "0.4rem",
+        width: isOpen ? width : 200,
+      }}
+      bg={["black", "blackAlpha.600"]}
+      bottom="lg"
+      cursor="pointer"
       display="flex"
       initial={{
-        width: 200,
         height: 40,
-        paddingInline: "0.4rem",
         paddingBlock: "0.5rem",
+        paddingInline: "0.4rem",
+        width: 200,
       }}
-      animate={{
-        width: isOpen ? width : 200,
-        height: isOpen ? 200 : 40,
-        paddingInline: isOpen ? "1rem" : "0.4rem",
-        paddingBlock: isOpen ? "1.5rem" : "0.5rem",
-      }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      justifyContent="space-between"
+      left="50%"
+      position="fixed"
+      rounded="3xl"
+      shadow="xl"
+      transform="translateX(-50%)"
+      transition={{ type: "spring", damping: 20, stiffness: 300 }}
       onClick={handleExpand}
       onMouseEnter={onOpen}
       onMouseLeave={onClose}
-      bg={["black", "blackAlpha.600"]}
-      shadow="xl"
-      justifyContent="space-between"
-      alignItems="center"
-      cursor="pointer"
-      position="fixed"
-      bottom="lg"
-      left="50%"
-      transform="translateX(-50%)"
-      rounded="3xl"
-      ref={ref}
     >
       <AnimatePresence>
         {!isOpen && (
           <>
             <Center
               as={Motion}
-              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              position="absolute"
+              initial={{ opacity: 0 }}
               left="md"
+              position="absolute"
             >
               <ImageIcon color="white" fontSize="xl" />
             </Center>
             <Center
               as={Motion}
-              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              initial={{ opacity: 0 }}
               position="absolute"
               right="md"
             >
@@ -109,26 +109,26 @@ const MusicDynamicIsland: FC = () => {
         )}
       </AnimatePresence>
 
-      {isOpen && (
+      {isOpen ? (
         <Motion
+          alignItems="stretch"
+          animate={{ opacity: 1 }}
           display="flex"
           flexDirection="column"
-          alignItems="stretch"
-          w="full"
           gap="md"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          width="full"
           px="md"
+          transition={{ delay: 0.2, duration: 0.5 }}
+          w="full"
+          width="full"
         >
-          <HStack w="full" justify="space-between">
+          <HStack justify="space-between" w="full">
             <ImageIcon color="white" fontSize="4xl" />
-            <Box ml="md" flex="1">
-              <Text fontSize="lg" color="white">
+            <Box flex="1" ml="md">
+              <Text color="white" fontSize="lg">
                 Your Song Title
               </Text>
-              <Text fontSize="sm" color="whiteAlpha.700">
+              <Text color="whiteAlpha.700" fontSize="sm">
                 Artist Name
               </Text>
             </Box>
@@ -136,35 +136,36 @@ const MusicDynamicIsland: FC = () => {
           </HStack>
 
           <HStack w="full">
-            <Text fontSize="xs" color="whiteAlpha.700">
+            <Text color="whiteAlpha.700" fontSize="xs">
               0:30
             </Text>
             <Progress
-              value={(30 / (120 + 45)) * 100}
               size="sm"
               bg="whiteAlpha.200"
               filledTrackColor="white"
-              rounded="full"
               flex="1"
               hasStripe
               isStripeAnimation
+              rounded="full"
+              value={(30 / (120 + 45)) * 100}
             />
-            <Text fontSize="xs" color="whiteAlpha.700">
+            <Text color="whiteAlpha.700" fontSize="xs">
               -2:45
             </Text>
           </HStack>
 
           <ButtonGroup as={Center} size="lg" variant="ghost">
             <IconButton
+              colorScheme="whiteAlpha"
               aria-label="Previous"
               icon={<ChevronLeftIcon fontSize="xl" />}
-              onClick={handlePrev}
-              colorScheme="whiteAlpha"
               _hover={{
                 bg: "whiteAlpha.50",
               }}
+              onClick={handlePrev}
             />
             <IconButton
+              colorScheme="whiteAlpha"
               aria-label={isPlaying ? "Pause" : "Play"}
               icon={
                 isPlaying ? (
@@ -173,28 +174,34 @@ const MusicDynamicIsland: FC = () => {
                   <PlayIcon fontSize="xl" />
                 )
               }
+              _hover={{
+                bg: "whiteAlpha.50",
+              }}
               onClick={(event) => {
                 event.stopPropagation()
                 toggle()
               }}
-              colorScheme="whiteAlpha"
-              _hover={{
-                bg: "whiteAlpha.50",
-              }}
             />
             <IconButton
+              colorScheme="whiteAlpha"
               aria-label="Next"
               icon={<ChevronRightIcon fontSize="xl" />}
-              onClick={handleNext}
-              colorScheme="whiteAlpha"
               _hover={{
                 bg: "whiteAlpha.50",
               }}
+              onClick={handleNext}
             />
           </ButtonGroup>
         </Motion>
-      )}
-      <audio ref={audioRef} />
+      ) : null}
+      <audio ref={audioRef} src="/audio.mp3" controls>
+        <track
+          src="/audio.vtt"
+          kind="captions"
+          label="English captions"
+          srcLang="en"
+        />
+      </audio>
     </Motion>
   )
 }

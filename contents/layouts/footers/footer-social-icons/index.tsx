@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { InstagramIcon, TwitterIcon, YoutubeIcon } from "@yamada-ui/lucide"
 import {
   ButtonGroup,
@@ -9,24 +10,23 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const FooterCentered: FC = () => {
   return (
     <VStack as="footer" gap="0" placeItems="center">
       <Divider />
       <Flex
-        w="full"
-        justifyContent="space-between"
         alignItems="center"
         flexDir={{ sm: "column" }}
         gap={{ sm: "sm" }}
+        justifyContent="space-between"
+        maxW="6xl"
         px="md"
         py="lg"
-        maxW="6xl"
+        w="full"
       >
         <HStack gap="sm">
-          <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
+          <Image src="/favicon.svg" alt="Yamada UI" height={30} width={30} />
           <Text fontSize="lg">Yamada UI</Text>
         </HStack>
         <ButtonGroup gap="xs">

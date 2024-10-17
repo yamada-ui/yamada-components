@@ -1,5 +1,6 @@
+import type { ColorMode, IconButtonProps, MenuProps } from "@yamada-ui/react"
+import type { FC } from "react"
 import { MoonIcon, SunIcon } from "@yamada-ui/lucide"
-import type { IconButtonProps, MenuProps, ColorMode } from "@yamada-ui/react"
 import {
   IconButton,
   Menu,
@@ -10,41 +11,40 @@ import {
   useBreakpointValue,
   useColorMode,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { memo } from "react"
 
-export type ColorModeButtonProps = IconButtonProps & {
+export type ColorModeButtonProps = {
   menuProps?: MenuProps
-}
+} & IconButtonProps
 
 export const ColorModeButton: FC<ColorModeButtonProps> = memo(
   ({ menuProps, ...rest }) => {
     const padding = useBreakpointValue({ base: 32, md: 16 })
-    const { colorMode, internalColorMode, changeColorMode } = useColorMode()
+    const { changeColorMode, colorMode, internalColorMode } = useColorMode()
 
     return (
       <Menu
-        placement="bottom"
         modifiers={[
           {
             name: "preventOverflow",
             options: {
               padding: {
-                top: padding,
                 bottom: padding,
                 left: padding,
                 right: padding,
+                top: padding,
               },
             },
           },
         ]}
+        placement="bottom"
         restoreFocus={false}
         {...menuProps}
       >
         <MenuButton
           as={IconButton}
-          aria-label="Open color mode switching menu"
           variant="ghost"
+          aria-label="Open color mode switching menu"
           color="muted"
           icon={
             colorMode === "dark" ? (
@@ -57,18 +57,18 @@ export const ColorModeButton: FC<ColorModeButtonProps> = memo(
         />
 
         <MenuList>
-          <MenuOptionGroup<ColorMode | "system">
+          <MenuOptionGroup<"system" | ColorMode>
+            type="radio"
             value={internalColorMode}
             onChange={changeColorMode}
-            type="radio"
           >
-            <MenuOptionItem value="light" closeOnSelect>
+            <MenuOptionItem closeOnSelect value="light">
               Light
             </MenuOptionItem>
-            <MenuOptionItem value="dark" closeOnSelect>
+            <MenuOptionItem closeOnSelect value="dark">
               Dark
             </MenuOptionItem>
-            <MenuOptionItem value="system" closeOnSelect>
+            <MenuOptionItem closeOnSelect value="system">
               System
             </MenuOptionItem>
           </MenuOptionGroup>

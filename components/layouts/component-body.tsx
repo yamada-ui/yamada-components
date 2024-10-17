@@ -1,3 +1,10 @@
+import type {
+  ResizableItemControl,
+  ResizableProps,
+  ResizableStorage,
+} from "@yamada-ui/react"
+import type { CodeDirection } from "layouts/component-layout"
+import type { SetStateAction } from "react"
 import {
   forwardRef,
   Resizable,
@@ -5,42 +12,33 @@ import {
   ResizableTrigger,
   useBreakpoint,
 } from "@yamada-ui/react"
-import type {
-  ResizableItemControl,
-  ResizableProps,
-  ResizableStorage,
-} from "@yamada-ui/react"
-import type { SetStateAction } from "react"
-import { memo, useEffect, useMemo, useRef } from "react"
 import { ComponentCodePreview, ComponentPreview } from "components/data-display"
 import { CONSTANT } from "constant"
 import { useComponent } from "contexts/component-context"
-import {
-  MOBILE_BREAKPOINTS,
-  type CodeDirection,
-} from "layouts/component-layout"
+import { MOBILE_BREAKPOINTS } from "layouts/component-layout"
+import { memo, useEffect, useMemo, useRef } from "react"
 
-export type ComponentBodyProps = ResizableProps & {
+export type ComponentBodyProps = {
   codeDirection: CodeDirection
-  onCodeDirectionChange: (valueOrFunc: SetStateAction<CodeDirection>) => void
   isCodePreviewOpen: boolean
+  onCodeDirectionChange: (valueOrFunc: SetStateAction<CodeDirection>) => void
   onCodePreviewClose: () => void
-}
+} & ResizableProps
 
 export const ComponentBody = memo(
   forwardRef<ComponentBodyProps, "div">(
     (
       {
         codeDirection,
-        onCodeDirectionChange,
         isCodePreviewOpen,
+        onCodeDirectionChange,
         onCodePreviewClose,
         ...rest
       },
       ref,
     ) => {
       const controlRef = useRef<ResizableItemControl>(null)
-      const { paths, components, metadata } = useComponent()
+      const { components, metadata, paths } = useComponent()
       const breakpoint = useBreakpoint()
 
       const storage: ResizableStorage = useMemo(
@@ -50,7 +48,7 @@ export const ComponentBody = memo(
               new RegExp(`(^| )${key}=([^;]+)`),
             )
 
-            return match ? match[2] : null
+            return match ? (match[2] ? match[2] : null) : null
           },
           setItem: (key, value) => {
             document.cookie = `${key}=${value}; max-age=31536000; path=/`
@@ -72,48 +70,48 @@ export const ComponentBody = memo(
           ref={ref}
           direction={codeDirection}
           flex="1"
-          storageKey={CONSTANT.STORAGE.COMPONENT_LAYOUT}
           storage={storage}
+          storageKey={CONSTANT.STORAGE.COMPONENT_LAYOUT}
           {...rest}
         >
           <ResizableItem
             id="preview"
-            order={1}
             defaultSize={isCodePreviewOpen ? (isMobile ? 0 : 70) : 100}
-            overflow="auto"
             h="full"
+            order={1}
+            overflow="auto"
           >
             <ComponentPreview
-              paths={paths}
               borderTopWidth="1px"
-              containerProps={metadata?.options?.container}
               iframe={metadata?.options?.iframe}
               isFullHeight
+              paths={paths}
+              containerProps={metadata?.options?.container}
             />
           </ResizableItem>
 
           {isCodePreviewOpen ? (
             <>
               <ResizableTrigger
+                isDisabled={isMobile}
+                transitionDuration="normal"
+                transitionProperty="background"
                 _active={!isMobile ? { bg: "focus" } : undefined}
                 _hover={!isMobile ? { bg: "focus" } : undefined}
-                transitionProperty="background"
-                transitionDuration="normal"
-                isDisabled={isMobile}
               />
 
               <ResizableItem
                 id="code"
                 controlRef={controlRef}
-                order={2}
                 defaultSize={isMobile ? 100 : 30}
-                minW="xs"
                 minH="xs"
+                minW="xs"
+                order={2}
                 overflow="auto"
               >
                 <ComponentCodePreview
-                  components={components}
                   codeDirection={codeDirection}
+                  components={components}
                   onCodeDirectionChange={onCodeDirectionChange}
                   onCodePreviewClose={onCodePreviewClose}
                 />

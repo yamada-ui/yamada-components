@@ -1,16 +1,16 @@
-import { Box, Link, CloseButton, Text, Center } from "@yamada-ui/react"
 import type { FC } from "react"
+import { Box, Center, CloseButton, Link, Text } from "@yamada-ui/react"
 
 const Announcement: FC = () => {
   return (
     <Box
       bgGradient="linear(to-l, primary.500, secondary.500)"
-      w="full"
       position="fixed"
       top="0"
+      w="full"
     >
       <Center>
-        <Text size="sm" padding="3" color="white" fontWeight="500" isTruncated>
+        <Text size="sm" color="white" fontWeight="500" isTruncated padding="3">
           Yamada UI Con 20xx is on June 7th in Online.{" "}
           <Link
             href="#"
@@ -23,12 +23,12 @@ const Announcement: FC = () => {
         </Text>
       </Center>
       <CloseButton
-        color="white"
-        position="absolute"
-        top="0"
         bottom="0"
-        right="sm"
+        color="white"
         m="auto"
+        position="absolute"
+        right="sm"
+        top="0"
       />
     </Box>
   )

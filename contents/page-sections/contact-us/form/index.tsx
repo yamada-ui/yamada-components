@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { InstagramIcon, TwitterIcon, YoutubeIcon } from "@yamada-ui/lucide"
 import {
   Button,
@@ -16,28 +17,27 @@ import {
   Textarea,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { contacts } from "./contacts"
 
 const Form: FC = () => {
   return (
     <Container
       bgGradient="linear(to-r, primary.700, primary.500)"
-      minH="full"
-      h="fit-content"
-      w="full"
-      p="0"
       centerContent
+      h="fit-content"
+      minH="full"
+      p="0"
+      w="full"
     >
       <Center
-        maxW="9xl"
-        w="full"
         flexDir={{ base: "row", lg: "column" }}
-        justifyContent={{ base: "space-between", lg: "center" }}
-        p={{ base: "2xl", sm: "md", lg: "lg" }}
         gap="md"
+        justifyContent={{ base: "space-between", lg: "center" }}
+        maxW="9xl"
+        p={{ base: "2xl", sm: "md", lg: "lg" }}
+        w="full"
       >
-        <VStack gap="sm" color="white" w="full" maxW={{ lg: "xl" }}>
+        <VStack color="white" gap="sm" maxW={{ lg: "xl" }} w="full">
           <Heading as="h2" size="lg">
             Contact us
           </Heading>
@@ -48,7 +48,7 @@ const Form: FC = () => {
             {contacts.map((contact) => (
               <HStack key={contact.name} w="full">
                 <contact.icon fontSize="2xl" />
-                <VStack gap="0" align="start">
+                <VStack align="start" gap="0">
                   <Text fontSize="xs">{contact.name}</Text>
                   <Text>{contact.value}</Text>
                 </VStack>
@@ -57,59 +57,59 @@ const Form: FC = () => {
           </VStack>
           <ButtonGroup>
             <IconButton
-              icon={<TwitterIcon fontSize="2xl" color="white" />}
-              rounded="full"
               as="a"
               href="https://twitter.com/hirotomoyamada"
               variant="ghost"
+              icon={<TwitterIcon color="white" fontSize="2xl" />}
+              rounded="full"
               _hover={{ bg: "blackAlpha.200" }}
               onClick={(e) => e.preventDefault()}
             />
             <IconButton
-              icon={<YoutubeIcon fontSize="2xl" color="white" />}
-              rounded="full"
               as="a"
               href="https://youtube.com/hirotomoyamada"
               variant="ghost"
+              icon={<YoutubeIcon color="white" fontSize="2xl" />}
+              rounded="full"
               _hover={{ bg: "blackAlpha.200" }}
               onClick={(e) => e.preventDefault()}
             />
             <IconButton
-              icon={<InstagramIcon fontSize="2xl" color="white" />}
-              rounded="full"
               as="a"
               href="https://instagram.com/hirotomoyamada"
               variant="ghost"
+              icon={<InstagramIcon color="white" fontSize="2xl" />}
+              rounded="full"
               _hover={{ bg: "blackAlpha.200" }}
               onClick={(e) => e.preventDefault()}
             />
           </ButtonGroup>
         </VStack>
         <Card
-          bg={["white", "black"]}
           as="form"
-          rounded="md"
-          p={{ base: "md", lg: "sm" }}
-          w="full"
-          mx="auto"
-          maxW="xl"
+          bg={["white", "black"]}
           h="fit-content"
+          maxW="xl"
+          mx="auto"
+          p={{ base: "md", lg: "sm" }}
           placeSelf={{ lg: "flex-start" }}
+          rounded="md"
+          w="full"
           onSubmit={(e) => e.preventDefault()}
         >
           <CardBody>
-            <FormControl label="Email" isRequired>
+            <FormControl isRequired label="Email">
               <Input type="email" placeholder="your@email.com" />
             </FormControl>
             <FormControl label="Name">
               <Input type="text" placeholder="Hirotomo Yamada" />
             </FormControl>
-            <FormControl label="Message" isRequired>
+            <FormControl isRequired label="Message">
               <Textarea placeholder="Your message" />
             </FormControl>
           </CardBody>
           <CardFooter justifyContent={{ base: "flex-end", md: "center" }}>
-            <Button colorScheme="primary" type="submit">
+            <Button type="submit" colorScheme="primary">
               Send message
             </Button>
           </CardFooter>

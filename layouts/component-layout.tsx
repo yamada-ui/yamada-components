@@ -1,38 +1,38 @@
 import type { ResizableProps, StackProps } from "@yamada-ui/react"
+import type { FC, SetStateAction } from "react"
 import {
-  useDisclosure,
-  VStack,
-  useIsMounted,
   runIfFunc,
+  useBreakpoint,
+  useDisclosure,
+  useIsMounted,
   useLoading,
   useUpdateEffect,
-  useBreakpoint,
+  VStack,
 } from "@yamada-ui/react"
-import { useCallback, useEffect, useState } from "react"
-import type { SetStateAction, FC } from "react"
 import { ComponentBody, ComponentHeader } from "components/layouts"
-import { SEO } from "components/media-and-icons"
+import { Seo } from "components/media-and-icons"
 import { CONSTANT } from "constant"
+import { useCallback, useEffect, useState } from "react"
 import { getCookie, setCookie } from "utils/storage"
 
 export const MOBILE_BREAKPOINTS = ["md", "sm"]
 export const DEFAULT_DIRECTION = "vertical"
 export type CodeDirection = ResizableProps["direction"]
 
-type ComponentLayoutOptions = {
-  title?: string
+interface ComponentLayoutOptions {
   description?: string
+  title?: string
 }
 
 export type ComponentLayoutProps = ComponentLayoutOptions
 
 export const ComponentLayout: FC<ComponentLayoutProps> = ({
-  title,
   description,
+  title,
 }) => {
   return (
     <>
-      <SEO title={title} description={description} />
+      <Seo description={description} title={title} />
 
       <ComponentLayoutBody />
     </>
@@ -106,7 +106,7 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
   }, [isMounted])
 
   return (
-    <VStack display={isMounted ? "flex" : "none"} h="100dvh" gap="0" {...rest}>
+    <VStack display={isMounted ? "flex" : "none"} gap="0" h="100dvh" {...rest}>
       <ComponentHeader
         {...{ codeDirection, isCodePreviewOpen, onCodePreviewOpen }}
       />
@@ -114,8 +114,8 @@ const ComponentLayoutBody: FC<ComponentLayoutBodyProps> = ({ ...rest }) => {
       <ComponentBody
         {...{
           codeDirection,
-          onCodeDirectionChange,
           isCodePreviewOpen,
+          onCodeDirectionChange,
           onCodePreviewClose,
         }}
       />

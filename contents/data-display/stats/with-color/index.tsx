@@ -2,20 +2,20 @@ import { Card, CardBody, Progress, Text } from "@yamada-ui/react"
 
 const ProgressCard = () => {
   return (
-    <Card textAlign="start" variant="outline" w="full" maxW="lg" bg="primary">
+    <Card variant="outline" bg="primary" maxW="lg" textAlign="start" w="full">
       <CardBody gap="0" p="lg">
-        <Text fontSize="xs" fontWeight={700} color="whiteAlpha.700">
+        <Text color="whiteAlpha.700" fontSize="xs" fontWeight={700}>
           MONTHLY GOAL
         </Text>
-        <Text fontSize="lg" fontWeight={500} color="white">
+        <Text color="white" fontSize="lg" fontWeight={500}>
           $5,431 / $10,000
         </Text>
         <Progress
-          value={54.31}
-          mt="md"
           size="lg"
           borderRadius="xl"
           filledTrackColor="white"
+          mt="md"
+          value={54.31}
         />
       </CardBody>
     </Card>

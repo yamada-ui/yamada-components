@@ -1,8 +1,9 @@
 import type { CellProps, ChartLabel } from "@yamada-ui/charts"
-import { DonutChart } from "@yamada-ui/charts"
 import type { SelectItem } from "@yamada-ui/react"
-import { Box, Select, VStack, Text } from "@yamada-ui/react"
-import { useMemo, useState, type FC } from "react"
+import type { FC } from "react"
+import { DonutChart } from "@yamada-ui/charts"
+import { Box, Select, Text, VStack } from "@yamada-ui/react"
+import { useMemo, useState } from "react"
 
 const DonutActive: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -11,23 +12,23 @@ const DonutActive: FC = () => {
     () => [
       {
         name: "USA",
-        value: 400,
         color: "primary.200",
+        value: 400,
       },
       {
         name: "India",
-        value: 300,
         color: "primary.300",
+        value: 300,
       },
       {
         name: "Japan",
-        value: 100,
         color: "primary.400",
+        value: 100,
       },
       {
         name: "Other",
-        value: 200,
         color: "primary.500",
+        value: 200,
       },
     ],
     [],
@@ -43,26 +44,26 @@ const DonutActive: FC = () => {
       return (
         <Box
           as="text"
+          dominantBaseline="middle"
+          textAnchor="middle"
           x={viewBox.cx}
           y={viewBox.cy}
-          textAnchor="middle"
-          dominantBaseline="middle"
         >
           <Text
             as="tspan"
             fill={["black", "white"]}
-            fontWeight="bold"
             fontSize="5xl"
+            fontWeight="bold"
           >
-            {data[activeIndex].value}
+            {data[activeIndex]?.value}
           </Text>
           <Text
             as="tspan"
+            dy={24}
             fill={["blackAlpha.700", "whiteAlpha.600"]}
             fontSize="sm"
             x={viewBox.cx}
             y={viewBox.cy}
-            dy={24}
           >
             Visitors
           </Text>
@@ -72,12 +73,12 @@ const DonutActive: FC = () => {
   }
 
   return (
-    <VStack my="md" gap="md" alignItems="center">
+    <VStack alignItems="center" gap="md" my="md">
       <Select
-        maxW="xs"
-        placement="right-start"
         defaultValue="USA"
         items={items}
+        maxW="xs"
+        placement="right-start"
         onChange={(value) => {
           const index = data.findIndex(({ name }) => name === value)
           setActiveIndex(index)
@@ -87,20 +88,20 @@ const DonutActive: FC = () => {
       <DonutChart
         data={data}
         h="sm"
-        w="sm"
-        tooltipDataSource="segment"
-        tooltipAnimationDuration={500}
         innerRadius={60}
         outerRadius={100}
+        tooltipAnimationDuration={500}
+        tooltipDataSource="segment"
+        w="sm"
+        labelProps={{
+          content: label,
+        }}
         pieProps={{
-          isAnimationActive: true,
           activeIndex,
           activeShape: {
             outerRadius: 125,
           },
-        }}
-        labelProps={{
-          content: label,
+          isAnimationActive: true,
         }}
       />
     </VStack>

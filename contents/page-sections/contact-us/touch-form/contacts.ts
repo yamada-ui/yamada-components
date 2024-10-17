@@ -1,24 +1,24 @@
-import { AtSignIcon, PhoneIcon, MapPinIcon, SunIcon } from "@yamada-ui/lucide"
+import { AtSignIcon, MapPinIcon, PhoneIcon, SunIcon } from "@yamada-ui/lucide"
 
 export const contacts = [
   {
     name: "Email",
-    value: "hello@yamada-ui.com",
     icon: AtSignIcon,
+    value: "hello@yamada-ui.com",
   },
   {
     name: "Phone",
-    value: "(123) 456-7890",
     icon: PhoneIcon,
+    value: "(123) 456-7890",
   },
   {
     name: "Address",
-    value: "Yamada-ui Inc., 123 Main St",
     icon: MapPinIcon,
+    value: "Yamada-ui Inc., 123 Main St",
   },
   {
     name: "Working hours",
-    value: "8:00 - 23:00",
     icon: SunIcon,
+    value: "8:00 - 23:00",
   },
 ]

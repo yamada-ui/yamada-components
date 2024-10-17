@@ -1,18 +1,18 @@
 import type { CenterProps } from "@yamada-ui/react"
 import {
   Center,
+  forwardRef,
   HStack,
   Link,
   Text,
   VStack,
-  forwardRef,
 } from "@yamada-ui/react"
-import { memo } from "react"
 import { Github, X } from "components/media-and-icons"
 import { CONSTANT } from "constant"
 import { useI18n } from "contexts/i18n-context"
+import { memo } from "react"
 
-export type FooterProps = CenterProps & {}
+export type FooterProps = {} & CenterProps
 
 export const Footer = memo(
   forwardRef<FooterProps, "div">(({ ...rest }, ref) => {
@@ -29,10 +29,10 @@ export const Footer = memo(
       >
         <VStack
           alignItems="center"
-          w="full"
           maxW="9xl"
-          py="xl"
           px={{ base: "lg", md: "md" }}
+          py="xl"
+          w="full"
         >
           <Text
             color={["blackAlpha.600", "whiteAlpha.600"]}
@@ -56,19 +56,19 @@ export const Footer = memo(
 
           <HStack>
             <Link
-              color="muted"
               href={CONSTANT.SNS.GITHUB.HIROTOMO_YAMADA}
               target="_blank"
               aria-label="GitHub profile of Hirotomo Yamada"
+              color="muted"
             >
               <Github />
             </Link>
 
             <Link
-              color="muted"
               href={CONSTANT.SNS.TWITTER.HIROTOMO_YAMADA}
               target="_blank"
               aria-label="X Hirotomo Yamada"
+              color="muted"
             >
               <X />
             </Link>

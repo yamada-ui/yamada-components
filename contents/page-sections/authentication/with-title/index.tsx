@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { EyeIcon, EyeOffIcon } from "@yamada-ui/lucide"
 import {
   Button,
@@ -14,29 +15,28 @@ import {
   InputRightElement,
   Link,
   Text,
-  VStack,
   useBoolean,
+  VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const AuthenticationForm: FC = () => {
   const [show, { toggle }] = useBoolean()
 
   return (
     <Center
-      flexDirection="column"
-      p="lg"
       bg={["blackAlpha.100", "blackAlpha.500"]}
+      flexDirection="column"
       gap="lg"
+      p="lg"
     >
       <VStack gap="xs">
         <Heading as="h1" size="xl" textAlign="center">
           Welcome back!
         </Heading>
         <Text
-          textAlign="center"
-          fontSize="md"
           color={["blackAlpha.700", "whiteAlpha.700"]}
+          fontSize="md"
+          textAlign="center"
         >
           Do not have an account yet?{" "}
           <Link href="#" onClick={(e) => e.preventDefault()}>
@@ -45,13 +45,13 @@ const AuthenticationForm: FC = () => {
         </Text>
       </VStack>
       <Card
-        rounded="xl"
         variant="outline"
-        w="lg"
+        bg={["white", "black"]}
         maxW="full"
         mx="auto"
-        bg={["white", "black"]}
         p="md"
+        rounded="xl"
+        w="lg"
       >
         <CardBody>
           <FormControl isRequired label="Email">
@@ -61,17 +61,17 @@ const AuthenticationForm: FC = () => {
           <FormControl isRequired label="Password">
             <InputGroup size="md">
               <Input
-                pr="4.5rem"
                 type={show ? "text" : "password"}
                 placeholder="Your password"
+                pr="4.5rem"
               />
               <InputRightElement isClick>
                 <Button
-                  h="1.75rem"
-                  w="1.75rem"
-                  minW="unset"
-                  onClick={toggle}
                   variant="ghost"
+                  h="1.75rem"
+                  minW="unset"
+                  w="1.75rem"
+                  onClick={toggle}
                 >
                   {show ? <EyeOffIcon /> : <EyeIcon />}
                 </Button>
@@ -82,8 +82,8 @@ const AuthenticationForm: FC = () => {
 
         <CardFooter flexDir="column">
           <Flex
-            flexDir={{ sm: "column", base: "row" }}
-            gap={{ sm: "xs", base: undefined }}
+            flexDir={{ base: "row", sm: "column" }}
+            gap={{ base: undefined, sm: "xs" }}
             justifyContent="space-between"
             w="full"
           >

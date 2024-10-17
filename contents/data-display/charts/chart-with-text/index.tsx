@@ -1,15 +1,16 @@
 import type { CellProps, ChartLabel } from "@yamada-ui/charts"
+import type { FC } from "react"
 import { DonutChart, RadialChart } from "@yamada-ui/charts"
-import { Box, VStack, Text, SimpleGrid, GridItem } from "@yamada-ui/react"
-import { useMemo, type FC } from "react"
+import { Box, GridItem, SimpleGrid, Text, VStack } from "@yamada-ui/react"
+import { useMemo } from "react"
 
 const ChartWithText: FC = () => {
   const data: CellProps[] = useMemo(
     () => [
-      { name: "USA", value: 440, color: "primary.200" },
-      { name: "India", value: 310, color: "primary.300" },
-      { name: "Japan", value: 150, color: "primary.400" },
-      { name: "Other", value: 230, color: "primary.500" },
+      { name: "USA", color: "primary.200", value: 440 },
+      { name: "India", color: "primary.300", value: 310 },
+      { name: "Japan", color: "primary.400", value: 150 },
+      { name: "Other", color: "primary.500", value: 230 },
     ],
     [],
   )
@@ -22,18 +23,18 @@ const ChartWithText: FC = () => {
   const label: ChartLabel = ({ viewBox }) => {
     if (viewBox && "cx" in viewBox && "cy" in viewBox) {
       return (
-        <Box as="text" x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
+        <Box as="text" textAnchor="middle" x={viewBox.cx} y={viewBox.cy}>
           <Text as="tspan" dy={-15} fill="gray.300">
             Total
           </Text>
           <Text
             as="tspan"
-            x={viewBox.cx}
-            y={viewBox.cy}
             dy={20}
             fill={["black", "white"]}
-            fontWeight="bold"
             fontSize="3xl"
+            fontWeight="bold"
+            x={viewBox.cx}
+            y={viewBox.cy}
           >
             {totalValue}
           </Text>
@@ -43,27 +44,23 @@ const ChartWithText: FC = () => {
   }
 
   return (
-    <SimpleGrid columns={{ base: 3, md: 1 }} gap="md" alignItems="center">
+    <SimpleGrid alignItems="center" columns={{ base: 3, md: 1 }} gap="md">
       <GridItem position="relative">
         <RadialChart
-          h="xs"
-          w="xs"
-          data={[{ value: 100, color: "primary.500" }]}
+          data={[{ color: "primary.500", value: 100 }]}
           dataKey="value"
+          endAngle={100}
+          h="xs"
           innerRadius={80}
           outerRadius={110}
           startAngle={0}
-          endAngle={100}
-          radialBarProps={{
-            isAnimationActive: true,
-            background: { fill: ["neutral.50", "neutral.800"] },
-          }}
+          w="xs"
           withPolarGrid
           polarGridProps={{
             gridType: "circle",
+            polarRadius: [86, 74],
             radialLines: false,
             strokeWidth: 0,
-            polarRadius: [86, 74],
             _first: {
               fill: ["neutral.50", "neutral.800"],
             },
@@ -71,16 +68,20 @@ const ChartWithText: FC = () => {
               fill: "background",
             },
           }}
+          radialBarProps={{
+            background: { fill: ["neutral.50", "neutral.800"] },
+            isAnimationActive: true,
+          }}
         />
 
         <VStack
-          position="absolute"
-          top={0}
           gap={0}
-          w="full"
           h="xs"
-          textAlign="center"
           justifyContent="center"
+          position="absolute"
+          textAlign="center"
+          top={0}
+          w="full"
         >
           <Text fontSize="5xl" fontWeight="bold">
             732
@@ -91,25 +92,20 @@ const ChartWithText: FC = () => {
 
       <GridItem position="relative">
         <RadialChart
-          h="xs"
-          w="xs"
-          data={[{ value: 100, color: "primary.500" }]}
+          data={[{ color: "primary.500", value: 100 }]}
           dataKey="value"
+          endAngle={250}
+          h="xs"
           innerRadius={80}
           outerRadius={95}
           startAngle={0}
-          endAngle={250}
-          radialBarProps={{
-            isAnimationActive: true,
-            cornerRadius: 10,
-            background: { fill: ["neutral.50", "neutral.800"] },
-          }}
+          w="xs"
           withPolarGrid
           polarGridProps={{
             gridType: "circle",
+            polarRadius: [86, 74],
             radialLines: false,
             strokeWidth: 0,
-            polarRadius: [86, 74],
             _first: {
               fill: ["neutral.50", "neutral.800"],
             },
@@ -117,16 +113,21 @@ const ChartWithText: FC = () => {
               fill: "background",
             },
           }}
+          radialBarProps={{
+            background: { fill: ["neutral.50", "neutral.800"] },
+            cornerRadius: 10,
+            isAnimationActive: true,
+          }}
         />
 
         <VStack
-          position="absolute"
-          top={0}
           gap={0}
-          w="full"
           h="xs"
-          textAlign="center"
           justifyContent="center"
+          position="absolute"
+          textAlign="center"
+          top={0}
+          w="full"
         >
           <Text fontSize="5xl" fontWeight="bold">
             1,994
@@ -137,16 +138,16 @@ const ChartWithText: FC = () => {
 
       <GridItem justifyContent="center">
         <DonutChart
-          w="full"
           data={data}
-          outerRadius="100%"
           innerRadius="80%"
+          outerRadius="100%"
           paddingAngle={3}
+          w="full"
           withTooltip={false}
-          pieProps={{ isAnimationActive: true }}
           labelProps={{
             content: label,
           }}
+          pieProps={{ isAnimationActive: true }}
         />
       </GridItem>
     </SimpleGrid>

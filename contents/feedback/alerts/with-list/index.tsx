@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Alert,
   AlertDescription,
@@ -7,11 +8,10 @@ import {
   DiscList,
   ListItem,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const WithList: FC = () => {
   return (
-    <Alert status="error" variant="subtle" alignItems="flex-start" maxW="5xl">
+    <Alert variant="subtle" alignItems="flex-start" maxW="5xl" status="error">
       <AlertIcon />
       <Box>
         <AlertTitle mb={3}>

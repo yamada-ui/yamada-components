@@ -1,14 +1,14 @@
 import type { NextSeoProps } from "next-seo"
+import { CONSTANT } from "constant"
 import { NextSeo } from "next-seo"
 import React from "react"
-import { CONSTANT } from "constant"
 
-export type SEOProps = Pick<NextSeoProps, "title" | "description">
+export type SeoProps = Pick<NextSeoProps, "description" | "title">
 
-export const SEO = ({ title, description }: SEOProps) => (
+export const Seo = ({ description, title }: SeoProps) => (
   <NextSeo
-    title={title}
     description={description}
+    title={title}
     {...CONSTANT.SEO.NEXT_SEO_PROPS}
   />
 )

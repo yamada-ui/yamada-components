@@ -1,32 +1,35 @@
 import type { StackProps } from "@yamada-ui/react"
+import type { FC } from "react"
 import { Center, VStack } from "@yamada-ui/react"
-import { type FC } from "react"
 import { Footer, Header } from "components/layouts"
-import { SEO } from "components/media-and-icons"
+import { Seo } from "components/media-and-icons"
 
-type AppLayoutOptions = { title?: string; description?: string }
+interface AppLayoutOptions {
+  description?: string
+  title?: string
+}
 
-export type AppLayoutProps = StackProps & AppLayoutOptions
+export type AppLayoutProps = AppLayoutOptions & StackProps
 
 export const AppLayout: FC<AppLayoutProps> = ({
-  title,
-  description,
   children,
+  description,
+  title,
   ...rest
 }) => {
   return (
     <>
-      <SEO title={title} description={description} />
+      <Seo description={description} title={title} />
 
       <Header />
 
       <Center as="main">
         <VStack
-          w="full"
-          maxW="9xl"
           gap="0"
-          py={{ base: "lg", md: "normal" }}
+          maxW="9xl"
           px={{ base: "lg", md: "md" }}
+          py={{ base: "lg", md: "normal" }}
+          w="full"
           {...rest}
         >
           {children}

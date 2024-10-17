@@ -1,20 +1,20 @@
+import type { FC } from "react"
 import { CircleIcon, StarIcon } from "@yamada-ui/lucide"
 import {
   Button,
   Card,
+  CardBody,
   CardFooter,
   CardHeader,
-  Heading,
-  Text,
   Center,
-  CardBody,
+  Heading,
   Spacer,
+  Text,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const GitHubCard: FC = () => {
   return (
-    <Card w="lg" rounded="xl" variant="outline">
+    <Card variant="outline" rounded="xl" w="lg">
       <CardHeader>
         <Heading as="h2" size="md" lineClamp={1}>
           yamada-ui
@@ -35,15 +35,15 @@ const GitHubCard: FC = () => {
       </CardBody>
 
       <CardFooter
-        flexDirection={{ base: "row", sm: "column" }}
         alignItems={{ base: "center", sm: "flex-start" }}
+        flexDirection={{ base: "row", sm: "column" }}
         gap={{ base: "md", sm: "sm" }}
       >
-        <Text as={Center} gap="xs" color="muted">
+        <Text as={Center} color="muted" gap="xs">
           <CircleIcon /> TypeScript
         </Text>
 
-        <Text as={Center} gap="xs" color="muted">
+        <Text as={Center} color="muted" gap="xs">
           <StarIcon /> 400
         </Text>
 

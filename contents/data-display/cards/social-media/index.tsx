@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Avatar,
   Button,
@@ -9,14 +10,13 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const ShareDocument: FC = () => {
   return (
-    <Card w="md" rounded="xl" variant="outline">
+    <Card variant="outline" rounded="xl" w="md">
       <CardHeader
-        flexDirection={{ base: "row", sm: "column" }}
         alignItems={{ base: "center", sm: "flex-start" }}
+        flexDirection={{ base: "row", sm: "column" }}
       >
         <HStack flex="1">
           <Avatar src="https://avatars.githubusercontent.com/u/61367823?v=4" />
@@ -33,9 +33,9 @@ const ShareDocument: FC = () => {
 
         <Button
           colorScheme="primary"
+          size="sm"
           isRounded
           px="normal"
-          size="sm"
           w={{ sm: "full" }}
         >
           Follow

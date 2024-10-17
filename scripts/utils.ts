@@ -1,6 +1,6 @@
-import path from "path"
 import type { RequestError } from "@octokit/request-error"
 import type { Options } from "prettier"
+import path from "path"
 import { format, resolveConfig } from "prettier"
 
 export const prettier = async (content: string, options?: Options) => {
@@ -19,19 +19,19 @@ export const prettier = async (content: string, options?: Options) => {
   }
 }
 
-export const toCamelCase = (value: string & {}) =>
+export const toCamelCase = (value: {} & string) =>
   value.toLowerCase().replace(/-(.)/g, (_, group1) => group1.toUpperCase())
 
-export const toKebabCase = (value: string & {}) =>
+export const toKebabCase = (value: {} & string) =>
   value
     .replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2")
     .toLowerCase()
     .replace(/^-/, "")
 
-export const wait = (ms: number) =>
+export const wait = async (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms))
 
-export const recursiveOctokit = async <T extends any = void>(
+export const recursiveOctokit = async <T = void>(
   callback: () => Promise<T>,
 ): Promise<T> => {
   try {
@@ -43,7 +43,7 @@ export const recursiveOctokit = async <T extends any = void>(
 
     if (isForbidden && isRateLimitExceeded) {
       const ratelimitReset =
-        (e as RequestError).response?.headers?.["x-ratelimit-reset"] ?? "0"
+        (e as RequestError).response?.headers["x-ratelimit-reset"] ?? "0"
       const resetTime = parseInt(ratelimitReset) * 1000
       const waitTime = resetTime - Date.now() + 1000
 

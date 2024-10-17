@@ -1,10 +1,10 @@
-import { Grid, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import type { InferGetStaticPropsType, NextPage } from "next"
-import Link from "next/link"
+import { Grid, Heading, HStack, Text, VStack } from "@yamada-ui/react"
 import { Authors, CategoryCard } from "components/data-display"
 import { AppProvider } from "contexts/app-context"
 import { useI18n } from "contexts/i18n-context"
 import { AppLayout } from "layouts/app-layout"
+import Link from "next/link"
 import { getStaticCommonProps } from "utils/next"
 
 export const getStaticProps = getStaticCommonProps
@@ -17,17 +17,17 @@ const Page: NextPage<PageProps> = ({ componentTree }) => {
   return (
     <AppProvider {...{ componentTree }}>
       <AppLayout
-        title={t("app.title")}
         description={t("app.description")}
         gap="lg"
+        title={t("app.title")}
       >
-        {componentTree.map(({ title, name, slug, items, authors }) => (
+        {componentTree.map(({ name, authors, items, slug, title }) => (
           <VStack key={name} as="section">
             <HStack as="header" gap={{ base: "md", sm: "sm" }}>
               <HStack
+                alignItems={{ base: "end", sm: "stretch" }}
                 flex="1"
                 flexDirection={{ base: "row", sm: "column" }}
-                alignItems={{ base: "end", sm: "stretch" }}
                 gap={{ base: "md", sm: "0" }}
               >
                 <Link href={slug}>
@@ -35,8 +35,8 @@ const Page: NextPage<PageProps> = ({ componentTree }) => {
                     as="h2"
                     size="lg"
                     fontWeight="semibold"
-                    lineHeight="shorter"
                     lineClamp={1}
+                    lineHeight="shorter"
                   >
                     {title}
                   </Heading>
@@ -52,16 +52,16 @@ const Page: NextPage<PageProps> = ({ componentTree }) => {
 
             <Grid
               as="nav"
+              gap="md"
               templateColumns={{
                 base: "repeat(4, 1fr)",
-                lg: "repeat(3, 1fr)",
-                md: "repeat(2, 1fr)",
                 sm: "repeat(1, 1fr)",
+                md: "repeat(2, 1fr)",
+                lg: "repeat(3, 1fr)",
               }}
-              gap="md"
             >
-              {items?.map(({ name, title, slug, items }) => (
-                <CategoryCard key={name} {...{ title, slug, items }} />
+              {items?.map(({ name, items, slug, title }) => (
+                <CategoryCard key={name} {...{ items, slug, title }} />
               ))}
             </Grid>
           </VStack>

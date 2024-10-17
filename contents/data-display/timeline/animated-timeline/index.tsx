@@ -1,15 +1,15 @@
+import type { FC } from "react"
 import { RefreshCwIcon } from "@yamada-ui/lucide"
 import {
+  Container,
   Divider,
-  List,
   Grid,
   GridItem,
+  IconButton,
+  List,
   ListItem,
   Motion,
-  IconButton,
-  Container,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { useState } from "react"
 import { items } from "./timeline"
 import { TimelineItem } from "./timeline-item"
@@ -27,23 +27,22 @@ const AnimatedTimeline: FC = () => {
   }
 
   return (
-    <Container centerContent position="relative" maxW="5xl" pt={{ sm: "4xl" }}>
+    <Container centerContent maxW="5xl" position="relative" pt={{ sm: "4xl" }}>
       <IconButton
-        onClick={restartAnimation}
         colorScheme="primary"
         mb="lg"
         position={{ base: "absolute", sm: "fixed" }}
-        top="md"
         right="md"
+        top="md"
         z="yamcha"
+        onClick={restartAnimation}
       >
         <RefreshCwIcon />
       </IconButton>
       <Grid
+        key={key}
         as={List}
-        position="relative"
-        pl={{ base: "lg", sm: "0" }}
-        maxW="4xl"
+        gap="xl"
         gridTemplateAreas={{
           base: `
           ${generateDesktopTemplateAreas().join(" ")}
@@ -54,20 +53,21 @@ const AnimatedTimeline: FC = () => {
           lg: `
           ${generateTabletTemplateAreas().join(" ")}`,
         }}
-        gap="xl"
-        key={key}
+        maxW="4xl"
+        pl={{ base: "lg", sm: "0" }}
+        position="relative"
       >
         <GridItem
-          area="line"
-          transform="translateX(-50%)"
           as={ListItem}
+          area="line"
           display={{ sm: "none" }}
+          transform="translateX(-50%)"
         >
           <Divider
-            orientation="vertical"
             borderColor="primary"
-            w="1px"
             h="100%"
+            orientation="vertical"
+            w="1px"
           />
         </GridItem>
         {items.map((item, index) => (
@@ -86,9 +86,9 @@ const AnimatedTimeline: FC = () => {
               position="relative"
             >
               <Motion
-                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                transition={{ delay: index * 0.2, duration: 0.5 }}
               >
                 <Motion whileHover={{ y: -5 }} whileTap={{ y: 5 }}>
                   <TimelineItem

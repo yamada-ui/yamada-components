@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { Search } from "@yamada-ui/lucide"
 import {
   Box,
@@ -13,13 +14,12 @@ import {
   InputLeftElement,
   useDisclosure,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const links = [
-  { link: "/about", label: "Features" },
-  { link: "/pricing", label: "Pricing" },
-  { link: "/learn", label: "Learn" },
-  { link: "/community", label: "Community" },
+  { label: "Features", link: "/about" },
+  { label: "Pricing", link: "/pricing" },
+  { label: "Learn", link: "/learn" },
+  { label: "Community", link: "/community" },
 ]
 
 const WithSearch: FC = () => {
@@ -27,15 +27,15 @@ const WithSearch: FC = () => {
   const items = links.map((link) => (
     <Button
       key={link.label}
-      variant="ghost"
       as="a"
       href={link.link}
+      size="sm"
+      variant="ghost"
+      borderRadius="sm"
       fontSize="xs"
+      fontWeight={500}
       px="3"
       py="sm"
-      size="sm"
-      borderRadius="sm"
-      fontWeight={500}
       onClick={(event) => {
         event.preventDefault()
       }}
@@ -46,67 +46,67 @@ const WithSearch: FC = () => {
   return (
     <Flex
       as="header"
-      h="14"
-      px="md"
-      justifyContent="space-between"
       alignItems="center"
       borderBottomWidth="1"
+      h="14"
+      justifyContent="space-between"
+      px="md"
     >
       <HStack gap="md">
         <IconButton
-          title="Menu"
           type="button"
+          size="sm"
           variant="unstyled"
           display={{ base: "none", md: "flex" }}
-          placeContent="center"
-          placeItems="center"
-          p="1"
-          size="sm"
-          onClick={onToggle}
           icon={
             <>
               <Box
-                position="absolute"
-                width="24px"
-                height="2px"
-                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
                 bg={["black", "white"]}
+                height="2px"
+                position="absolute"
+                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
                 transitionDuration="300ms"
                 transitionProperty="all"
+                width="24px"
               />
 
               <Box
-                position="absolute"
-                width="24px"
-                height="2px"
-                transform={isOpen ? "translateX(20px)" : undefined}
-                opacity={isOpen ? 0 : 1}
                 bg={["black", "white"]}
+                height="2px"
+                opacity={isOpen ? 0 : 1}
+                position="absolute"
+                transform={isOpen ? "translateX(20px)" : undefined}
                 transitionDuration="400ms"
                 transitionProperty="all"
+                width="24px"
               />
 
               <Box
-                position="absolute"
-                width="24px"
-                height="2px"
-                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
                 bg={["black", "white"]}
+                height="2px"
+                position="absolute"
+                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
                 transitionDuration="300ms"
                 transitionProperty="all"
+                width="24px"
               />
             </>
           }
+          p="1"
+          placeContent="center"
+          placeItems="center"
+          title="Menu"
+          onClick={onToggle}
         />
         <HStack gap="sm">
-          <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
+          <Image src="/favicon.svg" alt="Yamada UI" height={30} width={30} />
           <Heading as="a" fontSize="lg" whiteSpace="nowrap">
             Yamada UI
           </Heading>
         </HStack>
       </HStack>
       <HStack>
-        <ButtonGroup display={{ md: "none", base: "flex" }} gap="xs" as="nav">
+        <ButtonGroup as="nav" display={{ base: "flex", md: "none" }} gap="xs">
           {items}
         </ButtonGroup>
         <InputGroup size="sm" display={{ sm: "none" }}>

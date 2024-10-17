@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { ArrowLeftIcon } from "@yamada-ui/lucide"
 import {
   Button,
@@ -12,36 +13,35 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const AuthenticationForm: FC = () => {
   return (
     <Center
-      flexDirection="column"
-      p="lg"
       bg={["blackAlpha.100", "blackAlpha.500"]}
+      flexDirection="column"
       gap="lg"
+      p="lg"
     >
       <VStack gap="xs">
         <Heading as="h1" size="lg" textAlign="center">
           Forgot your password?
         </Heading>
         <Text
-          textAlign="center"
-          fontSize="md"
           color={["blackAlpha.700", "whiteAlpha.700"]}
+          fontSize="md"
+          textAlign="center"
         >
           Enter your email to get a reset link
         </Text>
       </VStack>
       <Card
-        rounded="xl"
         variant="outline"
-        w="lg"
+        bg={["white", "black"]}
         maxW="full"
         mx="auto"
-        bg={["white", "black"]}
         p="md"
+        rounded="xl"
+        w="lg"
       >
         <CardBody>
           <FormControl isRequired label="Email">
@@ -55,12 +55,12 @@ const AuthenticationForm: FC = () => {
         >
           <Link
             href="#"
-            onClick={(e) => e.preventDefault()}
-            fontSize="sm"
-            color={["blackAlpha.700", "whiteAlpha.700"]}
-            justifyContent="center"
             alignItems="center"
+            color={["blackAlpha.700", "whiteAlpha.700"]}
             display="flex"
+            fontSize="sm"
+            justifyContent="center"
+            onClick={(e) => e.preventDefault()}
           >
             <ArrowLeftIcon mr="xs" />
             Back to the login page

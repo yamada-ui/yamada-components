@@ -1,58 +1,58 @@
+import type { FC } from "react"
 import {
   Card,
   CardBody,
   CardHeader,
-  Heading,
-  Text,
-  ListItem,
   Center,
-  VStack,
+  Heading,
   HStack,
+  ListItem,
   Tag,
+  Text,
+  VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { CalendarIcon } from "./calendar-icon"
 
 interface TimelineItemProps {
   date: string
-  title: string
   description: string
+  title: string
   latest?: boolean
 }
 
 export const TimelineItem: FC<TimelineItemProps> = ({
   date,
-  title,
   description,
   latest = false,
+  title,
 }) => (
   <Card
     as={ListItem}
     variant="subtle"
-    position="relative"
-    maxW="xl"
     bg="transparent"
     gap="sm"
+    maxW="xl"
+    position="relative"
   >
     <Center
-      position="absolute"
-      left="-2.5rem"
-      top="8"
-      transform="translateY(-50%)"
-      _after={{
-        position: "absolute",
-        height: "6",
-        width: "6",
-        bg: "primary",
-        opacity: 0.5,
-        rounded: "full",
-        content: { base: '""', sm: undefined },
-      }}
       bg={["white", "black"]}
       fontSize="24"
-      rounded="full"
-      w="6"
       h="6"
+      left="-2.5rem"
+      position="absolute"
+      rounded="full"
+      top="8"
+      transform="translateY(-50%)"
+      w="6"
+      _after={{
+        bg: "primary",
+        content: { base: '""', sm: undefined },
+        height: "6",
+        opacity: 0.5,
+        position: "absolute",
+        rounded: "full",
+        width: "6",
+      }}
     >
       <CalendarIcon fontSize="xs" />
     </Center>
@@ -62,14 +62,14 @@ export const TimelineItem: FC<TimelineItemProps> = ({
           <Heading as="h3" fontSize="lg">
             {title}
           </Heading>
-          {latest && <Tag>Latest</Tag>}
+          {latest ? <Tag>Latest</Tag> : null}
         </HStack>
-        <Text as="time" color="muted" fontWeight="semibold" fontSize="sm">
+        <Text as="time" color="muted" fontSize="sm" fontWeight="semibold">
           {date}
         </Text>
       </VStack>
     </CardHeader>
-    <CardBody pt="0" pb="md">
+    <CardBody pb="md" pt="0">
       <Text>{description}</Text>
     </CardBody>
   </Card>

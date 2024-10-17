@@ -1,23 +1,23 @@
 import type {
-  GetServerSidePropsContext,
-  GetStaticPathsContext,
-  GetStaticPropsContext,
-} from "next"
-import { toArray } from "./array"
-import {
-  getComponentCategoryGroup,
-  getComponentPaths,
-  getComponent,
-  checkInvalidLabels,
-} from "./component"
-import type { Locale } from "./i18n"
-import type {
   Component,
   ComponentCategory,
   ComponentCategoryGroup,
 } from "component"
+import type {
+  GetServerSidePropsContext,
+  GetStaticPathsContext,
+  GetStaticPropsContext,
+} from "next"
+import type { Locale } from "./i18n"
+import { toArray } from "./array"
+import {
+  checkInvalidLabels,
+  getComponent,
+  getComponentCategoryGroup,
+  getComponentPaths,
+} from "./component"
 
-export const getServerSideCommonProps = async ({
+export const getServerSideCommonProps = ({
   req,
 }: GetServerSidePropsContext) => {
   const cookies = req.headers.cookie ?? ""
@@ -41,14 +41,14 @@ export const getStaticCommonProps = async ({
 export const getStaticComponentProps =
   (categoryGroupName: string) =>
   async ({
-    params,
     locale,
+    params,
   }: GetStaticPropsContext): Promise<{
     props: {
-      categoryGroup?: ComponentCategoryGroup
-      category?: ComponentCategory
-      component?: Component
       componentTree: ComponentCategoryGroup[]
+      category?: ComponentCategory
+      categoryGroup?: ComponentCategoryGroup
+      component?: Component
     }
     notFound?: boolean
   }> => {
@@ -72,7 +72,7 @@ export const getStaticComponentProps =
     if (!paths.length) {
       const props = { categoryGroup, componentTree }
 
-      return { props, notFound: !categoryGroup }
+      return { notFound: !categoryGroup, props }
     }
 
     if (paths.length === 1) {
@@ -97,9 +97,9 @@ export const getStaticComponentProps =
         items,
       } as ComponentCategory
 
-      const props = { categoryGroup, category, componentTree }
+      const props = { category, categoryGroup, componentTree }
 
-      return { props, notFound: !category }
+      return { notFound: !category, props }
     } else {
       const slug = [categoryGroupName, ...paths].join("/")
 
@@ -109,7 +109,7 @@ export const getStaticComponentProps =
 
       const props = { component, componentTree }
 
-      return { props, notFound: !component }
+      return { notFound: !component, props }
     }
   }
 
@@ -118,5 +118,5 @@ export const getStaticComponentPaths =
   async ({ locales }: GetStaticPathsContext) => {
     const paths = await getComponentPaths(categoryGroupName)(locales)
 
-    return { paths, fallback: false }
+    return { fallback: false, paths }
   }

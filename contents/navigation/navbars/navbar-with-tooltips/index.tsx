@@ -1,3 +1,5 @@
+import type { Component, IconProps } from "@yamada-ui/react"
+import type { FC } from "react"
 import {
   ArrowRightLeftIcon,
   CalendarIcon,
@@ -9,7 +11,6 @@ import {
   SettingsIcon,
   UserIcon,
 } from "@yamada-ui/lucide"
-import type { Component, IconProps } from "@yamada-ui/react"
 import {
   Avatar,
   Box,
@@ -18,7 +19,7 @@ import {
   Tooltip,
   VStack,
 } from "@yamada-ui/react"
-import { useState, type FC } from "react"
+import { useState } from "react"
 
 const mockdata = [
   { icon: HouseIcon, label: "Home" },
@@ -37,19 +38,19 @@ interface NavbarLinkProps {
   onClick?(): void
 }
 
-function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
+function NavbarLink({ active, icon: Icon, label, onClick }: NavbarLinkProps) {
   return (
     <Tooltip label={label} placement="right">
       <IconButton
-        onClick={onClick}
-        w="50px"
-        h="50px"
-        borderRadius="md"
         as={Center}
         colorScheme={active ? "primary" : undefined}
         variant={active ? "solid" : "ghost"}
         data-active={active || undefined}
+        borderRadius="md"
+        h="50px"
         icon={<Icon fontSize="xl" />}
+        w="50px"
+        onClick={onClick}
       />
     </Tooltip>
   )
@@ -60,12 +61,12 @@ const NavbarWithTooltips: FC = () => {
 
   return (
     <VStack
-      w="80px"
-      minH="750px"
-      h="full"
-      p="md"
       borderRight="1px solid"
       borderRightColor="border"
+      h="full"
+      minH="750px"
+      p="md"
+      w="80px"
     >
       <Center>
         <Avatar

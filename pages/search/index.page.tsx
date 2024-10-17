@@ -1,16 +1,17 @@
-import type { ParsedUrlQuery } from "querystring"
-import { isArray, isEmpty } from "@yamada-ui/react"
+import type { Component } from "component"
 import type {
+  GetServerSidePropsContext,
   InferGetServerSidePropsType,
   NextPageWithConfig,
-  GetServerSidePropsContext,
 } from "next"
-import type { Component } from "component"
+import type { ParsedUrlQuery } from "querystring"
+import type { Locale } from "utils/i18n"
+import { isArray, isEmpty } from "@yamada-ui/react"
 import { Components } from "components/data-display"
 import { AppProvider } from "contexts/app-context"
 import { AppLayout } from "layouts/app-layout"
 import { getComponent, getComponentCategoryGroup } from "utils/component"
-import { getContents, getUI, type Locale } from "utils/i18n"
+import { getContents, getUI } from "utils/i18n"
 
 type PageProps = InferGetServerSidePropsType<typeof getServerSideProps>
 
@@ -18,20 +19,20 @@ const getResolvedQuery = (query: ParsedUrlQuery, url?: string) => {
   if (url && !Object.keys(query).length)
     query = Object.fromEntries(new URL(url).searchParams.entries())
 
-  return Object.entries(query).reduce(
+  return Object.entries(query).reduce<{ [key: string]: string[] | undefined }>(
     (prev, [key, values]) => {
       prev[key] = isArray(values) ? values : (values?.split(",") ?? [])
 
       return prev
     },
-    {} as Record<string, string[] | undefined>,
+    {},
   )
 }
 
 export const getServerSideProps = async ({
-  req,
   locale,
   query,
+  req,
 }: GetServerSidePropsContext) => {
   const componentTree = await getComponentCategoryGroup()(locale as Locale)
 
@@ -43,7 +44,7 @@ export const getServerSideProps = async ({
   const hits = contents.filter((content) => {
     if (content.type !== "component") return false
 
-    return labels?.some((label) => content.labels.includes(label))
+    return labels.some((label) => content.labels.includes(label))
   })
 
   const components = (
@@ -58,25 +59,25 @@ export const getServerSideProps = async ({
 
   return {
     props: {
-      title: `${labels.join(", ")} ${ui.component.components.title}`,
-      description: ui.app.description,
-      componentTree,
       components,
+      componentTree,
+      description: ui.app.description,
       labels,
+      title: `${labels.join(", ")} ${ui.component.components.title}`,
     },
   }
 }
 
 const Page: NextPageWithConfig<PageProps> = ({
-  title,
-  description,
-  componentTree,
   components,
+  componentTree,
+  description,
   labels,
+  title,
 }) => {
   return (
-    <AppProvider {...{ componentTree, components }}>
-      <AppLayout {...{ title, description }} gap="md">
+    <AppProvider {...{ components, componentTree }}>
+      <AppLayout {...{ description, title }} gap="md">
         <Components labels={labels} />
       </AppLayout>
     </AppProvider>

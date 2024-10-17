@@ -1,51 +1,51 @@
+import type {
+  Dict,
+  Environment,
+  FlexProps,
+  HTMLUIProps,
+  LoadingProps,
+  ThemeConfig,
+  UIProviderProps,
+} from "@yamada-ui/react"
+import type { Component, ComponentContainerProps } from "component"
+import type { FC } from "react"
 import createEmotionCache from "@emotion/cache"
 import { CacheProvider } from "@emotion/react"
 import weakMemoize from "@emotion/weak-memoize"
 import {
   Box,
   Center,
+  createThemeSchemeManager,
+  EnvironmentProvider,
   extendConfig,
+  Flex,
   forwardRef,
-  Loading,
-  useAsync,
-  ui,
-  ThemeProvider,
-  LoadingProvider,
-  ResetStyle,
   GlobalStyle,
+  Loading,
+  LoadingProvider,
   NoticeProvider,
+  ResetStyle,
+  ThemeProvider,
+  ui,
+  useAsync,
   useColorMode,
   useTheme,
-  EnvironmentProvider,
-  createThemeSchemeManager,
-  Flex,
-} from "@yamada-ui/react"
-import type {
-  Dict,
-  HTMLUIProps,
-  LoadingProps,
-  ThemeConfig,
-  UIProviderProps,
-  Environment,
-  FlexProps,
 } from "@yamada-ui/react"
 import dynamic from "next/dynamic"
-import type { FC } from "react"
 import { memo, useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
-import type { Component, ComponentContainerProps } from "component"
-import { theme as defaultTheme, config as defaultConfig } from "theme"
+import { config as defaultConfig, theme as defaultTheme } from "theme"
 
-const UIProvider: FC<UIProviderProps & { environment?: Environment }> = ({
-  theme = defaultTheme,
-  config = defaultConfig,
+const UIProvider: FC<{ environment?: Environment } & UIProviderProps> = ({
   children,
+  config = defaultConfig,
   environment,
+  theme = defaultTheme,
   ...rest
 }) => {
   return (
     <EnvironmentProvider environment={environment}>
-      <ThemeProvider theme={theme} config={config} {...rest}>
+      <ThemeProvider config={config} theme={theme} {...rest}>
         <LoadingProvider {...config.loading}>
           <ResetStyle />
           <GlobalStyle />
@@ -57,16 +57,16 @@ const UIProvider: FC<UIProviderProps & { environment?: Environment }> = ({
   )
 }
 
-export type ComponentPreviewProps = FlexProps &
-  Pick<Component, "paths"> & {
-    containerProps?: ComponentContainerProps
-    loadingProps?: LoadingProps
-    iframe?: boolean
-    isFullHeight?: boolean
-  }
+export type ComponentPreviewProps = {
+  iframe?: boolean
+  isFullHeight?: boolean
+  containerProps?: ComponentContainerProps
+  loadingProps?: LoadingProps
+} & FlexProps &
+  Pick<Component, "paths">
 
 const createCache = weakMemoize((container: Node) =>
-  createEmotionCache({ container, key: "iframe-css" }),
+  createEmotionCache({ key: "iframe-css", container }),
 )
 
 export const ComponentPreview = memo(
@@ -74,17 +74,19 @@ export const ComponentPreview = memo(
     (
       {
         h,
+        iframe,
+        isFullHeight,
         minH,
         paths,
         containerProps: _containerProps,
         loadingProps,
-        iframe,
-        isFullHeight,
         ...rest
       },
       ref,
     ) => {
-      const Component = dynamic(() => import(`/contents/${paths.component}`))
+      const Component = dynamic(
+        async () => import(`/contents/${paths.component}`),
+      )
 
       const { colorMode } = useColorMode()
       const { themeScheme } = useTheme()
@@ -137,17 +139,17 @@ export const ComponentPreview = memo(
           ...config,
         })
 
-        return { theme, config }
+        return { config, theme }
       })
 
-      const containerProps = useMemo<HTMLUIProps<"div">>(() => {
+      const containerProps = useMemo<HTMLUIProps>(() => {
         const { centerContent, ...rest } = _containerProps ?? {}
 
-        let props: HTMLUIProps<"div"> = {
-          w: "full",
-          h: "full",
+        let props: HTMLUIProps = {
           containerType: "inline-size",
+          h: "full",
           overflow: "auto",
+          w: "full",
           ...rest,
         }
 
@@ -184,9 +186,9 @@ export const ComponentPreview = memo(
         <Flex ref={ref} flexDirection="column" h={h} minH={minH} {...rest}>
           {iframe ? (
             <ui.iframe
-              title="component-preview-iframe"
               ref={iframeRef}
               flex="1"
+              title="component-preview-iframe"
             >
               {head && body
                 ? createPortal(
