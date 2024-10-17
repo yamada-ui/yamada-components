@@ -47,8 +47,10 @@ const linksMockdata = [
 ]
 
 const DoubleNavbar: FC = () => {
-  const [active, setActive] = useState<string>(mainLinksMockdata[0].label)
-  const [activeLink, setActiveLink] = useState<string>(linksMockdata[0])
+  const [active, setActive] = useState<string>(
+    mainLinksMockdata[0]?.label || "",
+  )
+  const [activeLink, setActiveLink] = useState<string>(linksMockdata[0] || "")
 
   return (
     <VStack

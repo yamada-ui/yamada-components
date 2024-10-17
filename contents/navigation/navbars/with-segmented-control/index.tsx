@@ -55,7 +55,7 @@ type TabsKey = keyof typeof tabs
 
 const NavbarWithSegmentedControl: FC = () => {
   const [section, setSection] = useState<TabsKey>("account")
-  const [active, setActive] = useState<string>(tabs[section][0].label)
+  const [active, setActive] = useState<string>(tabs[section][0]?.label || "")
 
   return (
     <VStack

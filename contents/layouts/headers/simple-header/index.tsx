@@ -18,7 +18,7 @@ const links = [
 ]
 
 const HeaderSimple: FC = () => {
-  const [active, setActive] = useState<string>(links[0].label)
+  const [active, setActive] = useState<string>(links[0]?.label || "")
   const { isOpen, onToggle } = useDisclosure()
 
   const items = links.map((link) => (
