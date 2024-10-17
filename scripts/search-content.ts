@@ -64,36 +64,40 @@ const generateSearchContent = async (
           return null
         }
 
-        const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+        const title = metadata[locale]?.title ?? metadata[DEFAULT_LOCALE].title
         const description =
-          metadata[locale]?.description ?? metadata[DEFAULT_LOCALE]?.description
+          metadata[locale]?.description ?? metadata[DEFAULT_LOCALE].description
         const labels = metadata.labels ?? []
         const slug = getSlug(metadataPath)
         const type = getType(slug)
         const [, categoryGroup, category, component] = slug.split("/")
 
-        const hierarchy = { category, categoryGroup, component }
+        const hierarchy = {
+          category: category || "",
+          categoryGroup: categoryGroup || "",
+          component: component || "",
+        }
 
         hierarchy[type] = title
 
-        if (type === "category" || type === "component") {
+        if ((type === "category" || type === "component") && categoryGroup) {
           const metadata = await getMetadata(
             path.join("contents", categoryGroup, "metadata.json"),
           )
 
           const title =
-            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE].title
 
           hierarchy.categoryGroup = title
         }
 
-        if (type === "component") {
+        if (type === "component" && categoryGroup && category) {
           const metadata = await getMetadata(
             path.join("contents", categoryGroup, category, "metadata.json"),
           )
 
           const title =
-            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE]?.title
+            metadata[locale]?.title ?? metadata[DEFAULT_LOCALE].title
 
           hierarchy.category = title
         }
