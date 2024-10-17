@@ -100,9 +100,12 @@ const getAuthors: p.RequiredRunner<
         if (author?.type !== "User") return
 
         if (Object.prototype.hasOwnProperty.call(commitMap, author.id)) {
-          commitMap[author.id] = {
-            author,
-            count: commitMap[author.id].count + 1,
+          const count = commitMap[author.id]?.count
+          if (count) {
+            commitMap[author.id] = {
+              author,
+              count: count + 1,
+            }
           }
         } else {
           commitMap[author.id] = { author, count: 1 }
