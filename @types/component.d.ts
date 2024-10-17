@@ -5,8 +5,8 @@ type Locale = "en" | "ja"
 type OtherLocale = Exclude<Locale, DefaultLocale>
 
 type LocaleMetadata<Y> = {
-  [key in DefaultLocale]: Y
-} & Partial<{ [key: OtherLocale]: Y }>
+  [key in Locale]: key extends DefaultLocale ? Y : undefined | Y
+}
 
 declare module "component" {
   type ContentType = "category" | "categoryGroup" | "component"
