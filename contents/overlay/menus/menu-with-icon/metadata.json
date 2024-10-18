@@ -8,6 +8,7 @@
     "description": "アイコンを含めたメニュー"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

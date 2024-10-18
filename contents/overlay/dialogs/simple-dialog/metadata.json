@@ -8,6 +8,7 @@
     "description": "シンプルなダイアログです。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true,
       "p": "md"

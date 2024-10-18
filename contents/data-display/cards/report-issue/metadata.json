@@ -8,6 +8,7 @@
     "description": "問題を報告し、詳細を提供するためのカード。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

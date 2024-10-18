@@ -8,6 +8,7 @@
     "description": "支払い方法を追加および管理するためのカード。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "overflow": "hidden",

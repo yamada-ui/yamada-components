@@ -7,7 +7,13 @@
     "title": "プログレスカード",
     "description": "これはプログレスカードです。"
   },
-  "options": { "container": { "centerContent": true, "p": "md" } },
+  "options": {
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  },
   "authors": [
     {
       "id": 84060430,

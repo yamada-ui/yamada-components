@@ -8,6 +8,7 @@
     "description": "この例では、スクロールしたときにテキストを表示する方法を示しています。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true
     }

@@ -8,6 +8,7 @@
     "description": "Cookieの使用について同意を求めるために使用するダイアログです。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true,
       "p": "md"
