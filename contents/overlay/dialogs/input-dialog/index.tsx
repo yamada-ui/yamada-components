@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { TriangleAlert } from "@yamada-ui/lucide"
 import {
   Button,
@@ -10,11 +11,11 @@ import {
   useUpdateEffect,
   VStack,
 } from "@yamada-ui/react"
-import { useState, type FC } from "react"
+import { useState } from "react"
 
 const keyword = "delete"
 const InputDialog: FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onClose, onOpen } = useDisclosure()
   const [monitoringInput, setMonitoringInput] = useState(true)
   const [text, setText] = useState<string>("")
   const handleOnClose = () => {
@@ -33,17 +34,17 @@ const InputDialog: FC = () => {
     <>
       <Button onClick={onOpen}>Open Dialog</Button>
       <Dialog
-        isOpen={isOpen}
-        onClose={handleOnClose}
+        blockScrollOnMount={false}
         cancel="Cancel"
-        onCancel={handleOnClose}
+        isOpen={isOpen}
         success={{
           colorScheme: "danger",
-          isDisabled: monitoringInput,
           children: "Delete",
+          isDisabled: monitoringInput,
         }}
+        onCancel={handleOnClose}
+        onClose={handleOnClose}
         onSuccess={handleOnClose}
-        blockScrollOnMount={false}
       >
         <DialogHeader>
           <VStack alignItems="center">
@@ -58,9 +59,9 @@ const InputDialog: FC = () => {
               type '{keyword}'.
             </Text>
             <Input
-              value={text}
-              placeholder={keyword}
               focusBorderColor={monitoringInput ? "danger.500" : "blue.500"}
+              placeholder={keyword}
+              value={text}
               onChange={(e) => setText(e.target.value)}
             />
           </VStack>

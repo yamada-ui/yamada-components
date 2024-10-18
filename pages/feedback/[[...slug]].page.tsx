@@ -14,8 +14,8 @@ export const getStaticPaths = getStaticComponentPaths("feedback")
 export const getStaticProps = getStaticComponentProps("feedback")
 
 const Page: NextPageWithConfig<PageProps> = ({
-  categoryGroup,
   category,
+  categoryGroup,
   component,
   componentTree,
 }) => {
@@ -25,19 +25,19 @@ const Page: NextPageWithConfig<PageProps> = ({
     return (
       <ComponentProvider {...component}>
         <ComponentLayout
-          title={metadata?.title}
           description={metadata?.description}
+          title={metadata?.title}
         />
       </ComponentProvider>
     )
   }
 
   return (
-    <AppProvider {...{ componentTree, categoryGroup, category }}>
+    <AppProvider {...{ category, categoryGroup, componentTree }}>
       <AppLayout
-        title={category?.title ?? categoryGroup?.title}
         description={category?.description ?? categoryGroup?.description}
         gap="md"
+        title={category?.title ?? categoryGroup?.title}
       >
         {category ? <Category /> : <CategoryGroup />}
       </AppLayout>

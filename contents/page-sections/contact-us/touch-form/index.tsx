@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Button,
   Card,
@@ -14,27 +15,26 @@ import {
   Textarea,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { contacts } from "./contacts"
 
 const GetInTouch: FC = () => {
   return (
     <Container
       flexDir={{ base: "row", md: "column" }}
-      maxW="5xl"
-      rounded="2xl"
       gap={{ base: "xl", md: "lg" }}
-      p={{ base: "lg", md: "xs" }}
       m="auto"
+      maxW="5xl"
+      p={{ base: "lg", md: "xs" }}
+      rounded="2xl"
     >
       <VStack
         bgGradient="linear(to-r, primary.700, primary.500)"
-        py="xl"
-        px="lg"
-        rounded="2xl"
         color="white"
-        w={{ base: "lg", md: "full" }}
         gap="xl"
+        px="lg"
+        py="xl"
+        rounded="2xl"
+        w={{ base: "lg", md: "full" }}
       >
         <Heading as="h3" size="md">
           Contact information
@@ -52,17 +52,17 @@ const GetInTouch: FC = () => {
         </VStack>
       </VStack>
       <Card
-        bg={["white", "black"]}
         as="form"
-        rounded="md"
-        p="md"
-        w="full"
-        maxW="xl"
-        h="fit-content"
+        bg={["white", "black"]}
         boxShadow="none"
+        h="fit-content"
+        maxW="xl"
+        p="md"
+        rounded="md"
+        w="full"
         onSubmit={(e) => e.preventDefault()}
       >
-        <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+        <CardHeader alignItems="flex-start" flexDirection="column" gap="0">
           <Heading as="h2" size="lg">
             Get in touch
           </Heading>
@@ -72,11 +72,11 @@ const GetInTouch: FC = () => {
             <FormControl label="Name">
               <Input type="text" placeholder="Hirotomo Yamada" />
             </FormControl>
-            <FormControl label="Email" isRequired>
+            <FormControl isRequired label="Email">
               <Input type="email" placeholder="your@email.com" />
             </FormControl>
           </Flex>
-          <FormControl label="Subject" isRequired>
+          <FormControl isRequired label="Subject">
             <Input type="text" placeholder="Subject" />
           </FormControl>
           <FormControl label="Message">
@@ -85,9 +85,9 @@ const GetInTouch: FC = () => {
         </CardBody>
         <CardFooter
           justifyContent={{ base: "flex-end", md: "center" }}
-          pt={{ sm: "xs", base: "md" }}
+          pt={{ base: "md", sm: "xs" }}
         >
-          <Button colorScheme="primary" type="submit">
+          <Button type="submit" colorScheme="primary">
             Send message
           </Button>
         </CardFooter>

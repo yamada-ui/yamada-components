@@ -1,21 +1,21 @@
-import { VStack, Divider, List, ListItem } from "@yamada-ui/react"
 import type { FC } from "react"
+import { Divider, List, ListItem, VStack } from "@yamada-ui/react"
 import { items } from "./timeline"
 import { TimelineItem } from "./timeline-item"
 
 const SimpleTimeline: FC = () => {
   return (
-    <VStack as={List} position="relative" gap="xl" pl={{ base: "lg", sm: "0" }}>
+    <VStack as={List} gap="xl" pl={{ base: "lg", sm: "0" }} position="relative">
       <ListItem>
         <Divider
+          borderColor="primary"
+          bottom="0"
+          display={{ sm: "none" }}
+          left="xs"
           orientation="vertical"
           position="absolute"
-          bottom="0"
-          left="xs"
-          borderColor="primary"
-          w="1px"
-          display={{ sm: "none" }}
           top="0"
+          w="1px"
         />
       </ListItem>
       {items.map((item, index) => (

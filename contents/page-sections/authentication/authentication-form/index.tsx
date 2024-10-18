@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { EyeIcon, EyeOffIcon } from "@yamada-ui/lucide"
 import {
   Button,
@@ -9,18 +10,17 @@ import {
   Center,
   Divider,
   FormControl,
-  HStack,
   Heading,
+  HStack,
   Input,
   InputGroup,
   InputRightElement,
   Link,
   Spacer,
   Text,
-  VStack,
   useBoolean,
+  VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import { GoogleButton } from "./google-button"
 import { TwitterButton } from "./twitter-button"
 
@@ -28,13 +28,13 @@ const AuthenticationForm: FC = () => {
   const [show, { toggle }] = useBoolean()
 
   return (
-    <Center p="lg" bg={["blackAlpha.100", "blackAlpha.500"]}>
+    <Center bg={["blackAlpha.100", "blackAlpha.500"]} p="lg">
       <Card
-        rounded="xl"
         variant="outline"
-        maxW="lg"
         bg={["white", "black"]}
+        maxW="lg"
         p="md"
+        rounded="xl"
       >
         <CardHeader gap="0">
           <Heading as="h2" size="md">
@@ -45,22 +45,22 @@ const AuthenticationForm: FC = () => {
         <CardBody>
           <ButtonGroup
             variant="outline"
+            flexDir={{ base: "row", sm: "column" }}
             gap="md"
             w="full"
-            flexDir={{ sm: "column", base: "row" }}
           >
             <GoogleButton
-              w="full"
-              rounded="full"
               borderColor={["blackAlpha.400", "whiteAlpha.400"]}
+              rounded="full"
+              w="full"
             >
               Google
             </GoogleButton>
 
             <TwitterButton
-              w="full"
-              rounded="full"
               borderColor={["blackAlpha.400", "whiteAlpha.400"]}
+              rounded="full"
+              w="full"
             >
               Twitter
             </TwitterButton>
@@ -70,9 +70,9 @@ const AuthenticationForm: FC = () => {
             <Divider />
 
             <Text
-              whiteSpace="nowrap"
-              fontSize="sm"
               color={["blackAlpha.700", "whiteAlpha.700"]}
+              fontSize="sm"
+              whiteSpace="nowrap"
             >
               Or continue with email
             </Text>
@@ -88,17 +88,17 @@ const AuthenticationForm: FC = () => {
             <FormControl isRequired label="Password">
               <InputGroup size="md">
                 <Input
-                  pr="4.5rem"
                   type={show ? "text" : "password"}
                   placeholder="Your password"
+                  pr="4.5rem"
                 />
                 <InputRightElement isClick>
                   <Button
-                    h="1.75rem"
-                    w="1.75rem"
-                    minW="unset"
-                    onClick={toggle}
                     variant="ghost"
+                    h="1.75rem"
+                    minW="unset"
+                    w="1.75rem"
+                    onClick={toggle}
                   >
                     {show ? <EyeOffIcon /> : <EyeIcon />}
                   </Button>
@@ -109,23 +109,23 @@ const AuthenticationForm: FC = () => {
         </CardBody>
 
         <CardFooter
-          flexDir={{ sm: "column", base: "row" }}
-          pt={{ sm: "xs", base: "md" }}
+          flexDir={{ base: "row", sm: "column" }}
+          pt={{ base: "md", sm: "xs" }}
         >
           <Link
             href="#"
-            onClick={(e) => e.preventDefault()}
-            fontSize="sm"
             color={["blackAlpha.700", "whiteAlpha.700"]}
+            fontSize="sm"
             textAlign="center"
+            onClick={(e) => e.preventDefault()}
           >
             Don't have an account? Register
           </Link>
           <Spacer display={{ sm: "none" }} />
           <Button
             colorScheme="primary"
-            rounded="full"
             px="lg"
+            rounded="full"
             w={{ sm: "full" }}
           >
             Login

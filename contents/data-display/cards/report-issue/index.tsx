@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Button,
   Card,
@@ -5,26 +6,25 @@ import {
   CardFooter,
   CardHeader,
   FormControl,
+  Grid,
   Heading,
   Input,
-  Text,
-  Select,
   Option,
+  Select,
+  Text,
   Textarea,
-  Grid,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const ReportIssueCard: FC = () => {
   return (
     <Card
-      w="md"
-      rounded="xl"
-      variant="outline"
       as="form"
+      variant="outline"
+      rounded="xl"
+      w="md"
       onSubmit={(e) => e.preventDefault()}
     >
-      <CardHeader flexDirection="column" alignItems="flex-start" gap="0">
+      <CardHeader alignItems="flex-start" flexDirection="column" gap="0">
         <Heading as="h2" size="md">
           Report an issue
         </Heading>
@@ -34,12 +34,12 @@ const ReportIssueCard: FC = () => {
 
       <CardBody>
         <Grid
-          w="full"
-          templateColumns={{ base: "repeat(2, 1fr)", md: "1fr" }}
           gap="md"
+          templateColumns={{ base: "repeat(2, 1fr)", md: "1fr" }}
+          w="full"
         >
           <FormControl isRequired label="Area">
-            <Select w="full" defaultValue="Billing">
+            <Select defaultValue="Billing" w="full">
               <Option value="Team">Team</Option>
               <Option value="Billing">Billing</Option>
               <Option value="Account">Account</Option>
@@ -49,7 +49,7 @@ const ReportIssueCard: FC = () => {
           </FormControl>
 
           <FormControl isRequired label="Security Level">
-            <Select w="full" defaultValue="Severity 2">
+            <Select defaultValue="Severity 2" w="full">
               <Option value="Severity 1 (Highest)">Severity 1 (Highest)</Option>
               <Option value="Severity 2">Severity 2</Option>
               <Option value="Severity 3">Severity 3</Option>

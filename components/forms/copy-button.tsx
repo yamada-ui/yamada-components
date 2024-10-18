@@ -1,52 +1,46 @@
-import { CheckIcon, CopyIcon } from "@yamada-ui/lucide"
 import type { ButtonProps } from "@yamada-ui/react"
-import { forwardRef, IconButton, useClipboard, Tooltip } from "@yamada-ui/react"
+import { CheckIcon, CopyIcon } from "@yamada-ui/lucide"
+import { forwardRef, IconButton, Tooltip, useClipboard } from "@yamada-ui/react"
 import { memo } from "react"
 
-export type CopyButtonProps = Omit<ButtonProps, "value"> & { value: string }
+export type CopyButtonProps = { value: string } & Omit<ButtonProps, "value">
 
 export const CopyButton = memo(
   forwardRef<CopyButtonProps, "button">(({ value, ...rest }, ref) => {
     const { hasCopied, onCopy } = useClipboard(value)
 
     return (
-      <>
-        <Tooltip
-          label={hasCopied ? "Copied!" : "Copy the code"}
-          placement="top"
-          gutter={12}
-          {...(hasCopied ? { bg: "success", color: "white" } : {})}
-          display="inline-flex"
-          alignItems="center"
-        >
-          <IconButton
-            ref={ref}
-            size="sm"
-            aria-label="Copy the code"
-            variant="ghost"
-            color={hasCopied ? "success" : "muted"}
-            fontSize="1em"
-            {...(hasCopied
-              ? {
-                  _hover: {
-                    color: "success",
-                    borderColor: "success",
-                    bg: "rgba(86, 92, 103, 0.12)",
-                  },
-                }
-              : {})}
-            icon={
-              hasCopied ? (
-                <CheckIcon fontSize="lg" />
-              ) : (
-                <CopyIcon fontSize="md" />
-              )
-            }
-            {...rest}
-            onClick={onCopy}
-          />
-        </Tooltip>
-      </>
+      <Tooltip
+        gutter={12}
+        label={hasCopied ? "Copied!" : "Copy the code"}
+        placement="top"
+        {...(hasCopied ? { bg: "success", color: "white" } : {})}
+        alignItems="center"
+        display="inline-flex"
+      >
+        <IconButton
+          ref={ref}
+          size="sm"
+          variant="ghost"
+          aria-label="Copy the code"
+          color={hasCopied ? "success" : "muted"}
+          fontSize="1em"
+          {...(hasCopied
+            ? {
+                _hover: {
+                  bg: "rgba(86, 92, 103, 0.12)",
+                  borderColor: "success",
+                  color: "success",
+                },
+              }
+            : {})}
+          icon={
+            hasCopied ? <CheckIcon fontSize="lg" /> : <CopyIcon fontSize="md" />
+          }
+          {...rest}
+          onClick={onCopy}
+        />
+      </Tooltip>
     )
   }),
 )

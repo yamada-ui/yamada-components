@@ -1,7 +1,7 @@
+import type { FC } from "react"
 import { Dropzone } from "@yamada-ui/dropzone"
 import { Center, Image, Text, useLoading, VStack, Wrap } from "@yamada-ui/react"
 import { useState } from "react"
-import type { FC } from "react"
 
 export const ImagePreviewDropzone: FC = () => {
   const [imageURL, setImageURL] = useState<string[]>([])
@@ -16,9 +16,7 @@ export const ImagePreviewDropzone: FC = () => {
 
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i]
-
+    for (const file of files) {
       setImageURL((prev) => [...prev, URL.createObjectURL(file)])
     }
     page.finish()
@@ -27,10 +25,10 @@ export const ImagePreviewDropzone: FC = () => {
   return (
     <VStack maxW="5xl">
       <Dropzone
-        multiple
         accept={{
           "image/*": [],
         }}
+        multiple
         onDropAccepted={handleAcceptedFile}
       >
         <Text>Drag and Drop Image Files</Text>
@@ -42,9 +40,9 @@ export const ImagePreviewDropzone: FC = () => {
             key={index}
             src={url}
             alt={`image-${index}`}
-            width={200}
             height={200}
             objectFit="contain"
+            width={200}
           />
         ))}
       </Wrap>

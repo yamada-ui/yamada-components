@@ -65,16 +65,14 @@ export default function plop(
       {
         type: "list",
         name: "categoryGroupName",
-        message: "Which categoryGroup does this component belong to?:",
-        default: categoryGroups[0],
         choices: [...categoryGroups, "Create new category group."],
+        default: categoryGroups[0],
+        message: "Which categoryGroup does this component belong to?:",
       },
       {
         type: "input",
         name: "newCategoryGroupName",
         message: "Enter category group name:",
-        when: ({ categoryGroupName }) =>
-          categoryGroupName === "Create new category group.",
         validate: (input) => {
           if (!input) return "category group name is required."
 
@@ -85,12 +83,14 @@ export default function plop(
 
           return true
         },
+        when: ({ categoryGroupName }) =>
+          categoryGroupName === "Create new category group.",
       },
       {
         type: "input",
         name: "newCategoryName",
         message: "Enter category name:",
-        validate: (input, { newCategoryGroupName, categoryGroupName }) => {
+        validate: (input, { categoryGroupName, newCategoryGroupName }) => {
           if (!input) return "category name is required."
 
           if (!validateDashCase(input))
@@ -157,16 +157,14 @@ export default function plop(
       {
         type: "list",
         name: "categoryGroupName",
-        message: "Which categoryGroup does this component belong to?:",
-        default: categoryGroups[0],
         choices: [...categoryGroups, "Create new category group."],
+        default: categoryGroups[0],
+        message: "Which categoryGroup does this component belong to?:",
       },
       {
         type: "input",
         name: "newCategoryGroupName",
         message: "Enter category group name:",
-        when: ({ categoryGroupName }) =>
-          categoryGroupName === "Create new category group.",
         validate: (input) => {
           if (!input) return "category group name is required."
 
@@ -177,27 +175,26 @@ export default function plop(
 
           return true
         },
+        when: ({ categoryGroupName }) =>
+          categoryGroupName === "Create new category group.",
       },
       {
         type: "list",
         name: "categoryName",
-        message: "Which category does this component belong to?:",
-        default: categories[0],
-        when: ({ categoryGroupName }) =>
-          categoryGroupName !== "Create new category group.",
         choices: ({ categoryGroupName }) => [
           ...categories[categoryGroupName],
           "Create new category.",
         ],
+        default: categories[0],
+        message: "Which category does this component belong to?:",
+        when: ({ categoryGroupName }) =>
+          categoryGroupName !== "Create new category group.",
       },
       {
         type: "input",
         name: "newCategoryName",
         message: "Enter category name:",
-        when: ({ categoryGroupName, categoryName }) =>
-          categoryGroupName === "Create new category group." ||
-          categoryName === "Create new category.",
-        validate: (input, { newCategoryGroupName, categoryGroupName }) => {
+        validate: (input, { categoryGroupName, newCategoryGroupName }) => {
           if (!input) return "category name is required."
 
           if (!validateDashCase(input))
@@ -209,12 +206,15 @@ export default function plop(
 
           return true
         },
+        when: ({ categoryGroupName, categoryName }) =>
+          categoryGroupName === "Create new category group." ||
+          categoryName === "Create new category.",
       },
       {
         type: "input",
         name: "componentName",
         message: "Enter component name:",
-        validate: (input, { newCategoryGroupName, categoryGroupName }) => {
+        validate: (input, { categoryGroupName, newCategoryGroupName }) => {
           if (!input) return "component name is required."
 
           if (!validateDashCase(input))
@@ -230,16 +230,16 @@ export default function plop(
       {
         type: "list",
         name: "theme",
-        message: "Does this component need a theme?:",
-        default: "No",
         choices: ["Yes", "No"],
+        default: "No",
+        message: "Does this component need a theme?:",
       },
       {
         type: "list",
         name: "config",
-        message: "Does this component need a config?:",
-        default: "No",
         choices: ["Yes", "No"],
+        default: "No",
+        message: "Does this component need a config?:",
       },
     ],
 
@@ -248,7 +248,7 @@ export default function plop(
 
       if (!answers) return actions
 
-      const { theme, config, newCategoryGroupName, newCategoryName } = answers
+      const { config, newCategoryGroupName, newCategoryName, theme } = answers
 
       let destination = `./contents/{{dashCase categoryGroupName}}/{{dashCase categoryName}}/{{dashCase componentName}}`
 
@@ -288,29 +288,29 @@ export default function plop(
 
       actions.push({
         type: "addMany",
-        templateFiles: "plop/component/**",
-        destination,
         base: "plop/component",
         abortOnFail: true,
+        destination,
+        templateFiles: "plop/component/**",
       })
 
       if (theme === "Yes") {
         actions.push({
           type: "addMany",
-          templateFiles: "plop/optional/theme.ts.hbs",
-          destination,
           base: "plop/optional",
           abortOnFail: true,
+          destination,
+          templateFiles: "plop/optional/theme.ts.hbs",
         })
       }
 
       if (config === "Yes") {
         actions.push({
           type: "addMany",
-          templateFiles: "plop/optional/config.ts.hbs",
-          destination,
           base: "plop/optional",
           abortOnFail: true,
+          destination,
+          templateFiles: "plop/optional/config.ts.hbs",
         })
       }
 

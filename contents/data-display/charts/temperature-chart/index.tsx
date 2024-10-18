@@ -1,20 +1,21 @@
+import type { FC } from "react"
 import { AreaChart } from "@yamada-ui/charts"
 import {
   Center,
   Heading,
   Loading,
+  Option,
   Select,
+  Stack,
   Text,
   useAsync,
   VStack,
-  Option,
-  Stack,
 } from "@yamada-ui/react"
-import { useMemo, useState, type FC } from "react"
+import { useMemo, useState } from "react"
 import CustomRadioGroup from "./custom-radio"
 import { getTemperatureData, locationKeys } from "./utils"
 
-type RangeType = "2w" | "1w" | "1d"
+type RangeType = "1d" | "1w" | "2w"
 
 const TemperatureChart: FC = () => {
   const oneWeekLater = useMemo(() => {
@@ -33,7 +34,7 @@ const TemperatureChart: FC = () => {
   const [dateRange, setDateRange] = useState<RangeType>("2w")
   const [location, setLocation] = useState("Tokyo")
 
-  const { value, loading } = useAsync(async () => {
+  const { loading, value } = useAsync(async () => {
     try {
       return await getTemperatureData()
     } catch {
@@ -46,9 +47,9 @@ const TemperatureChart: FC = () => {
       case "2w":
         return value
       case "1w":
-        return value?.filter(({ date }) => new Date(date) <= oneWeekLater)
+        return value?.filter(({ date }) => new Date(date || "") <= oneWeekLater)
       case "1d":
-        return value?.filter(({ date }) => new Date(date) <= oneDayLater)
+        return value?.filter(({ date }) => new Date(date || "") <= oneDayLater)
 
       default:
         break
@@ -78,8 +79,8 @@ const TemperatureChart: FC = () => {
   const options = useMemo(
     () =>
       locationKeys.map((location) => ({
+        currentTemperature: (value?.[0]?.[location] as number) || 0,
         value: location,
-        currentTemperature: (value?.[0][location] as number) ?? 0,
       })),
     [value],
   )
@@ -88,15 +89,15 @@ const TemperatureChart: FC = () => {
     <VStack as="article">
       <Stack
         as="header"
-        gap={0}
-        direction={{ base: "row", lg: "column" }}
         alignItems={{ base: "center", lg: "flex-start" }}
-        justifyContent="space-between"
         borderBottomWidth="1px"
+        direction={{ base: "row", lg: "column" }}
+        gap={0}
+        justifyContent="space-between"
       >
-        <VStack px="md" py="sm" gap={0}>
+        <VStack gap={0} px="md" py="sm">
           <Heading isTruncated>Temperature forecast in Japan</Heading>
-          <Text isTruncated color={["blackAlpha.700", "whiteAlpha.600"]}>
+          <Text color={["blackAlpha.700", "whiteAlpha.600"]} isTruncated>
             {`Showing temperature in Japan for ${
               dateRange === "2w"
                 ? "the next two weeks"
@@ -109,15 +110,15 @@ const TemperatureChart: FC = () => {
 
         <CustomRadioGroup
           options={options}
-          onChange={setLocation}
           value={location}
+          onChange={setLocation}
         />
       </Stack>
 
-      <VStack px="md" py="sm" gap="md" alignItems="flex-end">
+      <VStack alignItems="flex-end" gap="md" px="md" py="sm">
         <Select
-          maxW="xs"
           defaultValue="2w"
+          maxW="xs"
           onChange={(value) => setDateRange(value as RangeType)}
         >
           <Option value="2w">2 weeks later</Option>
@@ -136,23 +137,23 @@ const TemperatureChart: FC = () => {
         ) : (
           <AreaChart
             data={filteredData ?? []}
+            dataKey="formattedDate"
             series={[
               {
-                dataKey: location,
                 color: "primary.500",
+                dataKey: location,
               },
             ]}
-            dataKey="formattedDate"
-            withDots={false}
-            unit="°C"
             tooltipAnimationDuration={500}
+            unit="°C"
+            withDots={false}
+            areaProps={{ isAnimationActive: true }}
             chartProps={{
               margin: { left: 12, right: 12 },
             }}
-            areaProps={{ isAnimationActive: true }}
             xAxisProps={{
-              minTickGap: 60,
               interval: "preserveEnd",
+              minTickGap: 60,
             }}
             yAxisProps={{ domain }}
           />

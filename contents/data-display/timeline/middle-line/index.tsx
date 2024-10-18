@@ -1,5 +1,5 @@
-import { Divider, List, Grid, GridItem, ListItem } from "@yamada-ui/react"
 import type { FC } from "react"
+import { Divider, Grid, GridItem, List, ListItem } from "@yamada-ui/react"
 import { items } from "./timeline"
 import { TimelineItem } from "./timeline-item"
 import {
@@ -12,9 +12,7 @@ const TimelineWithMiddleLine: FC = () => {
   return (
     <Grid
       as={List}
-      position="relative"
-      pl={{ base: "lg", sm: "0" }}
-      maxW="4xl"
+      gap="xl"
       gridTemplateAreas={{
         base: `
           ${generateDesktopTemplateAreas().join(" ")}
@@ -25,15 +23,17 @@ const TimelineWithMiddleLine: FC = () => {
         lg: `
           ${generateTabletTemplateAreas().join(" ")}`,
       }}
-      gap="xl"
+      maxW="4xl"
+      pl={{ base: "lg", sm: "0" }}
+      position="relative"
     >
-      <GridItem area="line" transform="translateX(-50%)" as={ListItem}>
+      <GridItem as={ListItem} area="line" transform="translateX(-50%)">
         <Divider
-          orientation="vertical"
           borderColor="primary"
-          w="1px"
-          h="100%"
           display={{ sm: "none" }}
+          h="100%"
+          orientation="vertical"
+          w="1px"
         />
       </GridItem>
       {items.map((item, index) => (

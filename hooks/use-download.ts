@@ -1,14 +1,14 @@
 import JSZip from "jszip"
 import { useCallback } from "react"
 
-type UseDownloadProps = {
+interface UseDownloadProps {
+  files?: { data: string; path: string }[]
   folderName?: string
-  files?: { path: string; data: string }[]
 }
 
 export const useDownload = (props: UseDownloadProps = {}) => {
   const onDownload = useCallback(
-    async ({ folderName, files }: UseDownloadProps = {}) => {
+    async ({ files, folderName }: UseDownloadProps = {}) => {
       folderName ??= props.folderName
       files ??= props.files ?? []
 
@@ -17,7 +17,7 @@ export const useDownload = (props: UseDownloadProps = {}) => {
       const zip = new JSZip()
       const folder = zip.folder(folderName)
 
-      files.forEach(({ path, data }) => folder?.file(path, data))
+      files.forEach(({ data, path }) => folder?.file(path, data))
 
       const content = await zip.generateAsync({ type: "blob" })
 

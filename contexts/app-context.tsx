@@ -1,15 +1,15 @@
-import { createContext, useMemo, useContext } from "react"
-import type { PropsWithChildren, FC } from "react"
 import type {
   Component,
   ComponentCategory,
   ComponentCategoryGroup,
 } from "component"
+import type { FC, PropsWithChildren } from "react"
+import { createContext, useContext, useMemo } from "react"
 
-type AppContext = {
+interface AppContext {
   componentTree: ComponentCategoryGroup[]
-  categoryGroup?: ComponentCategoryGroup
   category?: ComponentCategory
+  categoryGroup?: ComponentCategoryGroup
   components?: Component[]
 }
 
@@ -19,20 +19,20 @@ const AppContext = createContext<AppContext>({
 
 export type AppProviderProps = PropsWithChildren<{
   componentTree: ComponentCategoryGroup[]
-  categoryGroup?: ComponentCategoryGroup
   category?: ComponentCategory
+  categoryGroup?: ComponentCategoryGroup
   components?: Component[]
 }>
 
 export const AppProvider: FC<AppProviderProps> = ({
-  componentTree,
-  categoryGroup,
   category,
-  components,
+  categoryGroup,
   children,
+  components,
+  componentTree,
 }) => {
   const value = useMemo(
-    () => ({ componentTree, categoryGroup, category, components }),
+    () => ({ category, categoryGroup, components, componentTree }),
     [componentTree, categoryGroup, category, components],
   )
 

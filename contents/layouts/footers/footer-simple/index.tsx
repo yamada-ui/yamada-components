@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Divider,
   Flex,
@@ -7,14 +8,13 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const links = [
-  { link: "#", label: "Home" },
-  { link: "#", label: "Contact" },
-  { link: "#", label: "Privacy" },
-  { link: "#", label: "Terms" },
-  { link: "#", label: "About" },
+  { label: "Home", link: "#" },
+  { label: "Contact", link: "#" },
+  { label: "Privacy", link: "#" },
+  { label: "Terms", link: "#" },
+  { label: "About", link: "#" },
 ]
 
 const FooterCentered: FC = () => {
@@ -22,8 +22,8 @@ const FooterCentered: FC = () => {
     <Link
       key={link.label}
       href={link.link}
-      onClick={(e) => e.preventDefault()}
       color="muted"
+      onClick={(e) => e.preventDefault()}
     >
       {link.label}
     </Link>
@@ -33,17 +33,17 @@ const FooterCentered: FC = () => {
     <VStack as="footer" gap="0" placeItems="center">
       <Divider />
       <Flex
-        w="full"
-        justifyContent="space-between"
         alignItems="center"
         flexDir={{ sm: "column" }}
         gap={{ sm: "sm" }}
+        justifyContent="space-between"
+        maxW="6xl"
         px="md"
         py="lg"
-        maxW="6xl"
+        w="full"
       >
         <HStack gap="sm">
-          <Image src="/favicon.svg" width={30} height={30} alt="Yamada UI" />
+          <Image src="/favicon.svg" alt="Yamada UI" height={30} width={30} />
           <Text fontSize="lg">Yamada UI</Text>
         </HStack>
         <HStack>{items}</HStack>

@@ -1,20 +1,20 @@
-import { VStack, Divider, List } from "@yamada-ui/react"
 import type { FC } from "react"
+import { Divider, List, VStack } from "@yamada-ui/react"
 import { items } from "./timeline"
 import { TimelineItem } from "./timeline-item"
 
 const CustomIconTimeline: FC = () => {
   return (
-    <VStack as={List} position="relative" pl={{ base: "lg", sm: "0" }}>
+    <VStack as={List} pl={{ base: "lg", sm: "0" }} position="relative">
       <Divider
+        borderColor="primary"
+        bottom="0"
+        display={{ sm: "none" }}
+        left="xs"
         orientation="vertical"
         position="absolute"
-        bottom="0"
-        left="xs"
-        borderColor="primary"
-        w="1px"
-        display={{ sm: "none" }}
         top="0"
+        w="1px"
       />
       {items.map((item, index) => (
         <TimelineItem

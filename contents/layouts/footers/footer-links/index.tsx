@@ -1,47 +1,47 @@
+import type { FC } from "react"
 import { InstagramIcon, TwitterIcon, YoutubeIcon } from "@yamada-ui/lucide"
 import {
-  Text,
+  ButtonGroup,
+  Divider,
   Flex,
+  HStack,
   IconButton,
   Image,
   Link,
-  VStack,
-  HStack,
-  Divider,
-  SimpleGrid,
-  ButtonGroup,
   List,
   ListItem,
+  SimpleGrid,
+  Text,
+  VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const data = [
   {
-    title: "About",
     links: [
       { label: "Features", link: "#" },
       { label: "Pricing", link: "#" },
       { label: "Support", link: "#" },
       { label: "Forums", link: "#" },
     ],
+    title: "About",
   },
   {
-    title: "Project",
     links: [
       { label: "Contribute", link: "#" },
       { label: "Media assets", link: "#" },
       { label: "Changelog", link: "#" },
       { label: "Releases", link: "#" },
     ],
+    title: "Project",
   },
   {
-    title: "Community",
     links: [
       { label: "Join Discord", link: "#" },
       { label: "Follow on Twitter", link: "#" },
       { label: "Email newsletter", link: "#" },
       { label: "GitHub discussions", link: "#" },
     ],
+    title: "Community",
   },
 ]
 
@@ -51,9 +51,9 @@ const FooterLinks: FC = () => {
       <ListItem key={index}>
         <Link
           href={link.link}
-          onClick={(event) => event.preventDefault()}
-          fontSize="sm"
           color="muted"
+          fontSize="sm"
+          onClick={(event) => event.preventDefault()}
         >
           {link.label}
         </Link>
@@ -61,7 +61,7 @@ const FooterLinks: FC = () => {
     ))
 
     return (
-      <List gap="md" key={group.title}>
+      <List key={group.title} gap="md">
         <ListItem>
           <Text fontSize="lg" fontWeight="semibold">
             {group.title}
@@ -76,17 +76,17 @@ const FooterLinks: FC = () => {
 
   return (
     <VStack
-      alignItems="center"
       as="footer"
-      gap="0"
+      alignItems="center"
       bg={["white", "whiteAlpha.100"]}
+      gap="0"
     >
       <Divider borderColor={["blackAlpha.300", "border"]} />
-      <VStack gap="0" py="xl" px="md" placeItems="center" maxW="6xl">
+      <VStack gap="0" maxW="6xl" placeItems="center" px="md" py="xl">
         <Flex
-          justifyContent={{ base: "space-between", md: "center" }}
           alignItems="center"
           flexDir={{ md: "column" }}
+          justifyContent={{ base: "space-between", md: "center" }}
           px="md"
           py="lg"
           w="full"
@@ -95,13 +95,13 @@ const FooterLinks: FC = () => {
             <HStack gap="sm" justifyContent={{ base: "start", md: "center" }}>
               <Image
                 src="/favicon.svg"
-                width={30}
-                height={30}
                 alt="Yamada UI"
+                height={30}
+                width={30}
               />
               <Text fontSize="lg">Yamada UI</Text>
             </HStack>
-            <Text fontSize="sm" color="muted" textAlign={{ md: "center" }}>
+            <Text color="muted" fontSize="sm" textAlign={{ md: "center" }}>
               Unleash the Power of Styling, Animation, and Flexibility in React
               Apps
             </Text>
@@ -113,12 +113,12 @@ const FooterLinks: FC = () => {
         <Divider borderColor={["blackAlpha.300", "border"]} />
         <Flex
           flexDir={{ md: "column" }}
-          placeItems="center"
+          gap={{ md: "md" }}
           justifyContent="space-between"
-          w="full"
+          placeItems="center"
           px="md"
           py="lg"
-          gap={{ md: "md" }}
+          w="full"
         >
           <Text color="muted" fontSize="sm">
             © 2024 Yamada UI. All rights reserved.

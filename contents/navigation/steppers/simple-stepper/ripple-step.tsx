@@ -1,3 +1,4 @@
+import type { FC, ReactNode, SetStateAction } from "react"
 import {
   Box,
   Ripple,
@@ -8,21 +9,20 @@ import {
   StepTitle,
   useRipple,
 } from "@yamada-ui/react"
-import type { FC, ReactNode, SetStateAction } from "react"
 
 export const RippleStep: FC<{
-  index: number
-  title: ReactNode
   description: ReactNode
+  index: number
   setActiveStep: (value: SetStateAction<number>) => void
-}> = ({ index, title, description, setActiveStep }) => {
+  title: ReactNode
+}> = ({ description, index, setActiveStep, title }) => {
   const { onPointerDown, ...rippleProps } = useRipple()
   return (
     <Step
-      p="xs"
       borderRadius="md"
-      position="relative"
       overflow="hidden"
+      p="xs"
+      position="relative"
       onClick={() => setActiveStep(index)}
       onPointerDown={onPointerDown}
     >

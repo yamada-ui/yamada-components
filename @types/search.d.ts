@@ -1,16 +1,16 @@
 declare module "search" {
-  type ContentHierarchy = {
+  interface ContentHierarchy {
     categoryGroup: string
     category?: string
     component?: string
   }
 
-  type Content = {
+  interface Content {
+    type: ContentType
+    hierarchy: ContentHierarchy
+    labels: string[]
+    slug: string
     title: string
     description?: string
-    type: ContentType
-    slug: string
-    labels: string[]
-    hierarchy: ContentHierarchy
   }
 }
