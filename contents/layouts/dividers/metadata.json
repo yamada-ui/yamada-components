@@ -6,10 +6,5 @@
   "ja": {
     "title": "区切り線",
     "description": "区切り線は、要素間において区切りを表すコンポーネントです。"
-  },
-  "options": {
-    "files": {
-      "order": ["with-label", "with-button", "with-toolbar"]
-    }
   }
 }
