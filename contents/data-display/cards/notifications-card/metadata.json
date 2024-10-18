@@ -8,6 +8,7 @@
     "description": "ユーザーが通知の設定を選択できるカードコンポーネント。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

@@ -8,6 +8,7 @@
     "description": "気温の線グラフを表示します。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "minH": "3xl"
     }

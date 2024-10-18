@@ -8,6 +8,7 @@
     "description": "シンプルなタイムラインです。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md"
     }

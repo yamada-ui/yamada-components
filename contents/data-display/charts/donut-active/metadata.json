@@ -8,6 +8,7 @@
     "description": "アクティブな要素を持つDonutChart。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true
     }

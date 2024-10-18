@@ -8,6 +8,7 @@
     "description": "カスタムアイコンを使用したタイムラインコンポーネントです。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md"
     },

@@ -8,7 +8,11 @@
     "description": "イベントのアナウンスを表示するコンポーネント"
   },
   "options": {
-    "container": { "centerContent": true, "p": "md" },
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    },
     "iframe": true
   }
 }

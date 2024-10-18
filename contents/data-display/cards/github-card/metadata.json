@@ -8,6 +8,7 @@
     "description": "GitHubリポジトリ情報を表示し、リポジトリにスターを付けるオプションがあるカードコンポーネント。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

@@ -8,6 +8,7 @@
     "description": "ブックマークを保存および管理するためのカード。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

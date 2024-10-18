@@ -7,7 +7,13 @@
     "title": "画像プレビュー付きのドロップゾーン",
     "description": "これは画像プレビュー付きのドロップゾーンです。"
   },
-  "options": { "container": { "centerContent": true, "p": "md" } },
+  "options": {
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  },
   "authors": [
     {
       "id": 84060430,

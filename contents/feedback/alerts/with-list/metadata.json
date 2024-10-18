@@ -8,6 +8,7 @@
     "description": "アラートボックスの説明として箇条書きを入れたコンポーネントです"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

@@ -8,6 +8,7 @@
     "description": "ソーシャルメディアのプロフィール情報とフォローステータスを表示するカード。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

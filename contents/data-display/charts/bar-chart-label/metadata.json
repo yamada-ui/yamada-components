@@ -8,6 +8,7 @@
     "description": "ラベル付きBarChart。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true,
       "p": "md"

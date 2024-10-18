@@ -8,6 +8,7 @@
     "description": "ヘッダー、ボディ、フッターを持つ画像を表示するカードコンポーネントで、Yamada UIを紹介します。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

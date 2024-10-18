@@ -8,6 +8,7 @@
     "description": "クッキーの設定を管理するためのカード。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

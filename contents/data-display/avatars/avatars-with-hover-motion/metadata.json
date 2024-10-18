@@ -7,5 +7,11 @@
     "title": "アバターとホバーの組み合わせ (Framer) *モバイル端末非対応",
     "description": "Framerを使ったアバターとホバーの組み合わせの使用例です。"
   },
-  "options": { "container": { "centerContent": true, "p": "md" } }
+  "options": {
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
 }

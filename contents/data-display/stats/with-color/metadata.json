@@ -7,5 +7,11 @@
     "title": "色付きプログレスカード",
     "description": "これは色付きのプログレスバーカードです。"
   },
-  "options": { "container": { "centerContent": true, "p": "md" } }
+  "options": {
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
 }

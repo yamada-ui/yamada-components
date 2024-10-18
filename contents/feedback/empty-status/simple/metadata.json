@@ -8,6 +8,7 @@
     "description": "空のステータスを表現したシンプルなコンポーネントです。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true
