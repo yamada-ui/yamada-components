@@ -8,6 +8,7 @@
     "description": "アラートボックスの左側にボーダーを入れたコンポーネントです"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

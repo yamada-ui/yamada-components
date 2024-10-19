@@ -8,6 +8,7 @@
     "description": "ドキュメントのリンクを共有し、アクセス権限を管理するためのカード。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

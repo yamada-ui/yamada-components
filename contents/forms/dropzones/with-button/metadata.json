@@ -7,7 +7,14 @@
     "title": "ボタン付きのドロップゾーン",
     "description": "これはボタン付きのドロップゾーンです。"
   },
-  "options": { "container": { "centerContent": true, "px": "md", "py": "xl" } },
+  "options": {
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "px": "md",
+      "py": "xl"
+    }
+  },
   "authors": [
     {
       "id": 84060430,

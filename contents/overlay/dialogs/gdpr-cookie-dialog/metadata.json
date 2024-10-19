@@ -8,6 +8,7 @@
     "description": "GDPRに対応したクッキーのダイアログです。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true,

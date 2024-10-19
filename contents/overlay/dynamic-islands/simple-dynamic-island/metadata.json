@@ -8,6 +8,7 @@
     "description": "クリックで展開および折りたたみが可能なレスポンシブコンポーネント。アバターと複数のリンクを備えています。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md"
     },

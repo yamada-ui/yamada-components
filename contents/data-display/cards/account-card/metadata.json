@@ -8,6 +8,7 @@
     "description": "メールアドレスでアカウントを作成するカード。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

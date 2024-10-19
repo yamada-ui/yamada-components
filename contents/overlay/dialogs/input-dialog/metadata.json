@@ -8,6 +8,7 @@
     "description": "キーワードを入力して実行を確認するダイアログ。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true,
       "p": "md"

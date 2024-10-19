@@ -8,6 +8,7 @@
     "description": "テキストを保持したチャート。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true
     }

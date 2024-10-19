@@ -8,6 +8,7 @@
     "description": "ユーザーがパスワードを入力し確認するためのコンポーネントで、文字の一致を示す視覚的なオーバーレイが表示されます。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

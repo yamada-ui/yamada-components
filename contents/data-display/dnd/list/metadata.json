@@ -7,5 +7,11 @@
     "title": "ドラッグ＆ドロップリスト",
     "description": "ドラッグ＆ドロップリストは、リストの項目を並べ替えるためのコンポーネントです。"
   },
-  "options": { "container": { "centerContent": true, "p": "md" } }
+  "options": {
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
 }

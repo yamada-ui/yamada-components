@@ -8,6 +8,7 @@
     "description": "3つのボタンを備えたダイアログです。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true,
       "p": "md"

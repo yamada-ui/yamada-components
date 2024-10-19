@@ -8,6 +8,7 @@
     "description": "ヘッダー、ボディ、フッターを持つ画像を表示するカードコンポーネント。"
   },
   "options": {
+    "ignore": true,
     "container": {
       "p": "md",
       "centerContent": true

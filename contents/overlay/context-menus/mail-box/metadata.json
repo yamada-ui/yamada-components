@@ -8,6 +8,7 @@
     "description": "メールボックスのコンテキストメニュー"
   },
   "options": {
+    "ignore": true,
     "iframe": true
   }
 }

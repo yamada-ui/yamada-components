@@ -8,6 +8,7 @@
     "description": "プロフィールスケルトン"
   },
   "options": {
+    "ignore": true,
     "container": {
       "centerContent": true,
       "p": "md"
