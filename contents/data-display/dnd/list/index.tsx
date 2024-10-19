@@ -1,36 +1,36 @@
-import { HStack, Reorder, ReorderItem, Text, VStack } from "@yamada-ui/react"
 import type { FC } from "react"
+import { HStack, Reorder, ReorderItem, Text, VStack } from "@yamada-ui/react"
 
 const elements = [
   {
-    letter: "C",
     name: "Carbon",
-    position: 6,
+    letter: "C",
     mass: 12.011,
+    position: 6,
   },
   {
-    letter: "N",
     name: "Nitrogen",
-    position: 7,
+    letter: "N",
     mass: 14.007,
+    position: 7,
   },
   {
-    letter: "Y",
     name: "Yttrium",
-    position: 39,
+    letter: "Y",
     mass: 88.906,
+    position: 39,
   },
   {
-    letter: "Ba",
     name: "Barium",
-    position: 56,
+    letter: "Ba",
     mass: 137.33,
+    position: 56,
   },
   {
-    letter: "Ce",
     name: "Cerium",
-    position: 58,
+    letter: "Ce",
     mass: 140.12,
+    position: 58,
   },
 ]
 

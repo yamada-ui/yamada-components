@@ -7,11 +7,11 @@ export const YamadaUI = forwardRef<SVGSVGElement, IconProps>(
     return (
       <Icon
         ref={ref}
-        boxSize={boxSize}
-        viewBox="0 0 196 196"
-        fill="none"
         aria-hidden="true"
+        boxSize={boxSize}
+        fill="none"
         focusable="false"
+        viewBox="0 0 196 196"
         xmlns="http://www.w3.org/2000/svg"
         {...rest}
       >

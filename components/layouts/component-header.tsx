@@ -1,4 +1,12 @@
-import { DownloadIcon, UsersIcon, MenuIcon } from "@yamada-ui/lucide"
+import type {
+  IconButtonProps,
+  ModalProps,
+  StackProps,
+  UseDisclosureReturn,
+} from "@yamada-ui/react"
+import type { CodeDirection } from "layouts/component-layout"
+import type { FC } from "react"
+import { DownloadIcon, MenuIcon, UsersIcon } from "@yamada-ui/lucide"
 import {
   Avatar,
   Center,
@@ -15,14 +23,6 @@ import {
   useDisclosure,
   VStack,
 } from "@yamada-ui/react"
-import type {
-  IconButtonProps,
-  ModalProps,
-  StackProps,
-  UseDisclosureReturn,
-} from "@yamada-ui/react"
-import type { FC } from "react"
-import { memo, useMemo } from "react"
 import { ColorModeButton, ThemeSchemeButton } from "components/forms"
 import {
   Github,
@@ -35,53 +35,53 @@ import { CONSTANT } from "constant"
 import { useComponent } from "contexts/component-context"
 import { useI18n } from "contexts/i18n-context"
 import { useDownload } from "hooks/use-download"
-import type { CodeDirection } from "layouts/component-layout"
+import { memo, useMemo } from "react"
 
-export type ComponentHeaderProps = StackProps & {
+export type ComponentHeaderProps = {
   codeDirection: CodeDirection
   isCodePreviewOpen: boolean
   onCodePreviewOpen: () => void
-}
+} & StackProps
 
 export const ComponentHeader = memo(
   forwardRef<ComponentHeaderProps, "div">(
     ({ codeDirection, isCodePreviewOpen, onCodePreviewOpen, ...rest }, ref) => {
       const { metadata } = useComponent()
-      const { isOpen, onOpen, onClose } = useDisclosure()
+      const { isOpen, onClose, onOpen } = useDisclosure()
 
       return (
         <>
-          <HStack ref={ref} py="3" px={{ base: "lg", md: "md" }} {...rest}>
-            <Heading fontSize="2xl" lineClamp={1} flex="1">
+          <HStack ref={ref} px={{ base: "lg", md: "md" }} py="3" {...rest}>
+            <Heading flex="1" fontSize="2xl" lineClamp={1}>
               {metadata?.title ?? "Untitled"}
             </Heading>
 
             <ButtonGroup
               {...{
-                isOpen,
-                onOpen,
                 codeDirection,
                 isCodePreviewOpen,
+                isOpen,
                 onCodePreviewOpen,
+                onOpen,
               }}
             />
           </HStack>
 
           <MobileMenu
-            isOpen={isOpen}
-            onClose={onClose}
             header={
               <ButtonGroup
                 isMobile
                 {...{
-                  isOpen,
-                  onClose,
                   codeDirection,
                   isCodePreviewOpen,
+                  isOpen,
+                  onClose,
                   onCodePreviewOpen,
                 }}
               />
             }
+            isOpen={isOpen}
+            onClose={onClose}
           >
             <Tree py="sm" />
           </MobileMenu>
@@ -93,29 +93,29 @@ export const ComponentHeader = memo(
 
 ComponentHeader.displayName = "ComponentHeader"
 
-type ButtonGroupProps = Partial<UseDisclosureReturn> & {
-  isMobile?: boolean
+type ButtonGroupProps = {
   codeDirection: CodeDirection
   isCodePreviewOpen: boolean
   onCodePreviewOpen: () => void
-}
+  isMobile?: boolean
+} & Partial<UseDisclosureReturn>
 
 const ButtonGroup: FC<ButtonGroupProps> = memo(
   ({
-    isMobile,
     codeDirection,
     isCodePreviewOpen,
-    onCodePreviewOpen,
+    isMobile,
     isOpen,
-    onOpen,
     onClose,
+    onCodePreviewOpen,
+    onOpen,
   }) => {
-    const { name, slug, components } = useComponent()
+    const { name, components, slug } = useComponent()
     const files = useMemo(
-      () => components.map(({ name, code }) => ({ path: name, data: code })),
+      () => components.map(({ name, code }) => ({ data: code, path: name })),
       [components],
     )
-    const { onDownload } = useDownload({ folderName: name, files })
+    const { onDownload } = useDownload({ files, folderName: name })
 
     const isVertical = codeDirection === "vertical"
 
@@ -123,8 +123,8 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
       <HStack gap="sm">
         {!isCodePreviewOpen || isMobile ? (
           <IconButton
-            aria-label="Open source code"
             variant="ghost"
+            aria-label="Open source code"
             color="muted"
             display={{
               base: "inline-flex",
@@ -143,12 +143,12 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
         />
 
         <IconButton
-          aria-label="Download the files"
           variant="ghost"
+          aria-label="Download the files"
           color="muted"
           display={{ base: "inline-flex", md: "none" }}
           icon={<DownloadIcon fontSize="2xl" />}
-          onClick={() => onDownload()}
+          onClick={async () => onDownload()}
         />
 
         <ThemeSchemeButton
@@ -159,29 +159,29 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
 
         <NextLinkIconButton
           href={`${CONSTANT.SNS.GITHUB.EDIT_URL}${slug}`}
-          isExternal
-          display={{ base: "inline-flex", md: !isMobile ? "none" : undefined }}
-          aria-label="GitHub source code"
           variant="ghost"
+          aria-label="GitHub source code"
           color="muted"
+          display={{ base: "inline-flex", md: !isMobile ? "none" : undefined }}
           icon={<Github />}
+          isExternal
         />
 
         {!isOpen ? (
           <IconButton
             variant="ghost"
             aria-label="Open navigation menu"
-            display={{ base: "none", md: "inline-flex" }}
             color="muted"
-            onClick={onOpen}
+            display={{ base: "none", md: "inline-flex" }}
             icon={<MenuIcon fontSize="2xl" />}
+            onClick={onOpen}
           />
         ) : (
           <CloseButton
             size="lg"
             aria-label="Close navigation menu"
-            display={{ base: "none", md: "inline-flex" }}
             color="muted"
+            display={{ base: "none", md: "inline-flex" }}
             onClick={onClose}
           />
         )}
@@ -192,45 +192,43 @@ const ButtonGroup: FC<ButtonGroupProps> = memo(
 
 ButtonGroup.displayName = "ButtonGroup"
 
-type AuthorsButtonProps = IconButtonProps & {
+type AuthorsButtonProps = {
   modalProps?: ModalProps
-}
+} & IconButtonProps
 
 const AuthorsButton: FC<AuthorsButtonProps> = memo(
   ({ modalProps, ...rest }) => {
     const { t } = useI18n()
     const { metadata } = useComponent()
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onClose, onOpen } = useDisclosure()
 
     return (
       <>
         <IconButton
-          aria-label="Download the files"
           variant="ghost"
+          aria-label="Download the files"
           color="muted"
           icon={<UsersIcon fontSize="2xl" />}
           onClick={onOpen}
           {...rest}
         />
 
-        <Modal isOpen={isOpen} onClose={onClose} size="md" {...modalProps}>
+        <Modal size="md" isOpen={isOpen} onClose={onClose} {...modalProps}>
           <ModalHeader>{t("component.authors.description")}</ModalHeader>
 
           <ModalBody>
             {metadata?.authors?.length ? (
               <VStack>
-                {metadata?.authors.map(
-                  ({ id, login, avatar_url, html_url }) => (
-                    <HStack key={id} as="a" target="_blank" href={html_url}>
-                      <Avatar name={login} src={avatar_url} boxSize="10" />
+                {metadata.authors.map(({ id, avatar_url, html_url, login }) => (
+                  <HStack key={id} as="a" href={html_url} target="_blank">
+                    <Avatar name={login} src={avatar_url} boxSize="10" />
 
-                      <Text fontWeight="semibold">{login}</Text>
-                    </HStack>
-                  ),
-                )}
+                    <Text fontWeight="semibold">{login}</Text>
+                  </HStack>
+                ))}
               </VStack>
             ) : (
-              <Center w="full" h="4xs">
+              <Center h="4xs" w="full">
                 <Text color="muted">{t("component.authors.unknown")}</Text>
               </Center>
             )}

@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { CircleCheckBigIcon } from "@yamada-ui/lucide"
 import {
   Card,
@@ -5,13 +6,12 @@ import {
   CardHeader,
   Center,
   Container,
-  HStack,
   Heading,
+  HStack,
   Progress,
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const mockData = [
   {
@@ -39,31 +39,31 @@ const QuestProgress: FC = () => {
         <Text>Time remaining: 12 hours</Text>
       </HStack>
       {mockData.map((data, i) => (
-        <Card flexDir="row" key={`${data.content}-${i}`} variant="subtle">
+        <Card key={`${data.content}-${i}`} variant="subtle" flexDir="row">
           <VStack gap="0">
             <CardHeader fontSize="lg">
               {i + 1}. {data.content}
             </CardHeader>
             <CardBody>
               <Progress
+                colorScheme="primary"
+                borderRadius="3xl"
+                h="7"
                 hasStripe
                 isStripeAnimation
-                colorScheme="primary"
                 position="relative"
+                value={(data.current / data.max) * 100}
                 _after={{
                   content: `"${data.current}/${data.max}"`,
+                  left: "50%",
                   position: "absolute",
                   top: "50%",
-                  left: "50%",
                   transform: "translateY(-50%) translateX(-50%)",
                 }}
-                value={(data.current / data.max) * 100}
-                h="7"
-                borderRadius="3xl"
               />
             </CardBody>
           </VStack>
-          <Center w="32" flexDir="column">
+          <Center flexDir="column" w="32">
             {data.current >= data.max ? (
               <>
                 <CircleCheckBigIcon fontSize="6xl" />

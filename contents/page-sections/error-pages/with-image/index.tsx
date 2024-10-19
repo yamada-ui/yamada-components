@@ -4,12 +4,12 @@ const NotFoundImage = () => {
   return (
     <Flex
       alignItems="center"
+      flexDir={{ base: "row", md: "column" }}
       justifyContent="center"
       p="lg"
-      flexDir={{ base: "row", md: "column" }}
     >
       <VStack maxW="lg" order={{ base: 1, md: 2 }}>
-        <Heading size="xl" textAlign="center" lineHeight="1">
+        <Heading size="xl" lineHeight="1" textAlign="center">
           Something is not right...
         </Heading>
 
@@ -21,22 +21,22 @@ const NotFoundImage = () => {
 
         <Button
           as="a"
-          w={{ base: "fit-content", md: "full" }}
           href="/"
-          onClick={(e) => e.preventDefault()}
-          variant="outline"
           colorScheme="primary"
+          variant="outline"
           mx="auto"
+          w={{ base: "fit-content", md: "full" }}
+          onClick={(e) => e.preventDefault()}
         >
           Get back to home page
         </Button>
       </VStack>
 
       <Image
-        alt="404 Not Found (Image by Sawaratsuki)"
-        w={{ base: "lg", md: "full" }}
-        order={{ base: 2, md: 1 }}
         src="https://raw.githubusercontent.com/SAWARATSUKI/KawaiiLogos/main/ResponseCode/404%20NotFound.png"
+        alt="404 Not Found (Image by Sawaratsuki)"
+        order={{ base: 2, md: 1 }}
+        w={{ base: "lg", md: "full" }}
       />
     </Flex>
   )

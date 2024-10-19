@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Button,
   ButtonGroup,
@@ -11,7 +12,6 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 import HeroImage from "./hero.svg"
 
 const HeroWithBullets: FC = () => {
@@ -72,8 +72,8 @@ const HeroWithBullets: FC = () => {
       <Image
         src={HeroImage.src}
         alt="hero"
-        maxW="md"
         display={{ lg: "none" }}
+        maxW="md"
       />
     </Container>
   )

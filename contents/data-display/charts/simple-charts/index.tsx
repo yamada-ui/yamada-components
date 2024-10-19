@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   AreaChart,
   BarChart,
@@ -7,13 +8,13 @@ import {
   RadarChart,
 } from "@yamada-ui/charts"
 import { GridItem, SimpleGrid } from "@yamada-ui/react"
-import { useMemo, type FC } from "react"
+import { useMemo } from "react"
 
 const SimpleCharts: FC = () => {
   const data = useMemo(() => [10, 20, 40, 20, 60], [])
 
   const mappedData = useMemo(
-    () => data.map((value, index) => ({ value, index })),
+    () => data.map((value, index) => ({ index, value })),
     [data],
   )
 
@@ -21,43 +22,43 @@ const SimpleCharts: FC = () => {
     () =>
       data.map((value, index) => ({
         name: `${index}`,
-        value,
         color: `primary.${(index + 1) * 100}`,
+        value,
       })),
     [data],
   )
 
   return (
-    <SimpleGrid columns={{ base: 6, lg: 3, md: 2, sm: 1 }} gap="md">
+    <SimpleGrid columns={{ base: 6, sm: 1, md: 2, lg: 3 }} gap="md">
       <GridItem>
         <AreaChart
           boxSize="2xs"
-          data={mappedData}
-          series={[{ dataKey: "value", color: "primary.500" }]}
-          dataKey="index"
           curveType="linear"
-          areaProps={{ isAnimationActive: true }}
+          data={mappedData}
+          dataKey="index"
+          gridAxis="none"
+          series={[{ color: "primary.500", dataKey: "value" }]}
+          withDots={false}
+          withTooltip={false}
           withXAxis={false}
           withYAxis={false}
-          gridAxis="none"
-          withTooltip={false}
-          withDots={false}
+          areaProps={{ isAnimationActive: true }}
         />
       </GridItem>
 
       <GridItem>
         <LineChart
           boxSize="2xs"
-          data={mappedData}
-          series={[{ dataKey: "value", color: "primary.500" }]}
-          dataKey="index"
           curveType="linear"
-          lineProps={{ isAnimationActive: true }}
+          data={mappedData}
+          dataKey="index"
+          gridAxis="none"
+          series={[{ color: "primary.500", dataKey: "value" }]}
+          withDots={false}
+          withTooltip={false}
           withXAxis={false}
           withYAxis={false}
-          gridAxis="none"
-          withTooltip={false}
-          withDots={false}
+          lineProps={{ isAnimationActive: true }}
         />
       </GridItem>
 
@@ -65,13 +66,13 @@ const SimpleCharts: FC = () => {
         <BarChart
           boxSize="2xs"
           data={mappedData}
-          series={[{ dataKey: "value", color: "primary.500" }]}
           dataKey="index"
-          barProps={{ isAnimationActive: true }}
+          gridAxis="none"
+          series={[{ color: "primary.500", dataKey: "value" }]}
+          withTooltip={false}
           withXAxis={false}
           withYAxis={false}
-          gridAxis="none"
-          withTooltip={false}
+          barProps={{ isAnimationActive: true }}
         />
       </GridItem>
 
@@ -79,8 +80,8 @@ const SimpleCharts: FC = () => {
         <PieChart
           boxSize="2xs"
           data={pieChartData}
-          pieProps={{ isAnimationActive: true }}
           withTooltip={false}
+          pieProps={{ isAnimationActive: true }}
         />
       </GridItem>
 
@@ -88,8 +89,8 @@ const SimpleCharts: FC = () => {
         <DonutChart
           boxSize="2xs"
           data={pieChartData}
-          pieProps={{ isAnimationActive: true }}
           withTooltip={false}
+          pieProps={{ isAnimationActive: true }}
         />
       </GridItem>
 
@@ -97,11 +98,11 @@ const SimpleCharts: FC = () => {
         <RadarChart
           boxSize="2xs"
           data={mappedData}
-          series={[{ dataKey: "value", color: "primary.500" }]}
           dataKey="index"
-          radarProps={{ isAnimationActive: true }}
+          series={[{ color: "primary.500", dataKey: "value" }]}
           withPolarAngleAxis={false}
           withTooltip={false}
+          radarProps={{ isAnimationActive: true }}
         />
       </GridItem>
     </SimpleGrid>

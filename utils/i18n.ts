@@ -1,9 +1,9 @@
+import type { Content } from "search"
 import { CONSTANT } from "../constant"
 import CONTENT_EN from "../i18n/content.en.json"
 import CONTENT_JA from "../i18n/content.ja.json"
 import UI_EN from "../i18n/ui.en.json"
 import UI_JA from "../i18n/ui.ja.json"
-import type { Content } from "search"
 
 export type Locale = (typeof locales)[number]
 
@@ -15,8 +15,8 @@ export const otherLocales = CONSTANT.I18N.LOCALES.map(
 
 export type UI = typeof UI_EN
 
-export const ui = { ja: UI_JA, en: UI_EN }
-export const contents = { ja: CONTENT_JA, en: CONTENT_EN }
+export const ui = { en: UI_EN, ja: UI_JA }
+export const contents = { en: CONTENT_EN, ja: CONTENT_JA }
 
 export const getUI = (locale: Locale) => ui[locale]
 export const getContents = (locale: Locale) => contents[locale] as Content[]

@@ -1,8 +1,4 @@
-export const getCookie = <T extends any>(
-  cookie: string,
-  key: string,
-  fallback: string = "{}",
-) => {
+export const getCookie = <T>(cookie: string, key: string, fallback = "{}") => {
   const match = cookie.match(new RegExp(`(^| )${key}=([^;]+)`))
   const value = match?.[2] ?? fallback
 
@@ -11,12 +7,12 @@ export const getCookie = <T extends any>(
   ) as T
 }
 
-export const getCookies = <T extends any>(cookie: string, reg: RegExp) => {
+export const getCookies = <T>(cookie: string, reg: RegExp) => {
   const matches = [
     ...cookie.matchAll(new RegExp(`(?:^| )(${reg.source})=([^;]+)`, "g")),
   ]
 
-  return matches.map((match) => JSON.parse(match[2])) as T[]
+  return matches.map((match) => JSON.parse(match[2]!)) as T[]
 }
 
 export const setCookie = (key: string, value: string) => {

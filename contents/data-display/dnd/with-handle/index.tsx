@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { GripVerticalIcon } from "@yamada-ui/lucide"
 import {
   HStack,
@@ -7,38 +8,37 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const elements = [
   {
-    letter: "C",
     name: "Carbon",
-    position: 6,
+    letter: "C",
     mass: 12.011,
+    position: 6,
   },
   {
-    letter: "N",
     name: "Nitrogen",
-    position: 7,
+    letter: "N",
     mass: 14.007,
+    position: 7,
   },
   {
-    letter: "Y",
     name: "Yttrium",
-    position: 39,
+    letter: "Y",
     mass: 88.906,
+    position: 39,
   },
   {
-    letter: "Ba",
     name: "Barium",
-    position: 56,
+    letter: "Ba",
     mass: 137.33,
+    position: 56,
   },
   {
-    letter: "Ce",
     name: "Cerium",
-    position: 58,
+    letter: "Ce",
     mass: 140.12,
+    position: 58,
   },
 ]
 
@@ -48,8 +48,8 @@ const WithHandle: FC = () => {
       {elements.map((item) => (
         <ReorderItem key={item.name} value={item.name}>
           <HStack gap="0">
-            <ReorderTrigger ml="md" justifyContent="center">
-              <GripVerticalIcon color="gray" size="xl" />
+            <ReorderTrigger justifyContent="center" ml="md">
+              <GripVerticalIcon size="xl" color="gray" />
             </ReorderTrigger>
             <Text
               fontSize="5xl"

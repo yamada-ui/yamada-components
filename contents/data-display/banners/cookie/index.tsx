@@ -1,21 +1,21 @@
+import type { FC } from "react"
 import {
+  Button,
   Card,
   CardBody,
-  Text,
-  Button,
+  CardFooter,
+  CardHeader,
   CloseButton,
   HStack,
-  CardHeader,
-  CardFooter,
   Link,
+  Text,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const CookieBanner: FC = () => {
   return (
     <Card variant="outline" maxW="md" shadow="sm">
       <CardHeader>
-        <HStack w="full" justifyContent="space-between">
+        <HStack justifyContent="space-between" w="full">
           <Text fontSize="md">Allow cookies</Text>
           <CloseButton size="sm" color="gray" />
         </HStack>
@@ -31,11 +31,11 @@ const CookieBanner: FC = () => {
         </Text>
       </CardBody>
       <CardFooter>
-        <HStack w="full" gap="sm" justifyContent="end">
-          <Button variant="outline" px="4" h="10" size="xs">
+        <HStack gap="sm" justifyContent="end" w="full">
+          <Button size="xs" variant="outline" h="10" px="4">
             Cookies preferences
           </Button>
-          <Button variant="outline" px="4" h="10" colorScheme="sky" size="xs">
+          <Button colorScheme="sky" size="xs" variant="outline" h="10" px="4">
             Accept all
           </Button>
         </HStack>

@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import { CircleHelp } from "@yamada-ui/lucide"
 import {
   Button,
@@ -8,15 +9,14 @@ import {
   Text,
   useDisclosure,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const ThreeButtonsDialog: FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onClose, onOpen } = useDisclosure()
   const name = "Untitled-1"
   return (
     <>
       <Button onClick={onOpen}>Open Dialog</Button>
-      <Dialog isOpen={isOpen} onClose={onClose} blockScrollOnMount={false}>
+      <Dialog blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <DialogHeader>
           <CircleHelp boxSize="8" color="info" />
           <Text>Unsaved changes</Text>
@@ -25,14 +25,14 @@ const ThreeButtonsDialog: FC = () => {
           Do you want to save changes to '{name}' before closing?
         </Text>
         <DialogFooter>
-          <Button onClick={onClose} variant="ghost">
+          <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>
           <Spacer />
-          <Button onClick={onClose} variant="ghost" colorScheme="danger">
+          <Button colorScheme="danger" variant="ghost" onClick={onClose}>
             Discard
           </Button>
-          <Button onClick={onClose} variant="outline" colorScheme="info">
+          <Button colorScheme="info" variant="outline" onClick={onClose}>
             Save
           </Button>
         </DialogFooter>

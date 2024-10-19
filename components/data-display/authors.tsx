@@ -1,12 +1,12 @@
-import { Avatar, AvatarGroup, Box, forwardRef, Tooltip } from "@yamada-ui/react"
 import type { AvatarGroupProps, AvatarProps } from "@yamada-ui/react"
-import { memo } from "react"
 import type { Author } from "component"
+import { Avatar, AvatarGroup, Box, forwardRef, Tooltip } from "@yamada-ui/react"
+import { memo } from "react"
 
-export type AuthorsProps = AvatarGroupProps & {
+export type AuthorsProps = {
   authors?: Author[] | null
   avatarSize?: AvatarProps["boxSize"]
-}
+} & AvatarGroupProps
 
 export const Authors = memo(
   forwardRef<AuthorsProps, "div">(
@@ -21,21 +21,21 @@ export const Authors = memo(
           max={5}
           {...rest}
         >
-          {authors.map(({ login, avatar_url, html_url }) => (
+          {authors.map(({ avatar_url, html_url, login }) => (
             <Box
               key={login}
-              position="relative"
-              borderRadius="full"
               sx={{ borderWidth: "3px" }}
               bg={["white", "black"]}
+              borderRadius="full"
+              position="relative"
             >
-              <Tooltip label={login} placement="top" flexShrink="0">
+              <Tooltip flexShrink="0" label={login} placement="top">
                 <Avatar
                   as="a"
-                  target="_blank"
                   href={html_url}
                   name={login}
                   src={avatar_url}
+                  target="_blank"
                   boxSize={avatarSize}
                 />
               </Tooltip>

@@ -1,3 +1,7 @@
+import type { TabsProps } from "@yamada-ui/react"
+import type { Component } from "component"
+import type { CodeDirection } from "layouts/component-layout"
+import type { SetStateAction } from "react"
 import { XIcon } from "@yamada-ui/lucide"
 import {
   forwardRef,
@@ -9,35 +13,33 @@ import {
   TabPanel,
   Tabs,
 } from "@yamada-ui/react"
-import type { TabsProps } from "@yamada-ui/react"
-import type { SetStateAction } from "react"
-import { memo, useRef } from "react"
-import { CodeBlock } from "./code-block"
-import type { Component } from "component"
 import { CopyButton } from "components/forms"
 import { LayoutHorizontal, LayoutVertical } from "components/media-and-icons"
-import type { CodeDirection } from "layouts/component-layout"
+import { memo, useRef } from "react"
+import { CodeBlock } from "./code-block"
 
-export type ComponentCodePreviewProps = TabsProps &
-  Pick<Component, "components"> & {
-    codeDirection?: CodeDirection
-    onCodeDirectionChange?: (valueOrFunc: SetStateAction<CodeDirection>) => void
-    onCodePreviewClose?: () => void
-  }
+export type ComponentCodePreviewProps = {
+  codeDirection?: CodeDirection
+  onCodeDirectionChange?: (valueOrFunc: SetStateAction<CodeDirection>) => void
+  onCodePreviewClose?: () => void
+} & Pick<Component, "components"> &
+  TabsProps
 
 export const ComponentCodePreview = memo(
   forwardRef<ComponentCodePreviewProps, "div">(
     (
       {
-        components,
         codeDirection,
+        components,
         onCodeDirectionChange,
         onCodePreviewClose,
         ...rest
       },
       ref,
     ) => {
-      const currentCodeRef = useRef<string>(components[0].code)
+      const code =
+        components.length && components[0]?.code ? components[0].code : ""
+      const currentCodeRef = useRef<string>(code)
 
       const isVertical = codeDirection === "vertical"
 
@@ -46,30 +48,34 @@ export const ComponentCodePreview = memo(
           ref={ref}
           {...rest}
           onChange={handlerAll(rest.onChange, (index) => {
-            currentCodeRef.current = components[index].code
+            const code =
+              components.length && components[index]?.code
+                ? components[index].code
+                : ""
+            currentCodeRef.current = code
           })}
         >
           <TabList
-            position="sticky"
-            top="0"
             bg={["white", "black"]}
             borderTopWidth={isVertical ? "0px" : "1px"}
+            position="sticky"
+            top="0"
           >
             <HStack
-              tabIndex={-1}
-              mb="-px"
-              w="full"
               gap="0"
+              mb="-px"
               overflowX="auto"
               scrollbarWidth="none"
+              tabIndex={-1}
+              w="full"
               _scrollbar={{ display: "none" }}
             >
               {components.map(({ name }) => (
                 <Tab
                   key={name}
+                  color="muted"
                   mb="0"
                   overflow="visible"
-                  color="muted"
                   _focusVisible={{}}
                 >
                   {name}
@@ -77,16 +83,16 @@ export const ComponentCodePreview = memo(
               ))}
             </HStack>
 
-            <HStack ms="md" me="sm" gap="0">
+            <HStack gap="0" me="sm" ms="md">
               <CopyButton value={currentCodeRef.current} />
 
               {codeDirection ? (
                 <IconButton
-                  aria-label="Change code preview direction"
                   size="sm"
                   variant="ghost"
-                  display={{ base: "inline-flex", md: "none" }}
+                  aria-label="Change code preview direction"
                   color="muted"
+                  display={{ base: "inline-flex", md: "none" }}
                   icon={
                     isVertical ? (
                       <LayoutHorizontal boxSize="4" />
@@ -104,9 +110,9 @@ export const ComponentCodePreview = memo(
 
               {onCodePreviewClose ? (
                 <IconButton
-                  aria-label="Close code preview"
                   size="sm"
                   variant="ghost"
+                  aria-label="Close code preview"
                   color="muted"
                   fontSize="lg"
                   icon={<XIcon />}

@@ -3,18 +3,18 @@ import { Button, Heading, Text, VStack } from "@yamada-ui/react"
 const ServerError = () => {
   return (
     <VStack
-      justifyContent="center"
       alignItems="center"
       bg="primary"
-      px={{ base: "lg", md: "md" }}
       h="full"
+      justifyContent="center"
       minH="3xl"
+      px={{ base: "lg", md: "md" }}
     >
       <Heading
         as="h2"
+        color="whiteAlpha.800"
         fontSize="9xl"
         fontWeight="bold"
-        color="whiteAlpha.800"
         lineHeight="1"
       >
         500
@@ -24,8 +24,8 @@ const ServerError = () => {
         as="h3"
         size="xl"
         color="white"
-        textAlign="center"
         lineHeight="1"
+        textAlign="center"
       >
         Something bad just happened...
       </Heading>
@@ -37,10 +37,10 @@ const ServerError = () => {
 
       <Button
         as="a"
-        w="fit-content"
         href="/"
-        color="black"
         bg="white"
+        color="black"
+        w="fit-content"
         _hover={{ bg: "gray.100" }}
         onClick={(e) => e.preventDefault()}
       >

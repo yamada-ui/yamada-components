@@ -1,5 +1,6 @@
+import type { ButtonProps } from "@yamada-ui/react"
 import { TwitterIcon } from "@yamada-ui/lucide"
-import { Button, type ButtonProps } from "@yamada-ui/react"
+import { Button } from "@yamada-ui/react"
 
 type TwitterButtonProps = ButtonProps
 

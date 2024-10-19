@@ -1,23 +1,23 @@
-import { Plus } from "@yamada-ui/lucide"
-import { Text, Button, Flex, Wrap, Icon } from "@yamada-ui/react"
 import type { FC } from "react"
+import { Plus } from "@yamada-ui/lucide"
+import { Button, Flex, Icon, Text, Wrap } from "@yamada-ui/react"
 import CreditCardIcon from "./credit-card-icon"
 
 const Simple: FC = () => {
   return (
-    <Flex direction="column" justifyContent="center" alignItems="center" h="md">
+    <Flex alignItems="center" direction="column" h="md" justifyContent="center">
       <Icon as={CreditCardIcon} />
 
       <Wrap
+        alignItems="center"
         direction="column"
         justifyContent="center"
-        alignItems="center"
-        marginTop="2xs"
         marginBottom="md"
+        marginTop="2xs"
       >
         <Text
-          fontSize="2xl"
           color={["black", "white"]}
+          fontSize="2xl"
           fontWeight="medium"
           marginBottom="5px"
         >

@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   ArrowRightLeftIcon,
   BellRingIcon,
@@ -12,73 +13,73 @@ import {
 import {
   Box,
   Button,
-  HStack,
   Heading,
+  HStack,
   Link,
   Tag,
   Text,
   VStack,
 } from "@yamada-ui/react"
-import { useState, type FC } from "react"
+import { useState } from "react"
 
 const data = [
-  { link: "", label: "Notifications", icon: BellRingIcon },
-  { link: "", label: "Billing", icon: ReceiptIcon },
-  { link: "", label: "Security", icon: FingerprintIcon },
-  { link: "", label: "SSH Keys", icon: KeyIcon },
-  { link: "", label: "Databases", icon: DatabaseIcon },
-  { link: "", label: "Authentication", icon: UsersIcon },
-  { link: "", label: "Other Settings", icon: SettingsIcon },
+  { icon: BellRingIcon, label: "Notifications", link: "" },
+  { icon: ReceiptIcon, label: "Billing", link: "" },
+  { icon: FingerprintIcon, label: "Security", link: "" },
+  { icon: KeyIcon, label: "SSH Keys", link: "" },
+  { icon: DatabaseIcon, label: "Databases", link: "" },
+  { icon: UsersIcon, label: "Authentication", link: "" },
+  { icon: SettingsIcon, label: "Other Settings", link: "" },
 ]
 
 const SimpleNavbar: FC = () => {
-  const [active, setActive] = useState<string>(data[0]["label"])
+  const [active, setActive] = useState<string>(data[0]?.label || "")
 
   return (
     <VStack
       as="nav"
-      w="300px"
-      minH="700px"
-      h="full"
-      p="md"
       backgroundColor="primary"
+      h="full"
+      minH="700px"
+      p="md"
+      w="300px"
     >
       <Box flex={1}>
         <HStack
-          justifyContent="space-between"
-          pb="md"
-          mb="md"
           as="header"
           borderBottom="1px solid"
           borderBottomColor="white"
+          justifyContent="space-between"
+          mb="md"
+          pb="md"
         >
           <Heading
             as="a"
             size="md"
-            whiteSpace="nowrap"
             color="white"
+            whiteSpace="nowrap"
             onClick={(e) => e.preventDefault()}
           >
             Yamada UI
           </Heading>
-          <Tag fontWeight={500} fontSize="xs">
+          <Tag fontSize="xs" fontWeight={500}>
             v2.0.0
           </Tag>
         </HStack>
         {data.map((item) => (
           <Button
-            as={Link}
-            data-active={item.label === active || undefined}
-            href={item.link}
             key={item.label}
+            as={Link}
+            href={item.link}
             variant="ghost"
+            data-active={item.label === active || undefined}
+            alignItems="center"
             display="flex"
             justifyContent="left"
-            alignItems="center"
             {...(item.label === active
               ? {
-                  color: "primary",
                   backgroundColor: "white",
+                  color: "primary",
                 }
               : {
                   color: "white",
@@ -101,21 +102,21 @@ const SimpleNavbar: FC = () => {
         as="footer"
         borderTop="1px solid"
         borderTopColor="white"
-        pt="md"
         mt="md"
+        pt="md"
       >
         <Button
           as={Link}
           href="#"
-          onClick={(event) => event.preventDefault()}
           variant="ghost"
+          alignItems="center"
           color="white"
           display="flex"
           justifyContent="left"
-          alignItems="center"
           _hover={{
             textDecor: "none",
           }}
+          onClick={(event) => event.preventDefault()}
         >
           <ArrowRightLeftIcon />
           <Text>Change account</Text>
@@ -123,15 +124,15 @@ const SimpleNavbar: FC = () => {
 
         <Button
           as={Link}
-          onClick={(event) => event.preventDefault()}
           variant="ghost"
+          alignItems="center"
           color="white"
           display="flex"
           justifyContent="left"
-          alignItems="center"
           _hover={{
             textDecor: "none",
           }}
+          onClick={(event) => event.preventDefault()}
         >
           <LogOutIcon />
           <Text>Logout</Text>

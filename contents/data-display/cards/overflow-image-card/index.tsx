@@ -1,3 +1,4 @@
+import type { FC } from "react"
 import {
   Card,
   CardBody,
@@ -5,20 +6,19 @@ import {
   CardHeader,
   Divider,
   Heading,
-  Text,
   Image,
+  Text,
 } from "@yamada-ui/react"
-import type { FC } from "react"
 
 const OverflowImageCard: FC = () => {
   return (
-    <Card maxW="md" rounded="xl" variant="outline" h="xl">
+    <Card variant="outline" h="xl" maxW="md" rounded="xl">
       <CardHeader
-        h="md"
-        overflow="hidden"
         as={Image}
         src="https://picsum.photos/400"
+        h="md"
         objectFit="cover"
+        overflow="hidden"
         p="0"
         roundedTop="xl"
       />
@@ -38,7 +38,7 @@ const OverflowImageCard: FC = () => {
 
       <Divider />
 
-      <CardFooter backdropFilter="blur(10px)" roundedBottom="xl" pt="md">
+      <CardFooter backdropFilter="blur(10px)" pt="md" roundedBottom="xl">
         <Text fontSize="sm">1.2k views</Text>
 
         <Divider orientation="vertical" />

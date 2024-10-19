@@ -7,12 +7,12 @@ export const LayoutHorizontal = forwardRef<SVGSVGElement, IconProps>(
     return (
       <Icon
         ref={ref}
-        boxSize={boxSize}
-        stroke="none"
-        fill="none"
-        viewBox="0 0 14 14"
         aria-hidden="true"
+        boxSize={boxSize}
+        fill="none"
         focusable="false"
+        stroke="none"
+        viewBox="0 0 14 14"
         xmlns="http://www.w3.org/2000/svg"
         {...rest}
       >
@@ -21,10 +21,10 @@ export const LayoutHorizontal = forwardRef<SVGSVGElement, IconProps>(
           fill="currentColor"
         />
         <path
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M1.5 13.004a.5.5 0 01-.5-.5v-11a.5.5 0 01.5-.5h11a.5.5 0 01.5.5v11a.5.5 0 01-.5.5h-11zm.5-1v-10h6v10H2zm7-10h3v10H9v-10z"
           fill="currentColor"
+          fillRule="evenodd"
         />
       </Icon>
     )
@@ -38,12 +38,12 @@ export const LayoutVertical = forwardRef<SVGSVGElement, IconProps>(
     return (
       <Icon
         ref={ref}
-        boxSize={boxSize}
-        stroke="none"
-        fill="none"
-        viewBox="0 0 14 14"
         aria-hidden="true"
+        boxSize={boxSize}
+        fill="none"
         focusable="false"
+        stroke="none"
+        viewBox="0 0 14 14"
         xmlns="http://www.w3.org/2000/svg"
         {...rest}
       >
@@ -52,10 +52,10 @@ export const LayoutVertical = forwardRef<SVGSVGElement, IconProps>(
           fill="currentColor"
         />
         <path
-          fillRule="evenodd"
           clipRule="evenodd"
           d="M1 1.504a.5.5 0 01.5-.5h11a.5.5 0 01.5.5v11a.5.5 0 01-.5.5h-11a.5.5 0 01-.5-.5v-11zm1 6.5v-6h10v6H2zm10 1v3H2v-3h10z"
           fill="currentColor"
+          fillRule="evenodd"
         />
       </Icon>
     )

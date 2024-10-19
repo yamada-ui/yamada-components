@@ -1,5 +1,6 @@
+import type { FC } from "react"
 import { Flex, ScrollArea, Text } from "@yamada-ui/react"
-import { useState, useRef, type FC, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const OnScroll: FC = () => {
   const [scrollTop, setScrollTop] = useState(0)
@@ -18,33 +19,33 @@ const OnScroll: FC = () => {
 
   return (
     <ScrollArea
+      ref={contentRef}
+      type="always"
+      maxH="lg"
+      w="full"
       onScrollPositionChange={({ y }) => {
         if (contentRef.current) {
           setScrollTop((y / maxScrollTop.current) * text.length)
         }
       }}
-      maxH="lg"
-      type="always"
-      ref={contentRef}
-      w="full"
     >
-      <Flex justifyContent="center" minH="xl" h="100vh" position="relative">
+      <Flex h="100vh" justifyContent="center" minH="xl" position="relative">
         <Text
+          bgClip="text"
+          bgGradient="linear(to-l, #7928CA, #FF0080)"
+          fontWeight="bold"
+          maxW="xl"
           position="fixed"
           pt="md"
-          bgGradient="linear(to-l, #7928CA, #FF0080)"
-          bgClip="text"
-          maxW="xl"
           textAlign="center"
           z="-1"
-          fontWeight="bold"
         >
           {text.split("").map((char, index) => (
             <Text
-              as="span"
               key={index}
-              opacity={scrollTop <= index ? "0.8" : undefined}
+              as="span"
               color={scrollTop <= index ? ["black", "white"] : undefined}
+              opacity={scrollTop <= index ? "0.8" : undefined}
             >
               {char}
             </Text>
