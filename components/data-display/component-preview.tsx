@@ -147,7 +147,6 @@ export const ComponentPreview = memo(
 
         let props: HTMLUIProps = {
           containerType: "inline-size",
-          h: "full",
           overflow: "auto",
           w: "full",
           ...rest,
@@ -165,7 +164,6 @@ export const ComponentPreview = memo(
         if (isFullHeight) {
           props = {
             ...props,
-            h: "full",
             minH: "full",
           }
         }
