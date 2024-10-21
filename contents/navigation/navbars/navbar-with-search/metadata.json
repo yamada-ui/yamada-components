@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Navbar with Search",
+    "description": "Navigation bar with search box."
+  },
+  "ja": {
+    "title": "検索機能付きナビバー",
+    "description": "検索ボックス付きのナビゲーションバー。"
+  }
+}

@@ -13,7 +13,8 @@
         "simple-navbar",
         "with-segmented-control",
         "navbar-with-tooltips",
-        "double-navbar"
+        "double-navbar",
+        "navbar-with-search"
       ]
     }
   }
