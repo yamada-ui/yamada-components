@@ -1,0 +1,16 @@
+{
+  "en": {
+    "title": "FAQ with Page Header",
+    "description": "This is an FAQ component with a page header."
+  },
+  "ja": {
+    "title": "ページヘッダーを含む FAQ",
+    "description": "これは FAQ コンポーネントでページヘッダーを含むものです。"
+  },
+  "options": {
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
+}
