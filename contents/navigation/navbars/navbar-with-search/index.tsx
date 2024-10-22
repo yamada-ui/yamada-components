@@ -10,9 +10,7 @@ import {
 import {
   Avatar,
   Box,
-  Center,
   Divider,
-  Flex,
   HStack,
   IconButton,
   Indicator,
@@ -53,7 +51,6 @@ const NavbarWithSearch: FC = () => {
       as="nav"
       borderRight="1px solid"
       borderRightColor="border"
-      fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif"
       h="full"
       minH="700px"
       w="300px"
@@ -69,12 +66,12 @@ const NavbarWithSearch: FC = () => {
         }}
       >
         <LinkOverlay href="#" onClick={(event) => event.preventDefault()}>
-          <Flex align="center" gap="md" p="md">
+          <HStack gap="md" p="md">
             <Avatar
               name="Hirotomo Yamada"
               src="https://avatars.githubusercontent.com/u/84060430?v=4"
             />
-            <Flex align="center" gap="lg">
+            <HStack gap="lg">
               <Box>
                 <Text as="b" fontSize="sm">
                   Hirotomo Yamada
@@ -84,8 +81,8 @@ const NavbarWithSearch: FC = () => {
                 </Text>
               </Box>
               <ChevronRightIcon />
-            </Flex>
-          </Flex>
+            </HStack>
+          </HStack>
         </LinkOverlay>
         <Divider variant="solid" />
       </LinkBox>
@@ -109,7 +106,7 @@ const NavbarWithSearch: FC = () => {
         </InputGroup>
       </VStack>
 
-      <Flex direction="column" px="1">
+      <VStack gap="0" px="sm">
         {tabs.general.map((tab) => (
           <Box key={tab.label}>
             <LinkBox
@@ -129,20 +126,20 @@ const NavbarWithSearch: FC = () => {
                   ping
                   pingScale={1.4}
                   placement="right"
-                  right="6"
+                  right="md"
                 >
-                  <Center gap="md" justifyContent="start" px="4" py="2">
+                  <HStack gap="md" px="md" py="sm">
                     <tab.icon color="#909090" />
                     <Text color={["#505050", "gray.200"]} fontSize="xs">
                       {tab.label}
                     </Text>
-                  </Center>
+                  </HStack>
                 </Indicator>
               </LinkOverlay>
             </LinkBox>
           </Box>
         ))}
-      </Flex>
+      </VStack>
       <Divider variant="solid" />
 
       <VStack as="nav" px="md">
@@ -161,7 +158,7 @@ const NavbarWithSearch: FC = () => {
         </HStack>
       </VStack>
 
-      <Flex direction="column" px="1">
+      <VStack gap="0" px="sm" py="2xs">
         {tabs.collections.map((tab) => (
           <Box key={tab.label}>
             <LinkBox
@@ -175,17 +172,17 @@ const NavbarWithSearch: FC = () => {
               }}
             >
               <LinkOverlay href="#" onClick={(event) => event.preventDefault()}>
-                <Flex align="center" gap="md" px="3.5" py="1.5">
-                  <Text fontSize="sm">{tab.emoji}</Text>
-                  <Text color={["black", "gray.200"]} fontSize="xs">
+                <HStack gap="md" px="md" py="xs">
+                  <Text>{tab.emoji}</Text>
+                  <Text color={["#505050", "gray.200"]} fontSize="xs">
                     {tab.label}
                   </Text>
-                </Flex>
+                </HStack>
               </LinkOverlay>
             </LinkBox>
           </Box>
         ))}
-      </Flex>
+      </VStack>
     </VStack>
   )
 }
