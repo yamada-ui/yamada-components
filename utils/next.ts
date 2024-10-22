@@ -29,11 +29,11 @@ export const getStaticCommonProps = async ({
   locale,
 }: GetStaticPropsContext) => {
   const componentTree = (await getComponentCategoryGroup()(locale as Locale))
-    .filter(({ items }) => items)
     .map((component) => ({
       ...component,
       items: component.items?.filter(({ items }) => items),
     }))
+    .filter(({ items }) => items && items.length > 0)
 
   return { props: { componentTree } }
 }
