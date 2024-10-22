@@ -1,15 +1,16 @@
 import type { FC } from "react"
 import {
-  ActivityIcon,
   ChevronRightIcon,
-  InfoIcon,
-  Plus,
-  Search,
+  LightbulbIcon,
+  PlusIcon,
+  SearchIcon,
+  SquareCheckBigIcon,
   UserIcon,
 } from "@yamada-ui/lucide"
 import {
   Avatar,
   Box,
+  Center,
   Divider,
   Flex,
   HStack,
@@ -30,20 +31,20 @@ import {
 const NavbarWithSearch: FC = () => {
   const tabs = {
     collections: [
-      { icon: "👍", label: "Sales" },
-      { icon: "🚚", label: "Deliveries" },
-      { icon: "💸", label: "Discounts" },
-      { icon: "💰", label: "Profits" },
-      { icon: "✨", label: "Reports" },
-      { icon: "🛒", label: "Orders" },
-      { icon: "📅", label: "Events" },
-      { icon: "🙈", label: "Debts" },
-      { icon: "💁‍♀️", label: "Customers" },
+      { emoji: "👍", label: "Sales" },
+      { emoji: "🚚", label: "Deliveries" },
+      { emoji: "💸", label: "Discounts" },
+      { emoji: "💰", label: "Profits" },
+      { emoji: "✨", label: "Reports" },
+      { emoji: "🛒", label: "Orders" },
+      { emoji: "📅", label: "Events" },
+      { emoji: "🙈", label: "Debts" },
+      { emoji: "💁‍♀️", label: "Customers" },
     ],
     general: [
-      { icon: ActivityIcon, label: "Activity", number: "3" },
-      { icon: InfoIcon, label: "Tasks", number: "4" },
-      { icon: UserIcon, label: "Contacts", number: "" },
+      { icon: LightbulbIcon, label: "Activity", notifications: "3" },
+      { icon: SquareCheckBigIcon, label: "Tasks", notifications: "4" },
+      { icon: UserIcon, label: "Contacts", notifications: "" },
     ],
   }
 
@@ -62,9 +63,12 @@ const NavbarWithSearch: FC = () => {
         cursor="pointer"
         maxW="sm"
         transition="all 0.1s"
-        _hover={{ bg: "#F5F5F5" }}
+        _hover={{
+          background: ["#F5F5F5", "gray.800"],
+          textDecor: "none",
+        }}
       >
-        <LinkOverlay>
+        <LinkOverlay href="#" onClick={(event) => event.preventDefault()}>
           <Flex align="center" gap="md" p="md">
             <Avatar
               name="Hirotomo Yamada"
@@ -89,11 +93,16 @@ const NavbarWithSearch: FC = () => {
       <VStack as="nav" px="md">
         <InputGroup size="sm">
           <InputLeftElement>
-            <Search color="gray.500" />
+            <SearchIcon color="gray.500" />
           </InputLeftElement>
-          <Input placeholder="Search" pr="4.6rem" />
+          <Input
+            color={["#505050", "gray.200"]}
+            fontSize="xs"
+            placeholder="Search"
+            pr="4.6rem"
+          />
           <InputRightElement w="4.6rem">
-            <Text color="#080808">
+            <Text color={["black", "white"]}>
               <Kbd>Ctrl + K</Kbd>
             </Text>
           </InputRightElement>
@@ -108,27 +117,27 @@ const NavbarWithSearch: FC = () => {
               cursor="pointer"
               maxW="sm"
               transition="all 0.1s"
-              _hover={{ bg: "#F5F5F5" }}
+              _hover={{
+                background: ["#F5F5F5", "gray.800"],
+                textDecor: "none",
+              }}
             >
-              <LinkOverlay>
-                <Flex align="center" gap="md" px="4" py="2">
-                  <tab.icon color="#909090" />
-                  <Text color="#505050" fontSize="sm">
-                    {tab.label}
-                  </Text>
-                  <Spacer />
-                  {tab.number ? (
-                    <Indicator
-                      label={tab.number}
-                      offset={1.5}
-                      ping
-                      pingScale={1.4}
-                      placement="right"
-                    >
-                      <Avatar display="none" />
-                    </Indicator>
-                  ) : null}
-                </Flex>
+              <LinkOverlay href="#" onClick={(event) => event.preventDefault()}>
+                <Indicator
+                  isDisabled={!tab.notifications}
+                  label={tab.notifications}
+                  ping
+                  pingScale={1.4}
+                  placement="right"
+                  right="6"
+                >
+                  <Center gap="md" justifyContent="start" px="4" py="2">
+                    <tab.icon color="#909090" />
+                    <Text color={["#505050", "gray.200"]} fontSize="xs">
+                      {tab.label}
+                    </Text>
+                  </Center>
+                </Indicator>
               </LinkOverlay>
             </LinkBox>
           </Box>
@@ -138,15 +147,16 @@ const NavbarWithSearch: FC = () => {
 
       <VStack as="nav" px="md">
         <HStack>
-          <Text as="sub" color="#808080">
+          <Text as="sub" color={["#808080", "gray.400"]}>
             Collections
           </Text>
           <Spacer />
           <IconButton
             size="xs"
             variant="outline"
-            borderColor="gray.100"
-            icon={<Plus />}
+            borderColor={["gray.100", "gray.800"]}
+            color={["gray.800", "white"]}
+            icon={<PlusIcon />}
           />
         </HStack>
       </VStack>
@@ -159,12 +169,15 @@ const NavbarWithSearch: FC = () => {
               cursor="pointer"
               maxW="sm"
               transition="all 0.1s"
-              _hover={{ bg: "#F5F5F5" }}
+              _hover={{
+                background: ["#F5F5F5", "gray.800"],
+                textDecor: "none",
+              }}
             >
-              <LinkOverlay>
-                <Flex align="center" gap="sm" px="3.5" py="1.5">
-                  <Text>{tab.icon}</Text>
-                  <Text color="#505050" fontSize="sm">
+              <LinkOverlay href="#" onClick={(event) => event.preventDefault()}>
+                <Flex align="center" gap="md" px="3.5" py="1.5">
+                  <Text fontSize="sm">{tab.emoji}</Text>
+                  <Text color={["black", "gray.200"]} fontSize="xs">
                     {tab.label}
                   </Text>
                 </Flex>
