@@ -7,5 +7,11 @@
     "title": "ラベル付き",
     "description": "これは、ラベル付きの区切り線コンポーネントです。"
   },
-  "options": { "container": { "centerContent": true, "p": "md" } }
+  "options": {
+    "ignore": true,
+    "container": {
+      "centerContent": true,
+      "p": "md"
+    }
+  }
 }
