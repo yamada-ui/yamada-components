@@ -128,8 +128,9 @@ export const getComponentPaths =
     const defaultLocale = CONSTANT.I18N.DEFAULT_LOCALE
     const categoryGroupPath = path.join("contents", categoryGroupName)
 
-    const componentTree =
+    const componentTree = (
       await getComponentCategoryGroup(categoryGroupPath)(defaultLocale)
+    ).filter(({ items }) => items)
 
     const getPaths =
       (componentTree?: ComponentCategoryGroup[]) =>
