@@ -16,7 +16,9 @@ const LOCALES = CONSTANT.I18N.LOCALES.map(({ value }) => value)
 const getMetadataPaths: p.RequiredRunner = () => async (_, s) => {
   s.start(`Getting the Yamada UI content paths`)
 
-  const metadataPaths = await glob("contents/**/metadata.json")
+  const metadataPaths = await glob("contents/**/metadata.json", {
+    ignore: "contents/metadata.json",
+  })
 
   s.stop(`Got the Yamada UI content paths`)
 
