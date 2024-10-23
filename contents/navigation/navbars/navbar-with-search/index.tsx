@@ -71,7 +71,7 @@ const NavbarWithSearch: FC = () => {
               name="Hirotomo Yamada"
               src="https://avatars.githubusercontent.com/u/84060430?v=4"
             />
-            <HStack gap="lg">
+            <HStack gap="md">
               <Box>
                 <Text as="b" fontSize="sm">
                   Hirotomo Yamada
@@ -98,7 +98,7 @@ const NavbarWithSearch: FC = () => {
             placeholder="Search"
             pr="4.6rem"
           />
-          <InputRightElement w="4.6rem">
+          <InputRightElement h="1.85rem" w="4.6rem">
             <Text color={["black", "white"]}>
               <Kbd>Ctrl + K</Kbd>
             </Text>
@@ -126,7 +126,7 @@ const NavbarWithSearch: FC = () => {
                   ping
                   pingScale={1.4}
                   placement="right"
-                  right="md"
+                  right="5"
                 >
                   <HStack gap="md" px="md" py="sm">
                     <tab.icon color="#909090" />
