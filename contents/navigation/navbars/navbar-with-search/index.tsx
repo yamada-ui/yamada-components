@@ -88,7 +88,7 @@ const NavbarWithSearch: FC = () => {
       </LinkBox>
 
       <VStack as="nav" px="md">
-        <InputGroup size="sm">
+        <InputGroup size="sm" position="relative">
           <InputLeftElement>
             <SearchIcon color="gray.500" />
           </InputLeftElement>
@@ -98,7 +98,13 @@ const NavbarWithSearch: FC = () => {
             placeholder="Search"
             pr="4.6rem"
           />
-          <InputRightElement h="1.85rem" w="4.6rem">
+          <InputRightElement
+            h="1.85rem"
+            position="absolute"
+            right="0"
+            top="0"
+            w="4.6rem"
+          >
             <Text color={["black", "white"]}>
               <Kbd>Ctrl + K</Kbd>
             </Text>
