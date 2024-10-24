@@ -1,0 +1,10 @@
+{
+  "en": {
+    "title": "Navbar Nested",
+    "description": "A nested navigation bar component for organizing links and menus."
+  },
+  "ja": {
+    "title": "ネストされたナビゲーションバー",
+    "description": "リンクやメニューを整理するためのネストされたナビゲーションバーコンポーネント。"
+  }
+}
