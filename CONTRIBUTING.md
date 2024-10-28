@@ -47,6 +47,7 @@ To improve our development process, we have set up tools and systems.
   - Please enter the component name in kebab-case.
   - If [theme](https://yamada-ui.com/styled-system/theming) is `true`, a customized theme will be applied to the component.
   - If [config](https://yamada-ui.com/styled-system/configure) is `true`, a customized config will be applied to the component.
+  - If **`ignore`** is `true`, a component will be ignored on the site.
 
 ## Making a Pull Request?
 
