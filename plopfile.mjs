@@ -241,6 +241,13 @@ export default function plop(
         default: "No",
         message: "Does this component need a config?:",
       },
+      {
+        type: "list",
+        name: "ignore",
+        choices: ["Yes", "No"],
+        default: "Yes",
+        message: "Does this component need to be ignored?:",
+      },
     ],
 
     actions: (answers) => {
@@ -248,7 +255,8 @@ export default function plop(
 
       if (!answers) return actions
 
-      const { config, newCategoryGroupName, newCategoryName, theme } = answers
+      const { config, ignore, newCategoryGroupName, newCategoryName, theme } =
+        answers
 
       let destination = `./contents/{{dashCase categoryGroupName}}/{{dashCase categoryName}}/{{dashCase componentName}}`
 
@@ -311,6 +319,15 @@ export default function plop(
           abortOnFail: true,
           destination,
           templateFiles: "plop/optional/config.ts.hbs",
+        })
+      }
+
+      if (ignore === "Yes") {
+        actions.push({
+          type: "append",
+          path: destination + "/metadata.json",
+          pattern: /"options": {/,
+          template: `  "ignore": true,`,
         })
       }
 
