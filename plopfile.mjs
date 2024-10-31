@@ -245,7 +245,7 @@ export default function plop(
         type: "list",
         name: "ignore",
         choices: ["Yes", "No"],
-        default: "Yes",
+        default: "No",
         message: "Does this component need to be ignored?:",
       },
     ],
