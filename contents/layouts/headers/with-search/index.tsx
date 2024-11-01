@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   ButtonGroup,
+  Center,
   Flex,
   Heading,
   HStack,
@@ -44,79 +45,73 @@ const WithSearch: FC = () => {
     </Button>
   ))
   return (
-    <Flex
-      as="header"
-      alignItems="center"
-      borderBottomWidth="1"
-      h="14"
-      justifyContent="space-between"
-      px="md"
-    >
-      <HStack gap="md">
-        <IconButton
-          type="button"
-          size="sm"
-          variant="unstyled"
-          display={{ base: "none", md: "flex" }}
-          icon={
-            <>
-              <Box
-                bg={["black", "white"]}
-                height="2px"
-                position="absolute"
-                transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
-                transitionDuration="300ms"
-                transitionProperty="all"
-                width="24px"
-              />
+    <Center as="header" borderBottomWidth="1" px="md">
+      <Flex h="14" justifyContent="space-between" w="6xl">
+        <HStack gap="md">
+          <IconButton
+            type="button"
+            size="sm"
+            variant="unstyled"
+            display={{ base: "none", md: "flex" }}
+            icon={
+              <>
+                <Box
+                  bg={["black", "white"]}
+                  height="2px"
+                  position="absolute"
+                  transform={isOpen ? "rotate(45deg)" : "translateY(-8px)"}
+                  transitionDuration="300ms"
+                  transitionProperty="all"
+                  width="24px"
+                />
 
-              <Box
-                bg={["black", "white"]}
-                height="2px"
-                opacity={isOpen ? 0 : 1}
-                position="absolute"
-                transform={isOpen ? "translateX(20px)" : undefined}
-                transitionDuration="400ms"
-                transitionProperty="all"
-                width="24px"
-              />
+                <Box
+                  bg={["black", "white"]}
+                  height="2px"
+                  opacity={isOpen ? 0 : 1}
+                  position="absolute"
+                  transform={isOpen ? "translateX(20px)" : undefined}
+                  transitionDuration="400ms"
+                  transitionProperty="all"
+                  width="24px"
+                />
 
-              <Box
-                bg={["black", "white"]}
-                height="2px"
-                position="absolute"
-                transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
-                transitionDuration="300ms"
-                transitionProperty="all"
-                width="24px"
-              />
-            </>
-          }
-          p="1"
-          placeContent="center"
-          placeItems="center"
-          title="Menu"
-          onClick={onToggle}
-        />
-        <HStack gap="sm">
-          <Image src="/favicon.svg" alt="Yamada UI" height={30} width={30} />
-          <Heading as="a" fontSize="lg" whiteSpace="nowrap">
-            Yamada UI
-          </Heading>
+                <Box
+                  bg={["black", "white"]}
+                  height="2px"
+                  position="absolute"
+                  transform={isOpen ? "rotate(-45deg)" : "translateY(8px)"}
+                  transitionDuration="300ms"
+                  transitionProperty="all"
+                  width="24px"
+                />
+              </>
+            }
+            placeContent="center"
+            placeItems="center"
+            title="Menu"
+            onClick={onToggle}
+          />
+          <HStack gap="sm">
+            <Image src="/favicon.svg" alt="Yamada UI" height={30} width={30} />
+            <Heading as="a" fontSize="lg" whiteSpace="nowrap">
+              Yamada UI
+            </Heading>
+          </HStack>
         </HStack>
-      </HStack>
-      <HStack>
-        <ButtonGroup as="nav" display={{ base: "flex", md: "none" }} gap="xs">
-          {items}
-        </ButtonGroup>
-        <InputGroup size="sm" display={{ sm: "none" }}>
-          <InputLeftElement>
-            <Search color="gray.500" />
-          </InputLeftElement>
-          <Input placeholder="Search" />
-        </InputGroup>
-      </HStack>
-    </Flex>
+        <HStack>
+          <ButtonGroup as="nav" display={{ base: "flex", md: "none" }} gap="xs">
+            {items}
+          </ButtonGroup>
+          <InputGroup size="sm" display={{ sm: "none" }}>
+            <InputLeftElement>
+              <Search color="gray.500" />
+            </InputLeftElement>
+            <Input placeholder="Search" />
+          </InputGroup>
+        </HStack>
+      </Flex>
+    </Center>
   )
 }
 
