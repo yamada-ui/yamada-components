@@ -47,7 +47,7 @@ cd yamada-components
   - コンポーネント名はケバブケースで入力してください。
   - [theme](https://yamada-ui.com/ja/styled-system/theming)が`true`の場合、コンポーネントにカスタマイズしたテーマを適用します。
   - [config](https://yamada-ui.com/ja/styled-system/configure)が`true`の場合、コンポーネントにカスタマイズしたコンフィグを適用します。
-  - **`ignore`** が`true`の場合、コンポーネントを非表示にします。
+  - **`ignore`** が`true`の場合、コンポーネントはサイト上でのレンダリングから除外されます。
 
 ## プルリクエストを作成しますか？
 
