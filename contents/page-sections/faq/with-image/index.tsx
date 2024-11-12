@@ -6,7 +6,6 @@ import {
   Image,
   VStack,
 } from "@yamada-ui/react"
-import FAQ from "./faq.svg"
 
 const WithImage = () => {
   return (
@@ -18,7 +17,11 @@ const WithImage = () => {
       px="md"
       py="xl"
     >
-      <Image src={FAQ.src} alt="faq" w={{ base: "lg", sm: "full" }} />
+      <Image
+        src="https://images.pexels.com/photos/5428834/pexels-photo-5428834.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="faq"
+        w={{ base: "lg", sm: "full" }}
+      />
       <VStack maxW={{ base: "xl", sm: "full" }}>
         <Heading size="md" pl="md">
           Frequently Asked Questions

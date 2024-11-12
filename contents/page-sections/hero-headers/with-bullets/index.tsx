@@ -12,7 +12,6 @@ import {
   Text,
   VStack,
 } from "@yamada-ui/react"
-import HeroImage from "./hero.svg"
 
 const HeroWithBullets: FC = () => {
   return (
@@ -70,7 +69,7 @@ const HeroWithBullets: FC = () => {
         </ButtonGroup>
       </VStack>
       <Image
-        src={HeroImage.src}
+        src="https://images.unsplash.com/photo-1678690832324-67961a27ca92?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="hero"
         display={{ lg: "none" }}
         maxW="md"

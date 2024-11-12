@@ -21,7 +21,7 @@ const AuthenticationForm: FC = () => {
 
   return (
     <Box
-      bgImg="url(https://images.unsplash.com/photo-1484242857719-4b9144542727?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1280&q=80)"
+      bgImg="url(https://images.unsplash.com/photo-1677784976154-816c3ceca511?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
       h="full"
       w="full"
     >
